@@ -8,6 +8,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import { HelmetProvider } from "react-helmet-async";
+import "Styles/index.scss";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,9 +28,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 

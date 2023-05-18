@@ -1,42 +1,42 @@
-import React from 'react';
+import React from "react";
 
-import SingUpSelectForm from 'UI/Components/SignUp';
-import IPadBackImg from './IPadBackImg';
-import SocialSiteLink from '../../UI/Components/Footer/SocialSiteLink';
-import Footer from '../../UI/Components/Footer';
+import SingUpSelectForm from "UI/Components/SignUp";
+import IPadBackImg from "./IPadBackImg";
+import SocialSiteLink from "../../UI/Components/Footer/SocialSiteLink";
+import Footer from "../../UI/Components/Footer";
 
-import TopImg from 'Assets/images/desktop-logo-back-image.png';
-import HeaderLogoImage from 'Assets/images/logo.png';
-import FirstIpadImage from 'Assets/images/first-ipad.png';
-import SecondIpadImage from 'Assets/images/second-ipad.png';
-import SurveyMask from 'Assets/images/survery-mask.png';
+import TopImg from "Assets/images/desktop-logo-back-image.png";
+import HeaderLogoImage from "Assets/images/logo.png";
+import FirstIpadImage from "Assets/images/first-ipad.png";
+import SecondIpadImage from "Assets/images/second-ipad.png";
+import SurveyMask from "Assets/images/survery-mask.png";
 
-import FacebookIcon from 'Assets/images/svg/icon-facebook';
-import InstagramIcon from 'Assets/images/svg/icon-instagram';
-import LinkdedinIcon from 'Assets/images/svg/icon-linkedin';
-import TwitterIcon from 'Assets/images/svg/icon-twitter';
-import YoutubeIcon from 'Assets/images/svg/icons-youtube';
+import FacebookIcon from "Assets/images/svg/icon-facebook";
+import InstagramIcon from "Assets/images/svg/icon-instagram";
+import LinkdedinIcon from "Assets/images/svg/icon-linkedin";
+import TwitterIcon from "Assets/images/svg/icon-twitter";
+import YoutubeIcon from "Assets/images/svg/icons-youtube";
 
-export function Landing() {
+export const Landing: React.FC = () => {
   const socialLink = [
     {
-      handleClick: () => console.log('Clicked Facebook'),
+      handleClick: () => console.log("Clicked Facebook"),
       icon: FacebookIcon,
     },
     {
-      handleClick: () => console.log('Clicked Instargram'),
+      handleClick: () => console.log("Clicked Instargram"),
       icon: InstagramIcon,
     },
     {
-      handleClick: () => console.log('Clicked Twitter'),
+      handleClick: () => console.log("Clicked Twitter"),
       icon: TwitterIcon,
     },
     {
-      handleClick: () => console.log('Clicked Linkedin'),
+      handleClick: () => console.log("Clicked Linkedin"),
       icon: LinkdedinIcon,
     },
     {
-      handleClick: () => console.log('Clicked YouTube'),
+      handleClick: () => console.log("Clicked YouTube"),
       icon: YoutubeIcon,
     },
   ];
@@ -52,15 +52,19 @@ export function Landing() {
       >
         {/* part-Landing Page Logo */}
         <div className="absolute top-[330px] z-30 w-full">
-          <img src={HeaderLogoImage} alt="Football Funder" className="mx-auto" />
+          <img
+            src={HeaderLogoImage}
+            alt="Football Funder"
+            className="mx-auto"
+          />
           <div
             className="relative mt-[30px] mb-[64px] mx-auto
               h-[66px] sm:h-[44px]
               w-[368px] sm:w-[498px] max-ns:w-[280px]"
           >
             <p className="absolute top-0 text-base font-medium text-center leading-[22px] text-white">
-              The new home for football clubs and organisations that provides support with
-              fundrasing, advertising and sponsorship.
+              The new home for football clubs and organisations that provides
+              support with fundrasing, advertising and sponsorship.
             </p>
           </div>
         </div>
@@ -73,9 +77,9 @@ export function Landing() {
           ipadBack={{
             imageSrc: FirstIpadImage,
             title:
-              'Promote your organisation’s commercial interests on a football exclusive platform',
+              "Promote your organisation’s commercial interests on a football exclusive platform",
             description:
-              'Our crowdfunding engine and advertising and sponsorship marketplace provides exposure for your club or organisation, regardless of size.',
+              "Our crowdfunding engine and advertising and sponsorship marketplace provides exposure for your club or organisation, regardless of size.",
           }}
         />
       </div>
@@ -85,9 +89,9 @@ export function Landing() {
           ipadBack={{
             imageSrc: SecondIpadImage,
             title:
-              'Market your football brand and reach larger audiences with our campaign support',
+              "Market your football brand and reach larger audiences with our campaign support",
             description:
-              ' We’ll provide you with a dedicated profile to support your commercial activity and engage the audience you want to reach, all while being cost efficient.',
+              " We’ll provide you with a dedicated profile to support your commercial activity and engage the audience you want to reach, all while being cost efficient.",
           }}
         />
       </div>
@@ -102,8 +106,8 @@ export function Landing() {
           <div className="absolute top-[85px] w-full">
             <div className="mx-auto w-[330px] max-ns:w-[300px]">
               <p className="text-[21px] font-semibold leading-[28px] text-white mx-auto">
-                Take our Grassroots Survey and win <span className="text-green-10">£100</span> in
-                vouchers
+                Take our Grassroots Survey and win{" "}
+                <span className="text-green-10">£100</span> in vouchers
               </p>
               <div className="mt-[10px] bg-green-10 rounded-10">
                 <div className="px-[10px] py-[15px] text-center font-semibold text-[16px] leading-[20px]">
@@ -129,4 +133,4 @@ export function Landing() {
       </div>
     </div>
   );
-}
+};

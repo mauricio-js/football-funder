@@ -6,7 +6,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <Landing></Landing>
+      {/* <Landing></Landing> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="home" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
       {/* <BrowserRouter>
         <Routes>
           <Route path={"/"} Component={Landing} />

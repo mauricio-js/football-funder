@@ -4,6 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { Provider as ReduxProvider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import { HelmetProvider } from "react-helmet-async";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

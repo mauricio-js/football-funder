@@ -1,10 +1,10 @@
-import { useHistory } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 // import { LOGOUT_URL } from 'Lib'
 import useAuthToken from './useAuthToken';
 
 export function useAxios(timeout: number = 500000000) {
-  const history = useHistory();
+  const history = useNavigate ();
   const apiUrl = process.env.REACT_APP_API;
 
   const { token, refresh } = useAuthToken();
@@ -33,7 +33,7 @@ export function useAxios(timeout: number = 500000000) {
       if (status) {
         if (status >= 400 && status <= 500) {
           if (status === 401) {
-            history.push('/login');
+            history('/login');
           }
           if (status === 422) {
             return Promise.reject(error.response?.data);

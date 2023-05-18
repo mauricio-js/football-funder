@@ -3,7 +3,7 @@ import InputForm from '../InputForm/InputForm';
 
 const IndividualForm: React.FC = () => {
   return (
-    <div className="flex flex-col gap-3 mt-7">
+    <div className="flex flex-col gap-3 mt-7 ">
       <div className="text-white text-sm text-center">
         Please fill the requested information below
       </div>

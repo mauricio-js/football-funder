@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectFormArrow from 'Assets/images/svg/select-form-arrow';
+import EnglandFlag from 'Assets/images/icon-united-kingdom.png';
 
 const languages = [
   { code: 'gb', name: 'English' },
@@ -42,9 +43,9 @@ const SelectLanguage: React.FC = () => {
 
   return (
     <div className="relative">
-      <div id={LANGUAGE_SELECTOR_ID} className="mt-2 text-[14px] text-white">
-        <div className="d-flex" onClick={() => setLanguage(languages[0])}>
-          <span className={`fi fis fi-${language.code} mr-1`}></span>
+      <div id={LANGUAGE_SELECTOR_ID} className="text-[14px] text-white">
+        <div className="flex flex-row" onClick={() => setLanguage(languages[0])}>
+          <img src={EnglandFlag} alt="" />
           {language.name}
         </div>
         <div className="absolute top-0 left-14 items-center px-2 text-gray-700">

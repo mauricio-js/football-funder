@@ -1,7 +1,7 @@
 import React from "react";
 // import { Router } from './Router';
-import { Landing, Home } from "Pages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Landing } from "Pages";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (

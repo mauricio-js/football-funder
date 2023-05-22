@@ -3,10 +3,14 @@
 export const content = ['./src/**/*.{js,jsx,ts,tsx}'];
 export const theme = {
   screens: {
-    'vs': '330px',
-    'ns': '430px',
+    'vs': '375px',
+    'ns': '431px',
+    'xs': '540px',
+    '2xs': '590px',
     'sm': '640px',
     'md': '768px',
+    'mm': '850px',
+    'xm':  '950px',
     'lg': '1024px',
     'xl': '1280px',
     '2xl': '1536px',

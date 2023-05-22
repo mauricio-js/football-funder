@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IPadBack {
   imageSrc: string;
@@ -25,18 +25,17 @@ const IPadBackImg: React.FC<Props> = ({ ipadBack }) => {
         <div className="absolute top-[421px] w-full">
           <div
             className="
-            bg-green-20 rounded-20 p-[30px] mx-auto
-            w-[390px] sm:w-[527px] max-ns:w-[330px] max-vs:w-[300px]
-            h-[224px] sm:h-[261px] max-ns:h-[240px]
-          "
+            bg-green-20 rounded-20 mx-auto p-[30px]
+            sm:w-[527px] ns:w-[390px] max-ns:w-full
+           "
           >
-            <p className="w-full text-[21px] max-ns:text-[16px] font-semibold leading-[28px] text-white">
+            <p className="w-full text-[21px] max-vs:text-[16px] max-vs:leading-5 font-semibold leading-[28px] text-white">
               {title}
             </p>
-            <p className="w-full mt-[20px] max-ns:text-[12px] text-[14px] font-medium leading-5 text-green-10">
+            <p className="w-full mt-[20px] text-[14px] max-vs:text-[12px] max-vs:leading-4 font-medium leading-5 text-green-10">
               {description1}
             </p>
-            <p className="max-lg:hidden w-full mt-[20px] max-ns:text-[12px] text-[14px] font-medium leading-5 text-green-10">
+            <p className="max-sm:hidden w-full mt-[20px] max-ns:text-[12px] text-[14px] font-medium leading-5 text-green-10">
               {description2}
             </p>
           </div>

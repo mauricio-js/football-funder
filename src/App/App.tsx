@@ -8,10 +8,11 @@ function App() {
     <>
       {/* <Landing></Landing> */}
       <BrowserRouter>
-        <Routes>
+        <Landing></Landing>
+        {/* <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="home" element={<Home />} />
-        </Routes>
+        </Routes> */}
       </BrowserRouter>
       {/* <BrowserRouter>
         <Routes>

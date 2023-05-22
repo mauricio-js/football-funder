@@ -1,18 +1,18 @@
 import React from "react";
 // import { Router } from './Router';
-import { Landing } from "Pages";
+import { Landing, Home } from "Pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Landing></Landing>
-      {/* <BrowserRouter>
+      {/* <Landing></Landing> */}
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="home" element={<Home />} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
       {/* <BrowserRouter>
         <Routes>
           <Route path={"/"} Component={Landing} />

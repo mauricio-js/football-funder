@@ -111,7 +111,10 @@ export function Header() {
             {/* Part - Header Search Icon && Search Form */}
             <div className="flex flex-row items-center">
               {!isShowSearchForm && (
-                <button className="mr-5" onClick={ShowSearchForm}>
+                <button
+                  className="mr-5 max-lg:hidden max-xl:mr-3"
+                  onClick={ShowSearchForm}
+                >
                   <SearchIcon />
                 </button>
               )}

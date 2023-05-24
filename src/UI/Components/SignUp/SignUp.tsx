@@ -108,26 +108,33 @@ const SignUpSelectForm: React.FC = () => {
         />
 
         <div className="mt-[30px] ">
-          <div className="text-white text-sm text-center">
-            Please fill the requested information below
-          </div>
           {selectedOption === "organisation" && (
-            <div className="mt-[15px]">
-              {organisationFormData.map((data, index) => {
-                return <InputForm label={data.label} type={data.type} />;
-              })}
-              <div className="mt-[30px]">
-                <SignUpButton />
+            <div>
+              <div className="text-white text-sm text-center">
+                Please fill the requested information below
+              </div>
+              <div className="mt-[15px]">
+                {organisationFormData.map((data, index) => {
+                  return <InputForm label={data.label} type={data.type} />;
+                })}
+                <div className="mt-[30px]">
+                  <SignUpButton />
+                </div>
               </div>
             </div>
           )}
           {selectedOption === "individual" && (
-            <div className="mt-[15px]">
-              {individualFormData.map((data, index) => {
-                return <InputForm label={data.label} type={data.type} />;
-              })}
-              <div className="mt-[30px]">
-                <SignUpButton />
+            <div>
+              <div className="text-white text-sm text-center">
+                Please fill the requested information below
+              </div>
+              <div className="mt-[15px]">
+                {individualFormData.map((data, index) => {
+                  return <InputForm label={data.label} type={data.type} />;
+                })}
+                <div className="mt-[30px]">
+                  <SignUpButton />
+                </div>
               </div>
             </div>
           )}

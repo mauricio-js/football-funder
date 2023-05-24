@@ -1,25 +1,17 @@
 import React from "react";
-
-interface IPadBack {
-  imageSrc: string;
-  title: string;
-  description1: string;
-  description2: string;
-}
+import { IPadDataType } from "types";
 
 interface Props {
-  ipadBack: IPadBack;
+  value: IPadDataType;
 }
 
-const IPadBackImg: React.FC<Props> = ({ ipadBack }) => {
-  const { imageSrc, title, description1, description2 } = ipadBack;
-
+const IPadBackImg: React.FC<Props> = ({ value }) => {
   return (
     <div className="text-[14px] font-medium leading-[25px] text-white h-[682px] ">
       <div
         className=" relative bg-contain bg-no-repeat bg-center h-[531px] mx-auto z-0"
         style={{
-          backgroundImage: `url(${imageSrc})`,
+          backgroundImage: `url(${value.imageSrc})`,
         }}
       >
         <div className="absolute top-[421px] w-full">
@@ -29,14 +21,23 @@ const IPadBackImg: React.FC<Props> = ({ ipadBack }) => {
             sm:w-[527px] ns:w-[390px] max-ns:w-full
            "
           >
-            <p className="w-full text-[21px] max-vs:text-[16px] max-vs:leading-5 font-semibold leading-[28px] text-white">
-              {title}
+            <p
+              className="w-full text-[21px] max-vs:text-[16px] 
+              max-vs:leading-5 font-semibold leading-[28px] text-white"
+            >
+              {value.title}
             </p>
-            <p className="w-full mt-[20px] text-[14px] max-vs:text-[12px] max-vs:leading-4 font-medium leading-5 text-green-10">
-              {description1}
+            <p
+              className="w-full mt-[20px] text-[14px] max-vs:text-[12px] 
+              max-vs:leading-4 font-medium leading-5 text-green-10"
+            >
+              {value.description1}
             </p>
-            <p className="max-sm:hidden w-full mt-[20px] max-ns:text-[12px] text-[14px] font-medium leading-5 text-green-10">
-              {description2}
+            <p
+              className="max-sm:hidden w-full mt-[20px] max-ns:text-[12px] 
+              text-[14px] font-medium leading-5 text-green-10"
+            >
+              {value.description2}
             </p>
           </div>
         </div>

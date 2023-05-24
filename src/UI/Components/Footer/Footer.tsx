@@ -21,7 +21,10 @@ export const Footer: React.FC = () => {
           <img src={FooterLogoImage} alt="footer-logo" />
         </div>
         <div className="col-span-8 max-lg:col-span-11 flex items-center">
-          <div className="flex flex-row max-lg:flex-col max-lg:gap-[10px] gap-[30px] text-[14px] font-medium leading-[25px] text-white">
+          <div
+            className="flex flex-row max-lg:flex-col max-lg:gap-[10px] 
+            gap-[30px] text-[14px] font-medium leading-[25px] text-white"
+          >
             <div onClick={handleClick}>About</div>
             <div onClick={handleClick}>Terms & Conditions</div>
             <div onClick={handleClick}>Privacy Policy</div>
@@ -30,9 +33,14 @@ export const Footer: React.FC = () => {
         </div>
         <div className="col-span-7 max-lg:col-span-11">
           <div className="flex flex-row items-center gap-8 max-lg:flex-col max-lg:items-start">
-            <div className="flex flex-row gap-x-8 gap-y-[5px] max-md:flex-col text-[13px] font-medium leading-[25px] text-white">
-              <div>© 2023 Football Funder - All Rights Reserved</div>
-              <div>Operated by Aquariux Limited</div>
+            <div
+              className="flex flex-row gap-x-[30px] gap-y-[5px] 
+              max-lg:flex-col text-[13px] font-medium leading-[25px] text-white"
+            >
+              <div className="flex gap-x-[30px] max-2xs:flex-col">
+                <div>© 2023 Football Funder - All Rights Reserved</div>
+                <div>Operated by Aquariux Limited</div>
+              </div>
               <SelectLanguage />
             </div>
           </div>

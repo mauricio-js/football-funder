@@ -4,11 +4,10 @@ import SingUpSelectForm from "UI/Components/SignUp/SignUp";
 import IPadBackImg from "./IPadBackImg";
 import SocialSiteLink from "../../UI/Components/Footer/SocialSiteLink";
 import { Footer } from "../../UI/Components";
+import { IPadData } from "./landingPageConfig";
 
 import TopImg from "Assets/images/desktop-logo-back-image.png";
 import LandingLogoImage from "Assets/images/logo.png";
-import FirstIpadImage from "Assets/images/first-ipad.png";
-import SecondIpadImage from "Assets/images/second-ipad.png";
 import SurveyMask from "Assets/images/survery-mask.png";
 
 export function Landing() {
@@ -16,7 +15,7 @@ export function Landing() {
     <div className="bg-green-70">
       {/* part-landing page background */}
       <div
-        className="bg-cover bg-no-repeat bg-center"
+        className="bg-cover bg-no-repeat bg-bottom"
         style={{
           backgroundImage: `url(${TopImg})`,
         }}
@@ -41,38 +40,17 @@ export function Landing() {
       </div>
       {/* Part-Sign In */}
       <SingUpSelectForm />
-      {/* part - ipadImage */}
       <div className="px-5">
-        {/* Part - first Ipad Image */}
         <div className="mt-[110px]">
-          <IPadBackImg
-            ipadBack={{
-              imageSrc: FirstIpadImage,
-              title:
-                "Promote your organisation’s commercial interests on a football exclusive platform",
-              description1:
-                "Our crowdfunding engine and advertising and sponsorship marketplace provides exposure for your club or organisation, regardless of size.",
-              description2:
-                "Whether you're raising crucial funds, or have branding opportunities available, our platform is committed to ensuring your goals are met.",
-            }}
-          />
-          {/* third-part : second ipad image */}
-          <div className="relative mt-[60px]">
-            <IPadBackImg
-              ipadBack={{
-                imageSrc: SecondIpadImage,
-                title:
-                  "Market your football brand and reach larger audiences with our campaign support",
-                description1:
-                  " We’ll provide you with a dedicated profile to support your commercial activity and engage the audience you want to reach, all while being cost efficient.",
-                description2:
-                  "If you have a cause or commercial opportunity you'd like to promote further, we can help with that too.",
-              }}
-            />
-          </div>
+          {IPadData.map((data, index) => {
+            return (
+              <div key={index} className="mb-[100px]">
+                <IPadBackImg value={data} />
+              </div>
+            );
+          })}
         </div>
       </div>
-      {/* part-top div property absolute remove */}
       <div className="mt-[100px] h-[310px]">
         <div
           className="relative bg-auto bg-no-repeat bg-center h-[310px] mx-auto "

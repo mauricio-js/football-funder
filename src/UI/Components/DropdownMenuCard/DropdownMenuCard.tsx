@@ -14,29 +14,21 @@ export const DropdownMenuCard: React.FC<Props> = ({
   textColor,
 }) => {
   return (
-    <div className="font-semibold text-3xl lg:w-[1000px] w-full mx-auto z-30">
+    <div className="font-semibold text-[32px] leading-[26px] lg:w-[1000px] max-lg:max-w-[490px] w-full mx-auto px-[10px] z-30">
       <div
-        className={classname(
-          "max-bl:w-[490px]",
-          "w-[390px]",
-          "max-lg:mx-auto",
-          {
-            [textColor]: textColor,
-          }
-        )}
+        className={classname("w-full text-left", {
+          [textColor]: textColor,
+        })}
       >
         {title}
       </div>
       <div className="mt-[20px] flex gap-5 max-lg:flex-col">
         {value.map((item, index) => {
           return (
-            <div
-              key={index}
-              className="relative max-bl:mx-auto rounded-20 overflow-hidden z-30"
-            >
+            <div key={index} className="relative z-30 ">
               <img
                 src={item.backgroundImage}
-                className="h-[224px] object-cover"
+                className="h-[224px] object-fit"
                 alt=""
               />
               <div className="absolute top-0 w-full h-full px-[25px] py-[20px] max-xs:px-[20px]">
@@ -49,7 +41,7 @@ export const DropdownMenuCard: React.FC<Props> = ({
                 <div className="mt-9 max-xs:mt-5">
                   <button
                     className="rounded-10 bg-white text-black 
-                    font-semibold text-base xs:w-[138px] max-xs:w-[130px] h-[42px]"
+                    font-semibold text-[16px] leading-[22px] px-[25px] h-[42px]"
                   >
                     {item.buttonName}
                   </button>

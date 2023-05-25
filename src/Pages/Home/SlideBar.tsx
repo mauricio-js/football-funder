@@ -35,8 +35,6 @@ export const SlideBar: React.FC = () => {
         keyBoardControl
         minimumTouchDrag={80}
         renderButtonGroupOutside={false}
-        // autoPlay={true}
-        swipeable={true}
         draggable={true}
         showDots={true}
         infinite={true}
@@ -46,7 +44,7 @@ export const SlideBar: React.FC = () => {
       >
         {CarouselCardData.map((data, index) => {
           return (
-            <div key={index} className="pb-7">
+            <div key={index} className="pb-[45px]">
               <CarouselCard Item={data} />
             </div>
           );

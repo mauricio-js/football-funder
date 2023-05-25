@@ -9,7 +9,7 @@ export interface CarouselProps {
 
 export const CarouselCard: React.FC<CarouselProps> = ({ Item }) => {
   return (
-    <div className="relative w-[320px] h-[435px] bg-white rounded-[25px] overflow-hidden mx-auto">
+    <div className="relative w-[320px] max-vs:w-[310px] h-[435px] bg-white rounded-[25px] overflow-hidden mx-auto">
       <img src={Item.img} alt="first-carousel-card.png" />
       <div className="absolute top-0 p-5 w-full h-full">
         <div className="grid h-full content-between">

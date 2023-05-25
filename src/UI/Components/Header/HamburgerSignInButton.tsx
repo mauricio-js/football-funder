@@ -16,7 +16,7 @@ export const HamburgerSignInButton: React.FC = () => {
             bg-white text-base font-semibold"
           onClick={AccountShow}
         >
-          Sign in / Sign Up
+          Sign in / Sign up
         </button>
       )}
       {isAuth && (

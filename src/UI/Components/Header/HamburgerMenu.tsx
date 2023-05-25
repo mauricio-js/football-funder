@@ -3,7 +3,7 @@ import { Search } from "UI/Components";
 
 import { HamburgerSignInButton } from "UI/Components/Header/HamburgerSignInButton";
 import { HamburgerList } from "UI/Components/Header/HamburgerList";
-import HeaderMenuLogo from "Assets/images/hamburger-menu-logo.png";
+import HeaderMenuLogo from "Assets/images/svg/hamburger-menu -logo.svg";
 import WhiteCloseIcon from "Assets/images/close-icon-white.png";
 
 type hamburgerMenuProps = {

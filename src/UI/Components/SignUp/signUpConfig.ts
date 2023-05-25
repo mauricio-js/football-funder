@@ -1,6 +1,6 @@
-import { SignUpOption, FormDataType } from 'types'
+import { SignUpOptionType, FormDataType } from 'types'
 
-export const signUpSelectFormData: SignUpOption[] = [
+export const SignUpSelectFormData: SignUpOptionType[] = [
     {
       id: 1,
       label: "Organisation",
@@ -13,7 +13,7 @@ export const signUpSelectFormData: SignUpOption[] = [
     },
   ];
 
- export const organisationFormData: FormDataType[] = [
+ export const OrganisationFormData: FormDataType[] = [
     {
       id: 1,
       label: "First Name",
@@ -45,7 +45,7 @@ export const signUpSelectFormData: SignUpOption[] = [
       type: "tel",
     },
   ];
- export const individualFormData: FormDataType[] = [
+ export const IndividualFormData: FormDataType[] = [
     {
       id: 1,
       label: "First Name",

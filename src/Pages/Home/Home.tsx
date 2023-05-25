@@ -319,7 +319,7 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-[150px]">
+              <div className="mt-[150px] max-[417px]:mt-[200px]">
                 <div className="w-full px-[20px] h-[250px] mx-auto">
                   <div className=" relative">
                     <img

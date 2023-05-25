@@ -1,7 +1,7 @@
 import React from "react";
 import SelectLanguage from "UI/Components/SelectLanguage/SelectLanguage";
 import SocialSiteLink from "./SocialSiteLink";
-import FooterLogoImage from "Assets/images/footer-logo.png";
+import FooterLogoImage from "Assets/images/svg/footer-logo.svg";
 
 export const Footer: React.FC = () => {
   const handleClick = () => {
@@ -28,6 +28,7 @@ export const Footer: React.FC = () => {
             <div onClick={handleClick}>About</div>
             <div onClick={handleClick}>Terms & Conditions</div>
             <div onClick={handleClick}>Privacy Policy</div>
+            <div onClick={handleClick}>Fraud Policy</div>
             <div onClick={handleClick}>Cookies</div>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { Footer } from "../../UI/Components";
 import { IPadData } from "./landingPageConfig";
 
 import TopImg from "Assets/images/desktop-logo-back-image.png";
-import LandingLogoImage from "Assets/images/logo.png";
+import LandingLogoImage from "Assets/images/svg/landing-logo.svg";
 import SurveyMask from "Assets/images/survery-mask.png";
 
 export function Landing() {

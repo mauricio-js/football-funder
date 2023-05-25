@@ -1,4 +1,4 @@
-  export interface SignUpOption {
+  export interface SignUpOptionType {
     id: number;
     label: string;
     value: string;

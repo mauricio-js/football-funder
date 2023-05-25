@@ -10,7 +10,7 @@ export const menuList:MenuItem[] = [
         href: "/",
     },
     {
-        title: "Funraising",
+        title: "Fundraising",
         href: "/",
         children: [
             {
@@ -38,7 +38,7 @@ export const menuList:MenuItem[] = [
         ]
     },
     {
-        title: "Suponsorship",
+        title: "Sponsorship",
         href: "/",
         children: [
             {
@@ -112,7 +112,7 @@ export const menuList:MenuItem[] = [
     },
     {
       href: "/",
-      title: "Suponsorship",
+      title: "Sponsorship",
       children: [
             {
                 title: "Buy",

@@ -5,7 +5,7 @@ import MenuIcon from "Assets/images/menu-icon.png";
 import BlackCloseIcon from "Assets/images/close-icon-black.png";
 import { SearchIcon } from "Assets/images/svg/icon-search";
 
-import HeaderLogoImage from "Assets/images/header-logo.png";
+import HeaderLogoImage from "Assets/images/svg/header-log.svg";
 import classname from "classnames";
 import { menuList } from "./headerConfig";
 
@@ -21,39 +21,34 @@ export function Header({ isShowMobielMenu }: HeaderProps) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-20">
       <div className="bg-green-10">
         <div
-          className="px-40 max-2xl:px-28 max-xl:px-20 max-lg:px-10 
+          className="px-40 max-2xl:px-28 max-xl:px-20 max-bl:px-
           max-xs:px-10 max-ns:px-5 max-vs:px-4 py-4 flex flex-row"
         >
-          {/* Part - Header Logo */}
           <img src={HeaderLogoImage} alt="footer-logo" />
-          {/* Part - Header Menu */}
           <div
             className={classname(
-              "w-full flex flex-row justify-between max-lg:justify-end pl-28 max-xl:pl-10 max-vs:pl-3",
-              isShowSearchForm && "!justify-end"
+              "w-full flex flex-row justify-between max-bl:justify-end pl-[106px] max-xl:pl-[50px] max-vs:pl-3"
             )}
           >
-            {!isShowSearchForm && (
-              <div className="flex items-center max-lg:hidden">
-                <div className="flex flex-row items-center text-[14px] font-semibold leading-5">
-                  {menuList.map((list, index) => {
-                    return (
-                      <div key={index} className="flex flex-row">
-                        <Dropdown List={list} />
-                      </div>
-                    );
-                  })}
-                </div>
+            <div className="flex items-center max-bl:hidden">
+              <div className="flex flex-row items-center text-[14px] font-semibold leading-5">
+                {menuList.map((list, index) => {
+                  return (
+                    <div key={index} className="flex flex-row">
+                      <Dropdown List={list} />
+                    </div>
+                  );
+                })}
               </div>
-            )}
+            </div>
             {/* Part - Header Search Icon && Search Form */}
             <div className="flex flex-row items-center">
               {!isShowSearchForm && (
                 <button
-                  className="mr-5 max-lg:hidden max-xl:mr-3"
+                  className="mr-5 max-bl:hidden max-xl:mr-3"
                   onClick={ShowSearchForm}
                 >
                   <SearchIcon />
@@ -69,9 +64,10 @@ export function Header({ isShowMobielMenu }: HeaderProps) {
                       <input
                         type="text"
                         id="simple-search"
-                        className="block w-full rounded-lg bg-white py-2 pl-5 
-                          pr-[30px] font-medium text-base focus:outline-0"
-                        placeholder="Search"
+                        className="block w-full rounded-lg bg-white py-2 pl-3 
+                          pr-[30px] font-medium text-base focus:outline-0 
+                          placeholder:text-[12px] placeholder:leading-[20px] placeholder:font-medium"
+                        placeholder="Search..."
                         autoComplete="off"
                         required
                       />
@@ -95,7 +91,7 @@ export function Header({ isShowMobielMenu }: HeaderProps) {
               <SignInButton />
               <div className="flex items-center">
                 <button
-                  className="lg:hidden ml-5 max-vs:ml-1"
+                  className="bl:hidden ml-5 max-vs:ml-1"
                   onClick={isShowMobielMenu}
                 >
                   <img src={MenuIcon} alt="menu-icon" />

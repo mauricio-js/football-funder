@@ -19,8 +19,8 @@ export const SignInButton: React.FC = () => {
       {!isAuth && (
         <button
           className="
-            w-[90px] h-[42px] bg-green-70
-          text-white font-semibold leading-[22px] text-lg
+            w-[80px] h-[40px] bg-green-70 my-[1px] py-1
+          text-white font-semibold leading-[22px] text-[16px]
             flex justify-center items-center rounded-10"
           onClick={AccountShow}
         >

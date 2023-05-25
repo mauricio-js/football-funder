@@ -11,8 +11,8 @@ export const Search: React.FC = () => {
         <input
           type="text"
           id="simple-search"
-          className="block w-full rounded-lg !bg-green-30 py-2 pl-8 
-            pr-[35px] text-white font-medium text-base focus:outline-0"
+          className="block w-full rounded-lg !bg-green-30 py-3 pl-8 
+            pr-[35px] text-white font-medium text-[14px] focus:outline-0 "
           placeholder="Search"
           autoComplete="off"
           required

@@ -1,5 +1,5 @@
 import React from "react";
-import { Landing, Home } from "Pages";
+import { Landing, Home, Explore } from "Pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="home" element={<Home />} />
+          <Route path="explore" element={<Explore />} />
         </Routes>
       </BrowserRouter>
     </>

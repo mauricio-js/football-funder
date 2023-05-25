@@ -87,11 +87,11 @@ export const menuList:MenuItem[] = [
       title: "Fundraising",
       children: [
             {
-                title: "Buy",
+                title: "Fundraise",
                 href: "/"
             },
             {
-                title: "Sell",
+                title: "Contribute",
                 href: "/"
             },
         ]

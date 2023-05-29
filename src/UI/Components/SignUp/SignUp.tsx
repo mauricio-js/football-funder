@@ -40,7 +40,13 @@ const SignUpSelectForm: React.FC = () => {
               </div>
               <div className="mt-[15px]">
                 {OrganisationFormData.map((data, index) => {
-                  return <InputForm label={data.label} type={data.type} />;
+                  return (
+                    <InputForm
+                      key={index}
+                      label={data.label}
+                      type={data.type}
+                    />
+                  );
                 })}
                 <div className="mt-[30px]">
                   <SignUpButton />

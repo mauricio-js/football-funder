@@ -1,4 +1,4 @@
-import { MenuItem } from "types";
+import { MenuItem, AccountMenuDataType } from "types";
 
 export const menuList:MenuItem[] = [
     {
@@ -142,3 +142,17 @@ export const menuList:MenuItem[] = [
     },
   ];
 
+export const AccounMenuData : AccountMenuDataType[] = [
+    {
+        id: 1,
+        title: 'My Account'
+    },
+    {
+        id: 2,
+        title: 'Profile'
+    },
+    {
+        id: 3,
+        title: 'Sign out'
+    },
+];

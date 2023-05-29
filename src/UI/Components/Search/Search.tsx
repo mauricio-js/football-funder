@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchIcon } from "Assets/images/svg/icon-search";
+import { SearchIcon } from "Assets/images/svg/button/icon-search";
 
 export const Search: React.FC = () => {
   return (

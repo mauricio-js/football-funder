@@ -1,34 +1,18 @@
 import React, { useState } from "react";
-import Arrow from "Assets/images/svg/white-arrow";
-import EnglandFlag from "Assets/images/icon-united-kingdom.png";
-
-interface Language {
-  code: string;
-  name: string;
-}
-
-const languages: Language[] = [
-  { code: "gb", name: "English" },
-  { code: "fr", name: "French" },
-  { code: "it", name: "Italian" },
-  { code: "es", name: "Spanish" },
-];
+import Arrow from "Assets/images/svg/button/white-arrow";
+import EnglandFlag from "Assets/images/svg/footer/icon-united-kingdom.svg";
+import { Languages } from "./languageConfig";
+import { LanguagesType } from "types";
 
 const SelectLanguage: React.FC = () => {
-  const [language, setLanguage] = useState<Languages>(languages[0]);
+  const [language, setLanguage] = useState<LanguagesType>(Languages[0]);
   const LANGUAGE_SELECTOR_ID = "language-selector";
-
-  interface Languages {
-    code: string;
-    name: string;
-  }
-
   return (
     <div className="relative">
       <div id={LANGUAGE_SELECTOR_ID} className="text-[14px] text-white">
         <div
           className="flex flex-row gap-1"
-          onClick={() => setLanguage(languages[0])}
+          onClick={() => setLanguage(Languages[0])}
         >
           <img src={EnglandFlag} alt="" />
           {language.name}

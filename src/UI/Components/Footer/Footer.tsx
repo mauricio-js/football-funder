@@ -1,13 +1,10 @@
 import React from "react";
 import SelectLanguage from "UI/Components/SelectLanguage/SelectLanguage";
 import SocialSiteLink from "./SocialSiteLink";
-import FooterLogoImage from "Assets/images/svg/footer-logo.svg";
+import { guideList } from "./footerConfig";
+import FooterLogoImage from "Assets/images/svg/logo/footer-logo.svg";
 
 export const Footer: React.FC = () => {
-  const handleClick = () => {
-    console.log("You clicked this itmes");
-  };
-
   return (
     <div
       className="
@@ -25,11 +22,13 @@ export const Footer: React.FC = () => {
             className="flex flex-row max-lg:flex-col max-lg:gap-[10px] 
             gap-[30px] text-[14px] font-medium leading-[25px] text-white"
           >
-            <div onClick={handleClick}>About</div>
-            <div onClick={handleClick}>Terms & Conditions</div>
-            <div onClick={handleClick}>Privacy Policy</div>
-            <div onClick={handleClick}>Fraud Policy</div>
-            <div onClick={handleClick}>Cookies</div>
+            {guideList.map((item, index) => {
+              return (
+                <div key={index} onClick={item.handleClick}>
+                  {item.title}
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="col-span-7 max-lg:col-span-11">

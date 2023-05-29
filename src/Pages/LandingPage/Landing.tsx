@@ -6,9 +6,9 @@ import SocialSiteLink from "../../UI/Components/Footer/SocialSiteLink";
 import { Footer } from "../../UI/Components";
 import { IPadData } from "./landingPageConfig";
 
-import TopImg from "Assets/images/desktop-logo-back-image.png";
-import LandingLogoImage from "Assets/images/svg/landing-logo.svg";
-import SurveyMask from "Assets/images/survery-mask.png";
+import TopImg from "Assets/images/landing/desktop-logo-back-image.png";
+import LandingLogoImage from "Assets/images/svg/logo/landing-logo.svg";
+import SurveyMask from "Assets/images/landing/survery-mask.png";
 
 export function Landing() {
   return (
@@ -64,11 +64,9 @@ export function Landing() {
                 Take our Grassroots Survey and win{" "}
                 <span className="text-green-10">£100</span> in vouchers
               </p>
-              <div className="mt-[10px] bg-green-10 rounded-10">
-                <div className="px-[10px] py-[15px] text-center font-semibold text-[16px] leading-[20px]">
-                  Survey
-                </div>
-              </div>
+              <button className="w-full mt-[10px] bg-green-10 rounded-10 px-[10px] py-[15px] text-center font-semibold text-[16px] leading-[20px]">
+                <button className="">Survey</button>
+              </button>
             </div>
           </div>
         </div>

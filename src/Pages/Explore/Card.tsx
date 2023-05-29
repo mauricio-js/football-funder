@@ -40,7 +40,7 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
           )}
         </div>
         <div className="rounded-b-10 boder-2 shadow-md px-[20px] pt-[20px] pb-[20px] flex flex-col gap-[15px]">
-          <div className="flex flex-col gap-[10px]">
+          <div className="flex flex-col gap-[10px] max-sm:flex-row">
             <CardLabel cardLabelData={cardData.club} />
             <CardLabel cardLabelData={cardData.location} />
           </div>
@@ -100,7 +100,7 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
           </div>
         </div>
         <div className="rounded-b-10 boder-2 shadow-md px-[20px] pt-[20px] pb-[20px] flex flex-col gap-[15px]">
-          <div className="flex flex-col gap-[10px]">
+          <div className="flex gap-[10px]">
             <CardLabel cardLabelData={cardData.club} />
             <CardLabel cardLabelData={cardData.location} />
           </div>

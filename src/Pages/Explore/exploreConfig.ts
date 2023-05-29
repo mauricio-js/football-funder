@@ -49,7 +49,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Running a crowdfunding campaign for my football club',
@@ -83,7 +83,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Running a crowdfunding campaign for my football club',
@@ -117,7 +117,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Running a crowdfunding campaign for my football club',
@@ -152,7 +152,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Pitchside advertising board',
@@ -181,7 +181,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Pitchside advertising board',
@@ -210,7 +210,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Pitchside advertising board',
@@ -239,7 +239,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Front of shirt sponsorship - Season 2023/24',
@@ -266,7 +266,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Front of shirt sponsorship - Season 2023/24',
@@ -293,7 +293,7 @@ export const ExploreCardData: ExploreCardType[] = [
         location: {
             icon:LocationIcon,
             backgroundColor: "bg-green-80",
-            textColor: "text-green-10", 
+            textColor: "text-white", 
             text: "Durham, England",
         },
         title: 'Front of shirt sponsorship - Season 2023/24',

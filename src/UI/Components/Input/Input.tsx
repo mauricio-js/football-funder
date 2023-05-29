@@ -1,11 +1,7 @@
 import React from "react";
+import { FormDataType } from "types";
 
-interface Props {
-  label: string;
-  type: string;
-}
-
-const InputForm: React.FC<Props> = ({ label, type }) => {
+const InputForm: React.FC<FormDataType> = ({ label, type }) => {
   return (
     <div className="flex flex-col">
       <div className="relative mb-3">
@@ -29,10 +25,11 @@ const InputForm: React.FC<Props> = ({ label, type }) => {
             duration-200 ease-linear peer-focus:-translate-y-1.5 peer-focus:translate-x-[0.15rem] 
             peer-focus:scale-[0.75] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-1.5 
             peer-[:not(:placeholder-shown)]:translate-x-[0.15rem] peer-[:not(:placeholder-shown)]:scale-[0.75] 
-            motion-reduce:transition-none dark:text-gray-500 dark:peer-focus:text-primary"
+            motion-reduce:transition-none dark:text-gray-500 dark:peer-focus:text-primary 
+            after:content-['*'] after:ml-1 after:text-green-10 "
         >
           {label}
-          <span className="text-green-10 ml-1">*</span>
+          {/* <span className="text-green-10 ml-1">*</span> */}
         </label>
       </div>
     </div>

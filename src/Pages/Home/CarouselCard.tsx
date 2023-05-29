@@ -1,6 +1,6 @@
 import React from "react";
-import ShareIcon from "Assets/images/share-button.png";
-import FavouriteIcon from "Assets/images/favourite-button.png";
+import ShareIcon from "Assets/images/svg/button/share-button.svg";
+import FavouriteIcon from "Assets/images/svg/button/favourite-button.svg";
 import { CarouselCardType } from "types";
 
 export interface CarouselProps {
@@ -10,7 +10,11 @@ export interface CarouselProps {
 export const CarouselCard: React.FC<CarouselProps> = ({ Item }) => {
   return (
     <div className="relative w-[320px] max-vs:w-[310px] h-[435px] bg-white rounded-[25px] overflow-hidden mx-auto">
-      <img src={Item.img} alt="first-carousel-card.png" />
+      <img
+        src={Item.img}
+        alt="first-carousel-card.png"
+        className="object-fit"
+      />
       <div className="absolute top-0 p-5 w-full h-full">
         <div className="grid h-full content-between">
           <div className="flex justify-between">

@@ -11,15 +11,15 @@ import {
   MobileSponsorshipData,
 } from "./homeConfig";
 
-import HomeBack from "Assets/images/home-back.png";
-import VideoBackMask from "Assets/images/video-back-mask.png";
-import VideoPlayImg from "Assets/images/video-play.png";
-import PlayerIcon from "Assets/images/icon-player.png";
-import JoinBackImg from "Assets/images/joinnow-back.png";
-import MobileHomeBack from "Assets/images/m-home-back.png";
-import MobileVideoBackMask from "Assets/images/m-video-back-mask.png";
-import MobileVideoPlayImg from "Assets/images/m-video-play.png";
-import MobileJoinBackImg from "Assets/images/m-joinnow-back.png";
+import HomeBack from "Assets/images/home/home-back.png";
+import VideoBackMask from "Assets/images/home/video-back-mask.png";
+import VideoPlayImg from "Assets/images/svg/homepage/video-play.svg";
+import PlayerIcon from "Assets/images/svg/homepage/icon-player.svg";
+import JoinBackImg from "Assets/images/svg/homepage/joinnow-back.svg";
+import MobileHomeBack from "Assets/images/home/m-home-back.png";
+import MobileVideoBackMask from "Assets/images/home/m-video-back-mask.png";
+import MobileVideoPlayImg from "Assets/images/svg/homepage/mobile-video-play.svg";
+import MobileJoinBackImg from "Assets/images/svg/homepage/mobile-joinnow-back.svg";
 
 export const Home: React.FC = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -86,7 +86,7 @@ export const Home: React.FC = () => {
                 />
               </div>
               <div className="mt-[100px]">
-                <div className="bl:w-[1100px] md:w-[700px] max-md:w-[470px] max-xs:w-full mx-auto px-5">
+                <div className="bl:w-[1100px] w-full mx-auto px-5">
                   <div className="flex justify-between items-center">
                     <div className="font-semibold text-[32px] leading-[43px] ">
                       Featured

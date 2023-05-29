@@ -5,7 +5,7 @@
   }
 
   export interface FormDataType {
-    id: number;
+    id?: number;
     label: string;
     type: string;
   }

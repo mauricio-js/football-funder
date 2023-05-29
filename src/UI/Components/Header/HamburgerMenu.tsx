@@ -3,8 +3,8 @@ import { Search } from "UI/Components";
 
 import { HamburgerSignInButton } from "UI/Components/Header/HamburgerSignInButton";
 import { HamburgerList } from "UI/Components/Header/HamburgerList";
-import HeaderMenuLogo from "Assets/images/svg/hamburger-menu -logo.svg";
-import WhiteCloseIcon from "Assets/images/close-icon-white.png";
+import HeaderMenuLogo from "Assets/images/svg/logo/hamburger-menu-logo.svg";
+import WhiteCloseIcon from "Assets/images/svg/button/close-icon-white.svg";
 
 type hamburgerMenuProps = {
   isShowMobielMenu: () => void;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import AccountArrow from "Assets/images/accout-arrow.png";
-import DivideLine from "Assets/images/accout-menu-divide.png";
+import AccountArrow from "Assets/images/svg/button/accout-arrow.svg";
+import DivideLine from "Assets/images/svg/button/accout-menu-divide.svg";
+import { AccounMenuData } from "./headerConfig";
 
 export const SignInButton: React.FC = () => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
@@ -45,24 +46,16 @@ export const SignInButton: React.FC = () => {
                 className="py-2 text-sm text-gray-700 
                 dark:text-gray-200 divide-y  divide-gray-700"
               >
-                <div
-                  className="block text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
+                {AccounMenuData.map((item, key) => {
+                  return (
+                    <div
+                      className="block text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
                   hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  My Account
-                </div>
-                <div
-                  className="block text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
-                  hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Profile
-                </div>
-                <div
-                  className="block text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
-                  hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Sign Out
-                </div>
+                    >
+                      {item.title}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

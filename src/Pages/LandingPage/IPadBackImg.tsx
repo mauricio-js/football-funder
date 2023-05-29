@@ -22,19 +22,19 @@ const IPadBackImg: React.FC<Props> = ({ value }) => {
            "
           >
             <p
-              className="w-full text-[21px] max-vs:text-[16px] 
+              className=" text-[21px] max-vs:text-[16px] 
               max-vs:leading-5 font-semibold leading-[28px] text-white"
             >
               {value.title}
             </p>
             <p
-              className="w-full mt-[20px] text-[14px] max-vs:text-[12px] 
+              className=" mt-[20px] text-[14px] max-vs:text-[12px] 
               max-vs:leading-4 font-medium leading-5 text-green-10"
             >
               {value.description1}
             </p>
             <p
-              className="max-sm:hidden w-full mt-[20px] max-ns:text-[12px] 
+              className="max-sm:hidden  mt-[20px] max-ns:text-[12px] 
               text-[14px] font-medium leading-5 text-green-10"
             >
               {value.description2}

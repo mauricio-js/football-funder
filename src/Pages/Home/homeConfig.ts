@@ -1,20 +1,20 @@
 import { CardDataType } from "types/homeType";
 import { CarouselCardType } from "types/carouselCardType";
-import FirstCarouselCard from "Assets/images/first-carousel-card.png";
-import SecondCarouselCard from 'Assets/images/second-carousel-card.png'
+import FirstCarouselCard from "Assets/images/svg/homepage/first-carousel-card.svg";
+import SecondCarouselCard from 'Assets/images/svg/homepage/second-carousel-card.svg'
 
-import FundraiseCardImage from "Assets/images/fundraise.png";
-import ContributeCardImage from "Assets/images/contribute.png";
-import SponsorshipBuyImg from 'Assets/images/sponsorship-buy-img.png'
-import SponsorshipSellImg from 'Assets/images/sponsorship-sell-img.png'
-import AdvertisingBuyImg from 'Assets/images/advert-buy-img.png'
-import AdvertisingSellImg from 'Assets/images/advert-sell-img.png'
-import MobileFundraiseCardImage from "Assets/images/m-fundraise.png";
-import MobileContributeCardImage from "Assets/images/m-contribute.png";
-import MobileSponsorshipBuyImg from 'Assets/images/m-sponsorship-buy-img.png'
-import MobileSponsorshipSellImg from 'Assets/images/m-sponsorship-sell-img.png'
-import MobileAdvertisingBuyImg from 'Assets/images/m-advert-buy-img.png'
-import MobileAdvertisingSellImg from 'Assets/images/m-advert-sell-img.png'
+import FundraiseCardImage from "Assets/images/home/fundraise.png";
+import ContributeCardImage from "Assets/images/home/contribute.png";
+import SponsorshipBuyImg from 'Assets/images/home/sponsorship-buy-img.png'
+import SponsorshipSellImg from 'Assets/images/home/sponsorship-sell-img.png'
+import AdvertisingBuyImg from 'Assets/images/home/advert-buy-img.png'
+import AdvertisingSellImg from 'Assets/images/home/advert-sell-img.png'
+import MobileFundraiseCardImage from "Assets/images/home/m-fundraise.png";
+import MobileContributeCardImage from "Assets/images/home/m-contribute.png";
+import MobileSponsorshipBuyImg from 'Assets/images/home/m-sponsorship-buy-img.png'
+import MobileSponsorshipSellImg from 'Assets/images/home/m-sponsorship-sell-img.png'
+import MobileAdvertisingBuyImg from 'Assets/images/home/m-advert-buy-img.png'
+import MobileAdvertisingSellImg from 'Assets/images/home/m-advert-sell-img.png'
 
 export const FundraisingCardData: CardDataType[] = [
   {

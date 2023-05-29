@@ -1,5 +1,5 @@
 import React from "react";
-import Arrow from "Assets/images/svg/black-arrow";
+import Arrow from "Assets/images/svg/button/black-arrow";
 import { MenuItem } from "types";
 
 export interface DropdownProps {

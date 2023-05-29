@@ -1,10 +1,10 @@
-import { SocialLinkType } from "types";
+import { SocialLinkType, GuideListType } from "types";
 
-import FacebookIcon from "Assets/images/svg/icon-facebook";
-import InstagramIcon from "Assets/images/svg/icon-instagram";
-import LinkdedinIcon from "Assets/images/svg/icon-linkedin";
-import TwitterIcon from "Assets/images/svg/icon-twitter";
-import YoutubeIcon from "Assets/images/svg/icons-youtube";
+import FacebookIcon from "Assets/images/svg/footer/icon-facebook";
+import InstagramIcon from "Assets/images/svg/footer/icon-instagram";
+import LinkdedinIcon from "Assets/images/svg/footer/icon-linkedin";
+import TwitterIcon from "Assets/images/svg/footer/icon-twitter";
+import YoutubeIcon from "Assets/images/svg/footer/icons-youtube";
 
 
 export const socialLink: SocialLinkType[] = [
@@ -29,3 +29,27 @@ export const socialLink: SocialLinkType[] = [
     Icon: YoutubeIcon,
   },
 ];
+
+export const guideList: GuideListType[] = [
+  {
+    title: "About",
+    handleClick: () => console.log("Clicked About"),
+  },
+  {
+    title: "Terms & Conditions",
+    handleClick: () => console.log("Clicked Terms & Conditions"),
+  },
+  {
+    title: "Privacy Policy",
+    handleClick: () => console.log("Clicked Privacy Policy"),
+  },
+  {
+    title: "Fraud Policy",
+    handleClick: () => console.log("Clicked Fraud Policy"),
+  },
+  {
+    title: "Cookies",
+    handleClick: () => console.log("Clicked Cookies"),
+  },
+];
+

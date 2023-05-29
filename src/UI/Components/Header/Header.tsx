@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { SignInButton } from "./SignInButton";
 import { Dropdown } from "UI/Components";
-import MenuIcon from "Assets/images/menu-icon.png";
-import BlackCloseIcon from "Assets/images/close-icon-black.png";
-import { SearchIcon } from "Assets/images/svg/icon-search";
+import MenuIcon from "Assets/images/svg/button/menu-icon.svg";
+import BlackCloseIcon from "Assets/images/svg/button/close-icon-black.svg";
+import { SearchIcon } from "Assets/images/svg/button/icon-search";
 
-import HeaderLogoImage from "Assets/images/svg/header-log.svg";
+import HeaderLogoImage from "Assets/images/svg/logo/header-log.svg";
 import classname from "classnames";
 import { menuList } from "./headerConfig";
 

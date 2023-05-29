@@ -1,15 +1,10 @@
 import React from "react";
-import SelectFormArrow from "Assets/images/svg/white-arrow";
+import SelectFormArrow from "Assets/images/svg/button/white-arrow";
 import classname from "classnames";
-
-interface SelectFormData {
-  id: number;
-  label: string;
-  value: string;
-}
+import { SignUpOptionType } from "types";
 
 interface Props {
-  SelectFormData: SelectFormData[];
+  SelectFormData: SignUpOptionType[];
   selectedOption: string;
   onOptionChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

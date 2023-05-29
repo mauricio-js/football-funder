@@ -11,7 +11,7 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ cardData }) => {
   return (
     <div>
-      <div className="w-[320px] max-md:hidden">
+      <div className="w-[320px] h-full max-md:hidden">
         <div className="relative h-[194px] rounded-t-10">
           <img
             src={cardData.desktopimage}
@@ -39,7 +39,7 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
             </div>
           )}
         </div>
-        <div className="rounded-b-10 boder-2 shadow-md px-[20px] pt-[20px] pb-[20px] flex flex-col gap-[15px]">
+        <div className="h-[calc(100%-194px)] rounded-b-10 boder-2 shadow-md px-[20px] pt-[20px] pb-[20px] flex flex-col gap-[15px]">
           <div className="flex flex-col gap-[10px]">
             <CardLabel cardLabelData={cardData.club} />
             <CardLabel cardLabelData={cardData.location} />

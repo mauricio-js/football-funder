@@ -10,7 +10,7 @@ import {
   SponsorshipData,
   MobileSponsorshipData,
 } from "./homeConfig";
-
+import { Join } from "./Join";
 import HomeBack from "Assets/images/home/home-back.png";
 import VideoBackMask from "Assets/images/home/video-back-mask.png";
 import VideoPlayImg from "Assets/images/svg/homepage/video-play.svg";
@@ -142,51 +142,8 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-[150px]">
-                <div className="bl:w-[1000px] bl:px-3 md:px-10 w-full px-[20px] mx-auto">
-                  <div className="relative rounded-20 overflow-hidden">
-                    <img
-                      src={JoinBackImg}
-                      alt="join us"
-                      className="h-[300px] w-full object-cover"
-                    />
-                    <div className="absolute top-0 w-full h-full px-5 py-[32px]">
-                      <div className="flex flex-col items-center h-full justify-between max-sm:justify-around">
-                        <div className="font-semibold text-[50px] leading-[60px] text-green-70">
-                          Join now!
-                        </div>
-                        <div
-                          className="flex flex-col gap-[10px] text-green-70 
-                            text-[14px] leading-[20px] text-center xs:w-[440px] w-full max-sm"
-                        >
-                          <div>
-                            Explore our tools to crowdfund, sell advertising and
-                            agree sponsorship for your organisation.
-                          </div>
-                          <div className="max-sm:hidden">
-                            Whether a club, supporters' trust, league or
-                            individual - our platform will support your
-                            commercial goals.
-                          </div>
-                        </div>
-                        <div className="flex justify-center gap-5">
-                          <button
-                            className="w-[150px] h-[50px] 
-                              text-[16px] leading-[22px] font-semibold bg-white rounded-10"
-                          >
-                            Sign in
-                          </button>
-                          <button
-                            className="w-[150px] h-[50px] text-[16px] leading-[22px]
-                              font-semibold bg-green-70 text-white rounded-10"
-                          >
-                            Sign up
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="mt-[150px] px-[20px] ">
+                <Join image={JoinBackImg} />
               </div>
               <div className="mt-[150px]">
                 <Footer />
@@ -319,51 +276,8 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-[150px] max-[417px]:mt-[200px]">
-                <div className="w-full px-[20px] h-[250px] mx-auto">
-                  <div className=" relative">
-                    <img
-                      src={MobileJoinBackImg}
-                      alt="join us"
-                      className="h-[250px] w-full object-fit"
-                    />
-                    <div className="absolute top-0 w-full h-[250px] px-5">
-                      <div className="flex flex-col items-center h-full py-[32px] justify-around">
-                        <div className="font-semibold text-[50px] leading-[60px] text-green-70">
-                          Join now!
-                        </div>
-                        <div
-                          className="flex flex-col gap-[10px] text-green-70 
-                        text-[14px] leading-[20px] font-medium text-center w-full"
-                        >
-                          <div>
-                            Explore our tools to crowdfund, sell advertising and
-                            agree sponsorship for your organisation.
-                          </div>
-                          <div className="max-sm:hidden">
-                            Whether a club, supporters' trust, league or
-                            individual - our platform will support your
-                            commercial goals.
-                          </div>
-                        </div>
-                        <div className="flex justify-center gap-5 max-vs:gap-[10px]">
-                          <button
-                            className="w-[120px] max-vs:w-[100px] h-[40px] 
-                            text-[14px] leading-[20px] font-semibold bg-white rounded-10"
-                          >
-                            Sign in
-                          </button>
-                          <button
-                            className="w-[120px] max-vs:w-[100px] h-[40px] text-[14px] 
-                          font-semibold bg-green-70 text-white rounded-10"
-                          >
-                            Sign Up
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="mt-[150px] px-[20px] max-[417px]:mt-[200px]">
+                <Join image={MobileJoinBackImg} />
               </div>
               <div className="mt-[55px]">
                 <Footer />

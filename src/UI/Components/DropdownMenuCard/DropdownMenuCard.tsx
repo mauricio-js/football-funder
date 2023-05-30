@@ -6,15 +6,17 @@ interface Props {
   value: CardDataType[];
   title: string;
   textColor: string;
+  descritpion?: string;
 }
 
 export const DropdownMenuCard: React.FC<Props> = ({
   value,
   title,
   textColor,
+  descritpion,
 }) => {
   return (
-    <div className="font-semibold text-[32px] leading-[26px] lg:w-[1000px] max-lg:max-w-[490px] w-full mx-auto px-[10px] z-30">
+    <div className="font-semibold text-[32px] leading-[26px] lg:w-[1000px] max-lg:max-w-[490px] w-full mx-auto z-30">
       <div
         className={classname("w-full text-left", {
           [textColor]: textColor,
@@ -22,6 +24,11 @@ export const DropdownMenuCard: React.FC<Props> = ({
       >
         {title}
       </div>
+      {descritpion && (
+        <div className="mt-[15px] text-[16px] leading-[22px] font-medium text-green-10">
+          {descritpion}
+        </div>
+      )}
       <div className="mt-[20px] flex gap-5 max-lg:flex-col">
         {value.map((item, index) => {
           return (
@@ -38,7 +45,7 @@ export const DropdownMenuCard: React.FC<Props> = ({
                 <div className="mt-[10px] w-[240px] text-green-10 font-medium text-[16px] leading-[22px]">
                   {item.description}
                 </div>
-                <div className="mt-9 max-xs:mt-5">
+                <div className="mt-9">
                   <button
                     className="rounded-10 bg-white text-black 
                     font-semibold text-[16px] leading-[22px] px-[25px] h-[42px]"

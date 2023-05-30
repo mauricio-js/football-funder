@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Arrow from "Assets/images/svg/button/explore-arrow.svg";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { ExploreDropdownData } from "./exploreConfig";
 import classNames from "classnames";
 
@@ -17,7 +17,9 @@ export const ExploreDropdown: React.FC = () => {
         onClick={() => setIsShowMenu(!isShowMenu)}
       >
         {buttonName}
-        <img src={Arrow} alt="" />
+        <div>
+          <MdKeyboardArrowDown />
+        </div>
       </button>
       {isShowMenu && (
         <div className="absolute top-[45px]  w-[171px] rounded-10 bg-white shadow-lg border-2 z-50">

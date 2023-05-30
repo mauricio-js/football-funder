@@ -4,7 +4,7 @@ import { Search } from "UI/Components";
 import { HamburgerSignInButton } from "UI/Components/Header/HamburgerSignInButton";
 import { HamburgerList } from "UI/Components/Header/HamburgerList";
 import HeaderMenuLogo from "Assets/images/svg/logo/hamburger-menu-logo.svg";
-import WhiteCloseIcon from "Assets/images/svg/button/close-icon-white.svg";
+import { MdClose } from "react-icons/md";
 
 type hamburgerMenuProps = {
   isShowMobielMenu: () => void;
@@ -20,7 +20,9 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
           <div className="flex flex-row justify-between">
             <img src={HeaderMenuLogo} alt="Hamburger-logo" />
             <button onClick={isShowMobielMenu}>
-              <img src={WhiteCloseIcon} alt="close-button" />
+              <div className="text-[24px] text-white">
+                <MdClose />
+              </div>
             </button>
           </div>
           <div className="mt-[30px]">

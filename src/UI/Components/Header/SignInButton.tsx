@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import AccountArrow from "Assets/images/svg/button/accout-arrow.svg";
 import DivideLine from "Assets/images/svg/button/accout-menu-divide.svg";
 import { AccounMenuData } from "./headerConfig";
+import { MdArrowDropDown } from "react-icons/md";
 
 export const SignInButton: React.FC = () => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
@@ -60,12 +60,14 @@ export const SignInButton: React.FC = () => {
             </div>
           )}
           <div className="flex items-center justify-center">
-            <img src={AccountArrow} alt="footer-logo" className="ml-1 " />
+            <div className="">
+              <MdArrowDropDown />
+            </div>
           </div>
           <img
             src={DivideLine}
             alt="footer-logo"
-            className="ml-5 max-vs:ml-3 xm:hidden"
+            className="ml-5 max-vs:ml-3 bl:hidden"
           />
         </div>
       )}

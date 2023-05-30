@@ -1,6 +1,7 @@
 import React from "react";
 import { CardLabel } from "./CardLabel";
 import FavouriteIcon from "Assets/images/svg/button/favourite-button.svg";
+
 import ShareIcon from "Assets/images//svg/button/share-button.svg";
 import { ExploreCardType } from "types";
 

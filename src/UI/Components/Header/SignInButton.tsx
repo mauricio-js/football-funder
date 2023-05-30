@@ -65,7 +65,7 @@ export const SignInButton: React.FC = () => {
           <img
             src={DivideLine}
             alt="footer-logo"
-            className="ml-5 max-vs:ml-3 xm:hidden"
+            className="ml-5 max-vs:ml-3 bl:hidden"
           />
         </div>
       )}

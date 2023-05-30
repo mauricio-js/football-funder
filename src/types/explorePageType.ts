@@ -1,3 +1,4 @@
+import { IconType } from "react-icons/lib"
 
 export interface ExploreDropdownType { 
     id: number,
@@ -8,7 +9,7 @@ export interface CardLabelType {
     backgroundColor: string,
     textColor: string,
     text: string,
-    icon:string
+    icon:IconType
 }
 
 export interface ExploreCardType {

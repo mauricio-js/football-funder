@@ -13,10 +13,8 @@ import MobileExploreCardImageD from 'Assets/images/svg/explore/m-explore-card-d.
 import MobileExploreCardImageE from 'Assets/images/svg/explore/m-explore-card-e.svg'
 import MobileExploreCardImageF from 'Assets/images/svg/explore/m-explore-card-f.svg'
 import MobileExploreCardImageNone from 'Assets/images/svg/explore/m-explore-card-none.svg'
-import UserIcon from "Assets/images/svg/explore/tabler-icon-user-circle.svg";
-import LocationIcon from 'Assets/images/svg/explore/tabler-icon-map-pin.svg'
-import CalendarIcon from 'Assets/images/svg/explore/tabler-icon-calendar.svg'
-import MessageIcon from 'Assets/images/svg/explore/tabler-icon-message-circle.svg'
+import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
+import { BiMap,BiMessageRounded} from 'react-icons/bi'
 
 export const ExploreDropdownData: ExploreDropdownType[] = [
     {
@@ -41,13 +39,13 @@ export const ExploreCardData: ExploreCardType[] = [
     {
         broadcastingType: 'Live',
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -58,13 +56,13 @@ export const ExploreCardData: ExploreCardType[] = [
         fund: '50% funded',
         status : '£50,000 of £100,000',
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
         collection: {
-            icon:MessageIcon,
+            icon:BiMessageRounded,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "15 Comments",
@@ -75,13 +73,13 @@ export const ExploreCardData: ExploreCardType[] = [
     {
         broadcastingType: 'Live',
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -92,13 +90,13 @@ export const ExploreCardData: ExploreCardType[] = [
         fund: '50% funded',
         status : '£50,000 of £100,000',
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
         collection: {
-            icon:MessageIcon,
+            icon:BiMessageRounded,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "15 Comments",
@@ -109,13 +107,13 @@ export const ExploreCardData: ExploreCardType[] = [
     {
         broadcastingType: 'Live',
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -126,13 +124,13 @@ export const ExploreCardData: ExploreCardType[] = [
         fund: '50% funded',
         status : '£50,000 of £100,000',
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
         collection: {
-            icon:MessageIcon,
+            icon:BiMessageRounded,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "15 Comments",
@@ -144,13 +142,13 @@ export const ExploreCardData: ExploreCardType[] = [
         broadcastingType: 'Live',
         vat:"￡3,000 inc. VAT",
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -160,7 +158,7 @@ export const ExploreCardData: ExploreCardType[] = [
         fund: '50% funded',
         status : '£50,000 of £100,000',
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
@@ -173,13 +171,13 @@ export const ExploreCardData: ExploreCardType[] = [
         broadcastingType: 'Live',
         vat:"￡3,000 inc. VAT",
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -190,7 +188,7 @@ export const ExploreCardData: ExploreCardType[] = [
         fund: '50% funded',
         status : '£50,000 of £100,000',
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
@@ -202,13 +200,13 @@ export const ExploreCardData: ExploreCardType[] = [
         broadcastingType: 'Live',
         vat:"￡3,000 inc. VAT",
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -219,7 +217,7 @@ export const ExploreCardData: ExploreCardType[] = [
         fund: '50% funded',
         status : '£50,000 of £100,000',
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
@@ -231,13 +229,13 @@ export const ExploreCardData: ExploreCardType[] = [
         broadcastingType: 'Live',
         vat:"￡3,000 inc. VAT",
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -246,7 +244,7 @@ export const ExploreCardData: ExploreCardType[] = [
         description: 'Subline text goes here and there’s three lines of copy available to describe it. Lorem ipsum dolor sit amet de lipsum dolor.',
         progress:false,
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
@@ -258,13 +256,13 @@ export const ExploreCardData: ExploreCardType[] = [
         broadcastingType: 'Live',
         vat:"￡15,000",
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -273,7 +271,7 @@ export const ExploreCardData: ExploreCardType[] = [
         description: 'Subline text goes here and there’s three lines of copy available to describe it. Lorem ipsum dolor sit amet de lipsum dolor.',
         progress:false,
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
@@ -285,13 +283,13 @@ export const ExploreCardData: ExploreCardType[] = [
         broadcastingType: 'Live',
         vat:"￡15,000",
         club: {
-            icon:UserIcon,
+            icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10",
             text: "Coxhoe Athletic FC",
         },
         location: {
-            icon:LocationIcon,
+            icon:BiMap,
             backgroundColor: "bg-green-80",
             textColor: "text-green-10", 
             text: "Durham, England",
@@ -300,7 +298,7 @@ export const ExploreCardData: ExploreCardType[] = [
         description: 'Subline text goes here and there’s three lines of copy available to describe it. Lorem ipsum dolor sit amet de lipsum dolor.',
         progress:false,
         date: {
-            icon:CalendarIcon,
+            icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",

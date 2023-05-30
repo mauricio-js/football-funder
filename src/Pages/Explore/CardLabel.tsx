@@ -16,7 +16,11 @@ export const CardLabel: React.FC<CardLabelProps> = ({ cardLabelData }) => {
             cardLabelData.backgroundColor
           )}
         >
-          <img src={cardLabelData.icon} alt="club name" />
+          <div
+            className={classNames("flex items-center", cardLabelData.textColor)}
+          >
+            <cardLabelData.icon />
+          </div>
           <div
             className={classNames(
               "text-[14px] leading-[20px] font-medium max-vs:text-[10px]",

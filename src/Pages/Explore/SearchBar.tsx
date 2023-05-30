@@ -1,5 +1,5 @@
 import React from "react";
-import SearchIcon from "Assets/images/svg/button/explore-search.svg";
+import { MdSearch } from "react-icons/md";
 
 export const SearchBar: React.FC = () => {
   return (
@@ -15,7 +15,9 @@ export const SearchBar: React.FC = () => {
         required
       />
       <button className="absolute right-[15px] top-[16px] ml-2 rounded-lg">
-        <img src={SearchIcon} alt="search icon" />
+        <div className="text-[16px]">
+          <MdSearch />
+        </div>
       </button>
     </div>
   );

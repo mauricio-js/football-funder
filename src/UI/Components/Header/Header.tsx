@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { SignInButton } from "./SignInButton";
 import { Dropdown } from "UI/Components";
-import MenuIcon from "Assets/images/svg/button/menu-icon.svg";
-import BlackCloseIcon from "Assets/images/svg/button/close-icon-black.svg";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdMenu } from "react-icons/md";
 import { SearchIcon } from "Assets/images/svg/button/icon-search";
 
 import HeaderLogoImage from "Assets/images/svg/logo/header-log.svg";
@@ -84,7 +82,6 @@ export function Header({ isShowMobielMenu }: HeaderProps) {
                       className="absolute right-0 ml-2 rounded-lg px-2 py-2 text-sm font-medium text-white"
                       onClick={ShowSearchForm}
                     >
-                      {/* <img src={BlackCloseIcon} alt="close-button" /> */}
                       <div className="text-[16px] text-black">
                         <MdClose />
                       </div>
@@ -98,7 +95,9 @@ export function Header({ isShowMobielMenu }: HeaderProps) {
                   className="bl:hidden ml-5 max-vs:ml-1"
                   onClick={isShowMobielMenu}
                 >
-                  <img src={MenuIcon} alt="menu-icon" />
+                  <div className="text-2xl">
+                    <MdMenu />
+                  </div>
                 </button>
               </div>
             </div>

@@ -10,7 +10,7 @@ export const SearchBar: React.FC = () => {
         className="w-full rounded-lg px-[15px] py-[10px] border-2 border-gray-100
             text-black font-medium text-[16px] focus:outline-none
             placeholder:text-[16px] placeholder:leading-[22px] placeholder:font-medium placeholder:text-green-70"
-        placeholder="Searh..."
+        placeholder="Search..."
         autoComplete="off"
         required
       />

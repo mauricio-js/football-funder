@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { SignInButton } from "./SignInButton";
-import { Dropdown } from "UI/Components";
+import { Dropdown, HeaderButton } from "UI/Components";
 import MenuIcon from "Assets/images/svg/button/menu-icon.svg";
 import BlackCloseIcon from "Assets/images/svg/button/close-icon-black.svg";
 import { SearchIcon } from "Assets/images/svg/button/icon-search";
 
 import HeaderLogoImage from "Assets/images/svg/logo/header-log.svg";
 import classname from "classnames";
-import { menuList } from "./headerConfig";
+import {
+  homeButtonData,
+  exploreButtonData,
+  advertisingButtonData,
+  sponsorshipButtonData,
+  fundraisingButtonData,
+  moreButtonData,
+  feeButtonData,
+} from "./headerConfig";
 
 type HeaderProps = {
   isShowMobielMenu: () => void;
@@ -35,13 +43,15 @@ export function Header({ isShowMobielMenu }: HeaderProps) {
           >
             <div className="flex items-center max-bl:hidden">
               <div className="flex flex-row items-center text-[14px] font-semibold leading-5">
-                {menuList.map((list, index) => {
-                  return (
-                    <div key={index} className="flex flex-row">
-                      <Dropdown List={list} />
-                    </div>
-                  );
-                })}
+                <div className="flex flex-row">
+                  <HeaderButton List={homeButtonData} />
+                  <HeaderButton List={exploreButtonData} />
+                  <Dropdown List={fundraisingButtonData} />
+                  <Dropdown List={advertisingButtonData} />
+                  <Dropdown List={sponsorshipButtonData} />
+                  <HeaderButton List={feeButtonData} />
+                  <Dropdown List={moreButtonData} />
+                </div>
               </div>
             </div>
             {/* Part - Header Search Icon && Search Form */}

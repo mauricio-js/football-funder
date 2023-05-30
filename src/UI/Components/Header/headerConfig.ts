@@ -1,78 +1,92 @@
-import { MenuItem, AccountMenuDataType } from "types";
+import { ButtonItemType, MenuItemType, AccountMenuDataType,HamburgerMenuItemType } from "types";
 
-export const menuList:MenuItem[] = [
-    {
+export const homeButtonData: ButtonItemType = {
         title: "Home",
-        href: "/",
-    },
-    {
+        href: "/home",
+}
+export const exploreButtonData: ButtonItemType = {
         title: "Explore",
-        href: "/",
-    },
-    {
-        title: "Fundraising",
-        href: "/",
-        children: [
-            {
-                title: "Fundraise",
-                href: "/"
-            },
-            {
-                title: "Contribute",
-                href: "/"
-            },
-        ]
-    },
-    {
-        title: "Advertising",
+        href: "/explore",
+}
+export const aboutButtonData: ButtonItemType = {
+      href: "/about",
+      title: "About",
+}
+export const faqButtonData: ButtonItemType = {
+      href: "/faq",
+      title: "FAQ",
+}
+export const supprotButtonData: ButtonItemType = {
+      href: "/support",
+      title: "Support",
+}
+export const feeButtonData: ButtonItemType = {
+      href: "/fees",
+      title: "Fees",
+}
+export const fundraisingButtonData: MenuItemType = {
+    title: "Fundraising",
+    href: "/",
+    children: [
+        {
+            title: "Fundraise",
+            href: "/fundraise"
+        },
+        {
+            title: "Contribute",
+            href: "/contribute"
+        },
+    ]
+}
+export const sponsorshipButtonData: MenuItemType = {
+     title: "Sponsorship",
         href: "/",
         children: [
             {
                 title: "Buy",
-                href: "/"
+                href: "/sponsorshipbuy"
             },
             {
                 title: "Sell",
-                href: "/"
+                href: "/sponsorshipsell"
             },
         ]
-    },
-    {
-        title: "Sponsorship",
+}
+export const advertisingButtonData: MenuItemType = {
+     title: "Advertising",
         href: "/",
         children: [
             {
                 title: "Buy",
-                href: "/"
+                href: "/advertisingship"
             },
             {
                 title: "Sell",
-                href: "/"
+                href: "/advertisingsell"
             },
         ]
-    },
-    {
+}
+export const moreButtonData: MenuItemType = {
+   
         title: "More",
         href: "/",
         children: [
             {
                 title: "FAQ",
-                href: "/"
+                href: "/faq"
             },
             {
                 title: "About",
-                href: "/"
+                href: "/about"
             },
             {
                 title: "Support",
-                href: "/"
+                href: "/support"
             },
         ]
-    },
-   
-]
+}
 
-  export const HamburgerListData: MenuItem[] = [
+  export const HamburgerListData: HamburgerMenuItemType[] = [
     
     {
       href: "/",

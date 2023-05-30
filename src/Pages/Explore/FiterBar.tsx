@@ -1,7 +1,11 @@
 import React from "react";
 import FilterIcon from "Assets/images/svg/explore/filter-icon.svg";
 
-export const FilterBar: React.FC = () => {
+type FilterBarProps = {
+  isShowFilterModal: () => void;
+};
+
+export const FilterBar: React.FC<FilterBarProps> = ({ isShowFilterModal }) => {
   return (
     <div className="relative">
       <input
@@ -14,7 +18,10 @@ export const FilterBar: React.FC = () => {
         autoComplete="off"
         required
       />
-      <button className="absolute right-[15px] top-[16px] ml-2 rounded-lg">
+      <button
+        className="absolute right-[15px] top-[16px] ml-2 rounded-lg"
+        onClick={isShowFilterModal}
+      >
         <img src={FilterIcon} alt="filter icon" />
       </button>
     </div>

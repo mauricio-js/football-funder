@@ -36,11 +36,13 @@ export const Home: React.FC = () => {
               }}
             ></div>
             <div className="relative">
-              <Header
-                isShowMobielMenu={() => {
-                  setOpenMobileMenu(true);
-                }}
-              />
+              <div className="sticky top-0 z-40">
+                <Header
+                  isShowMobielMenu={() => {
+                    setOpenMobileMenu(true);
+                  }}
+                />
+              </div>
               <div className="mt-[130px] px-[20px]">
                 <div className="lg:w-[1000px] mx-auto w-full">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto">

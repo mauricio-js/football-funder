@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 import { Header, HamburgerMenu, Footer } from "UI/Components";
+import { FilterMenuModal } from "./FilterMenuModal";
 import { ExploreDropdown } from "./ExploreDropDown";
 import { FilterBar } from "./FiterBar";
 import { SearchBar } from "./SearchBar";
@@ -11,64 +13,84 @@ import Line from "Assets/images/svg/explore/explore-divide.svg";
 
 export const Explore: React.FC = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
+  const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   return (
     <div className="relative">
+      {/* <div
+        className={classNames(
+          "fixed top-0 z-20 w-full h- bg-black bg-opacity-30 flex justify-center items-center",
+          openFilterForm ? "block" : "hidden"
+        )}
+      >
+        <FilterMenuModal isShowFilterModal={() => setOpenFilterForm(false)} />
+      </div> */}
       {!openMobileMenu && (
-        <div>
-          <Header
-            isShowMobielMenu={() => {
-              setOpenMobileMenu(true);
-            }}
-          />
-        </div>
-      )}
-      <div className="absolute top-[90px] w-full">
-        <img
-          src={ExploreMask}
-          alt="explore back mask"
-          className="object-cover w-full max-ns:hidden"
-        />
-        <img
-          src={MobileExploreMask}
-          alt="explore back mask"
-          className="object-cover w-full ns:hidden"
-        />
-      </div>
-      <div className="mt-[60px] bl:w-[1000px] w-full max-bl:px-[20px] mx-auto">
-        <div className="px-[2px]">
-          <div className="flex justify-between max-xm:flex-col max-xm:gap-y-[20px]">
-            <div className="flex max-xs:flex-col max-xs:items-start gap-x-[15px] items-center">
-              <div className="text-[32px] leading-[40px] font-semibold">
-                Explore
-              </div>
-              <div className="max-xs:hidden">
-                <img src={Line} alt="divide" />
-              </div>
-              <div>
-                <ExploreDropdown />
-              </div>
+        <div className="relative">
+          <div>
+            <div className="sticky top-0 z-10">
+              <Header
+                isShowMobielMenu={() => {
+                  setOpenMobileMenu(true);
+                }}
+              />
             </div>
-            <div className="flex max-xs:flex-col gap-[60px] max-xm:gap-[70px]">
-              <div className="w-[150px]">
-                <FilterBar />
+            <div className="absolute top-[90px] w-full">
+              <img
+                src={ExploreMask}
+                alt="explore back mask"
+                className="object-cover w-full max-ns:hidden"
+              />
+              <img
+                src={MobileExploreMask}
+                alt="explore back mask"
+                className="object-cover w-full ns:hidden"
+              />
+            </div>
+            <div className="mt-[60px] bl:w-[1000px] w-full max-bl:px-[20px] mx-auto">
+              <div className="px-[2px]">
+                <div className="flex justify-between max-xm:flex-col max-xm:gap-y-[20px]">
+                  <div className="flex max-xs:flex-col max-xs:items-start gap-x-[15px] items-center">
+                    <div className="text-[32px] leading-[40px] font-semibold">
+                      Explore
+                    </div>
+                    <div className="max-xs:hidden">
+                      <img src={Line} alt="divide" />
+                    </div>
+                    <div>
+                      <ExploreDropdown />
+                    </div>
+                  </div>
+                  <div className="flex max-xs:flex-col gap-[60px] max-xm:gap-[70px]">
+                    <div className="w-[150px]">
+                      <FilterBar
+                        isShowFilterModal={() => {
+                          setOpenFilterForm(true);
+                        }}
+                      />
+                    </div>
+                    <div className="relative flex flex-col xs:w-[250px] w-[390px] max-ns:w-full">
+                      <SearchBar />
+                      <div className="absolute top-[-30px] w-full ns:hidden text-center">
+                        120 results
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="relative flex flex-col xs:w-[250px] w-[390px] max-ns:w-full">
-                <SearchBar />
-                <div className="absolute top-[-30px] w-full ns:hidden text-center">
-                  120 results
+              <div className="xs:mt-[65px] mt-[30px] max-bl:w-[700px] max-md:w-full mx-auto">
+                <div className="flex flex-wrap max-bl:justify-between max-md:justify-center gap-x-[20px] gap-y-[30px] mx-auto">
+                  {ExploreCardData.map((item, index) => {
+                    return <Card key={index} cardData={item} />;
+                  })}
                 </div>
               </div>
             </div>
+            <div className="ns:mt-[150px] mt-[46px]">
+              <Footer />
+            </div>
           </div>
         </div>
-        <div className="xs:mt-[65px] mt-[30px] max-bl:w-[700px] max-md:w-full mx-auto">
-          <div className="flex flex-wrap max-bl:justify-between max-md:justify-center gap-x-[20px] gap-y-[30px] mx-auto">
-            {ExploreCardData.map((item, index) => {
-              return <Card key={index} cardData={item} />;
-            })}
-          </div>
-        </div>
-      </div>
+      )}
       {openMobileMenu && (
         <HamburgerMenu
           isShowMobielMenu={() => {
@@ -76,9 +98,6 @@ export const Explore: React.FC = () => {
           }}
         />
       )}
-      <div className="ns:mt-[150px] mt-[46px]">
-        <Footer />
-      </div>
     </div>
   );
 };

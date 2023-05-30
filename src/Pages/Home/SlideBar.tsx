@@ -6,6 +6,10 @@ import { CarouselCard } from "./CarouselCard";
 
 export const SlideBar: React.FC = () => {
   const responsive: ResponsiveType = {
+    superLargeDesktop: {
+      breakpoint: { max: 3000, min: 1200 },
+      items: 3,
+    },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,

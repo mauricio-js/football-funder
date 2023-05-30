@@ -23,7 +23,7 @@ export const CardLabel: React.FC<CardLabelProps> = ({ cardLabelData }) => {
           </div>
           <div
             className={classNames(
-              "text-[14px] leading-[20px] font-medium max-vs:text-[10px]",
+              "text-[14px] leading-[20px] font-medium ns:text-[14px] max-ns:text-[10px]",
               cardLabelData.textColor
             )}
           >

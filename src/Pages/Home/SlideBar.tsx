@@ -8,8 +8,7 @@ export const SlideBar: React.FC = () => {
   const responsive: ResponsiveType = {
     superLargeDesktop: {
       breakpoint: { max: 3000, min: 1200 },
-      items: 2,
-      paritialVisibilityGutter: 100,
+      items: 3,
     },
     desktop: {
       breakpoint: { max: 1200, min: 1024 },

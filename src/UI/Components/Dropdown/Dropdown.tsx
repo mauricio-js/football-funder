@@ -1,12 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Arrow from "Assets/images/svg/button/black-arrow";
-import { MenuItem } from "types";
+import { MenuItemType } from "types";
 
 export interface DropdownProps {
-  List: MenuItem;
+  List: MenuItemType;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="relative group cursor-pointer">
       <button
@@ -29,6 +32,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
                   <button
                     className="block w-full text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
                       hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    onClick={() => navigate(key.href)}
                   >
                     <div className="flex justify-start">{key.title}</div>
                   </button>

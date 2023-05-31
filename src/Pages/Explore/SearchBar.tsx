@@ -15,7 +15,7 @@ export const SearchBar: React.FC = () => {
         required
       />
       <button className="absolute right-[15px] top-[16px] ml-2 rounded-lg">
-        <div className="text-[16px]">
+        <div className="text-[20px]">
           <MdSearch />
         </div>
       </button>

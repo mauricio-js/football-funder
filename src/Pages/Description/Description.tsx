@@ -19,14 +19,16 @@ import { Join } from "Pages/Home/Join";
 export const Description: React.FC = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
   return (
-    <div className="bg-green-70">
+    <div className="bg-green-70 ">
       {!openMobileMenu && (
-        <div>
-          <Header
-            isShowMobielMenu={() => {
-              setOpenMobileMenu(true);
-            }}
-          />
+        <div className="relative">
+          <div className="sticky top-0 z-50">
+            <Header
+              isShowMobielMenu={() => {
+                setOpenMobileMenu(true);
+              }}
+            />
+          </div>
 
           <div className="relative">
             <div className="absolute top-[140px] max-xs:top-[90px] w-full ">
@@ -57,20 +59,28 @@ export const Description: React.FC = () => {
               <img
                 src={MobileMask}
                 alt="desktop mask"
-                className="ns:hidden object-cover h-[442px] w-full"
+                className="ns:hidden object-cover h-[230px] w-full"
               />
             </div>
-            <div className="top-[25px] w-full">
+            <div className="w-full pt-[23px]">
               <div className="relative w-[1000px] max-lg:w-full  mx-auto">
-                <div className="w-[610px]  max-md:w-full max-lg:px-[20px] max-md:mx-auto flex flex-col gap-[20px] text-white">
-                  <div className="text-[32px] leading-[43px] font-semibold">
+                <div
+                  className="w-[610px] max-md:w-full max-lg:px-[20px] 
+                  max-md:mx-auto flex flex-col gap-[20px] text-white"
+                >
+                  <div
+                    className="text-[32px] max-ns:text-[21px] 
+                    max-ns:leading-[28px] leading-[43px] font-semibold"
+                  >
                     How it works
                   </div>
                   <div className="text-[16px] leading-[22px] font-medium flex flex-col gap-[20px]">
                     <div>
-                      Football Funder is a platform for organisations of any
-                      size to maximise the financial revenue of their
-                      operations.
+                      <span>
+                        Football Funder is a platform for organisations of any
+                        size to maximise <br className="max-md:hidden"></br>
+                      </span>
+                      <span>the financial revenue of their operations.</span>
                     </div>
                     <div>
                       We’re flying the fundraising flag for footballing
@@ -146,7 +156,7 @@ export const Description: React.FC = () => {
       )}
       {openMobileMenu && (
         <HamburgerMenu
-          isShowMobielMenu={() => {
+          isShowMobileMenu={() => {
             setOpenMobileMenu(false);
           }}
         />

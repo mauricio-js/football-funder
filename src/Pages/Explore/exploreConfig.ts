@@ -1,4 +1,4 @@
-import { ExploreCardType, ExploreDropdownType } from "types"
+import { ExploreCardType, ExploreDropdownType, FilterDataType,DistanceDataType } from "types"
 import ExploreCardImageA from 'Assets/images/svg/explore/explore-card-a.svg'
 import ExploreCardImageB from 'Assets/images/svg/explore/explore-card-b.svg'
 import ExploreCardImageC from 'Assets/images/svg/explore/explore-card-c.svg'
@@ -307,3 +307,149 @@ export const ExploreCardData: ExploreCardType[] = [
         mobileimage: MobileExploreCardImageNone
     },
 ];
+
+export const TypeFilterData:FilterDataType[] = [
+    {
+        title: "All",
+        value: "all",
+        status:"checked"
+    },
+    {
+        title: "Fundraisers",
+        value: "fundraisers",
+        status: "none"
+    },
+    {
+        title: "Advertising",
+        value: "advertising",
+        status: "none"
+    },
+    {
+        title: "Sponsorship",
+        value: "sponsorship",
+        status: "none"
+    }
+];
+
+export const OrganisationFilterData:FilterDataType[] = [
+    {
+        title: "All",
+        value: "all",
+        status:"checked"
+    },
+    {
+        title: "Clubs",
+        value: "clubs",
+        status: "none"
+    },
+    {
+        title: "Supporters' Trusts",
+        value: "supporter",
+        status: "none"
+    },
+    {
+        title: "Local communities",
+        value: "local communities",
+        status: "none"
+    },
+    {
+        title: "Foundations",
+        value: "foundations",
+        status: "none"
+    },
+    {
+        title: "Leagues",
+        value: "leagues",
+        status: "none"
+    },
+    {
+        title: "Charities",
+        value: "charities",
+        status: "none"
+    },
+    {
+        title: "Singing Sections / Ultras",
+        value: "ultras",
+        status: "none"
+    },
+    {
+        title: "Agency / Rights holder",
+        value: "agency",
+        status: "none"
+    },
+    {
+        title: "Podcast / Vlog",
+        value: "podcast",
+        status: "none"
+    },
+    {
+        title: "Advertiser/Sponsor",
+        value: "advertiser",
+        status: "none"
+    },
+    {
+        title: "Other",
+        value: "other",
+        status: "none"
+    },  
+];
+export const StatusFilterData:FilterDataType[] = [
+        {
+            title: "All",
+            value: "all",
+            status:"checked"
+        },
+        {
+            title: "Live",
+            value: "live",
+            status: "none"
+        },
+        {
+            title: "Pending",
+            value: "pending",
+            status: "none"
+        },
+        {
+            title: "Funded / Sold",
+            value: "fund",
+            status: "none"
+        }
+    ];
+export const SortByData:FilterDataType[] = [
+        {
+            title: "Promoted",
+            value: "promoted",
+            status:"checked"
+        },
+        {
+            title: "Newest (£)",
+            value: "newest",
+            status: "none"
+        },
+        {
+            title: "Oldest (£)",
+            value: "oldest",
+            status: "none"
+        },
+        {
+            title: "High to Low",
+            value: "high",
+            status: "none"
+        },
+        {
+            title: "Low to High",
+            value: "low",
+            status: "none"
+        },
+    ];
+ 
+export const DistanceData: DistanceDataType[] = [
+    {
+        label: "Miles from",
+        type:"text"
+    },
+    {
+        label: "Postcode",
+        type:"text"
+    },
+]

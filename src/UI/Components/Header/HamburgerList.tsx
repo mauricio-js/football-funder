@@ -1,7 +1,7 @@
 import React from "react";
 import SocialSiteLink from "../Footer/SocialSiteLink";
 import { HamburgerItem } from "./HamburgerItem";
-import { HamburgerListItem } from "./HamburgerLisItem";
+import { HamburgerListItem } from "./HamburgerListItem";
 import {
   homeButtonData,
   exploreButtonData,

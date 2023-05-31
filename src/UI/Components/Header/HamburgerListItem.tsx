@@ -1,5 +1,4 @@
 import React from "react";
-import SocialSiteLink from "../Footer/SocialSiteLink";
 import { useNavigate } from "react-router";
 import { MenuItemType } from "types";
 

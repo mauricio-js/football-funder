@@ -7,11 +7,11 @@ import HeaderMenuLogo from "Assets/images/svg/logo/hamburger-menu-logo.svg";
 import { MdClose } from "react-icons/md";
 
 type hamburgerMenuProps = {
-  isShowMobielMenu: () => void;
+  isShowMobileMenu: () => void;
 };
 
 export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
-  isShowMobielMenu,
+  isShowMobileMenu,
 }) => {
   return (
     <div>
@@ -19,7 +19,7 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
         <div className="ns:w-[430px] mx-auto p-5">
           <div className="flex flex-row justify-between">
             <img src={HeaderMenuLogo} alt="Hamburger-logo" />
-            <button onClick={isShowMobielMenu}>
+            <button onClick={isShowMobileMenu}>
               <div className="text-[24px] text-white">
                 <MdClose />
               </div>

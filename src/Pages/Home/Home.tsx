@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { Header, DropdownMenuCard, Footer } from "UI/Components";
 import { HamburgerMenu } from "UI/Components/Header/HamburgerMenu";
 import { SlideBar } from "./SlideBar";
@@ -23,6 +24,7 @@ import MobileJoinBackImg from "Assets/images/svg/homepage/mobile-joinnow-back.sv
 
 export const Home: React.FC = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
+  const navigate = useNavigate();
   return (
     <div className="bg-green-70">
       <div className="max-ns:hidden">
@@ -65,6 +67,9 @@ export const Home: React.FC = () => {
                       w-[150px] max-ns:w-[calc(50%-45px)] h-[50px]
                       bg-white rounded-10
                       "
+                        onClick={() => {
+                          navigate("/explore");
+                        }}
                       >
                         Explore
                       </button>
@@ -73,6 +78,9 @@ export const Home: React.FC = () => {
                       w-[150px] max-ns:w-[calc(50%-45px)] h-[50px]
                       bg-green-10 rounded-10
                       "
+                        onClick={() => {
+                          navigate("/howitworks");
+                        }}
                       >
                         How it works
                       </button>
@@ -155,7 +163,7 @@ export const Home: React.FC = () => {
         )}
         {openMobileMenu && (
           <HamburgerMenu
-            isShowMobielMenu={() => {
+            isShowMobileMenu={() => {
               setOpenMobileMenu(false);
             }}
           />
@@ -199,6 +207,9 @@ export const Home: React.FC = () => {
                       w-[calc(50%-45px)] h-[50px]
                       bg-white rounded-10
                       "
+                        onClick={() => {
+                          navigate("/explore");
+                        }}
                       >
                         Explore
                       </button>
@@ -207,6 +218,9 @@ export const Home: React.FC = () => {
                       w-[calc(50%-45px)] h-[50px]
                       bg-green-10 rounded-10
                       "
+                        onClick={() => {
+                          navigate("/howitworks");
+                        }}
                       >
                         How it works
                       </button>
@@ -289,7 +303,7 @@ export const Home: React.FC = () => {
         )}
         {openMobileMenu && (
           <HamburgerMenu
-            isShowMobielMenu={() => {
+            isShowMobileMenu={() => {
               setOpenMobileMenu(false);
             }}
           />

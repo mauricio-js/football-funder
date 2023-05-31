@@ -9,19 +9,19 @@ export const exploreButtonData: ButtonItemType = {
         href: "/explore",
 }
 export const aboutButtonData: ButtonItemType = {
-      href: "/about",
+      href: "/home",
       title: "About",
 }
 export const faqButtonData: ButtonItemType = {
-      href: "/faq",
+      href: "/home",
       title: "FAQ",
 }
 export const supprotButtonData: ButtonItemType = {
-      href: "/support",
+      href: "/home",
       title: "Support",
 }
 export const feeButtonData: ButtonItemType = {
-      href: "/fees",
+      href: "/home",
       title: "Fees",
 }
 export const fundraisingButtonData: MenuItemType = {
@@ -30,11 +30,11 @@ export const fundraisingButtonData: MenuItemType = {
     children: [
         {
             title: "Fundraise",
-            href: "/fundraise"
+            href: "/home"
         },
         {
             title: "Contribute",
-            href: "/contribute"
+            href: "/home"
         },
     ]
 }
@@ -44,11 +44,11 @@ export const sponsorshipButtonData: MenuItemType = {
         children: [
             {
                 title: "Buy",
-                href: "/sponsorshipbuy"
+                href: "/home"
             },
             {
                 title: "Sell",
-                href: "/sponsorshipsell"
+                href: "/home"
             },
         ]
 }
@@ -58,11 +58,11 @@ export const advertisingButtonData: MenuItemType = {
         children: [
             {
                 title: "Buy",
-                href: "/advertisingship"
+                href: "/home"
             },
             {
                 title: "Sell",
-                href: "/advertisingsell"
+                href: "/home"
             },
         ]
 }
@@ -73,15 +73,15 @@ export const moreButtonData: MenuItemType = {
         children: [
             {
                 title: "FAQ",
-                href: "/faq"
+                href: "/home"
             },
             {
                 title: "About",
-                href: "/about"
+                href: "/home"
             },
             {
                 title: "Support",
-                href: "/support"
+                href: "/home"
             },
         ]
 }
@@ -102,11 +102,11 @@ export const moreButtonData: MenuItemType = {
       children: [
             {
                 title: "Fundraise",
-                href: "/"
+                href: "/home"
             },
             {
                 title: "Contribute",
-                href: "/"
+                href: "/home"
             },
         ]
     },
@@ -116,11 +116,11 @@ export const moreButtonData: MenuItemType = {
        children: [
             {
                 title: "Buy",
-                href: "/"
+                href: "/home"
             },
             {
                 title: "Sell",
-                href: "/"
+                href: "/home"
             },
         ]
     },
@@ -130,28 +130,28 @@ export const moreButtonData: MenuItemType = {
       children: [
             {
                 title: "Buy",
-                href: "/"
+                href: "/home"
             },
             {
                 title: "Sell",
-                href: "/"
+                href: "/home"
             },
         ]
     },
     {
-      href: "/",
+      href: "/home",
       title: "Fees",
     },
     {
-      href: "/",
+      href: "/home",
       title: "FAQ",
     },
     {
-      href: "/",
+      href: "/home",
       title: "About",
     },
     {
-      href: "/",
+      href: "/home",
       title: "Support",
     },
   ];

@@ -24,7 +24,7 @@ export const SlideBar: React.FC = () => {
       breakpoint: { max: 767, min: 464 },
       items: 1,
       slidesToSlide: 1, // optional, default to 1.
-      paritialVisibilityGutter: 80,
+      partialVisibilityGutter: 80,
     },
     smobile: {
       breakpoint: { max: 464, min: 0 },
@@ -33,7 +33,7 @@ export const SlideBar: React.FC = () => {
   };
   return (
     <div>
-      <Carousel partialVisbile={true} responsive={responsive} showDots={true}>
+      <Carousel partialVisible={true} responsive={responsive} showDots={true}>
         {CarouselCardData.map((data, index) => {
           return (
             <div key={index} className="pb-[45px]">

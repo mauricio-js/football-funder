@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { SignInButton } from "./SignInButton";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Dropdown, HeaderButton } from "UI/Components";
@@ -21,6 +22,7 @@ type HeaderProps = {
 
 export function Header({ isShowMobielMenu }: HeaderProps) {
   const [isShowSearchForm, setIsShowSearchForm] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const ShowSearchForm = () => {
     setIsShowSearchForm(!isShowSearchForm);
@@ -33,7 +35,11 @@ export function Header({ isShowMobielMenu }: HeaderProps) {
           className="px-40 max-2xl:px-28 max-xl:px-20 max-bl:px-
           max-xs:px-10 max-ns:px-5 max-vs:px-4 py-4 flex flex-row"
         >
-          <img src={HeaderLogoImage} alt="footer-logo" />
+          <img
+            src={HeaderLogoImage}
+            alt="footer-logo"
+            onClick={() => navigate("/home")}
+          />
           <div
             className={classname(
               "w-full flex flex-row justify-between max-bl:justify-end pl-[106px] max-xl:pl-[50px] max-vs:pl-3"

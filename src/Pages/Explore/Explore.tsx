@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { Header, HamburgerMenu, Footer } from "UI/Components";
 import { FilterMenuModal } from "./FilterMenuModal";
 import { ExploreDropdown } from "./ExploreDropDown";
-import { FilterBar } from "./FiterBar";
+import { Filter } from "./Filter";
 import { SearchBar } from "./SearchBar";
 import { Card } from "./Card";
 import { ExploreCardData } from "./exploreConfig";
@@ -16,14 +16,16 @@ export const Explore: React.FC = () => {
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   return (
     <div className="relative">
-      {/* <div
+      <div
         className={classNames(
-          "fixed top-0 z-20 w-full h- bg-black bg-opacity-30 flex justify-center items-center",
+          "fixed top-0 z-50 w-full h-full bg-black bg-opacity-30 flex justify-center items-start",
           openFilterForm ? "block" : "hidden"
         )}
       >
-        <FilterMenuModal isShowFilterModal={() => setOpenFilterForm(false)} />
-      </div> */}
+        <div className="mt-[60px]">
+          <FilterMenuModal isShowFilterModal={() => setOpenFilterForm(false)} />
+        </div>
+      </div>
       {!openMobileMenu && (
         <div className="relative">
           <div>
@@ -62,7 +64,7 @@ export const Explore: React.FC = () => {
                   </div>
                   <div className="flex max-xs:flex-col gap-[60px] max-xm:gap-[70px]">
                     <div className="w-[150px]">
-                      <FilterBar
+                      <Filter
                         isShowFilterModal={() => {
                           setOpenFilterForm(true);
                         }}
@@ -93,7 +95,7 @@ export const Explore: React.FC = () => {
       )}
       {openMobileMenu && (
         <HamburgerMenu
-          isShowMobielMenu={() => {
+          isShowMobileMenu={() => {
             setOpenMobileMenu(false);
           }}
         />

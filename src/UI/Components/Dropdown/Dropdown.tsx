@@ -24,7 +24,9 @@ export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
         <div className="hidden group-hover:flex">
           <div
             id="dropdown"
-            className="origin-top-right shadow-lg ring-1 ring-black absolute bg-green-70 rounded-10 w-[120px] z-50"
+            className="
+            absolute origin-top-right shadow-lg ring-1 ring-black  
+            bg-green-70 rounded-10 w-[120px] z-50"
           >
             <div className="py-2 text-sm text-gray-700 dark:text-gray-200 divide-y divide-gray-700">
               {List.children.map((key, index) => (

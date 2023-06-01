@@ -1,5 +1,4 @@
 import { IconType } from "react-icons/lib"
-import { string } from "yargs"
 
 export interface ExploreDropdownType { 
     id: number,
@@ -13,7 +12,7 @@ export interface CardLabelType {
     icon:IconType
 }
 
-export interface ExploreCardType {
+export interface CardType {
     desktopimage: string,
     mobileimage: string,
     broadcastingType: string,
@@ -29,7 +28,7 @@ export interface ExploreCardType {
     collection?: CardLabelType
 };
 
-export interface FilterDataType  { 
+export interface SelectDataType  { 
     title: string,
     value: string,
     status:string

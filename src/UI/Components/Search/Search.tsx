@@ -1,7 +1,12 @@
 import React from "react";
-import { SearchIcon } from "Assets/images/svg/button/icon-search";
+import classNames from "classnames";
+import { SearchDataType } from "types";
 
-export const Search: React.FC = () => {
+interface SearchFormProps {
+  data: SearchDataType;
+}
+
+export const Search: React.FC<SearchFormProps> = ({ data }) => {
   return (
     <form className="relative flex items-center">
       <label htmlFor="simple-search" className="sr-only">
@@ -11,18 +16,29 @@ export const Search: React.FC = () => {
         <input
           type="text"
           id="simple-search"
-          className="block w-full rounded-lg !bg-green-30 py-3 pl-8 
-            pr-[35px] text-white font-medium text-[14px] focus:outline-0 "
-          placeholder="Search"
+          className={classNames(
+            "block w-full rounded-lg focus:outline-0",
+            data.backgroundColor,
+            data.padding,
+            data.border,
+            data.inputColor,
+            data.inputTextSize,
+            data.placeholderClass
+          )}
+          placeholder={data.placeholder}
           autoComplete="off"
           required
         />
       </div>
       <button
         type="submit"
-        className="absolute right-0 ml-2 rounded-lg px-3 py-2 text-sm font-medium text-white"
+        className={classNames(
+          "absolute right-0 ml-2 rounded-lg px-3 py-2",
+          data.iconColor,
+          data.iconSize
+        )}
       >
-        <SearchIcon />
+        <data.icon />
         <span className="sr-only">Search</span>
       </button>
     </form>

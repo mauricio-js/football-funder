@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Header, HamburgerMenu, Footer } from "UI/Components";
-import { FilterMenuModal } from "./FilterMenuModal";
-import { ExploreDropdown } from "./ExploreDropDown";
-import { Filter } from "./Filter";
-import { SearchBar } from "./SearchBar";
-import { Card } from "./Card";
-import { ExploreCardData } from "./exploreConfig";
+import { Card, Header, HamburgerMenu, Footer, FilterMenu, Search } from "UI";
+import { ExploreDropdown, Filter } from "Pages";
+import { ExploreCardData, ExploreSearchData } from "Config";
 import ExploreMask from "Assets/images/svg/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/svg/explore/m-explore-mask.svg";
 import Line from "Assets/images/svg/explore/explore-divide.svg";
@@ -23,7 +19,7 @@ export const Explore: React.FC = () => {
         )}
       >
         <div className="mt-[60px]">
-          <FilterMenuModal isShowFilterModal={() => setOpenFilterForm(false)} />
+          <FilterMenu isShowFilterModal={() => setOpenFilterForm(false)} />
         </div>
       </div>
       {!openMobileMenu && (
@@ -31,7 +27,7 @@ export const Explore: React.FC = () => {
           <div>
             <div className="sticky top-0 z-10">
               <Header
-                isShowMobielMenu={() => {
+                isShowMobileMenu={() => {
                   setOpenMobileMenu(true);
                 }}
               />
@@ -71,7 +67,7 @@ export const Explore: React.FC = () => {
                       />
                     </div>
                     <div className="relative flex flex-col xs:w-[250px] w-[390px] max-ns:w-full">
-                      <SearchBar />
+                      <Search data={ExploreSearchData} />
                       <div className="absolute top-[-30px] w-full ns:hidden text-center">
                         120 results
                       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Header, HamburgerMenu, DropdownMenuCard, Footer } from "UI/Components";
+import { Header, HamburgerMenu, Footer } from "UI";
+import { SummaryCard, Join } from "Pages";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -7,14 +8,13 @@ import {
   MobileFundraisingCardData,
   SponsorshipData,
   MobileSponsorshipData,
-} from "../Home/homeConfig";
+} from "Config";
 
 import DesktopBackImage from "Assets/images/svg/howItWorks/howDesktopBackImage.svg";
 import MobileBackImage from "Assets/images/svg/howItWorks/howMobileBackImage.svg";
 import DesktopMask from "Assets/images/svg/howItWorks/desktopMask.svg";
 import MobileMask from "Assets/images/svg/howItWorks/mobileMask.svg";
 import MobileJoinBackImg from "Assets/images/svg/homepage/mobile-joinnow-back.svg";
-import { Join } from "Pages/Home/Join";
 
 export const Description: React.FC = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -24,7 +24,7 @@ export const Description: React.FC = () => {
         <div className="relative">
           <div className="sticky top-0 z-50">
             <Header
-              isShowMobielMenu={() => {
+              isShowMobileMenu={() => {
                 setOpenMobileMenu(true);
               }}
             />
@@ -32,7 +32,10 @@ export const Description: React.FC = () => {
 
           <div className="relative">
             <div className="absolute top-[140px] max-xs:top-[90px] w-full ">
-              <div className="w-[1000px] max-lg:w-full max-lg:text-center max-lg:px-[20px] mx-auto text-[60px] leading-[60px] font-semibold text-white">
+              <div
+                className="w-[1000px] max-lg:w-full max-lg:text-center max-lg:px-[20px] mx-auto 
+                            text-[60px] leading-[60px] font-semibold text-white"
+              >
                 What is Football Funder?
               </div>
             </div>
@@ -96,7 +99,7 @@ export const Description: React.FC = () => {
               </div>
               <div className="max-ns:hidden px-[20px]">
                 <div className="mt-[100px]">
-                  <DropdownMenuCard
+                  <SummaryCard
                     value={FundraisingCardData}
                     title="Fundraising"
                     descritpion="Campaign tooling and promotion for football specific fundraising."
@@ -104,7 +107,7 @@ export const Description: React.FC = () => {
                   />
                 </div>
                 <div className="mt-[100px]">
-                  <DropdownMenuCard
+                  <SummaryCard
                     value={AdvertisingCardData}
                     title="Advertising"
                     descritpion="Bring opportunities to life and build relationships with sponsors"
@@ -112,7 +115,7 @@ export const Description: React.FC = () => {
                   />
                 </div>
                 <div className="mt-[95px]">
-                  <DropdownMenuCard
+                  <SummaryCard
                     value={SponsorshipData}
                     title="Sponsorship"
                     descritpion="Bring opportunities to life and build relationships with sponsors"
@@ -125,19 +128,19 @@ export const Description: React.FC = () => {
               </div>
               <div className="ns:hidden">
                 <div className="mt-[60px] px-[20px] flex flex-col gap-y-[60px]">
-                  <DropdownMenuCard
+                  <SummaryCard
                     value={MobileFundraisingCardData}
                     title="Fundraising"
                     descritpion="Campaign tooling and promotion for football specific fundraising."
                     textColor="text-white"
                   />
-                  <DropdownMenuCard
+                  <SummaryCard
                     value={MobileAdvertisingCardData}
                     title="Advertising"
                     descritpion="Bring opportunities to life and build relationships with sponsors"
                     textColor="text-white"
                   />
-                  <DropdownMenuCard
+                  <SummaryCard
                     value={MobileSponsorshipData}
                     title="Sponsorship"
                     descritpion="Bring opportunities to life and build relationships with sponsors"

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Arrow from "Assets/images/svg/button/white-arrow";
 import EnglandFlag from "Assets/images/svg/footer/icon-united-kingdom.svg";
-import { Languages } from "./languageConfig";
+import { Languages } from "Config/footerConfig";
 import { LanguagesType } from "types";
 
-const SelectLanguage: React.FC = () => {
+export const SelectLanguage: React.FC = () => {
   const [language, setLanguage] = useState<LanguagesType>(Languages[0]);
   const LANGUAGE_SELECTOR_ID = "language-selector";
   return (

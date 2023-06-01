@@ -23,6 +23,6 @@
   },
   "include": [
     "src",
-    "src/UI/Components/Header/Header.tsx"
+    "src/UI/Layout/Header/Header.tsx"
   ]
 }

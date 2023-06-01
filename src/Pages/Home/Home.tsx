@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { Header, DropdownMenuCard, Footer } from "UI/Components";
-import { HamburgerMenu } from "UI/Components/Header/HamburgerMenu";
-import { SlideBar } from "./SlideBar";
+import { Header, Footer, HamburgerMenu, SlideBar } from "UI";
+import { SummaryCard, Join } from "Pages";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -10,8 +9,7 @@ import {
   MobileFundraisingCardData,
   SponsorshipData,
   MobileSponsorshipData,
-} from "./homeConfig";
-import { Join } from "./Join";
+} from "Config";
 import HomeBack from "Assets/images/home/home-back.png";
 import VideoBackMask from "Assets/images/home/video-back-mask.png";
 import VideoPlayImg from "Assets/images/svg/homepage/video-play.svg";
@@ -40,7 +38,7 @@ export const Home: React.FC = () => {
             <div className="relative">
               <div className="sticky top-0 z-40">
                 <Header
-                  isShowMobielMenu={() => {
+                  isShowMobileMenu={() => {
                     setOpenMobileMenu(true);
                   }}
                 />
@@ -89,7 +87,7 @@ export const Home: React.FC = () => {
                 </div>
               </div>
               <div className="mt-[150px] mx-auto px-[10px]">
-                <DropdownMenuCard
+                <SummaryCard
                   value={FundraisingCardData}
                   title="Fundraising"
                   textColor="text-white"
@@ -112,7 +110,7 @@ export const Home: React.FC = () => {
               </div>
               <div className="mt-32">
                 <div className="px-[20px]">
-                  <DropdownMenuCard
+                  <SummaryCard
                     value={AdvertisingCardData}
                     title="Advertising"
                     textColor="text-black"
@@ -120,7 +118,7 @@ export const Home: React.FC = () => {
                 </div>
               </div>
               <div className="mt-40 mx-auto px-[20px] pb-[20px]">
-                <DropdownMenuCard
+                <SummaryCard
                   value={SponsorshipData}
                   title="Sponsorship"
                   textColor="text-white"
@@ -180,11 +178,13 @@ export const Home: React.FC = () => {
               />
             </div>
             <div className="relative">
-              <Header
-                isShowMobielMenu={() => {
-                  setOpenMobileMenu(true);
-                }}
-              />
+              <div className="sticky top-0 z-40">
+                <Header
+                  isShowMobileMenu={() => {
+                    setOpenMobileMenu(true);
+                  }}
+                />
+              </div>
               <div className="relative mt-[172px] px-[20px] z-20">
                 <div className="lg:w-[1000px] mx-auto w-full ">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto z-20">
@@ -229,7 +229,7 @@ export const Home: React.FC = () => {
                 </div>
               </div>
               <div className="mt-[172px] mx-auto px-[10px] z-20">
-                <DropdownMenuCard
+                <SummaryCard
                   value={MobileFundraisingCardData}
                   title="Fundraising"
                   textColor="text-white"
@@ -253,14 +253,14 @@ export const Home: React.FC = () => {
                 </div>
               </div>
               <div className="relative px-[20px] mt-10 z-20">
-                <DropdownMenuCard
+                <SummaryCard
                   value={MobileAdvertisingCardData}
                   title="Advertising"
                   textColor="text-black"
                 />
               </div>
               <div className="pt-[70px] mx-auto px-[20px] pb-[20px] mt-[10px] bg-white rounded-br-20">
-                <DropdownMenuCard
+                <SummaryCard
                   value={MobileSponsorshipData}
                   title="Sponsorship"
                   textColor="text-black"

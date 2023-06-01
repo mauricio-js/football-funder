@@ -1,2 +1,2 @@
 export * from './Dropdown';
-export * from './HeaderButton'
+export * from '../../Layout/Header/Components/HeaderButton'

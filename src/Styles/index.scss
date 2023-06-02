@@ -15,3 +15,17 @@
   font-weight: 600;
   font-style: normal;
 }
+
+.titleText{
+  @apply text-green-70 text-[32px] leading-[40px] font-semibold;
+}
+.stepLabelTitle{
+  @apply text-green-80 text-[21px] leading-[28px] font-semibold;
+}
+.introText {
+   @apply text-gray-500 text-[14px] leading-[20px] font-medium;
+}
+
+.textButton{
+  @apply text-green-70 text-[14px] leading-[20px] font-medium hover:underline;
+}

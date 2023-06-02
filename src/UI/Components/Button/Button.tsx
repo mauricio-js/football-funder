@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { ButtonDataType } from "types/buttonDataType";
+import { ButtonDataType } from "types/ComponentsTypes/buttonDataType";
 
 interface ButtonPropertyProps {
   property: ButtonDataType;

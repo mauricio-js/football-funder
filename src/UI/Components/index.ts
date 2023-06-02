@@ -1,6 +1,8 @@
 export * from './Button'
 export * from './Card';
 export * from './Carousel';
+export * from './CategoryButton';
+export * from './CategoryTag';
 export * from './CheckBox';
 export * from './Dropdown';
 export * from './Filter';
@@ -9,3 +11,5 @@ export * from './RadioButton';
 export * from './Search';
 export * from './Select';
 export * from './SelectLanguage';
+export * from './StepLabel';
+export * from './TextButton';

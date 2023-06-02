@@ -1,2 +1,2 @@
 export * from './SlideBar';
-export * from './Component';
+export * from './Components';

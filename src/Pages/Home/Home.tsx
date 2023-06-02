@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
-import { Header, Footer, HamburgerMenu, SlideBar } from "UI";
-import { SummaryCard, Join } from "Pages";
+import { Join, SlideBar, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -21,12 +20,12 @@ import MobileVideoPlayImg from "Assets/images/svg/homepage/mobile-video-play.svg
 import MobileJoinBackImg from "Assets/images/svg/homepage/mobile-joinnow-back.svg";
 
 export const Home: React.FC = () => {
-  const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
   const navigate = useNavigate();
+
   return (
-    <div className="bg-green-70">
-      <div className="max-ns:hidden">
-        {!openMobileMenu && (
+    <Template title="Home">
+      <div className="relative bg-green-70">
+        <div className="max-ns:hidden pb-[150px] max-ns:pb-[55px]">
           <div className="relative">
             <div
               className="absolute bg-cover bg-no-repeat bg-top w-full 
@@ -36,14 +35,8 @@ export const Home: React.FC = () => {
               }}
             ></div>
             <div className="relative">
-              <div className="sticky top-0 z-40">
-                <Header
-                  isShowMobileMenu={() => {
-                    setOpenMobileMenu(true);
-                  }}
-                />
-              </div>
-              <div className="mt-[130px] px-[20px]">
+              <div className="px-[20px]">
+                <div className="py-[100px]"></div>
                 <div className="lg:w-[1000px] mx-auto w-full">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto">
                     <div
@@ -153,22 +146,11 @@ export const Home: React.FC = () => {
               <div className="mt-[150px] px-[20px] ">
                 <Join image={JoinBackImg} />
               </div>
-              <div className="mt-[150px]">
-                <Footer />
-              </div>
             </div>
+            <div className="absolute bottom-[-180px] bg-green-70 py-[20px] w-full z-[-10]"></div>
           </div>
-        )}
-        {openMobileMenu && (
-          <HamburgerMenu
-            isShowMobileMenu={() => {
-              setOpenMobileMenu(false);
-            }}
-          />
-        )}
-      </div>
-      <div className="ns:hidden">
-        {!openMobileMenu && (
+        </div>
+        <div className="ns:hidden pb-[55px]">
           <div className="relative">
             <div className="absolute w-full rounded-b-3xl z-20">
               <img
@@ -178,13 +160,6 @@ export const Home: React.FC = () => {
               />
             </div>
             <div className="relative">
-              <div className="sticky top-0 z-40">
-                <Header
-                  isShowMobileMenu={() => {
-                    setOpenMobileMenu(true);
-                  }}
-                />
-              </div>
               <div className="relative mt-[172px] px-[20px] z-20">
                 <div className="lg:w-[1000px] mx-auto w-full ">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto z-20">
@@ -295,20 +270,11 @@ export const Home: React.FC = () => {
               <div className="mt-[150px] px-[20px] max-[417px]:mt-[200px]">
                 <Join image={MobileJoinBackImg} />
               </div>
-              <div className="mt-[55px]">
-                <Footer />
-              </div>
             </div>
           </div>
-        )}
-        {openMobileMenu && (
-          <HamburgerMenu
-            isShowMobileMenu={() => {
-              setOpenMobileMenu(false);
-            }}
-          />
-        )}
+          <div className="absolute bottom-[-30px] bg-green-70 py-[20px] w-full z-[-10]"></div>
+        </div>
       </div>
-    </div>
+    </Template>
   );
 };

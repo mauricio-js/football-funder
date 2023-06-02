@@ -1,16 +1,21 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { SocialSiteLink, SelectLanguage } from "UI";
 import { guideList } from "Config/footerConfig";
 import FooterLogoImage from "Assets/images/svg/logo/footer-logo.svg";
+import classNames from "classnames";
+import { AppState } from "App/reducers";
 
 export const Footer: React.FC = () => {
+  const isMobileMenu = useSelector(
+    (state: AppState) => state.layoutState.isMobileMenu
+  );
   return (
     <div
-      className="
-    bg-green-40 p-[60px] 
-      max-sm:px-[20px] max-sm:py-[30px] 
-      max-md:rounded-t-[30px]
-      "
+      className={classNames(
+        "bg-green-40 p-[60px] max-sm:px-[20px] max-sm:py-[30px] max-md:rounded-t-[30px]",
+        isMobileMenu ? "hidden" : ""
+      )}
     >
       <div className="grid grid-cols-11 gap-x-1 gap-y-[60px] max-lg:gap-y-[30px] text-white">
         <div className="col-span-2 max-md:col-span-11">

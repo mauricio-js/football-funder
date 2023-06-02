@@ -23,9 +23,9 @@ export const HowItWorks: React.FC = () => {
         <div className="relative">
           <div className="sticky top-0 z-50">
             <Header
-            // isShowMobileMenu={() => {
-            //   setOpenMobileMenu(true);
-            // }}
+              isShowMobileMenu={() => {
+                setOpenMobileMenu(true);
+              }}
             />
           </div>
 

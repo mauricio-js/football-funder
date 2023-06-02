@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Dropdown, HeaderButton, SignInButton, HamburgerMenu } from "UI";
@@ -14,24 +15,28 @@ import {
   moreButtonData,
   feeButtonData,
 } from "Config";
+import { AppState } from "App/reducers";
+import { setShowMobileMenu } from "Data/LayoutState";
 
-// type HeaderProps = {
-//   isShowMobileMenu: () => void;
-// };
+type HeaderProps = {
+  isShowMobileMenu?: () => void;
+};
 
-export function Header() {
-  // { isShowMobileMenu }: HeaderProps
+export const Header: React.FC<HeaderProps> = (isShowMobileMenu) => {
   const [isShowSearchForm, setIsShowSearchForm] = useState<boolean>(false);
-  const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
+  const isMobileMenu = useSelector(
+    (state: AppState) => state.layoutState.isMobileMenu
+  );
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const ShowSearchForm = () => {
     setIsShowSearchForm(!isShowSearchForm);
   };
 
   return (
-    <div>
-      {!openMobileMenu && (
+    <div className="sticky top-0 z-40">
+      {!isMobileMenu && (
         <div className="relative z-20">
           <div className="bg-green-10">
             <div
@@ -103,7 +108,7 @@ export function Header() {
                   <div className="flex items-center">
                     <button
                       className="bl:hidden ml-5 max-vs:ml-1"
-                      onClick={() => setOpenMobileMenu(true)}
+                      onClick={() => dispatch(setShowMobileMenu(true))}
                     >
                       <div className="text-2xl">
                         <MdMenu />
@@ -116,9 +121,13 @@ export function Header() {
           </div>
         </div>
       )}
-      {openMobileMenu && (
-        <HamburgerMenu isShowMobileMenu={() => setOpenMobileMenu(false)} />
+      {isMobileMenu && (
+        <HamburgerMenu
+          isShowMobileMenu={() => {
+            dispatch(setShowMobileMenu(false));
+          }}
+        />
       )}
     </div>
   );
-}
+};

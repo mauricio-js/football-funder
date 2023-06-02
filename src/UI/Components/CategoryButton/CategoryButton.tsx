@@ -8,9 +8,9 @@ export const CategoryButton: React.FC<CategoryButtonType> = (props) => {
       <input type="radio" name="option" id={props.id} className="peer hidden" />
       <label
         htmlFor={props.id}
-        className="block  cursor-pointer select-none rounded-xl px-[50px] max-ns:px-[25px] py-[15px] text-green-70 
+        className="block  cursor-pointer select-none rounded-xl px-[50px] max-md:px-[25px] py-[15px] text-green-70 
           text-[14x] leading-[20px] font-semibold 
-          border-2 border-gray-300 peer-checked:bg-green-10 peer-checked:border-none"
+          border-[1px] border-gray-300 peer-checked:bg-green-10 peer-checked:border-none"
       >
         {props.label}
       </label>

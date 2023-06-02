@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import authReducer from 'Data/Auth';
+import layoutSateReducer from 'Data/LayoutState';
 
 const appReducer = combineReducers({
   auth: authReducer,
+  layoutState: layoutSateReducer,
 });
 
 const rootReducer = (state: any, action: any) => {

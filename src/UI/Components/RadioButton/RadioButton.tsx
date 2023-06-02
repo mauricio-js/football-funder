@@ -35,7 +35,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({ List }) => {
         />
         <div
           className={classNames(
-            "check-icon hidden border-[5px] border-green-10 rounded-full w-full h-full z-1"
+            "check-icon hidden border-[5px] border-green-10 rounded-full w-full h-full"
           )}
         ></div>
       </div>

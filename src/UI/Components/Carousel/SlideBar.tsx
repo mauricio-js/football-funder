@@ -2,7 +2,7 @@ import React from "react";
 import Carousel, { ResponsiveType } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { CarouselCardData } from "Config/homeConfig";
-import { CarouselCard } from "./Component/CarouselCard";
+import { CarouselCard } from "./Components/CarouselCard";
 
 export const SlideBar: React.FC = () => {
   const responsive: ResponsiveType = {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Header, HamburgerMenu, Join, Footer, SummaryCard } from "UI";
+import { Header, HamburgerMenu, Join, Footer, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -155,14 +155,8 @@ export const HowItWorks: React.FC = () => {
             </div>
           </div>
         </div>
-      )}
-      {openMobileMenu && (
-        <HamburgerMenu
-          isShowMobileMenu={() => {
-            setOpenMobileMenu(false);
-          }}
-        />
-      )}
-    </div>
+        <div className="absolute bottom-[-38px] bg-green-70 p-5 z-[-10] w-full"></div>
+      </div>
+    </Template>
   );
 };

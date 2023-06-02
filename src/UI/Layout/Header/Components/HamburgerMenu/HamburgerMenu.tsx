@@ -12,7 +12,7 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
   isShowMobileMenu,
 }) => {
   return (
-    <div>
+    <div className="z-50">
       <div className="w-full bg-green-70">
         <div className="ns:w-[430px] mx-auto p-5">
           <div className="flex flex-row justify-between">

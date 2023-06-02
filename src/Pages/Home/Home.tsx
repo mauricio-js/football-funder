@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
 import { Join, SlideBar, SummaryCard, Template } from "UI";
 import {
@@ -272,9 +272,7 @@ export const Home: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-[-30px] bg-green-70 py-[20px] w-full z-[-10]">
-            123
-          </div>
+          <div className="absolute bottom-[-30px] bg-green-70 py-[20px] w-full z-[-10]"></div>
         </div>
       </div>
     </Template>

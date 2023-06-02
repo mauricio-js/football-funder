@@ -1,3 +1,4 @@
+export * from './createFundraiser';
 export * from './exploreConfig';
 export * from './footerConfig';
 export * from './headerConfig';

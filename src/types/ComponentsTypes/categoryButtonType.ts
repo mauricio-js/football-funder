@@ -1,3 +1,6 @@
 export interface CategoryButtonType { 
-    label:string
+    id:string,
+    label: string,
+    name:string,
+    value:string
 }

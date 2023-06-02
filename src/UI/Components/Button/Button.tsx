@@ -2,25 +2,25 @@ import React from "react";
 import classNames from "classnames";
 import { ButtonDataType } from "types/ComponentsTypes/buttonDataType";
 
-interface ButtonPropertyProps {
-  property: ButtonDataType;
-}
+// interface ButtonPropertyProps {
+//   property: ButtonDataType;
+// }
 
-export const Button: React.FC<ButtonPropertyProps> = ({ property }) => {
+export const Button: React.FC<ButtonDataType> = (props) => {
   return (
     <button
       className={classNames(
         "rounded-10",
-        property.backgroundColor,
-        property.height,
-        property.width,
-        property.textColor,
-        property.textSize
+        props.backgroundColor,
+        props.height,
+        props.width,
+        props.textColor,
+        props.textSize
       )}
     >
-      {property.icon && <property.icon />}
-      {property.image && <img src={property.image} alt=" button contect" />}
-      {property.text && property.text}
+      {props.icon && <props.icon />}
+      {props.image && <img src={props.image} alt=" button contect" />}
+      {props.text && props.text}
     </button>
   );
 };

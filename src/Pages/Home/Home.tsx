@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { Header, Footer, HamburgerMenu, SlideBar } from "UI";
-import { SummaryCard, Join } from "Pages";
+import { Footer, Header, HamburgerMenu, Join, SlideBar, SummaryCard } from "UI";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -38,9 +37,9 @@ export const Home: React.FC = () => {
             <div className="relative">
               <div className="sticky top-0 z-40">
                 <Header
-                  isShowMobileMenu={() => {
-                    setOpenMobileMenu(true);
-                  }}
+                // isShowMobileMenu={() => {
+                //   setOpenMobileMenu(true);
+                // }}
                 />
               </div>
               <div className="mt-[130px] px-[20px]">
@@ -178,13 +177,11 @@ export const Home: React.FC = () => {
               />
             </div>
             <div className="relative">
-              <div className="sticky top-0 z-40">
-                <Header
-                  isShowMobileMenu={() => {
-                    setOpenMobileMenu(true);
-                  }}
-                />
-              </div>
+              <Header
+              // isShowMobileMenu={() => {
+              //   setOpenMobileMenu(true);
+              // }}
+              />
               <div className="relative mt-[172px] px-[20px] z-20">
                 <div className="lg:w-[1000px] mx-auto w-full ">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto z-20">

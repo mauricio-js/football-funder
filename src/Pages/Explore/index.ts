@@ -1,2 +1,2 @@
 export * from './Explore';
-export * from './ExploreComponents';
+export * from './Components';

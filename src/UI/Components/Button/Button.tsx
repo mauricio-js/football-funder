@@ -13,9 +13,9 @@ export const Button: React.FC<ButtonPropertyProps> = ({ property }) => {
         "rounded-10",
         property.backgroundColor,
         property.height,
-        property.width,
         property.textColor,
-        property.textSize
+        property.textSize,
+        property.width
       )}
     >
       {property.icon && <property.icon />}

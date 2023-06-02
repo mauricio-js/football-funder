@@ -27,9 +27,9 @@ export const Explore: React.FC = () => {
           <div>
             <div className="sticky top-0 z-10">
               <Header
-                isShowMobileMenu={() => {
-                  setOpenMobileMenu(true);
-                }}
+              // isShowMobileMenu={() => {
+              //   setOpenMobileMenu(true);
+              // }}
               />
             </div>
             <div className="absolute top-[90px] w-full">

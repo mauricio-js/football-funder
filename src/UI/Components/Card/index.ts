@@ -1,2 +1,2 @@
 export * from './Card'
-export * from './Component';
+export * from './Components';

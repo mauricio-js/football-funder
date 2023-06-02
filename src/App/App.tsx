@@ -1,5 +1,5 @@
 import React from "react";
-import { Landing, Home, Explore, HowItWorks } from "Pages";
+import { Landing, Home, Explore, HowItWorks, CreateFundraiser } from "Pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="explore" element={<Explore />} />
           <Route path="howitworks" element={<HowItWorks />} />
+          <Route path="createfundraiser" element={<CreateFundraiser />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -21,7 +21,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({ List }) => {
       <label id="label1" className="text-base font-normal text-green-70">
         {List.title}
       </label>
-      <div className="bg-white rounded-full w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
+      <div className="bg-white rounded-full w-5 h-5 flex justify-center items-center relative">
         <input
           aria-labelledby="label1"
           type="radio"

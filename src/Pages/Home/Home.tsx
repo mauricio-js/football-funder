@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Join, SlideBar, SummaryCard, Template } from "UI";
+import { Header, Footer, HamburgerMenu, SlideBar, Join, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,

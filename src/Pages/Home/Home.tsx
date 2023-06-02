@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Header, Footer, HamburgerMenu, SlideBar, Join, SummaryCard, Template } from "UI";
+import { SlideBar, Join, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -160,7 +160,7 @@ export const Home: React.FC = () => {
               />
             </div>
             <div className="relative">
-              <div className="relative mt-[172px] px-[20px] z-20">
+              <div className="relative pt-[180px]  px-[20px] z-20">
                 <div className="lg:w-[1000px] mx-auto w-full ">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto z-20">
                     <div
@@ -234,7 +234,7 @@ export const Home: React.FC = () => {
                   textColor="text-black"
                 />
               </div>
-              <div className="pt-[70px] mx-auto px-[20px] pb-[20px] mt-[10px] bg-white rounded-br-20">
+              <div className="pt-[130px] mx-auto px-[20px] pb-[20px] mt-[10px] bg-white rounded-br-20">
                 <SummaryCard
                   value={MobileSponsorshipData}
                   title="Sponsorship"

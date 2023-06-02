@@ -32,7 +32,7 @@ export const Join: React.FC<Proos> = ({ image }) => {
                   platform will support your commercial goals.
                 </div>
               </div>
-              <div className="flex justify-center gap-5">
+              <div className="flex justify-center gap-5 max-vs:gap-2">
                 <button
                   className="w-[150px] h-[50px] max-vs:w-[120px] max-vs:h-[50px]
                               text-[16px] leading-[22px] font-semibold bg-white rounded-10"

@@ -42,13 +42,13 @@ export const SummaryCard: React.FC<Props> = ({
                 <div className="text-white font-semibold text-[21px]  leading-[28px]">
                   {item.title}
                 </div>
-                <div className="mt-[10px] w-[240px] text-green-10 font-medium text-[16px] leading-[22px]">
+                <div className="mt-[10px] w-[240px] max-vs:w-full text-green-10 font-medium text-[16px] max-vs:text-[14px] leading-[22px]">
                   {item.description}
                 </div>
                 <div className="mt-9">
                   <button
                     className="rounded-10 bg-white text-black 
-                    font-semibold text-[16px] leading-[22px] px-[25px] h-[42px]"
+                    font-semibold text-[16px] max-vs:text-[14px] leading-[22px] px-[25px] h-[42px]"
                   >
                     {item.buttonName}
                   </button>

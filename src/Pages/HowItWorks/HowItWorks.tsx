@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Header, HamburgerMenu, Footer } from "UI";
-import { SummaryCard, Join } from "Pages";
+import { Header, HamburgerMenu, Join, Footer, SummaryCard } from "UI";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -16,7 +15,7 @@ import DesktopMask from "Assets/images/svg/howItWorks/desktopMask.svg";
 import MobileMask from "Assets/images/svg/howItWorks/mobileMask.svg";
 import MobileJoinBackImg from "Assets/images/svg/homepage/mobile-joinnow-back.svg";
 
-export const Description: React.FC = () => {
+export const HowItWorks: React.FC = () => {
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
   return (
     <div className="bg-green-70 ">

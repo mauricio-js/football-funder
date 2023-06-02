@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import {
-  Footer,
-  Header,
-  HamburgerMenu,
-  Join,
-  SlideBar,
-  SummaryCard,
-  Template,
-} from "UI";
+import { Join, SlideBar, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,
   MobileAdvertisingCardData,
@@ -32,8 +24,8 @@ export const Home: React.FC = () => {
 
   return (
     <Template title="Home">
-      <div className="bg-green-70">
-        <div className="max-ns:hidden">
+      <div className="relative bg-green-70">
+        <div className="max-ns:hidden pb-[150px] max-ns:pb-[55px]">
           <div className="relative">
             <div
               className="absolute bg-cover bg-no-repeat bg-top w-full 
@@ -43,7 +35,8 @@ export const Home: React.FC = () => {
               }}
             ></div>
             <div className="relative">
-              <div className="mt-[130px] px-[20px]">
+              <div className="px-[20px]">
+                <div className="py-[100px]"></div>
                 <div className="lg:w-[1000px] mx-auto w-full">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto">
                     <div
@@ -154,9 +147,10 @@ export const Home: React.FC = () => {
                 <Join image={JoinBackImg} />
               </div>
             </div>
+            <div className="absolute bottom-[-180px] bg-green-70 py-[20px] w-full z-[-10]"></div>
           </div>
         </div>
-        <div className="ns:hidden">
+        <div className="ns:hidden pb-[55px]">
           <div className="relative">
             <div className="absolute w-full rounded-b-3xl z-20">
               <img
@@ -277,6 +271,9 @@ export const Home: React.FC = () => {
                 <Join image={MobileJoinBackImg} />
               </div>
             </div>
+          </div>
+          <div className="absolute bottom-[-30px] bg-green-70 py-[20px] w-full z-[-10]">
+            123
           </div>
         </div>
       </div>

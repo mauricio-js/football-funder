@@ -22,7 +22,7 @@ export const ExploreDropdown: React.FC = () => {
         </div>
       </button>
       {isShowMenu && (
-        <div className="absolute top-[45px]  w-[171px] rounded-10 bg-white shadow-lg border-2 z-50">
+        <div className="absolute top-[45px]  w-[171px] rounded-10 bg-white shadow-lg border-2 overflow-hidden z-50">
           <div className="text-green-white text-[14px] leading-[20px] font-semibold  divide-y divide-gray-100">
             {ExploreDropdownData.map((item, index) => {
               return (

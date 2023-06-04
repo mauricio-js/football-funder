@@ -4,6 +4,7 @@ export * from './Carousel';
 export * from './CategoryButton';
 export * from './CategoryTag';
 export * from './CheckBox';
+export * from './CreatePageTitle';
 export * from './Dropdown';
 export * from './Filter';
 export * from './Input';

@@ -17,7 +17,7 @@
 }
 
 .titleText{
-  @apply text-green-70 text-[32px] leading-[40px] font-semibold;
+  @apply text-green-70 text-[32px] max-ns:text-[21px] leading-[40px] max-ns:leading-[28px] font-semibold;
 }
 .stepLabelTitle{
   @apply text-green-80 text-[21px] leading-[28px] font-semibold;
@@ -26,6 +26,6 @@
    @apply text-gray-500 text-[14px] leading-[20px] font-medium;
 }
 
-.textButton{
-  @apply text-green-70 text-[14px] leading-[20px] font-medium hover:underline;
+.linkTextButton{
+  @apply text-green-70 text-[14px] leading-[20px] font-medium underline cursor-pointer;
 }

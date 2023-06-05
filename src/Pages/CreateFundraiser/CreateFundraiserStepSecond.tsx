@@ -12,7 +12,7 @@ export const CreateFundraiserStepSecond: React.FC = () => {
       <div>
         <PageTitle title="Create your fundraiser" />
         <div className="mt-[30px]">
-          <StepLabel step="Step 1" title="Fundraiser details" />
+          <StepLabel step="Step 2" title="Fundraiser details" />
         </div>
         <div className="mt-[30px]">
           <PageSectionTitle

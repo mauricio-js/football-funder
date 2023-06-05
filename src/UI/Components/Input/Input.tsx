@@ -1,33 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
-import { FormDataType } from "types";
+import { InputType } from "types";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 interface InputProps {
-  data: FormDataType;
+  data: InputType;
 }
 
 export const Input: React.FC<InputProps> = ({ data }) => {
+  const [inputType, setInputType] = useState<string>(data.type);
+  const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+
   return (
     <div className="flex flex-col">
-      <div className="relative mb-3">
+      <div className="relative">
         <input
-          type={data.type}
+          type={inputType}
           className={classNames(
-            "peer m-0 block bg-white w-full rounded-10 border",
-            "border-solid bg-transparent bg-clip-padding",
-            "font-medium leading-tight text-neutral-700 transition duration-200",
-            "ease-linear placeholder:text-transparent focus:border-primary",
-            "focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700",
-            "focus:outline-none peer-focus:text-primary dark:border-neutral-600",
-            "dark:text-neutral-700 dark:focus:border-primary dark:peer-focus:text-primary",
-            "[&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]",
+            "peer bg-white w-full rounded-10 text-green-70",
+            "transition duration-200 border-[1px] border-gray-300",
+            "ease-linear placeholder:text-transparent focus:pb-[0.625rem] focus:pt-[1.625rem] ",
+            "focus:outline-none [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]",
             data.height,
             data.padding,
-            data.textSize
+            data.textSize,
+            data.border
           )}
-          id="floatingInput"
           placeholder="1"
         />
+        {data.type === "password" && (
+          <div className="absolute h-full right-6 top-0 flex items-center">
+            <div
+              onClick={() => {
+                setIsShowPassword(!isShowPassword);
+              }}
+            >
+              {!isShowPassword ? (
+                <div
+                  onClick={() => {
+                    setInputType("text");
+                  }}
+                >
+                  <AiOutlineEye />
+                </div>
+              ) : (
+                <div
+                  onClick={() => {
+                    setInputType("password");
+                  }}
+                >
+                  <AiOutlineEyeInvisible />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
         <label
           htmlFor="floatingInput"
           className={classNames(

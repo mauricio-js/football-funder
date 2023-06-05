@@ -1,10 +1,12 @@
 import {
+    ButtonDataType,
     CardType,
     ExploreDropdownType,
-    SelectDataType,
+    FilterDataType,
+    InputType,
     SearchDataType,
-    FormDataType
 } from "types"
+import FilterIcon from "Assets/images/svg/explore/filter-icon.svg";
 import ExploreCardImageA from 'Assets/images/svg/explore/explore-card-a.svg'
 import ExploreCardImageB from 'Assets/images/svg/explore/explore-card-b.svg'
 import ExploreCardImageC from 'Assets/images/svg/explore/explore-card-c.svg'
@@ -317,138 +319,135 @@ export const ExploreCardData: CardType[] = [
     },
 ];
 
-export const TypeFilterData:SelectDataType[] = [
+
+export const FilterSearchData: SearchDataType = {
+    backgroundColor: "bg-white",
+    placeholder: "Search...",
+    placeholderClass:"placeholder:text-[16px] placeholder:leading-[22px] placeholder:font-medium placeholder:text-green-70",
+    padding: "px-[15px] py-[10px]",
+    iconColor: "text-black",
+    inputTextSize: "font-medium text-[16px]",
+    border:"border-2 border-gray-100",
+    icon: MdSearch,
+    iconSize: "text-[20px]",
+    inputColor:"text-black"
+}
+export const FiterButtonProperty: ButtonDataType = {
+    backgroundColor: "text-white",
+    text: "Filter & Sort",
+    image: FilterIcon,
+    width: "w-[150px]",
+    height: "h-[50px]",
+    border:"border-[1px] border-gray-100",
+}
+
+export const TypeFilterData:FilterDataType[] = [
     {
-        title: "All",
+        label: "All",
         value: "all",
-        status:"checked"
     },
     {
-        title: "Fundraisers",
+        label: "Fundraisers",
         value: "fundraisers",
-        status: "none"
     },
     {
-        title: "Advertising",
+        label: "Advertising",
         value: "advertising",
-        status: "none"
     },
     {
-        title: "Sponsorship",
+        label: "Sponsorship",
         value: "sponsorship",
-        status: "none"
     }
 ];
 
-export const OrganisationFilterData:SelectDataType[] = [
+export const OrganisationFilterData: FilterDataType[] = [
     {
-        title: "All",
+        label: "All",
         value: "all",
-        status:"checked"
     },
     {
-        title: "Clubs",
+        label: "Clubs",
         value: "clubs",
-        status: "none"
     },
     {
-        title: "Supporters' Trusts",
+        label: "Supporters' Trusts",
         value: "supporter",
-        status: "none"
     },
     {
-        title: "Local communities",
+        label: "Local communities",
         value: "local communities",
-        status: "none"
     },
     {
-        title: "Foundations",
+        label: "Foundations",
         value: "foundations",
-        status: "none"
     },
     {
-        title: "Leagues",
+        label: "Leagues",
         value: "leagues",
-        status: "none"
     },
     {
-        title: "Charities",
+        label: "Charities",
         value: "charities",
-        status: "none"
     },
     {
-        title: "Singing Sections / Ultras",
+        label: "Singing Sections / Ultras",
         value: "ultras",
-        status: "none"
     },
     {
-        title: "Agency / Rights holder",
+        label: "Agency / Rights holder",
         value: "agency",
-        status: "none"
     },
     {
-        title: "Podcast / Vlog",
+        label: "Podcast / Vlog",
         value: "podcast",
-        status: "none"
     },
     {
-        title: "Advertiser/Sponsor",
+        label: "Advertiser/Sponsor",
         value: "advertiser",
-        status: "none"
     },
     {
-        title: "Other",
+        label: "Other",
         value: "other",
-        status: "none"
     },  
 ];
-export const StatusFilterData:SelectDataType[] = [
+export const StatusFilterData:FilterDataType[] = [
         {
-            title: "All",
+            label: "All",
             value: "all",
-            status:"checked"
         },
         {
-            title: "Live",
+            label: "Live",
             value: "live",
-            status: "none"
         },
         {
-            title: "Pending",
+            label: "Pending",
             value: "pending",
-            status: "none"
         },
         {
-            title: "Funded / Sold",
+            label: "Funded / Sold",
             value: "fund",
-            status: "none"
         }
     ];
-export const SortByData:SelectDataType[] = [
+export const SortByData: FilterDataType[] = [
         {
-            title: "Promoted",
+            label: "Promoted",
             value: "promoted",
-            status:"checked"
         },
         {
-            title: "Newest (£)",
+            label: "Newest (£)",
             value: "newest",
-            status: "none"
         },
         {
-            title: "Oldest (£)",
+            label: "Oldest (£)",
             value: "oldest",
-            status: "none"
         },
         {
-            title: "High to Low",
+            label: "High to Low",
             value: "high",
-            status: "none"
         },
         {
-            title: "Low to High",
+            label: "Low to High",
             value: "low",
-            status: "none"
         },
     ];
  
@@ -466,19 +465,21 @@ export const ExploreSearchData: SearchDataType = {
     inputColor:"text-black"
 };
 
-export const DistanceInputFormData: FormDataType[] = [
+export const DistanceInputFormData: InputType[] = [
     {
+        content:"after:content-['*'] after:ml-1 after:text-green-10",
+        height: "h-[54px]",
         label: "Miles from",
-        type: "text",
-        textSize:"text-[20px]",
         padding:"px-[15px] py-[10px]",
-        height:"h-[54px]"
+        textSize:"text-[20px]",
+        type: "text",
     },
     {
+        content:"after:content-['*'] after:ml-1 after:text-green-10",
+        height: "h-[54px]",
         label: "Postcode",
-        type: "text",
         padding:"px-[15px] py-[10px]",
         textSize:"text-[20px]",
-        height:"h-[54px]"
+        type: "text",
     },
 ]

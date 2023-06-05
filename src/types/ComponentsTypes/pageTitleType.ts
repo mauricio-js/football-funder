@@ -1,4 +1,4 @@
-export interface CreatePageTitleType { 
+export interface PageTitleType { 
     title: string,
     introText?: string,
     linkText?:string

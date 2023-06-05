@@ -1,5 +1,5 @@
 import { IPadDataType } from "types";
-import { SignUpOptionType, FormDataType } from 'types'
+import { FormDataType, SelectDataType } from 'types'
 import FirstIpadImage from "Assets/images/landing/first-ipad.png";
 import SecondIpadImage from "Assets/images/landing/second-ipad.png";
 
@@ -25,15 +25,15 @@ export const IPadData: IPadDataType[] = [
 ]
 
 
-export const SignUpSelectFormData: SignUpOptionType[] = [
+export const SignUpSelectFormData: SelectDataType[] = [
     {
       id: 1,
-      label: "Organisation",
+      option: "Organisation",
       value: "organisation",
     },
     {
       id: 2,
-      label: "Individual",
+      option: "Individual",
       value: "individual",
     },
   ];

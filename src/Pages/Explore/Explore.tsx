@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Card, FilterMenu, Search, Template } from "UI";
-import { ExploreDropdown, Filter } from "Pages";
+import { Card, Search, Template } from "UI";
+import { ExploreDropdown, Filter, FilterMenu } from "Pages";
 import { ExploreCardData, ExploreSearchData } from "Config";
 import ExploreMask from "Assets/images/svg/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/svg/explore/m-explore-mask.svg";

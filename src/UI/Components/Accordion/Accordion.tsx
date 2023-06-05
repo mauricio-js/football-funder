@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import { IoIosArrowDown } from "react-icons/io";
-import { TypeFilterData } from "Config/exploreConfig";
-import { Checkbox } from "UI";
 
-export const TypeFilter: React.FC = () => {
+interface AccordionProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+export const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   return (
@@ -16,7 +19,7 @@ export const TypeFilter: React.FC = () => {
         }}
       >
         <div className="text-[18px] leading-6 font-semibold text-green-70 cursor-pointer">
-          Type
+          {title}
         </div>
         <div
           className={classNames(
@@ -27,17 +30,7 @@ export const TypeFilter: React.FC = () => {
           <IoIosArrowDown />
         </div>
       </div>
-      {showMenu && (
-        <div className="mt-5 flex flex-col gap-5">
-          {TypeFilterData.map((item, index) => {
-            return (
-              <div key={index}>
-                <Checkbox List={item} />
-              </div>
-            );
-          })}
-        </div>
-      )}
+      {showMenu && <div>{children}</div>}
     </div>
   );
 };

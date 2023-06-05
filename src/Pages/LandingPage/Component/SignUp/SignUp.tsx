@@ -26,9 +26,14 @@ export const SignUp: React.FC = () => {
               "
       >
         <Select
+          backgroundColor="bg-green-80"
+          onOptionChange={handleSelectChange}
+          placeholder="text-white"
+          placeholderText="Select your category"
           SelectFormData={SignUpSelectFormData}
           selectedOption={selectedOption}
-          onOptionChange={handleSelectChange}
+          textColor="text-white"
+          textSize="generalSmallText"
         />
 
         <div className="mt-[30px] ">
@@ -39,7 +44,11 @@ export const SignUp: React.FC = () => {
               </div>
               <div className="mt-[15px]">
                 {OrganisationFormData.map((Data, index) => {
-                  return <Input key={index} data={Data} />;
+                  return (
+                    <div key={index} className="mt-[10px]">
+                      <Input key={index} data={Data} />
+                    </div>
+                  );
                 })}
                 <div className="mt-[30px]">
                   <SignUpButton />
@@ -53,8 +62,12 @@ export const SignUp: React.FC = () => {
                 Please fill the requested information below
               </div>
               <div className="mt-[15px]">
-                {IndividualFormData.map((data, index) => {
-                  return <Input key={index} data={data} />;
+                {IndividualFormData.map((Data, index) => {
+                  return (
+                    <div className="mt-[10px]">
+                      <Input key={index} data={Data} />
+                    </div>
+                  );
                 })}
                 <div className="mt-[30px]">
                   <SignUpButton />

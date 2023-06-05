@@ -1,18 +1,31 @@
 import React from "react";
-import SelectFormArrow from "Assets/images/svg/button/white-arrow";
+import classNames from "classnames";
 import classname from "classnames";
-import { SignUpOptionType } from "types";
+import { SelectDataType } from "types";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 interface Props {
-  SelectFormData: SignUpOptionType[];
+  SelectFormData: SelectDataType[];
   selectedOption: string;
   onOptionChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  backgroundColor: string;
+  textColor: string;
+  textSize: string;
+  border?: string;
+  placeholder?: string;
+  placeholderText: string;
 }
 
 export const Select: React.FC<Props> = ({
-  selectedOption,
+  backgroundColor,
+  border,
   onOptionChange,
+  placeholder,
+  placeholderText,
+  selectedOption,
   SelectFormData,
+  textColor,
+  textSize,
 }) => {
   return (
     <div className="relative w-full">
@@ -22,32 +35,46 @@ export const Select: React.FC<Props> = ({
         onChange={onOptionChange}
         value={selectedOption}
         placeholder=""
-        className="items-center h-14 px-5 pt-5 appearance-none w-full text-[14px] 
-        leading-[20px] text-white rounded-10 bg-green-80 block border-0 
-        dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+        className={classNames(
+          "items-center h-14 px-5 pt-5 appearance-none w-full rounded-10  block",
+          " focus:outline-none focus:ring-0 peer",
+          backgroundColor,
+          textColor,
+          textSize,
+          border
+        )}
       >
         <option className="hidden"></option>
         {SelectFormData.map((formData, index) => {
           return (
-            <option key={index} value={formData.value} className="block w-full">
-              {formData.label}
+            <option
+              key={index}
+              value={formData.value}
+              className={classNames("w-full", textColor)}
+            >
+              {formData.option}
             </option>
           );
         })}
       </select>
-      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center px-2 text-gray-700">
-        <SelectFormArrow />
+      <div
+        className={classNames(
+          "pointer-events-none absolute inset-y-0 right-3 flex items-center px-2",
+          textColor
+        )}
+      >
+        <MdKeyboardArrowDown />
       </div>
       <label
         htmlFor="floating_filled"
         className={classname(
-          "absolute text-[14px] leading-[15px] font-medium text-white duration-300",
-          "transform scale-75 top-5 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100",
-          "peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3",
-          selectedOption !== "" && "-translate-y-3"
+          "absolute text-[14px] leading-[20px] font-medium duration-300",
+          "top-4 z-10 origin-[0] left-4 ",
+          selectedOption !== "" && "-translate-y-3",
+          placeholder
         )}
       >
-        Select your category
+        {placeholderText}
         <span className="text-green-10 ml-1">*</span>
       </label>
     </div>

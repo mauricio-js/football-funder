@@ -28,14 +28,13 @@ export interface CardType {
     collection?: CardLabelType
 };
 
-export interface SelectDataType  { 
-    title: string,
-    value: string,
-    status:string
-}
-
 export interface DistanceDataType { 
     id?: number;
     label: string;
     type: string;
+}
+
+export interface FilterDataType { 
+    label: string;
+    value: string;
 }

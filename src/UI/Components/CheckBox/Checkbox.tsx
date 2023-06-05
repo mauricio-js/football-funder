@@ -1,38 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
-import { SelectDataType } from "types";
 import { BsCheckLg } from "react-icons/bs";
 
-interface FilterDataProps {
-  List: SelectDataType;
+interface CheckBoxProps {
+  align?: string;
+  checked: boolean;
+  label: string;
+  onSelect: (value: string) => void;
+  textClass?: string;
+  value: string;
 }
 
-export const Checkbox: React.FC<FilterDataProps> = ({ List }) => {
-  const [selectStatus, setSelectStatus] = useState<boolean>(false);
+export const CheckBox: React.FC<CheckBoxProps> = ({
+  align,
+  checked,
+  label,
+  onSelect,
+  textClass,
+  value,
+}) => {
   return (
-    <div
-      className="flex justify-between items-center"
-      onClick={() => setSelectStatus(!selectStatus)}
-    >
-      <label id="label1" className="text-base font-normal text-green-70">
-        {List.title}
+    <div className={classNames("flex justify-between items-center", align)}>
+      <label
+        id="label1"
+        className={classNames("flex-1 text-base font-normal", textClass)}
+        onClick={() => onSelect(value)}
+      >
+        {label}
       </label>
       <div
         className="bg-white rounded-full w-5 h-5 flex 
-        flex-shrink-0 justify-center items-center relative"
+         justify-center items-center relative"
       >
         <input
           aria-labelledby="label1"
           type="checkbox"
           name="checkbox"
-          value={List.value}
+          checked={checked}
+          onChange={() => onSelect(value)}
           className="checkbox appearance-none focus:opacity-100 border rounded-md 
            border-gray-300 absolute cursor-pointer w-full h-full checked:border-none"
         />
         <div
           className={classNames(
             "check-icon bg-green-10 rounded-md w-full h-full z-1 justify-center items-center text-semibold",
-            selectStatus ? "flex" : "hidden"
+            checked ? "flex" : "hidden"
           )}
         >
           <BsCheckLg />

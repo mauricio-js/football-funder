@@ -1,34 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
-import { SelectDataType } from "types";
+import { RadioButtonType } from "types";
 
-interface RadioButtonProps {
-  List: SelectDataType;
-}
-
-export const RadioButton: React.FC<RadioButtonProps> = ({ List }) => {
-  const [selectStatus, setSelectStatus] = useState<Boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<string>(List.value);
-  const handleOptionChange = (e: any) => {
-    setSelectedOption(e.target.value);
-  };
-
+export const RadioButton: React.FC<RadioButtonType> = (props) => {
   return (
-    <div
-      className="flex justify-between items-center"
-      onClick={() => setSelectStatus(!selectStatus)}
-    >
-      <label id="label1" className="text-base font-normal text-green-70">
-        {List.title}
+    <div className="flex justify-between items-center">
+      <label
+        id="label1"
+        className="flex-1 text-base font-normal text-green-70"
+        onClick={props.onSelect}
+      >
+        {props.name}
       </label>
       <div className="bg-white rounded-full w-5 h-5 flex justify-center items-center relative">
         <input
-          aria-labelledby="label1"
           type="radio"
-          name="radio"
-          value={List.value}
-          checked={selectedOption === List.value}
-          onChange={(e) => handleOptionChange(e)}
+          value={props.value}
+          checked={props.checked}
+          onChange={props.onSelect}
           className="
             checkbox appearance-none focus:opacity-100 rounded-full 
             border  border-gray-300 absolute cursor-pointer w-full h-full checked:border-none"

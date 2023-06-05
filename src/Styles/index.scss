@@ -29,3 +29,11 @@
 .linkTextButton{
   @apply text-green-70 text-[14px] leading-[20px] font-medium underline cursor-pointer;
 }
+
+.generalText{
+  @apply text-[16px] leading-[22px];
+}
+
+.generalSmallText{
+  @apply text-[14px] leading-[20px];
+}

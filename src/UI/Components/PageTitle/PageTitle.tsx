@@ -1,8 +1,8 @@
 import React from "react";
 import { TextButton } from "UI";
-import { CreatePageTitleType } from "types/ComponentsTypes/createPageTitleType";
+import { PageTitleType } from "types";
 
-export const CreatePageTitle: React.FC<CreatePageTitleType> = (props) => {
+export const PageTitle: React.FC<PageTitleType> = (props) => {
   return (
     <div className="flex flex-col gap-[10px]">
       <div className="titleText">{props.title}</div>

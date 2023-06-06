@@ -465,21 +465,22 @@ export const ExploreSearchData: SearchDataType = {
     inputColor:"text-black"
 };
 
-export const DistanceInputFormData: InputType[] = [
-    {
-        content:"after:content-['*'] after:ml-1 after:text-green-10",
-        height: "h-[54px]",
-        label: "Miles from",
-        padding:"px-[15px] py-[10px]",
-        textSize:"text-[20px]",
-        type: "text",
-    },
-    {
-        content:"after:content-['*'] after:ml-1 after:text-green-10",
-        height: "h-[54px]",
-        label: "Postcode",
-        padding:"px-[15px] py-[10px]",
-        textSize:"text-[20px]",
-        type: "text",
-    },
-]
+export const MileDistanceInputFormData: InputType = {
+
+    content:"after:content-['*'] after:ml-1 after:text-green-10",
+    height: "h-[54px]",
+    label: "Miles from",
+    padding:"px-[15px] py-[10px]",
+    textSize:"text-[20px]",
+    type: "text",
+}
+export const PostcodeDistanceInputFormData: InputType = {
+
+    content:"after:content-['*'] after:ml-1 after:text-green-10",
+    height: "h-[54px]",
+    label: "Postcode",
+    padding:"px-[15px] py-[10px]",
+    textSize:"text-[20px]",
+    type: "text",
+}
+    

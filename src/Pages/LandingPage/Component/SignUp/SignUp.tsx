@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import { SignUpButton } from "Pages";
 import { Select, Input } from "UI";
 import {
-  OrganisationFormData,
-  IndividualFormData,
+  FirstName,
+  LastName,
+  ContactOrganisation,
+  AccountEmail,
+  PhoneNumber,
   SignUpSelectFormData,
+  WebSite,
 } from "Config";
 
 export const SignUp: React.FC = () => {
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [contactOrganistion, setContactOrganisation] = useState<string>("");
+  const [accountEmail, setAccountEmail] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [website, setWebsite] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -43,13 +53,39 @@ export const SignUp: React.FC = () => {
                 Please fill the requested information below
               </div>
               <div className="mt-[15px]">
-                {OrganisationFormData.map((Data, index) => {
-                  return (
-                    <div key={index} className="mt-[10px]">
-                      <Input key={index} data={Data} />
-                    </div>
-                  );
-                })}
+                <div className="flex flex-col gap-y-[10px]">
+                  <Input
+                    data={FirstName}
+                    setValue={setFirstName}
+                    defaultValue={firstName}
+                  />
+                  <Input
+                    data={LastName}
+                    setValue={setLastName}
+                    defaultValue={lastName}
+                  />
+                  <Input
+                    data={ContactOrganisation}
+                    setValue={setContactOrganisation}
+                    defaultValue={contactOrganistion}
+                  />
+                  <Input
+                    data={AccountEmail}
+                    setValue={setAccountEmail}
+                    defaultValue={accountEmail}
+                  />
+                  <Input
+                    data={PhoneNumber}
+                    setValue={setPhoneNumber}
+                    defaultValue={phoneNumber}
+                  />
+                  <Input
+                    data={WebSite}
+                    setValue={setWebsite}
+                    defaultValue={website}
+                  />
+                </div>
+
                 <div className="mt-[30px]">
                   <SignUpButton />
                 </div>
@@ -62,13 +98,29 @@ export const SignUp: React.FC = () => {
                 Please fill the requested information below
               </div>
               <div className="mt-[15px]">
-                {IndividualFormData.map((Data, index) => {
-                  return (
-                    <div className="mt-[10px]">
-                      <Input key={index} data={Data} />
-                    </div>
-                  );
-                })}
+                <div className="flex flex-col gap-y-[10px]">
+                  <Input
+                    data={FirstName}
+                    setValue={setFirstName}
+                    defaultValue={firstName}
+                  />
+                  <Input
+                    data={LastName}
+                    setValue={setLastName}
+                    defaultValue={lastName}
+                  />
+                  <Input
+                    data={AccountEmail}
+                    setValue={setAccountEmail}
+                    defaultValue={accountEmail}
+                  />
+                  <Input
+                    data={PhoneNumber}
+                    setValue={setPhoneNumber}
+                    defaultValue={phoneNumber}
+                  />
+                </div>
+
                 <div className="mt-[30px]">
                   <SignUpButton />
                 </div>

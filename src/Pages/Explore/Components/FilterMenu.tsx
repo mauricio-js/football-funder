@@ -9,8 +9,9 @@ import {
 } from "UI";
 import { FilterSearchData } from "Config";
 import {
-  DistanceInputFormData,
+  MileDistanceInputFormData,
   OrganisationFilterData,
+  PostcodeDistanceInputFormData,
   SortByData,
   StatusFilterData,
   TypeFilterData,
@@ -28,6 +29,8 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
   const [organisations, setOrganisations] = useState<string[]>(["all"]);
   const [type, setType] = useState<string[]>(["all"]);
   const [status, setStatus] = useState<string[]>(["all"]);
+  const [mile, setMile] = useState<string>("");
+  const [postCode, setPostCode] = useState<string>("");
 
   return (
     <div className="md:w-[645px] ns:w-[420px] max-ns:w-[300px] p-5 bg-white rounded-10 z-50">
@@ -76,14 +79,17 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
               />
             </Accordion>
             <Accordion title="Distance">
-              <div className="flex gap-[10px]">
-                {DistanceInputFormData.map((list, index) => {
-                  return (
-                    <div className="w-[180px]" key={index}>
-                      <Input data={list} />
-                    </div>
-                  );
-                })}
+              <div className="w-[180px] flex gap-[10px]">
+                <Input
+                  data={MileDistanceInputFormData}
+                  setValue={setMile}
+                  defaultValue={mile}
+                />
+                <Input
+                  data={PostcodeDistanceInputFormData}
+                  setValue={setPostCode}
+                  defaultValue={postCode}
+                />
               </div>
             </Accordion>
           </div>

@@ -2,10 +2,6 @@ import React from "react";
 import classNames from "classnames";
 import { ButtonDataType } from "types/ComponentsTypes/buttonType";
 
-// interface ButtonPropertyProps {
-//   property: ButtonDataType;
-// }
-
 export const Button: React.FC<ButtonDataType> = (props) => {
   return (
     <button
@@ -17,9 +13,10 @@ export const Button: React.FC<ButtonDataType> = (props) => {
         props.textColor,
         props.textSize
       )}
+      onClick={props.handleClick}
     >
       {props.icon && <props.icon />}
-      {props.image && <img src={props.image} alt=" button contect" />}
+      {props.image && <img src={props.image} alt=" button content" />}
       {props.text && props.text}
     </button>
   );

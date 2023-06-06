@@ -15,13 +15,13 @@ export const RadioButtonList: React.FC<RadioButtonListProps> = ({
 }) => {
   const handleSelect = useCallback(
     (value: string) => {
-      console.log("selected value", value);
+      // console.log("selected value", value);
       onSelect(value);
     },
     [onSelect]
   );
 
-  console.log("current value:", currentValue);
+  // console.log("current value:", currentValue);
   return (
     <div>
       {options.map((option, index) => (

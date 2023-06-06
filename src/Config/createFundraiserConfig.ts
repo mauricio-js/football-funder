@@ -221,7 +221,7 @@ export const VideoURL: InputType = {
 
     id: 7,
     label: "Video URL",
-    height: "h-[54nmpx]",
+    height: "h-[54px]",
     textSize: "text-[20px]",
     padding:" px-3 py-4",
     type: "text",

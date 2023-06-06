@@ -7,7 +7,7 @@ export const CreateFundraiserStepSecond: React.FC = () => {
     <div
       className="
         w-[1000px] max-lg:w-full px-[20px] mt-[60px] max-ns:mt-[20px]
-        mb-[135px] max-ns:mb-[100px] mx-auto"
+         mb-[90px] max-ns:mb-[30px] mx-auto"
     >
       <div>
         <PageTitle title="Create your fundraiser" />
@@ -24,8 +24,7 @@ export const CreateFundraiserStepSecond: React.FC = () => {
               title="Title"
               limit={150}
               height="h-[124px]"
-              value="Vel amet iaculis id adipiscing venenatis sed volutpat. 
-              Dictumst sem pellentesque lectus sollicitudin."
+              value="Vel amet iaculis id adipiscing venenatis sed volutpat.Dictumst sem pellentesque lectus sollicitudin."
             />
           </div>
           <div className="mt-[30px]">
@@ -40,9 +39,7 @@ export const CreateFundraiserStepSecond: React.FC = () => {
               title="Short description"
               limit={300}
               height="h-[150px]"
-              value="The subheader for running a fundraiser campaign for my football club goes here 
-              and there’s three lines of copy available to describe it. There’s some additional space 
-              in this box if I need it."
+              value="The subheader for running a fundraiser campaign for my football club goes here and there’s three lines of copy available to describe it. There’s some additional space in this box if I need it."
             />
           </div>
           <div className="mt-[30px]">
@@ -57,7 +54,7 @@ export const CreateFundraiserStepSecond: React.FC = () => {
                 We take a platform fee for each donation - this pays for all
                 admin and promotion of your fundraising campaign.
               </span>
-              <span className="ml-1 underline">See fees</span>
+              <span className="ml-1 text-green-70 underline">See fees</span>
             </div>
           </div>
           <div className="mt-[10px] md:w-1/2">

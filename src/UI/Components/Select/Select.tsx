@@ -30,8 +30,6 @@ export const Select: React.FC<Props> = ({
   return (
     <div className="relative w-full">
       <select
-        name="select form"
-        id="floating_filled"
         onChange={onOptionChange}
         value={selectedOption}
         placeholder=""

@@ -1,6 +1,7 @@
 export * from './buttonType';
 export * from './categoryButtonType';
 export * from './checkboxType';
+export * from './descriptionPanelType';
 export * from './dropDownInput'
 export * from './inputType';
 export * from './pageSectionTitleType';

@@ -29,7 +29,7 @@ export const CheckBoxList: React.FC<FilterDataProps> = ({
       }
     }
   };
-  console.log(selectedValues);
+  // console.log(selectedValues);
 
   return (
     <div className="mt-5 flex flex-col gap-5">

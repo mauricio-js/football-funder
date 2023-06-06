@@ -5,9 +5,18 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 interface InputProps {
   data: InputType;
+  setValue: (value: string) => void;
+  defaultValue: string;
 }
-
-export const Input: React.FC<InputProps> = ({ data }) => {
+export const Input: React.FC<InputProps> = ({
+  data,
+  setValue,
+  defaultValue,
+}) => {
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    setValue(inputValue);
+  };
   const [inputType, setInputType] = useState<string>(data.type);
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
@@ -26,6 +35,7 @@ export const Input: React.FC<InputProps> = ({ data }) => {
             data.textSize,
             data.border
           )}
+          onChange={onChangeHandler}
           placeholder="1"
         />
         {data.type === "password" && (

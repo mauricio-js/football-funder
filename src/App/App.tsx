@@ -4,11 +4,7 @@ import {
   Home,
   Explore,
   HowItWorks,
-  CreateFundraiserSignIn,
-  CreateFundraiserStepFirst,
-  CreateFundraiserStepSecond,
-  CreateFundraiserStepThird,
-  CreateListingSignIn,
+  CreateYourFundraiser,
 } from "Pages";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -22,21 +18,8 @@ function App() {
           <Route path="explore" element={<Explore />} />
           <Route path="howitworks" element={<HowItWorks />} />
           <Route
-            path="createfundraisersignin"
-            element={<CreateFundraiserSignIn />}
-          />
-          <Route path="createlistingsignin" element={<CreateListingSignIn />} />
-          <Route
-            path="createfundraiserstepfirst"
-            element={<CreateFundraiserStepFirst />}
-          />
-          <Route
-            path="createfundraiserstepsecond"
-            element={<CreateFundraiserStepSecond />}
-          />
-          <Route
-            path="createfundraiserstepthird"
-            element={<CreateFundraiserStepThird />}
+            path="createyourfundraiser"
+            element={<CreateYourFundraiser />}
           />
         </Routes>
       </BrowserRouter>

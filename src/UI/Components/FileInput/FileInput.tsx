@@ -9,7 +9,7 @@ export const FileInput: React.FC = () => {
           <div className="text-[16px] rotate-180">
             <AiOutlinePaperClip />
           </div>
-          Upload Document
+          Upload image
         </div>
       </button>
       <input

@@ -23,7 +23,7 @@ export const HowItWorks: React.FC = () => {
         <div className="relative">
           <div className="absolute top-[140px] max-xs:top-[90px] w-full ">
             <div
-              className="w-[1000px] max-lg:w-full max-lg:text-center max-lg:px-[20px] mx-auto 
+              className="w-[1000px] max-lg:w-full max-lg:text-center max-lg:px-5 mx-auto 
                             text-[60px] leading-[60px] font-semibold text-white"
             >
               What is Football Funder?
@@ -58,7 +58,7 @@ export const HowItWorks: React.FC = () => {
           <div className="w-full pt-[23px]">
             <div className="relative w-[1000px] max-lg:w-full  mx-auto">
               <div
-                className="w-[610px] max-md:w-full max-lg:px-[20px] 
+                className="w-[610px] max-md:w-full max-lg:px-5 
                   max-md:mx-auto flex flex-col gap-[20px] text-white"
               >
                 <div
@@ -87,7 +87,7 @@ export const HowItWorks: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="max-ns:hidden px-[20px]">
+            <div className="max-ns:hidden px-5">
               <div className="mt-[100px]">
                 <SummaryCard
                   value={FundraisingCardData}
@@ -117,7 +117,7 @@ export const HowItWorks: React.FC = () => {
               </div>
             </div>
             <div className="ns:hidden">
-              <div className="mt-[60px] px-[20px] flex flex-col gap-y-[60px]">
+              <div className="mt-[60px] px-5 flex flex-col gap-y-[60px]">
                 <SummaryCard
                   value={MobileFundraisingCardData}
                   title="Fundraising"

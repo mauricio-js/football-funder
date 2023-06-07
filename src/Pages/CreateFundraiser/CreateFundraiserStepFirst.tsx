@@ -35,14 +35,14 @@ export const CreateFundraiserStepFirst = () => {
   return (
     <div
       className="
-        w-[1000px] max-lg:w-full px-[20px] mt-[60px] max-ns:mt-[20px]
-        mb-[120px] max-ns:mb-[30px] mx-auto"
+        w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
+        mb-[120px] max-ns:mb-30 mx-auto"
     >
       <PageTitle title="Create your fundraiser" />
-      <div className="mt-[30px]">
+      <div className="mt-30">
         <StepLabel step="Step 1" title="Your basic information" />
       </div>
-      <div className="mt-[30px]">
+      <div className="mt-30">
         <PageSectionTitle
           title="Contact"
           intro="Please provide the details of the legal contact for the fundraiser."
@@ -109,9 +109,9 @@ export const CreateFundraiserStepFirst = () => {
               />
             </div>
           </div>
-          <div className="mt-[30px]">
+          <div className="mt-30">
             <div
-              className="px-[15px] md:py-[15px] py-2 w-full bg-gray-200 rounded-10 
+              className="px-15 md:py-[15px] py-2 w-full bg-gray-200 rounded-10 
               flex items-center gap-[10px] generalSmallText text-green-80"
             >
               <div className="w-[14px] h-[14px]">

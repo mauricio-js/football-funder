@@ -27,12 +27,14 @@ export const theme = {
       100: '430px',
     },
     padding: {
+      15: '15px',
       31: '31px',
       42: '42px',
     },
     margin: {
       15: '15px',
       18: '18px',
+      30: '30px',
       100: '100px',
       120: '120px',
     },

@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
             alt="card a"
             className="h-full w-full object-cover"
           />
-          <div className="absolute top-0 w-full p-[20px] flex justify-between">
+          <div className="absolute top-0 w-full p-5 flex justify-between">
             <div className="px-[10px] py-[5px] bg-green-10 rounded-10 text-[14px] font-medium">
               {cardData.broadcastingType}
             </div>
@@ -32,14 +32,14 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
             </div>
           </div>
           {cardData.vat && (
-            <div className="absolute bottom-[-12px] px-[20px]">
+            <div className="absolute bottom-[-12px] px-5">
               <div className="text-[14px] leading-[20px] font-semibold bg-green-10 rounded-10 py-[5px] px-[10px]">
                 {cardData.vat}
               </div>
             </div>
           )}
         </div>
-        <div className="h-[calc(100%-194px)] rounded-b-10 boder-2 shadow-md px-[20px] pt-[20px] pb-[20px] flex flex-col gap-[15px]">
+        <div className="h-[calc(100%-194px)] rounded-b-10 boder-2 shadow-md px-5 pt-[20px] pb-5 flex flex-col gap-[15px]">
           <div className="flex flex-col gap-[10px] max-sm:flex-row">
             <CardLabel cardLabelData={cardData.club} />
             <CardLabel cardLabelData={cardData.location} />
@@ -76,7 +76,7 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="absolute top-0 w-full p-[20px] flex justify-between">
+          <div className="absolute top-0 w-full p-5 flex justify-between">
             <div className="px-[10px] py-[5px] bg-green-10 rounded-10 text-[14px] font-medium">
               {cardData.broadcastingType}
             </div>
@@ -91,7 +91,7 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
           </div>
           <div className="absolute bottom-[-14px]">
             {cardData.vat && (
-              <div className="px-[20px]">
+              <div className="px-5">
                 <div className="relative text-[14px] leading-[20px] font-semibold bg-green-10 rounded-10 py-[5px] px-[10px]">
                   {cardData.vat}
                 </div>
@@ -99,7 +99,7 @@ export const Card: React.FC<CardProps> = ({ cardData }) => {
             )}
           </div>
         </div>
-        <div className="rounded-b-10 boder-2 shadow-md px-[20px] pt-[20px] pb-[20px] flex flex-col gap-[15px]">
+        <div className="rounded-b-10 boder-2 shadow-md px-5 pt-[20px] pb-5 flex flex-col gap-[15px]">
           <div className="flex gap-[10px]">
             <CardLabel cardLabelData={cardData.club} />
             <CardLabel cardLabelData={cardData.location} />

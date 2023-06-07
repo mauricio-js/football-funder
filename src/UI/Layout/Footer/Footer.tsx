@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
   return (
     <div
       className={classNames(
-        "bg-green-40 p-[60px] max-sm:px-[20px] max-sm:py-[30px] max-md:rounded-t-[30px]",
+        "bg-green-40 p-[60px] max-sm:px-5 max-sm:py-[30px] max-md:rounded-t-[30px]",
         isMobileMenu ? "hidden" : ""
       )}
     >

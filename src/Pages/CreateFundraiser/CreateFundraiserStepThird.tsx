@@ -12,17 +12,30 @@ import { VideoURL } from "Config";
 
 export const CreateFundraiserStepThird: React.FC = () => {
   const [vieoUrl, setVideoUrl] = useState<string>("");
+  const [selectedTitleImage, setSelectedTitleImage] = useState<File | null>(
+    null
+  );
+  const [selectedPitchImage, setSelectedPitchImage] = useState<File | null>(
+    null
+  );
+  const removeTitleImage = () => {
+    setSelectedTitleImage(null);
+  };
+  const removePitchImage = () => {
+    setSelectedPitchImage(null);
+  };
+  // console.log("selected title image", selectedTitleImage, selectedPitchImage);
   return (
     <div
       className="
-        w-[1000px] max-lg:w-full px-[20px] mt-[60px] max-ns:mt-[20px]
-         mb-[60px] max-ns:mb-[30px] mx-auto"
+        w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
+         mb-[60px] max-ns:mb-30 mx-auto"
     >
       <PageTitle title="Create your fundraiser" />
-      <div className="mt-[30px]">
+      <div className="mt-30">
         <StepLabel step="Step 3" title="Add Details" />
       </div>
-      <div className="mt-[30px]">
+      <div className="mt-30">
         <PageSectionTitle
           title="About the fundraiser"
           intro="Give a detailed description of your fundraiser."
@@ -40,18 +53,22 @@ export const CreateFundraiserStepThird: React.FC = () => {
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem."
         />
       </div>
-      <div className="mt-[30px]">
+      <div className="mt-30">
         <PageSectionTitle
           title="Fundraiser title image"
           intro="Recommended size 300x300px - this will be the first image you see on your campaign and in all listings."
         />
         <div className="mt-[15px]">
           <div className="w-[500px] max-md:w-full">
-            <FileInput />
+            <FileInput
+              onChange={setSelectedTitleImage}
+              selectedImage={selectedTitleImage}
+              removeImage={removeTitleImage}
+            />
           </div>
         </div>
       </div>
-      <div className="mt-[30px]">
+      <div className="mt-30">
         <PageSectionTitle
           title="Fundraiser pitch image/video "
           intro="This will appear at the top of your fundraiser page. Select image or video - a video will really bring the listing to life."
@@ -62,14 +79,18 @@ export const CreateFundraiserStepThird: React.FC = () => {
               <Button
                 backgroundColor="bg-green-10"
                 textColor="text-black"
-                textSize="text-[14px] leading-[20px] font-semibold"
+                textSize="text-[14px] leading-5 font-semibold"
                 height="h-[54px]"
                 width="w-full"
                 text="Video"
               />
             </div>
             <div className="w-1/2">
-              <FileInput />
+              <FileInput
+                onChange={setSelectedPitchImage}
+                selectedImage={selectedPitchImage}
+                removeImage={removePitchImage}
+              />
             </div>
           </div>
         </div>

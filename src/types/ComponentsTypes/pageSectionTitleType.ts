@@ -1,4 +1,4 @@
 export interface PageSectionTitleType { 
-    title: string,
+    title?: string,
     intro?  :string
 }

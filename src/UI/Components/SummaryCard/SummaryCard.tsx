@@ -38,7 +38,7 @@ export const SummaryCard: React.FC<Props> = ({
                 className="h-[224px] object-fit"
                 alt=""
               />
-              <div className="absolute top-0 w-full h-full px-[25px] py-[20px] max-xs:px-[20px]">
+              <div className="absolute top-0 w-full h-full px-[25px] py-[20px] max-xs:px-5">
                 <div className="text-white font-semibold text-[21px]  leading-[28px]">
                   {item.title}
                 </div>

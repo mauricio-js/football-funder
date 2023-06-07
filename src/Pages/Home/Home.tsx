@@ -35,20 +35,20 @@ export const Home: React.FC = () => {
               }}
             ></div>
             <div className="relative">
-              <div className="px-[20px]">
+              <div className="px-5">
                 <div className="py-[100px]"></div>
                 <div className="lg:w-[1000px] mx-auto w-full">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto">
                     <div
                       className="max-sm:text-center font-semibold text-[38px] max-2xs:text-[30px] 
-                    leading-[52px] max-2xs:leading-[40px] text-white max-sm:px-[20px]"
+                    leading-[52px] max-2xs:leading-[40px] text-white max-sm:px-5"
                     >
                       Raise funds with our fundraising, advertising and
                       sponsorship engine.
                     </div>
                     <div
                       className="
-                      w-full mt-[30px]
+                      w-full mt-30
                       flex max-sm:justify-center gap-[10px]
                       font-semibold text-base max-vs:text-sm
                       "
@@ -102,7 +102,7 @@ export const Home: React.FC = () => {
                 </div>
               </div>
               <div className="mt-32">
-                <div className="px-[20px]">
+                <div className="px-5">
                   <SummaryCard
                     value={AdvertisingCardData}
                     title="Advertising"
@@ -110,7 +110,7 @@ export const Home: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="mt-40 mx-auto px-[20px] pb-[20px]">
+              <div className="mt-40 mx-auto px-5 pb-5">
                 <SummaryCard
                   value={SponsorshipData}
                   title="Sponsorship"
@@ -124,12 +124,12 @@ export const Home: React.FC = () => {
                     backgroundImage: `url(${VideoBackMask})`,
                   }}
                 >
-                  <div className="bl:w-[1000px] bl:px-3 md:px-10 w-full px-[20px] mx-auto">
+                  <div className="bl:w-[1000px] bl:px-3 md:px-10 w-full px-5 mx-auto">
                     <div className="text-white font-semibold text-[32px] leading-[43px] px-2">
                       Explore Football Funder
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                      <div className="relative mt-[30px] mx-auto rounded-20 overflow-hidden">
+                      <div className="relative mt-30 mx-auto rounded-20 overflow-hidden">
                         <img
                           src={VideoPlayImg}
                           alt="video-player"
@@ -143,7 +143,7 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-[150px] px-[20px] ">
+              <div className="mt-[150px] px-5 ">
                 <Join image={JoinBackImg} />
               </div>
             </div>
@@ -160,7 +160,7 @@ export const Home: React.FC = () => {
               />
             </div>
             <div className="relative">
-              <div className="relative pt-[180px]  px-[20px] z-20">
+              <div className="relative pt-[180px]  px-5 z-20">
                 <div className="lg:w-[1000px] mx-auto w-full ">
                   <div className="w-[571px] max-sm:w-full max-lg:mx-auto z-20">
                     <div
@@ -172,7 +172,7 @@ export const Home: React.FC = () => {
                     </div>
                     <div
                       className="
-                      w-full mt-[30px]
+                      w-full mt-30
                       flex justify-center gap-[10px]
                       font-semibold text-base max-vs:text-sm
                       "
@@ -227,14 +227,14 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="relative px-[20px] mt-10 z-20">
+              <div className="relative px-5 mt-10 z-20">
                 <SummaryCard
                   value={MobileAdvertisingCardData}
                   title="Advertising"
                   textColor="text-black"
                 />
               </div>
-              <div className="pt-[130px] mx-auto px-[20px] pb-[20px] mt-[10px] bg-white rounded-br-20">
+              <div className="pt-[130px] mx-auto px-5 pb-5 mt-[10px] bg-white rounded-br-20">
                 <SummaryCard
                   value={MobileSponsorshipData}
                   title="Sponsorship"
@@ -248,12 +248,12 @@ export const Home: React.FC = () => {
                     backgroundImage: `url(${MobileVideoBackMask})`,
                   }}
                 >
-                  <div className="w-full px-[20px] mx-auto">
+                  <div className="w-full px-5 mx-auto">
                     <div className="text-white font-semibold text-[32px] leading-[43px] px-2">
                       Explore Football Funder
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                      <div className="relative mt-[30px] mx-auto rounded-20 overflow-hidden">
+                      <div className="relative mt-30 mx-auto rounded-20 overflow-hidden">
                         <img
                           src={MobileVideoPlayImg}
                           alt="video-player"
@@ -267,7 +267,7 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-[150px] px-[20px] max-[417px]:mt-[200px]">
+              <div className="mt-[150px] px-5 max-[417px]:mt-[200px]">
                 <Join image={MobileJoinBackImg} />
               </div>
             </div>

@@ -23,7 +23,7 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
               </div>
             </button>
           </div>
-          <div className="mt-[30px]">
+          <div className="mt-30">
             <Search data={HamburgerSearchData} />
           </div>
           {/* Part - Sign in / Sign Up Button */}
@@ -31,7 +31,7 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
             <HamburgerSignInButton />
           </div>
           {/* Part -  Hamburger List */}
-          <div className="mt-[30px]">
+          <div className="mt-30">
             <HamburgerItemList />
           </div>
         </div>

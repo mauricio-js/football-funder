@@ -46,7 +46,7 @@ export const SignUp: React.FC = () => {
           textSize="generalSmallText"
         />
 
-        <div className="mt-[30px] ">
+        <div className="mt-30 ">
           {selectedOption === "organisation" && (
             <div>
               <div className="text-white text-sm text-center">
@@ -86,7 +86,7 @@ export const SignUp: React.FC = () => {
                   />
                 </div>
 
-                <div className="mt-[30px]">
+                <div className="mt-30">
                   <SignUpButton />
                 </div>
               </div>
@@ -121,7 +121,7 @@ export const SignUp: React.FC = () => {
                   />
                 </div>
 
-                <div className="mt-[30px]">
+                <div className="mt-30">
                   <SignUpButton />
                 </div>
               </div>

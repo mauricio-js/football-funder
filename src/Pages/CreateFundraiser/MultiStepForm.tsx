@@ -38,7 +38,7 @@ export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
           currentStep > 0 ? "justify-between" : "justify-end"
         )}
       >
-        {currentStep > 0 && (
+        {currentStep > 0 && currentStep < pages.length - 1 && (
           <Button
             backgroundColor="bg-green-10"
             textColor="text-black"
@@ -50,21 +50,23 @@ export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
             disabled={currentStep === 0}
           />
         )}
-        <Button
-          backgroundColor="bg-green-10"
-          textColor="text-black"
-          textSize="text-[16px] leading-[20px] font-semibold"
-          height="h-[50px]"
-          width="2xs:w-[250px] ns:w-[400px] w-full"
-          text={
-            currentStep < pages.length - 1
-              ? "Continue"
-              : currentStep === 6
-              ? "Save Reward"
-              : "Submit Fundraiser"
-          }
-          handleClick={handleNextPage}
-        />
+        {currentStep < pages.length - 1 && (
+          <Button
+            backgroundColor="bg-green-10"
+            textColor="text-black"
+            textSize="text-[16px] leading-[20px] font-semibold"
+            height="h-[50px]"
+            width="2xs:w-[250px] ns:w-[400px] w-full"
+            text={
+              currentStep < pages.length - 2
+                ? "Continue"
+                : currentStep === 6
+                ? "Save Reward"
+                : "Submit Fundraiser"
+            }
+            handleClick={handleNextPage}
+          />
+        )}
       </div>
     </Template>
   );

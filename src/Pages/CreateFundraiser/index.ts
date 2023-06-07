@@ -6,6 +6,7 @@ export * from './CreateFundraiserStepFourth';
 export * from './CreateFundraiserStepFiveth';
 export * from './CreateFundraiserStepSixth';
 export * from './CreateFundraiserStepSeventh';
+export * from './CreateFundraiserFinalPage';
 export * from './CreateListingSignIn';
 export * from './CreateYourFundraiser'
 export * from './MultiStepForm';

@@ -9,14 +9,14 @@ import {
   StepLabel,
 } from "UI";
 import {
-  AccountEmail,
-  AccountConfirmPassword,
-  AccountPassword,
-  ContactAddressLine1,
-  ContactAddressLine2,
-  ContactOrganisation,
-  ContactPostcode,
-  ContactTown,
+  AccountEmailData,
+  AccountConfirmPasswordData,
+  AccountPasswordData,
+  ContactAddressLine1Data,
+  ContactAddressLine2Data,
+  ContactOrganisationData,
+  ContactPostcodeData,
+  ContactTownData,
   RegionData,
 } from "Config";
 
@@ -73,7 +73,7 @@ export const CreateListingSignIn = () => {
             <div className="w-full">
               <div className="md:w-1/2 flex flex-col gap-y-3">
                 <Input
-                  data={ContactOrganisation}
+                  data={ContactOrganisationData}
                   setValue={setContactOrganisation}
                   defaultValue={contactOrganistion}
                 />
@@ -81,14 +81,14 @@ export const CreateListingSignIn = () => {
                 <div className="flex gap-[10px]">
                   <div className="w-1/2">
                     <Input
-                      data={ContactAddressLine1}
+                      data={ContactAddressLine1Data}
                       setValue={setContactAddressLine1}
                       defaultValue={contactAddressLine1}
                     />
                   </div>
                   <div className="w-1/2">
                     <Input
-                      data={ContactAddressLine2}
+                      data={ContactAddressLine2Data}
                       setValue={setContactAddressLine2}
                       defaultValue={contactAddressLine2}
                     />
@@ -97,14 +97,14 @@ export const CreateListingSignIn = () => {
                 <div className="flex gap-[10px]">
                   <div className="w-1/2">
                     <Input
-                      data={ContactTown}
+                      data={ContactTownData}
                       setValue={setContactTown}
                       defaultValue={contactTown}
                     />
                   </div>
                   <div className="w-1/2">
                     <Input
-                      data={ContactPostcode}
+                      data={ContactPostcodeData}
                       setValue={setContactPostCode}
                       defaultValue={contactPostcode}
                     />
@@ -131,17 +131,17 @@ export const CreateListingSignIn = () => {
           <PageSectionTitle title="Account details" />
           <div className="mt-[15px] md:w-1/2 flex flex-col gap-[10px]">
             <Input
-              data={AccountEmail}
+              data={AccountEmailData}
               setValue={setAccountEmail}
               defaultValue={accountEmail}
             />
             <Input
-              data={AccountPassword}
+              data={AccountPasswordData}
               setValue={setAcccountPassword}
               defaultValue={accountPassword}
             />
             <Input
-              data={AccountConfirmPassword}
+              data={AccountConfirmPasswordData}
               setValue={setAccountConfirmPassword}
               defaultValue={accountConfirmPassword}
             />

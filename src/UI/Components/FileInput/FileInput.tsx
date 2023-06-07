@@ -36,7 +36,7 @@ export const FileInput: React.FC<FileInputProps> = ({
       <button
         className={classNames(
           "bg-white text-green-70  text-[14px] flex items-center",
-          "leading-[20px] h-[54px] rounded-10 border-2 border-gray-300 font-semibold py-2 px-4 w-full",
+          "leading-[20px] h-[54px] rounded-10 border-2 border-gray-200 font-semibold py-2 px-4 w-full",
           selectedImage ? "justify-start" : "justify-center"
         )}
       >

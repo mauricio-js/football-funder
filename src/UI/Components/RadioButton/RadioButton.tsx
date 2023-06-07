@@ -4,10 +4,10 @@ import { RadioButtonType } from "types";
 
 export const RadioButton: React.FC<RadioButtonType> = (props) => {
   return (
-    <div className="flex justify-between items-center">
+    <div className={classNames("flex items-center", props.classes)}>
       <label
         id="label1"
-        className="flex-1 text-base font-normal text-green-70"
+        className="text-base font-normal text-green-70"
         onClick={props.onSelect}
       >
         {props.name}

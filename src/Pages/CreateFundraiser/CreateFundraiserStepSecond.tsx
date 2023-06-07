@@ -24,13 +24,15 @@ export const CreateFundraiserStepSecond: React.FC = () => {
             title="Fundraiser title"
             intro="What is the title of your fundraiser?"
           />
-          <div className="md:w-1/2">
-            <Textarea
-              title="Title"
-              limit={150}
-              height="h-[124px]"
-              value="Vel amet iaculis id adipiscing venenatis sed volutpat.Dictumst sem pellentesque lectus sollicitudin."
-            />
+          <div className="mt-15">
+            <div className="md:w-1/2">
+              <Textarea
+                title="Title"
+                limit={150}
+                height="h-[124px]"
+                value="Vel amet iaculis id adipiscing venenatis sed volutpat.Dictumst sem pellentesque lectus sollicitudin."
+              />
+            </div>
           </div>
           <div className="mt-30">
             <PageSectionTitle

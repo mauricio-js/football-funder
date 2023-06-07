@@ -23,7 +23,7 @@ export const Textarea: React.FC<Props> = ({ value, limit, title, height }) => {
       <textarea
         className={classNames(
           "w-full h-[124px] px-4 pb-4 pt-6 generalText rounded-10 border-2",
-          "border-gray-300 focus:outline-none box-border",
+          "border-gray-200 focus:outline-none box-border",
           height
         )}
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>

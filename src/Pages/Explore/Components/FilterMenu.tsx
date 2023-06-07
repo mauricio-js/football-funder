@@ -51,11 +51,14 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
         <div className="">
           <div className="mt-[10px] px-[10px] flex flex-col divide-y divide-solid divide-gray-300">
             <Accordion title="Sort By">
-              <RadioButtonList
-                options={SortByData}
-                currentValue={sortBy}
-                onSelect={setSortby}
-              />
+              <div className="mt-4">
+                <RadioButtonList
+                  options={SortByData}
+                  currentValue={sortBy}
+                  onSelect={setSortby}
+                  classes="flex flex-col gap-5"
+                />
+              </div>
             </Accordion>
             <Accordion title="Type">
               <CheckBoxList

@@ -8,7 +8,7 @@ import {
   PageTitle,
   StepLabel,
 } from "UI";
-import { VideoURL } from "Config";
+import { VideoURLData } from "Config";
 
 export const CreateFundraiserStepThird: React.FC = () => {
   const [vieoUrl, setVideoUrl] = useState<string>("");
@@ -96,7 +96,7 @@ export const CreateFundraiserStepThird: React.FC = () => {
         </div>
         <div className="mt-[15px] md:w-[500px] w-full">
           <Input
-            data={VideoURL}
+            data={VideoURLData}
             setValue={setVideoUrl}
             defaultValue={vieoUrl}
           />

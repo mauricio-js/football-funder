@@ -57,7 +57,11 @@ export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
           height="h-[50px]"
           width="2xs:w-[250px] ns:w-[400px] w-full"
           text={
-            currentStep < pages.length - 1 ? "Continue" : "Submit Fundraiser"
+            currentStep < pages.length - 1
+              ? "Continue"
+              : currentStep === 6
+              ? "Save Reward"
+              : "Submit Fundraiser"
           }
           handleClick={handleNextPage}
         />

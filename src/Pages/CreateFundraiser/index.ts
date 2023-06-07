@@ -3,6 +3,7 @@ export * from './CreateFundraiserStepFirst';
 export * from './CreateFundraiserStepSecond';
 export * from './CreateFundraiserStepThird';
 export * from './CreateFundraiserStepFourth';
+export * from './CreateFundraiserStepFiveth';
 export * from './CreateListingSignIn';
 export * from './CreateYourFundraiser'
 export * from './MultiStepForm';

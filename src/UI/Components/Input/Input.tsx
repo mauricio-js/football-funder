@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { InputType } from "types";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { TbCalendar } from "react-icons/tb";
+// import { TbCalendar } from "react-icons/tb";
 
 interface InputProps {
   data: InputType;

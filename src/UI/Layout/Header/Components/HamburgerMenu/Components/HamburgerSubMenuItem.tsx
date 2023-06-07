@@ -14,7 +14,7 @@ export const HamburgerSubMenuItem: React.FC<ListItemProps> = ({ List }) => {
         <button className="text-white leading-[24px] font-medium text-[18px]">
           {List.title}
         </button>
-        <div className="mt-[20px] flex flex-col gap-[20px]">
+        <div className="mt-[20px] flex flex-col gap-5">
           {List.children.map((element, index) => (
             <div key={index}>
               <button

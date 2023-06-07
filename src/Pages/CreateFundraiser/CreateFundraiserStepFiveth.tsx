@@ -21,7 +21,7 @@ export const CreateFundraiserStepFiveth = () => {
   const onHandleConfirm = () => {
     setLimit(!limit);
   };
-  console.log("delivery", delivery);
+  // console.log("delivery", delivery);
   return (
     <div
       className="
@@ -34,7 +34,7 @@ export const CreateFundraiserStepFiveth = () => {
           Skip adding rewards
         </button>
       </div>
-      <div className="mt-30 w-[500px] max-2xs:w-full flex flex-col gap-[30px]">
+      <div className="mt-30 w-[500px] max-2xs:w-full flex flex-col gap-30">
         <StepLabel step="Step 5" title="Add rewards" />
         <PageSectionTitle intro="Give your supporters something back by offering rewards for a certain donation amount. The number of rewards you can offer is unlimited." />
         <div>
@@ -68,7 +68,7 @@ export const CreateFundraiserStepFiveth = () => {
         </div>
         <div>
           <PageSectionTitle title="How many are available?" />
-          <div className="mt-15 flex gap-[30px]">
+          <div className="mt-15 flex gap-30">
             <Input
               data={AvailableNumberData}
               setValue={setAvailableNumber}
@@ -112,7 +112,7 @@ export const CreateFundraiserStepFiveth = () => {
               options={DeliveryData}
               currentValue={delivery}
               onSelect={setDelivery}
-              classes="flex gap-[30px]"
+              classes="flex gap-30"
             />
           </div>
         </div>

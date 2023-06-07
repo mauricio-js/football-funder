@@ -97,7 +97,7 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
             </Accordion>
           </div>
         </div>
-        <div className="px-[10px] flex justify-between max-md:flex-col-reverse gap-y-[30px]">
+        <div className="px-[10px] flex justify-between max-md:flex-col-reverse gap-y-30">
           <button className="text-[14px] leading-[20px] font-medium underline max-md:text-start">
             Clear All Filters
           </button>

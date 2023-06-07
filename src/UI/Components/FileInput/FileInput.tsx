@@ -56,9 +56,9 @@ export const FileInput: React.FC<FileInputProps> = ({
               </div>
               {buttonName}
             </div>
-            <button className="text-red-600" onClick={removeImage}>
+            <div className="text-red-600" onClick={removeImage}>
               <RiDeleteBin6Line />
-            </button>
+            </div>
           </div>
         )}
       </button>

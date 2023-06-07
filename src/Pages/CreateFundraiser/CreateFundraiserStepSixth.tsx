@@ -23,7 +23,7 @@ export const CreateFundraiserStepSixth: React.FC = () => {
           intro="Give your supporters something back by offering rewards for a certain donation amount. 
                 The number of rewards you can offer is unlimited."
         />
-        <div className="w-[390px] flex flex-col gap-15">
+        <div className="ns:w-[390px] w-full flex flex-col gap-15">
           <div className="h-[300px] bg-gray-200 rounded-10 p-15">
             <div className="flex flex-col gap-15">
               <div className="flex justify-between">

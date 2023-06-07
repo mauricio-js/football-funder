@@ -10,6 +10,7 @@ export * from './CheckBoxList';
 export * from './DescriptionPanel';
 export * from './Dropdown';
 export * from './DropdownInput';
+export * from './EditPanelItem';
 export * from './FileInput';
 export * from './Input';
 export * from './Join';

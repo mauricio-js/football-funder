@@ -64,7 +64,7 @@ export const CreateListingSignIn = () => {
           <StepLabel step="Step 2" title="Organisation information" />
         </div>
 
-        <div className="flex flex-col gap-[15px]">
+        <div className="mt-[30px] flex flex-col">
           <PageSectionTitle
             title="Contact"
             intro="Please provide the details of the organisation that you are listing advertising opportunities for."
@@ -127,7 +127,7 @@ export const CreateListingSignIn = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="mt-30">
           <PageSectionTitle title="Account details" />
           <div className="mt-[15px] md:w-1/2 flex flex-col gap-[10px]">
             <Input
@@ -147,7 +147,7 @@ export const CreateListingSignIn = () => {
             />
           </div>
         </div>
-        <div>
+        <div className="mt-30">
           <PageSectionTitle title="Confirmation" />
           <div className="mt-[15px]">
             <CheckBox

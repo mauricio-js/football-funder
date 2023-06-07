@@ -8,7 +8,7 @@ export const CreateFundraiserStepFourth: React.FC = () => {
     <div
       className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
-         mb-[60px] max-ns:mb-30 mx-auto"
+         mb-[280px] max-ns:mb-30 mx-auto"
     >
       <PageTitle title="Create your fundraiser" />
       <div className="mt-30">

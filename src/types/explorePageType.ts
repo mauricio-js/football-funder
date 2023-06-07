@@ -34,7 +34,8 @@ export interface DistanceDataType {
     type: string;
 }
 
-export interface FilterDataType { 
+export interface RadioButtonDataType { 
     label: string;
     value: string;
+    classes?: string;
 }

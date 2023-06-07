@@ -8,13 +8,13 @@ import {
   StepLabel,
 } from "UI";
 import {
-  ContactAddressLine1,
-  ContactAddressLine2,
-  ContactPostcode,
-  ContactTown,
-  Date,
-  FirstName,
-  LastName,
+  ContactAddressLine1Data,
+  ContactAddressLine2Data,
+  ContactPostcodeData,
+  ContactTownData,
+  DateData,
+  FirstNameData,
+  LastNameData,
   RegionData,
 } from "Config";
 import { MdAnnouncement } from "react-icons/md";
@@ -50,29 +50,29 @@ export const CreateFundraiserStepFirst = () => {
         <div className="mt-[15px] md:w-1/2">
           <div className="flex flex-col gap-[10px]">
             <Input
-              data={FirstName}
+              data={FirstNameData}
               setValue={setFirstName}
               defaultValue={firstName}
             />
             <Input
-              data={LastName}
+              data={LastNameData}
               setValue={setLastName}
               defaultValue={lastName}
             />
-            <Input data={Date} setValue={setDate} defaultValue={date} />
+            <Input data={DateData} setValue={setDate} defaultValue={date} />
             <DropdownInput />
             <div className="flex flex-col gap-[10px]">
               <div className="flex gap-[10px]">
                 <div className="w-1/2">
                   <Input
-                    data={ContactAddressLine1}
+                    data={ContactAddressLine1Data}
                     setValue={setContactAddressLine1}
                     defaultValue={contactAddressLine1}
                   />
                 </div>
                 <div className="w-1/2">
                   <Input
-                    data={ContactAddressLine2}
+                    data={ContactAddressLine2Data}
                     setValue={setContactAddressLine2}
                     defaultValue={contactAddressLine2}
                   />
@@ -81,14 +81,14 @@ export const CreateFundraiserStepFirst = () => {
               <div className="flex gap-[10px]">
                 <div className="w-1/2">
                   <Input
-                    data={ContactTown}
+                    data={ContactTownData}
                     setValue={setContactTown}
                     defaultValue={contactTown}
                   />
                 </div>
                 <div className="w-1/2">
                   <Input
-                    data={ContactPostcode}
+                    data={ContactPostcodeData}
                     setValue={setContactPostCode}
                     defaultValue={contactPostcode}
                   />

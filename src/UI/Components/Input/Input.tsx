@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { InputType } from "types";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+// import { TbCalendar } from "react-icons/tb";
 
 interface InputProps {
   data: InputType;
@@ -27,7 +28,7 @@ export const Input: React.FC<InputProps> = ({
           type={inputType}
           className={classNames(
             "peer bg-white w-full rounded-10 text-green-70",
-            "transition duration-200 border-[1px] border-gray-300",
+            "transition duration-200 border-2 border-gray-200",
             "ease-linear placeholder:text-transparent focus:pb-[0.625rem] focus:pt-[1.625rem] ",
             "focus:outline-none [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]",
             data.height,
@@ -81,6 +82,16 @@ export const Input: React.FC<InputProps> = ({
           {/* <span className="text-green-10 ml-1">*</span> */}
         </label>
       </div>
+      <style>
+        {`
+        input::-webkit-calendar-picker-indicator {
+          cursor: pointer;
+          position:absolute;
+          right:20px;
+          top:15px
+        }
+      `}
+      </style>
     </div>
   );
 };

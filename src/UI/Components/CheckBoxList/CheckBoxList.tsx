@@ -1,9 +1,9 @@
 import React from "react";
 import { CheckBox } from "UI";
-import { FilterDataType } from "types";
+import { RadioButtonDataType } from "types";
 
 interface FilterDataProps {
-  options: FilterDataType[];
+  options: RadioButtonDataType[];
   selectedValues: string[];
   setValues: (values: string[]) => void;
 }

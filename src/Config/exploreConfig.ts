@@ -2,7 +2,7 @@ import {
     ButtonDataType,
     CardType,
     ExploreDropdownType,
-    FilterDataType,
+    RadioButtonDataType,
     InputType,
     SearchDataType,
 } from "types"
@@ -341,7 +341,7 @@ export const FiterButtonProperty: ButtonDataType = {
     border:"border-[1px] border-gray-100",
 }
 
-export const TypeFilterData:FilterDataType[] = [
+export const TypeFilterData:RadioButtonDataType[] = [
     {
         label: "All",
         value: "all",
@@ -360,7 +360,7 @@ export const TypeFilterData:FilterDataType[] = [
     }
 ];
 
-export const OrganisationFilterData: FilterDataType[] = [
+export const OrganisationFilterData: RadioButtonDataType[] = [
     {
         label: "All",
         value: "all",
@@ -410,7 +410,7 @@ export const OrganisationFilterData: FilterDataType[] = [
         value: "other",
     },  
 ];
-export const StatusFilterData:FilterDataType[] = [
+export const StatusFilterData:RadioButtonDataType[] = [
         {
             label: "All",
             value: "all",
@@ -428,26 +428,31 @@ export const StatusFilterData:FilterDataType[] = [
             value: "fund",
         }
     ];
-export const SortByData: FilterDataType[] = [
+export const SortByData: RadioButtonDataType[] = [
         {
             label: "Promoted",
-            value: "promoted",
+        value: "promoted",
+            classes:"justify-between"
         },
         {
             label: "Newest (£)",
             value: "newest",
+            classes:"justify-between"
         },
         {
             label: "Oldest (£)",
             value: "oldest",
+            classes:"justify-between"
         },
         {
             label: "High to Low",
             value: "high",
+            classes:"justify-between"
         },
         {
             label: "Low to High",
             value: "low",
+            classes:"justify-between"
         },
     ];
  

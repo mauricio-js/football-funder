@@ -17,14 +17,14 @@ export const Footer: React.FC = () => {
         isMobileMenu ? "hidden" : ""
       )}
     >
-      <div className="grid grid-cols-11 gap-x-1 gap-y-[60px] max-lg:gap-y-[30px] text-white">
+      <div className="grid grid-cols-11 gap-x-1 gap-y-[60px] max-lg:gap-y-30 text-white">
         <div className="col-span-2 max-md:col-span-11">
           <img src={FooterLogoImage} alt="footer-logo" />
         </div>
         <div className="col-span-8 max-lg:col-span-11 flex items-center">
           <div
             className="flex flex-row max-lg:flex-col max-lg:gap-[10px] 
-            gap-[30px] text-[14px] font-medium leading-[25px] text-white"
+            gap-30 text-[14px] font-medium leading-[25px] text-white"
           >
             {guideList.map((item, index) => {
               return (
@@ -38,10 +38,10 @@ export const Footer: React.FC = () => {
         <div className="col-span-7 max-lg:col-span-11">
           <div className="flex flex-row items-center gap-8 max-lg:flex-col max-lg:items-start">
             <div
-              className="flex flex-row gap-x-[30px] gap-y-[5px] 
+              className="flex flex-row gap-x-30 gap-y-[5px] 
               max-lg:flex-col text-[13px] font-medium leading-[25px] text-white"
             >
-              <div className="flex gap-x-[30px] max-2xs:flex-col">
+              <div className="flex gap-x-30 max-2xs:flex-col">
                 <div>© 2023 Football Funder - All Rights Reserved</div>
                 <div>Operated by Aquariux Limited</div>
               </div>

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { SignUpButton } from "Pages";
 import { Select, Input } from "UI";
 import {
-  FirstName,
-  LastName,
-  ContactOrganisation,
-  AccountEmail,
-  PhoneNumber,
+  FirstNameData,
+  LastNameData,
+  ContactOrganisationData,
+  AccountEmailData,
+  PhoneNumberData,
   SignUpSelectFormData,
-  WebSite,
+  WebSiteData,
 } from "Config";
 
 export const SignUp: React.FC = () => {
@@ -55,32 +55,32 @@ export const SignUp: React.FC = () => {
               <div className="mt-[15px]">
                 <div className="flex flex-col gap-y-[10px]">
                   <Input
-                    data={FirstName}
+                    data={FirstNameData}
                     setValue={setFirstName}
                     defaultValue={firstName}
                   />
                   <Input
-                    data={LastName}
+                    data={LastNameData}
                     setValue={setLastName}
                     defaultValue={lastName}
                   />
                   <Input
-                    data={ContactOrganisation}
+                    data={ContactOrganisationData}
                     setValue={setContactOrganisation}
                     defaultValue={contactOrganistion}
                   />
                   <Input
-                    data={AccountEmail}
+                    data={AccountEmailData}
                     setValue={setAccountEmail}
                     defaultValue={accountEmail}
                   />
                   <Input
-                    data={PhoneNumber}
+                    data={PhoneNumberData}
                     setValue={setPhoneNumber}
                     defaultValue={phoneNumber}
                   />
                   <Input
-                    data={WebSite}
+                    data={WebSiteData}
                     setValue={setWebsite}
                     defaultValue={website}
                   />
@@ -100,22 +100,22 @@ export const SignUp: React.FC = () => {
               <div className="mt-[15px]">
                 <div className="flex flex-col gap-y-[10px]">
                   <Input
-                    data={FirstName}
+                    data={FirstNameData}
                     setValue={setFirstName}
                     defaultValue={firstName}
                   />
                   <Input
-                    data={LastName}
+                    data={LastNameData}
                     setValue={setLastName}
                     defaultValue={lastName}
                   />
                   <Input
-                    data={AccountEmail}
+                    data={AccountEmailData}
                     setValue={setAccountEmail}
                     defaultValue={accountEmail}
                   />
                   <Input
-                    data={PhoneNumber}
+                    data={PhoneNumberData}
                     setValue={setPhoneNumber}
                     defaultValue={phoneNumber}
                   />

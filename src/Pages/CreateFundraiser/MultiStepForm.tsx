@@ -34,7 +34,7 @@ export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
         className={classNames(
           "w-[1000px] max-lg:w-full px-5 mb-[150px] max-ns:mb-[100px]",
           "flex max-2xs:flex-col ",
-          "max-2xs:items-center gap-y-[20px] mx-auto",
+          "max-2xs:items-center gap-y-5 mx-auto",
           currentStep > 0 ? "justify-between" : "justify-end"
         )}
       >
@@ -57,7 +57,11 @@ export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
           height="h-[50px]"
           width="2xs:w-[250px] ns:w-[400px] w-full"
           text={
-            currentStep < pages.length - 1 ? "Continue" : "Submit Fundraiser"
+            currentStep < pages.length - 1
+              ? "Continue"
+              : currentStep === 6
+              ? "Save Reward"
+              : "Submit Fundraiser"
           }
           handleClick={handleNextPage}
         />

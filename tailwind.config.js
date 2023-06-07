@@ -38,6 +38,9 @@ export const theme = {
       100: '100px',
       120: '120px',
     },
+    gap: {
+      30:'30px'
+    },
     borderRadius: {
       10: '10px',
       20: '20px',

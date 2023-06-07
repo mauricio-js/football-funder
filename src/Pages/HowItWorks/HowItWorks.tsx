@@ -59,7 +59,7 @@ export const HowItWorks: React.FC = () => {
             <div className="relative w-[1000px] max-lg:w-full  mx-auto">
               <div
                 className="w-[610px] max-md:w-full max-lg:px-5 
-                  max-md:mx-auto flex flex-col gap-[20px] text-white"
+                  max-md:mx-auto flex flex-col gap-5 text-white"
               >
                 <div
                   className="text-[32px] max-ns:text-[21px] 
@@ -67,7 +67,7 @@ export const HowItWorks: React.FC = () => {
                 >
                   How it works
                 </div>
-                <div className="text-[16px] leading-[22px] font-medium flex flex-col gap-[20px]">
+                <div className="text-[16px] leading-[22px] font-medium flex flex-col gap-5">
                   <div>
                     <span>
                       Football Funder is a platform for organisations of any

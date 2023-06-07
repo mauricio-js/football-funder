@@ -1,4 +1,10 @@
-import {CategoryDataType, ContactPhoneNumberType, InputType, SelectDataType} from 'types';
+import {
+    CategoryDataType,
+    ContactPhoneNumberType,
+    InputType,
+    RadioButtonDataType,
+    SelectDataType
+} from 'types';
 export const FundraiserCategoryData: CategoryDataType[] = [
     {
         label: "Club",
@@ -72,7 +78,7 @@ export const FundraiserNationData: CategoryDataType[] = [
     }
 ]
 
-export const ContactOrganisation: InputType = { 
+export const ContactOrganisationData: InputType = { 
         id: 1,
         label: "Organisation Name",
         height: "h-[54px]",
@@ -102,7 +108,7 @@ export const ContactPhoneNumber: ContactPhoneNumberType[] = [
 ];
 
 
-export const ContactAddressLine1: InputType = { 
+export const ContactAddressLine1Data: InputType = { 
         id: 1,
         label: "Address line 1",
         height: "h-[54px]",
@@ -111,7 +117,7 @@ export const ContactAddressLine1: InputType = {
         type: "text",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const ContactAddressLine2: InputType = { 
+export const ContactAddressLine2Data: InputType = { 
         id: 2,
         label: "Address line 2",
         height: "h-[54px]",
@@ -120,7 +126,7 @@ export const ContactAddressLine2: InputType = {
         type: "text",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const ContactTown: InputType = { 
+export const ContactTownData: InputType = { 
         id: 1,
         label: "Town/City",
         height: "h-[54px]",
@@ -129,7 +135,7 @@ export const ContactTown: InputType = {
         type: "text",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const ContactPostcode: InputType = { 
+export const ContactPostcodeData: InputType = { 
         id: 2,
         label: "Postcode",
         height: "h-[54px]",
@@ -138,7 +144,7 @@ export const ContactPostcode: InputType = {
         type: "text",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const AccountEmail: InputType = { 
+export const AccountEmailData: InputType = { 
         id: 1,
         label: "Email",
         height: "h-[54px]",
@@ -147,7 +153,7 @@ export const AccountEmail: InputType = {
         type: "text",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const AccountPassword: InputType = { 
+export const AccountPasswordData: InputType = { 
         id: 1,
         label: "Password",
         height: "h-[54px]",
@@ -156,7 +162,7 @@ export const AccountPassword: InputType = {
         type: "password",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const AccountConfirmPassword: InputType = { 
+export const AccountConfirmPasswordData: InputType = { 
         id: 2,
         label: "Confirm password",
         height: "h-[54px]",
@@ -165,7 +171,7 @@ export const AccountConfirmPassword: InputType = {
         type: "password",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const FirstName: InputType = { 
+export const FirstNameData: InputType = { 
         id: 1,
         border:"focus:border-green-10 focus:border-2",
         content:"after:content-['*'] after:ml-1 after:text-green-10 ",
@@ -175,7 +181,7 @@ export const FirstName: InputType = {
         textSize: "generalText",
         type: "text",
 }
-export const LastName: InputType = { 
+export const LastNameData: InputType = { 
         id: 2,
         border:"focus:border-green-10 focus:border-2",
         content:"after:content-['*'] after:ml-1 after:text-green-10",
@@ -185,7 +191,7 @@ export const LastName: InputType = {
         textSize: "generalText",
         type: "text",
 }
-export const Date: InputType = {
+export const DateData: InputType = {
         id: 1,
         label: "Date of Birth",
         height: "h-[54px]",
@@ -195,8 +201,18 @@ export const Date: InputType = {
         type: "date",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
+export const DispatchDateData: InputType = {
+        id: 2,
+        label: "Pick a date",
+        height: "h-[54px]",
+        textSize: "generalText",
+        padding: " px-3 py-4",
+        border:"focus:border-green-10 focus:border-2",
+        type: "date",
+        content:"after:content-['*'] after:ml-1 after:text-green-10 "
+}
 
-export const PhoneNumber: InputType = {
+export const PhoneNumberData: InputType = {
 
     id: 5,
     label: "Phone Number",
@@ -207,7 +223,7 @@ export const PhoneNumber: InputType = {
     content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
 
-export const WebSite: InputType = {
+export const WebSiteData: InputType = {
 
     id: 6,
     label: "Website",
@@ -217,10 +233,20 @@ export const WebSite: InputType = {
     type: "tel",
     content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
-export const VideoURL: InputType = {
+export const VideoURLData: InputType = {
 
     id: 7,
     label: "Video URL",
+    height: "h-[54px]",
+    textSize: "text-[20px]",
+    padding:" px-3 py-4",
+    type: "text",
+    content:"after:content-['*'] after:ml-1 after:text-green-10 "
+}
+export const AvailableNumberData: InputType = {
+
+    id: 8,
+    label: "Add a number",
     height: "h-[54px]",
     textSize: "text-[20px]",
     padding:" px-3 py-4",
@@ -249,3 +275,17 @@ export const RegionData: SelectDataType[] = [
         value:'northern ireland'
     },   
 ];
+
+export const DeliveryData:RadioButtonDataType[] = [
+        {
+            label: "Yes",
+            value: "yes",
+            classes:"gap-[10px] flex-row-reverse justify-end"
+        },
+        {
+            label: "No",
+            value: "no",
+            classes:"gap-[10px] flex-row-reverse justify-end",
+        },
+       
+    ];

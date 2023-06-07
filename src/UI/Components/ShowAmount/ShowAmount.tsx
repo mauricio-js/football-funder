@@ -15,8 +15,8 @@ export const ShowAmount: React.FC<ShowAmountProps> = ({ amount, classes }) => {
         classes
       )}
     >
-      <div className="flex items-center">
-        <div className="text-green-1 text-green-10">
+      <div className="flex items-center gap-1">
+        <div className="text-green-10">
           <BiPound />
         </div>
         <div>{amount}</div>

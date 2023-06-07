@@ -10,4 +10,5 @@ export interface ButtonDataType {
     handleClick?: () => void;
     image?: string,
     icon?: IconType,
+    disabled?:boolean
 }

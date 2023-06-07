@@ -1,5 +1,5 @@
 import { IPadDataType, SelectDataType} from "types";
-import FirstIpadImage from "Assets/images/landing/first-ipad.png";
+import FirstIpadImage from "Assets/images/landing/first-ipad..png";
 import SecondIpadImage from "Assets/images/landing/second-ipad.png";
 
 export const IPadData: IPadDataType[] = [

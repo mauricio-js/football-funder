@@ -14,6 +14,7 @@ export const Button: React.FC<ButtonDataType> = (props) => {
         props.textSize
       )}
       onClick={props.handleClick}
+      disabled={props.disabled}
     >
       {props.icon && <props.icon />}
       {props.image && <img src={props.image} alt=" button content" />}

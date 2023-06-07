@@ -11,13 +11,13 @@ import {
 } from "Config";
 import HomeBack from "Assets/images/home/home-back.png";
 import VideoBackMask from "Assets/images/home/video-back-mask.png";
-import VideoPlayImg from "Assets/images/svg/homepage/video-play.svg";
-import PlayerIcon from "Assets/images/svg/homepage/icon-player.svg";
-import JoinBackImg from "Assets/images/svg/homepage/joinnow-back.svg";
+import VideoPlayImg from "Assets/images/home/video-play.svg";
+import PlayerIcon from "Assets/images/home/icon-player.svg";
+import JoinBackImg from "Assets/images/home/joinnow-back.png";
 import MobileHomeBack from "Assets/images/home/m-home-back.png";
 import MobileVideoBackMask from "Assets/images/home/m-video-back-mask.png";
-import MobileVideoPlayImg from "Assets/images/svg/homepage/mobile-video-play.svg";
-import MobileJoinBackImg from "Assets/images/svg/homepage/mobile-joinnow-back.svg";
+import MobileVideoPlayImg from "Assets/images/home/mobile-video-play.png";
+import MobileJoinBackImg from "Assets/images/home/mobile-joinnow-back.png";
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();

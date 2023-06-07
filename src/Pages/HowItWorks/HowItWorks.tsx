@@ -9,11 +9,12 @@ import {
   MobileSponsorshipData,
 } from "Config";
 
-import DesktopBackImage from "Assets/images/svg/howItWorks/howDesktopBackImage.svg";
-import MobileBackImage from "Assets/images/svg/howItWorks/howMobileBackImage.svg";
-import DesktopMask from "Assets/images/svg/howItWorks/desktopMask.svg";
-import MobileMask from "Assets/images/svg/howItWorks/mobileMask.svg";
-import MobileJoinBackImg from "Assets/images/svg/homepage/mobile-joinnow-back.svg";
+import DesktopBackImage from "Assets/images/howItWorks/howDesktopBackImage.png";
+import MobileBackImage from "Assets/images/howItWorks/howMobileBackImage.png";
+import DesktopMask from "Assets/images/howItWorks/desktopMask.svg";
+import MobileMask from "Assets/images/howItWorks/mobileMask.svg";
+import JoinBackImg from "Assets/images/home/joinnow-back.png";
+import MobileJoinBackImg from "Assets/images/home/mobile-joinnow-back.png";
 
 export const HowItWorks: React.FC = () => {
   return (
@@ -112,7 +113,7 @@ export const HowItWorks: React.FC = () => {
                 />
               </div>
               <div className="mt-[100px]">
-                <Join image={MobileJoinBackImg} />
+                <Join image={JoinBackImg} />
               </div>
             </div>
             <div className="ns:hidden">

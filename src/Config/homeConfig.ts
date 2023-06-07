@@ -1,7 +1,7 @@
 import { CardDataType } from "types/homePageType";
 import { CarouselCardType } from "types";
-import FirstCarouselCard from "Assets/images/svg/homepage/first-carousel-card.svg";
-import SecondCarouselCard from 'Assets/images/svg/homepage/second-carousel-card.svg'
+import FirstCarouselCard from "Assets/images/home/first-carousel-card.png";
+import SecondCarouselCard from 'Assets/images/home/second-carousel-card.png'
 
 import FundraiseCardImage from "Assets/images/home/fundraise.png";
 import ContributeCardImage from "Assets/images/home/contribute.png";

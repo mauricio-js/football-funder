@@ -3,9 +3,9 @@ import classNames from "classnames";
 import { Card, Search, Template } from "UI";
 import { ExploreDropdown, Filter, FilterMenu } from "Pages";
 import { ExploreCardData, ExploreSearchData } from "Config";
-import ExploreMask from "Assets/images/svg/explore/explore-mask.svg";
-import MobileExploreMask from "Assets/images/svg/explore/m-explore-mask.svg";
-import Line from "Assets/images/svg/explore/explore-divide.svg";
+import ExploreMask from "Assets/images/explore/explore-mask.svg";
+import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
+import Line from "Assets/images/explore/explore-divide.svg";
 
 export const Explore: React.FC = () => {
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);

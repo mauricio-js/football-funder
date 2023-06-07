@@ -16,7 +16,7 @@ export const AddAwardPanel: React.FC<AddAwardPanelProps> = ({
     handleClick(false);
   };
   return (
-    <div className="ns:w-[410px] w-full p-15 bg-gray-50">
+    <div className="ns:w-[410px] w-full p-15 bg-gray-200 rounded-10">
       <div className="text-[16px] leading-[20px] font-semibold text-green-70">
         Would you like to add rewards to your fundraiser?
       </div>

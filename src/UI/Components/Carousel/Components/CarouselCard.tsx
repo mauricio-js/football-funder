@@ -33,7 +33,7 @@ export const CarouselCard: React.FC<CarouselProps> = ({ Item }) => {
               </button>
             </div>
           </div>
-          <div className="flex flex-col gap-y-[15px]">
+          <div className="flex flex-col gap-y-15">
             <div className="text-green-40 font-semibold leading-[24px] text-[18px]">
               {Item.title}
             </div>

@@ -40,7 +40,7 @@ export const Explore: React.FC = () => {
         >
           <div className="px-[2px]">
             <div className="flex justify-between max-xm:flex-col max-xm:gap-y-5">
-              <div className="flex max-xs:flex-col max-xs:items-start gap-x-[15px] items-center">
+              <div className="flex max-xs:flex-col max-xs:items-start gap-x-15 items-center">
                 <div className="text-[32px] leading-[40px] font-semibold">
                   Explore
                 </div>

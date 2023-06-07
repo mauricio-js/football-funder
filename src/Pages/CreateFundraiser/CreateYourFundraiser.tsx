@@ -7,6 +7,7 @@ import {
   CreateFundraiserStepThird,
   CreateFundraiserStepFourth,
   CreateFundraiserStepFiveth,
+  CreateFundraiserStepSixth,
   MultiStepForm,
 } from "Pages";
 
@@ -19,6 +20,7 @@ export const CreateYourFundraiser: React.FC = () => {
     <CreateFundraiserStepThird />,
     <CreateFundraiserStepFourth />,
     <CreateFundraiserStepFiveth />,
+    <CreateFundraiserStepSixth />,
   ];
 
   return (

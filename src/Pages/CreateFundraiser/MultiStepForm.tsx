@@ -40,7 +40,7 @@ export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
       >
         {currentStep > 0 && currentStep < pages.length - 1 && (
           <Button
-            backgroundColor="bg-green-10"
+            backgroundColor="bg-white border-2 border-gray-300"
             textColor="text-black"
             textSize="text-[16px] leading-[20px] font-semibold"
             height="h-[50px]"

@@ -6,21 +6,21 @@ import {
     InputType,
     SearchDataType,
 } from "types"
-import FilterIcon from "Assets/images/svg/explore/filter-icon.svg";
-import ExploreCardImageA from 'Assets/images/svg/explore/explore-card-a.svg'
-import ExploreCardImageB from 'Assets/images/svg/explore/explore-card-b.svg'
-import ExploreCardImageC from 'Assets/images/svg/explore/explore-card-c.svg'
-import ExploreCardImageD from 'Assets/images/svg/explore/explore-card-d.svg'
-import ExploreCardImageE from 'Assets/images/svg/explore/explore-card-e.svg'
-import ExploreCardImageF from 'Assets/images/svg/explore/explore-card-f.svg'
-import ExploreCardImageNone from 'Assets/images/svg/explore/explore-card-none.svg'
-import MobileExploreCardImageA from 'Assets/images/svg/explore/m-explore-card-a.svg'
-import MobileExploreCardImageB from 'Assets/images/svg/explore/m-explore-card-b.svg'
-import MobileExploreCardImageC from 'Assets/images/svg/explore/m-explore-card-c.svg'
-import MobileExploreCardImageD from 'Assets/images/svg/explore/m-explore-card-d.svg'
-import MobileExploreCardImageE from 'Assets/images/svg/explore/m-explore-card-e.svg'
-import MobileExploreCardImageF from 'Assets/images/svg/explore/m-explore-card-f.svg'
-import MobileExploreCardImageNone from 'Assets/images/svg/explore/m-explore-card-none.svg'
+import FilterIcon from "Assets/images/explore/filter-icon.svg";
+import ExploreCardImageA from 'Assets/images/explore/explore-card-a.png'
+import ExploreCardImageB from 'Assets/images/explore/explore-card-b.png'
+import ExploreCardImageC from 'Assets/images/explore/explore-card-c.png'
+import ExploreCardImageD from 'Assets/images/explore/explore-card-d.png'
+import ExploreCardImageE from 'Assets/images/explore/explore-card-e.png'
+import ExploreCardImageF from 'Assets/images/explore/explore-card-f.png'
+import ExploreCardImageNone from 'Assets/images/explore/explore-card-none.svg'
+import MobileExploreCardImageA from 'Assets/images/explore/m-explore-card-a.png'
+import MobileExploreCardImageB from 'Assets/images/explore/m-explore-card-b.png'
+import MobileExploreCardImageC from 'Assets/images/explore/m-explore-card-c.png'
+import MobileExploreCardImageD from 'Assets/images/explore/m-explore-card-d.png'
+import MobileExploreCardImageE from 'Assets/images/explore/m-explore-card-e.png'
+import MobileExploreCardImageF from 'Assets/images/explore/m-explore-card-f.png'
+import MobileExploreCardImageNone from 'Assets/images/explore/m-explore-card-none.svg'
 import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
 import { BiMap, BiMessageRounded } from 'react-icons/bi'
 import { MdSearch } from "react-icons/md";

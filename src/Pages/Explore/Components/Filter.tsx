@@ -1,5 +1,5 @@
 import React from "react";
-import FilterIcon from "Assets/images/svg/explore/filter-icon.svg";
+import FilterIcon from "Assets/images/explore/filter-icon.svg";
 
 type FilterBarProps = {
   isShowFilterModal: () => void;

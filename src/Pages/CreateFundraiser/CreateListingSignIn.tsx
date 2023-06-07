@@ -55,12 +55,12 @@ export const CreateListingSignIn = () => {
   return (
     <div
       className="
-        w-[1000px] max-lg:w-full px-[20px] mt-[60px] max-ns:mt-[20px]
-        mb-[60px] max-ns:mb-[30px] mx-auto"
+        w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-[20px]
+        mb-[60px] max-ns:mb-30 mx-auto"
     >
       <div>
         <PageTitle title="Create your listing" />
-        <div className="mt-[30px]">
+        <div className="mt-30">
           <StepLabel step="Step 2" title="Organisation information" />
         </div>
 
@@ -69,7 +69,7 @@ export const CreateListingSignIn = () => {
             title="Contact"
             intro="Please provide the details of the organisation that you are listing advertising opportunities for."
           />
-          <div className="mt-[30px]">
+          <div className="mt-30">
             <div className="w-full">
               <div className="md:w-1/2 flex flex-col gap-y-3">
                 <Input

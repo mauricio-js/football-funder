@@ -26,7 +26,7 @@ export function Landing() {
             className="mx-auto"
           />
           <div
-            className="block mt-[30px] pb-[64px] mx-auto
+            className="block mt-30 pb-[64px] mx-auto
               w-[368px] sm:w-[498px] max-ns:w-[280px]"
           >
             <p className="text-base font-medium text-center leading-[22px] text-white">

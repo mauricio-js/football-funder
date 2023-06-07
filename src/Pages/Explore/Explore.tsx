@@ -36,7 +36,7 @@ export const Explore: React.FC = () => {
         </div>
         <div
           className="pt-[60px] mb-[150px] max-ns:mb-[60px] 
-              bl:w-[1000px] w-full max-bl:px-[20px] mx-auto"
+              bl:w-[1000px] w-full max-bl:px-5 mx-auto"
         >
           <div className="px-[2px]">
             <div className="flex justify-between max-xm:flex-col max-xm:gap-y-[20px]">
@@ -68,7 +68,7 @@ export const Explore: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="xs:mt-[65px] mt-[30px] max-ns max-bl:w-[700px] max-md:w-full mx-auto">
+          <div className="xs:mt-[65px] mt-30 max-ns max-bl:w-[700px] max-md:w-full mx-auto">
             <div className="flex flex-wrap max-bl:justify-between max-md:justify-center gap-x-[20px] gap-y-[30px] mx-auto">
               {ExploreCardData.map((item, index) => {
                 return <Card key={index} cardData={item} />;

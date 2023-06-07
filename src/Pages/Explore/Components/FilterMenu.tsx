@@ -45,7 +45,7 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
         </div>
       </div>
       <div className="max-h-[500px] overfl overflow-y-scroll">
-        <div className="mt-[30px]">
+        <div className="mt-30">
           <Search data={FilterSearchData} />
         </div>
         <div className="">

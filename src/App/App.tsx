@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Landing,
   Home,
@@ -6,9 +6,16 @@ import {
   HowItWorks,
   CreateYourFundraiser,
 } from "Pages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, useNavigate, Route, Routes } from "react-router-dom";
 
 function App() {
+  const RedirectToRoot = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+      navigate("/");
+    }, [navigate]);
+    return null;
+  };
   return (
     <>
       <BrowserRouter>
@@ -21,6 +28,7 @@ function App() {
             path="createyourfundraiser"
             element={<CreateYourFundraiser />}
           />
+          <Route path="*" element={<RedirectToRoot />} />
         </Routes>
       </BrowserRouter>
     </>

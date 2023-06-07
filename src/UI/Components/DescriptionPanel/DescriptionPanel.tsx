@@ -9,7 +9,7 @@ export const DescriptionPanel: React.FC<DescriptionPanelType> = ({
   return (
     <div
       className={classNames(
-        "rounded-10 border-2 border-gray-300 px-[15px] pb-[15px] pt-[10px]",
+        "rounded-10 border-2 border-gray-300 px-15 pb-15 pt-[10px]",
         classes
       )}
     >

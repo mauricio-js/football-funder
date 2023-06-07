@@ -1,20 +1,25 @@
 import React from "react";
-import { PageSectionTitle, PageTitle, StepLabel, Textarea } from "UI";
-import { BiPound } from "react-icons/bi";
+import {
+  PageSectionTitle,
+  PageTitle,
+  ShowAmount,
+  StepLabel,
+  Textarea,
+} from "UI";
 
 export const CreateFundraiserStepSecond: React.FC = () => {
   return (
     <div
       className="
-        w-[1000px] max-lg:w-full px-[20px] mt-[60px] max-ns:mt-[20px]
-         mb-[90px] max-ns:mb-[30px] mx-auto"
+        w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
+         mb-[90px] max-ns:mb-30 mx-auto"
     >
       <div>
         <PageTitle title="Create your fundraiser" />
-        <div className="mt-[30px]">
+        <div className="mt-30">
           <StepLabel step="Step 2" title="Fundraiser details" />
         </div>
-        <div className="mt-[30px]">
+        <div className="mt-30">
           <PageSectionTitle
             title="Fundraiser title"
             intro="What is the title of your fundraiser?"
@@ -27,7 +32,7 @@ export const CreateFundraiserStepSecond: React.FC = () => {
               value="Vel amet iaculis id adipiscing venenatis sed volutpat.Dictumst sem pellentesque lectus sollicitudin."
             />
           </div>
-          <div className="mt-[30px]">
+          <div className="mt-30">
             <PageSectionTitle
               title="Fundraiser tagline"
               intro="Describe what your fundraiser is aiming to achieve in a sentence or two. 
@@ -42,7 +47,7 @@ export const CreateFundraiserStepSecond: React.FC = () => {
               value="The subheader for running a fundraiser campaign for my football club goes here and there’s three lines of copy available to describe it. There’s some additional space in this box if I need it."
             />
           </div>
-          <div className="mt-[30px]">
+          <div className="mt-30">
             <PageSectionTitle
               title="Fundraiser amount"
               intro="The final amount you wish to raise, after fees are deducted."
@@ -57,15 +62,8 @@ export const CreateFundraiserStepSecond: React.FC = () => {
               <span className="ml-1 text-green-70 underline">See fees</span>
             </div>
           </div>
-          <div className="mt-[10px] md:w-1/2">
-            <div className="h-[54px] p-[15px] bg-gray-50 border border-1 rounded-10">
-              <div className="flex items-center">
-                <div className="text-green-1 text-green-10">
-                  <BiPound />
-                </div>
-                <div>100,000</div>
-              </div>
-            </div>
+          <div className="mt-[10px]">
+            <ShowAmount amount="100,000" classes="md:w-1/2 h-[54px]" />
           </div>
         </div>
       </div>

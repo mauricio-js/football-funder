@@ -1,5 +1,6 @@
 export * from './Accordion';
-export * from './Button'
+export * from './AddAwardPanel';
+export * from './Button';
 export * from './Card';
 export * from './Carousel';
 export * from './CategoryButton';
@@ -11,7 +12,7 @@ export * from './Dropdown';
 export * from './DropdownInput';
 export * from './FileInput';
 export * from './Input';
-export * from './Join'
+export * from './Join';
 export * from './PageTitle';
 export * from './RadioButton';
 export * from './RadioButtonList';
@@ -19,6 +20,7 @@ export * from './Search';
 export * from './PageSectionTitle';
 export * from './Select';
 export * from './SelectLanguage';
+export * from './ShowAmount'
 export * from './StepLabel';
 export * from './SummaryCard';
 export * from './Textarea';

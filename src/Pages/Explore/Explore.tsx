@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import { Card, Search, Template } from "UI";
 import { ExploreDropdown, Filter, FilterMenu } from "Pages";
-import { ExploreCardData, ExploreSearchData } from "Config";
+import {
+  ExploreCardData,
+  ExploreDropdownData,
+  ExploreSearchData,
+} from "Config";
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 import Line from "Assets/images/explore/explore-divide.svg";
 
 export const Explore: React.FC = () => {
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
+  const [region, setRegion] = useState<string>(ExploreDropdownData[0].name);
   return (
     <Template title="Explore">
       <div className="relative">
@@ -48,7 +53,10 @@ export const Explore: React.FC = () => {
                   <img src={Line} alt="divide" />
                 </div>
                 <div>
-                  <ExploreDropdown />
+                  <ExploreDropdown
+                    setButtonName={setRegion}
+                    buttonName={region}
+                  />
                 </div>
               </div>
               <div className="flex max-xs:flex-col gap-[60px] max-xm:gap-[70px]">

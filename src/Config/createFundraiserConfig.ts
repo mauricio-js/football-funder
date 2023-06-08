@@ -1,10 +1,19 @@
 import {
+    CardType,
     CategoryDataType,
     ContactPhoneNumberType,
     InputType,
     RadioButtonDataType,
     SelectDataType
 } from 'types';
+import ExploreCardImageA from 'Assets/images/explore/explore-card-a.png'
+import ExploreCardImageB from 'Assets/images/explore/explore-card-b.png'
+import ExploreCardImageC from 'Assets/images/explore/explore-card-c.png'
+import MobileExploreCardImageA from 'Assets/images/explore/m-explore-card-a.png'
+import MobileExploreCardImageB from 'Assets/images/explore/m-explore-card-b.png'
+import MobileExploreCardImageC from 'Assets/images/explore/m-explore-card-c.png'
+import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
+import { BiMap, BiMessageRounded } from 'react-icons/bi'
 export const FundraiserCategoryData: CategoryDataType[] = [
     {
         label: "Club",
@@ -288,4 +297,315 @@ export const DeliveryData:RadioButtonDataType[] = [
             classes:"gap-[10px] flex-row-reverse justify-end",
         },
        
-    ];
+];
+    
+export const CrowdFundList: CardType[] = [
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageA,
+        mobileimage: MobileExploreCardImageA,
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageB,
+        mobileimage:MobileExploreCardImageB
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageC,
+        mobileimage:MobileExploreCardImageC
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageA,
+        mobileimage: MobileExploreCardImageA,
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageB,
+        mobileimage:MobileExploreCardImageB
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageC,
+        mobileimage:MobileExploreCardImageC
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageA,
+        mobileimage: MobileExploreCardImageA,
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageB,
+        mobileimage:MobileExploreCardImageB
+    },
+    {
+        broadcastingType: 'Live',
+        club: {
+            icon:FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: "Coxhoe Athletic FC",
+        },
+        location: {
+            icon:BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white", 
+            text: "Durham, England",
+        },
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        status : '£50,000 of £100,000',
+        date: {
+            icon:FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "11th April 2023",
+        },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        desktopimage: ExploreCardImageC,
+        mobileimage:MobileExploreCardImageC
+    }
+    
+];
+

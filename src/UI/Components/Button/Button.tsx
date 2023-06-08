@@ -6,12 +6,13 @@ export const Button: React.FC<ButtonDataType> = (props) => {
   return (
     <button
       className={classNames(
-        "rounded-10",
+        "rounded-10 flex items-center justify-center",
         props.backgroundColor,
         props.height,
         props.width,
         props.textColor,
-        props.textSize
+        props.textSize,
+        props.border
       )}
       onClick={props.handleClick}
       disabled={props.disabled}

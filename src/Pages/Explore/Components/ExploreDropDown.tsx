@@ -3,20 +3,25 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { ExploreDropdownData } from "Config";
 import classNames from "classnames";
 
-export const ExploreDropdown: React.FC = () => {
+interface ExploreDropdownProps {
+  buttonName: string;
+  setButtonName: (value: string) => void;
+}
+
+export const ExploreDropdown: React.FC<ExploreDropdownProps> = ({
+  buttonName,
+  setButtonName,
+}) => {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
-  const [buttonName, setButtonName] = useState<string>(
-    ExploreDropdownData[0].name
-  );
 
   return (
     <div className="relative">
       <button
         className="
-                    flex items-center gal-[5px] text-[32px] ledaing-[40px] font-semibold text-green-10"
+                    flex items-center gap-[5px] text-[32px] ledaing-[40px] font-semibold text-green-10"
         onClick={() => setIsShowMenu(!isShowMenu)}
       >
-        {buttonName}
+        {buttonName !== "Northern Ireland" ? buttonName : "N. Ireland"}
         <div>
           <MdKeyboardArrowDown />
         </div>

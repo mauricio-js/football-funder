@@ -4,6 +4,7 @@ import {
   Home,
   Explore,
   HowItWorks,
+  CrowdFundingList,
   IndividualFundraiser,
   OrganisationFundraiser,
 } from "Pages";
@@ -33,6 +34,7 @@ function App() {
             path="/crowdfunding/startafundraiser/individual"
             element={<IndividualFundraiser />}
           />
+          <Route path="/crowdfunding/listings" element={<CrowdFundingList />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
       </BrowserRouter>

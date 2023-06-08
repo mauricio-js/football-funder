@@ -9,7 +9,7 @@ export const Filter: React.FC<FilterBarProps> = ({ isShowFilterModal }) => {
   return (
     <div className="relative">
       <button
-        className="w-[150px] h-[50px] rounded-10 py-[10px] px-15 flex justify-between items-center border-[1px] border-gray-100"
+        className="w-[150px] h-[50px] bg-white rounded-10 py-[10px] px-15 flex justify-between items-center border-[1px] border-gray-200"
         onClick={isShowFilterModal}
       >
         Filter & Sort

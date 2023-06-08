@@ -6,7 +6,7 @@ interface ParentComponentProps {
   pages: React.ReactNode[];
 }
 
-export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
+export const Stepper: React.FC<ParentComponentProps> = ({ pages }) => {
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
@@ -28,7 +28,8 @@ export const MultiStepForm: React.FC<ParentComponentProps> = ({ pages }) => {
     sessionStorage.setItem("currentStep", String(currentStep));
   }, [currentStep]);
   return (
-    <Template title="Stepper">
+    // <Template title="Stepper">
+    <Template>
       {pages[currentStep]}
       <div
         className={classNames(

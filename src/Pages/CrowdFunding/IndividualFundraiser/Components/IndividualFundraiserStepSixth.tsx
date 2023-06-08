@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, FileInput, PageSectionTitle, PageTitle, StepLabel } from "UI";
 
-export const CreateFundraiserStepSeventh: React.FC = () => {
+export const IndividualFundraiserStepSixth: React.FC = () => {
   const [overlayImage, setOverlayImage] = useState<File | null>(null);
   const removeOverlayImage = () => {
     setOverlayImage(null);
@@ -14,7 +14,7 @@ export const CreateFundraiserStepSeventh: React.FC = () => {
     >
       <div className="flex flex-col gap-30">
         <PageTitle title="Create your fundraiser" />
-        <StepLabel step="Step 7" title="Final touches" />
+        <StepLabel step="Step 6" title="Final touches" />
         <div>
           <PageSectionTitle
             title="Video overlay image (optional)"

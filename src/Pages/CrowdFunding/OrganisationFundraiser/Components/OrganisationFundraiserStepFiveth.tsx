@@ -13,7 +13,7 @@ import {
 } from "UI";
 import { AvailableNumberData, DeliveryData, DispatchDateData } from "Config";
 
-export const CreateFundraiserStepFiveth = () => {
+export const OrganisationFundraiserStepFiveth = () => {
   const [availableNumber, setAvailableNumber] = useState<string>("");
   const [limit, setLimit] = useState<boolean>(false);
   const [delivery, setDelivery] = useState<string>("no");

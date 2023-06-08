@@ -34,7 +34,7 @@ export const Select: React.FC<Props> = ({
         value={selectedOption}
         placeholder=""
         className={classNames(
-          "items-center h-14 px-5 pt-5 appearance-none w-full rounded-10  block",
+          "items-center h-[54px] px-5 pt-5 appearance-none w-full rounded-10  block",
           " focus:outline-none focus:ring-0 peer",
           backgroundColor,
           textColor,

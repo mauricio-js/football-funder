@@ -3,13 +3,26 @@ import classNames from "classnames";
 import { ContactPhoneNumber } from "Config";
 import Arrow from "Assets/images/svg/button/black-arrow";
 
-export const DropdownInput: React.FC = () => {
-  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
-  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+interface DropdownInputProps {
+  country: string;
+  phoneNumber: string;
+  selectCountry: (value: string) => void;
+  inputPhoneNumber: (value: string) => void;
+  placeholder: string;
+  setPlaceholder: (value: string) => void;
+}
 
-  const [phoneNumber, setPhoneNumber] = useState<string>(
-    ContactPhoneNumber[0].randomNumber
-  );
+export const DropdownInput: React.FC<DropdownInputProps> = ({
+  country,
+  selectCountry,
+  inputPhoneNumber,
+  placeholder,
+  setPlaceholder,
+}) => {
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
+  const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+    inputPhoneNumber(event.target.value);
+  };
   return (
     <div className="flex flex-col">
       <div className="relative">
@@ -21,7 +34,8 @@ export const DropdownInput: React.FC = () => {
             "border-[1px] border-gray-300 focus:outline-none"
           )}
           id="floatingInput"
-          placeholder={phoneNumber}
+          placeholder={placeholder}
+          onChange={handleClick}
         />
         <div className="absolute top-0 h-full px-4 flex items-center">
           <div className="relative h-full">
@@ -45,9 +59,9 @@ export const DropdownInput: React.FC = () => {
                         key={index}
                         className="py-2 px-3 w-full hover:bg-gray-100 flex justify-start"
                         onClick={() => {
-                          setCountry(item.country);
+                          selectCountry(item.country);
                           setIsShowMenu(false);
-                          setPhoneNumber(item.randomNumber);
+                          setPlaceholder(item.randomNumber);
                         }}
                       >
                         <div className="generalSmallText">{item.country}</div>

@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 import { AppState } from "App/reducers";
 
 interface Props {
-  title: string;
+  title?: string;
   isLoading?: boolean;
   isError?: boolean;
   errorMessage?: string;
@@ -15,7 +15,8 @@ interface Props {
 }
 
 export function Template(props: Props) {
-  const { title, isLoading, isError, errorMessage, children } = props;
+  const { children } = props;
+  // above === title, isLoading, isError, errorMessage,
   const isMobileMenu = useSelector(
     (state: AppState) => state.layoutState.isMobileMenu
   );
@@ -24,7 +25,8 @@ export function Template(props: Props) {
     <>
       <Helmet>
         <title>
-          {title} | {APP_NAME}
+          {/* {title} | */}
+          {APP_NAME}
         </title>
       </Helmet>
       <div className="position-relative">

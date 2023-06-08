@@ -23,6 +23,7 @@ export * from './Select';
 export * from './SelectLanguage';
 export * from './ShowAmount'
 export * from './StepLabel';
+export * from './Stepper';
 export * from './SummaryCard';
 export * from './Textarea';
 export * from './TextButton';

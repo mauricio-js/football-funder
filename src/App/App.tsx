@@ -4,7 +4,8 @@ import {
   Home,
   Explore,
   HowItWorks,
-  CreateYourFundraiser,
+  IndividualFundraiser,
+  OrganisationFundraiser,
 } from "Pages";
 import { BrowserRouter, useNavigate, Route, Routes } from "react-router-dom";
 
@@ -25,8 +26,12 @@ function App() {
           <Route path="explore" element={<Explore />} />
           <Route path="howitworks" element={<HowItWorks />} />
           <Route
-            path="createyourfundraiser"
-            element={<CreateYourFundraiser />}
+            path="/crowdfunding/startafundraiser/organisation"
+            element={<OrganisationFundraiser />}
+          />
+          <Route
+            path="/crowdfunding/startafundraiser/individual"
+            element={<IndividualFundraiser />}
           />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>

@@ -15,12 +15,13 @@ import {
   ContactAddressLine1Data,
   ContactAddressLine2Data,
   ContactOrganisationData,
+  ContactPhoneNumber,
   ContactPostcodeData,
   ContactTownData,
   RegionData,
 } from "Config";
 
-export const CreateListingSignIn = () => {
+export const OrganisationFundraiserSignInStepSecond = () => {
   const [contactAddressLine1, setContactAddressLine1] = useState<string>("");
   const [contactAddressLine2, setContactAddressLine2] = useState<string>("");
   const [accountEmail, setAccountEmail] = useState<string>("");
@@ -41,6 +42,13 @@ export const CreateListingSignIn = () => {
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountryOption(event.target.value);
   };
+
+  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
+    ContactPhoneNumber[0].randomNumber
+  );
   // console.log(
   //   contactAddressLine1,
   //   contactAddressLine2,
@@ -50,7 +58,10 @@ export const CreateListingSignIn = () => {
   //   contactOrganistion,
   //   contactPostcode,
   //   contactTown,
-  //   selectedCountryOption
+  //   selectedCountryOption,
+  //   confirm,
+  //   country,
+  //   phoneNumber
   // );
   return (
     <div
@@ -77,7 +88,14 @@ export const CreateListingSignIn = () => {
                   setValue={setContactOrganisation}
                   defaultValue={contactOrganistion}
                 />
-                <DropdownInput />
+                <DropdownInput
+                  country={country}
+                  phoneNumber={phoneNumber}
+                  selectCountry={setCountry}
+                  inputPhoneNumber={setPhoneNumber}
+                  placeholder={phoneNumberPlaceholder}
+                  setPlaceholder={setPhoneNumberPlaceholder}
+                />
                 <div className="flex gap-[10px]">
                   <div className="w-1/2">
                     <Input

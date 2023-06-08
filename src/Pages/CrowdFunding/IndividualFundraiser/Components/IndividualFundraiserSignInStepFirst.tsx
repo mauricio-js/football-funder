@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { CategoryButtonList, PageSectionTitle, PageTitle, StepLabel } from "UI";
 
 import { FundraiserCategoryData, FundraiserNationData } from "Config";
-export const CreateFundraiserSignIn: React.FC = () => {
-  const [fundraiserCategory, setFundraiserCategory] = useState<string>("Club");
-  const [fundraiseNation, setFundraiserNation] = useState<string>("England");
+export const IndividualFundraiserSignInStepFirst: React.FC = () => {
+  const [fundraiserCategory, setFundraiserCategory] =
+    useState<string>("individual");
+  const [fundraiseNation, setFundraiserNation] = useState<string>("england");
   // console.log(
   //   "fundraiserCategory, fundraiserNation",
   //   fundraiserCategory,

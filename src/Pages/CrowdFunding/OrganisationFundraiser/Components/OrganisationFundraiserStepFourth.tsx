@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AddAwardPanel, PageSectionTitle, PageTitle, StepLabel } from "UI";
 
-export const CreateFundraiserStepFourth: React.FC = () => {
+export const OrganisationFundraiserStepFourth: React.FC = () => {
   const [addReward, setAddReward] = useState<boolean>(false);
   // console.log("addReward", addReward);
   return (

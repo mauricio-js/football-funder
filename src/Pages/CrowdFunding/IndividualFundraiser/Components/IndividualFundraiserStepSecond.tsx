@@ -10,7 +10,7 @@ import {
 } from "UI";
 import { VideoURLData } from "Config";
 
-export const CreateFundraiserStepThird: React.FC = () => {
+export const IndividualFundraiserStepSecond: React.FC = () => {
   const [vieoUrl, setVideoUrl] = useState<string>("");
   const [selectedTitleImage, setSelectedTitleImage] = useState<File | null>(
     null
@@ -33,7 +33,7 @@ export const CreateFundraiserStepThird: React.FC = () => {
     >
       <PageTitle title="Create your fundraiser" />
       <div className="mt-30">
-        <StepLabel step="Step 3" title="Add Details" />
+        <StepLabel step="Step 2" title="Add Details" />
       </div>
       <div className="mt-30">
         <PageSectionTitle

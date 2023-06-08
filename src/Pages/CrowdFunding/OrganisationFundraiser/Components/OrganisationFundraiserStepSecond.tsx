@@ -7,7 +7,7 @@ import {
   Textarea,
 } from "UI";
 
-export const CreateFundraiserStepSecond: React.FC = () => {
+export const OrganisationFundraiserStepSecond: React.FC = () => {
   return (
     <div
       className="

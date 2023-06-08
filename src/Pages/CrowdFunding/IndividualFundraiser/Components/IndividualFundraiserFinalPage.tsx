@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "UI";
 import BackImage from "Assets/images/fundraiser/thankyou-back-img.png";
-// import MobileBackImage from "Assets/images/fundraiser/m-thankyou-back-img.png";
+import MobileBackImage from "Assets/images/fundraiser/m-thankyou-back-img.png";
 
-export const CreateFundraiserFinalPage: React.FC = () => {
+export const IndividualFundraiserFinalPage: React.FC = () => {
   return (
     <div className="ns:mt-[60px] mt-[40px] ns:mb-[500px] mb-[100px] flex justify-center px-5">
       <div className="relative rounded-20 overflow-hidden">
@@ -11,7 +11,12 @@ export const CreateFundraiserFinalPage: React.FC = () => {
           <img
             src={BackImage}
             alt="backimage"
-            className="object-cover h-[350px] overflow-hidden"
+            className="max-ns:hidden object-cover h-[350px] overflow-hidden"
+          />
+          <img
+            src={MobileBackImage}
+            alt="backimage"
+            className="ns:hidden object-cover h-[350px] overflow-hidden"
           />
         </div>
         <div className="absolute top-0 w-full h-full flex flex-col items-center justify-center px-[10px]">

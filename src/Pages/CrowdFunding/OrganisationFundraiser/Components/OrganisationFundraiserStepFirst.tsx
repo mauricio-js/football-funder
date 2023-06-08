@@ -11,6 +11,7 @@ import {
   ContactAddressLine1Data,
   ContactAddressLine2Data,
   ContactPostcodeData,
+  ContactPhoneNumber,
   ContactTownData,
   DateData,
   FirstNameData,
@@ -19,7 +20,7 @@ import {
 } from "Config";
 import { MdAnnouncement } from "react-icons/md";
 
-export const CreateFundraiserStepFirst = () => {
+export const OrganisationFundraiserStepFirst = () => {
   const [selectedCountryOption, setSelectedCountryOption] =
     useState<string>("");
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -32,6 +33,12 @@ export const CreateFundraiserStepFirst = () => {
   const [contactAddressLine2, setContactAddressLine2] = useState<string>("");
   const [contactTown, setContactTown] = useState<string>("");
   const [contactPostcode, setContactPostCode] = useState<string>("");
+  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
+    ContactPhoneNumber[0].randomNumber
+  );
   return (
     <div
       className="
@@ -60,7 +67,14 @@ export const CreateFundraiserStepFirst = () => {
               defaultValue={lastName}
             />
             <Input data={DateData} setValue={setDate} defaultValue={date} />
-            <DropdownInput />
+            <DropdownInput
+              country={country}
+              phoneNumber={phoneNumber}
+              selectCountry={setCountry}
+              inputPhoneNumber={setPhoneNumber}
+              placeholder={phoneNumberPlaceholder}
+              setPlaceholder={setPhoneNumberPlaceholder}
+            />
             <div className="flex flex-col gap-[10px]">
               <div className="flex gap-[10px]">
                 <div className="w-1/2">

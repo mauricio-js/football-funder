@@ -9,7 +9,7 @@ import {
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-export const CreateFundraiserStepSixth: React.FC = () => {
+export const OrganisationFundraiserStepSixth: React.FC = () => {
   return (
     <div
       className="

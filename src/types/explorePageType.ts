@@ -14,16 +14,17 @@ export interface CardLabelType {
 
 export interface CardType {
     desktopimage: string,
-    mobileimage: string,
+    mobileimage?: string,
     broadcastingType: string,
     vat?:string,
     club: CardLabelType,
     location: CardLabelType,
     title: string,
     description: string,
-    progress?:boolean,
+    progress?: boolean,
     fund?: string,
-    status?: string,
+    curFund?: number,
+    oriFund?: number,
     date: CardLabelType,
     collection?: CardLabelType
 };

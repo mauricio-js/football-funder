@@ -14,7 +14,7 @@ import {
   PostcodeDistanceInputFormData,
   SortByData,
   StatusFilterData,
-  TypeFilterData,
+  // TypeFilterData,
 } from "Config/exploreConfig";
 import { IoMdClose } from "react-icons/io";
 
@@ -27,7 +27,7 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
 }) => {
   const [sortBy, setSortby] = useState<string>("promoted");
   const [organisations, setOrganisations] = useState<string[]>(["all"]);
-  const [type, setType] = useState<string[]>(["all"]);
+  // const [type, setType] = useState<string[]>(["all"]);
   const [status, setStatus] = useState<string[]>(["all"]);
   const [mile, setMile] = useState<string>("");
   const [postCode, setPostCode] = useState<string>("");
@@ -60,13 +60,13 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
                 />
               </div>
             </Accordion>
-            <Accordion title="Type">
+            {/* <Accordion title="Type">
               <CheckBoxList
                 options={TypeFilterData}
                 selectedValues={type}
                 setValues={setType}
               />
-            </Accordion>
+            </Accordion> */}
             <Accordion title="Organisation">
               <CheckBoxList
                 options={OrganisationFilterData}
@@ -82,17 +82,21 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
               />
             </Accordion>
             <Accordion title="Distance">
-              <div className="w-[180px] flex gap-[10px]">
-                <Input
-                  data={MileDistanceInputFormData}
-                  setValue={setMile}
-                  defaultValue={mile}
-                />
-                <Input
-                  data={PostcodeDistanceInputFormData}
-                  setValue={setPostCode}
-                  defaultValue={postCode}
-                />
+              <div className="mt-5 flex gap-[10px]">
+                <div className="w-[180px]">
+                  <Input
+                    data={MileDistanceInputFormData}
+                    setValue={setMile}
+                    defaultValue={mile}
+                  />
+                </div>
+                <div className="w-[180px]">
+                  <Input
+                    data={PostcodeDistanceInputFormData}
+                    setValue={setPostCode}
+                    defaultValue={postCode}
+                  />
+                </div>
               </div>
             </Accordion>
           </div>

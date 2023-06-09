@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import { ExploreDropdown, Filter, FilterMenu } from "Pages";
-import { Card, Search, Template } from "UI";
-import { CrowdFundList, ExploreDropdownData, ExploreSearchData } from "Config";
+import { HorizontalCard, VerticalCard, Search, Template } from "UI";
+import {
+  CrowdFundHorizontalList,
+  CrowdFundVerticalList,
+  ExploreDropdownData,
+  ExploreSearchData,
+} from "Config";
 import Line from "Assets/images/explore/explore-divide.svg";
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
@@ -39,21 +44,21 @@ export const CrowdFundingList: React.FC = () => {
               className="object-cover w-full ns:hidden"
             />
           </div>
-          <div className="bl:w-[1000px] w-full max-bl:px-5 mx-auto">
+          <div className="bl:w-[1000px] w-full max-bl:px-5 max-md:px-2.5 mx-auto">
             <div className="relative">
-              <div className="z-30 fixed  bl:hidden top-[500px] w-full ">
+              <div className="z-30 fixed bl:hidden top-[600px] w-full ">
                 <button
-                  className=" w-[150px] h-[50px] mx-auto  justify-center flex items-center shadow-xl  rounded-20 bg-white "
+                  className=" w-[150px] h-[50px] mx-auto border-[1px] border-gray-300  justify-center flex items-center shadow-xl  rounded-20 bg-white "
                   onClick={() => setHorizonalLayout(!horizontalLayout)}
                 >
                   {horizontalLayout ? (
                     <div className="flex justify-center items-center gap-8">
-                      List view
+                      Grid view
                       <TbLayoutList />
                     </div>
                   ) : (
                     <div className="flex justify-center items-center gap-8">
-                      Grid view
+                      List view
                       <TbLayoutGrid />
                     </div>
                   )}
@@ -97,12 +102,20 @@ export const CrowdFundingList: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="xs:mt-[65px] mt-30 max-ns max-bl:w-[700px] max-md:w-full mx-auto">
-              <div className="flex flex-wrap max-bl:justify-between max-md:justify-center gap-x-5 gap-y-30 mx-auto">
-                {CrowdFundList.map((item, index) => {
-                  return <Card key={index} cardData={item} />;
-                })}
-              </div>
+            <div className="xs:mt-[65px] mt-30 max-md:w-full mx-auto">
+              {horizontalLayout ? (
+                <div className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-2 max-xs:grid-cols-2 gap-x-5 max-2xs:gap-x-2.5 gap-y-30 ">
+                  {CrowdFundHorizontalList.map((item, index) => {
+                    return <HorizontalCard key={index} cardData={item} />;
+                  })}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-y-5">
+                  {CrowdFundVerticalList.map((item, index) => {
+                    return <VerticalCard key={index} cardData={item} />;
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>

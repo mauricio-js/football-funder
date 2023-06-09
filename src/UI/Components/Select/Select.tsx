@@ -69,6 +69,7 @@ export const Select: React.FC<Props> = ({
           "absolute text-[14px] leading-[20px] font-medium duration-300",
           "top-4 z-10 origin-[0] left-4 ",
           selectedOption !== "" && "-translate-y-3",
+          selectedOption !== "" && "text-[11px] leading-[14px]",
           placeholder
         )}
       >

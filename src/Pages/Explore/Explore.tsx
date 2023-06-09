@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Card, Search, Template } from "UI";
+import { HorizontalCard, Search, Template } from "UI";
 import { ExploreDropdown, Filter, FilterMenu } from "Pages";
 import {
   ExploreCardData,
@@ -79,7 +79,7 @@ export const Explore: React.FC = () => {
           <div className="xs:mt-[65px] mt-30 max-ns max-bl:w-[700px] max-md:w-full mx-auto">
             <div className="flex flex-wrap max-bl:justify-between max-md:justify-center gap-x-5 gap-y-30 mx-auto">
               {ExploreCardData.map((item, index) => {
-                return <Card key={index} cardData={item} />;
+                return <HorizontalCard key={index} cardData={item} />;
               })}
             </div>
           </div>

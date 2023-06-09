@@ -7,6 +7,7 @@ import {
   PageTitle,
   Select,
   StepLabel,
+  DatePicker,
 } from "UI";
 import {
   AccountEmailData,
@@ -83,7 +84,12 @@ export const IndividualFundraiserSignInStepSecond = () => {
               setValue={setLastName}
               defaultValue={lastName}
             />
-            <Input data={DateData} setValue={setDate} defaultValue={date} />
+            {/* <Input data={DateData} setValue={setDate} defaultValue={date} /> */}
+            <DatePicker
+              data={DateData}
+              setValue={setDate}
+              defaultValue={date}
+            />
             <DropdownInput
               country={country}
               phoneNumber={phoneNumber}

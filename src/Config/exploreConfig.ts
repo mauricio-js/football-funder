@@ -65,7 +65,8 @@ export const ExploreCardData: CardType[] = [
         description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
         progress:true,
         fund: '50% funded',
-        status : '£50,000 of £100,000',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
@@ -99,7 +100,8 @@ export const ExploreCardData: CardType[] = [
         description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
         progress:true,
         fund: '50% funded',
-        status : '£50,000 of £100,000',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
@@ -133,7 +135,8 @@ export const ExploreCardData: CardType[] = [
         description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
         progress:true,
         fund: '50% funded',
-        status : '£50,000 of £100,000',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
@@ -167,7 +170,8 @@ export const ExploreCardData: CardType[] = [
         title: 'Pitchside advertising board',
         description: 'Subline text goes here and there’s two lines of copy available to describe it.',
         fund: '50% funded',
-        status : '£50,000 of £100,000',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
@@ -197,7 +201,8 @@ export const ExploreCardData: CardType[] = [
         description: 'Subline text goes here and there’s two lines of copy available to describe it.',
         progress:false,
         fund: '50% funded',
-        status : '£50,000 of £100,000',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
@@ -226,7 +231,8 @@ export const ExploreCardData: CardType[] = [
         description: 'Subline text goes here and there’s two lines of copy available to describe it.',
         progress:false,
         fund: '50% funded',
-        status : '£50,000 of £100,000',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
@@ -476,7 +482,7 @@ export const MileDistanceInputFormData: InputType = {
     height: "h-[54px]",
     label: "Miles from",
     padding:"px-15 py-[10px]",
-    textSize:"text-[20px]",
+    textSize:"generalText",
     type: "text",
 }
 export const PostcodeDistanceInputFormData: InputType = {
@@ -485,7 +491,7 @@ export const PostcodeDistanceInputFormData: InputType = {
     height: "h-[54px]",
     label: "Postcode",
     padding:"px-15 py-[10px]",
-    textSize:"text-[20px]",
+    textSize:"generalText",
     type: "text",
 }
     

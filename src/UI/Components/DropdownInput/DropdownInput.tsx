@@ -27,15 +27,15 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
     <div className="flex flex-col">
       <div className="relative">
         <input
-          type="text"
+          type="tel"
           className={classNames(
-            "relative peer m-0 block bg-white w-full rounded-10",
-            "generalText pl-16 pt-4 h-[58px]",
-            "border-[1px] border-gray-300 focus:outline-none"
+            "peer bg-white w-full rounded-10 text-green-70 appearance-none",
+            "transition duration-200 border-2 border-gray-200 h-[54px] pl-16 py-4",
+            "ease-linear placeholder:text-transparent focus:pb-[0.625rem] focus:pt-[1.625rem] ",
+            "focus:outline-none [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
           )}
-          id="floatingInput"
-          placeholder={placeholder}
           onChange={handleClick}
+          placeholder="1"
         />
         <div className="absolute top-0 h-full px-4 flex items-center">
           <div className="relative h-full">
@@ -61,7 +61,7 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
                         onClick={() => {
                           selectCountry(item.country);
                           setIsShowMenu(false);
-                          setPlaceholder(item.randomNumber);
+                          // setPlaceholder(item.randomNumber);
                         }}
                       >
                         <div className="generalSmallText">{item.country}</div>
@@ -73,14 +73,21 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
             )}
           </div>
         </div>
+
         <label
           htmlFor="floatingInput"
           className={classNames(
-            "pointer-events-none absolute ml-16 top-2 origin-[0_0] text-xs",
+            "pointer-events-none absolute left-[50px] top-0 origin-[0_0] border text-[14px]",
+            "border-solid border-transparent px-3 py-4 text-gray-500 transition-[opacity,_transform]",
+            "duration-200 ease-linear",
+            " peer-focus:-translate-y-1.5 peer-focus:translate-x-[0.15rem]",
+            "peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-1.5 ",
+            " peer-[:not(:placeholder-shown)]:scale-[0.75] peer-focus:scale-[0.75] ",
             "after:content-['*'] after:ml-1 after:text-green-10"
           )}
         >
           Phone
+          {/* <span className="text-green-10 ml-1">*</span> */}
         </label>
       </div>
     </div>

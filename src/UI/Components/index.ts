@@ -13,6 +13,7 @@ export * from './DropdownInput';
 export * from './EditPanelItem';
 export * from './FileInput';
 export * from './Input';
+export * from './DatePicker';
 export * from './Join';
 export * from './PageTitle';
 export * from './RadioButton';

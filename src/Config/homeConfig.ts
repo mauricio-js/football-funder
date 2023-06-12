@@ -1,4 +1,4 @@
-import { CardDataType } from "types/homePageType";
+import { AdsCardDataType} from "types";
 import { CarouselCardType } from "types";
 import FirstCarouselCard from "Assets/images/home/first-carousel-card.png";
 import SecondCarouselCard from 'Assets/images/home/second-carousel-card.png'
@@ -16,7 +16,7 @@ import MobileSponsorshipSellImg from 'Assets/images/home/m-sponsorship-sell-img.
 import MobileAdvertisingBuyImg from 'Assets/images/home/m-advert-buy-img.png'
 import MobileAdvertisingSellImg from 'Assets/images/home/m-advert-sell-img.png'
 
-export const FundraisingCardData: CardDataType[] = [
+export const FundraisingCardData: AdsCardDataType[] = [
   {
     id: 1,
     title: "Fundraise",
@@ -34,7 +34,7 @@ export const FundraisingCardData: CardDataType[] = [
     buttonName: "Explore",
   },
 ];
-export const MobileFundraisingCardData: CardDataType[] = [
+export const MobileFundraisingCardData: AdsCardDataType[] = [
   {
     id: 1,
     title: "Fundraise",
@@ -52,7 +52,7 @@ export const MobileFundraisingCardData: CardDataType[] = [
     buttonName: "Explore",
   },
 ];
-export const AdvertisingCardData: CardDataType[] = [
+export const AdvertisingCardData: AdsCardDataType[] = [
   {
     id: 1,
     title: "Buy",
@@ -70,7 +70,7 @@ export const AdvertisingCardData: CardDataType[] = [
     buttonName: "Sell your ads",
   },
 ];
-export const MobileAdvertisingCardData: CardDataType[] = [
+export const MobileAdvertisingCardData: AdsCardDataType[] = [
   {
     id: 1,
     title: "Buy",
@@ -88,7 +88,7 @@ export const MobileAdvertisingCardData: CardDataType[] = [
     buttonName: "Sell your ads",
   },
 ];
-export const SponsorshipData: CardDataType[] = [
+export const SponsorshipData: AdsCardDataType[] = [
   {
     id: 1,
     title: "Buy",
@@ -106,7 +106,7 @@ export const SponsorshipData: CardDataType[] = [
     buttonName: "Sell your spots",
   },
 ];
-export const MobileSponsorshipData: CardDataType[] = [
+export const MobileSponsorshipData: AdsCardDataType[] = [
   {
     id: 1,
     title: "Buy",

@@ -1,4 +1,4 @@
-export interface CardDataType {
+export interface AdsCardDataType {
   id: number,
   title: string,
   description: string,

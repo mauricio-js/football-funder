@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Arrow from "Assets/images/svg/button/black-arrow";
 import { MenuItemType } from "types";
@@ -9,6 +9,7 @@ export interface DropdownProps {
 
 export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
   const navigate = useNavigate();
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(true);
 
   return (
     <div className="relative group cursor-pointer">
@@ -20,21 +21,24 @@ export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
         {List.title}
         {List.children && <Arrow />}
       </button>
-      {List.children && (
+      {List.children && isShowMenu && (
         <div className="hidden group-hover:flex">
           <div
             id="dropdown"
             className="
             absolute origin-top-right shadow-lg ring-1 ring-black  
-            bg-green-70 rounded-10 w-[120px] z-50"
+            bg-green-70 rounded-10 w-[120px] overflow-hidden z-50"
           >
-            <div className="py-2 text-sm text-gray-700 dark:text-gray-200 divide-y divide-gray-700">
+            <div className="text-sm text-gray-700 dark:text-gray-200 divide-y divide-gray-700">
               {List.children.map((key, index) => (
                 <div key={index}>
                   <button
                     className="block w-full text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
                       hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => navigate(key.href)}
+                    onClick={() => {
+                      navigate(key.href);
+                      setIsShowMenu(false);
+                    }}
                   >
                     <div className="flex justify-start">{key.title}</div>
                   </button>

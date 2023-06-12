@@ -1,5 +1,4 @@
 export * from './ComponentsTypes'
-export * from './explorePageType';
 export * from './footerType';
 export * from './fundraiserPageType';
 export * from './headerType';

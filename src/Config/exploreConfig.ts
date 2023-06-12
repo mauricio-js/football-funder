@@ -1,50 +1,22 @@
 import {
     ButtonDataType,
     CardType,
-    ExploreDropdownType,
     RadioButtonDataType,
     InputType,
     SearchDataType,
 } from "types"
 import FilterIcon from "Assets/images/explore/filter-icon.svg";
-import ExploreCardImageA from 'Assets/images/explore/explore-card-a.png'
-import ExploreCardImageB from 'Assets/images/explore/explore-card-b.png'
-import ExploreCardImageC from 'Assets/images/explore/explore-card-c.png'
-import ExploreCardImageD from 'Assets/images/explore/explore-card-d.png'
-import ExploreCardImageE from 'Assets/images/explore/explore-card-e.png'
-import ExploreCardImageF from 'Assets/images/explore/explore-card-f.png'
-import ExploreCardImageNone from 'Assets/images/explore/explore-card-none.svg'
-import MobileExploreCardImageA from 'Assets/images/explore/m-explore-card-a.png'
-import MobileExploreCardImageB from 'Assets/images/explore/m-explore-card-b.png'
-import MobileExploreCardImageC from 'Assets/images/explore/m-explore-card-c.png'
-import MobileExploreCardImageD from 'Assets/images/explore/m-explore-card-d.png'
-import MobileExploreCardImageE from 'Assets/images/explore/m-explore-card-e.png'
-import MobileExploreCardImageF from 'Assets/images/explore/m-explore-card-f.png'
-import MobileExploreCardImageNone from 'Assets/images/explore/m-explore-card-none.svg'
+import CardImageA from 'Assets/images/explore/card-a.png'
+import CardImageB from 'Assets/images/explore/card-b.png'
+import CardImageC from 'Assets/images/explore/card-c.png'
+import CardImageD from 'Assets/images/explore/card-d.png'
+import CardImageE from 'Assets/images/explore/card-e.png'
+import CardImageF from 'Assets/images/explore/card-f.png'
+import CardSImageNone from 'Assets/images/explore/card-s-none.png'
+import CardWImageNone from 'Assets/images/explore/card-w-none.png'
 import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
 import { BiMap, BiMessageRounded } from 'react-icons/bi'
 import { MdSearch } from "react-icons/md";
-
-
-
-export const ExploreDropdownData: ExploreDropdownType[] = [
-    {
-        id: 1,
-        name:'England'
-    },   
-    {
-        id: 2,
-        name:'Scotland'
-    },   
-    {
-        id: 3,
-        name:'Wales'
-    },   
-    {
-        id: 4,
-        name:'Northern Ireland'
-    },   
-];
 
 export const ExploreCardData: CardType[] = [
     {
@@ -79,8 +51,7 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageA,
-        mobileimage: MobileExploreCardImageA,
+        image: CardImageA,
     },
     {
         broadcastingType: 'Live',
@@ -114,8 +85,7 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageB,
-        mobileimage:MobileExploreCardImageB
+        image: CardImageB,
     },
     {
         broadcastingType: 'Live',
@@ -149,12 +119,10 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageC,
-        mobileimage:MobileExploreCardImageC
+        image: CardImageC,
     },
     {
         broadcastingType: 'Live',
-        vat:"￡3,000 inc. VAT",
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -167,8 +135,9 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Pitchside advertising board',
-        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
         fund: '50% funded',
         curFund: 50000,
         oriFund: 100000,
@@ -178,13 +147,16 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
-       
-        desktopimage: ExploreCardImageD,
-        mobileimage: MobileExploreCardImageD
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        image: CardImageD,
     },
     {
         broadcastingType: 'Live',
-        vat:"￡3,000 inc. VAT",
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -197,9 +169,9 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Pitchside advertising board',
-        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
-        progress:false,
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
         fund: '50% funded',
         curFund: 50000,
         oriFund: 100000,
@@ -209,12 +181,16 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
-        desktopimage: ExploreCardImageE,
-        mobileimage: MobileExploreCardImageE
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        image: CardImageE,
     },
     {
         broadcastingType: 'Live',
-        vat:"￡3,000 inc. VAT",
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -227,9 +203,9 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Pitchside advertising board',
-        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
-        progress:false,
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
         fund: '50% funded',
         curFund: 50000,
         oriFund: 100000,
@@ -239,12 +215,16 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
-        desktopimage: ExploreCardImageNone,
-        mobileimage: MobileExploreCardImageNone
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        image: CardSImageNone,
     },
     {
         broadcastingType: 'Live',
-        vat:"￡3,000 inc. VAT",
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -257,21 +237,28 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Front of shirt sponsorship - Season 2023/24',
-        description: 'Subline text goes here and there’s three lines of copy available to describe it. Lorem ipsum dolor sit amet de lipsum dolor.',
-        progress:false,
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
-        desktopimage: ExploreCardImageF,
-        mobileimage: MobileExploreCardImageF
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        image: CardImageF,
     },
     {
         broadcastingType: 'Live',
-        vat:"￡15,000",
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -284,21 +271,28 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Front of shirt sponsorship - Season 2023/24',
-        description: 'Subline text goes here and there’s three lines of copy available to describe it. Lorem ipsum dolor sit amet de lipsum dolor.',
-        progress:false,
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
-        desktopimage: ExploreCardImageNone,
-        mobileimage: MobileExploreCardImageNone
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        image: CardWImageNone,
     },
     {
         broadcastingType: 'Live',
-        vat:"￡15,000",
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -311,18 +305,26 @@ export const ExploreCardData: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Front of shirt sponsorship - Season 2023/24',
-        description: 'Subline text goes here and there’s three lines of copy available to describe it. Lorem ipsum dolor sit amet de lipsum dolor.',
-        progress:false,
+        title: 'Running a crowdfunding campaign for my football club',
+        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
+        progress:true,
+        fund: '50% funded',
+        curFund: 50000,
+        oriFund: 100000,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
             text: "11th April 2023",
         },
-        desktopimage: ExploreCardImageNone,
-        mobileimage: MobileExploreCardImageNone
-    },
+        collection: {
+            icon:BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70", 
+            text: "15 Comments",
+        },
+        image: CardWImageNone,
+    }
 ];
 
 
@@ -463,18 +465,6 @@ export const SortByData: RadioButtonDataType[] = [
     ];
  
 
-export const ExploreSearchData: SearchDataType = {
-    backgroundColor: "bg-white",
-    placeholder: "Search...",
-    placeholderClass:"placeholder:text-[16px] placeholder:leading-[22px] placeholder:font-medium placeholder:text-green-70",
-    padding: "px-15 py-[10px]",
-    iconColor: "text-black",
-    inputTextSize: "font-medium text-[16px]",
-    border:"border-2 border-gray-100",
-    icon: MdSearch,
-    iconSize: "text-[20px]",
-    inputColor:"text-black"
-};
 
 export const MileDistanceInputFormData: InputType = {
 

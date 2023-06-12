@@ -41,7 +41,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           htmlFor="floatingInput"
           className={classNames(
             "pointer-events-none absolute left-1 top-1 origin-[0_0] border text-[14px] peer-focus:!bg-transparent",
-            "border-solid border-transparent px-3 py-3 text-gray-500 transition-[opacity,_transform]",
+            "border-solid border-transparent pl-3 pr-5 py-3 text-gray-500 transition-[opacity,_transform]",
             "duration-200 ease-linear peer-focus:-translate-y-1.5 peer-focus:translate-x-[0.15rem]",
             "peer-focus:scale-[0.75]",
             "motion-reduce:transition-none dark:text-gray-500 dark:peer-focus:text-primary peer-focus:bg-transparent",

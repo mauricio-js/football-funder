@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import {
-  Landing,
-  Home,
+  AdsList,
+  CrowdfundingList,
   Explore,
+  Home,
   HowItWorks,
-  CrowdFundingList,
   IndividualFundraiser,
+  Landing,
   OrganisationFundraiser,
+  Sponsorship,
 } from "Pages";
 import { BrowserRouter, useNavigate, Route, Routes } from "react-router-dom";
 
@@ -34,7 +36,9 @@ function App() {
             path="/crowdfunding/startafundraiser/individual"
             element={<IndividualFundraiser />}
           />
-          <Route path="/crowdfunding/listings" element={<CrowdFundingList />} />
+          <Route path="/crowdfunding/listings" element={<CrowdfundingList />} />
+          <Route path="/AdsListing" element={<AdsList />} />
+          <Route path="/Sponsorship" element={<Sponsorship />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
       </BrowserRouter>

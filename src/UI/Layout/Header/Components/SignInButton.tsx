@@ -40,17 +40,19 @@ export const SignInButton: React.FC = () => {
           {isShowAccountMenu && (
             <div
               id="dropdown"
-              className="absolute top-[45px] right-0 bg-green-70 rounded-10 w-[120px] z-50"
+              className="absolute top-[45px] right-0 bg-green-70 rounded-10 w-[120px] overflow-hidden z-50"
             >
               <div
-                className="py-2 text-sm text-gray-700 
+                className="text-sm text-gray-700
                 dark:text-gray-200 divide-y  divide-gray-700"
               >
                 {AccounMenuData.map((item, key) => {
                   return (
                     <div
+                      key={key}
                       className="block text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
                   hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      onClick={AccountMenuShow}
                     >
                       {item.title}
                     </div>

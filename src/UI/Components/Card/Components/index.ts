@@ -1,1 +1,2 @@
-export * from './CardLabel';
+export * from './HorizontalCardLabel';
+export * from './VerticalCardLabel';

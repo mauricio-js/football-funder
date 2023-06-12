@@ -1,9 +1,9 @@
 import React from "react";
 import classname from "classnames";
-import { CardDataType } from "types/homePageType";
+import { AdsCardDataType } from "types/homePageType";
 
 interface Props {
-  value: CardDataType[];
+  value: AdsCardDataType[];
   title: string;
   textColor: string;
   descritpion?: string;

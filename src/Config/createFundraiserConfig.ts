@@ -6,15 +6,14 @@ import {
     RadioButtonDataType,
     SelectDataType
 } from 'types';
-import ExploreCardImageA from 'Assets/images/explore/explore-card-a.png'
-import ExploreCardImageB from 'Assets/images/explore/explore-card-b.png'
-import ExploreCardImageC from 'Assets/images/explore/explore-card-c.png'
-import ExploreVerticalCardImageA from 'Assets/images/fundraiser/v-card-a.png'
-import ExploreVerticalCardImageB from 'Assets/images/fundraiser/v-card-b.png'
-import ExploreVerticalCardImageC from 'Assets/images/fundraiser/v-card-c.png'
-import MobileExploreCardImageA from 'Assets/images/explore/m-explore-card-a.png'
-import MobileExploreCardImageB from 'Assets/images/explore/m-explore-card-b.png'
-import MobileExploreCardImageC from 'Assets/images/explore/m-explore-card-c.png'
+import CardImageA from 'Assets/images/explore/card-a.png'
+import CardImageB from 'Assets/images/explore/card-b.png'
+import CardImageC from 'Assets/images/explore/card-c.png'
+import CardImageD from 'Assets/images/explore/card-d.png'
+import CardImageE from 'Assets/images/explore/card-e.png'
+// import CardImageF from 'Assets/images/explore/card-f.png'
+import CardSImageNone from 'Assets/images/explore/card-s-none.png'
+// import CardWImageNone from 'Assets/images/explore/card-w-none.png'
 import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
 import { BiMap, BiMessageRounded } from 'react-icons/bi'
 export const FundraiserCategoryData: CategoryDataType[] = [
@@ -300,7 +299,7 @@ export const DeliveryData:RadioButtonDataType[] = [
        
 ];
     
-export const CrowdFundHorizontalList: CardType[] = [
+export const CrowdFundListData: CardType[] = [
     {
         broadcastingType: 'Live',
         club: {
@@ -333,8 +332,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageA,
-        mobileimage: MobileExploreCardImageA,
+        image: CardImageA,
     },
     {
         broadcastingType: 'Live',
@@ -368,8 +366,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageB,
-        mobileimage:MobileExploreCardImageB
+        image: CardImageB,
     },
     {
         broadcastingType: 'Live',
@@ -403,8 +400,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageC,
-        mobileimage:MobileExploreCardImageC
+        image: CardImageC,
     },
     {
         broadcastingType: 'Live',
@@ -438,8 +434,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageA,
-        mobileimage: MobileExploreCardImageA,
+        image: CardImageA,
     },
     {
         broadcastingType: 'Live',
@@ -473,8 +468,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageB,
-        mobileimage:MobileExploreCardImageB
+        image: CardImageB,
     },
     {
         broadcastingType: 'Live',
@@ -508,8 +502,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageC,
-        mobileimage:MobileExploreCardImageC
+        image: CardImageC,
     },
     {
         broadcastingType: 'Live',
@@ -543,8 +536,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageA,
-        mobileimage: MobileExploreCardImageA,
+        image: CardImageA,
     },
     {
         broadcastingType: 'Live',
@@ -578,8 +570,7 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageB,
-        mobileimage:MobileExploreCardImageB
+        image: CardImageB,
     },
     {
         broadcastingType: 'Live',
@@ -613,14 +604,14 @@ export const CrowdFundHorizontalList: CardType[] = [
             textColor: "text-green-70", 
             text: "15 Comments",
         },
-        desktopimage: ExploreCardImageC,
-        mobileimage:MobileExploreCardImageC
+        image: CardImageC,
     }
     
 ];
-export const CrowdFundVerticalList: CardType[] = [
+export const AdsListData: CardType[] = [
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -633,28 +624,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageA,
+        image: CardImageD,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -667,28 +650,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageB,
+        image: CardImageE,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -701,28 +676,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageC,
+        image: CardSImageNone,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -735,28 +702,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageA,
+        image: CardImageE,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -769,28 +728,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageB,
+        image: CardSImageNone,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -803,28 +754,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageC,
+        image: CardImageD,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -837,28 +780,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageA,
+        image: CardSImageNone,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -871,28 +806,20 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageB,
+        image: CardImageE,
     },
     {
         broadcastingType: 'Live',
+        vat: 3000,
         club: {
             icon:FaRegUserCircle,
             backgroundColor: "bg-green-80",
@@ -905,26 +832,16 @@ export const CrowdFundVerticalList: CardType[] = [
             textColor: "text-white", 
             text: "Durham, England",
         },
-        title: 'Running a crowdfunding campaign for my football club',
-        description: 'The sub header for running a crowdfunding campaign for my football club goes here.',
-        progress:true,
-        fund: '50% funded',
-        curFund: 50000,
-        oriFund: 100000,
+        title: 'Pitchside advertising board',
+        description: 'Subline text goes here and there’s two lines of copy available to describe it.',
+        progress:false,
         date: {
             icon:FaRegCalendarAlt,
             backgroundColor: "bg-gray-100",
             textColor: "text-green-70", 
-            text: "11th April 2023",
+            text: "April 2023 to April 2024",
         },
-        collection: {
-            icon:BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70", 
-            text: "15 Comments",
-        },
-        desktopimage: ExploreVerticalCardImageC,
-    }
+        image: CardImageD,
+    },
     
 ];
-

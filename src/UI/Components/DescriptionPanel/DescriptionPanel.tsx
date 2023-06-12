@@ -13,7 +13,7 @@ export const DescriptionPanel: React.FC<DescriptionPanelType> = ({
         classes
       )}
     >
-      <span className="text-[10px] leading-[14px] font-medium">
+      <span className="text-[10px] leading-[14px] font-medium text-green-70">
         Description
       </span>
       <span className="text-green-10">*</span>

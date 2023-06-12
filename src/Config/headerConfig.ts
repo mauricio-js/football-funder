@@ -1,4 +1,14 @@
 import {
+  ADSISTING_URL,
+  HOME_URL,
+  EXPLORE_URL,
+  CROWDFUNDINGLIST_URL,
+//   HOWITWORKS_URL,
+  ORGANISATIONFUNDRAISER_URL,
+//   ORGANISATIONINDIVIDUAL_URL,
+  ORGANISATIONLISTING_URL,
+} from "Lib";
+import {
     ButtonItemType,
     MenuItemType,
     AccountMenuDataType,
@@ -9,11 +19,11 @@ import { MdSearch } from "react-icons/md";
 
 export const homeButtonData: ButtonItemType = {
         title: "Home",
-        href: "/home",
+        href: HOME_URL,
 }
 export const exploreButtonData: ButtonItemType = {
         title: "Explore",
-        href: "/explore",
+        href: EXPLORE_URL,
 }
 export const aboutButtonData: ButtonItemType = {
       href: "/home",
@@ -37,11 +47,11 @@ export const fundraisingButtonData: MenuItemType = {
     children: [
         {
             title: "Fundraise",
-            href: "/home"
+            href: ORGANISATIONFUNDRAISER_URL
         },
         {
             title: "Contribute",
-            href: "/home"
+            href: CROWDFUNDINGLIST_URL
         },
     ]
 }
@@ -65,11 +75,11 @@ export const advertisingButtonData: MenuItemType = {
         children: [
             {
                 title: "Buy",
-                href: "/home"
+                href: ORGANISATIONLISTING_URL
             },
             {
                 title: "Sell",
-                href: "/home"
+                href: ADSISTING_URL
             },
         ]
 }
@@ -97,11 +107,11 @@ export const moreButtonData: MenuItemType = {
     
     {
       href: "/",
-      title: "Home",
+      title: HOME_URL,
     },
     {
       href: "/",
-      title: "Explore",
+      title: EXPLORE_URL,
     },
     {
       href: "/",
@@ -109,11 +119,11 @@ export const moreButtonData: MenuItemType = {
       children: [
             {
                 title: "Fundraise",
-                href: "/home"
+                href: ORGANISATIONFUNDRAISER_URL
             },
             {
                 title: "Contribute",
-                href: "/home"
+                href: CROWDFUNDINGLIST_URL
             },
         ]
     },
@@ -123,11 +133,11 @@ export const moreButtonData: MenuItemType = {
        children: [
             {
                 title: "Buy",
-                href: "/home"
+                href: ORGANISATIONLISTING_URL
             },
             {
                 title: "Sell",
-                href: "/home"
+                href: ADSISTING_URL
             },
         ]
     },

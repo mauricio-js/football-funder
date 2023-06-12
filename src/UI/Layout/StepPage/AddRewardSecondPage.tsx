@@ -3,7 +3,6 @@ import {
   Button,
   CheckBox,
   DatePicker,
-  DescriptionPanel,
   Input,
   PageSectionTitle,
   PageTitle,
@@ -22,6 +21,7 @@ export const AddRewardsSecondPage: React.FC<StepNumberPropsType> = ({
   const [availableNumber, setAvailableNumber] = useState<string>("");
   const [limit, setLimit] = useState<boolean>(false);
   const [delivery, setDelivery] = useState<string>("no");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dispatchDate, setDispatchDate] = useState<string>("");
   const onHandleConfirm = () => {
     setLimit(!limit);
@@ -49,6 +49,7 @@ export const AddRewardsSecondPage: React.FC<StepNumberPropsType> = ({
               limit={150}
               height="h-[80px]"
               value="Early Bird Special"
+              showLeftCharacters={true}
             />
           </div>
         </div>
@@ -68,8 +69,8 @@ export const AddRewardsSecondPage: React.FC<StepNumberPropsType> = ({
               title="Short description"
               limit={150}
               height="h-[150px]"
-              value="The subheader for running a fundraiser campaign for my football club goes here and 
-              there’s three lines of copy available to describe it. There’s some additional space in this box if I need it."
+              value="The subheader for running a fundraiser campaign for my football club goes here and there’s three lines of copy available to describe it. There’s some additional space in this box if I need it."
+              showLeftCharacters={true}
             />
           </div>
         </div>
@@ -97,19 +98,17 @@ export const AddRewardsSecondPage: React.FC<StepNumberPropsType> = ({
             intro="Use this section for any unique information about the reward."
           />
           <div className="mt-15">
-            <DescriptionPanel
-              classes="sm:h-[350px] h-auto text-green-70 generalText"
-              introText1="Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-              introText2="It has survived not only five centuries, 
-            but also the leap into electronic typesetting, remaining essentially unchanged. 
-            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem."
+            <Textarea
+              height="h-[350px] max-ns:h-[390px] "
+              value={
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem."
+              }
+              showLeftCharacters={false}
+              title="Description"
             />
           </div>
         </div>
-        <div>
+        <div className="">
           <PageSectionTitle
             title="Delivery"
             intro="Does this reward require delivery?"
@@ -132,7 +131,7 @@ export const AddRewardsSecondPage: React.FC<StepNumberPropsType> = ({
             <DatePicker
               data={DispatchDateData}
               setValue={setDispatchDate}
-              defaultValue={dispatchDate}
+              defaultValue=""
             />
           </div>
         </div>

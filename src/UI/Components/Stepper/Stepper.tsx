@@ -31,44 +31,46 @@ export const Stepper: React.FC<ParentComponentProps> = ({ pages }) => {
     // <Template title="Stepper">
     <Template>
       {pages[currentStep]}
-      <div
-        className={classNames(
-          "w-[1000px] max-lg:w-full px-5 mb-[150px] max-ns:mb-[100px]",
-          "flex max-2xs:flex-col ",
-          "max-2xs:items-center gap-y-5 mx-auto",
-          currentStep > 0 ? "justify-between" : "justify-end"
-        )}
-      >
-        {currentStep > 0 && currentStep < pages.length - 1 && (
-          <Button
-            backgroundColor="bg-white border-2 border-gray-300"
-            textColor="text-black"
-            textSize="text-[16px] leading-[20px] font-semibold"
-            height="h-[50px]"
-            width="2xs:w-[250px] ns:w-[400px] w-full"
-            text="Back"
-            handleClick={handlePrevPage}
-            disabled={currentStep === 0}
-          />
-        )}
-        {currentStep < pages.length - 1 && (
-          <Button
-            backgroundColor="bg-green-10"
-            textColor="text-black"
-            textSize="text-[16px] leading-[20px] font-semibold"
-            height="h-[50px]"
-            width="2xs:w-[250px] ns:w-[400px] w-full"
-            text={
-              currentStep < pages.length - 2
-                ? "Continue"
-                : currentStep === 6
-                ? "Save Reward"
-                : "Submit Fundraiser"
-            }
-            handleClick={handleNextPage}
-          />
-        )}
-      </div>
+      {currentStep !== pages.length - 1 && (
+        <div
+          className={classNames(
+            "w-[1000px] max-lg:w-full px-5 mb-[150px] max-ns:mb-[100px]",
+            "flex max-2xs:flex-col ",
+            "max-2xs:items-center gap-y-5 mx-auto",
+            currentStep > 0 ? "justify-between" : "justify-end"
+          )}
+        >
+          {currentStep > 0 && currentStep < pages.length - 1 && (
+            <Button
+              backgroundColor="bg-white border-2 border-gray-300"
+              textColor="text-black"
+              textSize="text-[16px] leading-[20px] font-semibold"
+              height="h-[50px]"
+              width="2xs:w-[250px] ns:w-[400px] w-full"
+              text="Back"
+              handleClick={handlePrevPage}
+              disabled={currentStep === 0}
+            />
+          )}
+          {currentStep < pages.length - 1 && (
+            <Button
+              backgroundColor="bg-green-10"
+              textColor="text-black"
+              textSize="text-[16px] leading-[20px] font-semibold"
+              height="h-[50px]"
+              width="2xs:w-[250px] ns:w-[400px] w-full"
+              text={
+                currentStep < pages.length - 2
+                  ? "Continue"
+                  : currentStep === 6
+                  ? "Save Reward"
+                  : "Submit Fundraiser"
+              }
+              handleClick={handleNextPage}
+            />
+          )}
+        </div>
+      )}
     </Template>
   );
 };

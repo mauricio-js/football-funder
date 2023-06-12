@@ -9,10 +9,12 @@ export const PageTitle: React.FC<PageTitleType> = (props) => {
       {props.introText && (
         <div className=" flex justify-between max-md:flex-col gap-y-[10px]">
           <div className="introText">{props.introText}</div>
-          <div className="flex gap-1">
-            <div className="introText">{props.linkText}</div>
-            <TextButton text="Log in here." />
-          </div>
+          {props.linkText && (
+            <div className="flex gap-1">
+              <div className="introText">{props.linkText}</div>
+              <TextButton text="Log in here." />
+            </div>
+          )}
         </div>
       )}
     </div>

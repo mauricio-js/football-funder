@@ -28,3 +28,4 @@ export * from './Stepper';
 export * from './SummaryCard';
 export * from './Textarea';
 export * from './TextButton';
+export * from './TextEditorPanel'

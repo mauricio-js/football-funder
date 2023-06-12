@@ -39,6 +39,7 @@ export const FundraiserDetailsPage: React.FC<FundraiserDetailsPageProps> = ({
                 limit={150}
                 height="h-[124px]"
                 value="Vel amet iaculis id adipiscing venenatis sed volutpat.Dictumst sem pellentesque lectus sollicitudin."
+                showLeftCharacters={true}
               />
             </div>
           </div>
@@ -55,6 +56,7 @@ export const FundraiserDetailsPage: React.FC<FundraiserDetailsPageProps> = ({
               limit={300}
               height="h-[150px]"
               value="The subheader for running a fundraiser campaign for my football club goes here and there’s three lines of copy available to describe it. There’s some additional space in this box if I need it."
+              showLeftCharacters={true}
             />
           </div>
           <div className="mt-30">

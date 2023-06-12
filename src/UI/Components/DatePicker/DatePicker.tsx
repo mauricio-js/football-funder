@@ -14,25 +14,31 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   defaultValue,
 }) => {
   const [inputType, setInputType] = useState<string>(data.type);
+  const [inputValue, setInputValue] = useState<string>("");
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setValue(inputValue);
+    setInputValue(inputValue);
   };
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     setInputType("date");
   };
-  // const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-  //   setInputType("text");
-  // };
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (inputType === "date" && inputValue !== "") {
+      setInputType("date");
+    } else {
+      setInputType("text");
+    }
+  };
 
-  // console.log("input value", inputType, inputValue);
+  console.log("input value", inputType, inputValue);
 
   return (
     <div className="flex flex-col">
       <div className="relative group">
         <input
           type={inputType}
-          // value={inputValue}
+          value={inputValue}
           className={classNames(
             "peer bg-white w-full rounded-10 text-green-70 appearance-none",
             "transition duration-200 border-2 border-gray-200 ",
@@ -46,10 +52,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           onChange={onChangeHandler}
           onInput={onChangeHandler}
           onFocus={handleFocus}
-          // onBlur={handleBlur}
+          onBlur={handleBlur}
           placeholder="1"
         />
-        <div className="absolute h-full flex items-center top-0 right-5 text-[20px] z-10">
+        <div
+          className="absolute h-full flex items-center top-0 right-5 text-[20px] z-10"
+          onFocus={handleFocus}
+        >
           <TbCalendar />
         </div>
         <label
@@ -60,7 +69,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             "duration-200 ease-linear peer-focus:-translate-y-1.5 peer-focus:translate-x-[0.15rem]",
             "peer-focus:scale-[0.75]",
             "motion-reduce:transition-none dark:text-gray-500 dark:peer-focus:text-primary peer-focus:bg-transparent",
-            inputType === "date" &&
+            (inputType === "date" || inputValue !== "") &&
               "-translate-y-1.5 translate-x-[0.15rem] scale-[0.75]  bg-transparent",
             // defaultValue && defaultValue !== ""
             //   ? "-translate-y-1.5 translate-x-[0.15rem] scale-[0.75]  bg-transparent"

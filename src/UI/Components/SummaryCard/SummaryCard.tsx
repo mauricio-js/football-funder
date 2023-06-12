@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import classname from "classnames";
 import { AdsCardDataType } from "types/homePageType";
 
@@ -15,6 +16,7 @@ export const SummaryCard: React.FC<Props> = ({
   textColor,
   descritpion,
 }) => {
+  const navigate = useNavigate();
   return (
     <div className="font-semibold text-[32px] leading-[26px] lg:w-[1000px] max-lg:max-w-[490px] w-full mx-auto z-30">
       <div
@@ -49,6 +51,7 @@ export const SummaryCard: React.FC<Props> = ({
                   <button
                     className="rounded-10 bg-white text-black 
                     font-semibold text-[16px] max-vs:text-[14px] leading-[22px] px-[25px] h-[42px]"
+                    onClick={() => navigate(item.linkUrl)}
                   >
                     {item.buttonName}
                   </button>

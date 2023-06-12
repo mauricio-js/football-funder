@@ -4,6 +4,7 @@ export interface AdsCardDataType {
   description: string,
   backgroundImage: string,
   buttonName: string,
+  linkUrl:string
 };
 
 export interface CarouselCardType {

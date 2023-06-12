@@ -12,14 +12,28 @@ interface InputProps {
 export const Input: React.FC<InputProps> = ({
   data,
   setValue,
-  // defaultValue,
+  defaultValue,
 }) => {
   const [inputType, setInputType] = useState<string>(data.type);
+  const [inputValue, setInputValue] = useState<string>("");
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setValue(inputValue);
+    setInputValue(inputValue);
+  };
+
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (event.target.value === "") {
+      setInputValue(defaultValue);
+    }
+  };
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const isDeleteKey = event.key === "Delete" || event.key === "Backspace";
+    if (isDeleteKey && event.currentTarget.value === defaultValue) {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -27,6 +41,7 @@ export const Input: React.FC<InputProps> = ({
       <div className="relative">
         <input
           type={inputType}
+          value={inputValue}
           className={classNames(
             "peer bg-white w-full rounded-10 text-green-70 appearance-none",
             "transition duration-200 border-2 border-gray-200 ",
@@ -38,6 +53,8 @@ export const Input: React.FC<InputProps> = ({
             data.border
           )}
           onChange={onChangeHandler}
+          onFocus={handleFocus}
+          onKeyDown={handleKeyDown}
           placeholder="1"
         />
         {data.type === "password" && (

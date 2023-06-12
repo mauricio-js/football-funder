@@ -8,6 +8,7 @@ import {
   IndividualFundraiser,
   Landing,
   OrganisationFundraiser,
+  OrganisationListing,
   Sponsorship,
 } from "Pages";
 import { BrowserRouter, useNavigate, Route, Routes } from "react-router-dom";
@@ -38,6 +39,10 @@ function App() {
           />
           <Route path="/crowdfunding/listings" element={<CrowdfundingList />} />
           <Route path="/AdsListing" element={<AdsList />} />
+          <Route
+            path="/advertising/createalistings/organisation"
+            element={<OrganisationListing />}
+          />
           <Route path="/Sponsorship" element={<Sponsorship />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>

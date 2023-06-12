@@ -1,9 +1,15 @@
 import React from "react";
-import { OrganisationListingStepFirst } from "Pages";
+import {
+  OrganisationListingStepFirst,
+  OrganisationListingStepSecond,
+} from "Pages";
 import { Stepper } from "UI";
 
 export const OrganisationListing: React.FC = () => {
-  const pages = [<OrganisationListingStepFirst />];
+  const pages = [
+    <OrganisationListingStepFirst />,
+    <OrganisationListingStepSecond />,
+  ];
 
   return (
     <div>

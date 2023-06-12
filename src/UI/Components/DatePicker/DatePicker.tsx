@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { InputType } from "types";
+import { TbCalendar } from "react-icons/tb";
 
 interface DatePickerProps {
   data: InputType;
@@ -12,17 +13,26 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   setValue,
   defaultValue,
 }) => {
+  const [inputType, setInputType] = useState<string>(data.type);
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     setValue(inputValue);
   };
-  // const [inputType, setInputType] = useState<string>(data.type);
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    setInputType("date");
+  };
+  // const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+  //   setInputType("text");
+  // };
+
+  // console.log("input value", inputType, inputValue);
 
   return (
     <div className="flex flex-col">
       <div className="relative group">
         <input
-          type={data.type}
+          type={inputType}
+          // value={inputValue}
           className={classNames(
             "peer bg-white w-full rounded-10 text-green-70 appearance-none",
             "transition duration-200 border-2 border-gray-200 ",
@@ -35,8 +45,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           )}
           onChange={onChangeHandler}
           onInput={onChangeHandler}
+          onFocus={handleFocus}
+          // onBlur={handleBlur}
           placeholder="1"
         />
+        <div className="absolute h-full flex items-center top-0 right-5 text-[20px] z-10">
+          <TbCalendar />
+        </div>
         <label
           htmlFor="floatingInput"
           className={classNames(
@@ -45,14 +60,15 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             "duration-200 ease-linear peer-focus:-translate-y-1.5 peer-focus:translate-x-[0.15rem]",
             "peer-focus:scale-[0.75]",
             "motion-reduce:transition-none dark:text-gray-500 dark:peer-focus:text-primary peer-focus:bg-transparent",
-            defaultValue && defaultValue !== ""
-              ? "-translate-y-1.5 translate-x-[0.15rem] scale-[0.75]  bg-transparent"
-              : "bg-white",
+            inputType === "date" &&
+              "-translate-y-1.5 translate-x-[0.15rem] scale-[0.75]  bg-transparent",
+            // defaultValue && defaultValue !== ""
+            //   ? "-translate-y-1.5 translate-x-[0.15rem] scale-[0.75]  bg-transparent"
+            //   : "bg-white",
             data.content
           )}
         >
           {data.label}
-          {/* <span className="text-green-10 ml-1">*</span> */}
         </label>
       </div>
       <style>
@@ -61,7 +77,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           cursor: pointer;
           position:absolute;
           right:20px;
-          top:15px
+          top:15px;
+          opacity:0;
+          z-index:100;
         }
       `}
       </style>

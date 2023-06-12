@@ -1,16 +1,16 @@
 import React from "react";
 import { BasicInformationPage } from "UI";
 
-export const OrganisationFundraiserSignInStepSecond = () => {
+export const OrganisationListingStepSecond = () => {
   return (
     <div>
       <BasicInformationPage
         isAuth={false}
         showAccountDetails={true}
         showOrganisation={true}
-        showConfirmation={true}
+        showConfirmation={false}
         showModifyAlert={false}
-        showProfileURL={false}
+        showProfileURL={true}
         contactText="Please provide the details of the organisation that you are listing advertising opportunities for."
         stepTitle="Organisation information"
         stepNumber="Step 2"

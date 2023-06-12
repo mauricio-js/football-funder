@@ -12,11 +12,17 @@ import {
 } from "Config";
 
 export const SignUp: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [firstName, setFirstName] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [lastName, setLastName] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactOrganistion, setContactOrganisation] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountEmail, setAccountEmail] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [website, setWebsite] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
 
@@ -57,32 +63,32 @@ export const SignUp: React.FC = () => {
                   <Input
                     data={FirstNameData}
                     setValue={setFirstName}
-                    defaultValue={firstName}
+                    defaultValue=""
                   />
                   <Input
                     data={LastNameData}
                     setValue={setLastName}
-                    defaultValue={lastName}
+                    defaultValue=""
                   />
                   <Input
                     data={ContactOrganisationData}
                     setValue={setContactOrganisation}
-                    defaultValue={contactOrganistion}
+                    defaultValue=""
                   />
                   <Input
                     data={AccountEmailData}
                     setValue={setAccountEmail}
-                    defaultValue={accountEmail}
+                    defaultValue=""
                   />
                   <Input
                     data={PhoneNumberData}
                     setValue={setPhoneNumber}
-                    defaultValue={phoneNumber}
+                    defaultValue=""
                   />
                   <Input
                     data={WebSiteData}
                     setValue={setWebsite}
-                    defaultValue={website}
+                    defaultValue=""
                   />
                 </div>
 
@@ -102,22 +108,22 @@ export const SignUp: React.FC = () => {
                   <Input
                     data={FirstNameData}
                     setValue={setFirstName}
-                    defaultValue={firstName}
+                    defaultValue=""
                   />
                   <Input
                     data={LastNameData}
                     setValue={setLastName}
-                    defaultValue={lastName}
+                    defaultValue=""
                   />
                   <Input
                     data={AccountEmailData}
                     setValue={setAccountEmail}
-                    defaultValue={accountEmail}
+                    defaultValue=""
                   />
                   <Input
                     data={PhoneNumberData}
                     setValue={setPhoneNumber}
-                    defaultValue={phoneNumber}
+                    defaultValue=""
                   />
                 </div>
 

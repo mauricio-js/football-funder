@@ -31,7 +31,9 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
   const [organisations, setOrganisations] = useState<string[]>(["all"]);
   const [type, setType] = useState<string[]>(["all"]);
   const [status, setStatus] = useState<string[]>(["all"]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mile, setMile] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [postCode, setPostCode] = useState<string>("");
 
   return (
@@ -91,14 +93,14 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
                   <Input
                     data={MileDistanceInputFormData}
                     setValue={setMile}
-                    defaultValue={mile}
+                    defaultValue=""
                   />
                 </div>
                 <div className="w-[180px]">
                   <Input
                     data={PostcodeDistanceInputFormData}
                     setValue={setPostCode}
-                    defaultValue={postCode}
+                    defaultValue=""
                   />
                 </div>
               </div>

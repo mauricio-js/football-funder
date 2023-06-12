@@ -5,8 +5,12 @@ export const IndividualFundraiserSignInStepSecond = () => {
   return (
     <BasicInformationPage
       isAuth={false}
+      showAccountDetails={true}
+      showOrganisation={false}
+      showConfirmation={true}
+      showModifyAlert={true}
+      showProfileURL={false}
       contactText="Please provide the details of the legal contact for the fundraiser."
-      organisation={false}
       stepTitle="Your basic information"
       stepNumber="Step 2"
     />

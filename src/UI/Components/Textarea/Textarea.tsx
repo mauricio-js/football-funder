@@ -36,6 +36,7 @@ export const Textarea: React.FC<Props> = ({
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
           setFormattedContent(event.target.value);
         }}
+        value={content}
       />
       {showLeftCharacters && (
         <div

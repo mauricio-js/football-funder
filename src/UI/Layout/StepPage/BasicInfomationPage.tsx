@@ -23,6 +23,7 @@ import {
   DateData,
   FirstNameData,
   LastNameData,
+  ProfileURLData,
   RegionData,
 } from "Config";
 import { MdAnnouncement } from "react-icons/md";
@@ -30,7 +31,11 @@ import { MdAnnouncement } from "react-icons/md";
 export const BasicInformationPage: React.FC<StepPagePropsType> = ({
   isAuth,
   contactText,
-  organisation,
+  showAccountDetails,
+  showConfirmation,
+  showModifyAlert,
+  showOrganisation,
+  showProfileURL,
   stepNumber,
   stepTitle,
 }) => {
@@ -39,24 +44,38 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountryOption(event.target.value);
   };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactOrganistion, setContactOrganisation] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [firstName, setFirstName] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [lastName, setLastName] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [date, setDate] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactAddressLine1, setContactAddressLine1] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactAddressLine2, setContactAddressLine2] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactTown, setContactTown] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactPostcode, setContactPostCode] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountEmail, setAccountEmail] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountConfirmPassword, setAccountConfirmPassword] =
     useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountPassword, setAcccountPassword] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
 
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
     ContactPhoneNumber[0].randomNumber
   );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [profileURL, setProfileURL] = useState<string>("footballfunder.com");
   const [confirm, setConfirm] = useState<boolean>(false);
 
   const onHandleConfirm = () => {
@@ -80,32 +99,32 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
         <PageSectionTitle title="Contact" intro={contactText} />
         <div className="mt-[15px] xs:w-[500px]">
           <div className="flex flex-col gap-[10px]">
-            {!isAuth && organisation && (
+            {showOrganisation && (
               <Input
                 data={ContactOrganisationData}
                 setValue={setContactOrganisation}
-                defaultValue={contactOrganistion}
+                defaultValue=""
               />
             )}
-            {!organisation && (
+            {!showOrganisation && (
               <div className="flex flex-col gap-[10px]">
                 <Input
                   data={FirstNameData}
                   setValue={setFirstName}
-                  defaultValue={firstName}
+                  defaultValue=""
                 />
                 <Input
                   data={LastNameData}
                   setValue={setLastName}
-                  defaultValue={lastName}
+                  defaultValue=""
+                />
+                <DatePicker
+                  data={DateData}
+                  setValue={setDate}
+                  defaultValue=""
                 />
               </div>
             )}
-            <DatePicker
-              data={DateData}
-              setValue={setDate}
-              defaultValue={date}
-            />
             <DropdownInput
               country={country}
               phoneNumber={phoneNumber}
@@ -120,14 +139,14 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
                   <Input
                     data={ContactAddressLine1Data}
                     setValue={setContactAddressLine1}
-                    defaultValue={contactAddressLine1}
+                    defaultValue=""
                   />
                 </div>
                 <div className="w-1/2">
                   <Input
                     data={ContactAddressLine2Data}
                     setValue={setContactAddressLine2}
-                    defaultValue={contactAddressLine2}
+                    defaultValue=""
                   />
                 </div>
               </div>
@@ -136,14 +155,14 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
                   <Input
                     data={ContactTownData}
                     setValue={setContactTown}
-                    defaultValue={contactTown}
+                    defaultValue=""
                   />
                 </div>
                 <div className="w-1/2">
                   <Input
                     data={ContactPostcodeData}
                     setValue={setContactPostCode}
-                    defaultValue={contactPostcode}
+                    defaultValue=""
                   />
                 </div>
               </div>
@@ -164,40 +183,44 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
           </div>
         </div>
       </div>
-      <div className="mt-30 xs:w-[500px]">
-        <PageSectionTitle title="Account details" />
-        <div className="mt-5 flex flex-col gap-[10px]">
-          <Input
-            data={AccountEmailData}
-            setValue={setAccountEmail}
-            defaultValue={accountEmail}
-          />
-          <Input
-            data={AccountPasswordData}
-            setValue={setAcccountPassword}
-            defaultValue={accountPassword}
-          />
-          <Input
-            data={AccountConfirmPasswordData}
-            setValue={setAccountConfirmPassword}
-            defaultValue={accountConfirmPassword}
-          />
+      {showAccountDetails && (
+        <div className="mt-30 xs:w-[500px]">
+          <PageSectionTitle title="Account details" />
+          <div className="mt-5 flex flex-col gap-[10px]">
+            <Input
+              data={AccountEmailData}
+              setValue={setAccountEmail}
+              defaultValue=""
+            />
+            <Input
+              data={AccountPasswordData}
+              setValue={setAcccountPassword}
+              defaultValue=""
+            />
+            <Input
+              data={AccountConfirmPasswordData}
+              setValue={setAccountConfirmPassword}
+              defaultValue=""
+            />
+          </div>
         </div>
-      </div>
-      <div className="mt-30">
-        <PageSectionTitle title="Confirmation" />
-        <div className="mt-[15px]">
-          <CheckBox
-            align="flex-row-reverse gap-[10px]"
-            checked={confirm}
-            label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-            onSelect={onHandleConfirm}
-            value="checked"
-            textClass="generalSmallText text-gray-500"
-          />
+      )}
+      {showConfirmation && (
+        <div className="mt-30">
+          <PageSectionTitle title="Confirmation" />
+          <div className="mt-[15px]">
+            <CheckBox
+              align="flex-row-reverse gap-[10px]"
+              checked={confirm}
+              label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+              onSelect={onHandleConfirm}
+              value="checked"
+              textClass="generalSmallText text-gray-500"
+            />
+          </div>
         </div>
-      </div>
-      {!organisation && (
+      )}
+      {showModifyAlert && (
         <div className="md:w-[500px] mt-30">
           <div
             className="px-15 xs:py-[15px] py-2 w-full bg-gray-200 rounded-10 
@@ -207,6 +230,24 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
               <MdAnnouncement />
             </div>
             You can modify your fundraiser details at any time after posting.
+          </div>
+        </div>
+      )}
+      {showProfileURL && (
+        <div className="mt-30 md:w-[630px]">
+          <PageSectionTitle
+            title="Profile URL"
+            intro="Each club and organisation signed up to Football Funder is given their own profile page to share their fundraisers and advertising or sponsorship listings from one place. "
+          />
+          <div className="mt-7 introText">
+            Enter your preferred subdomain name below:
+          </div>
+          <div className="mt-[35px] xs:w-[500px]">
+            <Input
+              data={ProfileURLData}
+              setValue={setProfileURL}
+              defaultValue="footballfunder.com"
+            />
           </div>
         </div>
       )}

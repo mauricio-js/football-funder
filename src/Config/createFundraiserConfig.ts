@@ -208,7 +208,7 @@ export const DateData: InputType = {
         height: "h-[54px]",
         textSize: "generalText",
         padding: " px-3 py-4",
-        type: "date",
+        type: "text",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
 export const DispatchDateData: InputType = {

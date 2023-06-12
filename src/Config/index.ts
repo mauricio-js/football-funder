@@ -1,3 +1,4 @@
+export * from './advertisingConfig';
 export * from './createFundraiserConfig';
 export * from './exploreConfig';
 export * from './footerConfig';

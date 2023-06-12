@@ -1,5 +1,15 @@
 import React, { useEffect } from "react";
 import {
+  ADSISTING_URL,
+  HOME_URL,
+  EXPLORE_URL,
+  CROWDFUNDINGLIST_URL,
+  HOWITWORKS_URL,
+  ORGANISATIONFUNDRAISER_URL,
+  ORGANISATIONINDIVIDUAL_URL,
+  ORGANISATIONLISTING_URL,
+} from "Lib";
+import {
   AdsList,
   CrowdfundingList,
   Explore,
@@ -26,21 +36,21 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="home" element={<Home />} />
-          <Route path="explore" element={<Explore />} />
-          <Route path="howitworks" element={<HowItWorks />} />
+          <Route path={HOME_URL} element={<Home />} />
+          <Route path={EXPLORE_URL} element={<Explore />} />
+          <Route path={HOWITWORKS_URL} element={<HowItWorks />} />
           <Route
-            path="/crowdfunding/startafundraiser/organisation"
+            path={ORGANISATIONFUNDRAISER_URL}
             element={<OrganisationFundraiser />}
           />
           <Route
-            path="/crowdfunding/startafundraiser/individual"
+            path={ORGANISATIONINDIVIDUAL_URL}
             element={<IndividualFundraiser />}
           />
-          <Route path="/crowdfunding/listings" element={<CrowdfundingList />} />
-          <Route path="/AdsListing" element={<AdsList />} />
+          <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
+          <Route path={ADSISTING_URL} element={<AdsList />} />
           <Route
-            path="/advertising/createalistings/organisation"
+            path={ORGANISATIONLISTING_URL}
             element={<OrganisationListing />}
           />
           <Route path="/Sponsorship" element={<Sponsorship />} />

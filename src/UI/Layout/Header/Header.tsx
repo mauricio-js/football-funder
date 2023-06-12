@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import {
+  // ADSISTING_URL,
+  HOME_URL,
+  // EXPLORE_URL,
+  // CROWDFUNDINGLIST_URL,
+  // HOWITWORKS_URL,
+  // ORGANISATIONFUNDRAISER_URL,
+  // ORGANISATIONINDIVIDUAL_URL,
+  // ORGANISATIONLISTING_URL,
+} from "Lib";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Dropdown, HeaderButton, SignInButton, HamburgerMenu } from "UI";
 import { SearchIcon } from "Assets/images/svg/button/icon-search";
@@ -46,7 +56,7 @@ export const Header: React.FC<HeaderProps> = (isShowMobileMenu) => {
               <img
                 src={HeaderLogoImage}
                 alt="footer-logo"
-                onClick={() => navigate("/home")}
+                onClick={() => navigate(HOME_URL)}
               />
               <div
                 className={classname(

@@ -24,6 +24,7 @@ export const FundraisingCardData: AdsCardDataType[] = [
       "Stand out from the crowd and raise funds on a dedicated football platform.",
     backgroundImage: FundraiseCardImage,
     buttonName: "Start Now",
+    linkUrl:"/crowdfunding/startafundraiser/organisation"
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ export const FundraisingCardData: AdsCardDataType[] = [
       "Whether here for a cause you support, or just browsing, you can start donating below.",
     backgroundImage: ContributeCardImage,
     buttonName: "Explore",
+    linkUrl:"/crowdfunding/listings"
   },
 ];
 export const MobileFundraisingCardData: AdsCardDataType[] = [
@@ -42,6 +44,7 @@ export const MobileFundraisingCardData: AdsCardDataType[] = [
       "Stand out from the crowd and raise funds on a dedicated football platform.",
     backgroundImage: MobileFundraiseCardImage,
     buttonName: "Start Now",
+    linkUrl:"/crowdfunding/startafundraiser/organisation"
   },
   {
     id: 2,
@@ -50,6 +53,7 @@ export const MobileFundraisingCardData: AdsCardDataType[] = [
       "Whether here for a cause you support, or just browsing, you can start donating below.",
     backgroundImage: MobileContributeCardImage,
     buttonName: "Explore",
+     linkUrl:"/crowdfunding/listings"
   },
 ];
 export const AdvertisingCardData: AdsCardDataType[] = [
@@ -60,6 +64,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "Interested in showcasing your brand using football? Browse opportunities in your area.",
     backgroundImage: AdvertisingBuyImg,
     buttonName: "Explore",
+    linkUrl:""
   },
   {
     id: 2,
@@ -68,6 +73,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: AdvertisingSellImg,
     buttonName: "Sell your ads",
+     linkUrl:""
   },
 ];
 export const MobileAdvertisingCardData: AdsCardDataType[] = [
@@ -78,6 +84,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "Interested in showcasing your brand using football? Browse opportunities in your area.",
     backgroundImage: MobileAdvertisingBuyImg,
     buttonName: "Explore",
+     linkUrl:""
   },
   {
     id: 2,
@@ -86,6 +93,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: MobileAdvertisingSellImg,
     buttonName: "Sell your ads",
+     linkUrl:""
   },
 ];
 export const SponsorshipData: AdsCardDataType[] = [
@@ -96,6 +104,7 @@ export const SponsorshipData: AdsCardDataType[] = [
       "Amplify the presence of your business locally or nationally through football sponsorship.",
     backgroundImage: SponsorshipBuyImg,
     buttonName: "Explore",
+     linkUrl:""
   },
   {
     id: 2,
@@ -104,6 +113,7 @@ export const SponsorshipData: AdsCardDataType[] = [
       "Attract sponsors to your club or organisation by listing your important sponsorship deals.",
     backgroundImage: SponsorshipSellImg,
     buttonName: "Sell your spots",
+     linkUrl:""
   },
 ];
 export const MobileSponsorshipData: AdsCardDataType[] = [
@@ -114,6 +124,7 @@ export const MobileSponsorshipData: AdsCardDataType[] = [
       "Amplify the presence of your business locally or nationally through football sponsorship.",
     backgroundImage: MobileSponsorshipBuyImg,
     buttonName: "Explore",
+     linkUrl:""
   },
   {
     id: 2,
@@ -122,6 +133,7 @@ export const MobileSponsorshipData: AdsCardDataType[] = [
       "Attract sponsors to your club or organisation by listing your important sponsorship deals.",
     backgroundImage: MobileSponsorshipSellImg,
     buttonName: "Sell your spots",
+     linkUrl:""
   },
 ];
 

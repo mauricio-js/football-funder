@@ -1,5 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import {
+  // ADSISTING_URL,
+  // HOME_URL,
+  EXPLORE_URL,
+  // CROWDFUNDINGLIST_URL,
+  HOWITWORKS_URL,
+  // ORGANISATIONFUNDRAISER_URL,
+  // ORGANISATIONINDIVIDUAL_URL,
+  // ORGANISATIONLISTING_URL,
+} from "Lib";
 import { SlideBar, Join, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,
@@ -59,7 +69,7 @@ export const Home: React.FC = () => {
                       bg-white rounded-10
                       "
                         onClick={() => {
-                          navigate("/explore");
+                          navigate(EXPLORE_URL);
                         }}
                       >
                         Explore
@@ -70,7 +80,7 @@ export const Home: React.FC = () => {
                       bg-green-10 rounded-10
                       "
                         onClick={() => {
-                          navigate("/howitworks");
+                          navigate(HOWITWORKS_URL);
                         }}
                       >
                         How it works
@@ -183,7 +193,7 @@ export const Home: React.FC = () => {
                       bg-white rounded-10
                       "
                         onClick={() => {
-                          navigate("/explore");
+                          navigate(EXPLORE_URL);
                         }}
                       >
                         Explore
@@ -194,7 +204,7 @@ export const Home: React.FC = () => {
                       bg-green-10 rounded-10
                       "
                         onClick={() => {
-                          navigate("/howitworks");
+                          navigate(HOWITWORKS_URL);
                         }}
                       >
                         How it works

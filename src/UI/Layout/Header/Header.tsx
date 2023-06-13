@@ -32,7 +32,7 @@ type HeaderProps = {
   isShowMobileMenu?: () => void;
 };
 
-export const Header: React.FC<HeaderProps> = (isShowMobileMenu) => {
+export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
   const [isShowSearchForm, setIsShowSearchForm] = useState<boolean>(false);
   const isMobileMenu = useSelector(
     (state: AppState) => state.layoutState.isMobileMenu

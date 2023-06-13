@@ -1,8 +1,17 @@
 import { AdsCardDataType} from "types";
 import { CarouselCardType } from "types";
+import {
+  ADSLISTING_URL,
+  // HOME_URL,
+  // EXPLORE_URL,
+  CROWDFUNDINGLIST_URL,
+//   HOWITWORKS_URL,
+  ORGANISATIONFUNDRAISER_URL,
+//   ORGANISATIONINDIVIDUAL_URL,
+  ORGANISATIONLISTING_URL,
+} from "Lib";
 import FirstCarouselCard from "Assets/images/home/first-carousel-card.png";
 import SecondCarouselCard from 'Assets/images/home/second-carousel-card.png'
-
 import FundraiseCardImage from "Assets/images/home/fundraise.png";
 import ContributeCardImage from "Assets/images/home/contribute.png";
 import SponsorshipBuyImg from 'Assets/images/home/sponsorship-buy-img.png'
@@ -24,7 +33,7 @@ export const FundraisingCardData: AdsCardDataType[] = [
       "Stand out from the crowd and raise funds on a dedicated football platform.",
     backgroundImage: FundraiseCardImage,
     buttonName: "Start Now",
-    linkUrl:"/crowdfunding/startafundraiser/organisation"
+    linkUrl:ORGANISATIONFUNDRAISER_URL
   },
   {
     id: 2,
@@ -33,7 +42,7 @@ export const FundraisingCardData: AdsCardDataType[] = [
       "Whether here for a cause you support, or just browsing, you can start donating below.",
     backgroundImage: ContributeCardImage,
     buttonName: "Explore",
-    linkUrl:"/crowdfunding/listings"
+    linkUrl:CROWDFUNDINGLIST_URL
   },
 ];
 export const MobileFundraisingCardData: AdsCardDataType[] = [
@@ -44,7 +53,7 @@ export const MobileFundraisingCardData: AdsCardDataType[] = [
       "Stand out from the crowd and raise funds on a dedicated football platform.",
     backgroundImage: MobileFundraiseCardImage,
     buttonName: "Start Now",
-    linkUrl:"/crowdfunding/startafundraiser/organisation"
+    linkUrl:ORGANISATIONFUNDRAISER_URL
   },
   {
     id: 2,
@@ -53,7 +62,7 @@ export const MobileFundraisingCardData: AdsCardDataType[] = [
       "Whether here for a cause you support, or just browsing, you can start donating below.",
     backgroundImage: MobileContributeCardImage,
     buttonName: "Explore",
-     linkUrl:"/crowdfunding/listings"
+     linkUrl:CROWDFUNDINGLIST_URL
   },
 ];
 export const AdvertisingCardData: AdsCardDataType[] = [
@@ -64,7 +73,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "Interested in showcasing your brand using football? Browse opportunities in your area.",
     backgroundImage: AdvertisingBuyImg,
     buttonName: "Explore",
-    linkUrl:""
+    linkUrl:ORGANISATIONLISTING_URL
   },
   {
     id: 2,
@@ -73,7 +82,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: AdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:""
+     linkUrl:ADSLISTING_URL
   },
 ];
 export const MobileAdvertisingCardData: AdsCardDataType[] = [
@@ -84,7 +93,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "Interested in showcasing your brand using football? Browse opportunities in your area.",
     backgroundImage: MobileAdvertisingBuyImg,
     buttonName: "Explore",
-     linkUrl:""
+     linkUrl:ORGANISATIONLISTING_URL
   },
   {
     id: 2,
@@ -93,7 +102,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: MobileAdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:""
+     linkUrl:ADSLISTING_URL
   },
 ];
 export const SponsorshipData: AdsCardDataType[] = [

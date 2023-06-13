@@ -1,12 +1,12 @@
 import {
-  ADSISTING_URL,
+  ADSLISTING_URL,
   HOME_URL,
   EXPLORE_URL,
   CROWDFUNDINGLIST_URL,
 //   HOWITWORKS_URL,
   ORGANISATIONFUNDRAISER_URL,
 //   ORGANISATIONINDIVIDUAL_URL,
-  ORGANISATIONLISTING_URL,
+  ORGANISATIONLISTING_URL
 } from "Lib";
 import {
     ButtonItemType,
@@ -79,7 +79,7 @@ export const advertisingButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: ADSISTING_URL
+                href: ADSLISTING_URL
             },
         ]
 }
@@ -137,7 +137,7 @@ export const moreButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: ADSISTING_URL
+                href: ADSLISTING_URL
             },
         ]
     },

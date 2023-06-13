@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { ButtonItemType } from "types";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
 import { setShowMobileMenu } from "Data/LayoutState";
 

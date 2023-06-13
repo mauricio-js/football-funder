@@ -2,7 +2,11 @@ import React from "react";
 import { Button } from "UI";
 import BackImage from "Assets/images/fundraiser/thankyou-back-img.png";
 
-export const FinalPage: React.FC = () => {
+interface finalPageProps {
+  viewLisingFunction: () => void;
+}
+
+export const FinalPage: React.FC<finalPageProps> = ({ viewLisingFunction }) => {
   return (
     <div className="ns:mt-[60px] mt-[40px] ns:mb-[500px] mb-[100px] flex justify-center px-5">
       <div className="relative rounded-20 overflow-hidden">
@@ -36,6 +40,7 @@ export const FinalPage: React.FC = () => {
               text="View listing"
               textColor="text-green-70"
               textSize="text-[16px] leading-[22px] font-semibold"
+              handleClick={viewLisingFunction}
             />
             <Button
               backgroundColor="bg-green-70"

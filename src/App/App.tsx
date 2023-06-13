@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {
-  ADSISTING_URL,
+  ADSLISTING_URL,
   HOME_URL,
   EXPLORE_URL,
   CROWDFUNDINGLIST_URL,
@@ -21,7 +21,22 @@ import {
   OrganisationListing,
   Sponsorship,
 } from "Pages";
-import { BrowserRouter, useNavigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  useNavigate,
+  useLocation,
+  Route,
+  Routes,
+} from "react-router-dom";
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
   const RedirectToRoot = () => {
@@ -31,9 +46,11 @@ function App() {
     }, [navigate]);
     return null;
   };
+
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path={HOME_URL} element={<Home />} />
@@ -48,7 +65,7 @@ function App() {
             element={<IndividualFundraiser />}
           />
           <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
-          <Route path={ADSISTING_URL} element={<AdsList />} />
+          <Route path={ADSLISTING_URL} element={<AdsList />} />
           <Route
             path={ORGANISATIONLISTING_URL}
             element={<OrganisationListing />}
@@ -56,6 +73,7 @@ function App() {
           <Route path="/Sponsorship" element={<Sponsorship />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
+        <ScrollToTop />
       </BrowserRouter>
     </>
   );

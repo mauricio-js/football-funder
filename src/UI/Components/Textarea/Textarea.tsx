@@ -30,7 +30,7 @@ export const Textarea: React.FC<Props> = ({
       <textarea
         className={classNames(
           "w-full h-[124px] px-[14px] pb-4 pt-6 generalText rounded-10 border-2",
-          "border-gray-200 focus:outline-none box-border",
+          "border-gray-200 focus:outline-none box-border  overflow:auto resize-none",
           height
         )}
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,12 +41,12 @@ export const Textarea: React.FC<Props> = ({
       {showLeftCharacters && (
         <div
           className="absolute bottom-[10px] right-[10px] text-[10px] leading-[14px]
-       text-gray-400"
+       text-gray-400 hidden vs:block"
         >
           {content.length}/{limit} characters left
         </div>
       )}
-      <div className="absolute w-full top-[12px] px-[16px] ">
+      <div className="absolute w-full top-[12px] px-[16px] hidden vs:block">
         <div className="text-[10px] leading-[14px] text-gray-400 after:content-['*'] after:ml-1 after:text-green-10">
           {title}
         </div>

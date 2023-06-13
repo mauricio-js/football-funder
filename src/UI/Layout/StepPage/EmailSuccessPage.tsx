@@ -4,7 +4,7 @@ import React from "react";
 export const EmailSuccessPage: React.FC = () => {
   return (
     <div>
-      <div className="sm:mt-[60px] mt-[80px] sm:mb-[300px] mb-[200px]">
+      <div className="sm:mt-[60px] mt-[80px] 2xs:mb-[50px] mb-[30px]">
         <div className="w-[520px] max-xs:w-full mx-auto max-xs:px-5">
           <div className="titleText text-center max-xs:text-start">
             Email confirmed successfully

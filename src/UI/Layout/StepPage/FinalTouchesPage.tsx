@@ -1,11 +1,22 @@
 import React, { useState } from "react";
-import { Button, FileInput, PageSectionTitle, PageTitle, StepLabel } from "UI";
-import { StepNumberPropsType } from "types";
+import classNames from "classnames";
+import {
+  Button,
+  GeneralCheckBoxList,
+  FileInput,
+  PageSectionTitle,
+  PageTitle,
+  StepLabel,
+} from "UI";
+import { FinalTouchPageCheckboxData } from "Config";
+import { FinalTouchedPagePropsType } from "types";
 
-export const FinalTouchesPage: React.FC<StepNumberPropsType> = ({
+export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
+  isCrowdFundingPage,
   stepNumber,
 }) => {
   const [overlayImage, setOverlayImage] = useState<File | null>(null);
+  const [isConfirm, setIsConfirm] = useState<string[]>([""]);
   const removeOverlayImage = () => {
     setOverlayImage(null);
   };
@@ -18,20 +29,27 @@ export const FinalTouchesPage: React.FC<StepNumberPropsType> = ({
       <div className="flex flex-col gap-30">
         <PageTitle title="Create your fundraiser" />
         <StepLabel number={stepNumber} title="Final touches" />
-        <div>
-          <PageSectionTitle
-            title="Video overlay image (optional)"
-            intro="Choose an image to represent your video before it plays. 695x460px recommended resolution."
-          />
-          <div className="mt-15 ns:w-[390px] w-full ">
-            <FileInput
-              onChange={setOverlayImage}
-              selectedImage={overlayImage}
-              removeImage={removeOverlayImage}
+        {isCrowdFundingPage && (
+          <div>
+            <PageSectionTitle
+              title="Video overlay image (optional)"
+              intro="Choose an image to represent your video before it plays. 695x460px recommended resolution."
             />
+            <div className="mt-15 ns:w-[390px] w-full ">
+              <FileInput
+                onChange={setOverlayImage}
+                selectedImage={overlayImage}
+                removeImage={removeOverlayImage}
+              />
+            </div>
           </div>
-        </div>
-        <div className="ns:w-[390px] w-full bg-gray-200 rounded-10 p-15">
+        )}
+        <div
+          className={classNames(
+            " w-full bg-gray-200 rounded-10 p-15",
+            isCrowdFundingPage ? "ns:w-[390px]" : "xs:w-[500px]"
+          )}
+        >
           <div className="text-[16px] leading-[20px]">
             Promote Your Fundraiser
           </div>
@@ -60,6 +78,18 @@ export const FinalTouchesPage: React.FC<StepNumberPropsType> = ({
             />
           </div>
         </div>
+        {!isCrowdFundingPage && (
+          <div className="xs:w-[500px] w-full">
+            <PageSectionTitle title="Confirm" />
+            <div className="mt-2.5">
+              <GeneralCheckBoxList
+                options={FinalTouchPageCheckboxData}
+                selectedValues={isConfirm}
+                setValues={setIsConfirm}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

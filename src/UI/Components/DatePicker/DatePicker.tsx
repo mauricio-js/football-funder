@@ -83,12 +83,17 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       <style>
         {`
         input::-webkit-calendar-picker-indicator {
-          cursor: pointer;
-          position:absolute;
-          right:20px;
-          top:15px;
-          opacity:0;
-          z-index:100;
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: -30px;
+        top: 0;
+        width: auto;
+        z-index:100
         }
       `}
       </style>

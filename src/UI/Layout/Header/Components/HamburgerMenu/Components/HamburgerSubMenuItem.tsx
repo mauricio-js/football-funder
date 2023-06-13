@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useDispatch, useSelector } from "react-redux";
+import { setShowMobileMenu } from "Data/LayoutState";
 import { MenuItemType } from "types";
 
 export interface ListItemProps {
@@ -8,6 +11,12 @@ export interface ListItemProps {
 
 export const HamburgerSubMenuItem: React.FC<ListItemProps> = ({ List }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onGoNavigate = (href: string) => {
+    navigate(href);
+    dispatch(setShowMobileMenu(false));
+  };
   return (
     <>
       <div className="px-[10px] py-[20px]">
@@ -19,7 +28,7 @@ export const HamburgerSubMenuItem: React.FC<ListItemProps> = ({ List }) => {
             <div key={index}>
               <button
                 className="text-green-10 font-medium text-[16px] leading-[22px]"
-                onClick={() => navigate(element.href)}
+                onClick={() => onGoNavigate(element.href)}
               >
                 {element.title}
               </button>

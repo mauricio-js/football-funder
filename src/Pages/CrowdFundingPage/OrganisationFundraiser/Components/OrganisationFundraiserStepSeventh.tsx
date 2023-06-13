@@ -4,7 +4,7 @@ import { FinalTouchesPage } from "UI";
 export const OrganisationFundraiserStepSeventh: React.FC = () => {
   return (
     <div>
-      <FinalTouchesPage stepNumber="Step 7" />
+      <FinalTouchesPage stepNumber="Step 7" isCrowdFundingPage={true} />
     </div>
   );
 };

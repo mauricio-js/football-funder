@@ -23,7 +23,7 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
     <div className={classNames("flex justify-between items-center", align)}>
       <label
         id="label1"
-        className={classNames("flex-1 text-base font-normal", textClass)}
+        className={classNames("flex-1", textClass)}
         onClick={() => onSelect(value)}
       >
         {label}

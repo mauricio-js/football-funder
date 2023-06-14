@@ -1,7 +1,7 @@
 import React from "react";
 import { BasicInformationPage } from "UI";
 
-export const OrganisationListingStepThird = () => {
+export const OrganisationAdvertisingStepThird = () => {
   return (
     <BasicInformationPage
       isAuth={false}

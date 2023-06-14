@@ -1,7 +1,7 @@
 import React from "react";
 import { BasicInformationPage } from "UI";
 
-export const IndividualListingStepSecond = () => {
+export const IndividualAdvertisingStepSecond = () => {
   return (
     <div>
       <BasicInformationPage

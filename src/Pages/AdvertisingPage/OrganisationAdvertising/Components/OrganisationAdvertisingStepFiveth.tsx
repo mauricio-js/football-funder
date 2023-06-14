@@ -1,7 +1,7 @@
 import React from "react";
 import { AddDetailsPage } from "UI";
 
-export const OrganisationListingStepFiveth: React.FC = () => {
+export const OrganisationAdvertisingStepFiveth: React.FC = () => {
   return (
     <div>
       <AddDetailsPage

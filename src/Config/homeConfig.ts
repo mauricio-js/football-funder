@@ -9,6 +9,7 @@ import {
   ORGANISATIONFUNDRAISER_URL,
 //   ORGANISATIONINDIVIDUAL_URL,
   ORGANISATIONLISTING_URL,
+  SPONSORSHIPLISTING_URL
 } from "Lib";
 import FirstCarouselCard from "Assets/images/home/first-carousel-card.png";
 import SecondCarouselCard from 'Assets/images/home/second-carousel-card.png'
@@ -73,7 +74,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "Interested in showcasing your brand using football? Browse opportunities in your area.",
     backgroundImage: AdvertisingBuyImg,
     buttonName: "Explore",
-    linkUrl:ORGANISATIONLISTING_URL
+    linkUrl:ADSLISTING_URL
   },
   {
     id: 2,
@@ -82,7 +83,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: AdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:ADSLISTING_URL
+     linkUrl:ORGANISATIONLISTING_URL
   },
 ];
 export const MobileAdvertisingCardData: AdsCardDataType[] = [
@@ -93,7 +94,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "Interested in showcasing your brand using football? Browse opportunities in your area.",
     backgroundImage: MobileAdvertisingBuyImg,
     buttonName: "Explore",
-     linkUrl:ORGANISATIONLISTING_URL
+     linkUrl:ADSLISTING_URL
   },
   {
     id: 2,
@@ -102,7 +103,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: MobileAdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:ADSLISTING_URL
+     linkUrl:ORGANISATIONLISTING_URL
   },
 ];
 export const SponsorshipData: AdsCardDataType[] = [
@@ -113,7 +114,7 @@ export const SponsorshipData: AdsCardDataType[] = [
       "Amplify the presence of your business locally or nationally through football sponsorship.",
     backgroundImage: SponsorshipBuyImg,
     buttonName: "Explore",
-     linkUrl:""
+     linkUrl:SPONSORSHIPLISTING_URL
   },
   {
     id: 2,
@@ -133,7 +134,7 @@ export const MobileSponsorshipData: AdsCardDataType[] = [
       "Amplify the presence of your business locally or nationally through football sponsorship.",
     backgroundImage: MobileSponsorshipBuyImg,
     buttonName: "Explore",
-     linkUrl:""
+     linkUrl:SPONSORSHIPLISTING_URL
   },
   {
     id: 2,

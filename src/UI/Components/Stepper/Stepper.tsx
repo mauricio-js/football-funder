@@ -40,8 +40,7 @@ export const Stepper: React.FC<ParentComponentProps> = ({
       {currentStep !== pages.length - 1 && (
         <div
           className={classNames(
-            " px-5",
-            "flex max-sm:flex-col ",
+            "px-5 flex max-sm:flex-col-reverse",
             "max-sm:items-center gap-y-5 mx-auto",
             currentStep > 0 ? "justify-between" : "justify-end",
             pages[currentStep].name === "EmailConfirmPage"
@@ -51,6 +50,10 @@ export const Stepper: React.FC<ParentComponentProps> = ({
             pages[currentStep].name === "EmailSuccessPage"
               ? "w-[600px] max-sm:w-full  mb-[530px] max-lg:mb-[300px]"
               : "w-[1000px] max-lg:w-full  mb-[150px] max-ns:mb-[100px]"
+            // pages[currentStep].name === "EmailSuccessPage" ||
+            //   pages[currentStep].name === "EmailConfirmPage"
+            //   ? "max-sm:flex-col-reverse"
+            //   : "max-sm:flex-col"
           )}
         >
           {currentStep > 0 && currentStep < pages.length - 1 && (

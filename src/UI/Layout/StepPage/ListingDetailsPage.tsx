@@ -10,9 +10,9 @@ import {
 } from "UI";
 import {
   CommencementDateDate,
-  EndPeriodData,
+  EndPeriodDateData,
   IncludingVatData,
-  StartPeriodData,
+  StartPeriodDateData,
 } from "Config";
 import { StepNumberPropsType } from "types";
 
@@ -88,14 +88,14 @@ export const ListingDetailsPage: React.FC<StepNumberPropsType> = ({
           <div className="mt-15 flex gap-2.5">
             <div className="w-1/2">
               <DatePicker
-                data={StartPeriodData}
+                data={StartPeriodDateData}
                 setValue={setStartPeriod}
                 defaultValue=""
               />
             </div>
             <div className="w-1/2">
               <DatePicker
-                data={EndPeriodData}
+                data={EndPeriodDateData}
                 setValue={setEndPeriod}
                 defaultValue=""
               />

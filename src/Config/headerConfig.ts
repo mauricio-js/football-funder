@@ -6,7 +6,8 @@ import {
 //   HOWITWORKS_URL,
   ORGANISATIONFUNDRAISER_URL,
 //   ORGANISATIONINDIVIDUAL_URL,
-  ORGANISATIONLISTING_URL
+    ORGANISATIONLISTING_URL,
+    SPONSORSHIPLISTING_URL
 } from "Lib";
 import {
     ButtonItemType,
@@ -61,7 +62,7 @@ export const sponsorshipButtonData: MenuItemType = {
         children: [
             {
                 title: "Buy",
-                href: "/home"
+                href: SPONSORSHIPLISTING_URL
             },
             {
                 title: "Sell",
@@ -75,11 +76,11 @@ export const advertisingButtonData: MenuItemType = {
         children: [
             {
                 title: "Buy",
-                href: ORGANISATIONLISTING_URL
+                href: ADSLISTING_URL
             },
             {
                 title: "Sell",
-                href: ADSLISTING_URL
+                href: ORGANISATIONLISTING_URL
             },
         ]
 }
@@ -133,11 +134,12 @@ export const moreButtonData: MenuItemType = {
        children: [
             {
                 title: "Buy",
-                href: ORGANISATIONLISTING_URL
+                href: ADSLISTING_URL
             },
             {
                 title: "Sell",
-                href: ADSLISTING_URL
+                href:  ORGANISATIONLISTING_URL
+               
             },
         ]
     },
@@ -147,7 +149,7 @@ export const moreButtonData: MenuItemType = {
       children: [
             {
                 title: "Buy",
-                href: "/home"
+                href: SPONSORSHIPLISTING_URL
             },
             {
                 title: "Sell",

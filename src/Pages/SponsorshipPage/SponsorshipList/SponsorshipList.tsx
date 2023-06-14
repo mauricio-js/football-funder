@@ -2,7 +2,7 @@ import React from "react";
 import { ListingPage } from "UI";
 import { SponsorshipListData } from "Config";
 
-export const Sponsorship: React.FC = () => {
+export const SponsorshipList: React.FC = () => {
   return (
     <div>
       <ListingPage

@@ -55,10 +55,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           onBlur={handleBlur}
           placeholder="1"
         />
-        <div
-          className="absolute h-full flex items-center top-0 right-5 text-[20px] z-10"
-          onFocus={handleFocus}
-        >
+        <div className="absolute h-full flex items-center top-0 right-5 text-[20px] z-10">
           <TbCalendar />
         </div>
         <label
@@ -95,6 +92,22 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         width: auto;
         z-index:100
         }
+        input[type=date]::-webkit-datetime-edit-text {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=date]::-webkit-datetime-edit-month-field{
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=date]::-webkit-datetime-edit-day-field {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=date]::-webkit-datetime-edit-year-field {
+    -webkit-appearance: none;
+    display: none;
+}
       `}
       </style>
     </div>

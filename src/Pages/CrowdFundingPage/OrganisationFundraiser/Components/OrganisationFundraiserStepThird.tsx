@@ -7,10 +7,12 @@ export const OrganisationFundraiserStepThird: React.FC = () => {
       <AddDetailsPage
         stepNumber="Step 3"
         addPerk={false}
-        advertNumber={false}
+        isShowAdvertNum={false}
         descriptionTitle="About the fundraiser"
+        pageTitle="Create your fundraiser"
         titleImage="Fundraiser title image"
         pitchImage="Fundraiser pitch image/video "
+        isShowDesciptionPanel={true}
       />
     </div>
   );

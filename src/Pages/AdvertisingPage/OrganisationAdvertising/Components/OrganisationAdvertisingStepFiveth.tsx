@@ -7,10 +7,12 @@ export const OrganisationAdvertisingStepFiveth: React.FC = () => {
       <AddDetailsPage
         stepNumber="Step 5"
         addPerk={true}
-        advertNumber={true}
+        isShowAdvertNum={true}
+        isShowDesciptionPanel={true}
         descriptionTitle="Description of advert"
-        titleImage="Title image"
+        pageTitle="Create your listing"
         pitchImage="Listing pitch image/video "
+        titleImage="Title image"
       />
     </div>
   );

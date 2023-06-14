@@ -12,6 +12,7 @@ export const OrganisationAdvertisingStepSecond = () => {
         showModifyAlert={false}
         showProfileURL={true}
         contactText="Please provide the details of the organisation that you are listing advertising opportunities for."
+        pageTitle="Create your listing"
         stepTitle="Organisation information"
         stepNumber="Step 2"
       />

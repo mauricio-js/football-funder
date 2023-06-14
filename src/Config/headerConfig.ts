@@ -6,7 +6,8 @@ import {
 //   HOWITWORKS_URL,
   ORGANISATIONFUNDRAISER_URL,
 //   ORGANISATIONINDIVIDUAL_URL,
-    ORGANISATIONLISTING_URL,
+    ORGANISATIONADVERTISING_URL,
+    ORGANISATIONSPONSORSHIP_URL,
     SPONSORSHIPLISTING_URL
 } from "Lib";
 import {
@@ -66,7 +67,7 @@ export const sponsorshipButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: "/home"
+                href: ORGANISATIONSPONSORSHIP_URL
             },
         ]
 }
@@ -80,7 +81,7 @@ export const advertisingButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: ORGANISATIONLISTING_URL
+                href: ORGANISATIONADVERTISING_URL
             },
         ]
 }
@@ -138,7 +139,7 @@ export const moreButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href:  ORGANISATIONLISTING_URL
+                href:  ORGANISATIONADVERTISING_URL
                
             },
         ]
@@ -153,7 +154,7 @@ export const moreButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: "/home"
+                href: ORGANISATIONSPONSORSHIP_URL
             },
         ]
     },

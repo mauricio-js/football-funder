@@ -7,9 +7,12 @@ import {
   HOWITWORKS_URL,
   ORGANISATIONFUNDRAISER_URL,
   INDIVIDUALFUNDRAISER_URL,
-  ORGANISATIONLISTING_URL,
-  INDIVIDUALLISTING_URL,
+  ORGANISATIONADVERTISING_URL,
+  ORGANISATIONSPONSORSHIP_URL,
+  INDIVIDUALADVERTISING_URL,
+  INDIVIDUALSPONSORSHIP_URL,
   SPONSORSHIPLISTING_URL,
+  PROMOTE_URL,
 } from "Lib";
 import {
   AdsList,
@@ -19,9 +22,12 @@ import {
   HowItWorks,
   IndividualFundraiser,
   IndividualListing,
+  IndividualSponsorship,
   Landing,
   OrganisationFundraiser,
   OrganisationListing,
+  OrganisationSponsorship,
+  Promote,
   SponsorshipList,
 } from "Pages";
 import {
@@ -70,11 +76,23 @@ function App() {
           <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
           <Route path={ADSLISTING_URL} element={<AdsList />} />
           <Route
-            path={ORGANISATIONLISTING_URL}
+            path={ORGANISATIONADVERTISING_URL}
             element={<OrganisationListing />}
           />
-          <Route path={INDIVIDUALLISTING_URL} element={<IndividualListing />} />
+          <Route
+            path={INDIVIDUALADVERTISING_URL}
+            element={<IndividualListing />}
+          />
+          <Route
+            path={ORGANISATIONSPONSORSHIP_URL}
+            element={<OrganisationSponsorship />}
+          />
+          <Route
+            path={INDIVIDUALSPONSORSHIP_URL}
+            element={<IndividualSponsorship />}
+          />
           <Route path={SPONSORSHIPLISTING_URL} element={<SponsorshipList />} />
+          <Route path={PROMOTE_URL} element={<Promote />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

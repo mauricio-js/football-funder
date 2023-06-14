@@ -15,18 +15,20 @@ export const AmountShow: React.FC<ShowAmountProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState(amount.toLocaleString("en-US"));
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value.replace(/,/g, "");
+    const value = event.target.value.replace(/\D/g, "");
     setInputValue(value);
     const newAmount = Number(value);
     if (!isNaN(newAmount)) {
+      setInputValue(newAmount.toLocaleString("en-US"));
       setAmount(newAmount);
     }
   };
+  // console.log("amount", amount, inputValue);
 
   return (
     <div className="relative">
       <input
-        type="string"
+        type="text"
         value={inputValue}
         className={classNames(
           "pl-10 pr-15 py-15 bg-white border border-1 rounded-10 h-[54px] appearance-none focus:outline-none w-full",

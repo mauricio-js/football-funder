@@ -1,6 +1,7 @@
 import { IconType } from "react-icons/lib";
 export interface ButtonDataType { 
     backgroundColor?: string,
+    padding?: string;
     width?: string,
     height?: string,
     text?:string,

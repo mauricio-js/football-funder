@@ -11,6 +11,7 @@ export const IndividualFundraiserSignInStepSecond = () => {
       showModifyAlert={true}
       showProfileURL={false}
       contactText="Please provide the details of the legal contact for the fundraiser."
+      pageTitle="Create your listing"
       stepTitle="Your basic information"
       stepNumber="Step 2"
     />

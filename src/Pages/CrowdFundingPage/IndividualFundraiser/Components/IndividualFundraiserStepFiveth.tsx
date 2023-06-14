@@ -4,7 +4,10 @@ import { AddRewardsThirdPage } from "UI";
 export const IndividualFundraiserStepFiveth: React.FC = () => {
   return (
     <div>
-      <AddRewardsThirdPage stepNumber="Step 5" />
+      <AddRewardsThirdPage
+        pageTitle="Create your fundraiser"
+        stepNumber="Step 5"
+      />
     </div>
   );
 };

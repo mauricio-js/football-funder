@@ -5,12 +5,14 @@ export const IndividualAdvertisingStepFourth: React.FC = () => {
   return (
     <div>
       <AddDetailsPage
-        stepNumber="Step 4"
         addPerk={true}
-        advertNumber={true}
+        isShowAdvertNum={true}
+        isShowDesciptionPanel={false}
         descriptionTitle="Description of advert"
-        titleImage="Title image"
+        pageTitle="Create your listing"
         pitchImage="Listing pitch image/video "
+        stepNumber="Step 4"
+        titleImage="Title image"
       />
     </div>
   );

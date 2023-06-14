@@ -6,11 +6,12 @@ import {
   PageTitle,
   StepLabel,
 } from "UI";
-import { StepNumberPropsType } from "types";
+import { StepPagePropsType } from "types";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-export const AddRewardsThirdPage: React.FC<StepNumberPropsType> = ({
+export const AddRewardsThirdPage: React.FC<StepPagePropsType> = ({
+  pageTitle,
   stepNumber,
 }) => {
   return (
@@ -20,7 +21,7 @@ export const AddRewardsThirdPage: React.FC<StepNumberPropsType> = ({
          mb-[90px] max-ns:mb-30 mx-auto"
     >
       <div className="flex flex-col gap-30">
-        <PageTitle title="Create your fundraiser" />
+        <PageTitle title={pageTitle} />
         <StepLabel number={stepNumber} title="Add rewards" />
         <PageSectionTitle
           intro="Give your supporters something back by offering rewards for a certain donation amount. 

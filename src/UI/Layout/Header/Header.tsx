@@ -118,7 +118,10 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
                   <div className="flex items-center">
                     <button
                       className="bl:hidden ml-5 max-vs:ml-1"
-                      onClick={() => dispatch(setShowMobileMenu(true))}
+                      onClick={() => {
+                        dispatch(setShowMobileMenu(true));
+                        window.scrollTo(0, 0);
+                      }}
                     >
                       <div className="text-2xl">
                         <MdMenu />

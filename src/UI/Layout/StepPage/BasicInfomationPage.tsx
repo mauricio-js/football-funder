@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { StepPagePropsType } from "types";
 import {
   CheckBox,
-  Input,
+  // CustomizeDatePicker,
   DropdownInput,
+  Input,
   PageSectionTitle,
   PageTitle,
   Select,
@@ -123,6 +124,7 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
                   setValue={setDate}
                   defaultValue=""
                 />
+                {/* <CustomizeDatePicker /> */}
               </div>
             )}
             <DropdownInput
@@ -205,6 +207,24 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
           </div>
         </div>
       )}
+      {showProfileURL && (
+        <div className="mt-30 md:w-[630px]">
+          <PageSectionTitle
+            title="Profile URL"
+            intro="Each club and organisation signed up to Football Funder is given their own profile page to share their fundraisers and advertising or sponsorship listings from one place. "
+          />
+          <div className="mt-7 introText">
+            Enter your preferred subdomain name below:
+          </div>
+          <div className="mt-[35px] xs:w-[500px]">
+            <Input
+              data={ProfileURLData}
+              setValue={setProfileURL}
+              defaultValue="footballfunder.com"
+            />
+          </div>
+        </div>
+      )}
       {showConfirmation && (
         <div className="mt-30">
           <PageSectionTitle title="Confirmation" />
@@ -230,24 +250,6 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
               <MdAnnouncement />
             </div>
             You can modify your fundraiser details at any time after posting.
-          </div>
-        </div>
-      )}
-      {showProfileURL && (
-        <div className="mt-30 md:w-[630px]">
-          <PageSectionTitle
-            title="Profile URL"
-            intro="Each club and organisation signed up to Football Funder is given their own profile page to share their fundraisers and advertising or sponsorship listings from one place. "
-          />
-          <div className="mt-7 introText">
-            Enter your preferred subdomain name below:
-          </div>
-          <div className="mt-[35px] xs:w-[500px]">
-            <Input
-              data={ProfileURLData}
-              setValue={setProfileURL}
-              defaultValue="footballfunder.com"
-            />
           </div>
         </div>
       )}

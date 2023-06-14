@@ -9,7 +9,7 @@ export interface DropdownProps {
 
 export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
   const navigate = useNavigate();
-  const [isShowMenu, setIsShowMenu] = useState<boolean>(true);
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
 
   return (
     <div className="relative group cursor-pointer">
@@ -17,6 +17,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
         id="dropdownDefaultButton"
         className="bg-green-10 p-[10px] hover:bg-black hover:bg-opacity-5 
           rounded-lg text-[14px] font-semibold leading-5 text-center inline-flex items-center"
+        onClick={() => setIsShowMenu(true)}
       >
         {List.title}
         {List.children && <Arrow />}

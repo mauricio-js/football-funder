@@ -6,8 +6,10 @@ import {
   CROWDFUNDINGLIST_URL,
   HOWITWORKS_URL,
   ORGANISATIONFUNDRAISER_URL,
-  ORGANISATIONINDIVIDUAL_URL,
+  INDIVIDUALFUNDRAISER_URL,
   ORGANISATIONLISTING_URL,
+  INDIVIDUALLISTING_URL,
+  SPONSORSHIPLISTING_URL,
 } from "Lib";
 import {
   AdsList,
@@ -16,10 +18,11 @@ import {
   Home,
   HowItWorks,
   IndividualFundraiser,
+  IndividualListing,
   Landing,
   OrganisationFundraiser,
   OrganisationListing,
-  Sponsorship,
+  SponsorshipList,
 } from "Pages";
 import {
   BrowserRouter,
@@ -61,7 +64,7 @@ function App() {
             element={<OrganisationFundraiser />}
           />
           <Route
-            path={ORGANISATIONINDIVIDUAL_URL}
+            path={INDIVIDUALFUNDRAISER_URL}
             element={<IndividualFundraiser />}
           />
           <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
@@ -70,7 +73,8 @@ function App() {
             path={ORGANISATIONLISTING_URL}
             element={<OrganisationListing />}
           />
-          <Route path="/Sponsorship" element={<Sponsorship />} />
+          <Route path={INDIVIDUALLISTING_URL} element={<IndividualListing />} />
+          <Route path={SPONSORSHIPLISTING_URL} element={<SponsorshipList />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

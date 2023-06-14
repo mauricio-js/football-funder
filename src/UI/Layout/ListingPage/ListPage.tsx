@@ -55,7 +55,7 @@ export const ListingPage: React.FC<ListingPageProps> = ({
           </div>
           <div className="bl:w-[1000px] w-full max-bl:px-5 mx-auto">
             <div className="relative">
-              <div className="z-30 fixed bl:hidden top-[600px] w-full ">
+              <div className="z-30 fixed bl:hidden top-[320px] w-full ">
                 <button
                   className=" w-[150px] h-[50px] mx-auto border-[1px] border-gray-300  justify-center flex items-center shadow-xl  rounded-20 bg-white "
                   onClick={() => setHorizonalLayout(!horizontalLayout)}

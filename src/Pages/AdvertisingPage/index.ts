@@ -1,3 +1,3 @@
 export * from './AdsList';
-export * from './IndividualListing';
-export * from './OrganisationListing';
+export * from './IndividualAdvertising';
+export * from './OrganisationAdvertising';

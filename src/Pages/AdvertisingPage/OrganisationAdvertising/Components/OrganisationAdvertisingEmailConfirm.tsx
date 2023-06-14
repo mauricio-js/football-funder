@@ -1,6 +1,6 @@
 import React from "react";
 import { EmailConfirmPage } from "UI";
-export const OrganisationListingEmailConfirm: React.FC = () => {
+export const OrganisationAdvertisingEmailConfirm: React.FC = () => {
   return (
     <div>
       <EmailConfirmPage />

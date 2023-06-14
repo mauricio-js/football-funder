@@ -31,7 +31,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     }
   };
 
-  console.log("input value", inputType, inputValue);
+  //console.log("input value", inputType, inputValue);
 
   return (
     <div className="flex flex-col">

@@ -15,6 +15,10 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
   isCrowdFundingPage,
   stepNumber,
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [pageTitle, setPageTitle] = useState<string>(
+    isCrowdFundingPage ? "Create your fundraiser" : "Create your listings"
+  );
   const [overlayImage, setOverlayImage] = useState<File | null>(null);
   const [isConfirm, setIsConfirm] = useState<string[]>([""]);
   const removeOverlayImage = () => {
@@ -27,7 +31,7 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
          mb-[100px] max-ns:mb-30 mx-auto"
     >
       <div className="flex flex-col gap-30">
-        <PageTitle title="Create your fundraiser" />
+        <PageTitle title={pageTitle} />
         <StepLabel number={stepNumber} title="Final touches" />
         {isCrowdFundingPage && (
           <div>

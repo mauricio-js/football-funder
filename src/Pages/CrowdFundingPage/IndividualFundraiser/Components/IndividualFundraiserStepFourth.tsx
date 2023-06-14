@@ -4,7 +4,10 @@ import { AddRewardsSecondPage } from "UI";
 export const IndividualFundraiserStepFourth = () => {
   return (
     <div>
-      <AddRewardsSecondPage stepNumber="Step 4" />
+      <AddRewardsSecondPage
+        pageTitle="Create your fundraiser"
+        stepNumber="Step 4"
+      />
     </div>
   );
 };

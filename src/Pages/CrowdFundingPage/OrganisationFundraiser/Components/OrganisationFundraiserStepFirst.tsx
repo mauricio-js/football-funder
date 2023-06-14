@@ -12,6 +12,7 @@ export const OrganisationFundraiserStepFirst = () => {
         showModifyAlert={true}
         showProfileURL={false}
         contactText="Please provide the details of the legal contact for the fundraiser."
+        pageTitle="Create your fundraiser"
         stepTitle="Your basic information"
         stepNumber="Step 1"
       />

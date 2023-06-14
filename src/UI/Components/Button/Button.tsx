@@ -8,6 +8,7 @@ export const Button: React.FC<ButtonDataType> = (props) => {
       className={classNames(
         "rounded-10 flex items-center justify-center",
         props.backgroundColor,
+        props.padding,
         props.height,
         props.width,
         props.textColor,

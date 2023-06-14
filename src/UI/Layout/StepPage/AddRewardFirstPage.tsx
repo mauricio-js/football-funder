@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { AddAwardPanel, PageSectionTitle, PageTitle, StepLabel } from "UI";
-import { StepNumberPropsType } from "types";
+import { StepPagePropsType } from "types";
 
-export const AddRewardsFirstPage: React.FC<StepNumberPropsType> = ({
+export const AddRewardsFirstPage: React.FC<StepPagePropsType> = ({
+  pageTitle,
   stepNumber,
 }) => {
   const [addReward, setAddReward] = useState<boolean>(false);
@@ -12,7 +13,7 @@ export const AddRewardsFirstPage: React.FC<StepNumberPropsType> = ({
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
          mb-[280px] max-ns:mb-30 mx-auto"
     >
-      <PageTitle title="Create your fundraiser" />
+      <PageTitle title={pageTitle} />
       <div className="mt-30">
         <StepLabel number={stepNumber} title="Add rewards" />
       </div>

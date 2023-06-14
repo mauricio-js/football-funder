@@ -14,9 +14,12 @@ import {
   IncludingVatData,
   StartPeriodDateData,
 } from "Config";
-import { StepNumberPropsType } from "types";
+import { ListingDetailsPagePropsType } from "types";
 
-export const ListingDetailsPage: React.FC<StepNumberPropsType> = ({
+export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
+  description,
+  pageTitle,
+  listingTitle,
   stepNumber,
 }) => {
   const [fundraiserAmount, setFundraiserAmount] = useState<number>(350);
@@ -30,19 +33,17 @@ export const ListingDetailsPage: React.FC<StepNumberPropsType> = ({
 
   return (
     <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 mb-[90px] max-ns:mb-30 mx-auto">
-      <PageTitle title="Create your fundraiser" />
+      <PageTitle title={pageTitle} />
 
       <div className="mt-30 ">
         <StepLabel number={stepNumber} title="Listing details" />
       </div>
-      <div className="mt-30">
-        <PageSectionTitle
-          title="Advertising listing title"
-          intro="What would you like the title of your listing to be?"
-        />
-      </div>
-      <div className="xs:w-[500px] flex flex-col gap-30">
+      <div className="mt-30 xs:w-[500px] flex flex-col gap-30">
         <div>
+          <PageSectionTitle
+            title={listingTitle}
+            intro="What would you like the title of your listing to be?"
+          />
           <div className="mt-15">
             <Textarea
               title="Title"
@@ -53,6 +54,23 @@ export const ListingDetailsPage: React.FC<StepNumberPropsType> = ({
             />
           </div>
         </div>
+        {description && (
+          <div>
+            <PageSectionTitle
+              title="Description of sponsorship"
+              intro="Give a detailed description of the sponsorship you are selling - such as location, dimensions, potential number of impressions etc."
+            />
+            <div className="mt-15">
+              <Textarea
+                title="Title"
+                limit={150}
+                height="h-[124px]"
+                value="Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin."
+                showLeftCharacters={true}
+              />
+            </div>
+          </div>
+        )}
         <div>
           <PageSectionTitle
             title="Amount"
@@ -102,18 +120,18 @@ export const ListingDetailsPage: React.FC<StepNumberPropsType> = ({
             </div>
           </div>
         </div>
-        <div>
-          <PageSectionTitle
-            title="Commencement date (optional)"
-            intro="If you have a date in mind for when the advert will be available, please select below."
+      </div>
+      <div className="mt-30">
+        <PageSectionTitle
+          title="Commencement date (optional)"
+          intro="If you have a date in mind for when the advert will be available, please select below."
+        />
+        <div className="mt-15 xs:w-[500px]">
+          <DatePicker
+            data={CommencementDateDate}
+            setValue={setCommencement}
+            defaultValue=""
           />
-          <div className="mt-15">
-            <DatePicker
-              data={CommencementDateDate}
-              setValue={setCommencement}
-              defaultValue=""
-            />
-          </div>
         </div>
       </div>
     </div>

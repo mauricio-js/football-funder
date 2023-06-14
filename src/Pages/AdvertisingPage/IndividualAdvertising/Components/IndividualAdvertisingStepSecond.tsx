@@ -12,6 +12,7 @@ export const IndividualAdvertisingStepSecond = () => {
         showModifyAlert={true}
         showProfileURL={true}
         contactText="Please provide the details of the commercial contact for the advertising."
+        pageTitle="Create your listing"
         stepTitle="Your basic information"
         stepNumber="Step 2"
       />

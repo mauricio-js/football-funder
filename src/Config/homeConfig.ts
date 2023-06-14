@@ -8,7 +8,8 @@ import {
 //   HOWITWORKS_URL,
   ORGANISATIONFUNDRAISER_URL,
 //   ORGANISATIONINDIVIDUAL_URL,
-  ORGANISATIONLISTING_URL,
+  ORGANISATIONADVERTISING_URL,
+  ORGANISATIONSPONSORSHIP_URL,
   SPONSORSHIPLISTING_URL
 } from "Lib";
 import FirstCarouselCard from "Assets/images/home/first-carousel-card.png";
@@ -83,7 +84,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: AdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:ORGANISATIONLISTING_URL
+     linkUrl:ORGANISATIONADVERTISING_URL
   },
 ];
 export const MobileAdvertisingCardData: AdsCardDataType[] = [
@@ -103,7 +104,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: MobileAdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:ORGANISATIONLISTING_URL
+     linkUrl:ORGANISATIONADVERTISING_URL
   },
 ];
 export const SponsorshipData: AdsCardDataType[] = [
@@ -123,7 +124,7 @@ export const SponsorshipData: AdsCardDataType[] = [
       "Attract sponsors to your club or organisation by listing your important sponsorship deals.",
     backgroundImage: SponsorshipSellImg,
     buttonName: "Sell your spots",
-     linkUrl:""
+     linkUrl:ORGANISATIONSPONSORSHIP_URL
   },
 ];
 export const MobileSponsorshipData: AdsCardDataType[] = [
@@ -143,7 +144,7 @@ export const MobileSponsorshipData: AdsCardDataType[] = [
       "Attract sponsors to your club or organisation by listing your important sponsorship deals.",
     backgroundImage: MobileSponsorshipSellImg,
     buttonName: "Sell your spots",
-     linkUrl:""
+     linkUrl:ORGANISATIONSPONSORSHIP_URL
   },
 ];
 

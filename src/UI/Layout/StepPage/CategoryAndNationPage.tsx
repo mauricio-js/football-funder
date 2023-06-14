@@ -4,14 +4,17 @@ import { CategoryButtonList, PageSectionTitle, PageTitle, StepLabel } from "UI";
 import { FundraiserCategoryData, FundraiserNationData } from "Config";
 
 interface CategoryAndNationPageProps {
+  isOrganisation: boolean;
   pageTitle: string;
 }
 
 export const CategoryAndNationPage: React.FC<CategoryAndNationPageProps> = ({
+  isOrganisation,
   pageTitle,
 }) => {
-  const [fundraiserCategory, setFundraiserCategory] =
-    useState<string>("individual");
+  const [fundraiserCategory, setFundraiserCategory] = useState<string>(
+    isOrganisation ? "club" : "individual"
+  );
   const [fundraiseNation, setFundraiserNation] = useState<string>("england");
 
   return (

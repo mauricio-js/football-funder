@@ -4,7 +4,10 @@ import { CategoryAndNationPage } from "UI";
 export const IndividualAdvertisingStepFirst = () => {
   return (
     <div>
-      <CategoryAndNationPage pageTitle="Create your listing" />
+      <CategoryAndNationPage
+        isOrganisation={false}
+        pageTitle="Create your listing"
+      />
     </div>
   );
 };

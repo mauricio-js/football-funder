@@ -4,7 +4,10 @@ import { CategoryAndNationPage } from "UI";
 export const IndividualFundraiserSignInStepFirst: React.FC = () => {
   return (
     <div>
-      <CategoryAndNationPage pageTitle="Create your fundraiser" />
+      <CategoryAndNationPage
+        isOrganisation={false}
+        pageTitle="Create your fundraiser"
+      />
     </div>
   );
 };

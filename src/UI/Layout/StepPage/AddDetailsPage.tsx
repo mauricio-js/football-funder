@@ -14,11 +14,13 @@ import { MdOutlineAddCircleOutline } from "react-icons/md";
 
 export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
   stepNumber,
-  advertNumber,
   addPerk,
   descriptionTitle,
   pitchImage,
   titleImage,
+  isShowAdvertNum,
+  isShowDesciptionPanel,
+  pageTitle,
 }) => {
   const [adsNumber, setAdsNumber] = useState<string>("");
   const [vieoUrl, setVideoUrl] = useState<string>("");
@@ -42,28 +44,30 @@ export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
          mb-[60px] max-ns:mb-30 mx-auto"
     >
-      <PageTitle title="Create your fundraiser" />
+      <PageTitle title={pageTitle} />
       <div className="mt-30">
         <StepLabel number={stepNumber} title="Add Details" />
       </div>
       <div className="xs:w-[500px]">
-        <div className="mt-30">
-          <PageSectionTitle
-            title={descriptionTitle}
-            intro="Give a detailed description of your fundraiser."
-          />
-        </div>
-        <div className="mt-[15px] xs:w-[500px]">
-          <Textarea
-            height="ns:h-[350px] vs:h-[390px] "
-            value={
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n\n It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem."
-            }
-            showLeftCharacters={false}
-            title="Description"
-          />
-        </div>
-        {advertNumber && (
+        {isShowDesciptionPanel && (
+          <div className="mt-30">
+            <PageSectionTitle
+              title={descriptionTitle}
+              intro="Give a detailed description of your fundraiser."
+            />
+            <div className="mt-[15px] xs:w-[500px]">
+              <Textarea
+                height="ns:h-[350px] vs:h-[390px] "
+                value={
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n\n It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem."
+                }
+                showLeftCharacters={false}
+                title="Description"
+              />
+            </div>
+          </div>
+        )}
+        {isShowAdvertNum && (
           <div className="mt-30">
             <PageSectionTitle
               title="Number of adverts"

@@ -12,9 +12,10 @@ import {
   Textarea,
 } from "UI";
 import { AvailableNumberData, DeliveryData, DispatchDateData } from "Config";
-import { StepNumberPropsType } from "types";
+import { StepPagePropsType } from "types";
 
-export const AddRewardsSecondPage: React.FC<StepNumberPropsType> = ({
+export const AddRewardsSecondPage: React.FC<StepPagePropsType> = ({
+  pageTitle,
   stepNumber,
 }) => {
   const [fundraiserAmount, setFundraiserAmount] = useState<number>(60);
@@ -29,7 +30,7 @@ export const AddRewardsSecondPage: React.FC<StepNumberPropsType> = ({
   return (
     <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 mb-[90px] max-ns:mb-30 mx-auto">
       <div className="flex max-sm:flex-col max-sm:items-start justify-between items-center">
-        <PageTitle title="Create your fundraiser" />
+        <PageTitle title={pageTitle} />
         <button className="generalSmallText text-green-70">
           Skip adding rewards
         </button>

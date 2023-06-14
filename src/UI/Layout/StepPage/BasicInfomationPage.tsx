@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StepPagePropsType } from "types";
+import { BasinInformationPagePropsType } from "types";
 import {
   CheckBox,
   // CustomizeDatePicker,
@@ -29,9 +29,10 @@ import {
 } from "Config";
 import { MdAnnouncement } from "react-icons/md";
 
-export const BasicInformationPage: React.FC<StepPagePropsType> = ({
+export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
   isAuth,
   contactText,
+  pageTitle,
   showAccountDetails,
   showConfirmation,
   showModifyAlert,
@@ -90,7 +91,7 @@ export const BasicInformationPage: React.FC<StepPagePropsType> = ({
         mb-[120px] max-ns:mb-30 mx-auto"
     >
       <div className="mt-30">
-        <PageTitle title="Create your listing" />
+        <PageTitle title={pageTitle} />
       </div>
       <div className="mt-30">
         <StepLabel number={stepNumber} title={stepTitle} />

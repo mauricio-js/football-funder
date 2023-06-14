@@ -1,6 +1,7 @@
-export interface StepPagePropsType {
-  isAuth: boolean;
+export interface BasinInformationPagePropsType {
   contactText: string;
+  isAuth: boolean;
+  pageTitle: string;
   showAccountDetails: boolean;
   showOrganisation: boolean;
   showProfileURL: boolean;
@@ -9,23 +10,28 @@ export interface StepPagePropsType {
   stepNumber: string;
   stepTitle: string;
 }
-export interface StepNumberPropsType {
+export interface StepPagePropsType {
+  pageTitle: string;
   stepNumber: string;
 }
 
 export interface FinalTouchedPagePropsType { 
-  stepNumber: string;
   isCrowdFundingPage:boolean
-}
-// export interface ListingDetailsPagePropsType { 
-//   stepNumber: string;
-//   isCrowdFundingPage:boolean
-// }
-export interface AddDetailsStepPagePropsType { 
   stepNumber: string;
-  advertNumber: boolean;
+}
+export interface ListingDetailsPagePropsType {
+  description: boolean;
+  listingTitle: string;
+  pageTitle:string
+  stepNumber: string;
+}
+export interface AddDetailsStepPagePropsType { 
   addPerk: boolean;
   descriptionTitle: string;
-  titleImage: string;
+  pageTitle: string;
   pitchImage: string;
+  stepNumber: string;
+  titleImage: string;
+  isShowDesciptionPanel: boolean;
+  isShowAdvertNum:boolean
 }

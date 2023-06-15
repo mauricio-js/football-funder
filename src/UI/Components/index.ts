@@ -9,6 +9,7 @@ export * from './CategoryButton';
 export * from './CategoryButtonList';
 export * from './CheckBox';
 export * from './CheckBoxList';
+export * from './ConfirmMenu';
 export * from './DescriptionPanel';
 export * from './Dropdown';
 export * from './DropdownInput';

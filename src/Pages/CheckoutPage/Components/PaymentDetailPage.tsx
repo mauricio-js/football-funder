@@ -30,7 +30,7 @@ export const PaymentDetailPage: React.FC = () => {
     <div
       className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
-         mb-[200px] max-ns:mb-30 mx-auto"
+        mb-30 mx-auto"
     >
       <PageTitle title="Checkout" />
       <div className="mt-30">
@@ -41,7 +41,7 @@ export const PaymentDetailPage: React.FC = () => {
           <PageSectionTitle title="Total to pay" />
           <div className="mt-15">
             <div className="rounded-10 border-[1px] border-gray-200 bg-gray-100 p-15 flex justify-between">
-              <div className="generalSmallGrayText">Amount</div>
+              <div className="introText">Amount</div>
               <div className="valueText">£35.98</div>
             </div>
           </div>

@@ -24,7 +24,11 @@ export const Checkout: React.FC = () => {
   const ContinueButtonText = ["Continue", "Continue", "Place order"];
   return (
     <div>
-      <Stepper pages={pages} buttonText={ContinueButtonText} />
+      <Stepper
+        pages={pages}
+        buttonText={ContinueButtonText}
+        isShowLastStepButton={true}
+      />
     </div>
   );
 };

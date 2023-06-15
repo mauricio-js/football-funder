@@ -29,7 +29,7 @@
   .introText {
      @apply text-gray-500 text-[14px] leading-[20px] font-medium;
   }
-  
+
   .linkTextButton{
     @apply text-green-70 text-[14px] leading-[20px] font-medium underline cursor-pointer;
   }
@@ -41,11 +41,15 @@
   .generalSmallText{
     @apply text-[14px] leading-[20px] font-medium;
   }
-  .generalSmallGrayText{
-    @apply text-[14px] leading-[20px] text-gray-400 font-medium;
+  .darkIntroText{
+    @apply text-green-70 text-[14px] leading-[20px] font-medium;
   }
+
   .valueText{
     @apply text-green-70 text-[14px] leading-[20px] font-semibold;
+  }
+  .valueTextWhite{
+    @apply text-white text-[14px] leading-[20px] font-semibold;
   }
 
   .buttonText{

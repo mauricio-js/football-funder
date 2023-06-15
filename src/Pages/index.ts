@@ -6,4 +6,5 @@ export * from './Home';
 export * from './HowItWorks';
 export * from './LandingPage';
 export * from './PromotePage';
+export * from './SigninPage';
 export * from './SponsorshipPage';

@@ -2,7 +2,15 @@ import React from "react";
 import { AddmoreBtn } from "UI";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-export const EditableCheckoutPanel: React.FC = () => {
+interface EditableCheckoutPanelProps {
+  handleClick: (value: boolean) => void;
+  value: boolean;
+}
+
+export const EditableCheckoutPanel: React.FC<EditableCheckoutPanelProps> = ({
+  handleClick,
+  value,
+}) => {
   return (
     <div>
       <div className="grid grid-cols-5">
@@ -14,9 +22,13 @@ export const EditableCheckoutPanel: React.FC = () => {
           <div className="valueText">1</div>
           <div className="flex flex-col items-end justify-between">
             <div className="valueText ">£5.99</div>
-            <div>
+            <button
+              onClick={() => {
+                handleClick(true);
+              }}
+            >
               <RiDeleteBinLine />
-            </div>
+            </button>
           </div>
         </div>
       </div>

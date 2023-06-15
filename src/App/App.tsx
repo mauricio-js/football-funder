@@ -11,6 +11,7 @@ import {
   ORGANISATIONSPONSORSHIP_URL,
   INDIVIDUALADVERTISING_URL,
   INDIVIDUALSPONSORSHIP_URL,
+  LOGIN_URL,
   SPONSORSHIPLISTING_URL,
   PROMOTE_URL,
   CHECKOUT_URL,
@@ -30,6 +31,7 @@ import {
   OrganisationListing,
   OrganisationSponsorship,
   Promote,
+  SigninPage,
   SponsorshipList,
 } from "Pages";
 import {
@@ -96,6 +98,7 @@ function App() {
           <Route path={SPONSORSHIPLISTING_URL} element={<SponsorshipList />} />
           <Route path={PROMOTE_URL} element={<Promote />} />
           <Route path={CHECKOUT_URL} element={<Checkout />} />
+          <Route path={LOGIN_URL} element={<SigninPage />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

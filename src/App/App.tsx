@@ -13,9 +13,11 @@ import {
   INDIVIDUALSPONSORSHIP_URL,
   SPONSORSHIPLISTING_URL,
   PROMOTE_URL,
+  CHECKOUT_URL,
 } from "Lib";
 import {
   AdsList,
+  Checkout,
   CrowdfundingList,
   Explore,
   Home,
@@ -93,6 +95,7 @@ function App() {
           />
           <Route path={SPONSORSHIPLISTING_URL} element={<SponsorshipList />} />
           <Route path={PROMOTE_URL} element={<Promote />} />
+          <Route path={CHECKOUT_URL} element={<Checkout />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

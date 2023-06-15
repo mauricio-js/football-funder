@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  AddmoreBtn,
   Button,
   FileInput,
   Input,
@@ -10,7 +11,6 @@ import {
 } from "UI";
 import { AdsNumberData, PerkTitleData, VideoURLData } from "Config";
 import { AddDetailsStepPagePropsType } from "types";
-import { MdOutlineAddCircleOutline } from "react-icons/md";
 
 export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
   stepNumber,
@@ -164,9 +164,12 @@ export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
                   />
                 </div>
                 <div className="mt-5">
-                  <div className="flex items-center generalSmallText text-gray-400 gap-2">
+                  {/* <div className="flex items-center generalSmallText text-gray-400 gap-2">
                     <MdOutlineAddCircleOutline />
                     Add more
+                  </div> */}
+                  <div>
+                    <AddmoreBtn />
                   </div>
                 </div>
               </div>

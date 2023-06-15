@@ -41,8 +41,14 @@
   .generalSmallText{
     @apply text-[14px] leading-[20px] font-medium;
   }
+  .generalSmallGrayText{
+    @apply text-[14px] leading-[20px] text-gray-400 font-medium;
+  }
+  .valueText{
+    @apply text-green-70 text-[14px] leading-[20px] font-semibold;
+  }
 
   .buttonText{
-    @apply text-[16px] leading-[20px] font-semibold
+    @apply text-[16px] leading-[20px] font-semibold 
   }
 }

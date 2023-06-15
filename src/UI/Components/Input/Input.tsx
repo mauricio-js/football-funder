@@ -56,6 +56,7 @@ export const Input: React.FC<InputProps> = ({
           onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           placeholder="1"
+          required
         />
         {data.type === "password" && (
           <div className="absolute h-full right-6 top-0 flex items-center">

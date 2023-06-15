@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Template } from "UI";
+import { Button, PromoteImageTitle, Template } from "UI";
+import { PromoteTitleImageData } from "Config";
 import Ring from "Assets/images/promote/ring.png";
-import FacebookImg from "Assets/images/promote/facebook-img.png";
 
 export const Promote: React.FC = () => {
   return (
@@ -49,30 +49,30 @@ export const Promote: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mt-40">
-            <div className="flex justify-center items-center flex-row max-mm:flex-col gap-y-5 gap-x-14 ">
-              <div>
-                <img src={FacebookImg} alt="facebookimage" />
-              </div>
-              <div className="w-[390px] max-ns:w-full">
-                <div className="stepLabelTitle">FaceBook</div>
-                <div className="mt-2.5 text-[16px] leading-[22px] font-semibold text-green-70">
-                  Post, Stories
-                </div>
-                <div className="mt-30 introText">
-                  Your fundraiser or listing will be featured on Football
-                  Funder’s official Facebook as its own post - and if your club
-                  or organisation is on there, we will partner with you on the
-                  post!
-                  <br />
-                  <br />
-                  We will also share content as a story, widening your reach
-                  even further.
-                </div>
-              </div>
-            </div>
+          <div className="mm:mt-40 mt-16 flex flex-col gap-y-10 gap-x-16">
+            {PromoteTitleImageData.map((data, index) => {
+              return (
+                <PromoteImageTitle
+                  alignStyle={data.alignStyle}
+                  heading={data.heading}
+                  image={data.image}
+                  subheading={data.subheading}
+                  topIntroText={data.topIntroText}
+                  underIntroText={data.underIntroText}
+                />
+              );
+            })}
           </div>
-          <div className="mt-32"></div>
+          <div className="mt-32 flex justify-center -le">
+            <Button
+              backgroundColor="bg-green-10"
+              padding="py-15"
+              text="Promote"
+              width="w-[390px]"
+              textColor="text-green-70"
+              textSize="buttonText"
+            />
+          </div>
         </div>
       </div>
     </Template>

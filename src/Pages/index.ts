@@ -1,4 +1,5 @@
 export * from './AdvertisingPage';
+export * from './CheckoutPage';
 export * from './CrowdFundingPage';
 export * from './Explore';
 export * from './Home';

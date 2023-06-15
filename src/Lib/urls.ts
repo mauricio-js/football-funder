@@ -12,5 +12,6 @@ export const ORGANISATIONSPONSORSHIP_URL = '/sponsorship/createalisting/organisa
 export const INDIVIDUALSPONSORSHIP_URL = '/sponsorship/createalisting/individual';
 export const SPONSORSHIPLISTING_URL = '/sponsorship/listing';
 export const PROMOTE_URL = '/promote';
+export const CHECKOUT_URL = '/checkout';
 export const LOGIN_URL = '/login';
 export const SIGNUP_URL = '/signup';

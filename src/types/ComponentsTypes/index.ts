@@ -7,6 +7,7 @@ export * from './inputType';
 export * from './listingPageType';
 export * from './pageSectionTitleType';
 export * from './pageTitleType';
+export * from './promoteImageTitleType';
 export * from './radioButtonType';
 export * from './selectType'
 export * from './stepLabelType';

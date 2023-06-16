@@ -68,7 +68,7 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
   const [accountConfirmPassword, setAccountConfirmPassword] =
     useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountPassword, setAcccountPassword] = useState<string>("");
+  const [accountPassword, setAccountPassword] = useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
 
@@ -197,7 +197,7 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
             />
             <Input
               data={AccountPasswordData}
-              setValue={setAcccountPassword}
+              setValue={setAccountPassword}
               defaultValue=""
             />
             <Input

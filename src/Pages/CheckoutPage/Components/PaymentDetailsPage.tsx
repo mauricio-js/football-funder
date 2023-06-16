@@ -67,7 +67,7 @@ export const PaymentDetailsPage: React.FC = () => {
                   backgroundColor="bg-green-70"
                   height="h-[50px]"
                   padding="px-5 py-15"
-                  text="Add sponsorship listing"
+                  text="Add advertising listing"
                   textColor="text-white"
                   textSize="introText"
                 />

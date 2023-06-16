@@ -3,5 +3,12 @@ import classNames from "classnames";
 import { textButtonType } from "types/ComponentsTypes/textButtonType";
 
 export const TextButton: React.FC<textButtonType> = (props) => {
-  return <div className={classNames("linkTextButton")}>{props.text}</div>;
+  return (
+    <button
+      className={classNames("linkTextButton")}
+      onClick={props.handleClick}
+    >
+      {props.text}
+    </button>
+  );
 };

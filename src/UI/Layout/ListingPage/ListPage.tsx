@@ -72,7 +72,7 @@ export const ListingPage: React.FC<ListingPageProps> = ({
                     </div>
                   )}
                 </button> */}
-                <button
+                {/* <button
                   className="
                   w-[70px] h-[70px] border-[1px] mx-auto border-gray-300
                    shadow-md shadow-slate-300  rounded-10 bg-white flex justify-center items-center"
@@ -83,7 +83,7 @@ export const ListingPage: React.FC<ListingPageProps> = ({
                   ) : (
                     <TbLayoutGrid size={30} />
                   )}
-                </button>
+                </button> */}
               </div>
               <div className="flex justify-between max-xm:flex-col max-xm:gap-y-5">
                 <div className="flex max-xs:flex-col max-xs:items-start gap-x-15 items-center">
@@ -100,19 +100,21 @@ export const ListingPage: React.FC<ListingPageProps> = ({
                     />
                   </div>
                 </div>
-                <div className="relative flex max-xs:flex-col gap-x-[10px] max-xm:gap-[70px]">
-                  <button
-                    className="z-30 max-bl:hidden w-[50px] border-[1px] border-gray-200 rounded-10 flex justify-center items-center"
-                    onClick={() => setHorizonalLayout(!horizontalLayout)}
-                  >
-                    {horizontalLayout ? <TbLayoutList /> : <TbLayoutGrid />}
-                  </button>
-                  <div className="w-[150px]">
-                    <Filter
-                      isShowFilterModal={() => {
-                        setOpenFilterForm(true);
-                      }}
-                    />
+                <div className="relative flex max-xs:flex-col gap-x-2.5 max-xm:gap-[70px]">
+                  <div className="flex max-xm:flex-row-reverse max-xs:justify-end gap-2.5">
+                    <button
+                      className="z-30  w-[50px] border-[1px] border-gray-200 rounded-10 flex justify-center items-center"
+                      onClick={() => setHorizonalLayout(!horizontalLayout)}
+                    >
+                      {horizontalLayout ? <TbLayoutList /> : <TbLayoutGrid />}
+                    </button>
+                    <div className="w-[150px]">
+                      <Filter
+                        isShowFilterModal={() => {
+                          setOpenFilterForm(true);
+                        }}
+                      />
+                    </div>
                   </div>
                   <div className="relative flex flex-col xs:w-[250px] w-[390px] max-ns:w-full">
                     <Search data={ListingPageSearchData} />

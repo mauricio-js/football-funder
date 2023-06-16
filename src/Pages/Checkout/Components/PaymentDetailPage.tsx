@@ -71,6 +71,8 @@ export const PaymentDetailPage: React.FC = () => {
               currentValue={paymentMethod}
               onSelect={setPaymentMethod}
               classes="flex gap-[15px]"
+              textStyle="text-base"
+              checkboxStyle={false}
             />
           </div>
         </div>

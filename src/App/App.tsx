@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import {
   ADSLISTING_URL,
+  FORGOTPASSWORD_URL,
   HOME_URL,
   EXPLORE_URL,
   CROWDFUNDINGLIST_URL,
@@ -12,6 +13,7 @@ import {
   INDIVIDUALADVERTISING_URL,
   INDIVIDUALSPONSORSHIP_URL,
   SIGNIN_URL,
+  SIGNUP_URL,
   SPONSORSHIPLISTING_URL,
   PROMOTE_URL,
   CHECKOUT_URL,
@@ -21,6 +23,7 @@ import {
   Checkout,
   CrowdfundingList,
   Explore,
+  ForgotPassword,
   Home,
   HowItWorks,
   IndividualFundraiser,
@@ -32,6 +35,7 @@ import {
   OrganisationSponsorship,
   Promote,
   SigninPage,
+  SignUp,
   SponsorshipList,
 } from "Pages";
 import {
@@ -99,6 +103,9 @@ function App() {
           <Route path={PROMOTE_URL} element={<Promote />} />
           <Route path={CHECKOUT_URL} element={<Checkout />} />
           <Route path={SIGNIN_URL} element={<SigninPage />} />
+          <Route path={SIGNUP_URL} element={<SignUp />} />
+          <Route path={SIGNUP_URL} element={<SignUp />} />
+          <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

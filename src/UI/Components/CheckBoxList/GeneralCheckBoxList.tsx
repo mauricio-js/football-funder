@@ -35,7 +35,7 @@ export const GeneralCheckBoxList: React.FC<CheckboxListDataProps> = ({
               label={item.label}
               checked={selectedValues.includes(item.value)}
               onSelect={onHandleSelectedCheckbox}
-              textClass="text-gray-400 generalSmallText"
+              textClass="introText"
             />
           </div>
         );

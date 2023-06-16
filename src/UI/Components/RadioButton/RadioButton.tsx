@@ -1,32 +1,56 @@
 import React from "react";
 import classNames from "classnames";
 import { RadioButtonType } from "types";
+import { BsCheckLg } from "react-icons/bs";
 
-export const RadioButton: React.FC<RadioButtonType> = (props) => {
+export const RadioButton: React.FC<RadioButtonType> = ({
+  checkboxStyle,
+  checked,
+  name,
+  onSelect,
+  value,
+  classes,
+  textStyle,
+  disabled,
+}) => {
   return (
-    <div className={classNames("flex items-center", props.classes)}>
+    <div className={classNames("flex items-center", classes)}>
       <label
         id="label1"
-        className="text-base font-normal text-green-70"
-        onClick={props.onSelect}
+        className={classNames("font-normal text-green-70", textStyle)}
+        onClick={onSelect}
       >
-        {props.name}
+        {name}
       </label>
       <div className="bg-white rounded-full w-5 h-5 flex justify-center items-center relative">
         <input
           type="radio"
-          value={props.value}
-          checked={props.checked}
-          onChange={props.onSelect}
-          className="
-            checkbox appearance-none focus:opacity-100 rounded-full 
-            border  border-gray-300 absolute cursor-pointer w-full h-full checked:border-none"
-        />
-        <div
+          value={value}
+          checked={checked}
+          onChange={onSelect}
           className={classNames(
-            "check-icon hidden border-[5px] border-green-10 rounded-full w-full h-full"
+            "appearance-none focus:opacity-100 ",
+            "border border-gray-300 absolute cursor-pointer w-full h-full checked:border-none",
+            checkboxStyle ? "rounded-md" : "rounded-full"
           )}
-        ></div>
+        />
+        {!checkboxStyle ? (
+          <div
+            className={classNames(
+              " border-[5px] border-green-10 rounded-full w-full h-full",
+              checked ? "flex" : "hidden"
+            )}
+          ></div>
+        ) : (
+          <div
+            className={classNames(
+              " bg-green-10 rounded-md w-full h-full z-1 justify-center items-center text-semibold",
+              checked ? "flex" : "hidden"
+            )}
+          >
+            <BsCheckLg />
+          </div>
+        )}
       </div>
       <style>
         {`

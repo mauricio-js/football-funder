@@ -120,6 +120,8 @@ export const AddRewardsSecondPage: React.FC<StepPagePropsType> = ({
               currentValue={delivery}
               onSelect={setDelivery}
               classes="flex gap-30"
+              textStyle="text-base"
+              checkboxStyle={false}
             />
           </div>
         </div>

@@ -153,8 +153,8 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
                   />
                 </div>
               </div>
-              <div className="flex gap-[10px]">
-                <div className="w-1/2">
+              <div className="w-1/2">
+                <div className="flex gap-[10px]">
                   <Input
                     data={ContactTownData}
                     setValue={setContactTown}

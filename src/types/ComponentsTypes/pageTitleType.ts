@@ -1,5 +1,7 @@
-export interface PageTitleType { 
-    title: string,
+export interface PageTitleType {
+    className?:string
     introText?: string,
-    linkText?:string
+    linkText?: string,
+    linkFunction?:() =>void,
+    title: string,
 }

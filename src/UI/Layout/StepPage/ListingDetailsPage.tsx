@@ -95,6 +95,8 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
               currentValue={includingVat}
               onSelect={setIncludingVat}
               classes="flex flex-col gap-[15px]"
+              textStyle="text-base"
+              checkboxStyle={false}
             />
           </div>
         </div>

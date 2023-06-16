@@ -8,6 +8,8 @@ interface RadioButtonListProps {
   currentValue: string;
   onSelect: (value: string) => void;
   classes?: string;
+  textStyle: string;
+  checkboxStyle: boolean;
 }
 
 export const RadioButtonList: React.FC<RadioButtonListProps> = ({
@@ -15,6 +17,8 @@ export const RadioButtonList: React.FC<RadioButtonListProps> = ({
   currentValue,
   onSelect,
   classes,
+  textStyle,
+  checkboxStyle,
 }) => {
   const handleSelect = useCallback(
     (value: string) => {
@@ -35,6 +39,8 @@ export const RadioButtonList: React.FC<RadioButtonListProps> = ({
             checked={currentValue === option.value}
             onSelect={() => handleSelect(option.value)}
             classes={option.classes}
+            textStyle={textStyle}
+            checkboxStyle={checkboxStyle}
           />
         </div>
       ))}

@@ -11,7 +11,7 @@ import {
   WebSiteData,
 } from "Config";
 
-export const SignUp: React.FC = () => {
+export const LandingSignUpForm: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [firstName, setFirstName] = useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -15,4 +15,4 @@ export const PROMOTE_URL = '/promote';
 export const CHECKOUT_URL = '/checkout';
 export const SIGNIN_URL = '/login';
 export const SIGNUP_URL = '/register';
-export const FORGOTPASSWORD_URL = './forgotpassword'
+export const FORGOTPASSWORD_URL = '/forgotpassword'

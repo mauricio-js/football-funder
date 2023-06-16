@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SignUp, IPadBackImg } from "Pages";
+import { LandingSignUpForm, IPadBackImg } from "Pages";
 import { SocialSiteLink, Footer } from "UI";
 import { IPadData } from "Config";
 
@@ -37,7 +37,7 @@ export function Landing() {
         </div>
       </div>
       {/* Part-Sign In */}
-      <SignUp />
+      <LandingSignUpForm />
       <div className="px-5">
         <div className="mt-[110px]">
           {IPadData.map((data, index) => {

@@ -38,4 +38,5 @@ export interface RadioButtonDataType {
     label: string;
     value: string;
     classes?: string;
+    textStyle?: string;
 }

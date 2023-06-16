@@ -1,2 +1,2 @@
 export * from './IPadBackImg';
-export * from './SignUp';
+export * from './LandingSignUpForm';

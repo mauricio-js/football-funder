@@ -61,6 +61,8 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
                   currentValue={sortBy}
                   onSelect={setSortby}
                   classes="flex flex-col gap-5"
+                  textStyle="text-base"
+                  checkboxStyle={false}
                 />
               </div>
             </Accordion>

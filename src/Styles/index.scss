@@ -44,6 +44,9 @@
   .introText {
      @apply text-gray-500 text-[14px] leading-[20px] font-medium;
   }
+  .smallIntroText {
+     @apply text-gray-500 text-[12px] leading-[20px] font-medium;
+  }
   
   .linkTextButton{
     @apply text-green-70 text-[14px] leading-[20px] font-medium underline underline-offset-2 cursor-pointer;

@@ -13,7 +13,7 @@ export const SignUpStepFirst: React.FC = () => {
   return (
     <div
       className="
-        w-[1000px] max-lg:w-full px-5 ns:mt-[60px] mt-[90px]
+        w-[1000px] max-lg:w-full px-5 ns:mt-[60px] mt-5
        sm:mb-[100px] mb-30 mx-auto"
     >
       <UnchangePageTitle

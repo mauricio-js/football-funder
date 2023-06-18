@@ -22,7 +22,7 @@ export const SigninPage: React.FC = () => {
   };
   return (
     <Template>
-      <div className=" w-[1000px] max-lg:w-full px-5 mb-[300px] max-md:mb-[150px] mx-auto sm:mt-[60px] mt-[90px]">
+      <div className=" w-[1000px] max-lg:w-full px-5 mb-[300px] max-md:mb-[150px] mx-auto sm:mt-[60px] mt-5">
         <div className=" xs:w-[500px]">
           <div className="generalTitle">Welcome back</div>
           <div className="mt-15 flex gap-1">

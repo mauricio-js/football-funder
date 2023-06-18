@@ -39,7 +39,7 @@ export const SignUpStepThird: React.FC = () => {
     useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountPassword, setAccountPassword] = useState<string>("");
-  const [eConfirm, setECConfirm] = useState<string>("");
+  const [eConfirm, setECConfirm] = useState<string>("no");
   const [confirm, setConfirm] = useState<boolean>(false);
 
   const onHandleConfirm = () => {
@@ -53,7 +53,7 @@ export const SignUpStepThird: React.FC = () => {
   return (
     <div
       className="
-        w-[1000px] max-lg:w-full px-5 sm:mt-[60px] mt-[90px]
+        w-[1000px] max-lg:w-full px-5 sm:mt-[60px] mt-5
        sm:mb-[100px] mb-30 mx-auto"
     >
       <div className="mt-30 xs:w-[500px] w-full">

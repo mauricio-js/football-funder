@@ -16,4 +16,5 @@ export const CHECKOUT_URL = '/checkout';
 export const SIGNIN_URL = '/login';
 export const SIGNUP_URL = '/register';
 export const FEES_URL = '/fees';
+export const ABOUTUS_URL = '/aboutus';
 export const FORGOTPASSWORD_URL = '/forgotpassword'

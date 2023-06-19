@@ -1,3 +1,4 @@
+export * from './AboutUsList';
 export * from './Accordion';
 export * from './AddAwardPanel';
 export * from './AddmoreBtn';

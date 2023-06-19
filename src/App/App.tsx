@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import {
+  ABOUTUS_URL,
   ADSLISTING_URL,
   FORGOTPASSWORD_URL,
   HOME_URL,
@@ -20,6 +21,7 @@ import {
   FEES_URL,
 } from "Lib";
 import {
+  AboutUs,
   AdsList,
   Checkout,
   CrowdfundingList,
@@ -109,6 +111,7 @@ function App() {
           <Route path={SIGNUP_URL} element={<SignUp />} />
           <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
           <Route path={FEES_URL} element={<Fees />} />
+          <Route path={ABOUTUS_URL} element={<AboutUs />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

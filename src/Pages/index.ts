@@ -1,3 +1,4 @@
+export * from './AboutUs';
 export * from './Advertising';
 export * from './Checkout';
 export * from './CrowdFunding';

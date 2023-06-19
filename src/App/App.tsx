@@ -17,12 +17,14 @@ import {
   SPONSORSHIPLISTING_URL,
   PROMOTE_URL,
   CHECKOUT_URL,
+  FEES_URL,
 } from "Lib";
 import {
   AdsList,
   Checkout,
   CrowdfundingList,
   Explore,
+  Fees,
   ForgotPassword,
   Home,
   HowItWorks,
@@ -59,7 +61,7 @@ function App() {
   const RedirectToRoot = () => {
     const navigate = useNavigate();
     useEffect(() => {
-      navigate("/");
+      navigate("/home");
     }, [navigate]);
     return null;
   };
@@ -106,6 +108,7 @@ function App() {
           <Route path={SIGNUP_URL} element={<SignUp />} />
           <Route path={SIGNUP_URL} element={<SignUp />} />
           <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
+          <Route path={FEES_URL} element={<Fees />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

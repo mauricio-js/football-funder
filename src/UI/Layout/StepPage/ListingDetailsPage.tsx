@@ -25,11 +25,11 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
   const [fundraiserAmount, setFundraiserAmount] = useState<number>(350);
   const [includingVat, setIncludingVat] = useState<string>("yes");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [startPeriod, setStartPeriod] = useState<string>("");
+  const [startPeriod, setStartPeriod] = useState<Date | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [endPeriod, setEndPeriod] = useState<string>("");
+  const [endPeriod, setEndPeriod] = useState<Date | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [commencement, setCommencement] = useState<string>("");
+  const [commencement, setCommencement] = useState<Date | null>(null);
 
   return (
     <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 mb-[90px] max-ns:mb-30 mx-auto">
@@ -110,14 +110,14 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
               <DatePicker
                 data={StartPeriodDateData}
                 setValue={setStartPeriod}
-                defaultValue=""
+                defaultValue={null}
               />
             </div>
             <div className="w-1/2">
               <DatePicker
                 data={EndPeriodDateData}
                 setValue={setEndPeriod}
-                defaultValue=""
+                defaultValue={null}
               />
             </div>
           </div>
@@ -132,7 +132,7 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
           <DatePicker
             data={CommencementDateDate}
             setValue={setCommencement}
-            defaultValue=""
+            defaultValue={null}
           />
         </div>
       </div>

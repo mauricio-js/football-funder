@@ -32,7 +32,13 @@ export const SlideBar: React.FC = () => {
   };
   return (
     <div>
-      <Carousel partialVisible={true} responsive={responsive} showDots={true}>
+      <Carousel
+        partialVisible={false}
+        responsive={responsive}
+        containerClass="carousel-container"
+        itemClass="carousel-item-padding-40-px"
+        showDots={true}
+      >
         {CarouselCardData.map((data, index) => {
           return (
             <div key={index} className="pb-[45px]">

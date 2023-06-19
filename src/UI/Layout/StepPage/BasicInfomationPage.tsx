@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { BasinInformationPagePropsType } from "types";
 import {
   CheckBox,
-  // CustomizeDatePicker,
   DropdownInput,
   Input,
   PageSectionTitle,
@@ -53,7 +52,7 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [lastName, setLastName] = useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<Date | null>();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactAddressLine1, setContactAddressLine1] = useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -120,12 +119,16 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
                   setValue={setLastName}
                   defaultValue=""
                 />
-                <DatePicker
+                {/* <DatePicker
                   data={DateData}
                   setValue={setDate}
                   defaultValue=""
+                /> */}
+                <DatePicker
+                  data={DateData}
+                  setValue={setDate}
+                  defaultValue={null}
                 />
-                {/* <CustomizeDatePicker /> */}
               </div>
             )}
             <DropdownInput
@@ -153,8 +156,8 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
                   />
                 </div>
               </div>
-              <div className="w-1/2">
-                <div className="flex gap-[10px]">
+              <div className="flex gap-[10px]">
+                <div className="w-1/2">
                   <Input
                     data={ContactTownData}
                     setValue={setContactTown}

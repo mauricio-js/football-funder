@@ -23,7 +23,7 @@ export const AddRewardsSecondPage: React.FC<StepPagePropsType> = ({
   const [limit, setLimit] = useState<boolean>(false);
   const [delivery, setDelivery] = useState<string>("no");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [dispatchDate, setDispatchDate] = useState<string>("");
+  const [dispatchDate, setDispatchDate] = useState<Date | null>(null);
   const onHandleConfirm = () => {
     setLimit(!limit);
   };
@@ -134,7 +134,7 @@ export const AddRewardsSecondPage: React.FC<StepPagePropsType> = ({
             <DatePicker
               data={DispatchDateData}
               setValue={setDispatchDate}
-              defaultValue=""
+              defaultValue={null}
             />
           </div>
         </div>

@@ -15,6 +15,7 @@ export * from './Dropdown';
 export * from './DropdownInput';
 export * from './EditPanelItem';
 export * from './EditableCheckoutPanel';
+export * from './FeeItem';
 export * from './FileInput';
 export * from './Input';
 export * from './DatePicker';

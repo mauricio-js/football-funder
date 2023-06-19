@@ -3,22 +3,23 @@ import {
   ABOUTUS_URL,
   ADSLISTING_URL,
   FORGOTPASSWORD_URL,
-  HOME_URL,
-  EXPLORE_URL,
+  CHECKOUT_URL,
   CROWDFUNDINGLIST_URL,
+  EXPLORE_URL,
+  FEES_URL,
+  HOME_URL,
   HOWITWORKS_URL,
-  ORGANISATIONFUNDRAISER_URL,
-  INDIVIDUALFUNDRAISER_URL,
-  ORGANISATIONADVERTISING_URL,
-  ORGANISATIONSPONSORSHIP_URL,
   INDIVIDUALADVERTISING_URL,
+  INDIVIDUALFUNDRAISER_URL,
   INDIVIDUALSPONSORSHIP_URL,
+  ORGANISATIONADVERTISING_URL,
+  ORGANISATIONFUNDRAISER_URL,
+  ORGANISATIONSPONSORSHIP_URL,
+  PROMOTE_URL,
   SIGNIN_URL,
   SIGNUP_URL,
   SPONSORSHIPLISTING_URL,
-  PROMOTE_URL,
-  CHECKOUT_URL,
-  FEES_URL,
+  SUPPORT_URL,
 } from "Lib";
 import {
   AboutUs,
@@ -41,6 +42,7 @@ import {
   SigninPage,
   SignUp,
   SponsorshipList,
+  Support,
 } from "Pages";
 import {
   BrowserRouter,
@@ -112,6 +114,7 @@ function App() {
           <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
           <Route path={FEES_URL} element={<Fees />} />
           <Route path={ABOUTUS_URL} element={<AboutUs />} />
+          <Route path={SUPPORT_URL} element={<Support />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

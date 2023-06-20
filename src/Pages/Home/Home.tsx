@@ -10,9 +10,10 @@ import {
   // ORGANISATIONINDIVIDUAL_URL,
   // ORGANISATIONLISTING_URL,
 } from "Lib";
-import { SlideBar, Join, SummaryCard, Template } from "UI";
+import { CarouselCard, SlideBar, Join, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,
+  CarouselCardData,
   MobileAdvertisingCardData,
   FundraisingCardData,
   MobileFundraisingCardData,
@@ -107,7 +108,10 @@ export const Home: React.FC = () => {
                     </div>
                   </div>
                   <div className="mt-5 mx-auto">
-                    <SlideBar />
+                    <SlideBar
+                      data={CarouselCardData}
+                      carouselContent={CarouselCard}
+                    />
                   </div>
                 </div>
               </div>
@@ -233,7 +237,10 @@ export const Home: React.FC = () => {
                     </div>
                   </div>
                   <div className="mt-5 mx-auto">
-                    <SlideBar />
+                    <SlideBar
+                      data={CarouselCardData}
+                      carouselContent={CarouselCard}
+                    />
                   </div>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 export * from './advertisingConfig';
 export * from './checkoutConfig';
+export * from './crowdFundDetailConfig';
 export * from './createFundraiserConfig';
 export * from './createListingConfig';
 export * from './exploreConfig';
@@ -11,3 +12,4 @@ export * from './listingPageConfig';
 export * from './promotePageConfig';
 export * from './signUpConfig';
 export * from './sponsorshipConfig';
+export * from './supporterConfig';

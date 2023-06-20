@@ -1,5 +1,5 @@
 import { AdsCardDataType} from "types";
-import { CarouselCardType } from "types";
+import { CardType } from "types";
 import {
   ADSLISTING_URL,
   // HOME_URL,
@@ -12,8 +12,8 @@ import {
   ORGANISATIONSPONSORSHIP_URL,
   SPONSORSHIPLISTING_URL
 } from "Lib";
-import FirstCarouselCard from "Assets/images/home/first-carousel-card.png";
-import SecondCarouselCard from 'Assets/images/home/second-carousel-card.png'
+import FirstCarouselCard from "Assets/images/home/carousel-first-img.png";
+import SecondCarouselCard from 'Assets/images/home/carousel-second-image.png'
 import FundraiseCardImage from "Assets/images/home/fundraise.png";
 import ContributeCardImage from "Assets/images/home/contribute.png";
 import SponsorshipBuyImg from 'Assets/images/home/sponsorship-buy-img.png'
@@ -149,78 +149,96 @@ export const MobileSponsorshipData: AdsCardDataType[] = [
 ];
 
 
-export const CarouselCardData: CarouselCardType[] = [
+export const CarouselCardData: CardType[] = [
     {
-    label: 'Live',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:FirstCarouselCard
+      broadcastingType: 'Live',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+    fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:FirstCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '100% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:SecondCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '100% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:SecondCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost:'￡50,000 of ￡100,000',
-    img:SecondCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:SecondCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:FirstCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:FirstCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:SecondCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:SecondCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:FirstCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:FirstCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:FirstCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:FirstCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:SecondCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:SecondCarouselCard
     },
     {
-    label: 'Funded',
-    title: 'Running a crowdfunding campaign for my football club',
-    description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
-    success: '50% of goal',
-    cost: '￡50,000 of ￡100,000',
-    img:FirstCarouselCard
+      broadcastingType: 'Funded',
+      title: 'Running a crowdfunding campaign for my football club',
+      description: 'The subheader for running a crowdfunding campaign for my football club goes here and there’s three lines of copy available to describe it.',
+      fund: '50% of goal',
+      progress:true,
+      curFund: 50000,
+      oriFund: 100000,
+      image:FirstCarouselCard
     },
 
 ];

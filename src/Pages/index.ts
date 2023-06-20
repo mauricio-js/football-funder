@@ -1,6 +1,7 @@
 export * from './AboutUs';
 export * from './Advertising';
 export * from './Checkout';
+export * from './CrowdFundDetails';
 export * from './CrowdFunding';
 export * from './Explore';
 export * from './Fees';
@@ -13,3 +14,4 @@ export * from './Signin';
 export * from './SingUp';
 export * from './Sponsorship';
 export * from './Support';
+export * from './View';

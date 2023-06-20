@@ -47,11 +47,15 @@ export const VerticalCard: React.FC<CardProps> = ({ cardData }) => {
             </div>
           )}
           <div className="flex gap-2.5">
-            <VerticalCardLabel cardLabelData={cardData.club} />
-            <VerticalCardLabel
-              cardLabelData={cardData.location}
-              className="max-ns:hidden"
-            />
+            {cardData.club && cardData.location && (
+              <>
+                <VerticalCardLabel cardLabelData={cardData.club} />
+                <VerticalCardLabel
+                  cardLabelData={cardData.location}
+                  className="max-ns:hidden"
+                />
+              </>
+            )}
           </div>
           <div className="text-[18px] leading-[24px] text-green-80 font-semibold max-2xs:line-clamp-2">
             {cardData.title}
@@ -86,9 +90,13 @@ export const VerticalCard: React.FC<CardProps> = ({ cardData }) => {
                 cardData.progress ? "justify-end" : "justify-start"
               )}
             >
-              <VerticalCardLabel cardLabelData={cardData.date} />
-              {cardData.collection && (
-                <VerticalCardLabel cardLabelData={cardData.collection} />
+              {cardData.date && (
+                <>
+                  <VerticalCardLabel cardLabelData={cardData.date} />
+                  {cardData.collection && (
+                    <VerticalCardLabel cardLabelData={cardData.collection} />
+                  )}
+                </>
               )}
             </div>
           </div>

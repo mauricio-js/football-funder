@@ -8,15 +8,18 @@ export const Button: React.FC<ButtonDataType> = (props) => {
       className={classNames(
         "rounded-10 flex items-center justify-center",
         props.backgroundColor,
+        props.otherStyle,
         props.padding,
         props.height,
         props.width,
         props.textColor,
         props.textSize,
-        props.border
+        props.border,
+        props.disabled && "bg-black bg-opacity-50 text-opacity-50"
       )}
       onClick={props.handleClick}
       disabled={props.disabled}
+      value={props.value}
     >
       {props.icon && <props.icon />}
       {props.image && <img src={props.image} alt=" button content" />}

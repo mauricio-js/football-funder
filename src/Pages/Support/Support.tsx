@@ -21,7 +21,7 @@ export const Support: React.FC = () => {
             />
           </div>
           <div className="xm:w-[870px] w-full px-5 mx-auto">
-            <div className="titleText">Support</div>
+            <div className="generalTitle">Support</div>
             <div className="mt-30 buttonText text-green-70">
               Have a question? We're here to support you.
             </div>

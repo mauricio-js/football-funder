@@ -42,14 +42,22 @@ export const HorizontalCard: React.FC<CardProps> = ({ cardData }) => {
             </div>
           )}
           <div className="flex flex-col gap-[10px] max-sm:flex-row">
-            <HorizontalCardLabel
-              cardLabelData={cardData.club}
-              className="max-md:w-full"
-            />
-            <HorizontalCardLabel
-              cardLabelData={cardData.location}
-              className="max-md:hidden max-md:w-full"
-            />
+            {cardData.club && (
+              <>
+                <HorizontalCardLabel
+                  cardLabelData={cardData.club}
+                  className="max-md:w-full"
+                />
+              </>
+            )}
+            {cardData.location && (
+              <>
+                <HorizontalCardLabel
+                  cardLabelData={cardData.location}
+                  className="max-md:hidden max-md:w-full"
+                />
+              </>
+            )}
           </div>
           <div className="xs:text-[18px] text-[14px] max-vs:text-[12px] max-vs:leading-[14px] xs:leading-[24px] leading-4 text-green-80 font-semibold max-sm:line-clamp-2">
             {cardData.title}
@@ -80,9 +88,13 @@ export const HorizontalCard: React.FC<CardProps> = ({ cardData }) => {
             </div>
           )}
           <div className="flex justify-between max-sm:hidden">
-            <HorizontalCardLabel cardLabelData={cardData.date} />
-            {cardData.collection && (
-              <HorizontalCardLabel cardLabelData={cardData.collection} />
+            {cardData.date && (
+              <>
+                <HorizontalCardLabel cardLabelData={cardData.date} />
+                {cardData.collection && (
+                  <HorizontalCardLabel cardLabelData={cardData.collection} />
+                )}
+              </>
             )}
           </div>
         </div>

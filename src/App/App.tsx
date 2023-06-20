@@ -4,6 +4,8 @@ import {
   ADSLISTING_URL,
   FORGOTPASSWORD_URL,
   CHECKOUT_URL,
+  CROWDFUNDDETAILPENDING_URL,
+  CROWDFUNDDETAILLIVE_URL,
   CROWDFUNDINGLIST_URL,
   EXPLORE_URL,
   FEES_URL,
@@ -25,6 +27,8 @@ import {
   AboutUs,
   AdsList,
   Checkout,
+  CrowdFundDetailsLivePage,
+  CrowdFundDetailsPendingPage,
   CrowdfundingList,
   Explore,
   Fees,
@@ -115,6 +119,14 @@ function App() {
           <Route path={FEES_URL} element={<Fees />} />
           <Route path={ABOUTUS_URL} element={<AboutUs />} />
           <Route path={SUPPORT_URL} element={<Support />} />
+          <Route
+            path={CROWDFUNDDETAILPENDING_URL}
+            element={<CrowdFundDetailsPendingPage />}
+          />
+          <Route
+            path={CROWDFUNDDETAILLIVE_URL}
+            element={<CrowdFundDetailsLivePage />}
+          />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

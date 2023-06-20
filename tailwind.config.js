@@ -58,6 +58,7 @@ export const theme = {
       },
       gray: {
         10: '#737373',
+        20: '#F0F4EF'
       },
       dark: '#242731',
       shark: '#1B1D21',

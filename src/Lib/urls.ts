@@ -18,4 +18,6 @@ export const SIGNUP_URL = '/register';
 export const FEES_URL = '/fees';
 export const ABOUTUS_URL = '/aboutus';
 export const SUPPORT_URL = '/support';
+export const CROWDFUNDDETAILPENDING_URL = '/crowdfunddetailpending';
+export const CROWDFUNDDETAILLIVE_URL = '/crowdfunddetaillive';
 export const FORGOTPASSWORD_URL = '/forgotpassword'

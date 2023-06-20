@@ -1,5 +1,6 @@
 export * from './advertisingConfig';
 export * from './checkoutConfig';
+export * from './crowdFundDetailConfig';
 export * from './createFundraiserConfig';
 export * from './createListingConfig';
 export * from './exploreConfig';

@@ -13,3 +13,4 @@ export * from './selectType'
 export * from './stepLabelType';
 export * from './stepPageType';
 export * from './textButtonType';
+export * from './userListType';

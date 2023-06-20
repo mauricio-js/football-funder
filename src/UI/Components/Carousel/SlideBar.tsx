@@ -1,51 +1,55 @@
-import React from "react";
-import Carousel, { ResponsiveType } from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { CarouselCardData } from "Config/homeConfig";
-import { CarouselCard } from "./Components/CarouselCard";
+import React, { useState } from "react";
+import Carousel from "react-simply-carousel";
+import { CardType } from "types";
 
-export const SlideBar: React.FC = () => {
-  const responsive: ResponsiveType = {
-    superLargeDesktop: {
-      breakpoint: { max: 3000, min: 1200 },
-      items: 3,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 4, // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 768 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 767, min: 464 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-      partialVisibilityGutter: 80,
-    },
-    smobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+interface SlideBarDataProps {
+  data: CardType[];
+  carouselContent: React.ComponentType<{ cardData: CardType }>;
+}
+
+export const SlideBar: React.FC<SlideBarDataProps> = ({
+  data,
+  carouselContent: CarouselContent,
+}) => {
+  const [activeSlide, setActiveSlide] = useState<number>(0);
   return (
     <div>
       <Carousel
-        partialVisible={false}
-        responsive={responsive}
-        containerClass="carousel-container"
-        itemClass="carousel-item-padding-40-px"
-        showDots={true}
+        preventScrollOnSwipe
+        swipeTreshold={60}
+        activeSlideIndex={activeSlide}
+        onRequestChange={setActiveSlide}
+        dotsNav={{
+          show: true,
+          itemBtnProps: {
+            style: {
+              height: 10,
+              width: 10,
+              borderRadius: "50%",
+              margin: "3px",
+              border: "2px solid #061807",
+            },
+          },
+          activeItemBtnProps: {
+            style: {
+              height: 10,
+              width: 10,
+              borderRadius: "0%",
+              border: "1px solid #061807",
+              margin: "3px",
+              backgroundColor: "#061807",
+            },
+          },
+        }}
+        itemsToShow={3}
+        speed={400}
+        centerMode={false}
       >
-        {CarouselCardData.map((data, index) => {
-          return (
-            <div key={index} className="pb-[45px]">
-              <CarouselCard Item={data} />
-            </div>
-          );
-        })}
+        {data.map((item, index) => (
+          <div key={index} className="w-[320px] p-2">
+            <CarouselContent cardData={item} />
+          </div>
+        ))}
       </Carousel>
     </div>
   );

@@ -16,15 +16,15 @@ export interface CardType {
     image: string,
     broadcastingType: string,
     vat?:number,
-    club: CardLabelType,
-    location: CardLabelType,
+    club?: CardLabelType,
+    location?: CardLabelType,
     title: string,
     description: string,
     progress?: boolean,
     fund?: string,
     curFund?: number,
     oriFund?: number,
-    date: CardLabelType,
+    date?: CardLabelType,
     collection?: CardLabelType
 };
 

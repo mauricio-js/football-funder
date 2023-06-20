@@ -12,3 +12,4 @@ export * from './listingPageConfig';
 export * from './promotePageConfig';
 export * from './signUpConfig';
 export * from './sponsorshipConfig';
+export * from './supporterConfig';

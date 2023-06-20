@@ -14,3 +14,4 @@ export * from './Signin';
 export * from './SingUp';
 export * from './Sponsorship';
 export * from './Support';
+export * from './View';

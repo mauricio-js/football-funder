@@ -22,6 +22,8 @@ import {
   SIGNUP_URL,
   SPONSORSHIPLISTING_URL,
   SUPPORT_URL,
+  SUPPORTERVIEW_URL,
+  DONATIONVIEW_URL,
 } from "Lib";
 import {
   AboutUs,
@@ -30,6 +32,7 @@ import {
   CrowdFundDetailsLivePage,
   CrowdFundDetailsPendingPage,
   CrowdfundingList,
+  DonationView,
   Explore,
   Fees,
   ForgotPassword,
@@ -47,6 +50,7 @@ import {
   SignUp,
   SponsorshipList,
   Support,
+  SupporterView,
 } from "Pages";
 import {
   BrowserRouter,
@@ -127,6 +131,8 @@ function App() {
             path={CROWDFUNDDETAILLIVE_URL}
             element={<CrowdFundDetailsLivePage />}
           />
+          <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
+          <Route path={DONATIONVIEW_URL} element={<DonationView />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

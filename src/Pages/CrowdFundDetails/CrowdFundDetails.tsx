@@ -51,7 +51,7 @@ export const CrowdFundDetails: React.FC<CrowdFundDetailsPropsType> = ({
 
   return (
     <Template>
-      <div className="pt-[60px] max-md:pt-0 pb-[150px] bl:w-[1080px] w-full mx-auto">
+      <div className="pt-[60px] max-md:pt-0 md:pb-[150px] pb-[40px] bl:w-[1080px] w-full mx-auto">
         <div className="flex gap-30 items-center max-bl:hidden">
           <div className="relative rounded-20 overflow-hidden">
             <img src={ListImage} alt="listimage" />

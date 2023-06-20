@@ -20,4 +20,6 @@ export const ABOUTUS_URL = '/aboutus';
 export const SUPPORT_URL = '/support';
 export const CROWDFUNDDETAILPENDING_URL = '/crowdfunddetailpending';
 export const CROWDFUNDDETAILLIVE_URL = '/crowdfunddetaillive';
+export const SUPPORTERVIEW_URL = '/supporterview'
+export const DONATIONVIEW_URL = '/donationview'
 export const FORGOTPASSWORD_URL = '/forgotpassword'

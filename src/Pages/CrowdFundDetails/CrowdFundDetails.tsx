@@ -52,31 +52,8 @@ export const CrowdFundDetails: React.FC<CrowdFundDetailsPropsType> = ({
   return (
     <Template>
       <div className="pt-[60px] max-md:pt-0 md:pb-[150px] pb-[40px] bl:w-[1080px] w-full mx-auto">
-        <div className="flex gap-30 items-center max-bl:hidden">
-          <div className="relative rounded-20 overflow-hidden">
-            <img src={ListImage} alt="listimage" />
-            <div className="absolute top-0 w-full xs:px-5 px-2.5 py-5  flex justify-between">
-              <div
-                className={classNames(
-                  "py-[5px]  rounded-10 ns:text-[14px] text-[12px] leading-[20px]  ns:px-[10px] px-2 font-medium",
-                  pending
-                    ? "bg-green-70 text-white"
-                    : "bg-green-10 text-green-70"
-                )}
-              >
-                {pending ? "Pending" : "Live"}
-              </div>
-              <div className="flex gap-[10px]">
-                <button className="rounded-10">
-                  <img src={FavouriteIcon} alt="favourite" />
-                </button>
-                <button className="rounded-10">
-                  <img src={ShareIcon} alt="share" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="flex-1">
+        <div className="sticky top-[76px] flex justify-end max-bl:hidden">
+          <div className="w-96 absolute py-6">
             <div className="relative h-[10px] w-full rounded-10 bg-gray-200">
               <div className="absolute top-0 h-[10px] w-[calc(50%)] bg-green-50 rounded-10"></div>
             </div>
@@ -121,6 +98,31 @@ export const CrowdFundDetails: React.FC<CrowdFundDetailsPropsType> = ({
                 </button>
                 <button>
                   <img src={ShareBtnImgFive} alt="fivebtn" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-30 items-center max-bl:hidden">
+          <div className="relative rounded-20 overflow-hidden">
+            <img src={ListImage} alt="listimage" />
+            <div className="absolute top-0 w-full xs:px-5 px-2.5 py-5  flex justify-between">
+              <div
+                className={classNames(
+                  "py-[5px]  rounded-10 ns:text-[14px] text-[12px] leading-[20px]  ns:px-[10px] px-2 font-medium",
+                  pending
+                    ? "bg-green-70 text-white"
+                    : "bg-green-10 text-green-70"
+                )}
+              >
+                {pending ? "Pending" : "Live"}
+              </div>
+              <div className="flex gap-[10px]">
+                <button className="rounded-10">
+                  <img src={FavouriteIcon} alt="favourite" />
+                </button>
+                <button className="rounded-10">
+                  <img src={ShareIcon} alt="share" />
                 </button>
               </div>
             </div>

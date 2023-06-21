@@ -12,5 +12,6 @@ export * from './radioButtonType';
 export * from './selectType'
 export * from './stepLabelType';
 export * from './stepPageType';
+export * from './stepperType';
 export * from './textButtonType';
 export * from './userListType';

@@ -63,6 +63,7 @@ export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
                 }
                 showLeftCharacters={false}
                 title="Description"
+                titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
               />
             </div>
           </div>
@@ -161,6 +162,7 @@ export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
                     limit={300}
                     showLeftCharacters={true}
                     title="Perk description"
+                    titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                   />
                 </div>
                 <div className="mt-5">

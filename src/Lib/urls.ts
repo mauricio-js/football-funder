@@ -22,4 +22,5 @@ export const CROWDFUNDDETAILPENDING_URL = '/crowdfunddetailpending';
 export const CROWDFUNDDETAILLIVE_URL = '/crowdfunddetaillive';
 export const SUPPORTERVIEW_URL = '/supporterview'
 export const DONATIONVIEW_URL = '/donationview'
+export const DONATETOFUNDRAISER = '/donatetofundraiser'
 export const FORGOTPASSWORD_URL = '/forgotpassword'

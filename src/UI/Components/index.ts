@@ -23,10 +23,11 @@ export * from './DatePicker';
 export * from './Join';
 export * from './PageTitle';
 export * from './PromoteImageTitle';
+export * from './PageSectionTitle';
 export * from './RadioButton';
 export * from './RadioButtonList';
+export * from './RangeSlider'
 export * from './Search';
-export * from './PageSectionTitle';
 export * from './Select';
 export * from './SelectLanguage';
 export * from './StepLabel';

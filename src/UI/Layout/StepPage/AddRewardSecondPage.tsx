@@ -47,6 +47,7 @@ export const AddRewardsSecondPage: React.FC<StepPagePropsType> = ({
           <div className="mt-15">
             <Textarea
               title="Reward title"
+              titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
               limit={150}
               height="h-[80px]"
               value="Early Bird Special"
@@ -68,6 +69,7 @@ export const AddRewardsSecondPage: React.FC<StepPagePropsType> = ({
           <div className="mt-[15px]">
             <Textarea
               title="Short description"
+              titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
               limit={150}
               height="h-[150px]"
               value="The subheader for running a fundraiser campaign for my football club goes here and there’s three lines of copy available to describe it. There’s some additional space in this box if I need it."
@@ -100,6 +102,7 @@ export const AddRewardsSecondPage: React.FC<StepPagePropsType> = ({
           />
           <div className="mt-15">
             <Textarea
+              titleStyle=""
               height="h-[350px] max-ns:h-[390px] "
               value={
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \n\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem."

@@ -35,3 +35,4 @@ export interface AddDetailsStepPagePropsType {
   isShowDesciptionPanel: boolean;
   isShowAdvertNum:boolean
 }
+

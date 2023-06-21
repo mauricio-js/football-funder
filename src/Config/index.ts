@@ -3,6 +3,7 @@ export * from './checkoutConfig';
 export * from './crowdFundDetailConfig';
 export * from './createFundraiserConfig';
 export * from './createListingConfig';
+export * from './donateConfig';
 export * from './exploreConfig';
 export * from './footerConfig';
 export * from './headerConfig';

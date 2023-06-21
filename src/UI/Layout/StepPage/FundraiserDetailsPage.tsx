@@ -36,6 +36,7 @@ export const FundraiserDetailsPage: React.FC<FundraiserDetailsPageProps> = ({
             <div className="xs:w-[500px]">
               <Textarea
                 title="Title"
+                titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 limit={150}
                 height="h-[124px]"
                 value="Vel amet iaculis id adipiscing venenatis sed volutpat.Dictumst sem pellentesque lectus sollicitudin."
@@ -53,6 +54,7 @@ export const FundraiserDetailsPage: React.FC<FundraiserDetailsPageProps> = ({
           <div className="mt-[15px] xs:w-[500px]">
             <Textarea
               title="Short description"
+              titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
               limit={300}
               height="h-[150px]"
               value="The subheader for running a fundraiser campaign for my football club goes here and there’s three lines of copy available to describe it. There’s some additional space in this box if I need it."

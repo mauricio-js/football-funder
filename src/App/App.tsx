@@ -7,6 +7,7 @@ import {
   CROWDFUNDDETAILPENDING_URL,
   CROWDFUNDDETAILLIVE_URL,
   CROWDFUNDINGLIST_URL,
+  DONATETOFUNDRAISER,
   EXPLORE_URL,
   FEES_URL,
   HOME_URL,
@@ -32,6 +33,7 @@ import {
   CrowdFundDetailsLivePage,
   CrowdFundDetailsPendingPage,
   CrowdfundingList,
+  Donate,
   DonationView,
   Explore,
   Fees,
@@ -133,6 +135,7 @@ function App() {
           />
           <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
           <Route path={DONATIONVIEW_URL} element={<DonationView />} />
+          <Route path={DONATETOFUNDRAISER} element={<Donate />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

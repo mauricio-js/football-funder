@@ -1,11 +1,17 @@
 import React from "react";
 import { RxCaretLeft } from "react-icons/rx";
 
-export const StepperBackButton: React.FC = () => {
+interface StepperPageBackBtnPropType {
+  handleBackPage: () => void;
+}
+
+export const StepperBackButton: React.FC<StepperPageBackBtnPropType> = ({
+  handleBackPage,
+}) => {
   return (
-    <div className="flex gap-2.5 items-center">
+    <button className="flex gap-2.5 items-center" onClick={handleBackPage}>
       <RxCaretLeft />
       <div className="generalText text-gray-10">Back</div>
-    </div>
+    </button>
   );
 };

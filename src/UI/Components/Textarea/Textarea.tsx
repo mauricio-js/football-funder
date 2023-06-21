@@ -2,21 +2,25 @@ import React, { useState, useCallback } from "react";
 import classNames from "classnames";
 
 interface Props {
-  value: string;
+  value?: string;
   limit?: number;
   showLeftCharacters: boolean;
-  title: string;
+  title?: string;
+  titleStyle: string;
   height: string;
+  placeholder?: string;
 }
 
 export const Textarea: React.FC<Props> = ({
   value,
   limit,
   title,
+  titleStyle,
   height,
   showLeftCharacters,
+  placeholder,
 }) => {
-  const [content, setContent] = useState<string>(value.slice(0, limit));
+  const [content, setContent] = useState<string>((value || "").slice(0, limit));
 
   const setFormattedContent = useCallback(
     (text: string) => {
@@ -24,33 +28,43 @@ export const Textarea: React.FC<Props> = ({
     },
     [limit, setContent]
   );
-
   return (
     <div className="relative">
       <textarea
         className={classNames(
-          "w-full h-[124px] px-[14px] pb-4 pt-6 generalText rounded-10 border-2",
+          "w-full h-[124px] px-[14px] pb-4 generalText rounded-10 border-2",
           "border-gray-200 focus:outline-none box-border  overflow:auto resize-none",
+          "placeholder:text-[12px] placeholder:leading-[14px] placeholder:font-medium placeholder:text-gray-10",
+          placeholder ? "pt-2.5" : "pt-6",
           height
         )}
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
           setFormattedContent(event.target.value);
+          console.log(event.target.value);
         }}
         value={content}
+        placeholder={placeholder}
       />
       {showLeftCharacters && (
         <div
-          className="absolute bottom-[10px] right-[10px] text-[10px] leading-[14px]
-       text-gray-400 hidden vs:block"
+          className={classNames(
+            "absolute bottom-[10px] right-[10px] text-[10px] leading-[14px]",
+            " hidden vs:block text-green-70",
+            !content && "text-opacity-50"
+          )}
         >
           {content.length}/{limit} characters left
         </div>
       )}
-      <div className="absolute w-full top-[12px] px-[16px] hidden vs:block">
-        <div className="text-[10px] leading-[14px] text-gray-400 after:content-['*'] after:ml-1 after:text-green-10">
-          {title}
+      {title && (
+        <div className="absolute w-full top-[12px] px-[16px] hidden vs:block">
+          <div
+            className={classNames(titleStyle, !content && "text-opacity-50")}
+          >
+            {title}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

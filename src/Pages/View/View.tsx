@@ -1,5 +1,5 @@
 import React from "react";
-import { StepperBackButton, UserList, Template } from "UI";
+import { UserList, Template } from "UI";
 import { AllSupporterData } from "Config";
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
@@ -27,9 +27,7 @@ export const View: React.FC<ViewPagePropsType> = ({ title }) => {
           </div>
           <div className="xm:w-[900px] w-full px-5 mx-auto">
             <div className="generalTitle">{title}</div>
-            <div className="mt-5 ">
-              <StepperBackButton />
-            </div>
+            <div className="mt-5 ">{/* <StepperBackButton /> */}</div>
             <div className="mt-30 text-xs text-gray-10">
               Fundraiser
               <div className="mt-1 buttonText text-green-70">

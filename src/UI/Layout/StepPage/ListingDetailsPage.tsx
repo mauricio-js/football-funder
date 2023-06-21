@@ -49,6 +49,7 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
               title="Title"
               limit={150}
               height="h-[124px]"
+              titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
               value="Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin."
               showLeftCharacters={true}
             />
@@ -63,6 +64,7 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
             <div className="mt-15">
               <Textarea
                 title="Title"
+                titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 limit={150}
                 height="h-[124px]"
                 value="Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin."

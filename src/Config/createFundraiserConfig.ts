@@ -14,8 +14,10 @@ import CardImageE from 'Assets/images/explore/card-e.png'
 // import CardImageF from 'Assets/images/explore/card-f.png'
 import CardSImageNone from 'Assets/images/explore/card-s-none.png'
 // import CardWImageNone from 'Assets/images/explore/card-w-none.png'
+import { CardLabelType, userFundListDataType, userCommentListDataType } from 'types'
 import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
 import { BiMap, BiMessageRounded } from 'react-icons/bi'
+import { RiHeart3Line,RiHeart3Fill } from "react-icons/ri";
 export const FundraiserCategoryData: CategoryDataType[] = [
     {
         label: "Club",
@@ -844,4 +846,120 @@ export const AdsListData: CardType[] = [
         image: CardImageD,
     },
     
+];
+
+export const CrowdDetailDateCardLabelData:CardLabelType = {
+    icon:FaRegCalendarAlt,
+    backgroundColor: "bg-gray-100",
+    textColor: "text-green-70", 
+    text: "11th April 2023",
+}
+export const CrowdDetailCommentCardLabelData:CardLabelType = {
+    icon:BiMessageRounded,
+    backgroundColor: "bg-gray-100",
+    textColor: "text-green-70", 
+    text: "15 Comments",
+}
+export const CrowdDetailClubCardLabelData:CardLabelType = {
+    icon:FaRegUserCircle,
+    backgroundColor: "bg-green-80",
+    textColor: "text-green-10",
+    text: "Coxhoe Athletic FC",
+}
+export const CrowdDetailLocationCardLabelData:CardLabelType = {
+    icon:BiMap,
+    backgroundColor: "bg-green-80",
+    textColor: "text-white", 
+    text: "Durham, England",
+}
+
+export const UserFundListData: userFundListDataType[] = [
+    {
+        name: "Tom",
+        fund: 10000,
+        startDay:"1 week"
+    },
+    {
+        name: "David",
+        fund: 5000,
+        startDay:"1 day"
+    },
+    {
+        name: "Alex",
+        fund: 5000,
+        startDay:"5 day"
+    },
+    {
+        name: "Alice",
+        fund: 3500,
+        startDay:"6 days"
+    },
+    {
+        name: "Ema",
+        fund: 2000,
+        startDay:"6 days"
+    },
+]
+
+export const UserCommentListData: userCommentListDataType[] = [
+    {
+        chat: "Love this project! Will support until the end ❤️.",
+        commentNum : 0,
+        Icon : RiHeart3Line,
+        startDay : "1 day",
+        name : "David"
+    },
+    {
+        chat: "Wohoo let’s go!!! ⚡️",
+        commentNum : 24,
+        Icon : RiHeart3Fill,
+        startDay : "1 day",
+        name : "Ema"
+    },
+    {
+        chat: "Such a nice thing! Supporting.",
+        commentNum : 0,
+        Icon : RiHeart3Line,
+        startDay : "1 day",
+        name : "Alice"
+    },
+];
+
+export const DonateClubLabel: CardLabelType = {
+    icon:FaRegUserCircle,
+    backgroundColor: "bg-green-80",
+    textColor: "text-green-10",
+    text: "Coxhoe Athletic FC",
+}
+
+export const DonateLocationLabel: CardLabelType = {
+    icon:BiMap,
+    backgroundColor: "bg-green-80",
+    textColor: "text-white", 
+    text: "Durham, England",
+}
+
+export const DonateCreateAccountConfirm: RadioButtonDataType[] = [
+    {
+        label: "I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy",
+        value:"confirm policy"
+    },
+    {
+        label: "I would like to sign up to receive newsletters from Football Funder. See Privacy Policy.",
+        value:"see policy"
+    },
+]
+export const DonatePaymentConfirm: RadioButtonDataType[] = [
+    {
+        label: "I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy",
+        value:"confirm policy"
+    },
+]
+
+export const SelectAnonymous:RadioButtonDataType[] = [
+    {
+        label: "Keep me anonymous",
+        value: "yes",
+        classes:"gap-[10px] flex-row-reverse justify-end"
+    },
 ];

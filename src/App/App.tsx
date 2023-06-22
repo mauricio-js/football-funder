@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import {
   ABOUTUS_URL,
+  MYACCOUNT_URL,
+  ADDETAILLIVE_URL,
+  ADDETAILPENDING_URL,
   ADSLISTING_URL,
+  ADVERTISINGSALE_URL,
   FORGOTPASSWORD_URL,
   CHECKOUT_URL,
   CROWDFUNDDETAILPENDING_URL,
   CROWDFUNDDETAILLIVE_URL,
   CROWDFUNDINGLIST_URL,
-  DONATETOFUNDRAISER,
+  CROWDFUNDINGDONATE_URL,
   EXPLORE_URL,
   FEES_URL,
   HOME_URL,
@@ -22,18 +26,24 @@ import {
   SIGNIN_URL,
   SIGNUP_URL,
   SPONSORSHIPLISTING_URL,
+  SPONSORSHIPDETAILLIVE_URL,
+  SPONSORSHIPDETAILPENDING_URL,
+  SPONSORSHIPSALE_URL,
   SUPPORT_URL,
   SUPPORTERVIEW_URL,
   DONATIONVIEW_URL,
 } from "Lib";
 import {
   AboutUs,
+  AdDetailLivePage,
+  AdDetailPendingPage,
   AdsList,
+  AdvertisingSale,
   Checkout,
-  CrowdFundDetailsLivePage,
-  CrowdFundDetailsPendingPage,
+  CrowdFundDetailLivePage,
+  CrowdFundDetailPendingPage,
+  CrowdfundingDonate,
   CrowdfundingList,
-  Donate,
   DonationView,
   Explore,
   Fees,
@@ -44,13 +54,17 @@ import {
   IndividualListing,
   IndividualSponsorship,
   Landing,
+  MyAccountPage,
   OrganisationFundraiser,
   OrganisationListing,
   OrganisationSponsorship,
   Promote,
-  SigninPage,
+  Signin,
   SignUp,
   SponsorshipList,
+  SponsorshipDetailLivePage,
+  SponsorshipDetailPendingPage,
+  SponsorshipSale,
   Support,
   SupporterView,
 } from "Pages";
@@ -98,7 +112,19 @@ function App() {
             element={<IndividualFundraiser />}
           />
           <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
-          <Route path={ADSLISTING_URL} element={<AdsList />} />
+          <Route
+            path={CROWDFUNDDETAILPENDING_URL}
+            element={<CrowdFundDetailPendingPage />}
+          />
+          <Route
+            path={CROWDFUNDDETAILLIVE_URL}
+            element={<CrowdFundDetailLivePage />}
+          />
+          <Route />
+          <Route
+            path={CROWDFUNDINGDONATE_URL}
+            element={<CrowdfundingDonate />}
+          />
           <Route
             path={ORGANISATIONADVERTISING_URL}
             element={<OrganisationListing />}
@@ -107,6 +133,10 @@ function App() {
             path={INDIVIDUALADVERTISING_URL}
             element={<IndividualListing />}
           />
+          <Route path={ADSLISTING_URL} element={<AdsList />} />
+          <Route path={ADDETAILLIVE_URL} element={<AdDetailLivePage />} />
+          <Route path={ADDETAILPENDING_URL} element={<AdDetailPendingPage />} />
+          <Route path={ADVERTISINGSALE_URL} element={<AdvertisingSale />} />
           <Route
             path={ORGANISATIONSPONSORSHIP_URL}
             element={<OrganisationSponsorship />}
@@ -116,26 +146,26 @@ function App() {
             element={<IndividualSponsorship />}
           />
           <Route path={SPONSORSHIPLISTING_URL} element={<SponsorshipList />} />
+          <Route
+            path={SPONSORSHIPDETAILLIVE_URL}
+            element={<SponsorshipDetailLivePage />}
+          />
+          <Route
+            path={SPONSORSHIPDETAILPENDING_URL}
+            element={<SponsorshipDetailPendingPage />}
+          />
+          <Route path={SPONSORSHIPSALE_URL} element={<SponsorshipSale />} />
           <Route path={PROMOTE_URL} element={<Promote />} />
           <Route path={CHECKOUT_URL} element={<Checkout />} />
-          <Route path={SIGNIN_URL} element={<SigninPage />} />
-          <Route path={SIGNUP_URL} element={<SignUp />} />
+          <Route path={SIGNIN_URL} element={<Signin />} />
           <Route path={SIGNUP_URL} element={<SignUp />} />
           <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
           <Route path={FEES_URL} element={<Fees />} />
           <Route path={ABOUTUS_URL} element={<AboutUs />} />
           <Route path={SUPPORT_URL} element={<Support />} />
-          <Route
-            path={CROWDFUNDDETAILPENDING_URL}
-            element={<CrowdFundDetailsPendingPage />}
-          />
-          <Route
-            path={CROWDFUNDDETAILLIVE_URL}
-            element={<CrowdFundDetailsLivePage />}
-          />
           <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
           <Route path={DONATIONVIEW_URL} element={<DonationView />} />
-          <Route path={DONATETOFUNDRAISER} element={<Donate />} />
+          <Route path={MYACCOUNT_URL} element={<MyAccountPage />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

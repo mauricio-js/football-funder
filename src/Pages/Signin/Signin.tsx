@@ -4,7 +4,7 @@ import { FORGOTPASSWORD_URL, SIGNUP_URL, SIGNIN_URL } from "Lib";
 import { Button, Input, TextButton, Template } from "UI";
 import { AccountEmailData, AccountPasswordData } from "Config";
 
-export const SigninPage: React.FC = () => {
+export const Signin: React.FC = () => {
   const navigate = useNavigate();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountEmail, setAccountEmail] = useState<string>("");

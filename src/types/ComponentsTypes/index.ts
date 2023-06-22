@@ -5,6 +5,7 @@ export * from './descriptionPanelType';
 export * from './dropDownInput'
 export * from './inputType';
 export * from './listingPageType';
+export * from './myTabType';
 export * from './pageSectionTitleType';
 export * from './pageTitleType';
 export * from './promoteImageTitleType';

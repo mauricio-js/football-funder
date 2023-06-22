@@ -41,6 +41,7 @@ export const SponsorshipDetail: React.FC<DetailPagePropsType> = ({
                 text="￡15,000"
                 textColor="text-white"
                 textSize="buttonText"
+                disabled={pending}
               />
               <div className="flex-1 flex gap-2.5 w-full">
                 <div className="w-[calc(50%-10px)]">

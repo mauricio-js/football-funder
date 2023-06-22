@@ -135,29 +135,33 @@ export const MyAccountPage: React.FC = () => {
           </div>
           <div className="relative w-[1000px] max-lg:w-full px-5 mx-auto z-20">
             <PageTitle title="Donate to this fundraiser" />
-            <div className="mt-30 flex gap-15">
-              <img src={AccountImage} alt="accuntimage" />
-              <div className="flex flex-col gap-2.5">
-                <div className="flex item-center gap-15">
-                  <div className="text-[18px] leading-6 text-green-70 font-semibold">
-                    Coxhoe Athletic FC
-                  </div>
-                  <button className="flex justify-center items-center">
-                    <HiOutlinePencil />
-                  </button>
-                </div>
-                <div className="flex gap-2.5">
-                  <VerticalCardLabel
-                    cardLabelData={AccountLocationCardLabelData}
-                  />
-                  <VerticalCardLabel
-                    cardLabelData={AccountClubTypeCardLabelData}
-                  />
-                </div>
+            <div className="mt-30 flex vs:flex-row flex-col gap-15 ">
+              <div className="flex">
+                <img src={AccountImage} alt="accuntimage" />
               </div>
-              <button className="text-2xl ml-30">
-                <BsThreeDots />
-              </button>
+              <div className="flex ns:gap-30 gap-15">
+                <div className="flex flex-col gap-2.5">
+                  <div className="flex item-center gap-15">
+                    <div className="text-[18px] leading-6 text-green-70 font-semibold">
+                      Coxhoe Athletic FC
+                    </div>
+                    <button className="flex justify-center items-center">
+                      <HiOutlinePencil />
+                    </button>
+                  </div>
+                  <div className="flex gap-2.5">
+                    <VerticalCardLabel
+                      cardLabelData={AccountLocationCardLabelData}
+                    />
+                    <VerticalCardLabel
+                      cardLabelData={AccountClubTypeCardLabelData}
+                    />
+                  </div>
+                </div>
+                <button className="text-2xl">
+                  <BsThreeDots />
+                </button>
+              </div>
             </div>
           </div>
           <div className="relative mt-30 z-20">

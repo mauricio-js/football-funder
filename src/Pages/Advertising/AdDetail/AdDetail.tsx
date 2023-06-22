@@ -39,6 +39,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                 text="￡3,000"
                 textColor="text-white"
                 textSize="buttonText"
+                disabled={pending}
               />
               <div className="flex-1 flex gap-2.5 w-full">
                 <div className="w-[calc(50%-10px)]">
@@ -49,6 +50,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                     text="Enquire"
                     textColor="text-green-70"
                     textSize="buttonText"
+                    disabled={pending}
                   />
                 </div>
                 <div className="w-[calc(50%-10px)]">
@@ -59,6 +61,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                     text="Buy Now"
                     textColor="text-green-70"
                     textSize="buttonText"
+                    disabled={pending}
                   />
                 </div>
               </div>
@@ -184,6 +187,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                 text="￡3,000"
                 textColor="text-white"
                 textSize="buttonText"
+                disabled={pending}
               />
             </div>
             <div className="mt-2.5 flex gap-2.5">

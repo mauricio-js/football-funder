@@ -24,6 +24,7 @@
   "include": [
     "src",
     "src/UI/Layout/Header/Header.tsx",
-    "createFundraiser.ts"
+    "createFundraiser.ts",
+    "PageTitle"
   ]
 }

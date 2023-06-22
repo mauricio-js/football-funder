@@ -1,4 +1,6 @@
+export * from './accountPageType';
 export * from './ComponentsTypes'
+export * from './detailPageType';
 export * from './footerType';
 export * from './fundraiserPageType';
 export * from './headerType';

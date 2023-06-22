@@ -1,4 +1,7 @@
-import { InputType, RadioButtonDataType } from "types"
+import { CardLabelType,InputType, RadioButtonDataType } from "types"
+import { BiMap} from 'react-icons/bi'
+import { BsTag } from "react-icons/bs";
+import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
 export const ProfileURLData: InputType = { 
         id: 1,
         border:"focus:border-2",
@@ -44,3 +47,36 @@ export const FinalTouchPageCheckboxData:RadioButtonDataType[] = [
         value: "acknowledgeToAsk",
     },
 ];
+
+export const AdDetailPeriodCardLabelData:CardLabelType = {
+    icon:FaRegCalendarAlt,
+    backgroundColor: "bg-gray-20",
+    textColor: "text-green-70", 
+    text: "April 2023 to April 2024",
+}
+export const AdDetailClubTypeCardLabelData:CardLabelType = {
+    icon:BsTag,
+    backgroundColor: "bg-gray-20",
+    textColor: "text-green-70", 
+    text: "Club",
+}
+export const AdDetailCommencementDateLabelData:CardLabelType = {
+   icon:FaRegCalendarAlt,
+    backgroundColor: "bg-gray-20",
+    textColor: "text-green-70", 
+    text: "23rd April 2023",
+}
+
+export const AdDetailClubCardLabelData:CardLabelType = {
+    icon:FaRegUserCircle,
+    backgroundColor: "bg-green-80",
+    textColor: "text-green-10",
+    text: "Coxhoe Athletic FC",
+}
+export const AdDetailLocationCardLabelData:CardLabelType = {
+    icon:BiMap,
+    backgroundColor: "bg-green-80",
+    textColor: "text-white", 
+    text: "Durham, England",
+}
+

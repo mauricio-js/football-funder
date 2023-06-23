@@ -2,22 +2,28 @@ import React from "react";
 import classNames from "classnames";
 import ShareIcon from "Assets/images/svg/button/share-button.svg";
 import FavouriteIcon from "Assets/images/svg/button/favourite-button.svg";
-import { CardType } from "types";
-import { HorizontalCardLabel } from "UI/Components/Card";
+import { CardType, MyDropdownType } from "types";
+import { MyDropdown, VerticalCardLabel } from "UI";
 
-export interface CarouselProps {
+export interface CarouselCardPropsType {
   cardData: CardType;
+  account: boolean;
+  dropdownData?: MyDropdownType;
 }
 
-export const CarouselCard: React.FC<CarouselProps> = ({ cardData }) => {
+export const CarouselCard: React.FC<CarouselCardPropsType> = ({
+  account,
+  cardData,
+  dropdownData,
+}) => {
   return (
     <div className="">
-      <div className="max-w-[320px] h-full">
-        <div className="relative rounded-t-20 overflow-hidden">
+      <div className="max-w-[390px] h-full">
+        <div className="relative rounded-t-20">
           <img
             src={cardData.image}
             alt="card a"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover rounded-t-20"
           />
           <div className="absolute top-0 w-full px-5  py-5  flex justify-between">
             <div className="py-[5px] bg-green-10 rounded-10 px-2.5 generalSmallText">
@@ -30,10 +36,20 @@ export const CarouselCard: React.FC<CarouselProps> = ({ cardData }) => {
               <button className="rounded-10">
                 <img src={ShareIcon} alt="share" />
               </button>
+              {dropdownData && (
+                <MyDropdown
+                  dropdownData={dropdownData}
+                  bgColor="bg-gray-10"
+                  titleColor="text-white"
+                  iconSize="text-2xl"
+                  size="w-[30px] h-[30px]"
+                  clickStyle="bg-green-70 text-white"
+                />
+              )}
             </div>
           </div>
         </div>
-        <div className="relative bg-white rounded-b-20 boder-2 shadow-md px-5 pt-5 ns:pb-5 pb-2.5 flex flex-col gap-2.5">
+        <div className="relative bg-white rounded-b-20 boder-2 shadow-md px-5 pt-[30px] ns:pb-5 pb-2.5 flex flex-col gap-2.5">
           {cardData.vat && (
             <div className="absolute top-[-15px] ">
               <div className="valueText bg-green-10 rounded-10 py-[5px] px-2.5">
@@ -41,20 +57,20 @@ export const CarouselCard: React.FC<CarouselProps> = ({ cardData }) => {
               </div>
             </div>
           )}
-          <div className="flex flex-col gap-[10px] max-sm:flex-row">
+          <div className="flex max-vs:flex-col flex-row gap-[10px]">
             {cardData.club && (
               <>
-                <HorizontalCardLabel
+                <VerticalCardLabel
                   cardLabelData={cardData.club}
-                  className="max-md:w-full"
+                  // className="max-md:w-full"
                 />
               </>
             )}
             {cardData.location && (
               <>
-                <HorizontalCardLabel
+                <VerticalCardLabel
                   cardLabelData={cardData.location}
-                  className="max-md:hidden max-md:w-full"
+                  // className="max-md:hidden max-md:w-full"
                 />
               </>
             )}
@@ -79,9 +95,9 @@ export const CarouselCard: React.FC<CarouselProps> = ({ cardData }) => {
           <div className="flex justify-between">
             {cardData.date && (
               <>
-                <HorizontalCardLabel cardLabelData={cardData.date} />
+                <VerticalCardLabel cardLabelData={cardData.date} />
                 {cardData.collection && (
-                  <HorizontalCardLabel cardLabelData={cardData.collection} />
+                  <VerticalCardLabel cardLabelData={cardData.collection} />
                 )}
               </>
             )}

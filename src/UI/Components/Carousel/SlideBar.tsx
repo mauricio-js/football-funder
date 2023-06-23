@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Carousel from "react-simply-carousel";
-import { CardType } from "types";
+import { CardType, CarouselCardPropsType } from "types";
 
 interface SlideBarDataProps {
   data: CardType[];
-  carouselContent: React.ComponentType<{ cardData: CardType }>;
+  carouselContent: React.FC<CarouselCardPropsType>;
 }
 
 export const SlideBar: React.FC<SlideBarDataProps> = ({
@@ -47,7 +47,7 @@ export const SlideBar: React.FC<SlideBarDataProps> = ({
       >
         {data.map((item, index) => (
           <div key={index} className="w-[320px] p-2">
-            <CarouselContent cardData={item} />
+            <CarouselContent cardData={item} account={false} />
           </div>
         ))}
       </Carousel>

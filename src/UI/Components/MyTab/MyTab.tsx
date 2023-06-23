@@ -13,12 +13,7 @@ type TabsProps = {
 
 export const MyTab: React.FC<TabData> = ({ sticky, tabData }) => {
   return (
-    <div
-      className={classNames(
-        "overflow-x-scroll",
-        sticky ? "sticky top-[100px]" : ""
-      )}
-    >
+    <div>
       <Tabs>
         {tabData.map((item, index) => {
           return (

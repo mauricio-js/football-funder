@@ -66,7 +66,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                 </div>
               </div>
             </div>
-            <div className="mt-[5px] flex gap-2.5 smallIntroText">
+            <div className="mt-[5px] flex gap-[5px] smallIntroText">
               <div>￡250 per month / 12 months</div>
               <div>including VAT</div>
             </div>
@@ -214,7 +214,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                 />
               </div>
             </div>
-            <div className="mt-[5px] flex gap-2.5 smallIntroText">
+            <div className="mt-[5px] flex gap-[5px] smallIntroText">
               <div>￡250 per month / 12 months</div>
               <div>including VAT</div>
             </div>

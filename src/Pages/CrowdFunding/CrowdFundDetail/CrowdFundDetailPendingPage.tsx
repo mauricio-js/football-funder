@@ -4,7 +4,7 @@ import { CrowdFundDetail } from "Pages";
 export const CrowdFundDetailPendingPage: React.FC = () => {
   return (
     <div>
-      <CrowdFundDetail pending={true} />
+      <CrowdFundDetail pending={true} menu={true} />
     </div>
   );
 };

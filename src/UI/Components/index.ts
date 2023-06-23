@@ -13,6 +13,7 @@ export * from './CheckBoxList';
 export * from './ConfirmMenu';
 export * from './DatePicker';
 export * from './DescriptionPanel';
+export * from './DownloadTitle';
 export * from './Dropdown';
 export * from './DropdownInput';
 export * from './EditPanelItem';

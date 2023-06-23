@@ -1,25 +1,35 @@
 import React, { useState } from "react";
+import classNames from "classnames";
+
 import {
   Accordion,
+  MyDropdown,
   MyTab,
   PageTitle,
   PageSectionTitle,
+  CarouselCard,
   VerticalCardLabel,
+  TabButton,
   Template,
 } from "UI";
+
 import {
+  AdsListData,
+  AccountDropdownData,
   AccountPageTabButtonNameData,
   AccountClubTypeCardLabelData,
   AccountLocationCardLabelData,
+  CardDropdownData,
+  CrowdFundListData,
 } from "Config";
+
 import { MyTabsDataType } from "types";
+
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 import AccountImage from "Assets/images/account/account-image.png";
 import { HiOutlinePencil } from "react-icons/hi";
-import { BsThreeDots } from "react-icons/bs";
-import classNames from "classnames";
-import { TabButton } from "./Components";
+import { MdAnnouncement } from "react-icons/md";
 
 export const MyAccountPage: React.FC = () => {
   const [active, setActive] = useState<string>("myProfile");
@@ -39,12 +49,20 @@ export const MyAccountPage: React.FC = () => {
 
   const FundraisingTab: MyTabsDataType[] = [
     {
-      content: <div>123</div>,
+      content: (
+        <div>
+          <CarouselCard
+            cardData={CrowdFundListData[0]}
+            account={true}
+            dropdownData={CardDropdownData}
+          />
+        </div>
+      ),
       number: 1,
       tabName: "Fundraise",
     },
     {
-      content: <div>123</div>,
+      content: <div>Contribute</div>,
       number: 0,
       tabName: "Contribute",
     },
@@ -134,7 +152,7 @@ export const MyAccountPage: React.FC = () => {
             />
           </div>
           <div className="relative w-[1000px] max-lg:w-full px-5 mx-auto z-20">
-            <PageTitle title="Donate to this fundraiser" />
+            <PageTitle title="My Account" />
             <div className="mt-30 flex vs:flex-row flex-col gap-15 ">
               <div className="flex">
                 <img src={AccountImage} alt="accuntimage" />
@@ -158,26 +176,35 @@ export const MyAccountPage: React.FC = () => {
                     />
                   </div>
                 </div>
-                <button className="text-2xl">
-                  <BsThreeDots />
-                </button>
+                <div className="flex items-center">
+                  <MyDropdown
+                    dropdownData={AccountDropdownData}
+                    bgColor="bg-white"
+                    clickStyle="bg-green-70 text-white"
+                    iconSize="text-2xl"
+                    size="w-[30px] h-[30px]"
+                    titleColor="text-black"
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <div className="relative mt-30 z-20">
+          <div className="relative mt-30 z-10">
             <div className="w-full">
               <div
                 id="sticky-tab"
                 className={classNames(
-                  "sticky-tab w-full h-[60px] sticky top-[74px] z-50",
-                  "overflow-scroll"
+                  "sticky-tab w-full h-[60px] sticky top-[74px]",
+                  "overflow-scroll z-10"
                 )}
               >
-                <div className="h-full lg:w-[1000px] flex items-center gap-5 px-5 mx-auto">
+                <div className="h-full lg:w-[1000px] w-[800px] flex items-center gap-5 px-5 lg:mx-auto">
                   {AccountPageTabButtonNameData.map((item, key) => {
                     return (
                       <div key={key}>
                         <TabButton
+                          textSize="generalText"
+                          textColor="text-gray-10 hover:text-gray-800"
                           handleClick={() => setActive(item.value)}
                           name={item.name}
                           selectedBtnName={active}
@@ -189,12 +216,12 @@ export const MyAccountPage: React.FC = () => {
                 </div>
               </div>
               <div className="w-[1000px] max-lg:w-full px-5 mx-auto">
-                {active === "fundraising" && (
-                  <div className="mt-30">
-                    <PageSectionTitle
-                      intro="Coxhoe Athletic FC - Varius habitasse semper convallis mi. Mi adipiscing mauris pharetra congue lorem nisl felis risus."
-                      title="About"
-                    />
+                <div className="mt-30">
+                  <PageSectionTitle
+                    intro="Coxhoe Athletic FC - Varius habitasse semper convallis mi. Mi adipiscing mauris pharetra congue lorem nisl felis risus."
+                    title="About"
+                  />
+                  {active === "fundraising" && (
                     <div className="xs:w-[500px]">
                       <div className="mt-14 ">
                         <Accordion title="Fundraising">
@@ -218,8 +245,57 @@ export const MyAccountPage: React.FC = () => {
                         </Accordion>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                  {active === "myProfile" && (
+                    <div className="xs:w-[390px]">
+                      <div className="mt-30">
+                        <Accordion title="Fundraising">
+                          <div className="mt-5 introText">Live fundraisers</div>
+                          <div className="flex flex-col gap-5 mt-5">
+                            <CarouselCard
+                              cardData={CrowdFundListData[0]}
+                              account={true}
+                              dropdownData={CardDropdownData}
+                            />
+                            <CarouselCard
+                              cardData={CrowdFundListData[0]}
+                              account={true}
+                              dropdownData={CardDropdownData}
+                            />
+                          </div>
+                        </Accordion>
+                      </div>
+                      <div className="mt-30">
+                        <Accordion title="Advertising">
+                          <div className="mt-5 introText">Live fundraisers</div>
+                          <div className="flex flex-col gap-5 mt-5">
+                            <CarouselCard
+                              cardData={AdsListData[0]}
+                              account={true}
+                              dropdownData={CardDropdownData}
+                            />
+                          </div>
+                        </Accordion>
+                      </div>
+                      <div className="mt-30">
+                        <Accordion title="Sponsorship">
+                          <div className="mt-5 introText">
+                            Live sponsorship opportunities
+                          </div>
+                          <div className="mt-15 bg-gray-20 rounded-10 flex items-center px-15 py-5 gap-2.5">
+                            <div className="text-gray-10">
+                              <MdAnnouncement />
+                            </div>
+                            <div className="introText">
+                              Coxhoe Athletic FC currently has no sponsorship
+                              opportunities listed.
+                            </div>
+                          </div>
+                        </Accordion>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

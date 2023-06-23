@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import {
   ABOUTUS_URL,
-  MYACCOUNT_URL,
   ADDETAILLIVE_URL,
   ADDETAILPENDING_URL,
   ADSLISTING_URL,
   ADVERTISINGSALE_URL,
   FORGOTPASSWORD_URL,
   CHECKOUT_URL,
-  CROWDFUNDDETAILPENDING_URL,
   CROWDFUNDDETAILLIVE_URL,
+  CROWDFUNDDETAILLIVEMENU_URL,
+  CROWDFUNDDETAILPENDING_URL,
   CROWDFUNDINGLIST_URL,
   CROWDFUNDINGDONATE_URL,
   EXPLORE_URL,
@@ -19,6 +19,8 @@ import {
   INDIVIDUALADVERTISING_URL,
   INDIVIDUALFUNDRAISER_URL,
   INDIVIDUALSPONSORSHIP_URL,
+  MYACCOUNT_URL,
+  EDITMYACCOUNT_URL,
   ORGANISATIONADVERTISING_URL,
   ORGANISATIONFUNDRAISER_URL,
   ORGANISATIONSPONSORSHIP_URL,
@@ -41,10 +43,12 @@ import {
   AdvertisingSale,
   Checkout,
   CrowdFundDetailLivePage,
+  CrowdFundDetailLiveMenuPage,
   CrowdFundDetailPendingPage,
   CrowdfundingDonate,
   CrowdfundingList,
   DonationView,
+  EditMyAccount,
   Explore,
   Fees,
   ForgotPassword,
@@ -113,12 +117,16 @@ function App() {
           />
           <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
           <Route
-            path={CROWDFUNDDETAILPENDING_URL}
-            element={<CrowdFundDetailPendingPage />}
+            path={CROWDFUNDDETAILLIVEMENU_URL}
+            element={<CrowdFundDetailLiveMenuPage />}
           />
           <Route
             path={CROWDFUNDDETAILLIVE_URL}
             element={<CrowdFundDetailLivePage />}
+          />
+          <Route
+            path={CROWDFUNDDETAILPENDING_URL}
+            element={<CrowdFundDetailPendingPage />}
           />
           <Route />
           <Route
@@ -166,6 +174,7 @@ function App() {
           <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
           <Route path={DONATIONVIEW_URL} element={<DonationView />} />
           <Route path={MYACCOUNT_URL} element={<MyAccountPage />} />
+          <Route path={EDITMYACCOUNT_URL} element={<EditMyAccount />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

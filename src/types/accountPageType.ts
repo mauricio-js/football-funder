@@ -1,11 +1,17 @@
+import { IconType } from "react-icons/lib"
+
 export interface AccountPageTabButtonType {
-    name: string,
     handleClick: () => void
+    icon?:IconType
+    name: string,
     selectedBtnName:string
     value:string,
+    textSize: string,
+    textColor:string
 }
 
-export interface AccountPageTabButtonNameType { 
+export interface AccountPageTabButtonNameType {
+    icon?:IconType
     name: string,
     value:string
 }

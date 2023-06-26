@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import classNames from "classnames";
 
 import {
   Accordion,
+  CarouselCard,
+  DownloadTitle,
+  GeneralCheckBoxList,
+  LabelAccordion,
+  ConfirmModal,
+  DownloadModal,
   MyDropdown,
   MyTab,
   PageTitle,
   PageSectionTitle,
-  CarouselCard,
-  VerticalCardLabel,
+  Select,
   TabButton,
   Template,
+  VerticalCardLabel,
 } from "UI";
 
 import {
@@ -19,8 +25,11 @@ import {
   AccountPageTabButtonNameData,
   AccountClubTypeCardLabelData,
   AccountLocationCardLabelData,
+  CampaignCheckboxData,
   CardDropdownData,
+  ClaimersListData,
   CrowdFundListData,
+  RewardsSortbyData,
 } from "Config";
 
 import { MyTabsDataType } from "types";
@@ -30,22 +39,64 @@ import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 import AccountImage from "Assets/images/account/account-image.png";
 import { HiOutlinePencil } from "react-icons/hi";
 import { MdAnnouncement } from "react-icons/md";
+import { BiCheck } from "react-icons/bi";
+import { TbAdjustmentsHorizontal } from "react-icons/tb";
 
 export const MyAccountPage: React.FC = () => {
   const [active, setActive] = useState<string>("myProfile");
+
+  const [showDownloadModal, setShowDownloadModal] = useState<boolean>(false);
+
+  const [showRewardModal, setShowRewardModal] = useState<boolean>(false);
+
+  const [clicked, setClicked] = useState<boolean>(false);
+
+  const [campaign, setCampaign] = useState<string[]>([""]);
+
+  const [selectedSortbyOption, setSelectedSortbyOption] = useState<string>("");
+
+  const handleSelectedSortbyChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedSortbyOption(event.target.value);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [updatedPassword, setUpdatedPassword] = useState<string>(
+    sessionStorage.getItem("updatedPassword") || "false"
+  );
 
   function handleScroll(): void {
     const div = document.querySelector("#sticky-tab");
     if (div) {
       const rect = div.getBoundingClientRect();
-      if (rect.top === 74) {
+      if (rect.top <= 74) {
         div.classList.add("bg-white", "shadow-lg", "shadow-slate-500");
       } else {
         div.classList.remove("bg-white", "shadow-lg", "shadow-slate-500");
       }
     }
   }
+
   window.addEventListener("scroll", handleScroll);
+
+  const alertDiv = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (alertDiv.current) {
+      setTimeout(() => {
+        if (alertDiv.current) {
+          alertDiv.current.classList.add("opacity-100");
+        }
+      }, 1000);
+      setTimeout(() => {
+        if (alertDiv.current) {
+          alertDiv.current.classList.remove("opacity-100");
+          alertDiv.current.classList.add("opacity-0");
+        }
+      }, 1000);
+    }
+  }, []);
 
   const FundraisingTab: MyTabsDataType[] = [
     {
@@ -137,7 +188,37 @@ export const MyAccountPage: React.FC = () => {
   ];
   return (
     <Template>
-      <div className="relative md:pt-5 pt-[10px] md:pb-[200px] pb-[150px]">
+      {showDownloadModal && (
+        <DownloadModal
+          isShowModal={() => setShowDownloadModal(false)}
+          menuTitle="Download list"
+          menuContent="Choose the file format you want to download the list of Reward Claimers."
+          button1Name="Download"
+          button2Name="Cancel"
+        />
+      )}
+      {showRewardModal && (
+        <ConfirmModal
+          isShowModal={() => setShowRewardModal(false)}
+          menuTitle="Are you sure?"
+          menuContent="Once confirmed, we will email the claimer to let them know their reward is on the way. Once actioned, it cannot be undone."
+          button1Name="Send Reward"
+          button2Name="Cancel"
+        />
+      )}
+      <div className="relative md:pt-5 pt-[10px] md:pb-[150px] pb-[70px]">
+        {updatedPassword === "true" && (
+          <div
+            ref={alertDiv}
+            className="absolute top-0 w-full bg-green-10 bg-opacity-50 px-5 py-2.5 
+          flex justify-center  transition-opacity duration-1000 ease-in-out"
+          >
+            <div className="flex items-center  gap-2.5 darkIntroText">
+              <BiCheck />
+              Updated successfully
+            </div>
+          </div>
+        )}
         <div className="relative sm:pt-[45px] pt-[25px]">
           <div className="absolute w-full top-0 z-10">
             <img
@@ -194,8 +275,8 @@ export const MyAccountPage: React.FC = () => {
               <div
                 id="sticky-tab"
                 className={classNames(
-                  "sticky-tab w-full h-[60px] sticky top-[74px]",
-                  "overflow-scroll z-10"
+                  "sticky-tab w-full h-[60px] sticky top-[74px] :",
+                  "overflow-scroll z-20 scrollbar-hidden"
                 )}
               >
                 <div className="h-full lg:w-[1000px] w-[800px] flex items-center gap-5 px-5 lg:mx-auto">
@@ -216,14 +297,14 @@ export const MyAccountPage: React.FC = () => {
                 </div>
               </div>
               <div className="w-[1000px] max-lg:w-full px-5 mx-auto">
-                <div className="mt-30">
-                  <PageSectionTitle
-                    intro="Coxhoe Athletic FC - Varius habitasse semper convallis mi. Mi adipiscing mauris pharetra congue lorem nisl felis risus."
-                    title="About"
-                  />
-                  {active === "fundraising" && (
+                {active === "fundraising" && (
+                  <div className="max-md:mt-10 mt-30">
+                    <PageSectionTitle
+                      intro="Coxhoe Athletic FC - Varius habitasse semper convallis mi. Mi adipiscing mauris pharetra congue lorem nisl felis risus."
+                      title="About"
+                    />
                     <div className="xs:w-[500px]">
-                      <div className="mt-14 ">
+                      <div className="sm:mt-14 mt-30">
                         <Accordion title="Fundraising">
                           <div className="mt-30">
                             <MyTab tabData={FundraisingTab} />
@@ -245,10 +326,16 @@ export const MyAccountPage: React.FC = () => {
                         </Accordion>
                       </div>
                     </div>
-                  )}
-                  {active === "myProfile" && (
+                  </div>
+                )}
+                {active === "myProfile" && (
+                  <div className="max-md:mt-10 mt-30">
+                    <PageSectionTitle
+                      intro="Coxhoe Athletic FC - Varius habitasse semper convallis mi. Mi adipiscing mauris pharetra congue lorem nisl felis risus."
+                      title="About"
+                    />
                     <div className="xs:w-[390px]">
-                      <div className="mt-30">
+                      <div className="sm:mt-14 mt-30">
                         <Accordion title="Fundraising">
                           <div className="mt-5 introText">Live fundraisers</div>
                           <div className="flex flex-col gap-5 mt-5">
@@ -294,12 +381,147 @@ export const MyAccountPage: React.FC = () => {
                         </Accordion>
                       </div>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
+                {active === "managerewards" && (
+                  <div className=" px-5">
+                    <div className="mt-30 xs:w-[500px]">
+                      <>
+                        <div className="flex justify-between items-center valueText">
+                          <>My Rewards</>
+                          <button
+                            className={classNames(
+                              "w-10 h-10 flex justify-center items-center rounded-10",
+                              "border-2 border-gray-30",
+                              clicked ? "bg-gray-30" : "bg-white"
+                            )}
+                            onClick={() => setClicked(!clicked)}
+                          >
+                            <TbAdjustmentsHorizontal />
+                          </button>
+                        </div>
+                        {clicked && (
+                          <>
+                            <div className="mt-6 text-xs text-gray-10">
+                              <div className="mt-2.5">
+                                <Select
+                                  backgroundColor="bg-white"
+                                  border="border-[1px] border-gray-300"
+                                  onOptionChange={handleSelectedSortbyChange}
+                                  placeholder="text-gray-500"
+                                  placeholderText="Sort by"
+                                  SelectFormData={RewardsSortbyData}
+                                  selectedOption={selectedSortbyOption}
+                                  textColor="text-green-70"
+                                  textSize="generalText"
+                                />
+                              </div>
+                            </div>
+                            <div className="mt-15 text-xs">
+                              Campaigns
+                              <div className="text-green-70 text-[16px] leading-5 mt-2.5">
+                                <GeneralCheckBoxList
+                                  classes="flex md:gap-[60px] gap-30"
+                                  textStyle="text-[16px] leading-5 text-green-70"
+                                  options={CampaignCheckboxData}
+                                  selectedValues={campaign}
+                                  setValues={setCampaign}
+                                />
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </>
+                      <div className="mt-2.5">
+                        <Accordion
+                          title="Running a crowdfunding campaign for my football club"
+                          className="valueText"
+                        >
+                          <div className="mt-30 bg-gray-20 rounded-10 p-2.5">
+                            <div className="valueText">
+                              Rangers 2020/21 Small Batch Single Malt
+                            </div>
+                            <div className="mt-15 generalSmallText text-green-70 flex gap-2.5">
+                              <div>Donate £30 or more</div>
+                              <div className="text-gray-10">|</div>
+                              <div>10 available</div>
+                            </div>
+                            <div className="mt-15 text-[12px] leading-[16px] font-medium text-gray-10 ">
+                              A small batch single malt, selected by Rangers
+                              Football Club for the 2020/21 Season. Bottled by
+                              Douglas Laing & Co. Ltd. Dispatch expected by 31st
+                              May 2023
+                            </div>
+                          </div>
+                        </Accordion>
+                        <div className="mt-5">
+                          <DownloadTitle
+                            title="Claimers list"
+                            handleClick={() => setShowDownloadModal(true)}
+                          />
+                        </div>
+                        <div className="mt-5 text-[12px] leading-[16px] font-medium text-gray-10">
+                          Use the arrows to reveal the details of where your
+                          rewards need to be sent and select 'Send Reward' once
+                          ready to action.
+                        </div>
+                        <div className="mt-15">
+                          <div className="flex flex-col gap-2.5">
+                            {ClaimersListData.map((item, index) => {
+                              return (
+                                <LabelAccordion
+                                  key={index}
+                                  date={item.date}
+                                  name={item.name}
+                                  sent={item.sent}
+                                  handleBtnClick={setShowRewardModal}
+                                  address={item.address}
+                                  email={item.email}
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
+                        <div className="mt-5">
+                          <DownloadTitle
+                            title="Sent rewards list"
+                            handleClick={() => setShowDownloadModal(true)}
+                          />
+                          <div className="mt-15">
+                            <LabelAccordion
+                              name="Sheldon Coppper"
+                              date="1 weeks"
+                              sent={true}
+                              handleBtnClick={setShowRewardModal}
+                            />
+                          </div>
+                        </div>
+                        <div className="mt-30">
+                          <Accordion
+                            title="Sed auctor aliquet morbi pretium blandit sit ullamcorper vulputate. Viverra in morbi."
+                            className="valueText"
+                          >
+                            <div className="mt-30 valueText">
+                              Sed auctor aliquet morbi pretium blandit sit
+                              ullamcorper vulputate. Viverra in morbi.
+                            </div>
+                          </Accordion>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
+        <style>
+          {`
+            .scrollbar-hidden::-webkit-scrollbar {
+                display: none;
+              }
+          `}
+        </style>
       </div>
     </Template>
   );

@@ -1,17 +1,22 @@
 import React from "react";
 import { CheckBox } from "UI";
 import { RadioButtonDataType } from "types";
+import classNames from "classnames";
 
 interface CheckboxListDataProps {
+  classes?: string;
   options: RadioButtonDataType[];
   selectedValues: string[];
   setValues: (values: string[]) => void;
+  textStyle: string;
 }
 
 export const GeneralCheckBoxList: React.FC<CheckboxListDataProps> = ({
+  classes,
   options,
   selectedValues,
   setValues,
+  textStyle,
 }) => {
   const onHandleSelectedCheckbox = (value: string) => {
     const index = selectedValues.findIndex((val) => val === value);
@@ -25,7 +30,7 @@ export const GeneralCheckBoxList: React.FC<CheckboxListDataProps> = ({
   //console.log(selectedValues);
 
   return (
-    <div className="mt-5 flex flex-col gap-5">
+    <div className={classNames(classes || "mt-5 flex flex-col gap-5")}>
       {options.map((item, index) => {
         return (
           <div key={index}>
@@ -35,7 +40,7 @@ export const GeneralCheckBoxList: React.FC<CheckboxListDataProps> = ({
               label={item.label}
               checked={selectedValues.includes(item.value)}
               onSelect={onHandleSelectedCheckbox}
-              textClass="introText"
+              textClass={textStyle}
             />
           </div>
         );

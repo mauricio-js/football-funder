@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import classNames from "classnames";
 import {
   Button,
-  ConfirmMenu,
   EditableCheckoutPanel,
+  ConfirmModal,
   PageTitle,
   StepLabel,
   PageSectionTitle,
@@ -13,7 +12,7 @@ export const PaymentDetailsPage: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <div>
-      <div
+      {/* <div
         className={classNames(
           "fixed top-0 w-full h-full px-5 overflow-y-auto inset-0 bg-black bg-opacity-30 flex justify-center items-start",
           showModal ? "block" : "hidden"
@@ -22,7 +21,16 @@ export const PaymentDetailsPage: React.FC = () => {
         <div className="mt-[300px]">
           <ConfirmMenu isShowModal={() => setShowModal(false)} />
         </div>
-      </div>
+      </div> */}
+      {showModal && (
+        <ConfirmModal
+          isShowModal={() => setShowModal(false)}
+          menuTitle="Are you sure?"
+          menuContent="Once confirmed, we will email the claimer to let them know their reward is on the way. Once actioned, it cannot be undone."
+          button1Name="Send Reward"
+          button2Name="Cancel"
+        />
+      )}
       <div
         className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
@@ -37,13 +45,13 @@ export const PaymentDetailsPage: React.FC = () => {
             <div className="divide-y-2 divide-gray-300">
               <div className="py-5">
                 <EditableCheckoutPanel
-                  handleClick={setShowModal}
+                  handleClick={() => setShowModal(true)}
                   value={showModal}
                 />
               </div>
               <div className="py-5">
                 <EditableCheckoutPanel
-                  handleClick={setShowModal}
+                  handleClick={() => setShowModal(true)}
                   value={showModal}
                 />
               </div>

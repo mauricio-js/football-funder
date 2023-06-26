@@ -12,12 +12,14 @@ interface LabelAccordionPropsType {
   email?: string;
   name: string;
   sent: boolean;
+  handleBtnClick: (val: boolean) => void;
 }
 
 export const LabelAccordion: React.FC<LabelAccordionPropsType> = ({
   address,
   date,
   email,
+  handleBtnClick,
   name,
   sent,
 }) => {
@@ -63,6 +65,7 @@ export const LabelAccordion: React.FC<LabelAccordionPropsType> = ({
                     textColor="text-green-70"
                     textSize="text-sm font-semibold"
                     width="w-[120px]"
+                    handleClick={() => handleBtnClick(true)}
                   />
                 </div>
               </>

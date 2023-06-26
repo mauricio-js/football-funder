@@ -170,6 +170,7 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
               options={DonatePaymentConfirm}
               selectedValues={isConfirm}
               setValues={setIsConfirm}
+              textStyle="introText"
             />
           </div>
         </div>

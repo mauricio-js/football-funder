@@ -121,6 +121,7 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
               options={SaleEnquiryConfirm}
               selectedValues={isConfirm}
               setValues={setIsConfirm}
+              textStyle="introText"
             />
           </div>
         </div>

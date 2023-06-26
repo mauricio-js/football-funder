@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+
+import { MAKEAWITHDRAWAL_URL } from "Lib";
 
 import {
   // AmountShow,
   Button,
   CarouselCard,
   CommentList,
+  ConfirmModal,
+  DownloadModal,
   DownloadTitle,
   LabelAccordion,
   SlideBar,
@@ -14,6 +19,7 @@ import {
   UserList,
   UserCommentList,
   VerticalCardLabel,
+  WithdrawFundItem,
 } from "UI";
 
 import {
@@ -25,6 +31,7 @@ import {
   CrowdDetailLocationCardLabelData,
   UserFundListData,
   UserCommentListData,
+  WithdrawFundsItemData,
 } from "Config";
 
 import { DetailMenuPagePropsType } from "types";
@@ -43,12 +50,19 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
   menu,
   pending,
 }) => {
+  const navigate = useNavigate();
+
+  const [showDownloadModal, setShowDownloadModal] = useState<boolean>(false);
+
+  const [showRewardModal, setShowRewardModal] = useState<boolean>(false);
+
   const [active, setActive] = useState<string>("view");
+
   const [crowdFundAmount, setCrowdFundAmount] = useState<number>(0);
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [Amount, setAmount] = useState<number>(0);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [showModal, setShowModal] = useState<boolean>(false);
+
   const handleSelectValue = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setCrowdFundAmount(parseFloat(e.currentTarget.value));
   };
@@ -57,10 +71,11 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
     setAmount(crowdFundAmount);
   };
   console.log("current active", active);
+
   return (
     <Template>
       {menu && (
-        <div className="sticky overflow-scroll bg-white top-[74px] h-[60px] shadow-lg w-full z-20">
+        <div className="sticky overflow-scroll bg-white top-[74px] h-[60px] shadow-lg w-full z-20  scrollbar-hidden">
           <div className="h-full lg:w-[1000px] w-[650px] flex items-center gap-5 px-5 lg:mx-auto">
             {CardMenuTabButtonNameData.map((item, key) => {
               return (
@@ -80,6 +95,24 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
           </div>
         </div>
       )}
+      {showDownloadModal && (
+        <DownloadModal
+          isShowModal={() => setShowDownloadModal(false)}
+          menuTitle="Download list"
+          menuContent="Choose the file format you want to download the list of Reward Claimers."
+          button1Name="Download list"
+          button2Name="Cancel"
+        />
+      )}
+      {showRewardModal && (
+        <ConfirmModal
+          isShowModal={() => setShowRewardModal(false)}
+          menuTitle="Are you sure?"
+          menuContent="Once confirmed, we will email the claimer to let them know their reward is on the way. Once actioned, it cannot be undone."
+          button1Name="Send Reward"
+          button2Name="Cancel"
+        />
+      )}
       <div
         className={classNames(
           "relative md:pb-[150px] pb-[40px] bl:w-[1080px] w-full mx-auto",
@@ -88,7 +121,6 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
       >
         {(active === "view" ||
           active === "edit" ||
-          active === "withdrawfunds" ||
           active === "endfundraiser") && (
           <>
             <div
@@ -437,7 +469,7 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
                   <div className="generalTitle">Related</div>
                   <div className="buttonText text-green-70">View all</div>
                 </div>
-                <div className="mt-5">
+                <div className="mt-5 w-full">
                   <SlideBar
                     data={CrowdFundListData}
                     carouselContent={CarouselCard}
@@ -447,12 +479,12 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
             </div>
           </>
         )}
-        {active === "managereward" && (
+        {active === "managerewards" && (
           <div className="max-md:mt-30 px-5">
             <div className="xs:w-[500px]">
-              <div className="valueText ">
+              <div className="buttonText text-green-70">
                 Fundraiser Rewards
-                <div className="mt-2.5 bg-gray-20 rounded-10 p-2.5">
+                <div className="mt-5 bg-gray-20 rounded-10 p-2.5">
                   <div className="valueText">
                     Rangers 2020/21 Small Batch Single Malt
                   </div>
@@ -471,7 +503,7 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
               <div className="mt-5">
                 <DownloadTitle
                   title="Claimers list"
-                  handleClick={() => setShowModal(true)}
+                  handleClick={() => setShowDownloadModal(true)}
                 />
               </div>
               <div className="mt-5 text-[12px] leading-[16px] font-medium text-gray-10">
@@ -486,6 +518,7 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
                     address="22 Burdon Place, Sedgefield, Stockton-on-Tees, TS21 3BF"
                     email="damien.scott89@gmail.com"
                     sent={false}
+                    handleBtnClick={setShowRewardModal}
                   />
                   <LabelAccordion
                     name="Sheldon Coppper"
@@ -493,6 +526,7 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
                     address="22 Burdon Place, Sedgefield, Stockton-on-Tees, TS21 3BF"
                     email="sheldon.copper89@gmail.com"
                     sent={false}
+                    handleBtnClick={setShowRewardModal}
                   />
                   <LabelAccordion
                     name="Donart Selimi"
@@ -500,25 +534,82 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
                     address="22 Burdon Place, Sedgefield, Stockton-on-Tees, TS21 3BF"
                     email="donart.selimi89@gmail.com"
                     sent={false}
+                    handleBtnClick={setShowRewardModal}
                   />
                 </div>
               </div>
               <div className="mt-5">
                 <DownloadTitle
                   title="Sent rewards list"
-                  handleClick={() => setShowModal(true)}
+                  handleClick={() => setShowDownloadModal(true)}
                 />
                 <div className="mt-15">
                   <LabelAccordion
                     name="Sheldon Coppper"
                     date="1 weeks"
                     sent={true}
+                    handleBtnClick={setShowRewardModal}
                   />
                 </div>
               </div>
             </div>
           </div>
         )}
+        {active === "withdrawfunds" && (
+          <div className="mt-30 px-5">
+            <div className="xs:w-[500px] ">
+              <div className="stepLabelTitle">
+                Fundraiser Rewards
+                <div className="mt-30">
+                  <div className="flex flex-col gap-5">
+                    {WithdrawFundsItemData.map((item, index) => {
+                      return (
+                        <WithdrawFundItem
+                          intro={item.intro}
+                          value={item.value}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className="mt-30">
+                  <Button
+                    backgroundColor="bg-green-10"
+                    height="h-[50px]"
+                    text="Make withdrawal"
+                    textColor="text-green-70"
+                    textSize="buttonText"
+                    width="w-full"
+                    handleClick={() => navigate(MAKEAWITHDRAWAL_URL)}
+                  />
+                </div>
+                <div className="md:mt-12 mt-30 valueText">
+                  Donation (120)
+                  <div className="mt-2.5 flex flex-col gap-2.5">
+                    {UserFundListData.map((data, index) => {
+                      return (
+                        <UserList
+                          key={index}
+                          fund={data.fund}
+                          name={data.name}
+                          startDay={data.startDay}
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="mt-5 linkTextButton">View all donations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        <style>
+          {`
+            .scrollbar-hidden::-webkit-scrollbar {
+                display: none;
+              }
+          `}
+        </style>
       </div>
     </Template>
   );

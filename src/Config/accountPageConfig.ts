@@ -1,5 +1,13 @@
 
-import { AccountPageTabButtonNameType,CardLabelType, MyDropdownType } from "types"
+import {
+    AccountPageTabButtonNameType,
+    ChattingAccordionType,
+    CardLabelType,
+    LabelAccordionType,
+    MyDropdownType,
+    RadioButtonDataType,
+    SelectDataType
+} from "types"
 import { BiMap } from 'react-icons/bi'
 import { FaUsers } from 'react-icons/fa'
 import { BsThreeDots } from "react-icons/bs";
@@ -44,7 +52,7 @@ export const AccountPageTabButtonNameData: AccountPageTabButtonNameType[] = [
     },
     {
         name: "Manage Rewards",
-        value:"manageReward"
+        value:"managerewards"
     },
     {
         name: "Help",
@@ -76,7 +84,7 @@ export const CardMenuTabButtonNameData: AccountPageTabButtonNameType[] = [
         {
             icon:AiOutlineGift,
             name: "Manage Rewards",
-            value:"managereward"
+            value:"managerewards"
         },
         
     ]
@@ -123,3 +131,176 @@ export const AccountDropdownData: MyDropdownType = {
         
     ]
 }
+
+export const RewardsSortbyData: SelectDataType[] = [
+    {
+        id: 1,
+        option: 'Newest',
+        value:'newest',
+    },
+    {
+        id: 2,
+        option: 'Promoted',
+        value:'promoted'
+    },   
+    {
+        id: 3,
+        option: 'Oldest',
+        value:'oldest'
+    },   
+    {
+        id: 4,
+        option: 'High to Low',
+        value:'high'
+    },   
+    {
+        id: 5,
+        option: 'Low to High',
+        value:'low'
+    },   
+];
+
+
+export const CampaignCheckboxData:RadioButtonDataType[] = [
+    {
+        label: "Live",
+        value: "live",
+        classes:"gap-[10px] flex-row-reverse justify-end"
+    },
+    {
+        label: "Funded",
+        value: "funded",
+        classes:"gap-[10px] flex-row-reverse justify-end"
+    },
+];
+
+export const DownloadFormatData:RadioButtonDataType[] = [
+        {
+            label: "PDF",
+            value: "pdf",
+            classes:"gap-[10px] flex-row-reverse justify-end"
+        },
+        {
+            label: "XLS",
+            value: "xls",
+            classes:"gap-[10px] flex-row-reverse justify-end",
+        },
+        {
+            label: "CSV",
+            value: "csv",
+            classes:"gap-[10px] flex-row-reverse justify-end",
+        },
+       
+];
+
+export const ClaimersListData: LabelAccordionType[] = [
+    {
+        address: "22 Burdon Place, Sedgefield, Stockton-on-Tees, TS21 3BF",
+        date: "1 weeks",
+        email: "damien.scott89@gmail.com",
+        name: "Damien Scott",
+        sent:false
+    },
+    {
+        address: "22 Burdon Place, Sedgefield, Stockton-on-Tees, TS21 3BF",
+        date: "1 weeks",
+        email: "sheldon.copper89@gmail.com",
+        name: "Sheldon Coppper",
+        sent:false
+    },
+    {
+        address: "22 Burdon Place, Sedgefield, Stockton-on-Tees, TS21 3BF",
+        date: "1 weeks",
+        email: "donart.selimi89@gmail.com",
+        name: "Donart Selimi",
+        sent:false
+    },
+]
+export const ChatListData: ChattingAccordionType[] = [
+    {
+        date: "1 weeks",
+        name: "Damien Scott",
+        content: "Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin. Vel amet iaculis id adipiscing venenatis sed volutpat.",
+        chatHistory: {
+            me: [
+                    {
+                        content: "Lorem ipsum dolor sit amet.",
+                        date:"1 day ago"
+                    },
+                    {
+                        content: "Lorem ipsum dolor sit amet.",
+                        date:"2 day ago"
+                    },
+                    {
+                        content: "Lorem ipsum dolor sit amet.",
+                        date:"3 day ago"
+                    },
+                    {
+                        content: "Lorem ipsum dolor sit amet.",
+                        date:"4 day ago"
+                    },
+                    {
+                        content: "Lorem ipsum dolor sit amet.",
+                        date:"5 day ago"
+                    },
+                ],
+            oppotunity: [
+                {
+                    content: "Proin quis dictum arcu, non tincidunt nulla. Pellentesque habitant morbi.",
+                    date: "1 day ago"
+                },
+                {
+                    content: "Proin quis dictum arcu, non tincidunt nulla. Pellentesque habitant morbi.",
+                    date: "2 day ago"
+                },
+                {
+                    content: "Proin quis dictum arcu, non tincidunt nulla. Pellentesque habitant morbi.",
+                    date: "3 day ago"
+                },
+                {
+                    content: "Proin quis dictum arcu, non tincidunt nulla. Pellentesque habitant morbi.",
+                    date: "4 day ago"
+                },
+                {
+                    content: "Proin quis dictum arcu, non tincidunt nulla. Pellentesque habitant morbi.",
+                    date: "5 day ago"
+                },
+              
+            ]
+        }
+    },
+    {
+        date: "1 weeks",
+        name: "Sheldon Coppper",
+        content: "Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin. Vel amet iaculis id adipiscing venenatis sed volutpat.",
+        chatHistory: {
+            me: [
+                    {
+                        content: "Lorem ipsum dolor sit amet.",
+                        date:"4 day ago"
+                    },
+            ],
+            oppotunity: [
+                    {
+                    content: "Proin quis dictum arcu, non tincidunt nulla. Pellentesque habitant morbi.",
+                    date: "5 day ago"
+                    },
+            ]
+        }
+    },
+    {
+        date: "1 weeks",
+        name: "Donart Selimi",
+        content:"Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin. Vel amet iaculis id adipiscing venenatis sed volutpat. "
+    },
+    {
+        date: "1 weeks",
+        name: "Donart Selimi",
+        content:"Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin. Vel amet iaculis id adipiscing venenatis sed volutpat. "
+    },
+    {
+        date: "1 weeks",
+        name: "Donart Selimi",
+        content:"Vel amet iaculis id adipiscing venenatis sed volutpat. Dictumst sem pellentesque lectus sollicitudin. Vel amet iaculis id adipiscing venenatis sed volutpat. "
+    },
+]

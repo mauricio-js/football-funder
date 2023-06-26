@@ -4,7 +4,8 @@ import {
     ContactPhoneNumberType,
     InputType,
     RadioButtonDataType,
-    SelectDataType
+    SelectDataType,
+    WithdrawFundItemType
 } from 'types';
 import CardImageA from 'Assets/images/explore/card-a.png'
 import CardImageB from 'Assets/images/explore/card-b.png'
@@ -264,6 +265,26 @@ export const AvailableNumberData: InputType = {
     type: "text",
     content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
+export const AccountNumberData: InputType = {
+
+    id: 8,
+    label: "Account number",
+    height: "h-[54px]",
+    textSize: "text-[16px] leading-[22px]",
+    padding:" px-3 py-4",
+    type: "text",
+    content:"after:content-['*'] after:ml-1 after:text-green-10 "
+}
+export const SortCodeData: InputType = {
+
+    id: 8,
+    label: "Sort Code",
+    height: "h-[54px]",
+    textSize: "text-[16px] leading-[22px]",
+    padding:" px-3 py-4",
+    type: "text",
+    content:"after:content-['*'] after:ml-1 after:text-green-10 "
+}
 export const RegionData: SelectDataType[] = [
     {
         id: 1,
@@ -285,6 +306,19 @@ export const RegionData: SelectDataType[] = [
         option: 'Northern Ireland',
         value:'northern ireland'
     },   
+];
+export const CategoryData: SelectDataType[] = [
+    {
+        id: 1,
+        option: 'Organization',
+        value:'orgranization',
+    },
+    {
+        id: 2,
+        option: 'Individual',
+        value:'individual'
+    },   
+
 ];
 
 export const DeliveryData:RadioButtonDataType[] = [
@@ -963,3 +997,22 @@ export const SelectAnonymous:RadioButtonDataType[] = [
         classes:"gap-[10px] flex-row-reverse justify-end"
     },
 ];
+
+export const WithdrawFundsItemData: WithdrawFundItemType[] = [
+    {
+        intro: "Initial target",
+        value:"£100.000"
+    },
+    {
+        intro: "Raised (lees fees)",
+        value:"£50.000"
+    },
+    {
+        intro: "Withdrawn",
+        value:"£5.000"
+    },
+    {
+        intro: "Total left to withdraw",
+        value:"£45.000"
+    },
+]

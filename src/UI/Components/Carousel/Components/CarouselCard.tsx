@@ -17,7 +17,7 @@ export const CarouselCard: React.FC<CarouselCardPropsType> = ({
   dropdownData,
 }) => {
   return (
-    <div className="">
+    <div>
       <div className="max-w-[390px] h-full">
         <div className="relative rounded-t-20">
           <img
@@ -57,7 +57,7 @@ export const CarouselCard: React.FC<CarouselCardPropsType> = ({
               </div>
             </div>
           )}
-          <div className="flex max-vs:flex-col flex-row gap-[10px]">
+          <div className="w-full flex flex-wrap gap-[10px]">
             {cardData.club && (
               <>
                 <VerticalCardLabel

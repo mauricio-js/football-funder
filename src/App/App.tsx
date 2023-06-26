@@ -12,6 +12,7 @@ import {
   CROWDFUNDDETAILPENDING_URL,
   CROWDFUNDINGLIST_URL,
   CROWDFUNDINGDONATE_URL,
+  DONATIONVIEW_URL,
   EXPLORE_URL,
   FEES_URL,
   HOME_URL,
@@ -19,11 +20,13 @@ import {
   INDIVIDUALADVERTISING_URL,
   INDIVIDUALFUNDRAISER_URL,
   INDIVIDUALSPONSORSHIP_URL,
+  MAKEAWITHDRAWAL_URL,
   MYACCOUNT_URL,
   EDITMYACCOUNT_URL,
   ORGANISATIONADVERTISING_URL,
   ORGANISATIONFUNDRAISER_URL,
   ORGANISATIONSPONSORSHIP_URL,
+  PITCHSIDEADBOARD_URL,
   PROMOTE_URL,
   SIGNIN_URL,
   SIGNUP_URL,
@@ -33,7 +36,7 @@ import {
   SPONSORSHIPSALE_URL,
   SUPPORT_URL,
   SUPPORTERVIEW_URL,
-  DONATIONVIEW_URL,
+  UPDATEPASSWORD_URL,
 } from "Lib";
 import {
   AboutUs,
@@ -58,10 +61,12 @@ import {
   IndividualListing,
   IndividualSponsorship,
   Landing,
+  MakeWithdrawal,
   MyAccountPage,
   OrganisationFundraiser,
   OrganisationListing,
   OrganisationSponsorship,
+  PitchSideAdBoard,
   Promote,
   Signin,
   SignUp,
@@ -71,6 +76,7 @@ import {
   SponsorshipSale,
   Support,
   SupporterView,
+  UpdatePassword,
 } from "Pages";
 import {
   BrowserRouter,
@@ -120,6 +126,7 @@ function App() {
             path={CROWDFUNDDETAILLIVEMENU_URL}
             element={<CrowdFundDetailLiveMenuPage />}
           />
+          <Route path={MAKEAWITHDRAWAL_URL} element={<MakeWithdrawal />} />
           <Route
             path={CROWDFUNDDETAILLIVE_URL}
             element={<CrowdFundDetailLivePage />}
@@ -175,6 +182,8 @@ function App() {
           <Route path={DONATIONVIEW_URL} element={<DonationView />} />
           <Route path={MYACCOUNT_URL} element={<MyAccountPage />} />
           <Route path={EDITMYACCOUNT_URL} element={<EditMyAccount />} />
+          <Route path={UPDATEPASSWORD_URL} element={<UpdatePassword />} />
+          <Route path={PITCHSIDEADBOARD_URL} element={<PitchSideAdBoard />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

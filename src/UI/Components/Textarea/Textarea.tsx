@@ -2,16 +2,20 @@ import React, { useState, useCallback } from "react";
 import classNames from "classnames";
 
 interface Props {
+  chattingField?: boolean;
+  className?: string;
   value?: string;
   limit?: number;
   showLeftCharacters: boolean;
   title?: string;
-  titleStyle: string;
-  height: string;
+  titleStyle?: string;
+  height?: string;
   placeholder?: string;
 }
 
 export const Textarea: React.FC<Props> = ({
+  chattingField,
+  className,
   value,
   limit,
   title,
@@ -32,15 +36,15 @@ export const Textarea: React.FC<Props> = ({
     <div className="relative">
       <textarea
         className={classNames(
-          "w-full h-[124px] px-[14px] pb-4 generalText rounded-10 border-2",
+          "w-full   rounded-10 border-2",
           "border-gray-200 focus:outline-none box-border  overflow:auto resize-none",
           "placeholder:text-[12px] placeholder:leading-[14px] placeholder:font-medium placeholder:text-gray-10",
           placeholder ? "pt-2.5" : "pt-6",
+          chattingField ? className : "generalText px-[14px] pb-4 h-[124px] ",
           height
         )}
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
           setFormattedContent(event.target.value);
-          console.log(event.target.value);
         }}
         value={content}
         placeholder={placeholder}

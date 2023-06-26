@@ -23,6 +23,10 @@ export const theme = {
     center: true,
   },
   extend: {
+    transitionDuration: {
+        '1000': '1000ms',
+        '5000': '5000ms',
+      },
     maxWidth: {
       100: '430px',
     },
@@ -58,7 +62,8 @@ export const theme = {
       },
       gray: {
         10: '#737373',
-        20: '#F0F4EF'
+        20: '#F0F4EF',
+        30: '#EAEAEA',
       },
       dark: '#242731',
       shark: '#1B1D21',

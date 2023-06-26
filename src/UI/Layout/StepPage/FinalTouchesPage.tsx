@@ -90,6 +90,7 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
                 options={FinalTouchPageCheckboxData}
                 selectedValues={isConfirm}
                 setValues={setIsConfirm}
+                textStyle="introText"
               />
             </div>
           </div>

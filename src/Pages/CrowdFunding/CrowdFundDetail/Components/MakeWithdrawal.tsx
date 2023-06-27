@@ -19,7 +19,7 @@ import {
   AccountNumberData,
   SortCodeData,
   AddressData,
-  ContactPhoneNumber,
+  ContactPhoneNumberData,
   FirstNameData,
   LastNameData,
   RegionData,
@@ -50,11 +50,13 @@ export const MakeWithdrawal: React.FC = () => {
   const [sortCode, setSortCode] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+  const [country, setCountry] = useState<string>(
+    ContactPhoneNumberData[0].country
+  );
 
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumber[0].randomNumber
+    ContactPhoneNumberData[0].randomNumber
   );
 
   return (
@@ -101,6 +103,7 @@ export const MakeWithdrawal: React.FC = () => {
                   />
                   <DropdownInput
                     country={country}
+                    data={ContactPhoneNumberData}
                     phoneNumber={phoneNumber}
                     selectCountry={setCountry}
                     inputPhoneNumber={setPhoneNumber}

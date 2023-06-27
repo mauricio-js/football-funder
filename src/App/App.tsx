@@ -5,7 +5,9 @@ import {
   ADDETAILPENDING_URL,
   ADSLISTING_URL,
   ADVERTISINGSALE_URL,
-  FORGOTPASSWORD_URL,
+  BUYER_URL,
+  BUYERCHECKOUT_URL,
+  BUYERFINAL_URL,
   CHECKOUT_URL,
   CROWDFUNDDETAILLIVE_URL,
   CROWDFUNDDETAILLIVEMENU_URL,
@@ -15,6 +17,7 @@ import {
   DONATIONVIEW_URL,
   EXPLORE_URL,
   FEES_URL,
+  FORGOTPASSWORD_URL,
   HOME_URL,
   HOWITWORKS_URL,
   INDIVIDUALADVERTISING_URL,
@@ -28,6 +31,7 @@ import {
   ORGANISATIONSPONSORSHIP_URL,
   PITCHSIDEADBOARD_URL,
   PROMOTE_URL,
+  SELLER_URL,
   SIGNIN_URL,
   SIGNUP_URL,
   SPONSORSHIPLISTING_URL,
@@ -44,6 +48,9 @@ import {
   AdDetailPendingPage,
   AdsList,
   AdvertisingSale,
+  BuyerCheckout,
+  BuyerFinalPage,
+  BuyerPage,
   Checkout,
   CrowdFundDetailLivePage,
   CrowdFundDetailLiveMenuPage,
@@ -68,6 +75,7 @@ import {
   OrganisationSponsorship,
   PitchSideAdBoard,
   Promote,
+  SellerPage,
   Signin,
   SignUp,
   SponsorshipList,
@@ -184,6 +192,10 @@ function App() {
           <Route path={EDITMYACCOUNT_URL} element={<EditMyAccount />} />
           <Route path={UPDATEPASSWORD_URL} element={<UpdatePassword />} />
           <Route path={PITCHSIDEADBOARD_URL} element={<PitchSideAdBoard />} />
+          <Route path={BUYER_URL} element={<BuyerPage />} />
+          <Route path={BUYERCHECKOUT_URL} element={<BuyerCheckout />} />
+          <Route path={BUYERFINAL_URL} element={<BuyerFinalPage />} />
+          <Route path={SELLER_URL} element={<SellerPage />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

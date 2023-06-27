@@ -41,7 +41,7 @@ export const CvcData: InputType = {
 }
 export const PostcodeData: InputType = {
         id: 1,
-        border: "focus:border-green-10 focus:border-2",
+        // border: "focus:border-green-10 focus:border-2",
         content: "after:content-['*'] after:ml-1 after:text-green-10 ",
         height: "h-[54px]",
         label: "Postcode",

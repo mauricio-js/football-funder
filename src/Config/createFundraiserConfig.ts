@@ -94,7 +94,7 @@ export const FundraiserNationData: CategoryDataType[] = [
 
 export const ContactOrganisationData: InputType = { 
         id: 1,
-        label: "Organisation Name",
+        label: "Organisation name",
         height: "h-[54px]",
         textSize: "text-[16px] leading-[22px]",
         padding:" px-3 py-4",
@@ -102,7 +102,7 @@ export const ContactOrganisationData: InputType = {
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
 
-export const ContactPhoneNumber: ContactPhoneNumberType[] = [
+export const ContactPhoneNumberData: ContactPhoneNumberType[] = [
     {
         country: "UK",
         randomNumber:"(123) 123-1234"
@@ -190,7 +190,7 @@ export const FirstNameData: InputType = {
         // border:"focus:border-green-10 focus:border-2",
         content:"after:content-['*'] after:ml-1 after:text-green-10 ",
         height: "h-[54px]",
-        label: "First Name",
+        label: "First name",
         padding:" px-3 py-4",
         textSize: "generalText",
         type: "text",
@@ -199,7 +199,7 @@ export const LastNameData: InputType = {
         id: 2,
         // border:"focus:border-green-10 focus:border-2",
         content:"after:content-['*'] after:ml-1 after:text-green-10",
-        label: "Last Name",
+        label: "Last name",
         height: "h-[54px]",
         padding: " px-3 py-4",
         textSize: "generalText",
@@ -279,6 +279,16 @@ export const SortCodeData: InputType = {
 
     id: 8,
     label: "Sort Code",
+    height: "h-[54px]",
+    textSize: "text-[16px] leading-[22px]",
+    padding:" px-3 py-4",
+    type: "text",
+    content:"after:content-['*'] after:ml-1 after:text-green-10 "
+}
+export const NameData: InputType = {
+
+    id: 9,
+    label: "Name",
     height: "h-[54px]",
     textSize: "text-[16px] leading-[22px]",
     padding:" px-3 py-4",

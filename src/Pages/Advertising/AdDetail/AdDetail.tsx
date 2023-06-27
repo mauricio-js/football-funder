@@ -41,30 +41,28 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                 textSize="buttonText"
                 disabled={pending}
               />
-              <div className="flex-1 flex gap-2.5 w-full">
-                <div className="w-[calc(50%-10px)]">
-                  <Button
-                    backgroundColor="bg-green-10"
-                    height="h-[50px]"
-                    width="w-full"
-                    text="Enquire"
-                    textColor="text-green-70"
-                    textSize="buttonText"
-                    disabled={pending}
-                  />
-                </div>
-                <div className="w-[calc(50%-10px)]">
-                  <Button
-                    backgroundColor="bg-green-10"
-                    height="h-[50px]"
-                    width="w-full"
-                    text="Buy Now"
-                    textColor="text-green-70"
-                    textSize="buttonText"
-                    disabled={pending}
-                  />
-                </div>
+              <div className="flex-1">
+                <Button
+                  backgroundColor="bg-green-10"
+                  height="h-[50px]"
+                  width="w-full"
+                  text="Enquire"
+                  textColor="text-green-70"
+                  textSize="buttonText"
+                  disabled={pending}
+                />
               </div>
+            </div>
+            <div className="mt-2.5">
+              <Button
+                backgroundColor="bg-green-70"
+                height="h-[50px]"
+                width="w-full"
+                text="Buy Now"
+                textColor="text-white"
+                textSize="buttonText"
+                disabled={pending}
+              />
             </div>
             <div className="mt-[5px] flex gap-[5px] smallIntroText">
               <div>￡250 per month / 12 months</div>
@@ -179,7 +177,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
             </div>
           </div>
           <div className="mt-15 bl:hidden">
-            <div className="flex">
+            <div className="flex gap-2.5">
               <Button
                 backgroundColor="bg-green-70"
                 height="h-[50px]"
@@ -189,20 +187,7 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                 textSize="buttonText"
                 disabled={pending}
               />
-            </div>
-            <div className="mt-2.5 flex gap-2.5">
-              <div className="w-1/2">
-                <Button
-                  backgroundColor="bg-green-10"
-                  height="h-[50px]"
-                  width="w-full"
-                  text="Buy Now"
-                  textColor="text-green-70"
-                  textSize="buttonText"
-                  disabled={pending}
-                />
-              </div>
-              <div className="w-1/2">
+              <div className="flex-1">
                 <Button
                   backgroundColor="bg-green-10"
                   height="h-[50px]"
@@ -213,6 +198,17 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
                   disabled={pending}
                 />
               </div>
+            </div>
+            <div className="mt-2.5">
+              <Button
+                backgroundColor="bg-green-70"
+                height="h-[50px]"
+                width="w-full"
+                text="Buy Now"
+                textColor="text-white"
+                textSize="buttonText"
+                disabled={pending}
+              />
             </div>
             <div className="mt-[5px] flex gap-[5px] smallIntroText">
               <div>￡250 per month / 12 months</div>

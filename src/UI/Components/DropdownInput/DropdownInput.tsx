@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { ContactPhoneNumber } from "Config";
+import { ContactPhoneNumberType } from "types";
 import Arrow from "Assets/images/svg/button/black-arrow";
 
 interface DropdownInputProps {
+  data: ContactPhoneNumberType[];
   country: string;
   phoneNumber: string;
   selectCountry: (value: string) => void;
@@ -14,6 +15,7 @@ interface DropdownInputProps {
 
 export const DropdownInput: React.FC<DropdownInputProps> = ({
   country,
+  data,
   selectCountry,
   inputPhoneNumber,
   placeholder,
@@ -53,7 +55,7 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
             {isShowMenu && (
               <div className="absolute w-20 -left-4 top-16 rounded-md bg-white shadow-lg border-[1px] overflow-hidden z-50">
                 <div className="text-[14px] leading-[20px] font-semibold  divide-y divide-gray-100">
-                  {ContactPhoneNumber.map((item, index) => {
+                  {data.map((item, index) => {
                     return (
                       <button
                         key={index}

@@ -13,7 +13,7 @@ import {
 } from "UI";
 import {
   AccountEmailData,
-  ContactPhoneNumber,
+  ContactPhoneNumberData,
   DonateClubLabel,
   DonateLocationLabel,
   FirstNameData,
@@ -40,11 +40,13 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
   const [accountConfirmPassword, setAccountConfirmPassword] =
     useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+  const [country, setCountry] = useState<string>(
+    ContactPhoneNumberData[0].country
+  );
 
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumber[0].randomNumber
+    ContactPhoneNumberData[0].randomNumber
   );
   const [isConfirm, setIsConfirm] = useState<string[]>([""]);
   return (
@@ -93,6 +95,7 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
               />
               <DropdownInput
                 country={country}
+                data={ContactPhoneNumberData}
                 phoneNumber={phoneNumber}
                 selectCountry={setCountry}
                 inputPhoneNumber={setPhoneNumber}

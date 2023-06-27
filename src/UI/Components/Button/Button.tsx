@@ -21,9 +21,9 @@ export const Button: React.FC<ButtonDataType> = (props) => {
       disabled={props.disabled}
       value={props.value}
     >
+      {props.text && props.text}
       {props.icon && <props.icon />}
       {props.image && <img src={props.image} alt=" button content" />}
-      {props.text && props.text}
     </button>
   );
 };

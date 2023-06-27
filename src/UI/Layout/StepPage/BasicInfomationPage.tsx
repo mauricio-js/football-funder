@@ -17,7 +17,7 @@ import {
   ContactAddressLine1Data,
   ContactAddressLine2Data,
   ContactOrganisationData,
-  ContactPhoneNumber,
+  ContactPhoneNumberData,
   ContactPostcodeData,
   ContactTownData,
   DateData,
@@ -47,33 +47,46 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
   };
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactOrganistion, setContactOrganisation] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [firstName, setFirstName] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [lastName, setLastName] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [date, setDate] = useState<Date | null>();
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactAddressLine1, setContactAddressLine1] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactAddressLine2, setContactAddressLine2] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactTown, setContactTown] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [contactPostcode, setContactPostCode] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountEmail, setAccountEmail] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountConfirmPassword, setAccountConfirmPassword] =
     useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [accountPassword, setAccountPassword] = useState<string>("");
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+  const [country, setCountry] = useState<string>(
+    ContactPhoneNumberData[0].country
+  );
 
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumber[0].randomNumber
+    ContactPhoneNumberData[0].randomNumber
   );
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [profileURL, setProfileURL] = useState<string>("footballfunder.com");
@@ -133,6 +146,7 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
             )}
             <DropdownInput
               country={country}
+              data={ContactPhoneNumberData}
               phoneNumber={phoneNumber}
               selectCountry={setCountry}
               inputPhoneNumber={setPhoneNumber}

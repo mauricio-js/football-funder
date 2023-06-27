@@ -8,7 +8,7 @@ import {
   StepLabel,
 } from "UI";
 import {
-  ContactPhoneNumber,
+  ContactPhoneNumberData,
   AddressData,
   FirstNameData,
   LastNameData,
@@ -27,11 +27,13 @@ export const BillingDetailsPage: React.FC = () => {
   const [lastName, setLastName] = useState<string>("");
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [address, setAddresss] = useState<string>("");
-  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+  const [country, setCountry] = useState<string>(
+    ContactPhoneNumberData[0].country
+  );
 
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumber[0].randomNumber
+    ContactPhoneNumberData[0].randomNumber
   );
   return (
     <div
@@ -54,6 +56,7 @@ export const BillingDetailsPage: React.FC = () => {
             <Input data={LastNameData} setValue={setLastName} defaultValue="" />
             <DropdownInput
               country={country}
+              data={ContactPhoneNumberData}
               phoneNumber={phoneNumber}
               selectCountry={setCountry}
               inputPhoneNumber={setPhoneNumber}

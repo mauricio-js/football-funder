@@ -20,7 +20,7 @@ import {
   AddressData,
   CategoryData,
   ContactOrganisationData,
-  ContactPhoneNumber,
+  ContactPhoneNumberData,
   ContactPostcodeData,
   DateData,
   FirstNameData,
@@ -88,14 +88,16 @@ export const EditMyAccount: React.FC = () => {
   const [accountPassword, setAccountPassword] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [country, setCountry] = useState<string>(ContactPhoneNumber[0].country);
+  const [country, setCountry] = useState<string>(
+    ContactPhoneNumberData[0].country
+  );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumber[0].randomNumber
+    ContactPhoneNumberData[0].randomNumber
   );
   return (
     <Template>
@@ -198,6 +200,7 @@ export const EditMyAccount: React.FC = () => {
                     </div>
                     <DropdownInput
                       country={country}
+                      data={ContactPhoneNumberData}
                       phoneNumber={phoneNumber}
                       selectCountry={setCountry}
                       inputPhoneNumber={setPhoneNumber}

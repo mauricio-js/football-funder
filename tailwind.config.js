@@ -32,6 +32,7 @@ export const theme = {
     },
     padding: {
       15: '15px',
+      30: '30px',
       31: '31px',
       42: '42px',
     },

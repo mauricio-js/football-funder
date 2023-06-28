@@ -20,6 +20,9 @@
   .generalTitle{
     @apply text-green-70 text-[32px] leading-[40px] font-semibold;
   }
+  .profileSectionTitle{
+    @apply text-[32px] font-semibold text-white
+  }
   .titleText{
     @apply text-green-70 text-[32px] max-ns:text-[21px] leading-[40px] max-ns:leading-[28px] font-semibold;
   }

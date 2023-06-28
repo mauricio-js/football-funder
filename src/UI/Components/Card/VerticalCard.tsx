@@ -7,17 +7,21 @@ import { CardType } from "types";
 
 interface CardProps {
   cardData: CardType;
+  profileCard: boolean;
 }
 
-export const VerticalCard: React.FC<CardProps> = ({ cardData }) => {
+export const VerticalCard: React.FC<CardProps> = ({
+  cardData,
+  profileCard,
+}) => {
   return (
     <div>
-      <div className="w-full flex max-2xs:flex-col h-fit">
-        <div className="relative max-2xs:h-[192px] rounded-l-20 max-2xs:rounded-t-20 max-2xs:rounded-bl-[0] overflow-hidden">
+      <div className="w-full flex max-sm:flex-col h-fit">
+        <div className="relative max-sm:h-[192px] rounded-l-30 max-sm:rounded-t-20 max-sm:rounded-bl-[0] overflow-hidden">
           <img
             src={cardData.image}
             alt="card a"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover m-0 p-0 block"
           />
           <div className="absolute top-0 w-full p-5 flex justify-between">
             <div className="px-[10px] py-[5px] bg-green-10 rounded-10 text-[14px] font-medium">
@@ -34,8 +38,8 @@ export const VerticalCard: React.FC<CardProps> = ({ cardData }) => {
           </div>
         </div>
         <div
-          className="relative  w-[calc(100%-209px)] max-2xs:w-full rounded-r-20 max-2xs:rounded-b-20 max-2xs:rounded-tr-[0]
-         max-2xs:border-t-0 border-[1px] shadow-lg px-5 pt-5 max-2xs:pt-[30px] max-vs:pt-5 pb-5 flex flex-col gap-15 h-fit"
+          className="relative bg-white w-[calc(100%-209px)] max-sm:w-full rounded-r-20 max-sm:rounded-b-20 max-sm:rounded-tr-[0]
+         max-sm:border-t-0 border-[1px] shadow-lg px-5 pt-5 max-sm:pt-[30px] max-vs:pt-5 pb-5 flex flex-col gap-15 h-fit"
         >
           {cardData.vat && (
             <div className="max-2xs:absolute max-2xs:top-[-15px] ">
@@ -68,36 +72,64 @@ export const VerticalCard: React.FC<CardProps> = ({ cardData }) => {
               <div className="absolute top-0 h-[10px] w-[calc(50%)] bg-green-50 rounded-10"></div>
             </div>
           )}
-          <div className="flex xm:flex-row flex-col  gap-y-2 justify-between  items-center text-[16px] leading-[20px] font-semibold text-green-70 w-full">
-            <div
-              className={classNames(
-                "w-full",
-                cardData.progress ? "block" : "hidden"
-              )}
-            >
-              <div className="flex gap-8 max-xm:justify-between max-vs:hidden">
-                <div className="whitespace-nowrap">{cardData.fund}</div>
-                <div className="whitespace-nowrap">{`￡${cardData.curFund} of ￡${cardData.oriFund}`}</div>
-              </div>
-              <div className="justify-between text-[16px] leading-[20px] font-semibold text-green-70 flex w-full vs:hidden">
-                <div>{`￡${cardData.curFund?.toLocaleString("en-US")}`}</div>
-                <div>{cardData.fund}</div>
-              </div>
-            </div>
-            <div
-              className={classNames(
-                "flex  max-xm:justify-between max-2xs:justify-start flex-row max-vs:hidden gap-2.5 w-full",
-                cardData.progress ? "justify-end" : "justify-start"
-              )}
-            >
-              {cardData.date && (
-                <>
-                  <VerticalCardLabel cardLabelData={cardData.date} />
-                  {cardData.collection && (
-                    <VerticalCardLabel cardLabelData={cardData.collection} />
+          <div
+            className={classNames(
+              "flex flex-wrap gap-2.5   items-center text-[16px] leading-[20px] font-semibold text-green-70 w-full",
+              cardData.progress ? "justify-between" : "justify-start"
+            )}
+          >
+            {cardData.progress && (
+              <div className="flex-1 flex">
+                <div
+                  className={classNames(
+                    "flex w-full",
+                    cardData.progress ? "block" : "hidden"
                   )}
-                </>
-              )}
+                >
+                  {profileCard ? (
+                    <>
+                      <div className="flex justify-between max-vs:hidden w-full">
+                        <div className="whitespace-nowrap">{cardData.fund}</div>
+                        <div className="whitespace-nowrap">{`￡${cardData.curFund} of ￡${cardData.oriFund}`}</div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex gap-30 max-xm:hidden max-vs:hidden w-full ">
+                        <div className="whitespace-nowrap">{cardData.fund}</div>
+                        <div className="whitespace-nowrap">{`￡${cardData.curFund} of ￡${cardData.oriFund}`}</div>
+                      </div>
+                      <div className="flex justify-between xm:hidden max-vs:hidden w-full">
+                        <div className="whitespace-nowrap">{cardData.fund}</div>
+                        <div className="whitespace-nowrap">{`￡${cardData.curFund} of ￡${cardData.oriFund}`}</div>
+                      </div>
+                    </>
+                  )}
+                  <div className="justify-between text-[16px] leading-[20px] font-semibold text-green-70 flex w-full vs:hidden">
+                    <div>{`￡${cardData.curFund?.toLocaleString(
+                      "en-US"
+                    )}`}</div>
+                    <div>{cardData.fund}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+            <div className="flex">
+              <div
+                className={classNames(
+                  "flex justify-end max-xm:justify-start flex-row max-vs:hidden gap-2.5 w-full",
+                  cardData.progress ? "justify-end" : "justify-start"
+                )}
+              >
+                {cardData.date && (
+                  <>
+                    <VerticalCardLabel cardLabelData={cardData.date} />
+                    {cardData.collection && (
+                      <VerticalCardLabel cardLabelData={cardData.collection} />
+                    )}
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

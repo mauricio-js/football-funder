@@ -135,7 +135,13 @@ export const ListingPage: React.FC<ListingPageProps> = ({
               ) : (
                 <div className="grid grid-cols-1 gap-y-5">
                   {ListingData.map((item, index) => {
-                    return <VerticalCard key={index} cardData={item} />;
+                    return (
+                      <VerticalCard
+                        key={index}
+                        cardData={item}
+                        profileCard={false}
+                      />
+                    );
                   })}
                 </div>
               )}

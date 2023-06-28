@@ -297,6 +297,17 @@ export const SponsorshipDetail: React.FC<DetailPagePropsType> = ({
                 disabled={pending}
               />
             </div>
+            <div className="mt-2.5">
+              <Button
+                backgroundColor="bg-green-70"
+                height="h-[50px]"
+                width="w-full"
+                text="Buy Now"
+                textColor="text-white"
+                textSize="buttonText"
+                disabled={pending}
+              />
+            </div>
           </div>
           <div className="mt-30">
             <div className="flex justify-between items-center">

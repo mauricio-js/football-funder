@@ -10,6 +10,7 @@ export * from './homeConfig';
 export * from './landingPageConfig';
 export * from './listingPageConfig';
 export * from './livePageConfig';
+export * from './profilePageConfig';
 export * from './promotePageConfig';
 export * from './signUpConfig';
 export * from './sponsorshipConfig';

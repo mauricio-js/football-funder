@@ -90,7 +90,7 @@ export const BuyerPage: React.FC = () => {
             <div>
               <div className="mt-30 stepLabelTitle">Buyer</div>
               <div className="mt-30">
-                <BuyerCard image={BuyCardImage} cost={3000} />
+                <BuyerCard image={BuyCardImage} cost="£3000" />
               </div>
               <div className="mt-30">
                 <div>

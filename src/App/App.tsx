@@ -30,6 +30,7 @@ import {
   ORGANISATIONFUNDRAISER_URL,
   ORGANISATIONSPONSORSHIP_URL,
   PITCHSIDEADBOARD_URL,
+  PROFILEPAGE_URL,
   PROMOTE_URL,
   SELLER_URL,
   SELLERFINAL_URL,
@@ -75,6 +76,7 @@ import {
   OrganisationListing,
   OrganisationSponsorship,
   PitchSideAdBoard,
+  ProfilePage,
   Promote,
   SellerPage,
   SellerFinalPage,
@@ -199,6 +201,7 @@ function App() {
           <Route path={BUYERFINAL_URL} element={<BuyerFinalPage />} />
           <Route path={SELLER_URL} element={<SellerPage />} />
           <Route path={SELLERFINAL_URL} element={<SellerFinalPage />} />
+          <Route path={PROFILEPAGE_URL} element={<ProfilePage />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

@@ -24,8 +24,8 @@ export * from './Join';
 export * from './Modal';
 export * from './MyTab';
 export * from './PageTitle';
-export * from './PromoteImageTitle';
 export * from './PageSectionTitle';
+export * from './PromoteImageTitle';
 export * from './RadioButton';
 export * from './RadioButtonList';
 export * from './RangeSlider'

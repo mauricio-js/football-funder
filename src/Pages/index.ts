@@ -10,6 +10,7 @@ export * from './ForgotPassword';
 export * from './Home';
 export * from './HowItWorks';
 export * from './LandingPage';
+export * from './Profile';
 export * from './Promote';
 export * from './Signin';
 export * from './SingUp';

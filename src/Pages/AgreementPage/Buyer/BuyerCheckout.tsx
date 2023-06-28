@@ -55,7 +55,7 @@ export const BuyerCheckout: React.FC = () => {
             <StepLabel number="Step 1" title="Payment details" />
           </div>
           <div className="mt-30 xs:w-[500px]">
-            <BuyerCard image={BuyCardImage} cost={3000} />
+            <BuyerCard image={BuyCardImage} cost="£3000" />
             <div className="mt-30">
               <PageSectionTitle title="Total to pay" />
               <div className="mt-15">

@@ -40,3 +40,4 @@ export const BUYER_URL = '/buyer';
 export const BUYERCHECKOUT_URL = '/buyer/checkout';
 export const BUYERFINAL_URL = '/buyer/final';
 export const SELLER_URL = '/seller';
+export const SELLERFINAL_URL = '/seller/final';

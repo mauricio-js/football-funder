@@ -32,6 +32,7 @@ import {
   PITCHSIDEADBOARD_URL,
   PROMOTE_URL,
   SELLER_URL,
+  SELLERFINAL_URL,
   SIGNIN_URL,
   SIGNUP_URL,
   SPONSORSHIPLISTING_URL,
@@ -76,6 +77,7 @@ import {
   PitchSideAdBoard,
   Promote,
   SellerPage,
+  SellerFinalPage,
   Signin,
   SignUp,
   SponsorshipList,
@@ -196,6 +198,7 @@ function App() {
           <Route path={BUYERCHECKOUT_URL} element={<BuyerCheckout />} />
           <Route path={BUYERFINAL_URL} element={<BuyerFinalPage />} />
           <Route path={SELLER_URL} element={<SellerPage />} />
+          <Route path={SELLERFINAL_URL} element={<SellerFinalPage />} />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

@@ -152,7 +152,7 @@ export const BuyerCheckout: React.FC = () => {
                 textColor="text-green-70"
                 textSize="buttonText"
                 width="w-full"
-                // handleClick={() => navigate(BUYERFINAL_URL)}
+                handleClick={() => navigate(BUYERFINAL_URL)}
               />
             </div>
           </div>

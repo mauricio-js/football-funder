@@ -14,10 +14,9 @@ import {
   RegionData,
 } from "Config";
 
-import { BUYERCHECKOUT_URL } from "Lib";
+import { SELLERFINAL_URL } from "Lib";
 
 import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
-import { BsCheckLg } from "react-icons/bs";
 
 export const SellerPage: React.FC = () => {
   const navigate = useNavigate();
@@ -54,8 +53,6 @@ export const SellerPage: React.FC = () => {
 
   const [email, setEmail] = useState<string>("");
 
-  const [showSignMark, setShowSignMark] = useState<boolean>(false);
-
   const handleSelectCountry1Change = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -75,20 +72,31 @@ export const SellerPage: React.FC = () => {
           <div>
             <div className="stepLabelTitle">Congratulations!</div>
             <div className="mt-5 introText">
-              The seller has confirmed they want to work in partnership with
-              you, and the asset is yours pending contract signing and payment
-              below.
+              You’ve confirmed you wish to work in partnership with
+              <span className="font-semibold text-green-70">
+                {" "}
+                Football Funder
+              </span>
+              , and the asset is theirs pending contract signing and payment to
+              you.
               <br />
-              <br /> As the buyer, please fill out your details and then select
-              ‘Sign contract’ where you will be able to review and sign.
+              <br /> As the seller, please fill out your details and select
+              ‘Sign contract’. The buyer will then be able to countersign and
+              pay for the asset. You will be notified when the buyer has
+              countersigned and processed payment. 
               <br />
-              <br /> Once signed, select ‘Proceed to payment’ to finalise the
-              deal.
+              <br /> We will then coordinate with you and them on artwork and
+              anything else to bring the agreement to life.
             </div>
           </div>
           <div className="xs:w-[500px]">
             <div>
               <div className="mt-30 stepLabelTitle">Buyer</div>
+              <div className="mt-5 p-15 bg-gray-20 rounded-10">
+                <div className="introText">Organisation name</div>
+                <div className="buttonText text-gren-70">Football Funder</div>
+              </div>
+              <div className="mt-30 stepLabelTitle">Seller</div>
               <div className="mt-30">
                 <BuyerCard image={BuyCardImage} cost={3000} />
               </div>
@@ -210,64 +218,20 @@ export const SellerPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-30">
-                <div className="stepLabelTitle">Seller</div>
-                <div className="mt-5 p-15 rounded-20 bg-gray-20">
-                  <div className="introText">Organisation name</div>
-                  <div className="buttonText text-green-70">
-                    Coxhoe Athletic FC
-                  </div>
-                  <div className="mt-15 introText">Address</div>
-                  <div className="flex flex-col buttonText text-green-70">
-                    <div>Beechfield Park</div>
-                    <div>Commercial Road East</div>
-                    <div>Durham</div>
-                    <div>DH6 4LF</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div className="flex justify-end xs:mt-[60px] mt-30">
-            {!showSignMark && (
-              <div className="xs:w-[250px] w-full">
-                <Button
-                  backgroundColor="bg-green-10"
-                  height="h-[50px]"
-                  text="Sign contract"
-                  textColor="text-green-70"
-                  textSize="buttonText"
-                  width="w-full"
-                  handleClick={() => setShowSignMark(true)}
-                />
-              </div>
-            )}
-            {showSignMark && (
-              <div className="flex xs:flex-row flex-col gap-2.5 w-full justify-end">
-                <div className="xs:w-[250px] w-full">
-                  <Button
-                    backgroundColor="bg-green-10 bg-opacity-50"
-                    height="h-[50px]"
-                    text="Signed"
-                    textColor="text-green-70"
-                    textSize="buttonText"
-                    width="w-full"
-                    icon={BsCheckLg}
-                  />
-                </div>
-                <div className="xs:w-[250px] w-full">
-                  <Button
-                    backgroundColor="bg-green-10"
-                    height="h-[50px]"
-                    text="Proceed to payment"
-                    textColor="text-green-70"
-                    textSize="buttonText"
-                    width="w-full"
-                    handleClick={() => navigate(BUYERCHECKOUT_URL)}
-                  />
-                </div>
-              </div>
-            )}
+            <div className="xs:w-[250px] w-full">
+              <Button
+                backgroundColor="bg-green-10"
+                height="h-[50px]"
+                text="Sign contract"
+                textColor="text-green-70"
+                textSize="buttonText"
+                width="w-full"
+                handleClick={() => navigate(SELLERFINAL_URL)}
+              />
+            </div>
           </div>
         </div>
       </div>

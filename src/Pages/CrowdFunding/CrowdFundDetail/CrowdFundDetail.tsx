@@ -470,10 +470,15 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
                   <div className="buttonText text-green-70">View all</div>
                 </div>
                 <div className="mt-5 w-full">
-                  <SlideBar
-                    data={CrowdFundListData}
-                    carouselContent={CarouselCard}
-                  />
+                  <SlideBar>
+                    {CrowdFundListData.map((item, index) => {
+                      return (
+                        <div key={index} className="w-[320px] p-2">
+                          <CarouselCard account={false} cardData={item} />
+                        </div>
+                      );
+                    })}
+                  </SlideBar>
                 </div>
               </div>
             </div>

@@ -1,2 +1,2 @@
 export * from './SellerFinalPage';
-export * from './SellerPage';
+export * from './SellerFirstPage';

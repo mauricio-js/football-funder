@@ -313,7 +313,15 @@ export const AdDetail: React.FC<DetailPagePropsType> = ({ pending }) => {
               <div className="buttonText text-green-70">View all</div>
             </div>
             <div className="mt-5">
-              <SlideBar data={AdsListData} carouselContent={CarouselCard} />
+              <SlideBar>
+                {AdsListData.map((item, index) => {
+                  return (
+                    <div key={index} className="w-[320px] p-2">
+                      <CarouselCard account={false} cardData={item} />
+                    </div>
+                  );
+                })}
+              </SlideBar>
             </div>
           </div>
         </div>

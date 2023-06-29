@@ -19,7 +19,7 @@ import { BUYERCHECKOUT_URL } from "Lib";
 import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
 import { BsCheckLg } from "react-icons/bs";
 
-export const BuyerPage: React.FC = () => {
+export const BuyerFirstPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState<string>("Football Funder");

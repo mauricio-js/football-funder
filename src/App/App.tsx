@@ -5,7 +5,7 @@ import {
   ADDETAILPENDING_URL,
   ADSLISTING_URL,
   ADVERTISINGSALE_URL,
-  BUYER_URL,
+  BUYERFIRSTPAGE_URL,
   BUYERCHECKOUT_URL,
   BUYERFINAL_URL,
   CHECKOUT_URL,
@@ -31,8 +31,11 @@ import {
   ORGANISATIONSPONSORSHIP_URL,
   PITCHSIDEADBOARD_URL,
   PROFILEPAGE_URL,
+  PROFILEEDIT_URL,
+  INDIVIDUALPROFILEPAGE_URL,
+  SPONSORPROFILEPAGE_URL,
   PROMOTE_URL,
-  SELLER_URL,
+  SELLERFIRSTPAGE_URL,
   SELLERFINAL_URL,
   SIGNIN_URL,
   SIGNUP_URL,
@@ -44,15 +47,16 @@ import {
   SUPPORTERVIEW_URL,
   UPDATEPASSWORD_URL,
 } from "Lib";
+
 import {
   AboutUs,
   AdDetailLivePage,
   AdDetailPendingPage,
   AdsList,
   AdvertisingSale,
-  BuyerCheckout,
+  BuyerCheckoutPage,
   BuyerFinalPage,
-  BuyerPage,
+  BuyerFirstPage,
   Checkout,
   CrowdFundDetailLivePage,
   CrowdFundDetailLiveMenuPage,
@@ -77,8 +81,11 @@ import {
   OrganisationSponsorship,
   PitchSideAdBoard,
   ProfilePage,
+  EditProfile,
+  IndividualProfilePage,
+  SponsorProfilePage,
   Promote,
-  SellerPage,
+  SellerFirstPage,
   SellerFinalPage,
   Signin,
   SignUp,
@@ -196,12 +203,21 @@ function App() {
           <Route path={EDITMYACCOUNT_URL} element={<EditMyAccount />} />
           <Route path={UPDATEPASSWORD_URL} element={<UpdatePassword />} />
           <Route path={PITCHSIDEADBOARD_URL} element={<PitchSideAdBoard />} />
-          <Route path={BUYER_URL} element={<BuyerPage />} />
-          <Route path={BUYERCHECKOUT_URL} element={<BuyerCheckout />} />
+          <Route path={BUYERFIRSTPAGE_URL} element={<BuyerFirstPage />} />
+          <Route path={BUYERCHECKOUT_URL} element={<BuyerCheckoutPage />} />
           <Route path={BUYERFINAL_URL} element={<BuyerFinalPage />} />
-          <Route path={SELLER_URL} element={<SellerPage />} />
+          <Route path={SELLERFIRSTPAGE_URL} element={<SellerFirstPage />} />
           <Route path={SELLERFINAL_URL} element={<SellerFinalPage />} />
           <Route path={PROFILEPAGE_URL} element={<ProfilePage />} />
+          <Route path={PROFILEEDIT_URL} element={<EditProfile />} />
+          <Route
+            path={INDIVIDUALPROFILEPAGE_URL}
+            element={<IndividualProfilePage />}
+          />
+          <Route
+            path={SPONSORPROFILEPAGE_URL}
+            element={<SponsorProfilePage />}
+          />
           <Route path="*" element={<RedirectToRoot />} />
         </Routes>
         <ScrollToTop />

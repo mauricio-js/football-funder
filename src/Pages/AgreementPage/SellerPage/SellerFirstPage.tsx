@@ -18,7 +18,7 @@ import { SELLERFINAL_URL } from "Lib";
 
 import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
 
-export const SellerPage: React.FC = () => {
+export const SellerFirstPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState<string>("Football Funder");

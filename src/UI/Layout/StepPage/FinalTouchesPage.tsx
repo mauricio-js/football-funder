@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {
   Button,
   GeneralCheckBoxList,
-  FileInput,
+  FileNameCoverInput,
   PageSectionTitle,
   PageTitle,
   StepLabel,
@@ -40,7 +40,7 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
               intro="Choose an image to represent your video before it plays. 695x460px recommended resolution."
             />
             <div className="mt-15 ns:w-[390px] w-full ">
-              <FileInput
+              <FileNameCoverInput
                 onChange={setOverlayImage}
                 selectedImage={overlayImage}
                 removeImage={removeOverlayImage}

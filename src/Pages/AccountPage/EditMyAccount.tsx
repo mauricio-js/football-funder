@@ -30,7 +30,7 @@ import {
 
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
-import ProfileImage from "Assets/images/account/profile-image.png";
+import Image from "Assets/images/account/profile-image.png";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const EditMyAccount: React.FC = () => {
@@ -121,7 +121,7 @@ export const EditMyAccount: React.FC = () => {
               <PageSectionTitle title="Profile picture" />
               <div className="mt-15 relative flex">
                 <div className="relative">
-                  <img src={ProfileImage} alt="profileimage" />
+                  <img src={Image} alt="profileimage" />
                   <div className="absolute bottom-0 -right-2">
                     <button className="bg-gray-300 rounded-20 p-2">
                       <RiDeleteBin6Line />

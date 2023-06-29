@@ -6,7 +6,9 @@ interface ProfileNamePropsType {
   name: string;
 }
 
-export const ProfileName: React.FC<ProfileNamePropsType> = ({ name }) => {
+export const ProfileNameSection: React.FC<ProfileNamePropsType> = ({
+  name,
+}) => {
   return (
     <>
       <div className="max-vs:text-3xl text-[32px] font-semibold text-white">

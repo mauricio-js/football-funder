@@ -165,28 +165,28 @@ export const EditProfile: React.FC = () => {
               <div className="buttonText text-green-70">Theme color</div>
               <div className="mt-15">
                 <div className="flex flex-wrap gap-2.5 w-full">
-                  <div className="w-[calc(50%-10px)]">
+                  <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setPrimaryColor}
                       defaultColor={primaryColor}
                       labelName="Primary"
                     />
                   </div>
-                  <div className="w-[calc(50%-10px)]">
+                  <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setSecondaryColor}
                       defaultColor={secondaryColor}
                       labelName="Secondary"
                     />
                   </div>
-                  <div className="w-[calc(50%-10px)]">
+                  <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setBackgroundColor}
                       defaultColor={backgroundColor}
                       labelName="Background"
                     />
                   </div>
-                  <div className="w-[calc(50%-10px)]">
+                  <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setGradientColor}
                       defaultColor={gradientColor}

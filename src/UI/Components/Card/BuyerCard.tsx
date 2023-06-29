@@ -11,7 +11,10 @@ export const BuyerCard: React.FC<BuyCardPropsType> = ({ cost, image }) => {
       <div className=" overflow-y-hidden rounded-l-30 w-[130px]">
         <img src={image} alt="cardimage" className="h-full w-full" />
       </div>
-      <div className="bg-white flex-1 rounded-r-20 box-border border-t-[1px] border-b-[1px] border-r-[1px] border-gray-100 py-[9px] px-15">
+      <div
+        className="bg-white flex-1 rounded-r-30 box-border border-t-[1px] border-b-[1px] border-r-[1px]
+       border-gray-100 py-[9px] px-15"
+      >
         <div className="valueText">
           Sit faucibus augue arcu iaculis amet odio nisl ac. Lectus ac et.
         </div>

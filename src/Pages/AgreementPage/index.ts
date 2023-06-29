@@ -1,2 +1,2 @@
-export * from './Buyer';
-export * from './Seller';
+export * from './BuyerPage';
+export * from './SellerPage';

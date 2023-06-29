@@ -6,4 +6,5 @@ export * from './fundraiserPageType';
 export * from './headerType';
 export * from './homePageType';
 export * from './landingPageType';
+export * from './profilePageType';
 export * from './routes';

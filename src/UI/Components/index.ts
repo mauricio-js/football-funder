@@ -19,6 +19,7 @@ export * from './EditPanelItem';
 export * from './EditableCheckoutPanel';
 export * from './FeeItem';
 export * from './FileInput';
+export * from './InputColor';
 export * from './Input';
 export * from './Join';
 export * from './Modal';
@@ -32,6 +33,7 @@ export * from './RangeSlider'
 export * from './Search';
 export * from './Select';
 export * from './SelectLanguage';
+export * from './SocialMediaLink';
 export * from './StepLabel';
 export * from './Stepper';
 export * from './SummaryCard';

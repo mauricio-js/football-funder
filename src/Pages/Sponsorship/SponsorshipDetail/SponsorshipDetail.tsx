@@ -315,10 +315,15 @@ export const SponsorshipDetail: React.FC<DetailPagePropsType> = ({
               <div className="buttonText text-green-70">View all</div>
             </div>
             <div className="mt-5">
-              <SlideBar
-                data={SponsorshipListData}
-                carouselContent={CarouselCard}
-              />
+              <SlideBar>
+                {SponsorshipListData.map((item, index) => {
+                  return (
+                    <div key={index} className="w-[320px] p-2">
+                      <CarouselCard account={false} cardData={item} />
+                    </div>
+                  );
+                })}
+              </SlideBar>
             </div>
           </div>
         </div>

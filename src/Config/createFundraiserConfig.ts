@@ -240,9 +240,9 @@ export const WebSiteData: InputType = {
     id: 6,
     label: "Website",
     height: "h-[58px]",
-    textSize: "text-[20px]",
+    textSize: "text-[16px] leading-[22px]",
     padding:" px-3 py-4",
-    type: "tel",
+    type: "text",
     content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
 export const VideoURLData: InputType = {

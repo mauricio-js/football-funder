@@ -9,7 +9,7 @@ interface FileInputProps {
   removeImage: () => void;
 }
 
-export const FileInput: React.FC<FileInputProps> = ({
+export const FileNameCoverInput: React.FC<FileInputProps> = ({
   onChange,
   selectedImage,
   removeImage,

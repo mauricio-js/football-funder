@@ -21,7 +21,7 @@ import {
   PaymentMethodData,
 } from "Config";
 
-import { BUYER_URL, BUYERFINAL_URL } from "Lib";
+import { BUYERFIRSTPAGE_URL, BUYERFINAL_URL } from "Lib";
 
 import { MdAnnouncement } from "react-icons/md";
 import PayCardA from "Assets/images/checkout/paycard-a.png";
@@ -31,7 +31,7 @@ import PayCardD from "Assets/images/checkout/paycard-d.png";
 import PayCardE from "Assets/images/checkout/paycard-e.png";
 import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
 
-export const BuyerCheckout: React.FC = () => {
+export const BuyerCheckoutPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [paymentMethod, setPaymentMethod] = useState<string>("card");
@@ -49,7 +49,9 @@ export const BuyerCheckout: React.FC = () => {
         <div className="lg:w-[1000px] mx-auto w-full">
           <PageTitle title="Checkout" />
           <div className="mt-5">
-            <StepperBackButton handleBackPage={() => navigate(BUYER_URL)} />
+            <StepperBackButton
+              handleBackPage={() => navigate(BUYERFIRSTPAGE_URL)}
+            />
           </div>
           <div className="mt-30">
             <StepLabel number="Step 1" title="Payment details" />

@@ -108,10 +108,15 @@ export const Home: React.FC = () => {
                     </div>
                   </div>
                   <div className="mt-5 mx-auto">
-                    <SlideBar
-                      data={CarouselCardData}
-                      carouselContent={CarouselCard}
-                    />
+                    <SlideBar>
+                      {CarouselCardData.map((item, index) => {
+                        return (
+                          <div key={index} className="w-[320px] p-2">
+                            <CarouselCard account={false} cardData={item} />
+                          </div>
+                        );
+                      })}
+                    </SlideBar>
                   </div>
                 </div>
               </div>
@@ -237,10 +242,15 @@ export const Home: React.FC = () => {
                     </div>
                   </div>
                   <div className="mt-5 mx-auto">
-                    <SlideBar
-                      data={CarouselCardData}
-                      carouselContent={CarouselCard}
-                    />
+                    <SlideBar>
+                      {CarouselCardData.map((item, index) => {
+                        return (
+                          <div key={index} className="w-[320px] p-2">
+                            <CarouselCard account={false} cardData={item} />
+                          </div>
+                        );
+                      })}
+                    </SlideBar>
                   </div>
                 </div>
               </div>

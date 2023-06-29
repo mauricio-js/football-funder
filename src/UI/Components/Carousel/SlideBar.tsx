@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import Carousel from "react-simply-carousel";
-import { CardType, CarouselCardPropsType } from "types";
 
 interface SlideBarDataProps {
-  data: CardType[];
-  carouselContent: React.FC<CarouselCardPropsType>;
+  children: React.ReactNode;
 }
 
-export const SlideBar: React.FC<SlideBarDataProps> = ({
-  data,
-  carouselContent: CarouselContent,
-}) => {
+export const SlideBar: React.FC<SlideBarDataProps> = ({ children }) => {
   const [activeSlide, setActiveSlide] = useState<number>(0);
   return (
     <div>
@@ -45,11 +40,7 @@ export const SlideBar: React.FC<SlideBarDataProps> = ({
         speed={400}
         centerMode={false}
       >
-        {data.map((item, index) => (
-          <div key={index} className="w-[320px] p-2">
-            <CarouselContent cardData={item} account={false} />
-          </div>
-        ))}
+        {children}
       </Carousel>
     </div>
   );

@@ -13,7 +13,7 @@ import {
   Gallery,
   // Gradient,
   ProfileImagePanel,
-  ProfileName,
+  ProfileNameSection,
   SocialIcons,
 } from "./Components";
 
@@ -38,7 +38,7 @@ export const ProfilePage = () => {
           <ProfileImagePanel backImage={ClubImage} logo={ClubLogo} />
           <div className="flex flex-col items-center w-full px-5">
             <div className="mt-[80px]">
-              <ProfileName name="Coxhoe Athletic FC" />
+              <ProfileNameSection name="Coxhoe Athletic FC" />
             </div>
             <div className="mt-30 text-sm text-white">
               Coxhoe Athletic FC - Varius habitasse semper convallis mi. <br />

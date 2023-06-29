@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   AddmoreBtn,
   Button,
-  FileInput,
+  FileNameCoverInput,
   Input,
   PageSectionTitle,
   PageTitle,
@@ -100,7 +100,7 @@ export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
           />
           <div className="mt-[15px]">
             <div className="xs:w-[500px]">
-              <FileInput
+              <FileNameCoverInput
                 onChange={setSelectedTitleImage}
                 selectedImage={selectedTitleImage}
                 removeImage={removeTitleImage}
@@ -126,7 +126,7 @@ export const AddDetailsPage: React.FC<AddDetailsStepPagePropsType> = ({
                 />
               </div>
               <div className="w-1/2">
-                <FileInput
+                <FileNameCoverInput
                   onChange={setSelectedPitchImage}
                   selectedImage={selectedPitchImage}
                   removeImage={removePitchImage}

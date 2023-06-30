@@ -37,6 +37,11 @@
   .buttonText{
     @apply text-[16px] leading-[20px] font-semibold 
   }
+
+  .darkGreenButtonText{
+    @apply text-[16px] leading-[20px] font-semibold text-green-70
+  }
+
   .generalSmallText{
     @apply text-[14px] leading-[20px] font-medium;
   }

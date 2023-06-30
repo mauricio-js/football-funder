@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { ColorContext } from "Lib";
 
 interface FactItemPropsType {
   title: string;
@@ -6,10 +8,17 @@ interface FactItemPropsType {
 }
 
 export const FactItem: React.FC<FactItemPropsType> = ({ title, value }) => {
+  const { primaryColor } = useContext(ColorContext)!;
+
   return (
     <div className="flex flex-col">
       <div className="generalSmallText text-white">{title}</div>
-      <div className="text-[32px] text-green-10 font-semibold">{value}</div>
+      <div
+        className="text-[32px] font-semibold"
+        style={{ color: primaryColor }}
+      >
+        {value}
+      </div>
     </div>
   );
 };

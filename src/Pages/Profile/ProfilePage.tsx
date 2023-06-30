@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   BuyerCard,
@@ -29,11 +29,20 @@ import ClubImage from "Assets/images/profile/club-image.png";
 import ClubLogo from "Assets/images/profile/club-logo.png";
 import SmallCardImg1 from "Assets/images/explore/card-b.png";
 import SmallCardImg2 from "Assets/images/explore/card-c.png";
+import { ColorContext } from "Lib";
+import classNames from "classnames";
 
 export const ProfilePage = () => {
+  const { backgroundColor } = useContext(ColorContext)!;
+
   return (
     <Template>
-      <div className="relative sm:pt-30 pb-[150px] sm:pb-[100px] bg-green-70">
+      <div
+        className={classNames("relative sm:pt-30 pb-[150px] sm:pb-[100px]")}
+        style={{
+          backgroundColor: backgroundColor,
+        }}
+      >
         <div className="flex flex-col items-center">
           <ProfileImagePanel backImage={ClubImage} logo={ClubLogo} />
           <div className="flex flex-col items-center w-full px-5">

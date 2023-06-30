@@ -7,7 +7,7 @@ export const PageSectionTitle: React.FC<PageSectionTitleType> = ({
 }) => {
   return (
     <div className={classNames("flex flex-col", intro && "gap-[10px]")}>
-      <div className="text-[16px] leading-[20px] font-semibold">{title}</div>
+      <div className="darkGreenButtonText">{title}</div>
       <div className="introText">{intro}</div>
     </div>
   );

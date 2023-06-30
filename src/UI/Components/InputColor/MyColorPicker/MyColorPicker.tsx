@@ -3,18 +3,18 @@ import classNames from "classnames";
 
 interface MyColorPickerPropsType {
   setColor: (value: string) => void;
-  defaultColor: string;
+  // defaultColor: string;
   labelName: string;
 }
 
 export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
-  defaultColor,
+  // defaultColor,
   setColor,
   labelName,
 }) => {
-  const [inputColor, setInputColor] = useState<string>(defaultColor);
+  const [inputColor, setInputColor] = useState<string>("");
 
-  const [pickedColor, setPickedColor] = useState<string>(defaultColor);
+  const [pickedColor, setPickedColor] = useState<string>("");
 
   const onChanageColorPickerHandler = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -27,7 +27,7 @@ export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (event.target.value === "") {
-      setInputColor(defaultColor);
+      setInputColor("");
     }
   };
 
@@ -85,7 +85,6 @@ export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
           )}
         >
           {labelName}
-          {/* <span className="text-green-10 ml-1">*</span> */}
         </label>
       </div>
     </div>

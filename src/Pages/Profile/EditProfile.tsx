@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { ColorContext } from "Lib";
 
 import {
   Button,
@@ -38,6 +40,14 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 export const EditProfile: React.FC = () => {
   const navigate = useNavigate();
 
+  const { setBackgroundColor } = useContext(ColorContext)!;
+
+  const { setGradientColor } = useContext(ColorContext)!;
+
+  const { setPrimaryColor } = useContext(ColorContext)!;
+
+  const { setSecondaryColor } = useContext(ColorContext)!;
+
   const [displayName, setDisplayName] = useState<string>("");
 
   const [selectedProfileImage, setSelectedProfileImage] = useState<File | null>(
@@ -47,14 +57,6 @@ export const EditProfile: React.FC = () => {
   const [selectedCoverImage, setSelectedCoverImage] = useState<File | null>(
     null
   );
-
-  const [primaryColor, setPrimaryColor] = useState<string>("");
-
-  const [secondaryColor, setSecondaryColor] = useState<string>("");
-
-  const [backgroundColor, setBackgroundColor] = useState<string>("");
-
-  const [gradientColor, setGradientColor] = useState<string>("");
 
   const [socialLinkUrl, setSocialLinkUrl] = useState<string>("");
 
@@ -168,28 +170,28 @@ export const EditProfile: React.FC = () => {
                   <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setPrimaryColor}
-                      defaultColor={primaryColor}
+                      // defaultColor={primaryColor}
                       labelName="Primary"
                     />
                   </div>
                   <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setSecondaryColor}
-                      defaultColor={secondaryColor}
+                      // defaultColor={secondaryColor}
                       labelName="Secondary"
                     />
                   </div>
                   <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setBackgroundColor}
-                      defaultColor={backgroundColor}
+                      // defaultColor={backgroundColor}
                       labelName="Background"
                     />
                   </div>
                   <div className="ns:w-[calc(50%-10px)] w-full">
                     <MyColorPicker
                       setColor={setGradientColor}
-                      defaultColor={gradientColor}
+                      // defaultColor={gradientColor}
                       labelName="Gradient"
                     />
                   </div>

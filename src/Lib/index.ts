@@ -1,3 +1,4 @@
+export * from './ColorContext';
 export * from './ExpiryGuard';
 export * from './useExpired';
 export * from './urls';

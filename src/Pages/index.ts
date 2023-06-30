@@ -7,6 +7,7 @@ export * from './CrowdFunding';
 export * from './Explore';
 export * from './Fees';
 export * from './ForgotPassword';
+export * from './GuidePages';
 export * from './Home';
 export * from './HowItWorks';
 export * from './LandingPage';

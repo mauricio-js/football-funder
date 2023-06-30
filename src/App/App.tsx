@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { ColorProvider } from "Lib";
+
 import {
   ABOUTUS_URL,
   ADDETAILLIVE_URL,
@@ -45,6 +47,7 @@ import {
   SPONSORSHIPSALE_URL,
   SUPPORT_URL,
   SUPPORTERVIEW_URL,
+  TERMS_URL,
   UPDATEPASSWORD_URL,
 } from "Lib";
 
@@ -95,6 +98,7 @@ import {
   SponsorshipSale,
   Support,
   SupporterView,
+  TermsPage,
   UpdatePassword,
 } from "Pages";
 import {
@@ -125,103 +129,112 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path={HOME_URL} element={<Home />} />
-          <Route path={EXPLORE_URL} element={<Explore />} />
-          <Route path={HOWITWORKS_URL} element={<HowItWorks />} />
-          <Route
-            path={ORGANISATIONFUNDRAISER_URL}
-            element={<OrganisationFundraiser />}
-          />
-          <Route
-            path={INDIVIDUALFUNDRAISER_URL}
-            element={<IndividualFundraiser />}
-          />
-          <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
-          <Route
-            path={CROWDFUNDDETAILLIVEMENU_URL}
-            element={<CrowdFundDetailLiveMenuPage />}
-          />
-          <Route path={MAKEAWITHDRAWAL_URL} element={<MakeWithdrawal />} />
-          <Route
-            path={CROWDFUNDDETAILLIVE_URL}
-            element={<CrowdFundDetailLivePage />}
-          />
-          <Route
-            path={CROWDFUNDDETAILPENDING_URL}
-            element={<CrowdFundDetailPendingPage />}
-          />
-          <Route />
-          <Route
-            path={CROWDFUNDINGDONATE_URL}
-            element={<CrowdfundingDonate />}
-          />
-          <Route
-            path={ORGANISATIONADVERTISING_URL}
-            element={<OrganisationListing />}
-          />
-          <Route
-            path={INDIVIDUALADVERTISING_URL}
-            element={<IndividualListing />}
-          />
-          <Route path={ADSLISTING_URL} element={<AdsList />} />
-          <Route path={ADDETAILLIVE_URL} element={<AdDetailLivePage />} />
-          <Route path={ADDETAILPENDING_URL} element={<AdDetailPendingPage />} />
-          <Route path={ADVERTISINGSALE_URL} element={<AdvertisingSale />} />
-          <Route
-            path={ORGANISATIONSPONSORSHIP_URL}
-            element={<OrganisationSponsorship />}
-          />
-          <Route
-            path={INDIVIDUALSPONSORSHIP_URL}
-            element={<IndividualSponsorship />}
-          />
-          <Route path={SPONSORSHIPLISTING_URL} element={<SponsorshipList />} />
-          <Route
-            path={SPONSORSHIPDETAILLIVE_URL}
-            element={<SponsorshipDetailLivePage />}
-          />
-          <Route
-            path={SPONSORSHIPDETAILPENDING_URL}
-            element={<SponsorshipDetailPendingPage />}
-          />
-          <Route path={SPONSORSHIPSALE_URL} element={<SponsorshipSale />} />
-          <Route path={PROMOTE_URL} element={<Promote />} />
-          <Route path={CHECKOUT_URL} element={<Checkout />} />
-          <Route path={SIGNIN_URL} element={<Signin />} />
-          <Route path={SIGNUP_URL} element={<SignUp />} />
-          <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
-          <Route path={FEES_URL} element={<Fees />} />
-          <Route path={ABOUTUS_URL} element={<AboutUs />} />
-          <Route path={SUPPORT_URL} element={<Support />} />
-          <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
-          <Route path={DONATIONVIEW_URL} element={<DonationView />} />
-          <Route path={MYACCOUNT_URL} element={<MyAccountPage />} />
-          <Route path={EDITMYACCOUNT_URL} element={<EditMyAccount />} />
-          <Route path={UPDATEPASSWORD_URL} element={<UpdatePassword />} />
-          <Route path={PITCHSIDEADBOARD_URL} element={<PitchSideAdBoard />} />
-          <Route path={BUYERFIRSTPAGE_URL} element={<BuyerFirstPage />} />
-          <Route path={BUYERCHECKOUT_URL} element={<BuyerCheckoutPage />} />
-          <Route path={BUYERFINAL_URL} element={<BuyerFinalPage />} />
-          <Route path={SELLERFIRSTPAGE_URL} element={<SellerFirstPage />} />
-          <Route path={SELLERFINAL_URL} element={<SellerFinalPage />} />
-          <Route path={PROFILEPAGE_URL} element={<ProfilePage />} />
-          <Route path={PROFILEEDIT_URL} element={<EditProfile />} />
-          <Route
-            path={INDIVIDUALPROFILEPAGE_URL}
-            element={<IndividualProfilePage />}
-          />
-          <Route
-            path={SPONSORPROFILEPAGE_URL}
-            element={<SponsorProfilePage />}
-          />
-          <Route path="*" element={<RedirectToRoot />} />
-        </Routes>
-        <ScrollToTop />
-      </BrowserRouter>
+      <ColorProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path={HOME_URL} element={<Home />} />
+            <Route path={EXPLORE_URL} element={<Explore />} />
+            <Route path={HOWITWORKS_URL} element={<HowItWorks />} />
+            <Route
+              path={ORGANISATIONFUNDRAISER_URL}
+              element={<OrganisationFundraiser />}
+            />
+            <Route
+              path={INDIVIDUALFUNDRAISER_URL}
+              element={<IndividualFundraiser />}
+            />
+            <Route path={CROWDFUNDINGLIST_URL} element={<CrowdfundingList />} />
+            <Route
+              path={CROWDFUNDDETAILLIVEMENU_URL}
+              element={<CrowdFundDetailLiveMenuPage />}
+            />
+            <Route path={MAKEAWITHDRAWAL_URL} element={<MakeWithdrawal />} />
+            <Route
+              path={CROWDFUNDDETAILLIVE_URL}
+              element={<CrowdFundDetailLivePage />}
+            />
+            <Route
+              path={CROWDFUNDDETAILPENDING_URL}
+              element={<CrowdFundDetailPendingPage />}
+            />
+            <Route />
+            <Route
+              path={CROWDFUNDINGDONATE_URL}
+              element={<CrowdfundingDonate />}
+            />
+            <Route
+              path={ORGANISATIONADVERTISING_URL}
+              element={<OrganisationListing />}
+            />
+            <Route
+              path={INDIVIDUALADVERTISING_URL}
+              element={<IndividualListing />}
+            />
+            <Route path={ADSLISTING_URL} element={<AdsList />} />
+            <Route path={ADDETAILLIVE_URL} element={<AdDetailLivePage />} />
+            <Route
+              path={ADDETAILPENDING_URL}
+              element={<AdDetailPendingPage />}
+            />
+            <Route path={ADVERTISINGSALE_URL} element={<AdvertisingSale />} />
+            <Route
+              path={ORGANISATIONSPONSORSHIP_URL}
+              element={<OrganisationSponsorship />}
+            />
+            <Route
+              path={INDIVIDUALSPONSORSHIP_URL}
+              element={<IndividualSponsorship />}
+            />
+            <Route
+              path={SPONSORSHIPLISTING_URL}
+              element={<SponsorshipList />}
+            />
+            <Route
+              path={SPONSORSHIPDETAILLIVE_URL}
+              element={<SponsorshipDetailLivePage />}
+            />
+            <Route
+              path={SPONSORSHIPDETAILPENDING_URL}
+              element={<SponsorshipDetailPendingPage />}
+            />
+            <Route path={SPONSORSHIPSALE_URL} element={<SponsorshipSale />} />
+            <Route path={PROMOTE_URL} element={<Promote />} />
+            <Route path={CHECKOUT_URL} element={<Checkout />} />
+            <Route path={SIGNIN_URL} element={<Signin />} />
+            <Route path={SIGNUP_URL} element={<SignUp />} />
+            <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
+            <Route path={FEES_URL} element={<Fees />} />
+            <Route path={ABOUTUS_URL} element={<AboutUs />} />
+            <Route path={SUPPORT_URL} element={<Support />} />
+            <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
+            <Route path={DONATIONVIEW_URL} element={<DonationView />} />
+            <Route path={MYACCOUNT_URL} element={<MyAccountPage />} />
+            <Route path={EDITMYACCOUNT_URL} element={<EditMyAccount />} />
+            <Route path={UPDATEPASSWORD_URL} element={<UpdatePassword />} />
+            <Route path={PITCHSIDEADBOARD_URL} element={<PitchSideAdBoard />} />
+            <Route path={BUYERFIRSTPAGE_URL} element={<BuyerFirstPage />} />
+            <Route path={BUYERCHECKOUT_URL} element={<BuyerCheckoutPage />} />
+            <Route path={BUYERFINAL_URL} element={<BuyerFinalPage />} />
+            <Route path={SELLERFIRSTPAGE_URL} element={<SellerFirstPage />} />
+            <Route path={SELLERFINAL_URL} element={<SellerFinalPage />} />
+            <Route path={PROFILEPAGE_URL} element={<ProfilePage />} />
+            <Route path={PROFILEEDIT_URL} element={<EditProfile />} />
+            <Route
+              path={INDIVIDUALPROFILEPAGE_URL}
+              element={<IndividualProfilePage />}
+            />
+            <Route
+              path={SPONSORPROFILEPAGE_URL}
+              element={<SponsorProfilePage />}
+            />
+            <Route path={TERMS_URL} element={<TermsPage />} />
+            <Route path="*" element={<RedirectToRoot />} />
+          </Routes>
+          <ScrollToTop />
+        </BrowserRouter>
+      </ColorProvider>
     </>
   );
 }

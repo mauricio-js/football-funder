@@ -47,8 +47,11 @@ import {
   SPONSORSHIPSALE_URL,
   SUPPORT_URL,
   SUPPORTERVIEW_URL,
-  TERMS_URL,
   UPDATEPASSWORD_URL,
+  FRAUDPOLICY_URL,
+  PRIVACYPOLICY_URL,
+  QUESTIONS_URL,
+  TERMS_URL,
 } from "Lib";
 
 import {
@@ -98,8 +101,11 @@ import {
   SponsorshipSale,
   Support,
   SupporterView,
-  TermsPage,
   UpdatePassword,
+  FraudPrivacyPage,
+  QuestionsPage,
+  PrivacyPolicyPage,
+  TermsPage,
 } from "Pages";
 import {
   BrowserRouter,
@@ -229,6 +235,9 @@ function App() {
               path={SPONSORPROFILEPAGE_URL}
               element={<SponsorProfilePage />}
             />
+            <Route path={FRAUDPOLICY_URL} element={<FraudPrivacyPage />} />
+            <Route path={QUESTIONS_URL} element={<QuestionsPage />} />
+            <Route path={PRIVACYPOLICY_URL} element={<PrivacyPolicyPage />} />
             <Route path={TERMS_URL} element={<TermsPage />} />
             <Route path="*" element={<RedirectToRoot />} />
           </Routes>

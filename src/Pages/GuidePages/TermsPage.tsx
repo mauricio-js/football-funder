@@ -22,7 +22,7 @@ export const TermsPage: React.FC = () => {
               className="object-cover w-full ns:hidden"
             />
           </div>
-          <div className="lg:w-[1000px] w-full px-5 mx-auto">
+          <div className="lg:w-[1000px] w-full max-lg:px-5 mx-auto">
             <PageTitle title="Terms & Conditions" />
             <div className="mt-30">
               <PageSectionTitle

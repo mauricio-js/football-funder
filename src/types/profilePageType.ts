@@ -12,3 +12,8 @@ export interface SelectCardDataType {
     title: string,
     value:string
 }
+
+export interface FactItemType { 
+    title: string,
+    value:string
+}

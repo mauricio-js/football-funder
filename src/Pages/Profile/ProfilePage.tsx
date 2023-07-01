@@ -20,6 +20,7 @@ import {
 import {
   AdsListData,
   CrowdFundListData,
+  FaceItemData,
   ProfileLocationLabelData,
   ProfileClubLabelData,
   SponsorshipListData,
@@ -116,11 +117,16 @@ export const ProfilePage = () => {
             <div className="mt-[60px]">
               <div className="profileSectionTitle">Facts</div>
               <div className="mt-30 flex md:flex-row md:justify-between flex-col gap-y-5">
-                <FactItem title="Since" value="2004" />
-                <FactItem title="Trophies" value="12" />
-                <FactItem title="Capacity" value="1000" />
-                <FactItem title="Average attendance" value="669" />
-                <FactItem title="Average player age" value="26" />
+                {FaceItemData.map((item, index) => {
+                  return (
+                    <FactItem
+                      key={index}
+                      title={item.title}
+                      value={item.value}
+                      textColor="text-green-70"
+                    />
+                  );
+                })}
               </div>
             </div>
             <div className="mt-[60px]">

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { ColorContext } from "Lib";
 
+import { FactItem } from "./Components";
+
 import {
   Button,
   FileUplaod,
@@ -22,6 +24,7 @@ import {
   AverageAttendanceData,
   AveragePlayerAgeData,
   CapacityData,
+  FaceItemData,
   FoundedData,
   NameData,
   SelectFundraiserCardData,
@@ -199,7 +202,7 @@ export const EditProfile: React.FC = () => {
               </div>
             </div>
             <div className="mt-30">
-              <div className="buttonText text-green-70">Cover image</div>
+              <div className="buttonText text-green-70">Social media links</div>
               <div className="mt-2.5">
                 <div className="introText">
                   Add your social media links below
@@ -339,7 +342,23 @@ export const EditProfile: React.FC = () => {
               </div>
             </div>
             <div className="mt-30">
-              <div className="flex flex-col gap-2.5">
+              <div className="generalTitle">Facts</div>
+              <div className="mt-5 flex flex-col gap-y-2.5">
+                {FaceItemData.map((item, index) => {
+                  return (
+                    <FactItem
+                      key={index}
+                      title={item.title}
+                      value={item.value}
+                      textColor="text-green-70"
+                    />
+                  );
+                })}
+              </div>
+            </div>
+            <div className="mt-30">
+              <EditProfileListTitle title="Stats" />
+              <div className="mt-15 flex flex-col gap-2.5">
                 <Input
                   data={FoundedData}
                   defaultValue={founded}

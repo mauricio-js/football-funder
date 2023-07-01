@@ -1,4 +1,4 @@
-import { CardLabelType,InputType,SelectCardDataType, SocialMediaLinkDataType, } from "types"
+import { CardLabelType,InputType,SelectCardDataType, SocialMediaLinkDataType,FactItemType } from "types"
 
 import { BiMap } from 'react-icons/bi'
 import { TbUsersGroup } from 'react-icons/tb'
@@ -141,3 +141,42 @@ export const WebSiteURLData: InputType = {
     padding:" px-3 py-4",
     type: "text",
 }
+
+export const FaceItemData: FactItemType[] = [
+    {
+        title:"Since",
+         value:"2004"
+    },
+    {
+        title:"Trophies",
+         value:"12"
+    },
+    {
+        title:"Capacity",
+         value:"1000"
+    },
+    {
+        title:"Average attendance",
+         value:"669"
+    },
+    {
+        title:"Average player age",
+         value:"26"
+    },
+]
+
+export const IndividualFactItemData: FactItemType[] = [
+    {
+        title:"Member since",
+         value:"2023"
+    },
+    {
+        title:"Supported fundraisers",
+         value:"1000"
+    },
+    {
+        title:"Total spent",
+         value:"£2"
+    },
+   
+]

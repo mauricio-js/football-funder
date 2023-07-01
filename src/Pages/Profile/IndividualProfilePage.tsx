@@ -11,7 +11,11 @@ import {
   SocialIcons,
 } from "./Components";
 
-import { CrowdFundListData, ProfileLocationLabelData } from "Config";
+import {
+  IndividualFactItemData,
+  CrowdFundListData,
+  ProfileLocationLabelData,
+} from "Config";
 
 import ClubImage from "Assets/images/profile/club-image.png";
 import IndividualImage from "Assets/images/profile/individual.png";
@@ -81,9 +85,16 @@ export const IndividualProfilePage = () => {
             <div className="mt-[60px]">
               <div className="profileSectionTitle">Facts</div>
               <div className="mt-30 flex md:flex-row md:justify-between flex-col gap-y-5">
-                <FactItem title="Member since" value="2023" />
-                <FactItem title="Supported fundraisers" value="1000" />
-                <FactItem title="Total spent" value="£2" />
+                {IndividualFactItemData.map((item, index) => {
+                  return (
+                    <FactItem
+                      key={index}
+                      title={item.title}
+                      value={item.value}
+                      textColor="text-white"
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>

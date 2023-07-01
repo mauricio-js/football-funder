@@ -25,6 +25,7 @@ import {
   INDIVIDUALADVERTISING_URL,
   INDIVIDUALFUNDRAISER_URL,
   INDIVIDUALSPONSORSHIP_URL,
+  LISTINGAPPROVAL_URL,
   MAKEAWITHDRAWAL_URL,
   MYACCOUNT_URL,
   EDITMYACCOUNT_URL,
@@ -48,6 +49,7 @@ import {
   SUPPORT_URL,
   SUPPORTERVIEW_URL,
   UPDATEPASSWORD_URL,
+  COOKIE_URL,
   FRAUDPOLICY_URL,
   PRIVACYPOLICY_URL,
   QUESTIONS_URL,
@@ -80,6 +82,7 @@ import {
   IndividualListing,
   IndividualSponsorship,
   Landing,
+  ListingApproval,
   MakeWithdrawal,
   MyAccountPage,
   OrganisationFundraiser,
@@ -102,6 +105,7 @@ import {
   Support,
   SupporterView,
   UpdatePassword,
+  CookiePage,
   FraudPrivacyPage,
   QuestionsPage,
   PrivacyPolicyPage,
@@ -235,10 +239,12 @@ function App() {
               path={SPONSORPROFILEPAGE_URL}
               element={<SponsorProfilePage />}
             />
+            <Route path={COOKIE_URL} element={<CookiePage />} />
             <Route path={FRAUDPOLICY_URL} element={<FraudPrivacyPage />} />
             <Route path={QUESTIONS_URL} element={<QuestionsPage />} />
             <Route path={PRIVACYPOLICY_URL} element={<PrivacyPolicyPage />} />
             <Route path={TERMS_URL} element={<TermsPage />} />
+            <Route path={LISTINGAPPROVAL_URL} element={<ListingApproval />} />
             <Route path="*" element={<RedirectToRoot />} />
           </Routes>
           <ScrollToTop />

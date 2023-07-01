@@ -2,6 +2,7 @@ export * from './AboutUs';
 export * from './AccountPage';
 export * from './AgreementPage';
 export * from './Advertising';
+export * from './Approval';
 export * from './Checkout';
 export * from './CrowdFunding';
 export * from './Explore';

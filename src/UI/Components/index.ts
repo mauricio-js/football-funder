@@ -39,5 +39,6 @@ export * from './Stepper';
 export * from './SummaryCard';
 export * from './Textarea';
 export * from './TextButton';
+export * from './ToggleButton';
 export * from './UserList';
 export * from './WithdrawFundItem';

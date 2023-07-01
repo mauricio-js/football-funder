@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { ColorContext } from "Lib";
 
-import { FactItem } from "./Components";
-
 import {
   Button,
   FileUplaod,
@@ -24,7 +22,6 @@ import {
   AverageAttendanceData,
   AveragePlayerAgeData,
   CapacityData,
-  FaceItemData,
   FoundedData,
   NameData,
   SelectFundraiserCardData,
@@ -339,21 +336,6 @@ export const EditProfile: React.FC = () => {
                   onChange={setSelectedGalleryImages}
                   selectedImages={selectedGalleryImages}
                 />
-              </div>
-            </div>
-            <div className="mt-30">
-              <div className="generalTitle">Facts</div>
-              <div className="mt-5 flex flex-col gap-y-2.5">
-                {FaceItemData.map((item, index) => {
-                  return (
-                    <FactItem
-                      key={index}
-                      title={item.title}
-                      value={item.value}
-                      textColor="text-green-70"
-                    />
-                  );
-                })}
               </div>
             </div>
             <div className="mt-30">

@@ -23,7 +23,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             />
           </div>
           <div className="lg:w-[1000px] w-full max-lg:px-5 mx-auto">
-            <PageTitle title="Terms & Conditions" />
+            <PageTitle title="Privacy Policy" />
             <div className="mt-30 introText">
               This Privacy Policy explains how we collect, use, and protect your
               personal information when you use our platform.

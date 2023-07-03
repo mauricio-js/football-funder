@@ -3,67 +3,102 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'General Sans';
-  src: url('../../public/Fonts/GeneralSans/GeneralSans-Medium.woff') format('woff');
+  font-family: "General Sans";
+  src: url("../../public/Fonts/GeneralSans/GeneralSans-Medium.woff")
+    format("woff");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'General Sans';
-  src: url('../../public/Fonts/GeneralSans/GeneralSans-Semibold.woff') format('woff');
+  font-family: "General Sans";
+  src: url("../../public/Fonts/GeneralSans/GeneralSans-Semibold.woff")
+    format("woff");
   font-weight: 600;
   font-style: normal;
 }
 
+@layer utilities {
+  .aspect-square {
+    aspect-ratio: 3/1;
+  }
+}
+
 @layer base {
-  .generalTitle{
+  .generalTitle {
     @apply text-green-70 text-[32px] leading-[40px] font-semibold;
   }
-  .profileSectionTitle{
-    @apply text-[32px] font-semibold text-white
+  .profileSectionTitle {
+    @apply text-[32px] font-semibold text-white;
   }
-  .titleText{
+  .titleText {
     @apply text-green-70 text-[32px] max-ns:text-[21px] leading-[40px] max-ns:leading-[28px] font-semibold;
   }
-  .stepLabelTitle{
+  .stepLabelTitle {
     @apply text-green-70 text-[21px] leading-7 font-semibold;
   }
-  
-  .generalText{
+
+  .generalText {
     @apply text-[16px] leading-[22px] font-medium;
   }
-  
-  .buttonText{
-    @apply text-[16px] leading-[20px] font-semibold 
+
+  .buttonText {
+    @apply text-[16px] leading-[20px] font-semibold;
   }
 
-  .darkGreenButtonText{
-    @apply text-[16px] leading-[20px] font-semibold text-green-70
+  .darkGreenButtonText {
+    @apply text-[16px] leading-[20px] font-semibold text-green-70;
   }
 
-  .generalSmallText{
+  .generalSmallText {
     @apply text-[14px] leading-[20px] font-medium;
   }
-  .darkIntroText{
+  .darkIntroText {
     @apply text-green-70 text-[14px] leading-[20px] font-medium;
   }
 
   .introText {
-     @apply text-gray-10 text-[14px] leading-[20px] font-medium;
+    @apply text-gray-10 text-[14px] leading-[20px] font-medium;
   }
   .smallIntroText {
-     @apply text-gray-10 text-[12px] leading-[20px] font-medium;
+    @apply text-gray-10 text-[12px] leading-[20px] font-medium;
   }
-  
-  .linkTextButton{
+
+  .linkTextButton {
     @apply text-green-70 text-[14px] leading-[20px] font-medium underline underline-offset-2 cursor-pointer;
   }
-  .valueText{
+  .valueText {
     @apply text-green-70 text-[14px] leading-[20px] font-semibold;
   }
-  .valueTextWhite{
+  .valueTextWhite {
     @apply text-white text-[14px] leading-[20px] font-semibold;
   }
 
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .customDatePickerWidth,
+  .customDatePickerWidth > div.react-datepicker-wrapper,
+  .customDatePickerWidth
+    > div
+    > div.react-datepicker__input-container
+    .customDatePickerWidth
+    > div
+    > div.react-datepicker__input-container
+    input {
+    width: 100%;
+  }
+
+  .customDatePickerWidth > div > div.react-datepicker-popper {
+    z-index: 100;
+  }
+
+  .react-datepicker-popper .react-datepicker__triangle {
+    display: none;
+  }
+
+  .react-datepicker-popper {
+    z-index: 20;
+  }
 }

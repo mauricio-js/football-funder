@@ -4,10 +4,10 @@ import { Template } from "UI";
 
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
-import { ApprovalTable } from "./Components";
-import { lisingTableData } from "Config";
+import { WithdrawalTable } from "./Components";
+import { withdrawalTableData } from "Config";
 
-export const ListingApproval: React.FC = () => {
+export const WithdrawalApproval: React.FC = () => {
   return (
     <Template>
       <div className="relative xs:pt-30 pt-10 xs:pb-[150px] pb-[100px]">
@@ -26,13 +26,13 @@ export const ListingApproval: React.FC = () => {
           </div>
           <div className="relative">
             <div className="px-6">
-              <div className="titleText">Listing approvals</div>
+              <div className="titleText">Withdrawal approvals</div>
               <div className="mt-5 introText">
-                Approve or deny listings to go live on the site
+                Confirm funds have been sent to users by selecting 'Sent'
               </div>
             </div>
-            <div className="my-30 w-full scrollbar-hidden overflow-x-scroll">
-              <ApprovalTable tableData={lisingTableData} />
+            <div className="my-3 w-full scrollbar-hidden overflow-x-scroll pb-[100px]">
+              <WithdrawalTable tableData={withdrawalTableData} />
             </div>
           </div>
         </div>

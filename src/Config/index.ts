@@ -1,5 +1,6 @@
 export * from './accountPageConfig';
 export * from './advertisingConfig';
+export * from './approvalTableConfig'
 export * from './checkoutConfig';
 export * from './createFundraiserConfig';
 export * from './createListingConfig';

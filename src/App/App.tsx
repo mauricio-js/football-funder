@@ -54,6 +54,7 @@ import {
   PRIVACYPOLICY_URL,
   QUESTIONS_URL,
   TERMS_URL,
+  WITHDRAWALAPPROVAL_URL,
 } from "Lib";
 
 import {
@@ -110,6 +111,7 @@ import {
   QuestionsPage,
   PrivacyPolicyPage,
   TermsPage,
+  WithdrawalApproval,
 } from "Pages";
 import {
   BrowserRouter,
@@ -245,6 +247,10 @@ function App() {
             <Route path={PRIVACYPOLICY_URL} element={<PrivacyPolicyPage />} />
             <Route path={TERMS_URL} element={<TermsPage />} />
             <Route path={LISTINGAPPROVAL_URL} element={<ListingApproval />} />
+            <Route
+              path={WITHDRAWALAPPROVAL_URL}
+              element={<WithdrawalApproval />}
+            />
             <Route path="*" element={<RedirectToRoot />} />
           </Routes>
           <ScrollToTop />

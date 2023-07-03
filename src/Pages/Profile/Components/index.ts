@@ -2,7 +2,7 @@ export * from './ClubLogoItem';
 export * from './EditProfileListTitle';
 export * from './FactItem';
 export * from './Gallery';
-export * from './Gradient'
+export * from './BackGradient'
 export * from './NoticeBoard';
 export * from './ProfileImagePanel';
 export * from './ProfileNameSection';

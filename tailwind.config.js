@@ -50,7 +50,8 @@ export const theme = {
     borderRadius: {
       10: '10px',
       20: '20px',
-      30: '30px'
+      30: '30px',
+      50: '50%'
     },
     colors: {
       green: {

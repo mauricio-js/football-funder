@@ -108,16 +108,6 @@ export const Input: React.FC<InputProps> = ({
           {/* <span className="text-green-10 ml-1">*</span> */}
         </label>
       </div>
-      <style>
-        {`
-        input::-webkit-calendar-picker-indicator {
-          cursor: pointer;
-          position:absolute;
-          right:20px;
-          top:15px
-        }
-      `}
-      </style>
     </div>
   );
 };

@@ -50,4 +50,5 @@ export const FRAUDPOLICY_URL = '/fraudpolicy';
 export const PRIVACYPOLICY_URL = '/privacypolicy';
 export const QUESTIONS_URL = '/questions';
 export const TERMS_URL = '/terms';
-export const LISTINGAPPROVAL_URL = '/listingapproval';
+export const LISTINGAPPROVAL_URL = '/approval/listing';
+export const WITHDRAWALAPPROVAL_URL = '/approval/withdrawal';

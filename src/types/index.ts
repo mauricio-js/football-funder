@@ -1,4 +1,5 @@
 export * from './accountPageType';
+export * from './approvalDataType';
 export * from './ComponentsTypes'
 export * from './detailPageType';
 export * from './footerType';

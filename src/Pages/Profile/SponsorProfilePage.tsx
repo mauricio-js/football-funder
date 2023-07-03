@@ -70,11 +70,6 @@ export const SponsorProfilePage = () => {
           </div>
         </div>
         <div className="absolute -bottom-10 h-12 w-full bg-green-70 -z-10"></div>
-        <style>
-          {`
-            
-            `}
-        </style>
       </div>
     </Template>
   );

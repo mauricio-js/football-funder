@@ -11,7 +11,7 @@ import {
 import {
   FactItem,
   Gallery,
-  // Gradient,
+  BackGradient,
   ProfileImagePanel,
   ProfileNameSection,
   SocialIcons,
@@ -62,9 +62,9 @@ export const ProfilePage = () => {
               <SocialIcons />
             </div>
           </div>
-          {/* <div className="mt-[60px] w-full">
-            <Gradient />
-          </div> */}
+          <div className="mt-[60px] w-full">
+            <BackGradient />
+          </div>
           <div className="mm:w-[800px] max-mm:px-5">
             <div className="mt-[100px]">
               <div className="profileSectionTitle">Fundraisers</div>
@@ -148,11 +148,6 @@ export const ProfilePage = () => {
           </div>
         </div>
         <div className="absolute -bottom-10 h-12 w-full bg-green-70 -z-10"></div>
-        <style>
-          {`
-            
-            `}
-        </style>
       </div>
     </Template>
   );

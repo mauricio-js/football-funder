@@ -515,13 +515,6 @@ export const MyAccountPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <style>
-          {`
-            .scrollbar-hidden::-webkit-scrollbar {
-                display: none;
-              }
-          `}
-        </style>
       </div>
     </Template>
   );

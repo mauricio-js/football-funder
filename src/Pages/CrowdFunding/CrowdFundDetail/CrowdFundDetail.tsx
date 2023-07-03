@@ -608,13 +608,6 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
             </div>
           </div>
         )}
-        <style>
-          {`
-            .scrollbar-hidden::-webkit-scrollbar {
-                display: none;
-              }
-          `}
-        </style>
       </div>
     </Template>
   );

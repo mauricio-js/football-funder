@@ -62,10 +62,12 @@ export const ProfilePage = () => {
               <SocialIcons />
             </div>
           </div>
-          <div className="mt-[60px] w-full">
-            <BackGradient />
+          <div className="mt-[60px] relative w-full">
+            <div className="absolute w-full overflow-hidden">
+              <BackGradient />
+            </div>
           </div>
-          <div className="mm:w-[800px] max-mm:px-5">
+          <div className="z-10 mm:w-[800px] max-mm:px-5">
             <div className="mt-[100px]">
               <div className="profileSectionTitle">Fundraisers</div>
               <div className="mt-30">

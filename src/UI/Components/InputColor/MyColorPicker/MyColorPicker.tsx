@@ -55,7 +55,7 @@ export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
             type="color"
             value={pickedColor || "#000000"}
             id="colorPicker"
-            className={classNames("w-full h-full rounded-10 opacity-0")}
+            className={classNames("w-full h-full opacity-0")}
             onChange={onChanageColorPickerHandler}
           />
         </div>

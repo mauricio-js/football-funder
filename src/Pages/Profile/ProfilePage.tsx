@@ -63,7 +63,7 @@ export const ProfilePage = () => {
             </div>
           </div>
           <div className="mt-[60px] relative w-full">
-            <div className="absolute w-full overflow-hidden">
+            <div className="absolute w-full">
               <BackGradient />
             </div>
           </div>

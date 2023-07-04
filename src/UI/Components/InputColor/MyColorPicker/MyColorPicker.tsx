@@ -1,34 +1,28 @@
 import React, { useState } from "react";
+
+import Sketch from "@uiw/react-color-sketch";
+
 import classNames from "classnames";
 
 interface MyColorPickerPropsType {
   setColor: (value: string) => void;
-  // defaultColor: string;
+  defaultColor: string;
   labelName: string;
 }
 
 export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
-  // defaultColor,
+  defaultColor,
   setColor,
   labelName,
 }) => {
-  const [inputColor, setInputColor] = useState<string>("");
+  const [inputColor, setInputColor] = useState<string>(defaultColor);
 
-  const [pickedColor, setPickedColor] = useState<string>("");
+  const [pickedColor, setPickedColor] = useState<string>(defaultColor);
 
-  const onChanageColorPickerHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const pickedColor = event.target.value;
-    setPickedColor(pickedColor);
-    setInputColor(pickedColor.toUpperCase());
-    setColor(pickedColor.toUpperCase());
-  };
+  const [showPanel, setShowPanel] = useState<boolean>(false);
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (event.target.value === "") {
-      setInputColor("");
-    }
+    setShowPanel(true);
   };
 
   return (
@@ -50,7 +44,7 @@ export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
           required
         />
 
-        <div className="absolute h-full w-full flex items-center top-0 right-0 ">
+        {/* <div className="absolute h-full w-full flex items-center top-0 right-0 ">
           <input
             type="color"
             value={pickedColor || "#000000"}
@@ -58,7 +52,7 @@ export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
             className={classNames("w-full h-full opacity-0")}
             onChange={onChanageColorPickerHandler}
           />
-        </div>
+        </div> */}
 
         <div className="absolute h-full flex items-center top-0 right-[15px] ">
           <div
@@ -86,6 +80,43 @@ export const MyColorPicker: React.FC<MyColorPickerPropsType> = ({
         >
           {labelName}
         </label>
+        <div className="absolute z-10">
+          {showPanel && (
+            <div className="realative">
+              <Sketch
+                width={210}
+                color={pickedColor}
+                disableAlpha={true}
+                onChange={(color) => {
+                  setPickedColor(color.hex);
+                  setInputColor(color.hex.toUpperCase());
+                  setColor(color.hex);
+                  // setInputColor(pickedColor.toUpperCase());
+                }}
+              />
+              <div
+                className="absolute w-[212px] h-10 -bottom-9 -left-[1px]  
+                border-[1px] border-t-0 border-gray-300 rounded-b-[4px]  bg-white flex justify-center gap-2.5 py-2"
+              >
+                <button
+                  className="w-20 rounded-10 bg-green-10 border-[1px] border-gray-300 text-xs font-semibold"
+                  onClick={() => setShowPanel(false)}
+                >
+                  OK
+                </button>
+                <button
+                  className="w-20 rounded-10 bg-white border-[1px] border-gray-300 text-xs font-semibold"
+                  onClick={() => {
+                    setInputColor("");
+                    setShowPanel(false);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

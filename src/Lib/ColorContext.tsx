@@ -26,13 +26,13 @@ export const ColorProvider: React.FC<ColorProviderPropsType> = ({
     sessionStorage.getItem("backgroundColor") || "#061807"
   );
   const [gradientColor, setGradientColor] = useState<string>(
-    sessionStorage.getItem("gradientColor") || ""
+    sessionStorage.getItem("gradientColor") || "#78E98C"
   );
   const [primaryColor, setPrimaryColor] = useState<string>(
     sessionStorage.getItem("primaryColor") || "#78E98C"
   );
   const [secondaryColor, setSecondaryColor] = useState<string>(
-    sessionStorage.getItem("secondaryColor") || ""
+    sessionStorage.getItem("secondaryColor") || "#FFFFFF"
   );
 
   useEffect(() => {

@@ -5,7 +5,6 @@ import { useMutation } from "react-query";
 import { Button, Input, Template } from "UI";
 import { useAxios, SIGNIN_URL, FORGOTPASSWORD_URL } from "Lib";
 import { StatusContext } from 'App/StatusProvider'
-import { MdToken } from "react-icons/md";
 
 interface ResetPasswordType {
   token: string | undefined

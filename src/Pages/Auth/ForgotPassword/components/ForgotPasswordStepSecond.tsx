@@ -13,7 +13,7 @@ export const ForgotPasswordStepSecond: React.FC<
   ResetPasswordStep2PropsType
 > = ({ handleSendResetPassword, handlePrevPage, formValues, onInputChange }) => {
   return (
-    <form>
+    <form onSubmit={handleSendResetPassword}>
       <div
         className="
         md:w-[720px] w-full px-5 ns:mt-[90px] mt-[60px] ns:mb-[500px] mb-[300px]  mx-auto"
@@ -39,13 +39,13 @@ export const ForgotPasswordStepSecond: React.FC<
         <div className="mt-30 w-full flex justify-center">
           <div className="xs:w-[500px] w-full">
             <Button
+              type='submit'
               backgroundColor="bg-green-10"
               height="h-[50px]"
               width="w-full"
               text="Send password reset link"
               textColor="text-green-70"
               textSize="buttonText"
-              handleClick={handleSendResetPassword}
             />
           </div>
         </div>

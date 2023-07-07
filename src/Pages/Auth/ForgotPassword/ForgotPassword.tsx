@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { useAxios, useIsMounted, SIGNIN_URL } from "Lib";
+import { useAxios, SIGNIN_URL } from "Lib";
 import {
   ForgotPasswordStepFirst,
   ForgotPasswordStepSecond,
@@ -9,7 +9,6 @@ import {
 } from "Pages";
 import { StatusContext } from "App/StatusProvider";
 import { GeneralStepper, Template } from "UI";
-import { resetPasswordFormDataType } from "./types";
 
 export const ForgotPassword: React.FC = () => {
   const navigate = useNavigate();
@@ -25,12 +24,6 @@ export const ForgotPassword: React.FC = () => {
       ...preValue,
       [name]: value,
     }));
-  };
-
-  const data: resetPasswordFormDataType = {
-    token: "",
-    password: formValues.password,
-    password_confirmation: formValues.password_confirmation,
   };
 
   function handleNextPage() {

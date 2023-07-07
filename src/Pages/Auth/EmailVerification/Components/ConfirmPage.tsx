@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StepperBackButton } from "UI";
+import { Button } from "UI";
 import { StepperActionPropsType } from "types";
 
 export const ConfirmPage: React.FC<StepperActionPropsType> = ({

@@ -1,26 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { AccountEmailData } from "Config";
 import { Button, Input, StepperBackButton } from "UI";
-import { StepperActionPropsType } from "types";
 
-export const ForgotPasswordStepSecond: React.FC<StepperActionPropsType> = ({
-  handleNextPage,
-  handlePrevPage,
-}) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+interface ResetPasswordStep2PropsType {
+  handlePrevPage: () => void;
+  handleSendResetPassword: () => void;
+  formValues: { [key: string]: string };
+  onInputChange: (name: string, value: string) => void;
+}
 
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
+export const ForgotPasswordStepSecond: React.FC<
+  ResetPasswordStep2PropsType
+> = ({ handleSendResetPassword, handlePrevPage, formValues, onInputChange }) => {
   return (
     <form>
       <div
         className="
-        px-5 ns:mt-[90px] mt-[60px] ns:mb-[500px] mb-[300px]  mx-auto"
+        md:w-[720px] w-full px-5 ns:mt-[90px] mt-[60px] ns:mb-[500px] mb-[300px]  mx-auto"
       >
         <div className="mt-15">
           <StepperBackButton handleBackPage={handlePrevPage} />
@@ -35,8 +31,8 @@ export const ForgotPasswordStepSecond: React.FC<StepperActionPropsType> = ({
             <Input
               data={AccountEmailData}
               name="email"
-              onChange={handleInputChange}
-              value={formValues.email || ""}
+              onChange={onInputChange}
+              value={formValues?.email || ""}
             />
           </div>
         </div>
@@ -49,7 +45,7 @@ export const ForgotPasswordStepSecond: React.FC<StepperActionPropsType> = ({
               text="Send password reset link"
               textColor="text-green-70"
               textSize="buttonText"
-              handleClick={handleNextPage}
+              handleClick={handleSendResetPassword}
             />
           </div>
         </div>

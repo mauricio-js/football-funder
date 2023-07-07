@@ -1,18 +1,37 @@
-import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { SIGNIN_URL } from "Lib";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import { useAxios, useIsMounted, SIGNIN_URL } from "Lib";
 import {
   ForgotPasswordStepFirst,
   ForgotPasswordStepSecond,
-  ForgotPasswordStepThird,
   ForgotPasswordStepFourth,
 } from "Pages";
-import { GeneralStepper } from "UI";
+import { StatusContext } from "App/StatusProvider";
+import { GeneralStepper, Template } from "UI";
+import { resetPasswordFormDataType } from "./types";
 
 export const ForgotPassword: React.FC = () => {
+  const navigate = useNavigate();
+  const axios = useAxios();
+  const { showStatus } = useContext(StatusContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
+
+  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+  const handleInputChange = (name: string, value: string) => {
+    setFormValues((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+
+  const data: resetPasswordFormDataType = {
+    token: "",
+    password: formValues.password,
+    password_confirmation: formValues.password_confirmation,
+  };
 
   function handleNextPage() {
     if (currentStep < pages.length - 1) {
@@ -26,32 +45,34 @@ export const ForgotPassword: React.FC = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
-  //   const navigate = useNavigate();
+
+  const sendForgotPasswordLink = useMutation((params: any) => axios.post('/auth/send_password_reset', params), {
+    onSuccess: () => {
+      showStatus('Just sent a reset password link. Please check your email!')
+    },
+    onError: (err: any) => {
+      const error = err.response?.data?.error ?? ''
+      if(error === 'invalid-user') showStatus('You are not registered user!', 'error')
+    },
+  })
+
+  function handleSendResetPassword() {
+    sendForgotPasswordLink.mutate(formValues)
+  }
+
   const pages: { name: string; component: React.ReactNode }[] = [
     {
       name: "ForgotPasswordStepFirst",
-      component: (
-        <ForgotPasswordStepFirst
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-        />
-      ),
+      component: <ForgotPasswordStepFirst handleNextPage={handleNextPage} />,
     },
     {
       name: "ForgotPasswordStepSecond",
       component: (
         <ForgotPasswordStepSecond
           handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-        />
-      ),
-    },
-    {
-      name: "ForgotPasswordStepThird",
-      component: (
-        <ForgotPasswordStepThird
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
+          handleSendResetPassword={handleSendResetPassword}
+          formValues={formValues}
+          onInputChange={handleInputChange}
         />
       ),
     },
@@ -60,15 +81,15 @@ export const ForgotPassword: React.FC = () => {
       component: (
         <ForgotPasswordStepFourth
           handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
+          handleNextPage={() => navigate(SIGNIN_URL)}
         />
       ),
     },
   ];
 
   return (
-    <div>
+    <Template title="ForgotPassword" isLoading={sendForgotPasswordLink.isLoading}>
       <GeneralStepper pages={pages} stepNumber={currentStep} />
-    </div>
+    </Template>
   );
 };

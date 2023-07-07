@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
 import { SignUpStepFirst, SignUpStepSecond, SignUpStepThird } from "Pages";
 import { GeneralStepper, Template } from "UI";
 import { ContactPhoneNumberData } from "Config";
-import { useAxios, useIsMounted } from "Lib";
+import { useAxios } from "Lib";
 import { registerFormDataType } from "./types";
 import { EMAILVERIFICATION_URL } from "Lib";
-import useToast from "Lib/useToast";
+import { StatusContext } from 'App/StatusProvider'
 
-const country = ["england", "scotland", "wales", "nothern ireland"];
+const country = ["england", "scotland", "wales", "nothern ireland"]
 
 export const SignUp: React.FC = () => {
   const navigate = useNavigate();
-  const { handleErrorMessage } = useToast();
-
-  const { setSafely } = useIsMounted();
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [categoryId, setCategoryId] = useState<number>(1);
 
@@ -31,6 +27,8 @@ export const SignUp: React.FC = () => {
   const [confirm, setConfirm] = useState<boolean>(false);
 
   const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+
+  const { showStatus } = useContext(StatusContext);
 
   const handleInputChange = (name: string, value: string) => {
     setFormValues((preValue) => ({
@@ -68,26 +66,27 @@ export const SignUp: React.FC = () => {
 
   const axios = useAxios();
 
-  const onClickRegisterBtn = () => {
-    setSafely(setIsLoading, true);
-    axios
-      .post(`/user/register`, data)
-      .then((res) => {
-        setSafely(setIsLoading, false);
-        navigate(EMAILVERIFICATION_URL);
-      })
-      .catch((err) => {
-        if (err.errors) {
-          window.scrollTo(0, 0);
-          const responseError = err.errors;
-          handleErrorMessage(responseError[0].message);
-        } else {
-          console.log(err.message);
-          handleErrorMessage(err.message);
-        }
-        setSafely(setIsLoading, false);
-      });
-  };
+  const signUp = useMutation((parms: registerFormDataType) => axios.post('/user/register', parms), {
+    onSuccess: (data) => {
+      showStatus('Your account has been succesfully registered!')
+      navigate(EMAILVERIFICATION_URL);
+    },
+    onError: (err: any) => {
+      if (err.errors) {
+        window.scrollTo(0, 0);
+        const responseError = err.errors;
+        showStatus(responseError[0].message, 'error')
+      } else {
+        console.log(err.message);
+        showStatus(err.message);
+      }
+    },
+  })
+
+  function onClickRegisterBtn() {
+    signUp.mutate(data)
+  }
+
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
@@ -146,7 +145,7 @@ export const SignUp: React.FC = () => {
     },
   ];
   return (
-    <Template isLoading={isLoading}>
+    <Template isLoading={signUp.isLoading}>
       <GeneralStepper pages={pages} stepNumber={currentStep} />
     </Template>
   );

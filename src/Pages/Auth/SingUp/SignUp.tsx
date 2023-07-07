@@ -9,7 +9,7 @@ import { registerFormDataType } from "./types";
 import { EMAILVERIFICATION_URL } from "Lib";
 import { StatusContext } from 'App/StatusProvider'
 
-const country = ["england", "scotland", "wales", "nothern ireland"];
+const country = ["england", "scotland", "wales", "nothern ireland"]
 
 export const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -84,7 +84,6 @@ export const SignUp: React.FC = () => {
   })
 
   function onClickRegisterBtn() {
-    console.log('asdfasdfa', data)
     signUp.mutate(data)
   }
 

@@ -1,16 +1,19 @@
 import React from "react";
 import { Button, StepperBackButton } from "UI";
-import { StepperActionPropsType } from "types";
 
-export const ForgotPasswordStepFourth: React.FC<StepperActionPropsType> = ({
-  handleNextPage,
-  handlePrevPage,
-}) => {
+interface ResetPasswordStep4PropsType {
+  handlePrevPage: () => void;
+  handleNextPage: () => void;
+}
+
+export const ForgotPasswordStepFourth: React.FC<
+  ResetPasswordStep4PropsType
+> = ({ handlePrevPage, handleNextPage }) => {
   return (
     <div>
       <div
         className="
-      px-5 ns:mt-[90px] mt-[60px] ns:mb-[500px] mb-[300px]  mx-auto"
+      md:w-[720px] w-full px-5 ns:mt-[90px] mt-[60px] ns:mb-[500px] mb-[300px]  mx-auto"
       >
         <div className="mt-15">
           <StepperBackButton handleBackPage={handlePrevPage} />

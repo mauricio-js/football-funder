@@ -1,26 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { AccountConfirmPasswordData, AccountPasswordData } from "Config";
 import { Button, Input, StepperBackButton } from "UI";
-import { StepperActionPropsType } from "types";
 
-export const ForgotPasswordStepThird: React.FC<StepperActionPropsType> = ({
-  handleNextPage,
+interface ResetPasswordStep3PropsType {
+  handlePrevPage: () => void;
+  formValues: { [key: string]: string };
+  onInputChange: (name: string, value: string) => void;
+  handleSubmit: () => void;
+}
+export const ForgotPasswordStepThird: React.FC<ResetPasswordStep3PropsType> = ({
   handlePrevPage,
+  formValues,
+  onInputChange,
+  handleSubmit,
 }) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div
         className="
-       px-5 ns:mt-[90px] mt-[60px] ns:mb-[500px] mb-[300px]  mx-auto"
+       md:w-[720px] w-full px-5 ns:mt-[90px] mt-[60px] ns:mb-[500px] mb-[300px]  mx-auto"
       >
         <div className="mt-15">
           <StepperBackButton handleBackPage={handlePrevPage} />
@@ -35,26 +33,26 @@ export const ForgotPasswordStepThird: React.FC<StepperActionPropsType> = ({
           <Input
             data={AccountPasswordData}
             name="password"
-            onChange={handleInputChange}
-            value={formValues.password}
+            onChange={onInputChange}
+            value={formValues.password || ""}
           />
           <Input
             data={AccountConfirmPasswordData}
-            name="confirm_password"
-            onChange={handleInputChange}
-            value={formValues.confirm_password}
+            name="password_confirmation"
+            onChange={onInputChange}
+            value={formValues.password_confirmation || ""}
           />
         </div>
         <div className="mt-30 w-full flex justify-center">
           <div className="xs:w-[500px] w-full">
             <Button
+              type="submit"
               backgroundColor="bg-green-10"
               height="h-[50px]"
               width="w-full"
               text="Create new password"
               textColor="text-green-70"
               textSize="buttonText"
-              handleClick={handleNextPage}
             />
           </div>
         </div>

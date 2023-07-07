@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import {
+  Button,
   DatePicker,
   PageSectionTitle,
   PageTitle,
   RadioButtonList,
   AmountShow,
   StepLabel,
+  StepperBackButton,
   Textarea,
 } from "UI";
 import {
@@ -17,6 +19,8 @@ import {
 import { ListingDetailsPagePropsType } from "types";
 
 export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
+  handleNextPage,
+  handlePrevPage,
   description,
   pageTitle,
   listingTitle,
@@ -24,17 +28,19 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
 }) => {
   const [fundraiserAmount, setFundraiserAmount] = useState<number>(350);
   const [includingVat, setIncludingVat] = useState<string>("yes");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [startPeriod, setStartPeriod] = useState<Date | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [endPeriod, setEndPeriod] = useState<Date | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [commencement, setCommencement] = useState<Date | null>(null);
 
   return (
-    <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 mb-[90px] max-ns:mb-30 mx-auto">
+    <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 ns:mb-[100px] mb-[60px] mx-auto">
       <PageTitle title={pageTitle} />
-
+      <div className="mt-15">
+        <StepperBackButton handleBackPage={handlePrevPage} />
+      </div>
       <div className="mt-30 ">
         <StepLabel number={stepNumber} title="Listing details" />
       </div>
@@ -112,14 +118,14 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
               <DatePicker
                 data={StartPeriodDateData}
                 setValue={setStartPeriod}
-                defaultValue={null}
+                value={startPeriod}
               />
             </div>
             <div className="w-1/2">
               <DatePicker
                 data={EndPeriodDateData}
                 setValue={setEndPeriod}
-                defaultValue={null}
+                value={endPeriod}
               />
             </div>
           </div>
@@ -134,8 +140,23 @@ export const ListingDetailsPage: React.FC<ListingDetailsPagePropsType> = ({
           <DatePicker
             data={CommencementDateDate}
             setValue={setCommencement}
-            defaultValue={null}
+            value={commencement}
           />
+        </div>
+      </div>
+      <div className="xs:mt-[100px] mt-[60px]">
+        <div className="flex xs:justify-end w-full">
+          <div className="xs:w-[250px] w-full">
+            <Button
+              backgroundColor="bg-green-10"
+              height="h-[50px]"
+              width="w-full"
+              text="Continue"
+              textColor="text-green-70"
+              textSize="buttonText"
+              handleClick={handleNextPage}
+            />
+          </div>
         </div>
       </div>
     </div>

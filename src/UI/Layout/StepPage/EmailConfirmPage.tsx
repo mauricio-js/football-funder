@@ -1,12 +1,19 @@
 import React from "react";
-// import { Button } from "UI";
+import { Button, StepperBackButton } from "UI";
+import { StepperActionPropsType } from "types";
 
-export const EmailConfirmPage: React.FC = () => {
+export const EmailConfirmPage: React.FC<StepperActionPropsType> = ({
+  handleNextPage,
+  handlePrevPage,
+}) => {
   return (
     <div>
-      <div className="sm:mt-[60px] mt-[80px] xs:mb-[30px] mb-[10px]">
+      <div className="sm:mt-[60px] mt-[80px] xs:mb-[500px] mb-[200px]">
         <div className="w-[520px] max-xs:w-full mx-auto max-xs:px-5">
-          <div className="titleText text-center max-xs:text-start">
+          <div className="mt-15">
+            <StepperBackButton handleBackPage={handlePrevPage} />
+          </div>
+          <div className="mt-30 titleText text-center max-xs:text-start">
             Confirm your email to continue
           </div>
           <div className="mt-15 introText">
@@ -17,7 +24,7 @@ export const EmailConfirmPage: React.FC = () => {
           <div className="mt-30 introText text-center max-xs:text-start">
             Not received yet?
           </div>
-          {/* <div className="mt-2.5 mx-auto">
+          <div className="mt-2.5 mx-auto">
             <div className="xs:w-[390px] w-full mx-auto">
               <Button
                 backgroundColor="bg-green-10"
@@ -26,9 +33,10 @@ export const EmailConfirmPage: React.FC = () => {
                 text="Resend email"
                 textColor="text-green-70"
                 textSize="text-[16px] leading-5 font-semibold"
+                handleClick={handleNextPage}
               />
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

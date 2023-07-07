@@ -1,28 +1,36 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { EDITMYACCOUNT_URL } from "Lib";
+import { MYACCOUNT_URL } from "Lib";
 
 import { Button, Input, StepperBackButton } from "UI";
 
-import { AccountEmailData, AccountPasswordData } from "Config";
+import { AccountPasswordData, AccountConfirmPasswordData } from "Config";
 
 import { StepperActionPropsType } from "types";
 
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 
-export const UpdatePasswordStep1: React.FC<StepperActionPropsType> = ({
+export const UpdatePasswordStep2: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
   const navigate = useNavigate();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountEmail, setAccountEmail] = useState<string>("");
+  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountPassword, setAccountPassword] = useState<string>("");
+  const handleInputChange = (name: string, value: string) => {
+    setFormValues((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+
+  const onUpdateBtnClick = () => {
+    navigate(MYACCOUNT_URL);
+    sessionStorage.setItem("updatedPassword", "true");
+  };
 
   return (
     <div className="relative md:pt-5 pt-[10px] md:pb-[300px] pb-[250px]">
@@ -43,26 +51,24 @@ export const UpdatePasswordStep1: React.FC<StepperActionPropsType> = ({
           <div className=" xs:w-[500px]">
             <div className="generalTitle">Update password</div>
             <div className="mt-30">
-              <StepperBackButton
-                handleBackPage={() => navigate(EDITMYACCOUNT_URL)}
-              />
+              <StepperBackButton handleBackPage={handlePrevPage} />
             </div>
             <div className="mt-15 flex gap-1">
-              <div className="introText">
-                For security, please enter your existing login details.
-              </div>
+              <div className="introText">Enter your new password.</div>
             </div>
             <div className="mt-30">
               <Input
-                data={AccountEmailData}
-                setValue={setAccountEmail}
-                defaultValue=""
+                data={AccountPasswordData}
+                name="password"
+                onChange={handleInputChange}
+                value={formValues.password || ""}
               />
               <div className="mt-2.5">
                 <Input
-                  data={AccountPasswordData}
-                  setValue={setAccountPassword}
-                  defaultValue=""
+                  data={AccountConfirmPasswordData}
+                  name="confirm_password"
+                  onChange={handleInputChange}
+                  value={formValues.confirm_password || ""}
                 />
               </div>
             </div>
@@ -71,10 +77,10 @@ export const UpdatePasswordStep1: React.FC<StepperActionPropsType> = ({
                 backgroundColor="bg-green-10"
                 height="h-[50px]"
                 width="w-full"
-                text="Sign in"
+                text="Update new password"
                 textColor="text-green-70"
                 textSize="buttonText"
-                handleClick={handleNextPage}
+                handleClick={onUpdateBtnClick}
               />
             </div>
           </div>

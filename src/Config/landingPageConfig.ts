@@ -26,14 +26,12 @@ export const IPadData: IPadDataType[] = [
 
 export const SignUpSelectFormData: SelectDataType[] = [
     {
-      id: 1,
+      value: 1,
       option: "Organisation",
-      value: "organisation",
     },
     {
-      id: 2,
+      value: 2,
       option: "Individual",
-      value: "individual",
     },
   ];
 

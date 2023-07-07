@@ -4,5 +4,9 @@ export interface RegionDataType {
 }
 export interface CategoryDataType { 
     label: string,
-    value:string
+    value:number
 }
+// export interface CategoryDataType { 
+//     label: string,
+//     value:number
+// }

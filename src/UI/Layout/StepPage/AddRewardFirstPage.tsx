@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import { AddAwardPanel, PageSectionTitle, PageTitle, StepLabel } from "UI";
+import {
+  AddAwardPanel,
+  Button,
+  PageSectionTitle,
+  PageTitle,
+  StepLabel,
+  StepperBackButton,
+} from "UI";
 import { StepPagePropsType } from "types";
 
 export const AddRewardsFirstPage: React.FC<StepPagePropsType> = ({
+  handleNextPage,
+  handlePrevPage,
   pageTitle,
   stepNumber,
 }) => {
@@ -11,9 +20,12 @@ export const AddRewardsFirstPage: React.FC<StepPagePropsType> = ({
     <div
       className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
-         mb-[280px] max-ns:mb-30 mx-auto"
+         pb-[100px] max-ns:pb-[60px] mx-auto"
     >
       <PageTitle title={pageTitle} />
+      <div className="mt-15">
+        <StepperBackButton handleBackPage={handlePrevPage} />
+      </div>
       <div className="mt-30">
         <StepLabel number={stepNumber} title="Add rewards" />
       </div>
@@ -22,6 +34,21 @@ export const AddRewardsFirstPage: React.FC<StepPagePropsType> = ({
       </div>
       <div className="mt-30">
         <AddAwardPanel handleClick={setAddReward} reward={addReward} />
+      </div>
+      <div className="xs:mt-[100px] mt-[60px]">
+        <div className="flex xs:justify-end">
+          <div className="xs:w-[250px] w-full">
+            <Button
+              backgroundColor="bg-green-10"
+              height="h-[50px]"
+              width="w-full"
+              text="Continue"
+              textColor="text-green-70"
+              textSize="buttonText"
+              handleClick={handleNextPage}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

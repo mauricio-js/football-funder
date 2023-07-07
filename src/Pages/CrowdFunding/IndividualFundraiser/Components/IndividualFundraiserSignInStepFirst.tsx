@@ -1,10 +1,17 @@
 import React from "react";
+
 import { CategoryAndNationPage } from "UI";
 
-export const IndividualFundraiserSignInStepFirst: React.FC = () => {
+import { StepperActionPropsType } from "types";
+
+export const IndividualFundraiserSignInStepFirst: React.FC<
+  StepperActionPropsType
+> = ({ handleNextPage, handlePrevPage }) => {
   return (
     <div>
       <CategoryAndNationPage
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
         isOrganisation={false}
         pageTitle="Create your fundraiser"
       />

@@ -28,26 +28,19 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
   introTitle,
   pageTitle,
 }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [contactOrganistion, setContactOrganisation] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [firstName, setFirstName] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [lastName, setLastName] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountEmail, setAccountEmail] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountConfirmPassword, setAccountConfirmPassword] =
-    useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+
+  const handleInputChange = (name: string, value: string) => {
+    setFormValues((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+
   const [country, setCountry] = useState<string>(
     ContactPhoneNumberData[0].country
   );
 
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumberData[0].randomNumber
-  );
   const [isConfirm, setIsConfirm] = useState<string[]>([""]);
   return (
     <div
@@ -80,27 +73,29 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
             <div className="flex flex-col gap-[10px]">
               <Input
                 data={FirstNameData}
-                setValue={setFirstName}
-                defaultValue=""
+                name="first_name"
+                onChange={handleInputChange}
+                value={formValues.first_name || ""}
               />
               <Input
                 data={ContactOrganisationData}
-                setValue={setContactOrganisation}
-                defaultValue=""
+                name="organisation"
+                onChange={handleInputChange}
+                value={formValues.organisation}
               />
               <Input
                 data={AccountEmailData}
-                setValue={setAccountEmail}
-                defaultValue=""
+                name="email"
+                onChange={handleInputChange}
+                value={formValues.email || ""}
               />
               <DropdownInput
                 country={country}
                 data={ContactPhoneNumberData}
-                phoneNumber={phoneNumber}
                 selectCountry={setCountry}
-                inputPhoneNumber={setPhoneNumber}
-                placeholder={phoneNumberPlaceholder}
-                setPlaceholder={setPhoneNumberPlaceholder}
+                name="phone_number"
+                onChange={handleInputChange}
+                value={formValues.phone_number || ""}
               />
             </div>
           </div>

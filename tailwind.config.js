@@ -24,7 +24,8 @@ export const theme = {
   },
   extend: {
     transitionDuration: {
-        '1000': '1000ms',
+      '1000': '1000ms',
+      '3000':'3000ms',
         '5000': '5000ms',
       },
     maxWidth: {

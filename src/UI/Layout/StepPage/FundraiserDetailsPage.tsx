@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import {
+  Button,
   PageSectionTitle,
   PageTitle,
   AmountShow,
+  StepperBackButton,
   StepLabel,
   Textarea,
 } from "UI";
 
 interface FundraiserDetailsPageProps {
   stepNumber: string;
+  handleNextPage: () => void;
+  handlePrevPage: () => void;
 }
 
 export const FundraiserDetailsPage: React.FC<FundraiserDetailsPageProps> = ({
+  handleNextPage,
+  handlePrevPage,
   stepNumber,
 }) => {
   const [fundraiserAmount, setFundraiserAmount] = useState<number>(100000);
@@ -20,10 +26,13 @@ export const FundraiserDetailsPage: React.FC<FundraiserDetailsPageProps> = ({
     <div
       className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
-         mb-[90px] max-ns:mb-30 mx-auto"
+         mb-[100px] max-ns:mb-[60px] mx-auto"
     >
       <div>
         <PageTitle title="Create your fundraiser" />
+        <div className="mt-15">
+          <StepperBackButton handleBackPage={handlePrevPage} />
+        </div>
         <div className="mt-30">
           <StepLabel number={stepNumber} title="Fundraiser details" />
         </div>
@@ -80,6 +89,21 @@ export const FundraiserDetailsPage: React.FC<FundraiserDetailsPageProps> = ({
             <AmountShow
               amount={fundraiserAmount}
               setAmount={setFundraiserAmount}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="xs:mt-[100px] mt-[60px]">
+        <div className="flex xs:justify-end">
+          <div className="xs:w-[250px] w-full">
+            <Button
+              backgroundColor="bg-green-10"
+              height="h-[50px]"
+              width="w-full"
+              text="Continue"
+              textColor="text-green-70"
+              textSize="buttonText"
+              handleClick={handleNextPage}
             />
           </div>
         </div>

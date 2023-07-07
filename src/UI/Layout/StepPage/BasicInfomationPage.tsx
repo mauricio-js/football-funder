@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { BasinInformationPagePropsType } from "types";
 import {
+  Button,
   CheckBox,
   DropdownInput,
   Input,
   PageSectionTitle,
   PageTitle,
   Select,
+  StepperBackButton,
   StepLabel,
   DatePicker,
 } from "UI";
@@ -29,6 +31,8 @@ import {
 import { MdAnnouncement } from "react-icons/md";
 
 export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
+  handleNextPage,
+  handlePrevPage,
   isAuth,
   contactText,
   pageTitle,
@@ -40,56 +44,27 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
   stepNumber,
   stepTitle,
 }) => {
+  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+
+  const handleInputChange = (name: string, value: string) => {
+    setFormValues((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+
   const [selectedCountryOption, setSelectedCountryOption] =
     useState<string>("");
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountryOption(event.target.value);
   };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [contactOrganistion, setContactOrganisation] = useState<string>("");
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [firstName, setFirstName] = useState<string>("");
+  const [date, setDate] = useState<Date | null>(null);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [lastName, setLastName] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [date, setDate] = useState<Date | null>();
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [contactAddressLine1, setContactAddressLine1] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [contactAddressLine2, setContactAddressLine2] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [contactTown, setContactTown] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [contactPostcode, setContactPostCode] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountEmail, setAccountEmail] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountConfirmPassword, setAccountConfirmPassword] =
-    useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountPassword, setAccountPassword] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [country, setCountry] = useState<string>(
     ContactPhoneNumberData[0].country
   );
 
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumberData[0].randomNumber
-  );
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [profileURL, setProfileURL] = useState<string>("footballfunder.com");
   const [confirm, setConfirm] = useState<boolean>(false);
 
   const onHandleConfirm = () => {
@@ -100,10 +75,13 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
     <div
       className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
-        mb-[120px] max-ns:mb-30 mx-auto"
+        mb-[120px] max-ns:mb-[60px] mx-auto"
     >
       <div className="mt-30">
         <PageTitle title={pageTitle} />
+      </div>
+      <div className="mt-15">
+        <StepperBackButton handleBackPage={handlePrevPage} />
       </div>
       <div className="mt-30">
         <StepLabel number={stepNumber} title={stepTitle} />
@@ -116,57 +94,57 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
             {showOrganisation && (
               <Input
                 data={ContactOrganisationData}
-                setValue={setContactOrganisation}
-                defaultValue=""
+                name="organisation"
+                onChange={handleInputChange}
+                value={formValues.organisation || ""}
               />
             )}
             {!showOrganisation && (
               <div className="flex flex-col gap-[10px]">
                 <Input
                   data={FirstNameData}
-                  setValue={setFirstName}
-                  defaultValue=""
+                  name="firstName"
+                  onChange={handleInputChange}
+                  value={formValues.firstName || ""}
                 />
                 <Input
                   data={LastNameData}
-                  setValue={setLastName}
-                  defaultValue=""
+                  name="lastName"
+                  onChange={handleInputChange}
+                  value={formValues.lastName || ""}
                 />
                 {/* <DatePicker
                   data={DateData}
                   setValue={setDate}
-                  defaultValue=""
+                  value=""
                 /> */}
-                <DatePicker
-                  data={DateData}
-                  setValue={setDate}
-                  defaultValue={null}
-                />
+                <DatePicker data={DateData} setValue={setDate} value={date} />
               </div>
             )}
             <DropdownInput
               country={country}
               data={ContactPhoneNumberData}
-              phoneNumber={phoneNumber}
               selectCountry={setCountry}
-              inputPhoneNumber={setPhoneNumber}
-              placeholder={phoneNumberPlaceholder}
-              setPlaceholder={setPhoneNumberPlaceholder}
+              name="phone_number"
+              onChange={handleInputChange}
+              value={formValues.phone_number || ""}
             />
             <div className="flex flex-col gap-[10px]">
               <div className="flex gap-[10px]">
                 <div className="w-1/2">
                   <Input
                     data={ContactAddressLine1Data}
-                    setValue={setContactAddressLine1}
-                    defaultValue=""
+                    name="address_line1"
+                    onChange={handleInputChange}
+                    value={formValues.address_line1 || ""}
                   />
                 </div>
                 <div className="w-1/2">
                   <Input
                     data={ContactAddressLine2Data}
-                    setValue={setContactAddressLine2}
-                    defaultValue=""
+                    name="address_line2"
+                    onChange={handleInputChange}
+                    value={formValues.address_line2 || ""}
                   />
                 </div>
               </div>
@@ -174,15 +152,17 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
                 <div className="w-1/2">
                   <Input
                     data={ContactTownData}
-                    setValue={setContactTown}
-                    defaultValue=""
+                    name="city"
+                    onChange={handleInputChange}
+                    value={formValues.city || ""}
                   />
                 </div>
                 <div className="w-1/2">
                   <Input
                     data={ContactPostcodeData}
-                    setValue={setContactPostCode}
-                    defaultValue=""
+                    name="postcode"
+                    onChange={handleInputChange}
+                    value={formValues.postcode || ""}
                   />
                 </div>
               </div>
@@ -209,18 +189,21 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
           <div className="mt-5 flex flex-col gap-[10px]">
             <Input
               data={AccountEmailData}
-              setValue={setAccountEmail}
-              defaultValue=""
+              name="email"
+              onChange={handleInputChange}
+              value={formValues.email || ""}
             />
             <Input
               data={AccountPasswordData}
-              setValue={setAccountPassword}
-              defaultValue=""
+              name="password"
+              onChange={handleInputChange}
+              value={formValues.password || ""}
             />
             <Input
               data={AccountConfirmPasswordData}
-              setValue={setAccountConfirmPassword}
-              defaultValue=""
+              name="confirmPassword"
+              onChange={handleInputChange}
+              value={formValues.confirmPassword || ""}
             />
           </div>
         </div>
@@ -237,8 +220,9 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
           <div className="mt-[35px] xs:w-[500px]">
             <Input
               data={ProfileURLData}
-              setValue={setProfileURL}
-              defaultValue="footballfunder.com"
+              name="profile_url"
+              onChange={handleInputChange}
+              value={formValues.profile_url || ""}
             />
           </div>
         </div>
@@ -271,6 +255,21 @@ export const BasicInformationPage: React.FC<BasinInformationPagePropsType> = ({
           </div>
         </div>
       )}
+      <div className="xs:mt-[100px] mt-[60px]">
+        <div className="flex xs:justify-end">
+          <div className="xs:w-[250px] w-full">
+            <Button
+              backgroundColor="bg-green-10"
+              height="h-[50px]"
+              width="w-full"
+              text="Continue"
+              textColor="text-green-70"
+              textSize="buttonText"
+              handleClick={handleNextPage}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

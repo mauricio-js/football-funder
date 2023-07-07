@@ -1,6 +1,6 @@
 export interface CategoryButtonType { 
    label: string,
-    value: string,
+    value: number,
     checked: boolean,
     disabled?:boolean,
     onSelect: () => void,

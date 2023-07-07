@@ -22,52 +22,52 @@ import { RiHeart3Line,RiHeart3Fill } from "react-icons/ri";
 export const FundraiserCategoryData: CategoryDataType[] = [
     {
         label: "Club",
-        value: "club",
+        value: 1,
     },
     {
         label: "Individual",
-        value:"individual"
+        value:2
     },
     {
         label: "Supporters’ Trust",
-        value:"support"
+        value:3
         
     },
     {
         label: "Local community",
-        value:"local"
+        value:4
     },
     {
         label: "Foundation",
-        value:"foundation"
+        value:5
     },
     {
         label: "League",
-        value:"league"
+        value:6
     },
     {
         label: "Charity",
-        value:"charity"
+        value:7
     },
     {
         label: "Singing Section / Ultras",
-        value:"ultras"
+        value:8
     },
     {
         label: "Agency / Rights holder",
-        value:"agency"
+        value:9
     },
     {
         label: "Podcast / Vlog",
-        value:"podcast"
+        value:10
     },
     {
         label: "Advertiser/Sponsor",
-        value:"advertiser"
+        value:11
     },
     {
         label: "Other",
-        value:"other"
+        value:12
     },
 ]
   
@@ -75,20 +75,20 @@ export const FundraiserNationData: CategoryDataType[] = [
     
     {   
         label: "England",
-        value: "england",
+        value: 1,
     },
     {
         label: "Scotland",
-        value:"scotland"
+        value:2
     },
     {
         label: "Wales",
-        value:"wales"
+        value:3
         
     },
     {
         label: "Northern Ireland",
-        value:"northern Ireland"
+        value:4
     }
 ]
 
@@ -164,7 +164,7 @@ export const AccountEmailData: InputType = {
         height: "h-[54px]",
         textSize: "generalText",
         padding:" px-3 py-4",
-        type: "text",
+        type: "email",
         content:"after:content-['*'] after:ml-1 after:text-green-10 "
 }
 export const AccountPasswordData: InputType = { 
@@ -297,36 +297,30 @@ export const NameData: InputType = {
 }
 export const RegionData: SelectDataType[] = [
     {
-        id: 1,
+        value:1,
         option: 'England',
-        value:'england',
     },
     {
-        id: 2,
+        value:2,
         option: 'Scotland',
-        value:'scotland'
     },   
     {
-        id: 3,
+        value:3,
         option: 'Wales',
-        value:'wales'
     },   
     {
-        id: 4,
+        value:4,
         option: 'Northern Ireland',
-        value:'northern ireland'
     },   
 ];
 export const CategoryData: SelectDataType[] = [
     {
-        id: 1,
+        value:1,
         option: 'Organization',
-        value:'orgranization',
     },
     {
-        id: 2,
         option: 'Individual',
-        value:'individual'
+        value:2,
     },   
 
 ];

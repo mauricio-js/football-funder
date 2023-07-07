@@ -1,10 +1,15 @@
 import React from "react";
 import { AddDetailsPage } from "UI";
+import { StepperActionPropsType } from "types";
 
-export const IndividualSponsorshipStepFourth: React.FC = () => {
+export const IndividualSponsorshipStepFourth: React.FC<
+  StepperActionPropsType
+> = ({ handleNextPage, handlePrevPage }) => {
   return (
     <div>
       <AddDetailsPage
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
         stepNumber="Step 4"
         pageTitle="Create your listing"
         addPerk={true}

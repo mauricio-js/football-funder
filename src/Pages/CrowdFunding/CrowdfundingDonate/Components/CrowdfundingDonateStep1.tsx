@@ -32,44 +32,31 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+
+  const handleInputChange = (name: string, value: string) => {
+    setFormValues((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+
   const [selectedCountryOption, setSelectedCountryOption] =
     useState<string>("");
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountryOption(event.target.value);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [firstName, setFirstName] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [lastName, setLastName] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [date, setDate] = useState<Date | null>();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [addresss, setAddress] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [contactPostcode, setContactPostCode] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountEmail, setAccountEmail] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountConfirmPassword, setAccountConfirmPassword] =
-    useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountPassword, setAccountPassword] = useState<string>("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [date, setDate] = useState<Date | null>(null);
+
   const [country, setCountry] = useState<string>(
     ContactPhoneNumberData[0].country
   );
 
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumberData[0].randomNumber
-  );
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [profileURL, setProfileURL] = useState<string>("footballfunder.com");
   const [isConfirm, setIsConfirm] = useState<string[]>([""]);
 
   return (
-    <div>
+    <form>
       <div
         className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
@@ -101,44 +88,43 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
               <div className="flex flex-col gap-[10px]">
                 <Input
                   data={FirstNameData}
-                  setValue={setFirstName}
-                  defaultValue=""
+                  name="first_name"
+                  onChange={handleInputChange}
+                  value={formValues.first_name || ""}
                 />
                 <Input
                   data={LastNameData}
-                  setValue={setLastName}
-                  defaultValue=""
+                  name="last_name"
+                  onChange={handleInputChange}
+                  value={formValues.last_name || ""}
                 />
 
-                <DatePicker
-                  data={DateData}
-                  setValue={setDate}
-                  defaultValue={null}
-                />
+                <DatePicker data={DateData} setValue={setDate} value={date} />
               </div>
               <DropdownInput
                 country={country}
                 data={ContactPhoneNumberData}
-                phoneNumber={phoneNumber}
                 selectCountry={setCountry}
-                inputPhoneNumber={setPhoneNumber}
-                placeholder={phoneNumberPlaceholder}
-                setPlaceholder={setPhoneNumberPlaceholder}
+                name="phone_number"
+                onChange={handleInputChange}
+                value={formValues.phone_number || ""}
               />
               <div className="flex flex-col gap-[10px]">
                 <div className="flex gap-[10px]">
                   <div className="w-1/2">
                     <Input
                       data={ContactPostcodeData}
-                      setValue={setContactPostCode}
-                      defaultValue=""
+                      name="post_code"
+                      onChange={handleInputChange}
+                      value={formValues.post_code || ""}
                     />
                   </div>
                   <div className="w-1/2">
                     <Input
                       data={AddressData}
-                      setValue={setAddress}
-                      defaultValue=""
+                      name="address"
+                      onChange={handleInputChange}
+                      value={formValues.address || ""}
                     />
                   </div>
                 </div>
@@ -164,18 +150,21 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
           <div className="mt-5 flex flex-col gap-[10px]">
             <Input
               data={AccountEmailData}
-              setValue={setAccountEmail}
-              defaultValue=""
+              name="email"
+              onChange={handleInputChange}
+              value={formValues.email || ""}
             />
             <Input
               data={AccountPasswordData}
-              setValue={setAccountPassword}
-              defaultValue=""
+              name="password"
+              onChange={handleInputChange}
+              value={formValues.password}
             />
             <Input
               data={AccountConfirmPasswordData}
-              setValue={setAccountConfirmPassword}
-              defaultValue=""
+              name="confirm_password"
+              onChange={handleInputChange}
+              value={formValues.confirm_password}
             />
           </div>
         </div>
@@ -217,6 +206,6 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };

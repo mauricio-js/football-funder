@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import classNames from "classnames";
 import { InputType } from "types";
 import ReactDatePicker from "react-datepicker";
@@ -7,22 +7,19 @@ import "react-datepicker/dist/react-datepicker.css";
 interface DatePickerProps {
   data: InputType;
   setValue: (value: Date | null) => void;
-  defaultValue: Date | null;
+  value: Date | null | undefined;
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   data,
   setValue,
-  defaultValue,
+  value,
 }: DatePickerProps) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
   const labelRef = useRef<HTMLLabelElement>(null);
 
   const handleDateChange = (date: Date): void => {
-    const selectedMonth = date.getMonth() + 1;
-    console.log("Selected month:", selectedMonth);
-    setSelectedDate(date);
+    // const selectedMonth = date.getMonth() + 1;
+    // console.log("Selected month:", selectedMonth);
     setValue(date);
   };
 
@@ -37,7 +34,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   };
 
   const handleBlur = (): void => {
-    if (!selectedDate && labelRef.current) {
+    if (!value && labelRef.current) {
       labelRef.current.classList.remove(
         "scale-75",
         "translate-x-[0.15rem]",
@@ -48,7 +45,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   return (
     <div className="relative customDatePickerWidth">
       <ReactDatePicker
-        selected={selectedDate}
+        selected={value}
         onChange={handleDateChange}
         dateFormat="dd MMMM, yyyy"
         onInputClick={handleInputClick}
@@ -70,7 +67,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         className={classNames(
           "pointer-events-none absolute left-0 top-0 origin-[0_0] border text-[14px]",
           "border-solid border-transparent px-3 py-4 text-gray-500 transition-[opacity,_transform] duration-200 ease-linear",
-          selectedDate ? "scale-75 translate-x-[0.15rem] -translate-y-1.5" : "",
+          value ? "scale-75 translate-x-[0.15rem] -translate-y-1.5" : "",
           data.content
         )}
       >

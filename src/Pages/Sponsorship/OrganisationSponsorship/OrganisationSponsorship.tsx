@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   OrganisationSponsorshipEmailConfirm,
   OrganisationSponsorshipEmailSuccess,
@@ -10,41 +10,97 @@ import {
   OrganisationSponsorshipStepSixth,
   OrganisationSponsorshipFinalPage,
 } from "Pages";
-import { Stepper } from "UI";
+import { GeneralStepper } from "UI";
 
 export const OrganisationSponsorship: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState<number>(
+    parseInt(sessionStorage.getItem("currentStep") || "0")
+  );
+
+  function handleNextPage() {
+    if (currentStep < pages.length - 1) {
+      setCurrentStep(currentStep + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+  function handlePrevPage() {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
   const pages: { name: string; component: React.ReactNode }[] = [
     {
       name: "OrganisationSponsorshipStepFirst",
-      component: <OrganisationSponsorshipStepFirst />,
+      component: (
+        <OrganisationSponsorshipStepFirst
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationSponsorshipStepSecond",
-      component: <OrganisationSponsorshipStepSecond />,
+      component: (
+        <OrganisationSponsorshipStepSecond
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "EmailConfirmPage",
-      component: <OrganisationSponsorshipEmailConfirm />,
+      component: (
+        <OrganisationSponsorshipEmailConfirm
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "EmailSuccessPage",
-      component: <OrganisationSponsorshipEmailSuccess />,
+      component: (
+        <OrganisationSponsorshipEmailSuccess
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationAdvertisingStepThird",
-      component: <OrganisationSponsorshipStepThird />,
+      component: (
+        <OrganisationSponsorshipStepThird
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationAdvertisingStepFourth",
-      component: <OrganisationSponsorshipStepFourth />,
+      component: (
+        <OrganisationSponsorshipStepFourth
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationAdvertisingStepFiveth",
-      component: <OrganisationSponsorshipStepFiveth />,
+      component: (
+        <OrganisationSponsorshipStepFiveth
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationAdvertisingStepSixth",
-      component: <OrganisationSponsorshipStepSixth />,
+      component: (
+        <OrganisationSponsorshipStepSixth
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationAdvertisingFinalPage",
@@ -52,20 +108,9 @@ export const OrganisationSponsorship: React.FC = () => {
     },
   ];
 
-  const ContinueButtonText = [
-    "Continue",
-    "Continue",
-    "Resend email",
-    "Continue",
-    "Continue",
-    "Continue",
-    "Continue",
-    "Post listing",
-  ];
-
   return (
     <div>
-      <Stepper pages={pages} buttonText={ContinueButtonText} />
+      <GeneralStepper pages={pages} stepNumber={currentStep} />
     </div>
   );
 };

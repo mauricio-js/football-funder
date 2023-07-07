@@ -6,12 +6,15 @@ import {
   FileNameCoverInput,
   PageSectionTitle,
   PageTitle,
+  StepperBackButton,
   StepLabel,
 } from "UI";
 import { FinalTouchPageCheckboxData } from "Config";
 import { FinalTouchedPagePropsType } from "types";
 
 export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
+  handleNextPage,
+  handlePrevPage,
   isCrowdFundingPage,
   stepNumber,
 }) => {
@@ -28,13 +31,18 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
     <div
       className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
-         mb-[100px] max-ns:mb-30 mx-auto"
+         mb-[100px] max-ns:mb-[60px] mx-auto"
     >
-      <div className="flex flex-col gap-30">
+      <div className="">
         <PageTitle title={pageTitle} />
-        <StepLabel number={stepNumber} title="Final touches" />
+        <div className="mt-15">
+          <StepperBackButton handleBackPage={handlePrevPage} />
+        </div>
+        <div className="mt-30">
+          <StepLabel number={stepNumber} title="Final touches" />
+        </div>
         {isCrowdFundingPage && (
-          <div>
+          <div className="mt-30">
             <PageSectionTitle
               title="Video overlay image (optional)"
               intro="Choose an image to represent your video before it plays. 695x460px recommended resolution."
@@ -50,11 +58,11 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
         )}
         <div
           className={classNames(
-            " w-full bg-gray-200 rounded-10 p-15",
+            "mt-30 w-full bg-gray-200 rounded-10 p-15",
             isCrowdFundingPage ? "ns:w-[390px]" : "xs:w-[500px]"
           )}
         >
-          <div className="text-[16px] leading-[20px]">
+          <div className="mt-30 text-[16px] leading-[20px]">
             Promote Your Fundraiser
           </div>
           <div className="mt-[10px]">
@@ -83,7 +91,7 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
           </div>
         </div>
         {!isCrowdFundingPage && (
-          <div className="xs:w-[500px] w-full">
+          <div className="mt-30 xs:w-[500px] w-full">
             <PageSectionTitle title="Confirm" />
             <div className="mt-2.5">
               <GeneralCheckBoxList
@@ -95,6 +103,21 @@ export const FinalTouchesPage: React.FC<FinalTouchedPagePropsType> = ({
             </div>
           </div>
         )}
+      </div>
+      <div className="xs:mt-[100px] mt-[60px]">
+        <div className="flex xs:justify-end">
+          <div className="xs:w-[250px] w-full">
+            <Button
+              backgroundColor="bg-green-10"
+              height="h-[50px]"
+              width="w-full"
+              text="Post listing"
+              textColor="text-green-70"
+              textSize="buttonText"
+              handleClick={handleNextPage}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

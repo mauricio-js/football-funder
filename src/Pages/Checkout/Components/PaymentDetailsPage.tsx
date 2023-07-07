@@ -5,10 +5,15 @@ import {
   ConfirmModal,
   PageTitle,
   StepLabel,
+  // StepperBackButton,
   PageSectionTitle,
 } from "UI";
+import { StepperActionPropsType } from "types";
 
-export const PaymentDetailsPage: React.FC = () => {
+export const PaymentDetailsPage: React.FC<StepperActionPropsType> = ({
+  handleNextPage,
+  handlePrevPage,
+}) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <div>
@@ -37,6 +42,9 @@ export const PaymentDetailsPage: React.FC = () => {
          mb-[60px] max-ns:mb-30 mx-auto"
       >
         <PageTitle title="Checkout" />
+        <div className="mt-15">
+          {/* <StepperBackButton handleBackPage={handlePrevPage} /> */}
+        </div>
         <div className="mt-30">
           <StepLabel number="Step 1" title="Payment details" />
 
@@ -88,6 +96,21 @@ export const PaymentDetailsPage: React.FC = () => {
                   textSize="introText"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-30">
+          <div className="flex xs:justify-end max-xs:flex-col">
+            <div className="xs:w-[250px]">
+              <Button
+                backgroundColor="bg-green-10"
+                height="h-[50px]"
+                width="w-full"
+                text="Continue"
+                textColor="text-green-70"
+                textSize="buttonText"
+                handleClick={handleNextPage}
+              />
             </div>
           </div>
         </div>

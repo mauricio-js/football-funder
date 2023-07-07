@@ -1,10 +1,15 @@
 import React from "react";
 import { BasicInformationPage } from "UI";
+import { StepperActionPropsType } from "types";
 
-export const OrganisationFundraiserStepFirst = () => {
+export const OrganisationFundraiserStepFirst: React.FC<
+  StepperActionPropsType
+> = ({ handleNextPage, handlePrevPage }) => {
   return (
     <div>
       <BasicInformationPage
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
         isAuth={true}
         showAccountDetails={false}
         showOrganisation={false}

@@ -1,9 +1,15 @@
 import React from "react";
 import { EmailConfirmPage } from "UI";
-export const IndividualAdvertisingEmailConfirm: React.FC = () => {
+import { StepperActionPropsType } from "types";
+export const IndividualAdvertisingEmailConfirm: React.FC<
+  StepperActionPropsType
+> = ({ handleNextPage, handlePrevPage }) => {
   return (
     <div>
-      <EmailConfirmPage />
+      <EmailConfirmPage
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+      />
     </div>
   );
 };

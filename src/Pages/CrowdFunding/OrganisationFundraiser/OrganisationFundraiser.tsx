@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   OrganisationFundraiserSignInStepFirst,
   OrganisationFundraiserSignInStepSecond,
@@ -11,45 +11,106 @@ import {
   OrganisationFundraiserStepSeventh,
   OrganisationFundraiserFinalPage,
 } from "Pages";
-import { Stepper } from "UI";
+import { GeneralStepper } from "UI";
 
 export const OrganisationFundraiser: React.FC = () => {
+  const [currentStep, setCurrentStep] = useState<number>(
+    parseInt(sessionStorage.getItem("currentStep") || "0")
+  );
+
+  function handleNextPage() {
+    if (currentStep < pages.length - 1) {
+      setCurrentStep(currentStep + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+  function handlePrevPage() {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
   const pages: { name: string; component: React.ReactNode }[] = [
     {
       name: "OrganisationFundraiserSignInStepFirst",
-      component: <OrganisationFundraiserSignInStepFirst />,
+      component: (
+        <OrganisationFundraiserSignInStepFirst
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserSignInStepSecond",
-      component: <OrganisationFundraiserSignInStepSecond />,
+      component: (
+        <OrganisationFundraiserSignInStepSecond
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserStepFirst",
-      component: <OrganisationFundraiserStepFirst />,
+      component: (
+        <OrganisationFundraiserStepFirst
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserStepSecond",
-      component: <OrganisationFundraiserStepSecond />,
+      component: (
+        <OrganisationFundraiserStepSecond
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserStepThird",
-      component: <OrganisationFundraiserStepThird />,
+      component: (
+        <OrganisationFundraiserStepThird
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserStepFourth",
-      component: <OrganisationFundraiserStepFourth />,
+      component: (
+        <OrganisationFundraiserStepFourth
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserStepFiveth",
-      component: <OrganisationFundraiserStepFiveth />,
+      component: (
+        <OrganisationFundraiserStepFiveth
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserStepSixth",
-      component: <OrganisationFundraiserStepSixth />,
+      component: (
+        <OrganisationFundraiserStepSixth
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserStepSeventh",
-      component: <OrganisationFundraiserStepSeventh />,
+      component: (
+        <OrganisationFundraiserStepSeventh
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+        />
+      ),
     },
     {
       name: "OrganisationFundraiserFinalPage",
@@ -57,21 +118,9 @@ export const OrganisationFundraiser: React.FC = () => {
     },
   ];
 
-  const ContinueButtonText = [
-    "Continue",
-    "Continue",
-    "Continue",
-    "Continue",
-    "Continue",
-    "Continue",
-    "Save Reward",
-    "Continue",
-    "Submit Fundraiser",
-  ];
-
   return (
     <div>
-      <Stepper pages={pages} buttonText={ContinueButtonText} />
+      <GeneralStepper pages={pages} stepNumber={currentStep} />
     </div>
   );
 };

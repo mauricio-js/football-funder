@@ -1,10 +1,18 @@
 import React from "react";
 import { FinalTouchesPage } from "UI";
+import { StepperActionPropsType } from "types";
 
-export const OrganisationSponsorshipStepSixth: React.FC = () => {
+export const OrganisationSponsorshipStepSixth: React.FC<
+  StepperActionPropsType
+> = ({ handleNextPage, handlePrevPage }) => {
   return (
     <div>
-      <FinalTouchesPage stepNumber="Step 6" isCrowdFundingPage={false} />
+      <FinalTouchesPage
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+        stepNumber="Step 6"
+        isCrowdFundingPage={false}
+      />
     </div>
   );
 };

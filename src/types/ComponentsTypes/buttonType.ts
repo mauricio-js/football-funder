@@ -13,5 +13,6 @@ export interface ButtonDataType {
     image?: string,
     icon?: IconType,
     disabled?: boolean
-    value?:number
+    value?: number
+    type?: "button" | "submit" | "reset";
 }

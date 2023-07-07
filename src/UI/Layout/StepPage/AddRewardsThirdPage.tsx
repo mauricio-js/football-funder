@@ -4,6 +4,7 @@ import {
   EditPanelItem,
   PageSectionTitle,
   PageTitle,
+  StepperBackButton,
   StepLabel,
 } from "UI";
 import { StepPagePropsType } from "types";
@@ -11,6 +12,8 @@ import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const AddRewardsThirdPage: React.FC<StepPagePropsType> = ({
+  handleNextPage,
+  handlePrevPage,
   pageTitle,
   stepNumber,
 }) => {
@@ -22,6 +25,9 @@ export const AddRewardsThirdPage: React.FC<StepPagePropsType> = ({
     >
       <div className="flex flex-col gap-30">
         <PageTitle title={pageTitle} />
+        <div className="mt-15">
+          <StepperBackButton handleBackPage={handlePrevPage} />
+        </div>
         <StepLabel number={stepNumber} title="Add rewards" />
         <PageSectionTitle
           intro="Give your supporters something back by offering rewards for a certain donation amount. 
@@ -60,6 +66,21 @@ export const AddRewardsThirdPage: React.FC<StepPagePropsType> = ({
             textSize="text-[16px] leading-[20px] font-semibold"
             text="Add new reward"
           />
+        </div>
+      </div>
+      <div className="xs:mt-[100px] mt-[60px]">
+        <div className="flex xs:justify-end">
+          <div className="xs:w-[250px] w-full">
+            <Button
+              backgroundColor="bg-green-10"
+              height="h-[50px]"
+              width="w-full"
+              text="Continue"
+              textColor="text-green-70"
+              textSize="buttonText"
+              handleClick={handleNextPage}
+            />
+          </div>
         </div>
       </div>
     </div>

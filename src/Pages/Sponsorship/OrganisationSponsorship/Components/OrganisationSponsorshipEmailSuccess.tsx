@@ -1,9 +1,15 @@
 import React from "react";
 import { EmailSuccessPage } from "UI";
-export const OrganisationSponsorshipEmailSuccess: React.FC = () => {
+import { StepperActionPropsType } from "types";
+export const OrganisationSponsorshipEmailSuccess: React.FC<
+  StepperActionPropsType
+> = ({ handleNextPage, handlePrevPage }) => {
   return (
     <div>
-      <EmailSuccessPage />
+      <EmailSuccessPage
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+      />
     </div>
   );
 };

@@ -5,36 +5,35 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 // import { TbCalendar } from "react-icons/tb";
 
 interface InputProps {
+  name: string;
+  value: string;
+  onChange: (name: string, value: string) => void;
   data: InputType;
-  setValue: (value: string) => void;
-  defaultValue: string;
   disabled?: boolean;
 }
 export const Input: React.FC<InputProps> = ({
   data,
-  setValue,
-  defaultValue,
+  name,
+  value,
+  onChange,
   disabled,
 }) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(name, event.target.value);
+  };
+
   const [inputType, setInputType] = useState<string>(data.type);
-  const [inputValue, setInputValue] = useState<string>(defaultValue);
+
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    setValue(inputValue);
-    setInputValue(inputValue);
-  };
+  // const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const inputValue = event.target.value;
+  //   setValue(inputValue);
+  // };
 
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (event.target.value === "") {
-      setInputValue(defaultValue);
-    }
-  };
-  // const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-  //   const isDeleteKey = event.key === "Delete" || event.key === "Backspace";
-  //   if (isDeleteKey && event.currentTarget.value === defaultValue) {
-  //     event.preventDefault();
+  // const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+  //   if (event.target.value === "") {
+  //     setValue(value);
   //   }
   // };
 
@@ -42,8 +41,9 @@ export const Input: React.FC<InputProps> = ({
     <div className="flex flex-col">
       <div className="relative">
         <input
+          name={name}
           type={inputType}
-          value={inputValue}
+          value={value}
           className={classNames(
             "peer bg-white w-full rounded-10  appearance-none",
             "transition duration-200 border-2 border-gray-200 ",
@@ -56,10 +56,10 @@ export const Input: React.FC<InputProps> = ({
             data.border
           )}
           disabled={disabled}
-          onChange={onChangeHandler}
-          onFocus={handleFocus}
-          // onKeyDown={handleKeyDown}
+          onChange={handleInputChange}
+          // onFocus={handleFocus}
           placeholder="1"
+          autoComplete="on"
           required
         />
         {data.type === "password" && (

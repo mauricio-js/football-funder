@@ -4,8 +4,8 @@ import { CategoryDataType } from "types";
 
 interface CategoryButtonListProps {
   options: CategoryDataType[];
-  currentValue: string;
-  onSelect: (value: string) => void;
+  currentValue: number;
+  onSelect: (value: number) => void;
 }
 
 export const CategoryButtonList: React.FC<CategoryButtonListProps> = ({
@@ -14,7 +14,7 @@ export const CategoryButtonList: React.FC<CategoryButtonListProps> = ({
   onSelect,
 }) => {
   const handleSelect = useCallback(
-    (value: string) => {
+    (value: number) => {
       onSelect(value);
     },
     [onSelect]

@@ -28,35 +28,23 @@ import {
 export const MakeWithdrawal: React.FC = () => {
   const navigate = useNavigate();
 
+  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+
+  const handleInputChange = (name: string, value: string) => {
+    setFormValues((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
+
   const [selectedCountryOption, setSelectedCountryOption] =
     useState<string>("");
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountryOption(event.target.value);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [firstName, setFirstName] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [lastName, setLastName] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [addresss, setAddress] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [accountNumber, setAccountNumber] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [sortCode, setSortCode] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [country, setCountry] = useState<string>(
     ContactPhoneNumberData[0].country
-  );
-
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumberData[0].randomNumber
   );
 
   return (
@@ -93,28 +81,30 @@ export const MakeWithdrawal: React.FC = () => {
                 <div className="flex flex-col gap-[10px]">
                   <Input
                     data={FirstNameData}
-                    setValue={setFirstName}
-                    defaultValue=""
+                    name="first_name"
+                    onChange={handleInputChange}
+                    value={formValues.first_name || ""}
                   />
                   <Input
                     data={LastNameData}
-                    setValue={setLastName}
-                    defaultValue=""
+                    name="last_name"
+                    onChange={handleInputChange}
+                    value={formValues.last_name || ""}
                   />
                   <DropdownInput
                     country={country}
                     data={ContactPhoneNumberData}
-                    phoneNumber={phoneNumber}
                     selectCountry={setCountry}
-                    inputPhoneNumber={setPhoneNumber}
-                    placeholder={phoneNumberPlaceholder}
-                    setPlaceholder={setPhoneNumberPlaceholder}
+                    name="phone_number"
+                    onChange={handleInputChange}
+                    value={formValues.phone_number || ""}
                   />
 
                   <Input
                     data={AddressData}
-                    setValue={setAddress}
-                    defaultValue=""
+                    name="address"
+                    onChange={handleInputChange}
+                    value={formValues.address || ""}
                   />
                 </div>
                 <div>
@@ -138,13 +128,15 @@ export const MakeWithdrawal: React.FC = () => {
             <div className="mt-5 flex flex-col gap-[10px]">
               <Input
                 data={AccountNumberData}
-                setValue={setAccountNumber}
-                defaultValue=""
+                name="account_number"
+                onChange={handleInputChange}
+                value={formValues.account_number || ""}
               />
               <Input
                 data={SortCodeData}
-                setValue={setSortCode}
-                defaultValue=""
+                name="sort_code"
+                onChange={handleInputChange}
+                value={formValues.sort_code || ""}
               />
             </div>
           </div>

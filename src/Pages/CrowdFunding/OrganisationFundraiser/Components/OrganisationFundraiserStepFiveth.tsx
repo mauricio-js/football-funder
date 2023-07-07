@@ -1,9 +1,14 @@
 import React from "react";
 import { AddRewardsSecondPage } from "UI";
-export const OrganisationFundraiserStepFiveth = () => {
+import { StepperActionPropsType } from "types";
+export const OrganisationFundraiserStepFiveth: React.FC<
+  StepperActionPropsType
+> = ({ handleNextPage, handlePrevPage }) => {
   return (
     <div>
       <AddRewardsSecondPage
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
         pageTitle="Create your fundraiser"
         stepNumber="Step 5"
       />

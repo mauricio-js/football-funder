@@ -134,29 +134,24 @@ export const AccountDropdownData: MyDropdownType = {
 
 export const RewardsSortbyData: SelectDataType[] = [
     {
-        id: 1,
+        value: 1,
         option: 'Newest',
-        value:'newest',
     },
     {
-        id: 2,
+        value: 2,
         option: 'Promoted',
-        value:'promoted'
     },   
     {
-        id: 3,
+        value: 3,
         option: 'Oldest',
-        value:'oldest'
     },   
     {
-        id: 4,
+        value: 4,
         option: 'High to Low',
-        value:'high'
     },   
     {
-        id: 5,
+        value: 5,
         option: 'Low to High',
-        value:'low'
     },   
 ];
 

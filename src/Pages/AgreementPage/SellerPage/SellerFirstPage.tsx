@@ -21,15 +21,14 @@ import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
 export const SellerFirstPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const [name, setName] = useState<string>("Football Funder");
+  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
 
-  const [postcode1, setPostcode1] = useState<string>("");
-
-  const [address1, setAddress1] = useState<string>("");
-
-  const [postcode2, setPostcode2] = useState<string>("");
-
-  const [address2, setAddress2] = useState<string>("");
+  const handleInputChange = (name: string, value: string) => {
+    setFormValues((preValue) => ({
+      ...preValue,
+      [name]: value,
+    }));
+  };
 
   const [selectedCountry1Option, setSelectedCountry1Option] =
     useState<string>("");
@@ -37,21 +36,9 @@ export const SellerFirstPage: React.FC = () => {
   const [selectedCountry2Option, setSelectedCountry2Option] =
     useState<string>("");
 
-  const [firstName, setFirstName] = useState<string>("");
-
-  const [lastName, setLastName] = useState<string>("");
-
   const [country, setCountry] = useState<string>(
     ContactPhoneNumberData[0].country
   );
-
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-
-  const [phoneNumberPlaceholder, setPhoneNumberPlaceholder] = useState<string>(
-    ContactPhoneNumberData[0].randomNumber
-  );
-
-  const [email, setEmail] = useState<string>("");
 
   const handleSelectCountry1Change = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -106,9 +93,10 @@ export const SellerFirstPage: React.FC = () => {
                   <div className="mt-5">
                     <Input
                       data={NameData}
-                      setValue={setName}
+                      name="name"
+                      onChange={handleInputChange}
+                      value={formValues.name || ""}
                       disabled={true}
-                      defaultValue={name}
                     />
                   </div>
                 </div>
@@ -121,15 +109,17 @@ export const SellerFirstPage: React.FC = () => {
                       <div className="w-1/2">
                         <Input
                           data={PostcodeData}
-                          setValue={setPostcode1}
-                          defaultValue={postcode1}
+                          name="post_code"
+                          onChange={handleInputChange}
+                          value={formValues.postcode || ""}
                         />
                       </div>
                       <div className="w-1/2">
                         <Input
                           data={AddressData}
-                          setValue={setAddress1}
-                          defaultValue={address1}
+                          name="address_line1"
+                          onChange={handleInputChange}
+                          value={formValues.address_line1 || ""}
                         />
                       </div>
                     </div>
@@ -157,15 +147,17 @@ export const SellerFirstPage: React.FC = () => {
                       <div className="w-1/2">
                         <Input
                           data={PostcodeData}
-                          setValue={setPostcode2}
-                          defaultValue={postcode2}
+                          name="post_code"
+                          onChange={handleInputChange}
+                          value={formValues.post_code || ""}
                         />
                       </div>
                       <div className="w-1/2">
                         <Input
                           data={AddressData}
-                          setValue={setAddress2}
-                          defaultValue={address2}
+                          name="address_line2"
+                          onChange={handleInputChange}
+                          value={formValues.address_line2 || ""}
                         />
                       </div>
                     </div>
@@ -193,27 +185,29 @@ export const SellerFirstPage: React.FC = () => {
                   <div className="mt-5 flex flex-col gap-2.5">
                     <Input
                       data={FirstNameData}
-                      defaultValue={firstName}
-                      setValue={setFirstName}
+                      name="first_name"
+                      onChange={handleInputChange}
+                      value={formValues.first_name || ""}
                     />
                     <Input
                       data={LastNameData}
-                      defaultValue={lastName}
-                      setValue={setLastName}
+                      name="last_name"
+                      onChange={handleInputChange}
+                      value={formValues.last_name || ""}
                     />
                     <DropdownInput
                       country={country}
                       data={ContactPhoneNumberData}
-                      phoneNumber={phoneNumber}
                       selectCountry={setCountry}
-                      inputPhoneNumber={setPhoneNumber}
-                      placeholder={phoneNumberPlaceholder}
-                      setPlaceholder={setPhoneNumberPlaceholder}
+                      name="phone_number"
+                      onChange={handleInputChange}
+                      value={formValues.phone_number || ""}
                     />
                     <Input
                       data={AccountEmailData}
-                      defaultValue={email}
-                      setValue={setEmail}
+                      name="email"
+                      onChange={handleInputChange}
+                      value={formValues.email || ""}
                     />
                   </div>
                 </div>

@@ -5,6 +5,7 @@ import { ButtonDataType } from "types/ComponentsTypes/buttonType";
 export const Button: React.FC<ButtonDataType> = (props) => {
   return (
     <button
+      type={props.type ? props.type : "button"}
       className={classNames(
         "rounded-10 flex items-center justify-center",
         props.backgroundColor,

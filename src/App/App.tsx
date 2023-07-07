@@ -57,6 +57,7 @@ import {
   WITHDRAWALAPPROVAL_URL,
   EMAILVERIFICATION_URL,
   VERIFY_ACCOUNT_URL,
+  REST_PASSWORD,
 } from "Lib";
 
 import {
@@ -116,6 +117,7 @@ import {
   WithdrawalApproval,
   EmailVerification,
   VerifyAccount,
+  ResetPassword
 } from "Pages";
 import {
   BrowserRouter,
@@ -124,6 +126,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -230,6 +233,7 @@ function App() {
               path={VERIFY_ACCOUNT_URL + "/:token"}
               element={<VerifyAccount />}
             />
+            <Route path={REST_PASSWORD + "/:token"} element={<ResetPassword />} />
             {/*  */}
             <Route path={FEES_URL} element={<Fees />} />
             <Route path={ABOUTUS_URL} element={<AboutUs />} />

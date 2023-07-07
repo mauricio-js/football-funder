@@ -75,7 +75,7 @@ export const SignUp: React.FC = () => {
       if (err.errors) {
         window.scrollTo(0, 0);
         const responseError = err.errors;
-        showStatus(responseError[0].message)
+        showStatus(responseError[0].message, 'error')
       } else {
         console.log(err.message);
         showStatus(err.message);

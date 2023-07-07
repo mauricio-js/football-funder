@@ -4,14 +4,14 @@ import { Button, Input, StepperBackButton } from "UI";
 
 interface ResetPasswordStep2PropsType {
   handlePrevPage: () => void;
-  handleNextPage: () => void;
+  handleSendResetPassword: () => void;
   formValues: { [key: string]: string };
   onInputChange: (name: string, value: string) => void;
 }
 
 export const ForgotPasswordStepSecond: React.FC<
   ResetPasswordStep2PropsType
-> = ({ handleNextPage, handlePrevPage, formValues, onInputChange }) => {
+> = ({ handleSendResetPassword, handlePrevPage, formValues, onInputChange }) => {
   return (
     <form>
       <div
@@ -45,7 +45,7 @@ export const ForgotPasswordStepSecond: React.FC<
               text="Send password reset link"
               textColor="text-green-70"
               textSize="buttonText"
-              handleClick={handleNextPage}
+              handleClick={handleSendResetPassword}
             />
           </div>
         </div>

@@ -51,7 +51,9 @@ export const Signin: React.FC = () => {
       .catch((err) => {
         const errorMessage = err.response?.data.error;
         console.log(errorMessage);
-        showStatus(errorMessage, 'error')
+        if(errorMessage === 'no-such-account') showStatus("Your account doesn't exist!" , 'error')
+        else if(errorMessage === 'unverified-user') showStatus("Your account has not been verified!" , 'error')
+        else showStatus("Your password is invalid!" , 'error')
         setSafely(setIsLoading, false);
       });
   };

@@ -1,5 +1,5 @@
-export interface resetPasswordFormDataType { 
+export interface resetPasswordFormDataType {
     token: string,
     password: string,
-    password_confirmation:string
+    password_confirmation: string
 }

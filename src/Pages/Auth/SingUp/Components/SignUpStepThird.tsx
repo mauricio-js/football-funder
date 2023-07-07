@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -20,7 +20,7 @@ import {
   EmailCommunicationAlterCheckboxData,
 } from "Config";
 import { SIGNIN_URL } from "Lib";
-import useToast from "Lib/useToast";
+import { StatusContext } from 'App/StatusProvider';
 
 interface SignInThirdPagePropsType {
   handlePrevPage: () => void;
@@ -47,7 +47,7 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
   handleSubmit,
 }) => {
   const navigate = useNavigate();
-  const { handleErrorMessage } = useToast();
+  const { showStatus } = useContext(StatusContext);
 
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
@@ -56,9 +56,9 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
   const SignInFinalPageAction = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (formValues.password !== formValues.confirm_password) {
-      handleErrorMessage("These passwords do not match. Try again.");
+      showStatus('These passwords do not match. Try again.', 'error')
     } else if (formValues.password.length < 8) {
-      handleErrorMessage("Password must be longer than 8 characters");
+      showStatus('Password must be longer than 8 characters', 'error')
     } else {
       handleSubmit();
     }

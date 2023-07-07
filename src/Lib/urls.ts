@@ -53,3 +53,4 @@ export const TERMS_URL = '/terms';
 export const LISTINGAPPROVAL_URL = '/approval/listing';
 export const WITHDRAWALAPPROVAL_URL = '/approval/withdrawal';
 export const EMAILVERIFICATION_URL = '/verifyemail';
+export const VERIFY_ACCOUNT_URL = '/verify_account'

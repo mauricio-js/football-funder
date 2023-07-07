@@ -8,6 +8,7 @@ import { Provider as ReduxProvider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import { HelmetProvider } from "react-helmet-async";
+import { StatusProvider } from 'App/StatusProvider'
 import { store } from "App/store";
 import "Styles/index.scss";
 
@@ -35,7 +36,9 @@ root.render(
       <PersistGate loading={null} persistor={persistor}>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
-            <App />
+            <StatusProvider>
+              <App />
+            </StatusProvider>
           </QueryClientProvider>
         </HelmetProvider>
       </PersistGate>

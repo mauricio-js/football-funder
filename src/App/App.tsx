@@ -56,6 +56,7 @@ import {
   TERMS_URL,
   WITHDRAWALAPPROVAL_URL,
   EMAILVERIFICATION_URL,
+  VERIFY_ACCOUNT_URL,
 } from "Lib";
 
 import {
@@ -114,6 +115,7 @@ import {
   TermsPage,
   WithdrawalApproval,
   EmailVerification,
+  VerifyAccount,
 } from "Pages";
 import {
   BrowserRouter,
@@ -216,6 +218,7 @@ function App() {
             <Route path={SPONSORSHIPSALE_URL} element={<SponsorshipSale />} />
             <Route path={PROMOTE_URL} element={<Promote />} />
             <Route path={CHECKOUT_URL} element={<Checkout />} />
+            {/* auth */}
             <Route path={SIGNIN_URL} element={<Signin />} />
             <Route
               path={EMAILVERIFICATION_URL}
@@ -223,6 +226,11 @@ function App() {
             />
             <Route path={SIGNUP_URL} element={<SignUp />} />
             <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
+            <Route
+              path={VERIFY_ACCOUNT_URL + "/:token"}
+              element={<VerifyAccount />}
+            />
+            {/*  */}
             <Route path={FEES_URL} element={<Fees />} />
             <Route path={ABOUTUS_URL} element={<AboutUs />} />
             <Route path={SUPPORT_URL} element={<Support />} />

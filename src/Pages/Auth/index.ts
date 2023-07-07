@@ -1,4 +1,4 @@
-export * from './EmailVerfication';
+export * from './EmailVerification';
 export * from './ForgotPassword';
 export * from './Signin';
 export * from './SingUp';

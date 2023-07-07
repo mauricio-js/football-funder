@@ -5,7 +5,7 @@ import { GeneralStepper, Template } from "UI";
 import { ContactPhoneNumberData } from "Config";
 import { useAxios, useIsMounted } from "Lib";
 import { registerFormDataType } from "./types";
-import { EMAILVERIFICATION_URL } from "Lib";
+import { SIGNIN_URL } from "Lib";
 import useToast from "Lib/useToast";
 
 const country = ["england", "scotland", "wales", "nothern ireland"];
@@ -74,7 +74,7 @@ export const SignUp: React.FC = () => {
       .post(`/user/register`, data)
       .then((res) => {
         setSafely(setIsLoading, false);
-        navigate(EMAILVERIFICATION_URL);
+        navigate(SIGNIN_URL);
       })
       .catch((err) => {
         if (err.errors) {

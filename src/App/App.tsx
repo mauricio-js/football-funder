@@ -55,6 +55,7 @@ import {
   QUESTIONS_URL,
   TERMS_URL,
   WITHDRAWALAPPROVAL_URL,
+  EMAILVERIFICATION_URL,
 } from "Lib";
 
 import {
@@ -112,6 +113,7 @@ import {
   PrivacyPolicyPage,
   TermsPage,
   WithdrawalApproval,
+  EmailVerification,
 } from "Pages";
 import {
   BrowserRouter,
@@ -215,6 +217,10 @@ function App() {
             <Route path={PROMOTE_URL} element={<Promote />} />
             <Route path={CHECKOUT_URL} element={<Checkout />} />
             <Route path={SIGNIN_URL} element={<Signin />} />
+            <Route
+              path={EMAILVERIFICATION_URL}
+              element={<EmailVerification />}
+            />
             <Route path={SIGNUP_URL} element={<SignUp />} />
             <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
             <Route path={FEES_URL} element={<Fees />} />

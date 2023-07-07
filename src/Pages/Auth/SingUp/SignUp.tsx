@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignUpStepFirst, SignUpStepSecond, SignUpStepThird } from "Pages";
-import { GeneralStepper } from "UI";
+import { GeneralStepper, Template } from "UI";
 import { ContactPhoneNumberData } from "Config";
 import { useAxios, useIsMounted } from "Lib";
 import { registerFormDataType } from "./types";
-import { SIGNIN_URL } from "Lib";
+import { EMAILVERIFICATION_URL } from "Lib";
 import useToast from "Lib/useToast";
 
 const country = ["england", "scotland", "wales", "nothern ireland"];
@@ -39,6 +39,10 @@ export const SignUp: React.FC = () => {
     }));
   };
 
+  useEffect(() => {
+    sessionStorage.setItem("accountEmail", formValues.email);
+  }, [formValues.email]);
+
   const onHandleConfirm = () => {
     setConfirm(!confirm);
   };
@@ -70,7 +74,7 @@ export const SignUp: React.FC = () => {
       .post(`/user/register`, data)
       .then((res) => {
         setSafely(setIsLoading, false);
-        navigate(SIGNIN_URL);
+        navigate(EMAILVERIFICATION_URL);
       })
       .catch((err) => {
         if (err.errors) {
@@ -107,8 +111,6 @@ export const SignUp: React.FC = () => {
           handleNextPage={handleNextPage}
           setCategoryId={setCategoryId}
           categoryId={categoryId}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
         />
       ),
     },
@@ -122,8 +124,6 @@ export const SignUp: React.FC = () => {
           handleSelectChange={handleSelectChange}
           formValues={formValues}
           onInputChange={handleInputChange}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
         />
       ),
     },
@@ -141,15 +141,13 @@ export const SignUp: React.FC = () => {
           formValues={formValues}
           onInputChange={handleInputChange}
           handleSubmit={onClickRegisterBtn}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
         />
       ),
     },
   ];
   return (
-    <>
+    <Template isLoading={isLoading}>
       <GeneralStepper pages={pages} stepNumber={currentStep} />
-    </>
+    </Template>
   );
 };

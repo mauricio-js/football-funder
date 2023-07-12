@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { MYACCOUNT_URL } from "Lib";
@@ -13,19 +13,9 @@ import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 
 export const UpdatePasswordStep2: React.FC<StepperActionPropsType> = ({
-  handleNextPage,
   handlePrevPage,
 }) => {
   const navigate = useNavigate();
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
 
   const onUpdateBtnClick = () => {
     navigate(MYACCOUNT_URL);
@@ -57,18 +47,11 @@ export const UpdatePasswordStep2: React.FC<StepperActionPropsType> = ({
               <div className="introText">Enter your new password.</div>
             </div>
             <div className="mt-30">
-              <Input
-                data={AccountPasswordData}
-                name="password"
-                onChange={handleInputChange}
-                value={formValues.password || ""}
-              />
+              <Input data={AccountPasswordData} name="password" />
               <div className="mt-2.5">
                 <Input
                   data={AccountConfirmPasswordData}
                   name="confirm_password"
-                  onChange={handleInputChange}
-                  value={formValues.confirm_password || ""}
                 />
               </div>
             </div>

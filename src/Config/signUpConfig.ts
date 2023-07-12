@@ -2,13 +2,13 @@ import { RadioButtonDataType } from "types";
 export const EmailCommunicationAlterCheckboxData: RadioButtonDataType[] = [
     {
         label: "Yes please, opt me in to Football Funder’s email campaigns",
-        value: "yes",
+        value: 1,
         classes: "gap-[10px] flex-row-reverse justify-end",
         textStyle:"darkIntroText"
     },
     {
         label: "No thanks",
-        value: "no",
+        value: 0,
         classes:"gap-[10px] flex-row-reverse justify-end",
         textStyle:"darkIntroText"
     },

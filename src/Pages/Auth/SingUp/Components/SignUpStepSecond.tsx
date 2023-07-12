@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { FormStepperContext } from "App/FormStepperProvider";
 import "react-toastify/dist/ReactToastify.css";
 
 import {
@@ -20,25 +20,20 @@ import {
   UnchangePageTitle,
 } from "UI";
 import { SIGNIN_URL } from "Lib";
+import { StatusContext } from "App/StatusProvider";
 
 interface SignUpSecondPagePropsType {
   handleNextPage: () => void;
   handlePrevPage: () => void;
-  country: string;
-  handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  formValues: { [key: string]: string };
-  onInputChange: (name: string, value: string) => void;
 }
 
 export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
-  handleSelectChange,
-  country,
   handleNextPage,
   handlePrevPage,
-  formValues,
-  onInputChange,
 }) => {
   const navigate = useNavigate();
+  const { showStatus } = useContext(StatusContext);
+  const { formValues } = useContext(FormStepperContext)!;
 
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
@@ -46,19 +41,10 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
 
   const signUpSecondPageAction = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (country) {
+    if (formValues.country) {
       handleNextPage();
     } else {
-      toast.error("You must select the country", {
-        position: "bottom-right",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      showStatus("You must select the country", "error");
     }
   };
 
@@ -87,50 +73,25 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
           />
         </div>
         <div className="mt-30 xs:w-[500px] w-full">
-          <Input
-            data={ContactOrganisationData}
-            name="organization"
-            onChange={onInputChange}
-            value={formValues.organization || ""}
-          />
+          <Input data={ContactOrganisationData} name="organization" />
           <div className="mt-2.5 smallIntroText">
             Use official name - if individual, use full name.
           </div>
           <div className="mt-30 flex flex-col gap-2.5">
             <div className="flex gap-2.5">
               <div className="w-1/2">
-                <Input
-                  data={ContactAddressLine1Data}
-                  name="address_line1"
-                  onChange={onInputChange}
-                  value={formValues.address_line1 || ""}
-                />
+                <Input data={ContactAddressLine1Data} name="address_line1" />
               </div>
               <div className="w-1/2">
-                <Input
-                  data={ContactAddressLine2Data}
-                  name="address_line2"
-                  onChange={onInputChange}
-                  value={formValues.address_line2 || ""}
-                />
+                <Input data={ContactAddressLine2Data} name="address_line2" />
               </div>
             </div>
             <div className="flex gap-2.5">
               <div className="w-1/2">
-                <Input
-                  data={ContactTownData}
-                  name="city"
-                  onChange={onInputChange}
-                  value={formValues.city || ""}
-                />
+                <Input data={ContactTownData} name="city" />
               </div>
               <div className="w-1/2">
-                <Input
-                  data={ContactPostcodeData}
-                  name="postcode"
-                  onChange={onInputChange}
-                  value={formValues.postcode || ""}
-                />
+                <Input data={ContactPostcodeData} name="postcode" />
               </div>
             </div>
           </div>
@@ -140,16 +101,11 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
           <div className="mt-5">
             <Select
               backgroundColor="bg-white"
-              border="border-[1px] border-gray-300"
-              onOptionChange={handleSelectChange}
-              placeholder="text-gray-500"
-              placeholderText="Country (Region)"
+              name="country"
+              label="Country (Region)"
               SelectFormData={RegionData}
-              selectedOption={country}
-              textColor="text-green-70"
               textSize="generalText"
             />
-            <ToastContainer />
           </div>
           <div className="mt-2.5 smallIntroText">
             Country that your organisation is based.

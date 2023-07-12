@@ -352,114 +352,114 @@ export const FiterButtonProperty: ButtonDataType = {
 export const TypeFilterData:RadioButtonDataType[] = [
     {
         label: "All",
-        value: "all",
+        value: 0,
     },
     {
         label: "Fundraisers",
-        value: "fundraisers",
+        value: 1,
     },
     {
         label: "Advertising",
-        value: "advertising",
+        value: 2,
     },
     {
         label: "Sponsorship",
-        value: "sponsorship",
+        value: 3,
     }
 ];
 
 export const OrganisationFilterData: RadioButtonDataType[] = [
     {
         label: "All",
-        value: "all",
+        value: 4,
     },
     {
         label: "Clubs",
-        value: "clubs",
+        value: 5,
     },
     {
         label: "Supporters' Trusts",
-        value: "supporter",
+        value: 6,
     },
     {
         label: "Local communities",
-        value: "local communities",
+        value: 7,
     },
     {
         label: "Foundations",
-        value: "foundations",
+        value: 8,
     },
     {
         label: "Leagues",
-        value: "leagues",
+        value: 9,
     },
     {
         label: "Charities",
-        value: "charities",
+        value: 10,
     },
     {
         label: "Singing Sections / Ultras",
-        value: "ultras",
+        value: 11,
     },
     {
         label: "Agency / Rights holder",
-        value: "agency",
+        value: 12,
     },
     {
         label: "Podcast / Vlog",
-        value: "podcast",
+        value: 13,
     },
     {
         label: "Advertiser/Sponsor",
-        value: "advertiser",
+        value: 14,
     },
     {
         label: "Other",
-        value: "other",
+        value: 15,
     },  
 ];
 export const StatusFilterData:RadioButtonDataType[] = [
         {
             label: "All",
-            value: "all",
+            value: 0,
         },
         {
             label: "Live",
-            value: "live",
+            value: 1,
         },
         {
             label: "Pending",
-            value: "pending",
+            value: 2,
         },
         {
             label: "Funded / Sold",
-            value: "fund",
+            value: 3,
         }
     ];
 export const SortByData: RadioButtonDataType[] = [
         {
             label: "Promoted",
-        value: "promoted",
+        value: 0,
             classes:"justify-between"
         },
         {
             label: "Newest (£)",
-            value: "newest",
+            value: 1,
             classes:"justify-between"
         },
         {
             label: "Oldest (£)",
-            value: "oldest",
+            value: 2,
             classes:"justify-between"
         },
         {
             label: "High to Low",
-            value: "high",
+            value:  3,
             classes:"justify-between"
         },
         {
             label: "Low to High",
-            value: "low",
+            value: 4,
             classes:"justify-between"
         },
     ];
@@ -471,7 +471,6 @@ export const MileDistanceInputFormData: InputType = {
     content:"after:content-['*'] after:ml-1 after:text-green-10",
     height: "h-[54px]",
     label: "Miles from",
-    padding:"px-15 py-[10px]",
     textSize:"generalText",
     type: "text",
 }
@@ -480,7 +479,6 @@ export const PostcodeDistanceInputFormData: InputType = {
     content:"after:content-['*'] after:ml-1 after:text-green-10",
     height: "h-[54px]",
     label: "Postcode",
-    padding:"px-15 py-[10px]",
     textSize:"generalText",
     type: "text",
 }

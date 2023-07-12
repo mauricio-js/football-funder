@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { SignUpStepFirst, SignUpStepSecond, SignUpStepThird } from "Pages";
@@ -7,22 +7,19 @@ import { ContactPhoneNumberData } from "Config";
 import { useAxios } from "Lib";
 import { registerFormDataType } from "./types";
 import { EMAILVERIFICATION_URL } from "Lib";
-import { StatusContext } from 'App/StatusProvider'
-
-const country = ["england", "scotland", "wales", "nothern ireland"]
+import { StatusContext } from "App/StatusProvider";
 
 export const SignUp: React.FC = () => {
   const navigate = useNavigate();
+  const axios = useAxios();
 
   const [categoryId, setCategoryId] = useState<number>(1);
-
-  const [countryIndex, setCountryIndex] = useState<string>("");
 
   const [countryPhone, setCountryPhone] = useState<string>(
     ContactPhoneNumberData[0].country
   );
 
-  const [eCConfirm, setECConfirm] = useState<string>("no");
+  const [eCConfirm, setECConfirm] = useState<number>();
 
   const [confirm, setConfirm] = useState<boolean>(false);
 
@@ -37,16 +34,8 @@ export const SignUp: React.FC = () => {
     }));
   };
 
-  useEffect(() => {
-    sessionStorage.setItem("accountEmail", formValues.email);
-  }, [formValues.email]);
-
   const onHandleConfirm = () => {
     setConfirm(!confirm);
-  };
-
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setCountryIndex(event.target.value);
   };
 
   const data: registerFormDataType = {
@@ -56,7 +45,7 @@ export const SignUp: React.FC = () => {
     address_line2: formValues.address_line2,
     city: formValues.city,
     post_code: formValues.postcode,
-    country: country[parseInt(countryIndex) - 1],
+    country: formValues.country,
     phone_number: formValues.phone_number,
     first_name: formValues.first_name,
     last_name: formValues.last_name,
@@ -64,27 +53,50 @@ export const SignUp: React.FC = () => {
     password: formValues.password,
   };
 
-  const axios = useAxios();
+  // const getCategoryData = async () => {
+  //   try {
+  //     const response = await axios.get("/category");
+  //     const { data: category_data } = response;
+  //     console.log(category_data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  const signUp = useMutation((parms: registerFormDataType) => axios.post('/user/register', parms), {
-    onSuccess: (data) => {
-      showStatus('Your account has been succesfully registered!')
-      navigate(EMAILVERIFICATION_URL);
-    },
-    onError: (err: any) => {
-      if (err.errors) {
-        window.scrollTo(0, 0);
-        const responseError = err.errors;
-        showStatus(responseError[0].message, 'error')
-      } else {
-        console.log(err.message);
-        showStatus(err.message);
-      }
-    },
-  })
+  // useEffect(() => {
+  //   getCategoryData();
+  // });
+
+  // useEffect(() => {
+  //   sessionStorage.setItem("accountEmail", formValues.email);
+  // }, [formValues.email]);
+
+  const signUp = useMutation(
+    (params: registerFormDataType) => axios.post("/user/register", params),
+    {
+      onSuccess: (data) => {
+        showStatus("Your account has been succesfully registered!");
+        navigate(EMAILVERIFICATION_URL);
+      },
+      onError: (err: any) => {
+        if (err.errors) {
+          window.scrollTo(0, 0);
+          const responseError = err.errors;
+          if (
+            responseError[0].rule === "unique" &&
+            responseError[0].field === "email"
+          ) {
+            showStatus("Username already exists", "error");
+          } else showStatus(responseError[0].message, "error");
+        } else {
+          showStatus(err.message, "error");
+        }
+      },
+    }
+  );
 
   function onClickRegisterBtn() {
-    signUp.mutate(data)
+    signUp.mutate(data);
   }
 
   const [currentStep, setCurrentStep] = useState<number>(
@@ -119,10 +131,6 @@ export const SignUp: React.FC = () => {
         <SignUpStepSecond
           handlePrevPage={handlePrevPage}
           handleNextPage={handleNextPage}
-          country={countryIndex}
-          handleSelectChange={handleSelectChange}
-          formValues={formValues}
-          onInputChange={handleInputChange}
         />
       ),
     },
@@ -137,7 +145,6 @@ export const SignUp: React.FC = () => {
           setECConfirm={setECConfirm}
           confirm={confirm}
           onHandleConfirm={onHandleConfirm}
-          formValues={formValues}
           onInputChange={handleInputChange}
           handleSubmit={onClickRegisterBtn}
         />

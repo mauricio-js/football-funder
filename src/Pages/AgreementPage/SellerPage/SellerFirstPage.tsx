@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, BuyerCard, DropdownInput, Input, Select, Template } from "UI";
@@ -20,37 +20,6 @@ import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
 
 export const SellerFirstPage: React.FC = () => {
   const navigate = useNavigate();
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
-  const [selectedCountry1Option, setSelectedCountry1Option] =
-    useState<string>("");
-
-  const [selectedCountry2Option, setSelectedCountry2Option] =
-    useState<string>("");
-
-  const [country, setCountry] = useState<string>(
-    ContactPhoneNumberData[0].country
-  );
-
-  const handleSelectCountry1Change = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedCountry1Option(event.target.value);
-  };
-
-  const handleSelectCountry2Change = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedCountry2Option(event.target.value);
-  };
 
   return (
     <Template>
@@ -91,13 +60,7 @@ export const SellerFirstPage: React.FC = () => {
                 <div>
                   <div className="buttonText text-green-70">Organisation</div>
                   <div className="mt-5">
-                    <Input
-                      data={NameData}
-                      name="name"
-                      onChange={handleInputChange}
-                      value={formValues.name || ""}
-                      disabled={true}
-                    />
+                    <Input data={NameData} name="name" disabled={true} />
                   </div>
                 </div>
               </div>
@@ -107,32 +70,18 @@ export const SellerFirstPage: React.FC = () => {
                   <div className="mt-5">
                     <div className="flex gap-2.5">
                       <div className="w-1/2">
-                        <Input
-                          data={PostcodeData}
-                          name="post_code"
-                          onChange={handleInputChange}
-                          value={formValues.postcode || ""}
-                        />
+                        <Input data={PostcodeData} name="post_code" />
                       </div>
                       <div className="w-1/2">
-                        <Input
-                          data={AddressData}
-                          name="address_line1"
-                          onChange={handleInputChange}
-                          value={formValues.address_line1 || ""}
-                        />
+                        <Input data={AddressData} name="address_line1" />
                       </div>
                     </div>
                     <div className="mt-2.5">
                       <Select
                         backgroundColor="bg-white"
-                        border="border-[1px] border-gray-300"
-                        onOptionChange={handleSelectCountry1Change}
-                        placeholder="text-gray-500"
-                        placeholderText="Country (Region)"
+                        name="country"
+                        label="Country (Region)"
                         SelectFormData={RegionData}
-                        selectedOption={selectedCountry1Option}
-                        textColor="text-green-70"
                         textSize="generalText"
                       />
                     </div>
@@ -145,32 +94,18 @@ export const SellerFirstPage: React.FC = () => {
                   <div className="mt-5">
                     <div className="flex gap-2.5">
                       <div className="w-1/2">
-                        <Input
-                          data={PostcodeData}
-                          name="post_code"
-                          onChange={handleInputChange}
-                          value={formValues.post_code || ""}
-                        />
+                        <Input data={PostcodeData} name="post_code" />
                       </div>
                       <div className="w-1/2">
-                        <Input
-                          data={AddressData}
-                          name="address_line2"
-                          onChange={handleInputChange}
-                          value={formValues.address_line2 || ""}
-                        />
+                        <Input data={AddressData} name="address_line2" />
                       </div>
                     </div>
                     <div className="mt-2.5">
                       <Select
                         backgroundColor="bg-white"
-                        border="border-[1px] border-gray-300"
-                        onOptionChange={handleSelectCountry2Change}
-                        placeholder="text-gray-500"
-                        placeholderText="Country (Region)"
+                        name="country"
+                        label="Country (Region)"
                         SelectFormData={RegionData}
-                        selectedOption={selectedCountry2Option}
-                        textColor="text-green-70"
                         textSize="generalText"
                       />
                     </div>
@@ -183,32 +118,13 @@ export const SellerFirstPage: React.FC = () => {
                     Legal contact information
                   </div>
                   <div className="mt-5 flex flex-col gap-2.5">
-                    <Input
-                      data={FirstNameData}
-                      name="first_name"
-                      onChange={handleInputChange}
-                      value={formValues.first_name || ""}
-                    />
-                    <Input
-                      data={LastNameData}
-                      name="last_name"
-                      onChange={handleInputChange}
-                      value={formValues.last_name || ""}
-                    />
+                    <Input data={FirstNameData} name="first_name" />
+                    <Input data={LastNameData} name="last_name" />
                     <DropdownInput
-                      country={country}
                       data={ContactPhoneNumberData}
-                      selectCountry={setCountry}
                       name="phone_number"
-                      onChange={handleInputChange}
-                      value={formValues.phone_number || ""}
                     />
-                    <Input
-                      data={AccountEmailData}
-                      name="email"
-                      onChange={handleInputChange}
-                      value={formValues.email || ""}
-                    />
+                    <Input data={AccountEmailData} name="email" />
                   </div>
                 </div>
               </div>

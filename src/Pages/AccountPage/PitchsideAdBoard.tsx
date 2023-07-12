@@ -11,9 +11,7 @@ export const PitchSideAdBoard: React.FC = () => {
         <div className="relative w-[1000px] max-lg:w-full px-5 mx-auto">
           <div className="stepLabelTitle">Pitchside advertising board (5)</div>
           <div className="mt-15">
-            <StepperBackButton
-              handleBackPage={() => console.log("back button clicked")}
-            />
+            <StepperBackButton handleBackPage={() => {}} />
           </div>
           <div className="mt-30 smallIntroText">
             Use the arrows to reveal the details of an enquiry, chat to the

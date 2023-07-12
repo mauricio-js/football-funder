@@ -1,5 +1,4 @@
-export * from './IndividualSponsorship';
-export * from './OrganisationSponsorship';
+export * from './Sponsor';
 export * from './SponsorshipDetail';
 export * from './SponsorshipList';
 export * from './SponsorshipSale';

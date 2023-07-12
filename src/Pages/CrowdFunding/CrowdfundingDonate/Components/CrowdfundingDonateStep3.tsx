@@ -24,16 +24,7 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
-  const [anonymous, setAnonymous] = useState<string>("no");
+  const [anonymous, setAnonymous] = useState<number>();
   return (
     <form>
       <div
@@ -64,24 +55,9 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
             <PageSectionTitle title="Your details" />
             <div className="mt-5 ">
               <div className="flex flex-col gap-[10px]">
-                <Input
-                  data={FirstNameData}
-                  name="first_name"
-                  onChange={handleInputChange}
-                  value={formValues.first_name || ""}
-                />
-                <Input
-                  data={LastNameData}
-                  name="last_name"
-                  onChange={handleInputChange}
-                  value={formValues.last_name || ""}
-                />
-                <Input
-                  data={AccountEmailData}
-                  name="email"
-                  onChange={handleInputChange}
-                  value={formValues.email || ""}
-                />
+                <Input data={FirstNameData} name="first_name" />
+                <Input data={LastNameData} name="last_name" />
+                <Input data={AccountEmailData} name="email" />
               </div>
             </div>
           </div>
@@ -105,6 +81,7 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
             <PageSectionTitle title="Leave a comment" />
             <div className="mt-15">
               <Textarea
+                name="comment"
                 title="Your comment"
                 titleStyle="text-[12px] leading-[14px] font-medium text-gray-10"
                 height="h-[150px]"

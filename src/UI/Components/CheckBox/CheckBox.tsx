@@ -1,30 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FormStepperContext } from "App/FormStepperProvider";
 import classNames from "classnames";
 import { BsCheckLg } from "react-icons/bs";
 
 interface CheckBoxProps {
   align?: string;
-  checked: boolean;
+  // checked: boolean;
   label: string;
-  onSelect: (value: string) => void;
+  name: string;
+  // onSelect: (value: string) => void;
   textClass?: string;
-  value: string;
+  value: number;
 }
 
 export const CheckBox: React.FC<CheckBoxProps> = ({
   align,
-  checked,
+  // checked,
   label,
-  onSelect,
+  name,
+  // onSelect,
   textClass,
   value,
 }) => {
+  const { selectedCheckbox, handleSelectedCheckbox } =
+    useContext(FormStepperContext);
   return (
     <div className={classNames("flex justify-between items-center", align)}>
       <label
         id="label1"
         className={classNames("flex-1", textClass)}
-        onClick={() => onSelect(value)}
+        onClick={() => handleSelectedCheckbox(name, value)}
       >
         {label}
       </label>
@@ -36,15 +41,21 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
           aria-labelledby="label1"
           type="checkbox"
           name="checkbox"
-          checked={checked}
-          onChange={() => onSelect(value)}
+          checked={
+            selectedCheckbox[name]
+              ? selectedCheckbox[name].includes(value)
+              : false
+          }
+          onChange={() => handleSelectedCheckbox(name, value)}
           className="checkbox appearance-none focus:opacity-100 border rounded-md 
            border-gray-300 absolute cursor-pointer w-full h-full checked:border-none"
         />
         <div
           className={classNames(
             "check-icon bg-green-10 rounded-md w-full h-full z-1 justify-center items-center text-semibold",
-            checked ? "flex" : "hidden"
+            selectedCheckbox[name] && selectedCheckbox[name].includes(value)
+              ? "flex"
+              : "hidden"
           )}
         >
           <BsCheckLg />

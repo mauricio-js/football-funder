@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   DropdownInput,
@@ -28,20 +28,6 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
   introTitle,
   pageTitle,
 }) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
-  const [country, setCountry] = useState<string>(
-    ContactPhoneNumberData[0].country
-  );
-
-  const [isConfirm, setIsConfirm] = useState<string[]>([""]);
   return (
     <div
       className="
@@ -71,31 +57,12 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
           <PageSectionTitle title="Your details" />
           <div className="mt-5 ">
             <div className="flex flex-col gap-[10px]">
-              <Input
-                data={FirstNameData}
-                name="first_name"
-                onChange={handleInputChange}
-                value={formValues.first_name || ""}
-              />
-              <Input
-                data={ContactOrganisationData}
-                name="organisation"
-                onChange={handleInputChange}
-                value={formValues.organisation}
-              />
-              <Input
-                data={AccountEmailData}
-                name="email"
-                onChange={handleInputChange}
-                value={formValues.email || ""}
-              />
+              <Input data={FirstNameData} name="first_name" />
+              <Input data={ContactOrganisationData} name="organisation" />
+              <Input data={AccountEmailData} name="email" />
               <DropdownInput
-                country={country}
                 data={ContactPhoneNumberData}
-                selectCountry={setCountry}
                 name="phone_number"
-                onChange={handleInputChange}
-                value={formValues.phone_number || ""}
               />
             </div>
           </div>
@@ -104,6 +71,7 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
           <PageSectionTitle title="Enquiry" />
           <div className="mt-15">
             <Textarea
+              name="comment"
               title="Your comment"
               titleStyle="text-[12px] leading-[14px] font-medium text-gray-10"
               height="h-[150px]"
@@ -117,8 +85,7 @@ export const LivePageStep2: React.FC<LivePagePropsType> = ({
           <div className="mt-[15px]">
             <GeneralCheckBoxList
               options={SaleEnquiryConfirm}
-              selectedValues={isConfirm}
-              setValues={setIsConfirm}
+              name="sale_enquiry_confirm"
               textStyle="introText"
             />
           </div>

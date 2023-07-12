@@ -1,14 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Template } from "UI";
+import { FAQ_URL } from "Lib";
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 
 export const Support: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <Template>
       <div className="relative md:pt-5 pt-[10px] md:pb-[320px] pb-[250px]">
         <div className="relative sm:pt-[45px] pt-[25px]">
-          <div className="absolute w-full top-0">
+          <div className="absolute w-full top-0 z-0">
             <img
               src={ExploreMask}
               alt="explore back mask"
@@ -20,7 +23,7 @@ export const Support: React.FC = () => {
               className="object-cover w-full ns:hidden"
             />
           </div>
-          <div className="xm:w-[870px] w-full px-5 mx-auto">
+          <div className="relative xm:w-[870px] w-full px-5 mx-auto z-10">
             <div className="generalTitle">Support</div>
             <div className="mt-30 buttonText text-green-70">
               Have a question? We're here to support you.
@@ -54,6 +57,9 @@ export const Support: React.FC = () => {
                 text="FAQ"
                 textColor="text-green-70"
                 textSize="buttonText"
+                handleClick={() => {
+                  navigate(FAQ_URL);
+                }}
               />
             </div>
           </div>

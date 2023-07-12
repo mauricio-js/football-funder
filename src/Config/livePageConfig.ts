@@ -20,16 +20,16 @@ export const SaleLocationLabel: CardLabelType = {
 export const SaleAccountConfirm: RadioButtonDataType[] = [
     {
         label: "I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy",
-        value:"confirm policy"
+        value:0
     },
     {
         label: "I would like to sign up to receive newsletters from Football Funder. See Privacy Policy.",
-        value:"see policy"
+        value:1
     },
 ]
 export const SaleEnquiryConfirm: RadioButtonDataType[] = [
     {
         label: "I consent to the details of this account being passed to the rights holder to initiate contact should they wish to engage further on the opportunity.",
-        value:"confirm policy"
+        value:2
     },
 ]

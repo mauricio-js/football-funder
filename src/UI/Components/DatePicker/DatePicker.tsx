@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useState, useContext } from "react";
+import { FormStepperContext } from "App/FormStepperProvider";
 import classNames from "classnames";
 import { InputType } from "types";
 import ReactDatePicker from "react-datepicker";
@@ -6,56 +7,40 @@ import "react-datepicker/dist/react-datepicker.css";
 
 interface DatePickerProps {
   data: InputType;
-  setValue: (value: Date | null) => void;
-  value: Date | null | undefined;
+  name: string;
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   data,
-  setValue,
-  value,
+  name,
 }: DatePickerProps) => {
-  const labelRef = useRef<HTMLLabelElement>(null);
+  const { dateList, handleDateChange } = useContext(FormStepperContext)!;
+  const [floating, setFloating] = useState<boolean>(false);
 
-  const handleDateChange = (date: Date): void => {
-    // const selectedMonth = date.getMonth() + 1;
-    // console.log("Selected month:", selectedMonth);
-    setValue(date);
+  const handleInputDate = (date: Date): void => {
+    handleDateChange(name, date);
   };
 
   const handleInputClick = (): void => {
-    if (labelRef.current) {
-      labelRef.current.classList.add(
-        "scale-75",
-        "translate-x-[0.15rem]",
-        "-translate-y-1.5"
-      );
-    }
+    setFloating(true);
   };
 
   const handleBlur = (): void => {
-    if (!value && labelRef.current) {
-      labelRef.current.classList.remove(
-        "scale-75",
-        "translate-x-[0.15rem]",
-        "-translate-y-1.5"
-      );
-    }
+    setFloating(false);
   };
+  // console.log(dateList, "datelist.name");
   return (
     <div className="relative customDatePickerWidth">
       <ReactDatePicker
-        selected={value}
-        onChange={handleDateChange}
+        selected={dateList[name] || null}
+        onChange={handleInputDate}
         dateFormat="dd MMMM, yyyy"
         onInputClick={handleInputClick}
         onBlur={handleBlur}
         className={classNames(
-          "peer w-full rounded-10 appearance-none focus:appearance-none focus-visible:outline-0 border-2 border-gray-200",
-          "ease-linear focus:pb-[0.625rem] focus:pt-[1.625rem] transition duration-200",
-          "[&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]",
+          " w-full rounded-10 appearance-none focus:outline-none  border-2 border-gray-200",
+          "ease-linear  transition duration-200 px-3 pt-3",
           data.height,
-          data.padding,
           data.textSize,
           data.border
         )}
@@ -63,11 +48,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       />
       <label
         htmlFor="date-picker"
-        ref={labelRef}
         className={classNames(
-          "pointer-events-none absolute left-0 top-0 origin-[0_0] border text-[14px]",
-          "border-solid border-transparent px-3 py-4 text-gray-500 transition-[opacity,_transform] duration-200 ease-linear",
-          value ? "scale-75 translate-x-[0.15rem] -translate-y-1.5" : "",
+          "pointer-events-none absolute  left-3  top-[calc(50%-10px)] text-gray-10 text-sm",
+          "origin-[0_0]  duration-200 ease-linear",
+          floating || dateList[name] ? "scale-75 -translate-y-2.5" : "",
           data.content
         )}
       >

@@ -52,7 +52,7 @@ export const CrowdfundingDonateStep2: React.FC<StepperActionPropsType> = ({
             intro="Please enter the amount you would like to donate to this fundraiser"
           />
           <div className="mt-15">
-            <AmountShow amount={donationAmount} setAmount={setDonationAmount} />
+            <AmountShow name="donation_amount" />
           </div>
         </div>
         <div className="mt-30">
@@ -94,10 +94,7 @@ export const CrowdfundingDonateStep2: React.FC<StepperActionPropsType> = ({
                     </button>
                   </div>
                   <div className="mt-2.5 xs:w-[390px]">
-                    <AmountShow
-                      amount={additionalDonationAmount}
-                      setAmount={setAdditionalDonationAmount}
-                    />
+                    <AmountShow name="amount" />
                   </div>
                 </div>
               )}

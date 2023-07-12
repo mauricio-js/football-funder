@@ -1,34 +1,28 @@
-import React, { useCallback } from "react";
+import React, { useContext } from "react";
+import { FormStepperContext } from "App/FormStepperProvider";
 import { CategoryButton } from "UI";
 import { CategoryDataType } from "types";
 
 interface CategoryButtonListProps {
   options: CategoryDataType[];
-  currentValue: number;
-  onSelect: (value: number) => void;
+  name: string;
 }
 
 export const CategoryButtonList: React.FC<CategoryButtonListProps> = ({
   options,
-  currentValue,
-  onSelect,
+  name,
 }) => {
-  const handleSelect = useCallback(
-    (value: number) => {
-      onSelect(value);
-    },
-    [onSelect]
-  );
+  const { selectValue } = useContext(FormStepperContext)!;
   return (
     <div className="flex flex-wrap gap-[10px]">
       {options.map((option, index) => {
         return (
           <div key={index}>
             <CategoryButton
-              checked={currentValue === option.value}
+              name={name}
+              checked={selectValue[name] === option.value}
               value={option.value}
               label={option.label}
-              onSelect={() => handleSelect(option.value)}
             />
           </div>
         );

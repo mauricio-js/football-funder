@@ -1,14 +1,16 @@
 import {
-  ADSLISTING_URL,
-  HOME_URL,
-  EXPLORE_URL,
-  CROWDFUNDINGLIST_URL,
-//   HOWITWORKS_URL,
-  ORGANISATIONFUNDRAISER_URL,
-//   ORGANISATIONINDIVIDUAL_URL,
-    ORGANISATIONADVERTISING_URL,
-    ORGANISATIONSPONSORSHIP_URL,
-    SPONSORSHIPLISTING_URL
+    ADSLISTING_URL,
+    HOME_URL,
+    EXPLORE_URL,
+    CROWDFUNDINGLIST_URL,
+    FUNDRAISER_URL,
+    ADVERTISING_URL,
+    SPONSOR_URL,
+    SPONSORSHIPLISTING_URL,
+    FEES_URL,
+    ABOUTUS_URL,
+    SUPPORT_URL,
+FAQ_URL
 } from "Lib";
 import {
     ButtonItemType,
@@ -28,20 +30,20 @@ export const exploreButtonData: ButtonItemType = {
         href: EXPLORE_URL,
 }
 export const aboutButtonData: ButtonItemType = {
-      href: "/home",
-      title: "About",
+    title: "About",
+    href: ABOUTUS_URL,
 }
 export const faqButtonData: ButtonItemType = {
-      href: "/home",
-      title: "FAQ",
+    title: "FAQ",
+    href:FAQ_URL,
 }
 export const supprotButtonData: ButtonItemType = {
-      href: "/home",
-      title: "Support",
+    title: "Support",
+    href: SUPPORT_URL,
 }
 export const feeButtonData: ButtonItemType = {
-      href: "/home",
-      title: "Fees",
+    title: "Fees",
+      href:FEES_URL,
 }
 export const fundraisingButtonData: MenuItemType = {
     title: "Fundraising",
@@ -49,7 +51,7 @@ export const fundraisingButtonData: MenuItemType = {
     children: [
         {
             title: "Fundraise",
-            href: ORGANISATIONFUNDRAISER_URL
+            href: FUNDRAISER_URL
         },
         {
             title: "Contribute",
@@ -67,7 +69,7 @@ export const sponsorshipButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: ORGANISATIONSPONSORSHIP_URL
+                href: SPONSOR_URL
             },
         ]
 }
@@ -81,7 +83,7 @@ export const advertisingButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: ORGANISATIONADVERTISING_URL
+                href: ADVERTISING_URL
             },
         ]
 }
@@ -92,15 +94,15 @@ export const moreButtonData: MenuItemType = {
         children: [
             {
                 title: "FAQ",
-                href: "/home"
+                href: FAQ_URL
             },
             {
                 title: "About",
-                href: "/home"
+                href: ABOUTUS_URL
             },
             {
                 title: "Support",
-                href: "/home"
+                href: SUPPORT_URL
             },
         ]
 }
@@ -109,19 +111,18 @@ export const moreButtonData: MenuItemType = {
     
     {
       href: "/",
-      title: HOME_URL,
+      title: "Home",
     },
     {
-      href: "/",
-      title: EXPLORE_URL,
+      href: EXPLORE_URL,
+      title: "Explore",
     },
     {
-      href: "/",
       title: "Fundraising",
       children: [
             {
                 title: "Fundraise",
-                href: ORGANISATIONFUNDRAISER_URL
+                href: FUNDRAISER_URL
             },
             {
                 title: "Contribute",
@@ -130,7 +131,6 @@ export const moreButtonData: MenuItemType = {
         ]
     },
     {
-      href: "/",
       title: "Advertising",
        children: [
             {
@@ -139,13 +139,12 @@ export const moreButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href:  ORGANISATIONADVERTISING_URL
+                href:  ADVERTISING_URL
                
             },
         ]
     },
     {
-      href: "/",
       title: "Sponsorship",
       children: [
             {
@@ -154,25 +153,25 @@ export const moreButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: ORGANISATIONSPONSORSHIP_URL
+                href: SPONSOR_URL
             },
         ]
     },
     {
-      href: "/home",
-      title: "Fees",
+        title: "Fees",
+        href: FEES_URL,
     },
     {
-      href: "/home",
-      title: "FAQ",
+        title: "FAQ",
+      href: FAQ_URL,
     },
     {
-      href: "/home",
-      title: "About",
+        title: "About",
+      href: ABOUTUS_URL,
     },
     {
-      href: "/home",
-      title: "Support",
+        title: "Support",
+      href: SUPPORT_URL,
     },
   ];
 

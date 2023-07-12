@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { EDITMYACCOUNT_URL } from "Lib";
@@ -14,18 +14,8 @@ import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 
 export const UpdatePasswordStep1: React.FC<StepperActionPropsType> = ({
   handleNextPage,
-  handlePrevPage,
 }) => {
   const navigate = useNavigate();
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
 
   return (
     <form>
@@ -57,19 +47,9 @@ export const UpdatePasswordStep1: React.FC<StepperActionPropsType> = ({
                 </div>
               </div>
               <div className="mt-30">
-                <Input
-                  data={AccountEmailData}
-                  name="email"
-                  onChange={handleInputChange}
-                  value={formValues.email || ""}
-                />
+                <Input data={AccountEmailData} name="email" />
                 <div className="mt-2.5">
-                  <Input
-                    data={AccountPasswordData}
-                    name="passoword"
-                    onChange={handleInputChange}
-                    value={formValues.password || ""}
-                  />
+                  <Input data={AccountPasswordData} name="passoword" />
                 </div>
               </div>
               <div className="mt-30">

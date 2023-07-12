@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import classNames from "classnames";
-import { CategoryButtonType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
-export const CategoryButton: React.FC<CategoryButtonType> = ({
+interface CategoryButtonPropsType {
+  checked: boolean;
+  label: string;
+  value: number;
+  name: string;
+}
+
+export const CategoryButton: React.FC<CategoryButtonPropsType> = ({
   checked,
+  name,
   label,
-  onSelect,
   value,
 }) => {
+  const { handleSelectInput } = useContext(FormStepperContext)!;
+  const handleSelect = () => {
+    handleSelectInput(name, value);
+  };
   return (
-    <div className="flex justify-center peer" onClick={onSelect}>
+    <div className="flex justify-center peer" onClick={handleSelect}>
       <input
         type="radio"
         value={value}
         checked={checked}
-        onChange={onSelect}
+        onChange={handleSelect}
         className="appearance-none"
       />
       <label

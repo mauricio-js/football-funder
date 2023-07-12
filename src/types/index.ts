@@ -9,4 +9,4 @@ export * from './homePageType';
 export * from './landingPageType';
 export * from './profilePageType';
 export * from './routes';
-export * from './messages';
+export * from './messagesType';

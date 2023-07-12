@@ -101,35 +101,30 @@ export const FoundedData: InputType = {
     label: "Founded",
     height: "h-[54px]",
     textSize: "generalText",
-    padding:" px-3 py-4",
     type: "text",
 }
 export const TrophiesData: InputType = { 
     label: "Trophies",
     height: "h-[54px]",
     textSize: "generalText",
-    padding:" px-3 py-4",
     type: "text",
 }
 export const CapacityData: InputType = { 
     label: "Capacity",
     height: "h-[54px]",
     textSize: "generalText",
-    padding:" px-3 py-4",
     type: "text",
 }
 export const AverageAttendanceData: InputType = { 
     label: "Average attendance",
     height: "h-[54px]",
     textSize: "generalText",
-    padding:" px-3 py-4",
     type: "text",
 }
 export const AveragePlayerAgeData: InputType = { 
     label: "Average player age",
     height: "h-[54px]",
     textSize: "generalText",
-    padding:" px-3 py-4",
     type: "text",
 }
 
@@ -138,7 +133,6 @@ export const WebSiteURLData: InputType = {
     label: "Website URL",
     height: "h-[58px]",
     textSize: "text-[16px] leading-[22px]",
-    padding:" px-3 py-4",
     type: "text",
 }
 

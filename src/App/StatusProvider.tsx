@@ -5,7 +5,8 @@ interface Props {
   children: React.ReactNode;
 }
 
-type position = "top-right" 
+type position =
+  | "top-right"
   | "top-center"
   | "top-left"
   | "bottom-right"
@@ -14,11 +15,7 @@ type position = "top-right"
   | "top-right";
 type VariantType = "info" | "success" | "error" | "default" | "warning";
 export interface StatusStore {
-  showStatus: (
-    msg: string,
-    type?: VariantType,
-    position?: position
-  ) => void;
+  showStatus: (msg: string, type?: VariantType, position?: position) => void;
 }
 
 const placeholder = {} as StatusStore;
@@ -31,7 +28,7 @@ export function StatusProvider(props: Props) {
 
   useEffect(() => {
     if (message !== "") {
-      if(type === 'error') {
+      if (type === "error") {
         toast.error(`${message}`, {
           position: position,
           autoClose: 2000,
@@ -60,7 +57,7 @@ export function StatusProvider(props: Props) {
   const showStatus = (
     msg: string,
     type: VariantType = "success",
-    position: position = "bottom-left",
+    position: position = "bottom-left"
   ) => {
     setType(type);
     setPosition(position);

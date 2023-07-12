@@ -39,18 +39,22 @@ export const ForgotPassword: React.FC = () => {
     }
   }
 
-  const sendForgotPasswordLink = useMutation((params: any) => axios.post('/auth/send_password_reset', params), {
-    onSuccess: () => {
-      showStatus('Just sent a reset password link. Please check your email!')
-    },
-    onError: (err: any) => {
-      const error = err.response?.data?.error ?? ''
-      if(error === 'invalid-user') showStatus('You are not registered user!', 'error')
-    },
-  })
+  const sendForgotPasswordLink = useMutation(
+    (params: any) => axios.post("/auth/send_password_reset", params),
+    {
+      onSuccess: () => {
+        showStatus("Just sent a reset password link. Please check your email!");
+      },
+      onError: (err: any) => {
+        const error = err.response?.data?.error ?? "";
+        if (error === "invalid-user")
+          showStatus("You are not registered user!", "error");
+      },
+    }
+  );
 
   function handleSendResetPassword() {
-    sendForgotPasswordLink.mutate(formValues)
+    sendForgotPasswordLink.mutate(formValues);
   }
 
   const pages: { name: string; component: React.ReactNode }[] = [
@@ -81,7 +85,10 @@ export const ForgotPassword: React.FC = () => {
   ];
 
   return (
-    <Template title="ForgotPassword" isLoading={sendForgotPasswordLink.isLoading}>
+    <Template
+      title="ForgotPassword"
+      isLoading={sendForgotPasswordLink.isLoading}
+    >
       <GeneralStepper pages={pages} stepNumber={currentStep} />
     </Template>
   );

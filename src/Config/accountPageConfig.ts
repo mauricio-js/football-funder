@@ -159,12 +159,12 @@ export const RewardsSortbyData: SelectDataType[] = [
 export const CampaignCheckboxData:RadioButtonDataType[] = [
     {
         label: "Live",
-        value: "live",
+        value: 1,
         classes:"gap-[10px] flex-row-reverse justify-end"
     },
     {
         label: "Funded",
-        value: "funded",
+        value: 0,
         classes:"gap-[10px] flex-row-reverse justify-end"
     },
 ];
@@ -172,17 +172,17 @@ export const CampaignCheckboxData:RadioButtonDataType[] = [
 export const DownloadFormatData:RadioButtonDataType[] = [
         {
             label: "PDF",
-            value: "pdf",
+            value: 0,
             classes:"gap-[10px] flex-row-reverse justify-end"
         },
         {
             label: "XLS",
-            value: "xls",
+            value: 1,
             classes:"gap-[10px] flex-row-reverse justify-end",
         },
         {
             label: "CSV",
-            value: "csv",
+            value: 2,
             classes:"gap-[10px] flex-row-reverse justify-end",
         },
        

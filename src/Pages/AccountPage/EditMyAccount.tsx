@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { UPDATEPASSWORD_URL } from "Lib";
 
@@ -36,48 +36,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 export const EditMyAccount: React.FC = () => {
   const navigate = useNavigate();
 
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-  const [selectedContactCountryOption, setSelectedContactCountryOption] =
-    useState<string>("");
-  const [
-    selectedOrganisationCountryOption,
-    setSelectedOrganisationCountryOption,
-  ] = useState<string>("");
-
-  const [selectedCategoryOption, setSelectedCategoryOption] =
-    useState<string>("");
-
-  const handleSelectedContactCountryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedContactCountryOption(event.target.value);
-  };
-
-  const handleSelectedOrganisationCountryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedOrganisationCountryOption(event.target.value);
-  };
-
-  const handleSelectCategoryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedCategoryOption(event.target.value);
-  };
-
-  const [date, setDate] = useState<Date | null>(null);
-
-  const [country, setCountry] = useState<string>(
-    ContactPhoneNumberData[0].country
-  );
-
   return (
     <Template>
       <form>
@@ -112,50 +70,27 @@ export const EditMyAccount: React.FC = () => {
               </div>
               <div className="xs:w-[500px]">
                 <div className="mt-30 flex flex-col gap-2.5">
-                  <Input
-                    data={ContactOrganisationData}
-                    name="organisation"
-                    onChange={handleInputChange}
-                    value={formValues.organisation || ""}
-                  />
+                  <Input data={ContactOrganisationData} name="organisation" />
                   <div className="flex gap-[10px]">
                     <div className="w-1/2">
-                      <Input
-                        data={ContactPostcodeData}
-                        name="post_code"
-                        onChange={handleInputChange}
-                        value={formValues.post_code || ""}
-                      />
+                      <Input data={ContactPostcodeData} name="post_code" />
                     </div>
                     <div className="w-1/2">
-                      <Input
-                        data={AddressData}
-                        name="address"
-                        onChange={handleInputChange}
-                        value={formValues.address || ""}
-                      />
+                      <Input data={AddressData} name="address" />
                     </div>
                   </div>
                   <Select
                     backgroundColor="bg-white"
-                    border="border-[1px] border-gray-300"
-                    onOptionChange={handleSelectedOrganisationCountryChange}
-                    placeholder="text-gray-500"
-                    placeholderText="Country (Region)"
+                    name="organisation_country"
+                    label="Country (Region)"
                     SelectFormData={RegionData}
-                    selectedOption={selectedOrganisationCountryOption}
-                    textColor="text-green-70"
                     textSize="generalText"
                   />
                   <Select
                     backgroundColor="bg-white"
-                    border="border-[1px] border-gray-300"
-                    onOptionChange={handleSelectCategoryChange}
-                    placeholder="text-gray-500"
-                    placeholderText="Category"
+                    name="category"
+                    label="Category"
                     SelectFormData={CategoryData}
-                    selectedOption={selectedCategoryOption}
-                    textColor="text-green-70"
                     textSize="generalText"
                   />
                 </div>
@@ -164,32 +99,14 @@ export const EditMyAccount: React.FC = () => {
                   <div className="mt-[15px]">
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex flex-col gap-[10px]">
-                        <Input
-                          data={FirstNameData}
-                          name="first_name"
-                          onChange={handleInputChange}
-                          value={formValues.first_name || ""}
-                        />
-                        <Input
-                          data={LastNameData}
-                          name="last_name"
-                          onChange={handleInputChange}
-                          value={formValues.last_name || ""}
-                        />
+                        <Input data={FirstNameData} name="first_name" />
+                        <Input data={LastNameData} name="last_name" />
 
-                        <DatePicker
-                          data={DateData}
-                          setValue={setDate}
-                          value={date}
-                        />
+                        <DatePicker data={DateData} name="birth" />
                       </div>
                       <DropdownInput
-                        country={country}
                         data={ContactPhoneNumberData}
-                        selectCountry={setCountry}
                         name="phone_number"
-                        onChange={handleInputChange}
-                        value={formValues.phone_number || ""}
                       />
                       <div className="flex flex-col gap-[10px]">
                         <div className="flex gap-[10px]">
@@ -197,30 +114,19 @@ export const EditMyAccount: React.FC = () => {
                             <Input
                               data={ContactPostcodeData}
                               name="post_code"
-                              onChange={handleInputChange}
-                              value={formValues.post_code || ""}
                             />
                           </div>
                           <div className="w-1/2">
-                            <Input
-                              data={AddressData}
-                              name="address"
-                              onChange={handleInputChange}
-                              value={formValues.address || ""}
-                            />
+                            <Input data={AddressData} name="address" />
                           </div>
                         </div>
                       </div>
                       <div>
                         <Select
                           backgroundColor="bg-white"
-                          border="border-[1px] border-gray-300"
-                          onOptionChange={handleSelectedContactCountryChange}
-                          placeholder="text-gray-500"
-                          placeholderText="Country (Region)"
+                          name="contact_country"
+                          label="Country (Region)"
                           SelectFormData={RegionData}
-                          selectedOption={selectedContactCountryOption}
-                          textColor="text-green-70"
                           textSize="generalText"
                         />
                       </div>
@@ -230,18 +136,11 @@ export const EditMyAccount: React.FC = () => {
                 <div className="mt-30">
                   <PageSectionTitle title="Account Details" />
                   <div className="mt-5 flex flex-col gap-2.5">
-                    <Input
-                      data={AccountEmailData}
-                      name="email"
-                      onChange={handleInputChange}
-                      value={formValues.email || ""}
-                    />
+                    <Input data={AccountEmailData} name="email" />
                     <Input
                       data={AccountPasswordData}
                       disabled={true}
                       name="password"
-                      onChange={handleInputChange}
-                      value={formValues.password || ""}
                     />
                   </div>
                   <div className="mt-5">

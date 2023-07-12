@@ -51,16 +51,6 @@ export const MyAccountPage: React.FC = () => {
 
   const [clicked, setClicked] = useState<boolean>(false);
 
-  const [campaign, setCampaign] = useState<string[]>([""]);
-
-  const [selectedSortbyOption, setSelectedSortbyOption] = useState<string>("");
-
-  const handleSelectedSortbyChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedSortbyOption(event.target.value);
-  };
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [updatedPassword, setUpdatedPassword] = useState<string>(
     sessionStorage.getItem("updatedPassword") || "false"
@@ -406,13 +396,9 @@ export const MyAccountPage: React.FC = () => {
                               <div className="mt-2.5">
                                 <Select
                                   backgroundColor="bg-white"
-                                  border="border-[1px] border-gray-300"
-                                  onOptionChange={handleSelectedSortbyChange}
-                                  placeholder="text-gray-500"
-                                  placeholderText="Sort by"
+                                  name="sort"
+                                  label="Sort by"
                                   SelectFormData={RewardsSortbyData}
-                                  selectedOption={selectedSortbyOption}
-                                  textColor="text-green-70"
                                   textSize="generalText"
                                 />
                               </div>
@@ -424,8 +410,7 @@ export const MyAccountPage: React.FC = () => {
                                   classes="flex md:gap-[60px] gap-30"
                                   textStyle="text-[16px] leading-5 text-green-70"
                                   options={CampaignCheckboxData}
-                                  selectedValues={campaign}
-                                  setValues={setCampaign}
+                                  name="campaign_checkbox"
                                 />
                               </div>
                             </div>

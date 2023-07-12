@@ -20,34 +20,31 @@ import {
   EmailCommunicationAlterCheckboxData,
 } from "Config";
 import { SIGNIN_URL } from "Lib";
-import { StatusContext } from 'App/StatusProvider';
+import { StatusContext } from "App/StatusProvider";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 interface SignInThirdPagePropsType {
   handlePrevPage: () => void;
   countryPhone: string;
   setCountryPhone: (countryPhone: string) => void;
-  eCConfirm: string;
-  setECConfirm: (eCConfirm: string) => void;
+  eCConfirm: number | undefined;
+  setECConfirm: (eCConfirm: number) => void;
   confirm: boolean;
   onHandleConfirm: () => void;
-  formValues: { [key: string]: string };
   onInputChange: (name: string, value: string) => void;
   handleSubmit: () => void;
 }
 export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
   handlePrevPage,
   confirm,
-  countryPhone,
   eCConfirm,
-  setCountryPhone,
   setECConfirm,
   onHandleConfirm,
-  formValues,
-  onInputChange,
   handleSubmit,
 }) => {
   const navigate = useNavigate();
   const { showStatus } = useContext(StatusContext);
+  const { formValues } = useContext(FormStepperContext)!;
 
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
@@ -56,9 +53,14 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
   const SignInFinalPageAction = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (formValues.password !== formValues.confirm_password) {
-      showStatus('These passwords do not match. Try again.', 'error')
+      showStatus("These passwords do not match. Try again.", "error");
     } else if (formValues.password.length < 8) {
-      showStatus('Password must be longer than 8 characters', 'error')
+      showStatus("Password must be longer than 8 characters", "error");
+    } else if (!confirm) {
+      showStatus(
+        "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
+        "error"
+      );
     } else {
       handleSubmit();
     }
@@ -88,25 +90,11 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               Use official name - if individual, use full name.
             </div>
             <div className="mt-15 flex flex-col gap-15">
-              <Input
-                data={FirstNameData}
-                name="first_name"
-                onChange={onInputChange}
-                value={formValues.first_name || ""}
-              />
-              <Input
-                data={LastNameData}
-                name="last_name"
-                onChange={onInputChange}
-                value={formValues.last_name || ""}
-              />
+              <Input data={FirstNameData} name="first_name" />
+              <Input data={LastNameData} name="last_name" />
               <DropdownInput
                 data={ContactPhoneNumberData}
-                country={countryPhone}
-                selectCountry={setCountryPhone}
                 name="phone_number"
-                onChange={onInputChange}
-                value={formValues.phone_number || ""}
               />
             </div>
           </div>
@@ -116,12 +104,7 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               This will double up as your username.
             </div>
             <div className="mt-15">
-              <Input
-                data={AccountEmailData}
-                name="email"
-                onChange={onInputChange}
-                value={formValues.email || ""}
-              />
+              <Input data={AccountEmailData} name="email" />
             </div>
           </div>
           <div className="mt-30">
@@ -131,17 +114,10 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               managing  your campaign.
             </div>
             <div className="mt-15 flex flex-col gap-2.5">
-              <Input
-                data={AccountPasswordData}
-                name="password"
-                onChange={onInputChange}
-                value={formValues.password || ""}
-              />
+              <Input data={AccountPasswordData} name="password" />
               <Input
                 data={AccountConfirmPasswordData}
                 name="confirm_password"
-                onChange={onInputChange}
-                value={formValues.confirm_password || ""}
               />
             </div>
           </div>
@@ -168,11 +144,10 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
             <div className="mt-[15px]">
               <CheckBox
                 align="flex-row-reverse gap-[10px]"
-                checked={confirm}
                 label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-                onSelect={onHandleConfirm}
-                value="checked"
+                value={0}
                 textClass="introText"
+                name="confirm"
               />
             </div>
           </div>

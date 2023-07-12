@@ -51,8 +51,7 @@ export const SignUpStepFirst: React.FC<SignUpFirstPagePropsType> = ({
         <div className="mt-[15px]">
           <CategoryButtonList
             options={FundraiserCategoryData}
-            currentValue={categoryId}
-            onSelect={setCategoryId}
+            name="fundraiser_category"
           />
         </div>
       </div>

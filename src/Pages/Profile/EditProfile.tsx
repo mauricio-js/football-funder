@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ColorContext } from "Lib";
+import { ColorContext } from "App/ColorProvider";
 
 import {
   Button,
@@ -39,15 +39,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const EditProfile: React.FC = () => {
   const navigate = useNavigate();
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
 
   const { backgroundColor, setBackgroundColor } = useContext(ColorContext)!;
 
@@ -113,19 +104,14 @@ export const EditProfile: React.FC = () => {
               <>
                 <div className="buttonText text-green-70">Display name</div>
                 <div className="mt-15">
-                  <Input
-                    data={NameData}
-                    disabled={false}
-                    name="name"
-                    onChange={handleInputChange}
-                    value={formValues.name}
-                  />
+                  <Input data={NameData} disabled={false} name="name" />
                 </div>
               </>
               <div className="mt-30">
                 <div className="buttonText text-green-70">About</div>
                 <div className="mt-15">
                   <Textarea
+                    name="description"
                     showLeftCharacters={true}
                     height="h-[150px]"
                     limit={300}
@@ -340,47 +326,20 @@ export const EditProfile: React.FC = () => {
               <div className="mt-30">
                 <EditProfileListTitle title="Stats" />
                 <div className="mt-15 flex flex-col gap-2.5">
-                  <Input
-                    data={FoundedData}
-                    name="funded"
-                    onChange={handleInputChange}
-                    value={formValues.funded || ""}
-                  />
-                  <Input
-                    data={TrophiesData}
-                    name="trophies"
-                    onChange={handleInputChange}
-                    value={formValues.trophies || ""}
-                  />
-                  <Input
-                    data={CapacityData}
-                    name="capacity"
-                    onChange={handleInputChange}
-                    value={formValues.capacity || ""}
-                  />
+                  <Input data={FoundedData} name="funded" />
+                  <Input data={TrophiesData} name="trophies" />
+                  <Input data={CapacityData} name="capacity" />
                   <Input
                     data={AverageAttendanceData}
                     name="average_attendance"
-                    onChange={handleInputChange}
-                    value={formValues.average_attendance || ""}
                   />
-                  <Input
-                    data={AveragePlayerAgeData}
-                    name="averagePlayerAge"
-                    onChange={handleInputChange}
-                    value={formValues.averagePlayerAge || ""}
-                  />
+                  <Input data={AveragePlayerAgeData} name="averagePlayerAge" />
                 </div>
               </div>
               <div className="mt-30">
                 <div className="buttonText text-green-70">Website link</div>
                 <div className="mt-15">
-                  <Input
-                    data={WebSiteURLData}
-                    name="website_url"
-                    onChange={handleInputChange}
-                    value={formValues.website_url || ""}
-                  />
+                  <Input data={WebSiteURLData} name="website_url" />
                 </div>
               </div>
             </div>

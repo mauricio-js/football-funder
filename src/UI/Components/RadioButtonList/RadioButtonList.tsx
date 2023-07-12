@@ -5,8 +5,8 @@ import { RadioButtonDataType } from "types";
 
 interface RadioButtonListProps {
   options: RadioButtonDataType[];
-  currentValue: string;
-  onSelect: (value: string) => void;
+  currentValue: number | undefined;
+  onSelect: (value: number) => void;
   classes?: string;
   textStyle: string;
   checkboxStyle: boolean;
@@ -21,7 +21,7 @@ export const RadioButtonList: React.FC<RadioButtonListProps> = ({
   checkboxStyle,
 }) => {
   const handleSelect = useCallback(
-    (value: string) => {
+    (value: number) => {
       // console.log("selected value", value);
       onSelect(value);
     },
@@ -32,7 +32,7 @@ export const RadioButtonList: React.FC<RadioButtonListProps> = ({
   return (
     <div className={classNames(classes)}>
       {options.map((option, index) => (
-        <div className="" key={index}>
+        <div key={index}>
           <RadioButton
             value={option.value}
             name={option.label}

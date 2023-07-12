@@ -30,7 +30,7 @@ import ClubImage from "Assets/images/profile/club-image.png";
 import ClubLogo from "Assets/images/profile/club-logo.png";
 import SmallCardImg1 from "Assets/images/explore/card-b.png";
 import SmallCardImg2 from "Assets/images/explore/card-c.png";
-import { ColorContext } from "Lib";
+import { ColorContext } from "App/ColorProvider";
 import classNames from "classnames";
 
 export const ProfilePage = () => {

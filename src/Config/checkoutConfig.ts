@@ -5,7 +5,6 @@ export const AddressData: InputType = {
         content:"after:content-['*'] after:ml-1 after:text-green-10 ",
         height: "h-[54px]",
         label: "Address",
-        padding:" px-3 py-4",
         textSize: "generalText",
         type: "text",
 }
@@ -15,7 +14,6 @@ export const CardNumberData : InputType = {
         content:"after:content-['*'] after:ml-1 after:text-green-10 ",
         height: "h-[54px]",
         label: "Card number",
-        padding:" px-3 py-4",
         textSize: "generalText",
         type: "text",
 }
@@ -25,7 +23,6 @@ export const ExpiryData: InputType = {
         content:"after:content-['*'] after:ml-1 after:text-green-10 ",
         height: "h-[54px]",
         label: "Expiry",
-        padding:" px-3 py-4",
         textSize: "generalText",
         type: "text",
 }
@@ -35,7 +32,6 @@ export const CvcData: InputType = {
         content: "after:content-['*'] after:ml-1 after:text-green-10 ",
         height: "h-[54px]",
         label: "CVC",
-        padding: " px-3 py-4",
         textSize: "generalText",
         type: "text",
 }
@@ -45,7 +41,6 @@ export const PostcodeData: InputType = {
         content: "after:content-['*'] after:ml-1 after:text-green-10 ",
         height: "h-[54px]",
         label: "Postcode",
-        padding: " px-3 py-4",
         textSize: "generalText",
         type: "text",
 }
@@ -53,12 +48,12 @@ export const PostcodeData: InputType = {
 export const PaymentMethodData:RadioButtonDataType[] = [
         {
             label: "Card",
-            value: "card",
+            value: 0,
             classes:"gap-[10px] flex-row-reverse justify-end"
         },
         {
             label: "Paypal",
-            value: "paypal",
+            value: 1,
             classes:"gap-[10px] flex-row-reverse justify-end",
         },
        

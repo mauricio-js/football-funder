@@ -4,29 +4,33 @@ import { RadioButtonDataType } from "types";
 import classNames from "classnames";
 
 interface CheckboxListDataProps {
+  name: string;
   classes?: string;
   options: RadioButtonDataType[];
-  selectedValues: string[];
-  setValues: (values: string[]) => void;
+  // selectedValues: string[];
+  // setValues: (values: string[]) => void;
   textStyle: string;
 }
 
 export const GeneralCheckBoxList: React.FC<CheckboxListDataProps> = ({
   classes,
   options,
-  selectedValues,
-  setValues,
+  // selectedValues,
+  // setValues,
   textStyle,
+  name,
 }) => {
-  const onHandleSelectedCheckbox = (value: string) => {
-    const index = selectedValues.findIndex((val) => val === value);
-    if (index < 0) {
-      setValues([...selectedValues, value]);
-    } else {
-      const filteredData = selectedValues.filter((val) => val !== value);
-      setValues(filteredData);
-    }
-  };
+  // const { selectedCheckbox, handleSelectedCheckbox } =
+  //   useContext(FormStepperContext);
+  // const onHandleSelectedCheckbox = (value: string) => {
+  //   const index = selectedValues.findIndex((val) => val === value);
+  //   if (index < 0) {
+  //     setValues([...selectedValues, value]);
+  //   } else {
+  //     const filteredData = selectedValues.filter((val) => val !== value);
+  //     setValues(filteredData);
+  //   }
+  // };
   //console.log(selectedValues);
 
   return (
@@ -36,10 +40,11 @@ export const GeneralCheckBoxList: React.FC<CheckboxListDataProps> = ({
           <div key={index}>
             <CheckBox
               align="flex-row-reverse gap-[10px]"
+              name={name}
               value={item.value}
               label={item.label}
-              checked={selectedValues.includes(item.value)}
-              onSelect={onHandleSelectedCheckbox}
+              // checked={selectedCheckbox[name].includes(item.value)}
+              // onSelect={onHandleSelectedCheckbox}
               textClass={textStyle}
             />
           </div>

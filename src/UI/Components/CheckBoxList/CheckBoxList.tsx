@@ -4,31 +4,33 @@ import { RadioButtonDataType } from "types";
 
 interface FilterDataProps {
   options: RadioButtonDataType[];
-  selectedValues: string[];
-  setValues: (values: string[]) => void;
+  selectedValues: number[];
+  setValues: (values: number[]) => void;
+  name: string;
 }
 
 export const CheckBoxList: React.FC<FilterDataProps> = ({
   options,
   selectedValues,
   setValues,
+  name,
 }) => {
-  const onHandleSelectedCheckbox = (value: string) => {
-    if (value === "all") {
-      setValues(["all"]);
-    } else {
-      const index = selectedValues.findIndex((val) => val === value);
-      if (index < 0) {
-        const filteredData = selectedValues.filter((val) => val !== "all");
-        setValues([...filteredData, value]);
-      } else {
-        const filteredData = selectedValues.filter(
-          (val) => val !== value && val !== "all"
-        );
-        setValues(filteredData);
-      }
-    }
-  };
+  // const onHandleSelectedCheckbox = (value: string) => {
+  //   if (value === "all") {
+  //     setValues(["all"]);
+  //   } else {
+  //     const index = selectedValues.findIndex((val) => val === value);
+  //     if (index < 0) {
+  //       const filteredData = selectedValues.filter((val) => val !== "all");
+  //       setValues([...filteredData, value]);
+  //     } else {
+  //       const filteredData = selectedValues.filter(
+  //         (val) => val !== value && val !== "all"
+  //       );
+  //       setValues(filteredData);
+  //     }
+  //   }
+  // };
   // console.log(selectedValues);
 
   return (
@@ -39,9 +41,8 @@ export const CheckBoxList: React.FC<FilterDataProps> = ({
             <CheckBox
               value={item.value}
               label={item.label}
-              checked={selectedValues.includes(item.value)}
-              onSelect={onHandleSelectedCheckbox}
               textClass="text-green-70 generalText"
+              name={name}
             />
           </div>
         );

@@ -138,6 +138,7 @@ export const ChattingAccordion: React.FC<ChattingAccordionPropsType> = ({
                 <div className="valueText">Send message</div>
                 <div className="mt-2.5">
                   <Textarea
+                    name="chatting"
                     showLeftCharacters={false}
                     placeholder="Type something..."
                     height="h-[50px]"

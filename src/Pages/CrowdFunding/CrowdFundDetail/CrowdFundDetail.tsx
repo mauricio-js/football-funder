@@ -70,7 +70,6 @@ export const CrowdFundDetail: React.FC<DetailMenuPagePropsType> = ({
   const handleOnChange = () => {
     setAmount(crowdFundAmount);
   };
-  console.log("current active", active);
 
   return (
     <Template>

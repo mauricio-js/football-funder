@@ -1,6 +1,6 @@
 export interface RadioButtonType  { 
     name: string,
-    value: string,
+    value: number,
     checked: boolean,
     checkboxStyle:boolean,
     disabled?:boolean,

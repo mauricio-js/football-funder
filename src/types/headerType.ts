@@ -7,7 +7,7 @@ export interface MenuItemType {
 };
 export interface HamburgerMenuItemType {
   title: string,
-  href: string,
+  href?: string,
   children?: ButtonItemType[]
 };
 export interface ButtonItemType {

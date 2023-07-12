@@ -52,13 +52,6 @@ export const RadioButton: React.FC<RadioButtonType> = ({
           </div>
         )}
       </div>
-      {/* <style>
-        {`
-        .checkbox:checked + .check-icon {
-          display: flex;
-        }
-      `}
-      </style> */}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { CROWDFUNDDETAILLIVEMENU_URL } from "Lib";
@@ -27,25 +27,6 @@ import {
 
 export const MakeWithdrawal: React.FC = () => {
   const navigate = useNavigate();
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
-  const [selectedCountryOption, setSelectedCountryOption] =
-    useState<string>("");
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCountryOption(event.target.value);
-  };
-
-  const [country, setCountry] = useState<string>(
-    ContactPhoneNumberData[0].country
-  );
 
   return (
     <Template>
@@ -79,44 +60,21 @@ export const MakeWithdrawal: React.FC = () => {
             <div className="mt-[15px]">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px]">
-                  <Input
-                    data={FirstNameData}
-                    name="first_name"
-                    onChange={handleInputChange}
-                    value={formValues.first_name || ""}
-                  />
-                  <Input
-                    data={LastNameData}
-                    name="last_name"
-                    onChange={handleInputChange}
-                    value={formValues.last_name || ""}
-                  />
+                  <Input data={FirstNameData} name="first_name" />
+                  <Input data={LastNameData} name="last_name" />
                   <DropdownInput
-                    country={country}
                     data={ContactPhoneNumberData}
-                    selectCountry={setCountry}
                     name="phone_number"
-                    onChange={handleInputChange}
-                    value={formValues.phone_number || ""}
                   />
 
-                  <Input
-                    data={AddressData}
-                    name="address"
-                    onChange={handleInputChange}
-                    value={formValues.address || ""}
-                  />
+                  <Input data={AddressData} name="address" />
                 </div>
                 <div>
                   <Select
                     backgroundColor="bg-white"
-                    border="border-[1px] border-gray-300"
-                    onOptionChange={handleSelectChange}
-                    placeholder="text-gray-500"
-                    placeholderText="Country (Region)"
+                    name="country"
+                    label="Country (Region)"
                     SelectFormData={RegionData}
-                    selectedOption={selectedCountryOption}
-                    textColor="text-green-70"
                     textSize="generalText"
                   />
                 </div>
@@ -126,18 +84,8 @@ export const MakeWithdrawal: React.FC = () => {
           <div className="mt-30">
             <PageSectionTitle title="Account" />
             <div className="mt-5 flex flex-col gap-[10px]">
-              <Input
-                data={AccountNumberData}
-                name="account_number"
-                onChange={handleInputChange}
-                value={formValues.account_number || ""}
-              />
-              <Input
-                data={SortCodeData}
-                name="sort_code"
-                onChange={handleInputChange}
-                value={formValues.sort_code || ""}
-              />
+              <Input data={AccountNumberData} name="account_number" />
+              <Input data={SortCodeData} name="sort_code" />
             </div>
           </div>
         </div>

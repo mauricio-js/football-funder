@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
+import { FormStepperContext } from "App/FormStepperProvider";
 import { useNavigate } from "react-router-dom";
 import {
   FORGOTPASSWORD_URL,
   SIGNUP_URL,
-  HOME_URL,
+  MYACCOUNT_URL,
   useAxios,
   useIsMounted,
 } from "Lib";
@@ -14,20 +15,12 @@ import { loginFormDataType } from "./types";
 
 export const Signin: React.FC = () => {
   const navigate = useNavigate();
+  const { formValues } = useContext(FormStepperContext)!;
   const { setSafely } = useIsMounted();
   const { showStatus } = useContext(StatusContext);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // const { setSafely } = useIsMounted();
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
 
   const data: loginFormDataType = {
     action: "validate-login",
@@ -42,18 +35,18 @@ export const Signin: React.FC = () => {
     axios
       .post(`/auth/login`, data)
       .then((res) => {
-        console.log(res);
-        // const data = res.data as FetchLoginDataResponseType;
+        // console.log(res);
         setSafely(setIsLoading, false);
-        // dispatch(setLogin(res.data));
-        navigate(HOME_URL);
+        navigate(MYACCOUNT_URL);
       })
       .catch((err) => {
         const errorMessage = err.response?.data.error;
-        console.log(errorMessage);
-        if(errorMessage === 'no-such-account') showStatus("Your account doesn't exist!" , 'error')
-        else if(errorMessage === 'unverified-user') showStatus("Your account has not been verified!" , 'error')
-        else showStatus("Your password is invalid!" , 'error')
+        // console.log(errorMessage);
+        if (errorMessage === "no-such-account")
+          showStatus("Your account doesn't exist!", "error");
+        else if (errorMessage === "unverified-user")
+          showStatus("Your account has not been verified!", "error");
+        else showStatus("Your password is invalid!", "error");
         setSafely(setIsLoading, false);
       });
   };
@@ -74,19 +67,9 @@ export const Signin: React.FC = () => {
               <TextButton text="Sign Up" handleClick={goToSignUp} />
             </div>
             <div className="mt-30">
-              <Input
-                data={AccountEmailData}
-                name="email"
-                onChange={handleInputChange}
-                value={formValues.email || ""}
-              />
+              <Input data={AccountEmailData} name="email" />
               <div className="mt-2.5">
-                <Input
-                  data={AccountPasswordData}
-                  name="password"
-                  onChange={handleInputChange}
-                  value={formValues.password || ""}
-                />
+                <Input data={AccountPasswordData} name="password" />
               </div>
             </div>
             <div className="mt-30">

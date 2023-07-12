@@ -1,30 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FormStepperContext } from "App/FormStepperProvider";
 import classNames from "classnames";
 import { BiPound } from "react-icons/bi";
 
 interface ShowAmountProps {
-  amount: number;
-  setAmount: (value: number) => void;
+  name: string;
   classes?: string;
 }
 
-export const AmountShow: React.FC<ShowAmountProps> = ({
-  amount,
-  setAmount,
-  classes,
-}) => {
-  const [inputValue, setInputValue] = useState(amount.toLocaleString("en-US"));
+export const AmountShow: React.FC<ShowAmountProps> = ({ name, classes }) => {
+  const { amount, handleAmountChange } = useContext(FormStepperContext)!;
+  const [inputValue, setInputValue] = useState(
+    amount[name] ? amount[name].toLocaleString("en-US") : ""
+  );
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.replace(/\D/g, "");
     setInputValue(value);
     const newAmount = Number(value);
     if (!isNaN(newAmount)) {
       setInputValue(newAmount.toLocaleString("en-US"));
-      setAmount(newAmount);
+      handleAmountChange(name, newAmount);
     }
   };
-  // console.log("amount", amount, inputValue);
-
   return (
     <div className="relative">
       <input
@@ -35,6 +32,7 @@ export const AmountShow: React.FC<ShowAmountProps> = ({
           classes
         )}
         onChange={onChangeHandler}
+        required
       />
       <div className="absolute top-0 h-full flex  items-center left-4 text-green-10">
         <BiPound />

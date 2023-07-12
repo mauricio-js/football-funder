@@ -3,7 +3,6 @@ export interface InputType{
      content?: string;
      height: string;
     label?: string;
-    padding: string,
     border?:string,
     textSize:string,
     type: string;

@@ -36,7 +36,7 @@ export interface DistanceDataType {
 
 export interface RadioButtonDataType { 
     label: string;
-    value: string;
+    value: number;
     classes?: string;
     textStyle?: string;
 }

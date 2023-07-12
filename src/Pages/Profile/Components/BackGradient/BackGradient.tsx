@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import classNames from "classnames";
 
-import { ColorContext } from "Lib";
+import { ColorContext } from "App/ColorProvider";
 
 export const BackGradient: React.FC = () => {
   const { backgroundColor } = useContext(ColorContext)!;

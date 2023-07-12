@@ -27,21 +27,13 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
   isShowFilterModal,
   typeItem,
 }) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+  const [sortBy, setSortby] = useState<number>();
 
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-  const [sortBy, setSortby] = useState<string>("promoted");
+  const [organisations, setOrganisations] = useState<number[]>([]);
 
-  const [organisations, setOrganisations] = useState<string[]>(["all"]);
+  const [type, setType] = useState<number[]>([]);
 
-  const [type, setType] = useState<string[]>(["all"]);
-
-  const [status, setStatus] = useState<string[]>(["all"]);
+  const [status, setStatus] = useState<number[]>([]);
 
   return (
     <form>
@@ -77,6 +69,7 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
               {typeItem && (
                 <Accordion title="Type">
                   <CheckBoxList
+                    name="type_filter"
                     options={TypeFilterData}
                     selectedValues={type}
                     setValues={setType}
@@ -85,6 +78,7 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
               )}
               <Accordion title="Organisation">
                 <CheckBoxList
+                  name="organisation_filter"
                   options={OrganisationFilterData}
                   selectedValues={organisations}
                   setValues={setOrganisations}
@@ -92,6 +86,7 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
               </Accordion>
               <Accordion title="Status">
                 <CheckBoxList
+                  name="status_filter"
                   options={StatusFilterData}
                   selectedValues={status}
                   setValues={setStatus}
@@ -103,16 +98,12 @@ export const FilterMenu: React.FC<FilterMenuProps> = ({
                     <Input
                       data={MileDistanceInputFormData}
                       name="mile_distance"
-                      onChange={handleInputChange}
-                      value={formValues.mile_distance}
                     />
                   </div>
                   <div className="w-[180px]">
                     <Input
                       data={PostcodeDistanceInputFormData}
                       name="postcode_distance"
-                      onChange={handleInputChange}
-                      value={formValues.postcode_distance}
                     />
                   </div>
                 </div>

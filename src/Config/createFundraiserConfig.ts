@@ -97,7 +97,6 @@ export const ContactOrganisationData: InputType = {
     label: "Organisation name",
     height: "h-[54px]",
     textSize: "text-[16px] leading-[22px]",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -127,7 +126,6 @@ export const ContactAddressLine1Data: InputType = {
     label: "Address line 1",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -136,7 +134,6 @@ export const ContactAddressLine2Data: InputType = {
     label: "Address line 2",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -145,7 +142,6 @@ export const ContactTownData: InputType = {
     label: "Town/City",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -154,7 +150,6 @@ export const ContactPostcodeData: InputType = {
     label: "Postcode",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -163,7 +158,6 @@ export const AccountEmailData: InputType = {
     label: "Email",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "email",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -172,7 +166,6 @@ export const AccountPasswordData: InputType = {
     label: "Password",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "password",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -181,7 +174,6 @@ export const AccountConfirmPasswordData: InputType = {
     label: "Confirm password",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "password",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -191,7 +183,6 @@ export const FirstNameData: InputType = {
     content: "after:content-['*'] after:ml-1 after:text-green-10 ",
     height: "h-[54px]",
     label: "First name",
-    padding: " px-3 py-4",
     textSize: "generalText",
     type: "text",
 }
@@ -201,7 +192,6 @@ export const LastNameData: InputType = {
     content: "after:content-['*'] after:ml-1 after:text-green-10",
     label: "Last name",
     height: "h-[54px]",
-    padding: " px-3 py-4",
     textSize: "generalText",
     type: "text",
 }
@@ -210,7 +200,6 @@ export const DateData: InputType = {
     label: "Date of Birth",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -219,7 +208,6 @@ export const DispatchDateData: InputType = {
     label: "Pick a date",
     height: "h-[54px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -230,7 +218,6 @@ export const PhoneNumberData: InputType = {
     label: "Phone Number",
     height: "h-[58px]",
     textSize: "generalText",
-    padding: " px-3 py-4",
     type: "tel",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -241,7 +228,6 @@ export const WebSiteData: InputType = {
     label: "Website",
     height: "h-[58px]",
     textSize: "text-[16px] leading-[22px]",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -251,7 +237,6 @@ export const VideoURLData: InputType = {
     label: "Video URL",
     height: "h-[54px]",
     textSize: "text-[16px] leading-[22px]",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -261,7 +246,6 @@ export const AvailableNumberData: InputType = {
     label: "Add a number",
     height: "h-[54px]",
     textSize: "text-[16px] leading-[22px]",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -271,7 +255,6 @@ export const AccountNumberData: InputType = {
     label: "Account number",
     height: "h-[54px]",
     textSize: "text-[16px] leading-[22px]",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -281,7 +264,6 @@ export const SortCodeData: InputType = {
     label: "Sort Code",
     height: "h-[54px]",
     textSize: "text-[16px] leading-[22px]",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -291,7 +273,6 @@ export const NameData: InputType = {
     label: "Name",
     height: "h-[54px]",
     textSize: "text-[16px] leading-[22px]",
-    padding: " px-3 py-4",
     type: "text",
     content: "after:content-['*'] after:ml-1 after:text-green-10 "
 }
@@ -328,12 +309,12 @@ export const CategoryData: SelectDataType[] = [
 export const DeliveryData: RadioButtonDataType[] = [
     {
         label: "Yes",
-        value: "yes",
+        value: 1,
         classes: "gap-[10px] flex-row-reverse justify-end"
     },
     {
         label: "No",
-        value: "no",
+        value:2,
         classes: "gap-[10px] flex-row-reverse justify-end",
     },
 
@@ -980,24 +961,24 @@ export const DonateLocationLabel: CardLabelType = {
 export const DonateCreateAccountConfirm: RadioButtonDataType[] = [
     {
         label: "I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy",
-        value: "confirm policy"
+        value: 0
     },
     {
         label: "I would like to sign up to receive newsletters from Football Funder. See Privacy Policy.",
-        value: "see policy"
+        value: 1
     },
 ]
 export const DonatePaymentConfirm: RadioButtonDataType[] = [
     {
         label: "I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy",
-        value: "confirm policy"
+        value: 2
     },
 ]
 
 export const SelectAnonymous: RadioButtonDataType[] = [
     {
         label: "Keep me anonymous",
-        value: "yes",
+        value: 0,
         classes: "gap-[10px] flex-row-reverse justify-end"
     },
 ];

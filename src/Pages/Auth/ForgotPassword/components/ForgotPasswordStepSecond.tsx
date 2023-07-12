@@ -11,7 +11,12 @@ interface ResetPasswordStep2PropsType {
 
 export const ForgotPasswordStepSecond: React.FC<
   ResetPasswordStep2PropsType
-> = ({ handleSendResetPassword, handlePrevPage, formValues, onInputChange }) => {
+> = ({
+  handleSendResetPassword,
+  handlePrevPage,
+  formValues,
+  onInputChange,
+}) => {
   return (
     <form onSubmit={handleSendResetPassword}>
       <div
@@ -28,18 +33,13 @@ export const ForgotPasswordStepSecond: React.FC<
         </div>
         <div className="w-full mx-auto">
           <div className="mt-30 xs:w-[500px] w-full mx-auto">
-            <Input
-              data={AccountEmailData}
-              name="email"
-              onChange={onInputChange}
-              value={formValues?.email || ""}
-            />
+            <Input data={AccountEmailData} name="email" />
           </div>
         </div>
         <div className="mt-30 w-full flex justify-center">
           <div className="xs:w-[500px] w-full">
             <Button
-              type='submit'
+              type="submit"
               backgroundColor="bg-green-10"
               height="h-[50px]"
               width="w-full"

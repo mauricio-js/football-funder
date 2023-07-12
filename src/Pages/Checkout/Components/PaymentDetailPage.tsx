@@ -27,15 +27,7 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-  const [paymentMethod, setPaymentMethod] = useState<string>("card");
+  const [paymentMethod, setPaymentMethod] = useState<number>();
 
   return (
     <form>
@@ -94,36 +86,16 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
           <div className="mt-30">
             <PageSectionTitle title="Card details" />
             <div className="mt-15 flex flex-col gap-2.5">
-              <Input
-                data={CardNumberData}
-                name="card_number"
-                onChange={handleInputChange}
-                value={formValues.card_number}
-              />
+              <Input data={CardNumberData} name="card_number" />
               <div className="flex gap-[10px]">
                 <div className="w-1/2">
-                  <Input
-                    data={ExpiryData}
-                    name="expiry"
-                    onChange={handleInputChange}
-                    value={formValues.expiry || ""}
-                  />
+                  <Input data={ExpiryData} name="expiry" />
                 </div>
                 <div className="w-1/2">
-                  <Input
-                    data={CvcData}
-                    name="cvc"
-                    onChange={handleInputChange}
-                    value={formValues.cvc || ""}
-                  />
+                  <Input data={CvcData} name="cvc" />
                 </div>
               </div>
-              <Input
-                data={PostcodeData}
-                name="post_code"
-                onChange={handleInputChange}
-                value={formValues.post_code || ""}
-              />
+              <Input data={PostcodeData} name="post_code" />
               <div className="mt-5">
                 <button className="w-full border-[1px] rounded-10 buttonText text-green-70 border-green-70 py-15">
                   Save as payment method

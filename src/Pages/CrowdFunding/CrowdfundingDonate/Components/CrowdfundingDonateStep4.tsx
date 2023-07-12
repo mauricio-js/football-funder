@@ -33,20 +33,9 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
-  const [paymentMethod, setPaymentMethod] = useState<string>("card");
+  const [paymentMethod, setPaymentMethod] = useState<number>();
 
   const [btnActive, setBtnActive] = useState<boolean>(false);
-
-  const [isConfirm, setIsConfirm] = useState<string[]>([""]);
 
   const handleClickPaymentMethodBtn = () => {
     setBtnActive(!btnActive);
@@ -118,36 +107,16 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
             <PageSectionTitle title="Card details" />
             {!btnActive ? (
               <div className="mt-15 flex flex-col gap-2.5">
-                <Input
-                  data={CardNumberData}
-                  name="card_number"
-                  onChange={handleInputChange}
-                  value={formValues.card_number || ""}
-                />
+                <Input data={CardNumberData} name="card_number" />
                 <div className="flex gap-[10px]">
                   <div className="w-1/2">
-                    <Input
-                      data={ExpiryData}
-                      name="expiry"
-                      onChange={handleInputChange}
-                      value={formValues.expiry || ""}
-                    />
+                    <Input data={ExpiryData} name="expiry" />
                   </div>
                   <div className="w-1/2">
-                    <Input
-                      data={CvcData}
-                      name="cvc"
-                      onChange={handleInputChange}
-                      value={formValues.cvc || ""}
-                    />
+                    <Input data={CvcData} name="cvc" />
                   </div>
                 </div>
-                <Input
-                  data={PostcodeData}
-                  name="post_code"
-                  onChange={handleInputChange}
-                  value={formValues.post_code}
-                />
+                <Input data={PostcodeData} name="post_code" />
               </div>
             ) : (
               <div className="mt-15 w-full">
@@ -187,9 +156,8 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
             <div className="mt-[15px]">
               <GeneralCheckBoxList
                 options={DonatePaymentConfirm}
-                selectedValues={isConfirm}
-                setValues={setIsConfirm}
                 textStyle="introText"
+                name="donate_payment_confirm"
               />
             </div>
           </div>

@@ -20,7 +20,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
   menuContent,
   menuTitle,
 }) => {
-  const [downloadFormat, setDownloadFormat] = useState<string>("");
+  const [downloadFormat, setDownloadFormat] = useState<number>();
 
   return (
     <Modal>

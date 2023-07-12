@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   DatePicker,
@@ -34,29 +34,6 @@ export const LivePageStep1: React.FC<LivePagePropsType> = ({
   introTitle,
   pageTitle,
 }) => {
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
-  const [selectedCountryOption, setSelectedCountryOption] =
-    useState<string>("");
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCountryOption(event.target.value);
-  };
-
-  const [date, setDate] = useState<Date | null>();
-
-  const [country, setCountry] = useState<string>(
-    ContactPhoneNumberData[0].country
-  );
-
-  const [isConfirm, setIsConfirm] = useState<string[]>([""]);
-
   return (
     <form>
       <div
@@ -88,59 +65,31 @@ export const LivePageStep1: React.FC<LivePagePropsType> = ({
           <div className="mt-[15px] xs:w-[500px]">
             <div className="flex flex-col gap-[10px]">
               <div className="flex flex-col gap-[10px]">
-                <Input
-                  data={FirstNameData}
-                  name="first_name"
-                  onChange={handleInputChange}
-                  value={formValues.first_name || ""}
-                />
-                <Input
-                  data={LastNameData}
-                  name="last_name"
-                  onChange={handleInputChange}
-                  value={formValues.last_name || ""}
-                />
+                <Input data={FirstNameData} name="first_name" />
+                <Input data={LastNameData} name="last_name" />
 
-                <DatePicker data={DateData} setValue={setDate} value={date} />
+                <DatePicker data={DateData} name="birth" />
               </div>
               <DropdownInput
-                country={country}
                 data={ContactPhoneNumberData}
-                selectCountry={setCountry}
                 name="phone_number"
-                onChange={handleInputChange}
-                value={formValues.phone_number || ""}
               />
               <div className="flex flex-col gap-[10px]">
                 <div className="flex gap-[10px]">
                   <div className="w-1/2">
-                    <Input
-                      data={ContactPostcodeData}
-                      name="post_code"
-                      onChange={handleInputChange}
-                      value={formValues.post_code || ""}
-                    />
+                    <Input data={ContactPostcodeData} name="post_code" />
                   </div>
                   <div className="w-1/2">
-                    <Input
-                      data={AddressData}
-                      name="address"
-                      onChange={handleInputChange}
-                      value={formValues.address || ""}
-                    />
+                    <Input data={AddressData} name="address" />
                   </div>
                 </div>
               </div>
               <div>
                 <Select
                   backgroundColor="bg-white"
-                  border="border-[1px] border-gray-300"
-                  onOptionChange={handleSelectChange}
-                  placeholder="text-gray-500"
-                  placeholderText="Country (Region)"
+                  name="country"
+                  label="Country (Region)"
                   SelectFormData={RegionData}
-                  selectedOption={selectedCountryOption}
-                  textColor="text-green-70"
                   textSize="generalText"
                 />
               </div>
@@ -150,24 +99,9 @@ export const LivePageStep1: React.FC<LivePagePropsType> = ({
         <div className="mt-30 xs:w-[500px]">
           <PageSectionTitle title="Account details" />
           <div className="mt-5 flex flex-col gap-[10px]">
-            <Input
-              data={AccountEmailData}
-              name="email"
-              onChange={handleInputChange}
-              value={formValues.email || ""}
-            />
-            <Input
-              data={AccountPasswordData}
-              name="password"
-              onChange={handleInputChange}
-              value={formValues.password || ""}
-            />
-            <Input
-              data={AccountConfirmPasswordData}
-              name="confirm_password"
-              onChange={handleInputChange}
-              value={formValues.confirm_password || ""}
-            />
+            <Input data={AccountEmailData} name="email" />
+            <Input data={AccountPasswordData} name="password" />
+            <Input data={AccountConfirmPasswordData} name="confirm_password" />
           </div>
         </div>
         <div className="mt-30">
@@ -175,9 +109,8 @@ export const LivePageStep1: React.FC<LivePagePropsType> = ({
           <div className="mt-[15px]">
             <GeneralCheckBoxList
               options={SaleAccountConfirm}
-              selectedValues={isConfirm}
-              setValues={setIsConfirm}
               textStyle="introText"
+              name="confirm"
             />
           </div>
         </div>

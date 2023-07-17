@@ -36,6 +36,8 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
     (state: AppState) => state.layoutState.isMobileMenu
   );
   const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
+  const { userInfo } = useSelector((state: any) => state.user);
+  const isUpdated = userInfo.first_name;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -60,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
 
   const logOut = () => {
     dispatch({ type: "RESET" });
-    navigate(SIGNUP_URL);
+    navigate(HOME_URL);
   };
 
   const handleAvatarMenuClick = () => {
@@ -106,7 +108,9 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
                         otherStyle="hover:bg-green-70 hover:bg-opacity-5"
                         handleClick={() => navigate(EXPLORE_URL)}
                       />
-                      <Dropdown List={fundraisingButtonData(isAuth)} />
+                      <Dropdown
+                        List={fundraisingButtonData(isAuth, isUpdated)}
+                      />
                       <Dropdown List={advertisingButtonData} />
                       <Dropdown List={sponsorshipButtonData} />
                       <Button

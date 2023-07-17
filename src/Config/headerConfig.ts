@@ -24,6 +24,8 @@ import {
     SearchDataType
 } from "types";
 import { MdSearch } from "react-icons/md";
+import { useSelector } from "react-redux";
+
 
 export const homeButtonData: ButtonItemType = {
         title: "Home",
@@ -49,13 +51,15 @@ export const feeButtonData: ButtonItemType = {
     title: "Fees",
       href:FEES_URL,
 }
-export const fundraisingButtonData = (isAuth: boolean) =>({
+export const fundraisingButtonData = (isAuth: boolean, isUpdated: string) => ({
+    // const { userInfo } = useSelector((state: any) => state.user)
+    // const isUpdated = userInfo.first_name
     title: "Fundraising",
     href: "/",
     children: [
         {
             title: "Fundraise",
-            href: isAuth ? FUNDRAISERACCOUNTUPDATE_URL : FUNDRAISERSIGNUP_URL,
+            href: isAuth ? (isUpdated? CREATEFUNDRAISER_URL : FUNDRAISERACCOUNTUPDATE_URL) : FUNDRAISERSIGNUP_URL,
         },
         {
             title: "Contribute",

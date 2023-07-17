@@ -20,7 +20,7 @@ import {
   supprotButtonData,
   HamburgerSearchData,
 } from "Config";
-import { SIGNUP_URL } from "Lib/urls";
+import { HOME_URL } from "Lib/urls";
 import { AppState } from "App/reducers";
 import { setShowMobileMenu } from "Data/LayoutState";
 import HeaderMenuLogo from "Assets/images/svg/logo/hamburger-menu-logo.svg";
@@ -36,10 +36,12 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
+  const { userInfo } = useSelector((state: any) => state.user);
+  const isUpdated = userInfo.first_name;
   const logOut = () => {
     dispatch({ type: "RESET" });
     dispatch(setShowMobileMenu(false));
-    navigate(SIGNUP_URL);
+    navigate(HOME_URL);
   };
   return (
     <div className="z-50">
@@ -65,7 +67,9 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
             <div className="flex flex-col divide-y divide-solid divide-green-30">
               <HamburgerItem Item={homeButtonData} />
               <HamburgerItem Item={exploreButtonData} />
-              <HamburgerSubMenuItem List={fundraisingButtonData(isAuth)} />
+              <HamburgerSubMenuItem
+                List={fundraisingButtonData(isAuth, isUpdated)}
+              />
               <HamburgerSubMenuItem List={advertisingButtonData} />
               <HamburgerSubMenuItem List={sponsorshipButtonData} />
               <HamburgerItem Item={feeButtonData} />

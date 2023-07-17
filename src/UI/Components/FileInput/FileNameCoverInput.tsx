@@ -11,7 +11,7 @@ interface FileInputProps {
 
 export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
   const axios = useAxios();
-  const { selectedImage, handleSelectedImage } =
+  const { selectedImage, handleSelectedImage, setIsLoading, isLoading } =
     useContext(FormStepperContext)!;
 
   async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -19,8 +19,9 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
     if (fileList && fileList.length > 0) {
       const seletedFile = fileList[0];
       let formData = new FormData();
-      formData.append('file', seletedFile);
+      formData.append("file", seletedFile);
       try {
+        setIsLoading(true);
         const response = await axios.post(
           "file/fundraiser/file_upload",
           formData,
@@ -30,6 +31,7 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
             },
           }
         );
+        setIsLoading(false);
         handleSelectedImage(name, seletedFile, response.data);
       } catch (error) {
         console.log(error);

@@ -38,7 +38,7 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     selectValue,
     addRewardData,
     handleRewardIdArray,
-    // rewardIdArray,
+    rewardIdArray,
   } = useContext(FormStepperContext);
 
   //  front-end
@@ -72,7 +72,8 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     {
       onSuccess: (res) => {
         showStatus("Your fundraiser has been succesfully created!");
-        dispatch(setReward(res.data.data));
+        const rewardData = res.data.data;
+        dispatch(setReward(rewardData));
         handleRewardIdArray(rewardData.id);
         // console.log("rewardArray", rewardData.id, rewardIdArray);
         window.scrollTo({ top: 0, behavior: "smooth" });

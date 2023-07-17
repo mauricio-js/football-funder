@@ -16,8 +16,14 @@ interface FormStepperContextProps {
   handleDescriptionChange: (name: string, intro: string) => void;
   amount: { [key: string]: number };
   handleAmountChange: (name: string, value: number) => void;
-  selectedImage: { [key: string]: {file: File | null, publicUrl: string | null} };
-  handleSelectedImage: (name: string, file: File | null, publicUrl: string | null) => void;
+  selectedImage: {
+    [key: string]: { file: File | null; publicUrl: string | null };
+  };
+  handleSelectedImage: (
+    name: string,
+    file: File | null,
+    publicUrl: string | null
+  ) => void;
   countryPhoneNumber: string;
   setCountryPhoneNumber: (value: string) => void;
   selectedCheckbox: { [key: string]: number[] | null };
@@ -34,6 +40,8 @@ interface FormStepperContextProps {
   handleClickNoAddrewardBtn: () => void;
   rewardIdArray: any;
   handleRewardIdArray: any;
+  isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
 }
 
 interface FormStepperPropsType {
@@ -137,7 +145,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   }>({});
   const [amount, setAmountList] = useState<{ [key: string]: number }>({});
   const [selectedImage, setSelectedImage] = useState<{
-    [key: string]: {file: File | null, publicUrl: string | null};
+    [key: string]: { file: File | null; publicUrl: string | null };
   }>({});
   const [countryPhoneNumber, setCountryPhoneNumber] = useState<string>(
     ContactPhoneNumberData[0].country
@@ -150,6 +158,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   const [crrRewardId, setCrrRewardId] = useState<string>("");
   const [isClickedPromoteBtn, setIsClickPromoteBtn] = useState(false);
   const [isClickedAddrewardBtn, setIsClickAddrewardBtn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const handleClickPromoteBtn = () => {
     setIsClickPromoteBtn(!isClickedPromoteBtn);
   };
@@ -197,10 +206,14 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     }));
   };
 
-  const handleSelectedImage = (name: string, value: File | null, publicUrl: string | null) => {
+  const handleSelectedImage = (
+    name: string,
+    value: File | null,
+    publicUrl: string | null
+  ) => {
     setSelectedImage((preValue) => ({
       ...preValue,
-      [name]: {file: value, publicUrl: publicUrl},
+      [name]: { file: value, publicUrl: publicUrl },
     }));
   };
 
@@ -288,6 +301,8 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         isClickedAddrewardBtn,
         handleRewardIdArray,
         rewardIdArray,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

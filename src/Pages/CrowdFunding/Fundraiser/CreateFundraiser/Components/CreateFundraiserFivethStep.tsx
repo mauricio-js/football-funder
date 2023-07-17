@@ -69,9 +69,9 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
     handleSelectInput("delivery", willUpdateRewardArray[0].delivery);
     handlePrevPage();
   };
-  useEffect(() => {
-    console.log(rewardList);
-  }, [rewardList]);
+  // useEffect(() => {
+  //   console.log(rewardList);
+  // }, [rewardList]);
 
   return (
     <div

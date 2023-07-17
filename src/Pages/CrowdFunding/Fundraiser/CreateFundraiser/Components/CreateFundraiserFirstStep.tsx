@@ -37,7 +37,7 @@ export const CreateFundraiserFirstStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-15">
               <div className="xs:w-[500px]">
                 <Textarea
-                  name="title"
+                  name="fundraiser_title"
                   title="Title"
                   titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                   limit={150}

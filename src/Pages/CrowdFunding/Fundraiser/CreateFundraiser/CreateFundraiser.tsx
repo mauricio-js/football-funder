@@ -28,14 +28,33 @@ export const CreateFundraiser: React.FC = () => {
     selectedImage,
     formValues,
     isClickedPromoteBtn,
-    rewardIdArray
+    rewardIdArray,
+    isLoading,
   } = useContext(FormStepperContext);
 
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
 
-  const { mutate: fundraiserSignUp } = useMutation(
+  const data: any = {
+    user_id: userInfo.id,
+    title: descriptionList.fundraiser_title,
+    description: descriptionList.short_description,
+    amount: amount.fundraiser_amount,
+    about: descriptionList.description,
+    titleImgLink: selectedImage.title_image?.publicUrl,
+    titleImgName: selectedImage.title_image?.file?.name,
+    pitchImgLink: selectedImage.pitch_image?.publicUrl,
+    pitchImgName: selectedImage.pitch_image?.file?.name,
+    pitchVideoLink: formValues.video_url,
+    pitchVideoName: formValues.video_url,
+    overlayImgLink: selectedImage.overlay_image?.publicUrl,
+    overlayImgName: selectedImage.overlay_image?.file?.name,
+    promote: isClickedPromoteBtn,
+    reward_ids: rewardIdArray,
+  };
+
+  const createFundraiser = useMutation(
     (params: any) => axios.post("/fundraiser/create", params),
     {
       onSuccess: (data) => {
@@ -61,27 +80,8 @@ export const CreateFundraiser: React.FC = () => {
   );
 
   function handleNextPage() {
-
-    if (currentStep === 4) {
-    }
     if (currentStep === 5) {
-      fundraiserSignUp({
-        user_id: userInfo.id,
-        title: descriptionList.title,
-        description: descriptionList.short_description,
-        amount: amount.fundraiser_amount,
-        about: descriptionList.description,
-        titleImgLink: selectedImage.title_image?.publicUrl,
-        titleImgName: selectedImage.title_image?.file?.name,
-        pitchImgLink: selectedImage.pitch_image?.publicUrl,
-        pitchImgName: selectedImage.pitch_image?.file?.name,
-        pitchVideoLink: formValues.video_url,
-        pitchVideoName: formValues.video_url,
-        overlayImgLink: selectedImage.overlay_image?.publicUrl,
-        overlayImgName: selectedImage.overlay_image?.file?.name,
-        promote: isClickedPromoteBtn,
-        reward_ids: rewardIdArray,
-      });
+      createFundraiser.mutate(data);
     } else if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -172,7 +172,7 @@ export const CreateFundraiser: React.FC = () => {
   ];
 
   return (
-    <Template>
+    <Template isLoading={createFundraiser.isLoading || isLoading}>
       <GeneralStepper pages={pages} stepNumber={currentStep} />
     </Template>
   );

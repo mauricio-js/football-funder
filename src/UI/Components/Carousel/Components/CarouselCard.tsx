@@ -23,7 +23,7 @@ export const CarouselCard: React.FC<CarouselCardPropsType> = ({
           <img
             src={cardData.image}
             alt="card a"
-            className="h-full w-full object-cover rounded-t-20"
+            className="h-[200px] w-full object-cover rounded-t-20"
           />
           <div className="absolute top-0 w-full px-5  py-5  flex justify-between">
             <div className="py-[5px] bg-green-10 rounded-10 px-2.5 generalSmallText">

@@ -49,6 +49,7 @@ import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { FaRegUserCircle, FaRegCalendarAlt } from "react-icons/fa";
 import { BiMap, BiMessageRounded } from "react-icons/bi";
 import CardImageA from "Assets/images/explore/card-a.png";
+import dayjs from "dayjs";
 
 export const MyAccountPage: React.FC = () => {
   const axios = useAxios();
@@ -113,7 +114,7 @@ export const MyAccountPage: React.FC = () => {
           icon: FaRegCalendarAlt,
           backgroundColor: "bg-gray-100",
           textColor: "text-green-70",
-          text: accountFundraiser.created_at,
+          text: dayjs(accountFundraiser.created_at).format("MMM DD, YYYY"),
         },
         collection: {
           icon: BiMessageRounded,
@@ -129,7 +130,7 @@ export const MyAccountPage: React.FC = () => {
       };
       accountFundraiserData.push(data);
     }
-    setAccountFundraiserListData(fundraiserData);
+    setAccountFundraiserListData(accountFundraiserData);
   };
 
   function handleScroll(): void {
@@ -168,16 +169,11 @@ export const MyAccountPage: React.FC = () => {
     {
       content: (
         <div>
-          {accountFundraserListData.map((item, index) => {
-            return (
-              <CarouselCard
-                key={index}
-                cardData={item}
-                account={true}
-                dropdownData={CardDropdownData}
-              />
-            );
-          })}
+          <CarouselCard
+            cardData={CrowdFundListData[0]}
+            account={true}
+            dropdownData={CardDropdownData}
+          />
         </div>
       ),
       number: 1,
@@ -409,17 +405,17 @@ export const MyAccountPage: React.FC = () => {
                       <div className="sm:mt-14 mt-30">
                         <Accordion title="Fundraising">
                           <div className="mt-5 introText">Live fundraisers</div>
-                          <div className="flex flex-col gap-5 mt-5">
-                            <CarouselCard
-                              cardData={CrowdFundListData[0]}
-                              account={true}
-                              dropdownData={CardDropdownData}
-                            />
-                            <CarouselCard
-                              cardData={CrowdFundListData[0]}
-                              account={true}
-                              dropdownData={CardDropdownData}
-                            />
+                          <div className="flex flex-col gap-2.5">
+                            {accountFundraserListData.map((item, index) => {
+                              return (
+                                <CarouselCard
+                                  key={index}
+                                  cardData={item}
+                                  account={true}
+                                  dropdownData={CardDropdownData}
+                                />
+                              );
+                            })}
                           </div>
                         </Accordion>
                       </div>

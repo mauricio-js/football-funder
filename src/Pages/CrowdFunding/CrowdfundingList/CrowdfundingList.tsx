@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useQuery } from 'react-query'
 import classNames from "classnames";
 import {
   Button,
@@ -29,11 +30,80 @@ import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 import { TbLayoutList, TbLayoutGrid } from "react-icons/tb";
 import FilterIcon from "Assets/images/explore/filter-icon.svg";
 import { IoMdClose } from "react-icons/io";
+import { QueryKey } from "types";
+import { useAxios } from 'Lib'
+import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
+import { BiMap, BiMessageRounded } from 'react-icons/bi'
+import CardImageA from 'Assets/images/explore/card-a.png'
 
 export const CrowdfundingList: React.FC = () => {
+
+  const axios = useAxios();
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   const [region, setRegion] = useState<string>(ListingPageDropdownData[0].name);
   const [horizontalLayout, setHorizonalLayout] = useState<boolean>(false);
+  const [fundraiserList, setFundraiserList] = useState<any[]>([])
+
+  const getCrowdingFundingList = async (): Promise<any> => {
+    const { data } = await axios.get(`/fundraiser/getAllFundraiser`);
+    return data;
+  };
+
+  useQuery(
+    [QueryKey.CrowdingFundingList],
+    getCrowdingFundingList,
+    {
+      onSuccess: (data) => {
+        setCrowdfundingListData(data.data);
+      },
+      onError: (data: any) => {
+
+      },
+    }
+  );
+
+  const setCrowdfundingListData = (fundraisers: any) => {
+    let fundraiserData = []
+    for (let fundraiser of fundraisers) {
+      let data = {
+        broadcastingType: 'Live',
+        club: {
+            icon: FaRegUserCircle,
+            backgroundColor: "bg-green-80",
+            textColor: "text-green-10",
+            text: fundraiser.userData.organization.name,
+        },
+        location: {
+            icon: BiMap,
+            backgroundColor: "bg-green-80",
+            textColor: "text-white",
+            text: `${fundraiser.userData.country} ${fundraiser.userData.city}`,
+        },
+        title: fundraiser.title,
+        description: fundraiser.description,
+        progress: true,
+        fund: '50% funded',
+        curFund: 50000,
+        oriFund: 100000,
+        date: {
+            icon: FaRegCalendarAlt,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70",
+            text: fundraiser.created_at,
+        },
+        collection: {
+            icon: BiMessageRounded,
+            backgroundColor: "bg-gray-100",
+            textColor: "text-green-70",
+            text: "15 Comments",
+        },
+        image:  fundraiser.title_img_link ==='' || !fundraiser.title_img_link ? CardImageA : `https://storage.googleapis.com/football_funder${fundraiser.title_img_link}`,
+      }
+      fundraiserData.push(data)
+    }
+    setFundraiserList(fundraiserData)
+  }
+
   return (
     <Template>
       <div className="relative md:pt-5 pt-[10px] md:pb-[150px] pb-[50px]">
@@ -188,13 +258,13 @@ export const CrowdfundingList: React.FC = () => {
             <div className="xs:mt-[65px] mt-30 max-md:w-full mx-auto">
               {horizontalLayout ? (
                 <div className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-2 max-xs:grid-cols-2 gap-x-5 max-2xs:gap-x-2.5 gap-y-30 ">
-                  {CrowdFundListData.map((item, index) => {
+                  {fundraiserList.map((item, index) => {
                     return <HorizontalCard key={index} cardData={item} />;
                   })}
                 </div>
               ) : (
                 <div className="grid grid-cols-1 gap-y-5">
-                  {CrowdFundListData.map((item, index) => {
+                  {fundraiserList.map((item, index) => {
                     return (
                       <VerticalCard
                         key={index}

@@ -96,7 +96,7 @@ export const MyAccountPage: React.FC = () => {
           icon: FaRegUserCircle,
           backgroundColor: "bg-green-80",
           textColor: "text-green-10",
-          text: accountFundraiser.userData.organization.name,
+          text: accountFundraiser.userData.organization?.name,
         },
         location: {
           icon: BiMap,

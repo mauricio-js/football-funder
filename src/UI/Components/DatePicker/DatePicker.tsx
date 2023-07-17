@@ -28,7 +28,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const handleBlur = (): void => {
     setFloating(false);
   };
-  // console.log(dateList, "datelist.name");
   return (
     <div className="relative customDatePickerWidth">
       <ReactDatePicker

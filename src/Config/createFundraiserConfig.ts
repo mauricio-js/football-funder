@@ -314,7 +314,7 @@ export const DeliveryData: RadioButtonDataType[] = [
     },
     {
         label: "No",
-        value:2,
+        value:0,
         classes: "gap-[10px] flex-row-reverse justify-end",
     },
 
@@ -965,7 +965,7 @@ export const DonateCreateAccountConfirm: RadioButtonDataType[] = [
     },
     {
         label: "I would like to sign up to receive newsletters from Football Funder. See Privacy Policy.",
-        value: 1
+        value:1
     },
 ]
 export const DonatePaymentConfirm: RadioButtonDataType[] = [

@@ -3,6 +3,8 @@ import { FormStepperContext } from "App/FormStepperProvider";
 import classNames from "classnames";
 import { InputType } from "types";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+// import { useSelector } from "react-redux";
+// import { AppState } from "App/reducers";
 
 interface InputProps {
   name: string;
@@ -54,7 +56,7 @@ export const Input: React.FC<InputProps> = ({ data, name, disabled }) => {
           required
         />
         {data.type === "password" && (
-          <div className="absolute h-full right-6 top-0 flex items-center">
+          <div className="absolute h-full right-6 top-0 flex items-center z-10">
             <div
               onClick={() => {
                 setIsShowPassword(!isShowPassword);

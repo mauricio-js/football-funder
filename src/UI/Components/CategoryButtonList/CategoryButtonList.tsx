@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React from "react";
 import { CategoryButton } from "UI";
 import { CategoryDataType } from "types";
 
@@ -12,7 +11,6 @@ export const CategoryButtonList: React.FC<CategoryButtonListProps> = ({
   options,
   name,
 }) => {
-  const { selectValue } = useContext(FormStepperContext)!;
   return (
     <div className="flex flex-wrap gap-[10px]">
       {options.map((option, index) => {
@@ -20,7 +18,6 @@ export const CategoryButtonList: React.FC<CategoryButtonListProps> = ({
           <div key={index}>
             <CategoryButton
               name={name}
-              checked={selectValue[name] === option.value}
               value={option.value}
               label={option.label}
             />

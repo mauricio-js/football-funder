@@ -1,15 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import {
-  // ADSISTING_URL,
-  // HOME_URL,
-  EXPLORE_URL,
-  // CROWDFUNDINGLIST_URL,
-  HOWITWORKS_URL,
-  // ORGANISATIONFUNDRAISER_URL,
-  // ORGANISATIONINDIVIDUAL_URL,
-  // ORGANISATIONLISTING_URL,
-} from "Lib";
+import { EXPLORE_URL, HOWITWORKS_URL } from "Lib/urls";
 import { CarouselCard, SlideBar, Join, SummaryCard, Template } from "UI";
 import {
   AdvertisingCardData,

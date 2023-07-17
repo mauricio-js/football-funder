@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Input,
@@ -24,7 +24,6 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const [anonymous, setAnonymous] = useState<number>();
   return (
     <form>
       <div
@@ -66,11 +65,10 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
             <div className="mt-5">
               <RadioButtonList
                 options={SelectAnonymous}
-                currentValue={anonymous}
-                onSelect={setAnonymous}
                 classes="flex gap-30"
                 textStyle="text-base"
                 checkboxStyle={false}
+                name="anonymous"
               />
             </div>
             <div className="mt-15 smallIntroText">

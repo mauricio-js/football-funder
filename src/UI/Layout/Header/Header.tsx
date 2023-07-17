@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { HOME_URL, SIGNIN_URL, SIGNUP_URL } from "Lib";
-import { Dropdown, HeaderButton, HamburgerMenu } from "UI";
 import classname from "classnames";
+import {
+  HOME_URL,
+  SIGNIN_URL,
+  SIGNUP_URL,
+  EXPLORE_URL,
+  FEES_URL,
+  MYACCOUNT_URL,
+  PROFILEPAGE_URL,
+} from "Lib/urls";
+import { Dropdown, HamburgerMenu, Button } from "UI";
 import { MdClose, MdMenu } from "react-icons/md";
 import { SearchIcon } from "Assets/images/svg/button/icon-search";
 import HeaderLogoImage from "Assets/images/svg/logo/header-log.svg";
 import {
-  AccounMenuData,
-  homeButtonData,
-  exploreButtonData,
   advertisingButtonData,
   sponsorshipButtonData,
   fundraisingButtonData,
   moreButtonData,
-  feeButtonData,
 } from "Config";
 import DivideLine from "Assets/images/svg/button/accout-menu-divide.svg";
 import { MdArrowDropDown } from "react-icons/md";
@@ -45,6 +49,25 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
     setIsShowAccountMenu(!isShowAccountMenu);
   };
 
+  const handleAccountBtn = () => {
+    setIsShowAccountMenu(!isShowAccountMenu);
+    navigate(MYACCOUNT_URL);
+  };
+  const handleProfileBtn = () => {
+    setIsShowAccountMenu(!isShowAccountMenu);
+    navigate(PROFILEPAGE_URL);
+  };
+
+  const logOut = () => {
+    dispatch({ type: "RESET" });
+    navigate(SIGNUP_URL);
+  };
+
+  const handleAvatarMenuClick = () => {
+    logOut();
+    AccountMenuShow();
+  };
+
   return (
     <div className="sticky top-0 z-40">
       {!isMobileMenu && (
@@ -66,13 +89,34 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
               >
                 <div className="flex items-center max-xl:hidden">
                   <div className="flex flex-row items-center text-[14px] font-semibold leading-5">
-                    <div className="flex flex-row">
-                      <HeaderButton List={homeButtonData} />
-                      <HeaderButton List={exploreButtonData} />
-                      <Dropdown List={fundraisingButtonData} />
+                    <div className="flex flex-row text">
+                      <Button
+                        text="Home"
+                        textSize="text-sm fpont-semibold"
+                        padding="p-2.5"
+                        textColor="text-green-70"
+                        otherStyle="hover:bg-green-70 hover:bg-opacity-5"
+                        handleClick={() => navigate(HOME_URL)}
+                      />
+                      <Button
+                        text="Explore"
+                        textSize="text-sm fpont-semibold"
+                        padding="p-2.5"
+                        textColor="text-green-70"
+                        otherStyle="hover:bg-green-70 hover:bg-opacity-5"
+                        handleClick={() => navigate(EXPLORE_URL)}
+                      />
+                      <Dropdown List={fundraisingButtonData(isAuth)} />
                       <Dropdown List={advertisingButtonData} />
                       <Dropdown List={sponsorshipButtonData} />
-                      <HeaderButton List={feeButtonData} />
+                      <Button
+                        text="Fees"
+                        textSize="text-sm fpont-semibold"
+                        padding="p-2.5"
+                        textColor="text-green-70"
+                        otherStyle="hover:bg-green-70 hover:bg-opacity-5"
+                        handleClick={() => navigate(FEES_URL)}
+                      />
                       <Dropdown List={moreButtonData} />
                     </div>
                   </div>
@@ -137,7 +181,7 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
                       </div>
                     )}
                     {isAuth && (
-                      <div className="relative flex flex-row">
+                      <div className="relative flex flex-row max-xl:hidden">
                         <button
                           className="
                               w-[40px] h-[40px] bg-white my-[1px]
@@ -154,18 +198,27 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
                               className="text-sm text-gray-700
                                         dark:text-gray-200 divide-y  divide-gray-700"
                             >
-                              {AccounMenuData.map((item, key) => {
-                                return (
-                                  <button
-                                    key={key}
-                                    className="block text-[14px] font-semibold leading-5 px-[10px] py-[10px] 
+                              <button
+                                className=" text-[14px] font-semibold leading-5 px-[10px] py-[10px] w-full text-left 
                                                hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    onClick={AccountMenuShow}
-                                  >
-                                    {item.title}
-                                  </button>
-                                );
-                              })}
+                                onClick={handleAccountBtn}
+                              >
+                                My Account
+                              </button>
+                              <button
+                                className=" text-[14px] font-semibold leading-5 px-[10px] py-[10px] w-full text-left 
+                                               hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                onClick={handleProfileBtn}
+                              >
+                                Profile
+                              </button>
+                              <button
+                                className=" text-[14px] font-semibold leading-5 px-[10px] py-[10px] w-full text-left 
+                                               hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                onClick={handleAvatarMenuClick}
+                              >
+                                Sign out
+                              </button>
                             </div>
                           </div>
                         )}

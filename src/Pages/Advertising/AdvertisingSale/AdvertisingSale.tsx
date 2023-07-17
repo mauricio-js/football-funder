@@ -49,12 +49,7 @@ export const AdvertisingSale: React.FC = () => {
     },
     {
       name: "AdvertisingSaleStep3",
-      component: (
-        <AdvertisingSaleStep3
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-        />
-      ),
+      component: <AdvertisingSaleStep3 />,
     },
   ];
   return (

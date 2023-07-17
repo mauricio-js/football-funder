@@ -4,17 +4,10 @@ import { RadioButtonDataType } from "types";
 
 interface FilterDataProps {
   options: RadioButtonDataType[];
-  selectedValues: number[];
-  setValues: (values: number[]) => void;
   name: string;
 }
 
-export const CheckBoxList: React.FC<FilterDataProps> = ({
-  options,
-  selectedValues,
-  setValues,
-  name,
-}) => {
+export const CheckBoxList: React.FC<FilterDataProps> = ({ options, name }) => {
   // const onHandleSelectedCheckbox = (value: string) => {
   //   if (value === "all") {
   //     setValues(["all"]);

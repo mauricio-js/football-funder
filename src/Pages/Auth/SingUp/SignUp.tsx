@@ -1,46 +1,30 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { SignUpStepFirst, SignUpStepSecond, SignUpStepThird } from "Pages";
 import { GeneralStepper, Template } from "UI";
-import { ContactPhoneNumberData } from "Config";
+import { SignUpStepFirst, SignUpStepSecond, SignUpStepThird } from "Pages";
 import { useAxios } from "Lib";
+import { EMAILVERIFICATION_URL } from "Lib/urls";
 import { registerFormDataType } from "./types";
-import { EMAILVERIFICATION_URL } from "Lib";
 import { StatusContext } from "App/StatusProvider";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const axios = useAxios();
-
-  const [categoryId, setCategoryId] = useState<number>(1);
-
-  const [countryPhone, setCountryPhone] = useState<string>(
-    ContactPhoneNumberData[0].country
-  );
-
-  const [eCConfirm, setECConfirm] = useState<number>();
-
-  const [confirm, setConfirm] = useState<boolean>(false);
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
+  const { formValues, selectValue } = useContext(FormStepperContext);
 
   const { showStatus } = useContext(StatusContext);
 
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
-
-  const onHandleConfirm = () => {
-    setConfirm(!confirm);
-  };
-
   const data: registerFormDataType = {
-    category_id: categoryId,
-    organization: formValues.organization,
+    category_id: selectValue.fundraiser_category,
+    org_name: formValues.org_name,
+    org_address1: formValues.org_address1,
+    org_address2: formValues.org_address2,
+    org_phone_number: formValues.org_phone_number,
+    org_city: formValues.org_city,
+    org_country: formValues.org_country,
+    org_post_code: formValues.org_post_code,
     address_line1: formValues.address_line1,
     address_line2: formValues.address_line2,
     city: formValues.city,
@@ -52,24 +36,6 @@ export const SignUp: React.FC = () => {
     email: formValues.email,
     password: formValues.password,
   };
-
-  // const getCategoryData = async () => {
-  //   try {
-  //     const response = await axios.get("/category");
-  //     const { data: category_data } = response;
-  //     console.log(category_data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCategoryData();
-  // });
-
-  // useEffect(() => {
-  //   sessionStorage.setItem("accountEmail", formValues.email);
-  // }, [formValues.email]);
 
   const signUp = useMutation(
     (params: registerFormDataType) => axios.post("/user/register", params),
@@ -94,7 +60,6 @@ export const SignUp: React.FC = () => {
       },
     }
   );
-
   function onClickRegisterBtn() {
     signUp.mutate(data);
   }
@@ -105,6 +70,18 @@ export const SignUp: React.FC = () => {
   function handleNextPage() {
     if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+  function handleDoubleNextPage() {
+    if (currentStep < pages.length - 2) {
+      setCurrentStep(currentStep + 2);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+  function handleDoublePrevPage() {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 2);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
@@ -120,8 +97,7 @@ export const SignUp: React.FC = () => {
       component: (
         <SignUpStepFirst
           handleNextPage={handleNextPage}
-          setCategoryId={setCategoryId}
-          categoryId={categoryId}
+          handleOtherPage={handleDoubleNextPage}
         />
       ),
     },
@@ -139,13 +115,7 @@ export const SignUp: React.FC = () => {
       component: (
         <SignUpStepThird
           handlePrevPage={handlePrevPage}
-          countryPhone={countryPhone}
-          setCountryPhone={setCountryPhone}
-          eCConfirm={eCConfirm}
-          setECConfirm={setECConfirm}
-          confirm={confirm}
-          onHandleConfirm={onHandleConfirm}
-          onInputChange={handleInputChange}
+          handleDoublePrevPage={handleDoublePrevPage}
           handleSubmit={onClickRegisterBtn}
         />
       ),

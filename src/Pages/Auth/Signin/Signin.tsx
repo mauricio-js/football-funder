@@ -1,24 +1,23 @@
-import React, { useState, useContext } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  FORGOTPASSWORD_URL,
-  SIGNUP_URL,
-  MYACCOUNT_URL,
-  useAxios,
-  useIsMounted,
-} from "Lib";
-import { StatusContext } from "App/StatusProvider";
+import { useMutation } from "react-query";
+import { useDispatch } from "react-redux";
+import { FORGOTPASSWORD_URL, SIGNUP_URL } from "Lib/urls";
+import { useAxios } from "Lib";
+import { setLogin } from "Data/Auth";
+import { setUserInfo } from "Data/User";
 import { Button, Input, TextButton, Template } from "UI";
 import { AccountEmailData, AccountPasswordData } from "Config";
 import { loginFormDataType } from "./types";
+import { StatusContext } from "App/StatusProvider";
+import { FormStepperContext } from "App/FormStepperProvider";
+// import { AppState } from "App/reducers";
 
 export const Signin: React.FC = () => {
   const navigate = useNavigate();
   const { formValues } = useContext(FormStepperContext)!;
-  const { setSafely } = useIsMounted();
   const { showStatus } = useContext(StatusContext);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const userInfo = useSelector((state: AppState) => state.user);
 
   // const { setSafely } = useIsMounted();
 
@@ -29,27 +28,42 @@ export const Signin: React.FC = () => {
   };
 
   const axios = useAxios();
+  const dispatch = useDispatch();
 
-  const handleSubmit = () => {
-    setSafely(setIsLoading, true);
-    axios
-      .post(`/auth/login`, data)
-      .then((res) => {
-        // console.log(res);
-        setSafely(setIsLoading, false);
-        navigate(MYACCOUNT_URL);
-      })
-      .catch((err) => {
+  const storeLoginData = (loginData: any) => {
+    dispatch(setLogin(loginData.token));
+  };
+  const storeUserInfo = (userInfo: any) => {
+    dispatch(setUserInfo(userInfo));
+  };
+  const signIn = useMutation(
+    (params: loginFormDataType) => axios.post("/auth/login", params),
+    {
+      onSuccess: (res) => {
+        showStatus("Your account has been succesfully login!");
+
+        // const resData = res;
+        const data = res.data;
+        const userInfo = data.data;
+        storeLoginData(data);
+        storeUserInfo(userInfo);
+
+        // navigate(MYACCOUNT_URL);
+      },
+      onError: (err: any) => {
         const errorMessage = err.response?.data.error;
-        // console.log(errorMessage);
         if (errorMessage === "no-such-account")
           showStatus("Your account doesn't exist!", "error");
         else if (errorMessage === "unverified-user")
           showStatus("Your account has not been verified!", "error");
         else showStatus("Your password is invalid!", "error");
-        setSafely(setIsLoading, false);
-      });
-  };
+      },
+    }
+  );
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    signIn.mutate(data);
+  }
   const goToSignUp = () => {
     navigate(SIGNUP_URL);
   };
@@ -57,7 +71,7 @@ export const Signin: React.FC = () => {
     navigate(FORGOTPASSWORD_URL);
   };
   return (
-    <Template isLoading={isLoading}>
+    <Template isLoading={signIn.isLoading}>
       <form onSubmit={handleSubmit}>
         <div className=" w-[1000px] max-lg:w-full px-5 mb-[300px] max-md:mb-[150px] mx-auto sm:mt-[60px] mt-5">
           <div className=" xs:w-[500px]">

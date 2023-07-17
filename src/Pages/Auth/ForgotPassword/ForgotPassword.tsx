@@ -1,14 +1,15 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { useAxios, SIGNIN_URL } from "Lib";
+import { useAxios } from "Lib";
+import { SIGNIN_URL } from "Lib/urls";
+import { GeneralStepper, Template } from "UI";
 import {
   ForgotPasswordStepFirst,
   ForgotPasswordStepSecond,
   ForgotPasswordStepFourth,
 } from "Pages";
 import { StatusContext } from "App/StatusProvider";
-import { GeneralStepper, Template } from "UI";
 
 export const ForgotPassword: React.FC = () => {
   const navigate = useNavigate();

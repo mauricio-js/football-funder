@@ -3,19 +3,17 @@ import classNames from "classnames";
 import { FormStepperContext } from "App/FormStepperProvider";
 
 interface CategoryButtonPropsType {
-  checked: boolean;
   label: string;
   value: number;
   name: string;
 }
 
 export const CategoryButton: React.FC<CategoryButtonPropsType> = ({
-  checked,
   name,
   label,
   value,
 }) => {
-  const { handleSelectInput } = useContext(FormStepperContext)!;
+  const { selectValue, handleSelectInput } = useContext(FormStepperContext)!;
   const handleSelect = () => {
     handleSelectInput(name, value);
   };
@@ -24,7 +22,7 @@ export const CategoryButton: React.FC<CategoryButtonPropsType> = ({
       <input
         type="radio"
         value={value}
-        checked={checked}
+        checked={selectValue.name === value}
         onChange={handleSelect}
         className="appearance-none"
       />
@@ -33,7 +31,7 @@ export const CategoryButton: React.FC<CategoryButtonPropsType> = ({
           "cursor-pointer select-none rounded-xl px-[50px] max-md:px-8 py-[15px]",
           "text-green-70 text-[14x] leading-[20px] font-semibold",
           "border-[1px] border-gray-300",
-          checked && "bg-green-10"
+          selectValue[name] === value && "bg-green-10"
         )}
       >
         {label}

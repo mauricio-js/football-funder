@@ -18,6 +18,7 @@ export interface ButtonItemType {
 export interface AccountMenuDataType { 
   id: number,
   title: string
+  url?:string
 };
 
 export interface SearchDataType { 

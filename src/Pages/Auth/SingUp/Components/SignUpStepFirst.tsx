@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -7,29 +7,26 @@ import {
   CategoryButtonList,
 } from "UI";
 import { FundraiserCategoryData } from "Config";
-import { SIGNIN_URL } from "Lib";
+import { FormStepperContext } from "App/FormStepperProvider";
+import { SIGNIN_URL } from "Lib/urls";
 
 interface SignUpFirstPagePropsType {
   handleNextPage: () => void;
-  setCategoryId: (categoryId: number) => void;
-  categoryId: number;
+  handleOtherPage: () => void;
 }
 
 export const SignUpStepFirst: React.FC<SignUpFirstPagePropsType> = ({
   handleNextPage,
-  setCategoryId,
-  categoryId,
+  handleOtherPage,
 }) => {
   const navigate = useNavigate();
+  const { selectValue } = useContext(FormStepperContext);
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
   };
   const signUpFirstPageAction = () => {
-    if (categoryId) {
-      handleNextPage();
-    } else {
-      console.log("You must select the category");
-    }
+    if (selectValue.category === 2) handleOtherPage();
+    else handleNextPage();
   };
   return (
     <div
@@ -51,7 +48,7 @@ export const SignUpStepFirst: React.FC<SignUpFirstPagePropsType> = ({
         <div className="mt-[15px]">
           <CategoryButtonList
             options={FundraiserCategoryData}
-            name="fundraiser_category"
+            name="category"
           />
         </div>
       </div>

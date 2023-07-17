@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import {
-  AdvertisingSaleStep1,
-  AdvertisingSaleStep2,
-  AdvertisingSaleStep3,
-} from "Pages";
+  SponsorshipSaleStep1,
+  SponsorshipSaleStep2,
+  SponsorshipSaleStep3,
+} from "./Components";
 import { GeneralStepper } from "UI";
 
 export const SponsorshipSale: React.FC = () => {
@@ -26,9 +26,9 @@ export const SponsorshipSale: React.FC = () => {
 
   const pages: { name: string; component: React.ReactNode }[] = [
     {
-      name: "AdvertisingSaleStep1",
+      name: "SponsorshipSaleStep1",
       component: (
-        <AdvertisingSaleStep1
+        <SponsorshipSaleStep1
           handlePrevPage={handlePrevPage}
           handleNextPage={handleNextPage}
           introTitle="Front of shirt sponsorship - Season 2023/24"
@@ -37,9 +37,9 @@ export const SponsorshipSale: React.FC = () => {
       ),
     },
     {
-      name: "AdvertisingSaleStep2",
+      name: "SponsorshipSaleStep2",
       component: (
-        <AdvertisingSaleStep2
+        <SponsorshipSaleStep2
           handlePrevPage={handlePrevPage}
           handleNextPage={handleNextPage}
           introTitle="Front of shirt sponsorship - Season 2023/24"
@@ -48,13 +48,8 @@ export const SponsorshipSale: React.FC = () => {
       ),
     },
     {
-      name: "AdvertisingSaleStep3",
-      component: (
-        <AdvertisingSaleStep3
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-        />
-      ),
+      name: "SponsorshipSaleStep3",
+      component: <SponsorshipSaleStep3 />,
     },
   ];
   return (

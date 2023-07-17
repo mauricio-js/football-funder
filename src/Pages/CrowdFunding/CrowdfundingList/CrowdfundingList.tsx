@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useQuery } from 'react-query'
+import { useQuery } from "react-query";
 import classNames from "classnames";
+import dayjs from "dayjs";
 import {
   Button,
   Input,
@@ -31,78 +32,74 @@ import { TbLayoutList, TbLayoutGrid } from "react-icons/tb";
 import FilterIcon from "Assets/images/explore/filter-icon.svg";
 import { IoMdClose } from "react-icons/io";
 import { QueryKey } from "types";
-import { useAxios } from 'Lib'
-import { FaRegUserCircle, FaRegCalendarAlt, } from 'react-icons/fa'
-import { BiMap, BiMessageRounded } from 'react-icons/bi'
-import CardImageA from 'Assets/images/explore/card-a.png'
+import { useAxios } from "Lib";
+import { FaRegUserCircle, FaRegCalendarAlt } from "react-icons/fa";
+import { BiMap, BiMessageRounded } from "react-icons/bi";
+import CardImageA from "Assets/images/explore/card-a.png";
 
 export const CrowdfundingList: React.FC = () => {
-
   const axios = useAxios();
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   const [region, setRegion] = useState<string>(ListingPageDropdownData[0].name);
   const [horizontalLayout, setHorizonalLayout] = useState<boolean>(false);
-  const [fundraiserList, setFundraiserList] = useState<any[]>([])
+  const [fundraiserList, setFundraiserList] = useState<any[]>([]);
 
   const getCrowdingFundingList = async (): Promise<any> => {
     const { data } = await axios.get(`/fundraiser/getAllFundraiser`);
     return data;
   };
 
-  useQuery(
-    [QueryKey.CrowdingFundingList],
-    getCrowdingFundingList,
-    {
-      onSuccess: (data) => {
-        setCrowdfundingListData(data.data);
-      },
-      onError: (data: any) => {
-
-      },
-    }
-  );
+  useQuery([QueryKey.CrowdingFundingList], getCrowdingFundingList, {
+    onSuccess: (data) => {
+      setCrowdfundingListData(data.data);
+    },
+    onError: (data: any) => {},
+  });
 
   const setCrowdfundingListData = (fundraisers: any) => {
-    let fundraiserData = []
+    let fundraiserData = [];
     for (let fundraiser of fundraisers) {
       let data = {
-        broadcastingType: 'Live',
+        broadcastingType: "Live",
         club: {
-            icon: FaRegUserCircle,
-            backgroundColor: "bg-green-80",
-            textColor: "text-green-10",
-            text: fundraiser.userData.organization.name,
+          icon: FaRegUserCircle,
+          backgroundColor: "bg-green-80",
+          textColor: "text-green-10",
+          text: fundraiser.userData.organization.name,
         },
         location: {
-            icon: BiMap,
-            backgroundColor: "bg-green-80",
-            textColor: "text-white",
-            text: `${fundraiser.userData.country} ${fundraiser.userData.city}`,
+          icon: BiMap,
+          backgroundColor: "bg-green-80",
+          textColor: "text-white",
+          text: `${fundraiser.userData.country} ${fundraiser.userData.city}`,
         },
         title: fundraiser.title,
         description: fundraiser.description,
         progress: true,
-        fund: '50% funded',
+        fund: "50% funded",
         curFund: 50000,
         oriFund: 100000,
         date: {
-            icon: FaRegCalendarAlt,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70",
-            text: fundraiser.created_at,
+          icon: FaRegCalendarAlt,
+          backgroundColor: "bg-gray-100",
+          textColor: "text-green-70",
+          text: dayjs(fundraiser.created_at).format("MMM DD, YYYY"),
         },
         collection: {
-            icon: BiMessageRounded,
-            backgroundColor: "bg-gray-100",
-            textColor: "text-green-70",
-            text: "15 Comments",
+          icon: BiMessageRounded,
+          backgroundColor: "bg-gray-100",
+          textColor: "text-green-70",
+          text: "15 Comments",
         },
-        image:  fundraiser.title_img_link ==='' || !fundraiser.title_img_link ? CardImageA : `https://storage.googleapis.com/football_funder${fundraiser.title_img_link}`,
-      }
-      fundraiserData.push(data)
+        image:
+          fundraiser.title_img_link === "" || !fundraiser.title_img_link
+            ? CardImageA
+            : `https://storage.googleapis.com/football_funder${fundraiser.title_img_link}`,
+      };
+      fundraiserData.push(data);
     }
-    setFundraiserList(fundraiserData)
-  }
+    setFundraiserList(fundraiserData);
+  };
 
   return (
     <Template>

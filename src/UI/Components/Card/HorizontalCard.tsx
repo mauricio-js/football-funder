@@ -17,7 +17,7 @@ export const HorizontalCard: React.FC<CardProps> = ({ cardData }) => {
           <img
             src={cardData.image}
             alt="card a"
-            className="h-full w-full object-cover"
+            className="h-[300px] w-full object-cover"
           />
           <div className="absolute top-0 w-full xs:px-5 px-2.5 py-5  flex justify-between">
             <div className="py-[5px] bg-green-10 rounded-10 ns:text-[14px] text-[12px] leading-[20px]  ns:px-[10px] px-2 font-medium">

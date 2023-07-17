@@ -65,7 +65,7 @@ export const CrowdfundingList: React.FC = () => {
           icon: FaRegUserCircle,
           backgroundColor: "bg-green-80",
           textColor: "text-green-10",
-          text: fundraiser.userData.organization.name,
+          text: fundraiser.userData.organization?.name,
         },
         location: {
           icon: BiMap,
@@ -100,7 +100,7 @@ export const CrowdfundingList: React.FC = () => {
     }
     setFundraiserList(fundraiserData);
   };
-
+  console.log('asdfasdfadf', fundraiserList )
   return (
     <Template>
       <div className="relative md:pt-5 pt-[10px] md:pb-[150px] pb-[50px]">

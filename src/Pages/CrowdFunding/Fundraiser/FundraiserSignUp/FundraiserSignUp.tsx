@@ -30,7 +30,7 @@ export const FundraiserSignUp: React.FC = () => {
     address_line1: formValues.address_line1,
     address_line2: formValues.address_line2,
     city: formValues.city,
-    post_code: formValues.postcode,
+    post_code: formValues.post_code,
     country: formValues.country,
     phone_number: formValues.phone_number,
     first_name: formValues.first_name,
@@ -64,8 +64,7 @@ export const FundraiserSignUp: React.FC = () => {
   );
 
   function onClickSubmitBtn() {
-    console.log(data);
-    // fundraiserSignUp.mutate(data);
+    fundraiserSignUp.mutate(data);
   }
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")

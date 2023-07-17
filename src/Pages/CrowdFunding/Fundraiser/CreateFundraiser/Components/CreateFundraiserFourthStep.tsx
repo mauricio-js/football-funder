@@ -1,4 +1,7 @@
 import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
+import dayjs from "dayjs";
+import { useAxios } from "Lib";
 import {
   Button,
   CheckBox,
@@ -15,10 +18,17 @@ import {
 import { AvailableNumberData, DeliveryData, DispatchDateData } from "Config";
 import { FormStepperContext } from "App/FormStepperProvider";
 import { StepperActionPropsType } from "types";
+import { useMutation } from "react-query";
+import { StatusContext } from "App/StatusProvider";
+import { setReward } from "Data/Reward";
 export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const axios = useAxios();
+  const dispatch = useDispatch();
+  // const rewardDataList = useSelector((state: AppState) => state.reward);
+  const { showStatus } = useContext(StatusContext);
   const {
     formValues,
     descriptionList,
@@ -27,8 +37,11 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     selectedCheckbox,
     selectValue,
     addRewardData,
+    // handleRewardIdArray,
+    // rewardIdArray,
   } = useContext(FormStepperContext);
 
+  //  front-end
   const addRewardPageData: any = {
     reward_title: descriptionList.reward_title,
     donation_amount: amount.donation_amount,
@@ -39,12 +52,45 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     reward_additional_info: descriptionList.reward_additional_info,
     dispatch_date: dateList.dispatch_date,
   };
-  console.log(addRewardPageData);
+
+  //  back-end
+  const rewardData: any = {
+    title: descriptionList.reward_title,
+    amount: amount.donation_amount?.toString(),
+    description: descriptionList.reward_short_description,
+    delivery: selectValue.delivery ? true : false,
+    availableNumber: formValues.available_num
+      ? parseInt(formValues.available_num)
+      : 0,
+    unlimited: selectedCheckbox.limit?.includes(1) ? true : false || false,
+    about: descriptionList.reward_additional_info,
+    dispatchDate: dayjs(dateList.dispatch_date).format("YYYY-MM-DD"),
+  };
+
+  const { mutate: addReward } = useMutation(
+    (params: any) => axios.post("/fundraiser/createReward", params),
+    {
+      onSuccess: (res) => {
+        showStatus("Your fundraiser has been succesfully created!");
+        dispatch(setReward(res.data.data));
+        // handleRewardIdArray(rewardData.id);
+        // console.log("rewardArray", rewardData.id, rewardIdArray);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      },
+      onError: (err: any) => {
+        console.log(err);
+      },
+    }
+  );
+
   const handleBtnClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     addRewardData(addRewardPageData);
+    addReward(rewardData);
+
     handleNextPage();
   };
+
   return (
     <form onSubmit={handleBtnClick}>
       <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 mb-[90px] max-ns:mb-30 mx-auto">

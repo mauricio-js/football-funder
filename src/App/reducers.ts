@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import authReducer from 'Data/Auth';
 import userReducer from 'Data/User';
+import rewardReducer from 'Data/Reward'
 import layoutSateReducer from 'Data/LayoutState';
 
 const appReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
+  reward:rewardReducer,
   layoutState: layoutSateReducer,
 });
 

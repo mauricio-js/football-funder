@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import classNames from "classnames";
 import {
   Button,
@@ -9,11 +9,20 @@ import {
   StepLabel,
 } from "UI";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
-export const CreateFundraiserSixthStep: React.FC<StepperActionPropsType> = ({
-  handleNextPage,
-  handlePrevPage,
-}) => {
+interface CreateFundraiserSixthStepProps {
+  handleNextPage: () => void;
+  handlePrevPage: () => void;
+  handleDoublePrevPage: () => void;
+}
+
+export const CreateFundraiserSixthStep: React.FC<
+  CreateFundraiserSixthStepProps
+> = ({ handleNextPage, handlePrevPage, handleDoublePrevPage }) => {
+  const { isClickedAddrewardBtn, isClickedPromoteBtn, handleClickPromoteBtn } =
+    useContext(FormStepperContext);
+
   return (
     <div
       className="
@@ -23,7 +32,11 @@ export const CreateFundraiserSixthStep: React.FC<StepperActionPropsType> = ({
       <div className="">
         <PageTitle title="Create your fundraiser" />
         <div className="mt-15">
-          <StepperBackButton handleBackPage={handlePrevPage} />
+          <StepperBackButton
+            handleBackPage={
+              isClickedAddrewardBtn ? handlePrevPage : handleDoublePrevPage
+            }
+          />
         </div>
         <div className="mt-30">
           <StepLabel number="Step 6" title="Final touches" />
@@ -62,12 +75,15 @@ export const CreateFundraiserSixthStep: React.FC<StepperActionPropsType> = ({
           </div>
           <div className="mt-15">
             <Button
-              backgroundColor="bg-green-10"
+              backgroundColor={
+                isClickedPromoteBtn ? "bg-green-70" : "bg-green-10"
+              }
               height="h-[50px]"
               width="w-full"
               text="Promote"
-              textColor="text-green-70"
+              textColor={isClickedPromoteBtn ? "text-white" : "text-green-70"}
               textSize="text-[16px] leading-[20px] font-semibold"
+              handleClick={handleClickPromoteBtn}
             />
           </div>
         </div>

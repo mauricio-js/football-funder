@@ -44,7 +44,7 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
         <div
           className={classNames(
             " bg-green-10 rounded-md w-full h-full z-1 justify-center items-center text-semibold",
-            selectedCheckbox[name] && selectedCheckbox[name].includes(value)
+            selectedCheckbox[name] && selectedCheckbox[name]?.includes(value)
               ? "flex"
               : "hidden"
           )}

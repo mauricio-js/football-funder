@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   Button,
   EditPanelItem,
@@ -10,6 +11,7 @@ import { FormStepperContext } from "App/FormStepperProvider";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { StepperActionPropsType } from "types";
+import { AppState } from "App/reducers";
 
 export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
@@ -26,6 +28,8 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
     handleSetCrrRewardId,
     deleteRewardData,
   } = useContext(FormStepperContext);
+
+  const rewardList = useSelector((state: AppState) => state.reward.rewardData);
   const handleClickAddBtn = () => {
     handleInputChange("available_num", "");
     handleDescriptionChange("reward_title", "");
@@ -33,7 +37,7 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
     handleDescriptionChange("reward_short_description", "");
     handleAmountChange("donation_amount", 0);
     handleDateChange("dispatch_date", null);
-    handleSelectedCheckbox("limit", 1);
+    handleSelectedCheckbox("limit", 0);
     handleSelectInput("delivery", 0);
     handlePrevPage();
   };
@@ -65,6 +69,9 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
     handleSelectInput("delivery", willUpdateRewardArray[0].delivery);
     handlePrevPage();
   };
+  useEffect(() => {
+    console.log(rewardList);
+  }, [rewardList]);
 
   return (
     <div

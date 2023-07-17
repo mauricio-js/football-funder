@@ -54,6 +54,8 @@ export const CreateFundraiser: React.FC = () => {
   );
 
   function handleNextPage() {
+    if (currentStep === 4) {
+    }
     if (currentStep === 6) {
       fundraiserSignUp({
         user_id: userInfo.id,
@@ -87,6 +89,12 @@ export const CreateFundraiser: React.FC = () => {
   function handlePrevPage() {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+  function handledDoublePrevPage() {
+    if (currentStep > 2) {
+      setCurrentStep(currentStep - 3);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
@@ -144,6 +152,7 @@ export const CreateFundraiser: React.FC = () => {
         <CreateFundraiserSixthStep
           handlePrevPage={handlePrevPage}
           handleNextPage={handleNextPage}
+          handleDoublePrevPage={handledDoublePrevPage}
         />
       ),
     },

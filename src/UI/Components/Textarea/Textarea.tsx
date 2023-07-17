@@ -63,7 +63,7 @@ export const Textarea: React.FC<Props> = ({
         </div>
       )}
       {title && (
-        <div className="absolute w-full top-[12px] px-[16px] hidden vs:block">
+        <div className="absolute top-[12px] px-[16px] hidden vs:block">
           <div
             className={classNames(
               titleStyle,

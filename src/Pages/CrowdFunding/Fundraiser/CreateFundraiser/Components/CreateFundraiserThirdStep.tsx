@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AddAwardPanel,
   Button,
@@ -7,6 +7,7 @@ import {
   StepLabel,
   StepperBackButton,
 } from "UI";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export interface AddrewardsFirstPagePropsType {
   handlePrevPage: () => void;
@@ -17,10 +18,9 @@ export interface AddrewardsFirstPagePropsType {
 export const CreateFundraiserThirdStep: React.FC<
   AddrewardsFirstPagePropsType
 > = ({ handleNextPage, handlePrevPage, handleNextPartPage }) => {
-  const [addReward, setAddReward] = useState<boolean>(true);
-
+  const { isClickedAddrewardBtn } = useContext(FormStepperContext);
   const handleContinueBtnClick = () => {
-    if (addReward) {
+    if (isClickedAddrewardBtn) {
       handleNextPage();
     } else {
       handleNextPartPage();
@@ -43,7 +43,7 @@ export const CreateFundraiserThirdStep: React.FC<
         <PageSectionTitle intro="Give your supporters something back by offering rewards for a certain donation amount. The number of rewards you can offer is unlimited." />
       </div>
       <div className="mt-30">
-        <AddAwardPanel handleClick={setAddReward} reward={addReward} />
+        <AddAwardPanel />
       </div>
       <div className="xs:mt-[100px] mt-[60px]">
         <div className="flex xs:justify-end">

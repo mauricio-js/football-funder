@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useAxios } from "Lib";
 import { FormStepperContext } from "App/FormStepperProvider";
 import classNames from "classnames";
 import { AiOutlinePaperClip } from "react-icons/ai";
@@ -9,17 +10,35 @@ interface FileInputProps {
 }
 
 export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
+  const axios = useAxios();
   const { selectedImage, handleSelectedImage } =
     useContext(FormStepperContext)!;
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const fileList = event.target.files;
     if (fileList && fileList.length > 0) {
       const seletedFile = fileList[0];
+      let formData = new FormData();
+      formData.append(name, seletedFile);
+      try {
+        const response = await axios.post(
+          "file/fundraiser/file_upload",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
       handleSelectedImage(name, seletedFile);
     } else {
       handleSelectedImage(name, null);
     }
-  };
+  }
 
   const removeImage = () => {
     handleSelectedImage(name, null);

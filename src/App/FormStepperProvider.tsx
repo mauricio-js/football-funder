@@ -20,12 +20,20 @@ interface FormStepperContextProps {
   handleSelectedImage: (name: string, file: File | null) => void;
   countryPhoneNumber: string;
   setCountryPhoneNumber: (value: string) => void;
-  selectedCheckbox: { [key: string]: number[] };
+  selectedCheckbox: { [key: string]: number[] | null };
+  // setSelectedCheckbox: (name: string, value: number[]) => void;
   handleSelectedCheckbox: (name: string, value: number) => void;
   rewardArray: any;
   addRewardData: (rewardData: any) => void;
   deleteRewardData: (index: number) => void;
   handleSetCrrRewardId: (id: string) => void;
+  isClickedPromoteBtn: boolean;
+  handleClickPromoteBtn: () => void;
+  isClickedAddrewardBtn: boolean;
+  handleClickAddrewardBtn: () => void;
+  handleClickNoAddrewardBtn: () => void;
+  rewardIdArray: any;
+  handleRewardIdArray: any;
 }
 
 interface FormStepperPropsType {
@@ -135,11 +143,22 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     ContactPhoneNumberData[0].country
   );
   const [selectedCheckbox, setSelectedCheckbox] = useState<{
-    [key: string]: Array<number>;
+    [key: string]: number[] | null;
   }>({});
   const [rewardArray, setRewardArray] = useState<any>([]);
+  const [rewardIdArray, setRewardIdArray] = useState<any>([]);
   const [crrRewardId, setCrrRewardId] = useState<string>("");
-
+  const [isClickedPromoteBtn, setIsClickPromoteBtn] = useState(false);
+  const [isClickedAddrewardBtn, setIsClickAddrewardBtn] = useState(false);
+  const handleClickPromoteBtn = () => {
+    setIsClickPromoteBtn(!isClickedPromoteBtn);
+  };
+  const handleClickAddrewardBtn = () => {
+    setIsClickAddrewardBtn(true);
+  };
+  const handleClickNoAddrewardBtn = () => {
+    setIsClickAddrewardBtn(false);
+  };
   const handleInputChange = (name: string, value: string | null) => {
     setFormValues((preValue) => ({
       ...preValue,
@@ -186,12 +205,12 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   };
 
   const handleSelectedCheckbox = (name: string, value: number) => {
-    // if (selectedCheckbox[name] === undefined) {
-    //   selectedCheckbox[name] = [];
-    // }
+    if (selectedCheckbox[name] === undefined) {
+      selectedCheckbox[name] = [];
+    }
     const index = selectedCheckbox[name]?.findIndex((val) => val === value);
     const updatedSelectedCheckbox = { ...selectedCheckbox };
-    if (index < 0) {
+    if (index && index < 0) {
       updatedSelectedCheckbox[name] = [
         ...(selectedCheckbox[name] || []),
         value,
@@ -202,7 +221,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       );
       updatedSelectedCheckbox[name] = filteredData || [];
     }
-    setSelectedCheckbox(updatedSelectedCheckbox);
+    setSelectedCheckbox(updatedSelectedCheckbox || null);
   };
 
   const addRewardData = (rewardData: any) => {
@@ -222,6 +241,10 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       setRewardArray([...rewardArray, newRewardData]);
       setCrrRewardId("");
     }
+  };
+
+  const handleRewardIdArray = (rewardID: any) => {
+    setRewardIdArray((preValue: any) => [...preValue, rewardID]);
   };
 
   const deleteRewardData = (id: number) => {
@@ -258,6 +281,13 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         rewardArray,
         deleteRewardData,
         handleSetCrrRewardId,
+        handleClickPromoteBtn,
+        isClickedPromoteBtn,
+        handleClickAddrewardBtn,
+        handleClickNoAddrewardBtn,
+        isClickedAddrewardBtn,
+        handleRewardIdArray,
+        rewardIdArray,
       }}
     >
       {children}

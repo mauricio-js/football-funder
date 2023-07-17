@@ -7,7 +7,7 @@ import { MyDropdown, VerticalCardLabel } from "UI";
 
 export interface CarouselCardPropsType {
   cardData: CardType;
-  account: boolean;
+  account?: boolean;
   dropdownData?: MyDropdownType;
 }
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
+import { useAxios } from "Lib";
 import { AppState } from "App/reducers";
 
 import {
@@ -34,7 +36,7 @@ import {
   RewardsSortbyData,
 } from "Config";
 
-import { MyTabsDataType } from "types";
+import { MyTabsDataType, QueryKey } from "types";
 
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
@@ -44,7 +46,13 @@ import { MdAnnouncement } from "react-icons/md";
 import { BiCheck } from "react-icons/bi";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 
+import { FaRegUserCircle, FaRegCalendarAlt } from "react-icons/fa";
+import { BiMap, BiMessageRounded } from "react-icons/bi";
+import CardImageA from "Assets/images/explore/card-a.png";
+
 export const MyAccountPage: React.FC = () => {
+  const axios = useAxios();
+  const { userInfo } = useSelector((state: any) => state.user);
   const [active, setActive] = useState<string>("myProfile");
 
   const [showDownloadModal, setShowDownloadModal] = useState<boolean>(false);
@@ -59,6 +67,70 @@ export const MyAccountPage: React.FC = () => {
   const [updatedPassword, setUpdatedPassword] = useState<string>(
     sessionStorage.getItem("updatedPassword") || "false"
   );
+
+  const [accountFundraserListData, setAccountFundraiserListData] = useState<
+    any[]
+  >([]);
+
+  const getAccountFundraiserList = async (): Promise<any> => {
+    const { data } = await axios.get(
+      `/fundraiser/${userInfo.id}/getAllFundraiserByUserId`
+    );
+    return data;
+  };
+
+  useQuery([QueryKey.AccountFundraiserList], getAccountFundraiserList, {
+    onSuccess: (data) => {
+      setAccountFundraiserData(data.data);
+    },
+    onError: (data: any) => {},
+  });
+
+  const setAccountFundraiserData = (fundraiserData: any) => {
+    let accountFundraiserData = [];
+    for (let accountFundraiser of fundraiserData) {
+      let data = {
+        broadcastingType: "Live",
+        club: {
+          icon: FaRegUserCircle,
+          backgroundColor: "bg-green-80",
+          textColor: "text-green-10",
+          text: accountFundraiser.userData.organization.name,
+        },
+        location: {
+          icon: BiMap,
+          backgroundColor: "bg-green-80",
+          textColor: "text-white",
+          text: `${accountFundraiser.userData.country} ${accountFundraiser.userData.city}`,
+        },
+        title: accountFundraiser.title,
+        description: accountFundraiser.description,
+        progress: true,
+        fund: "50% funded",
+        curFund: 50000,
+        oriFund: 100000,
+        date: {
+          icon: FaRegCalendarAlt,
+          backgroundColor: "bg-gray-100",
+          textColor: "text-green-70",
+          text: accountFundraiser.created_at,
+        },
+        collection: {
+          icon: BiMessageRounded,
+          backgroundColor: "bg-gray-100",
+          textColor: "text-green-70",
+          text: "15 Comments",
+        },
+        image:
+          accountFundraiser.title_img_link === "" ||
+          !accountFundraiser.title_img_link
+            ? CardImageA
+            : `https://storage.googleapis.com/football_funder${accountFundraiser.title_img_link}`,
+      };
+      accountFundraiserData.push(data);
+    }
+    setAccountFundraiserListData(fundraiserData);
+  };
 
   function handleScroll(): void {
     const div = document.querySelector("#sticky-tab");
@@ -96,11 +168,16 @@ export const MyAccountPage: React.FC = () => {
     {
       content: (
         <div>
-          <CarouselCard
-            cardData={CrowdFundListData[0]}
-            account={true}
-            dropdownData={CardDropdownData}
-          />
+          {accountFundraserListData.map((item, index) => {
+            return (
+              <CarouselCard
+                key={index}
+                cardData={item}
+                account={true}
+                dropdownData={CardDropdownData}
+              />
+            );
+          })}
         </div>
       ),
       number: 1,

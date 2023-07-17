@@ -10,8 +10,9 @@ interface InputProps {
   name: string;
   data: InputType;
   disabled?: boolean;
+  required?: boolean
 }
-export const Input: React.FC<InputProps> = ({ data, name, disabled }) => {
+export const Input: React.FC<InputProps> = ({ data, name, disabled, required }) => {
   const { formValues, handleInputChange } = useContext(FormStepperContext)!;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -53,7 +54,7 @@ export const Input: React.FC<InputProps> = ({ data, name, disabled }) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           autoComplete="on"
-          required
+          required={!required}
         />
         {data.type === "password" && (
           <div className="absolute h-full right-6 top-0 flex items-center z-10">

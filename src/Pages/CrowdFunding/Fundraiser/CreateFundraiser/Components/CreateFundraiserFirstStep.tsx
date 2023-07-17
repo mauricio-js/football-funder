@@ -43,6 +43,7 @@ export const CreateFundraiserFirstStep: React.FC<StepperActionPropsType> = ({
                   limit={150}
                   height="h-[124px]"
                   showLeftCharacters={true}
+                  required={true}
                 />
               </div>
             </div>
@@ -61,6 +62,7 @@ export const CreateFundraiserFirstStep: React.FC<StepperActionPropsType> = ({
                 limit={300}
                 height="h-[150px]"
                 showLeftCharacters={true}
+                required={true}
               />
             </div>
             <div className="mt-30">

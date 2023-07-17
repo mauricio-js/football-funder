@@ -16,8 +16,8 @@ interface FormStepperContextProps {
   handleDescriptionChange: (name: string, intro: string) => void;
   amount: { [key: string]: number };
   handleAmountChange: (name: string, value: number) => void;
-  selectedImage: { [key: string]: File | null };
-  handleSelectedImage: (name: string, file: File | null) => void;
+  selectedImage: { [key: string]: {file: File | null, publicUrl: string | null} };
+  handleSelectedImage: (name: string, file: File | null, publicUrl: string | null) => void;
   countryPhoneNumber: string;
   setCountryPhoneNumber: (value: string) => void;
   selectedCheckbox: { [key: string]: number[] | null };
@@ -137,7 +137,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   }>({});
   const [amount, setAmountList] = useState<{ [key: string]: number }>({});
   const [selectedImage, setSelectedImage] = useState<{
-    [key: string]: File | null;
+    [key: string]: {file: File | null, publicUrl: string | null};
   }>({});
   const [countryPhoneNumber, setCountryPhoneNumber] = useState<string>(
     ContactPhoneNumberData[0].country
@@ -197,10 +197,10 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     }));
   };
 
-  const handleSelectedImage = (name: string, value: File | null) => {
+  const handleSelectedImage = (name: string, value: File | null, publicUrl: string | null) => {
     setSelectedImage((preValue) => ({
       ...preValue,
-      [name]: value,
+      [name]: {file: value, publicUrl: publicUrl},
     }));
   };
 

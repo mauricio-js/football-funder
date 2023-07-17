@@ -19,7 +19,7 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
     if (fileList && fileList.length > 0) {
       const seletedFile = fileList[0];
       let formData = new FormData();
-      formData.append(name, seletedFile);
+      formData.append('file', seletedFile);
       try {
         const response = await axios.post(
           "file/fundraiser/file_upload",
@@ -30,18 +30,17 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
             },
           }
         );
-        console.log(response);
+        handleSelectedImage(name, seletedFile, response.data);
       } catch (error) {
         console.log(error);
       }
-      handleSelectedImage(name, seletedFile);
     } else {
-      handleSelectedImage(name, null);
+      handleSelectedImage(name, null, null);
     }
   }
 
   const removeImage = () => {
-    handleSelectedImage(name, null);
+    handleSelectedImage(name, null, null);
   };
 
   return (
@@ -67,7 +66,7 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
               <div className="text-[16px] rotate-180">
                 <AiOutlinePaperClip />
               </div>
-              {selectedImage[name]?.name}
+              {selectedImage[name]?.file?.name}
             </div>
             <div className="text-red-600" onClick={removeImage}>
               <RiDeleteBin6Line />

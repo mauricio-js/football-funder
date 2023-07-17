@@ -37,7 +37,7 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     selectedCheckbox,
     selectValue,
     addRewardData,
-    // handleRewardIdArray,
+    handleRewardIdArray,
     // rewardIdArray,
   } = useContext(FormStepperContext);
 
@@ -73,7 +73,7 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
       onSuccess: (res) => {
         showStatus("Your fundraiser has been succesfully created!");
         dispatch(setReward(res.data.data));
-        // handleRewardIdArray(rewardData.id);
+        handleRewardIdArray(rewardData.id);
         // console.log("rewardArray", rewardData.id, rewardIdArray);
         window.scrollTo({ top: 0, behavior: "smooth" });
       },

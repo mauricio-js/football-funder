@@ -47,6 +47,7 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
                 showLeftCharacters={false}
                 title="Description"
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
+                required={true}
               />
             </div>
           </div>

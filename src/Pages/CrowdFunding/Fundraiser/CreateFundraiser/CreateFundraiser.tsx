@@ -21,8 +21,15 @@ export const CreateFundraiser: React.FC = () => {
   // const { selectValue } = useContext(FormStepperContext)!;
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
-  const userInfo = useSelector((state: any) => state.user);
-  const { descriptionList, amount } = useContext(FormStepperContext);
+  const { userInfo } = useSelector((state: any) => state.user);
+  const {
+    descriptionList,
+    amount,
+    selectedImage,
+    formValues,
+    isClickedPromoteBtn,
+    rewardIdArray
+  } = useContext(FormStepperContext);
 
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -54,25 +61,26 @@ export const CreateFundraiser: React.FC = () => {
   );
 
   function handleNextPage() {
+
     if (currentStep === 4) {
     }
-    if (currentStep === 6) {
+    if (currentStep === 5) {
       fundraiserSignUp({
         user_id: userInfo.id,
         title: descriptionList.title,
-        description: descriptionList.description,
-        amount: amount.amount,
-        about: "",
-        titleImgLink: "",
-        titleImgName: "",
-        pitchImgLink: "",
-        pitchImgName: "",
-        pitchVideoLink: "",
-        pitchVideoName: "",
-        overlayImgLink: "",
-        overlayImgName: "",
-        promote: true,
-        reward_ids: [],
+        description: descriptionList.short_description,
+        amount: amount.fundraiser_amount,
+        about: descriptionList.description,
+        titleImgLink: selectedImage.title_image?.publicUrl,
+        titleImgName: selectedImage.title_image?.file?.name,
+        pitchImgLink: selectedImage.pitch_image?.publicUrl,
+        pitchImgName: selectedImage.pitch_image?.file?.name,
+        pitchVideoLink: formValues.video_url,
+        pitchVideoName: formValues.video_url,
+        overlayImgLink: selectedImage.overlay_image?.publicUrl,
+        overlayImgName: selectedImage.overlay_image?.file?.name,
+        promote: isClickedPromoteBtn,
+        reward_ids: rewardIdArray,
       });
     } else if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);

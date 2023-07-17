@@ -21,7 +21,7 @@ export const VerticalCard: React.FC<CardProps> = ({
           <img
             src={cardData.image}
             alt="card a"
-            className="h-full w-[280px] object-cover m-0 p-0 block"
+            className="h-full w-[300px] object-cover m-0 p-0 block"
           />
           <div className="absolute top-0 w-full p-5 flex justify-between">
             <div className="px-[10px] py-[5px] bg-green-10 rounded-10 text-[14px] font-medium">

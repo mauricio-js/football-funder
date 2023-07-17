@@ -19,44 +19,39 @@ import {
   LastNameData,
   EmailCommunicationAlterCheckboxData,
 } from "Config";
-import { SIGNIN_URL } from "Lib";
+import { SIGNIN_URL } from "Lib/urls";
 import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
 
 interface SignInThirdPagePropsType {
   handlePrevPage: () => void;
-  countryPhone: string;
-  setCountryPhone: (countryPhone: string) => void;
-  eCConfirm: number | undefined;
-  setECConfirm: (eCConfirm: number) => void;
-  confirm: boolean;
-  onHandleConfirm: () => void;
-  onInputChange: (name: string, value: string) => void;
+  handleDoublePrevPage: () => void;
   handleSubmit: () => void;
 }
 export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
   handlePrevPage,
-  confirm,
-  eCConfirm,
-  setECConfirm,
-  onHandleConfirm,
+  handleDoublePrevPage,
   handleSubmit,
 }) => {
   const navigate = useNavigate();
   const { showStatus } = useContext(StatusContext);
-  const { formValues } = useContext(FormStepperContext)!;
+  const { formValues, selectedCheckbox, selectValue } =
+    useContext(FormStepperContext)!;
 
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
   };
-
   const SignInFinalPageAction = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (formValues.password !== formValues.confirm_password) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password.length < 8) {
+    } else if (formValues.password && formValues.password.length < 8) {
       showStatus("Password must be longer than 8 characters", "error");
-    } else if (!confirm) {
+    } else if (
+      !selectedCheckbox.confirm ||
+      selectedCheckbox.confirm.length === 0
+    ) {
       showStatus(
         "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
         "error"
@@ -73,7 +68,11 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
       xs:mb-[150px] mb-[100px]  mx-auto"
       >
         <div className="mt-6">
-          <StepperBackButton handleBackPage={handlePrevPage} />
+          <StepperBackButton
+            handleBackPage={
+              selectValue.category === 2 ? handleDoublePrevPage : handlePrevPage
+            }
+          />
         </div>
         <div className="mt-15">
           <UnchangePageTitle
@@ -130,11 +129,10 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               <div className="mt-2.5">
                 <RadioButtonList
                   options={EmailCommunicationAlterCheckboxData}
-                  currentValue={eCConfirm}
-                  onSelect={setECConfirm}
                   classes="flex flex-col gap-[15px]"
                   textStyle="darkIntroText"
                   checkboxStyle={true}
+                  name="ecc_communication"
                 />
               </div>
             </div>
@@ -145,7 +143,7 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               <CheckBox
                 align="flex-row-reverse gap-[10px]"
                 label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-                value={0}
+                value={1}
                 textClass="introText"
                 name="confirm"
               />

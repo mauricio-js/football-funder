@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
+import { useMutation } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { AccountConfirmPasswordData, AccountPasswordData } from "Config";
-import { useMutation } from "react-query";
 import { Button, Input, Template } from "UI";
-import { useAxios, SIGNIN_URL, FORGOTPASSWORD_URL } from "Lib";
+import { useAxios } from "Lib";
+import { SIGNIN_URL, FORGOTPASSWORD_URL } from "Lib/urls";
 import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
 
 interface ResetPasswordType {
   token: string | undefined;
-  password: string;
-  password_confirmation: string;
+  password: string | null;
+  password_confirmation: string | null;
 }
 export const ResetPassword: React.FC = () => {
   const params = useParams<string>();

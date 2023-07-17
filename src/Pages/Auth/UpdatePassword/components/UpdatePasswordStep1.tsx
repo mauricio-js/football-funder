@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { EDITMYACCOUNT_URL } from "Lib";
+import { EDITMYACCOUNT_URL } from "Lib/urls";
 
 import { Button, Input, StepperBackButton } from "UI";
 

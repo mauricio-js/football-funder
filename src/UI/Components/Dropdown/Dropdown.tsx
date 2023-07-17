@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import { AppState } from "App/reducers";
+// import { SIGNUP_URL } from "Lib/urls";
 import Arrow from "Assets/images/svg/button/black-arrow";
 import { MenuItemType } from "types";
 
@@ -9,6 +12,7 @@ export interface DropdownProps {
 
 export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
   const navigate = useNavigate();
+  // const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
 
   return (

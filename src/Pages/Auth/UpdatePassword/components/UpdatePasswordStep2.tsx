@@ -1,14 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import { MYACCOUNT_URL } from "Lib";
-
+import { MYACCOUNT_URL } from "Lib/urls";
 import { Button, Input, StepperBackButton } from "UI";
-
 import { AccountPasswordData, AccountConfirmPasswordData } from "Config";
-
 import { StepperActionPropsType } from "types";
-
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 

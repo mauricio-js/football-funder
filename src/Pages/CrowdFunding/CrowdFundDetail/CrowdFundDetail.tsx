@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
-import { MAKEAWITHDRAWAL_URL } from "Lib";
+import { MAKEAWITHDRAWAL_URL } from "Lib/urls";
 
 import {
-  // AmountShow,
   Button,
   CarouselCard,
   CommentList,

@@ -32,7 +32,7 @@ import {
   WebSiteURLData,
 } from "Config";
 
-import { PROFILEPAGE_URL } from "Lib";
+import { PROFILEPAGE_URL } from "Lib/urls";
 
 import { TbInfoSquareRoundedFilled } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";

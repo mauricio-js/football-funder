@@ -3,6 +3,7 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } fro
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './reducers';
 
+
 const persistConfig = {
   key: 'state',
   version: 1,

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SIGNIN_URL } from "Lib";
+import { SIGNIN_URL } from "Lib/urls";
 import { Button, StepperBackButton } from "UI";
 
 interface ResetPasswordStep1PropsType {

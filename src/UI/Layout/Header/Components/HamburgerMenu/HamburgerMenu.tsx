@@ -1,6 +1,28 @@
 import React from "react";
-import { HamburgerSignInButton, HamburgerItemList, Search } from "UI";
-import { HamburgerSearchData } from "Config";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  HamburgerSignInButton,
+  Search,
+  SocialSiteLink,
+  HamburgerItem,
+  HamburgerSubMenuItem,
+} from "UI";
+import {
+  homeButtonData,
+  exploreButtonData,
+  advertisingButtonData,
+  sponsorshipButtonData,
+  fundraisingButtonData,
+  feeButtonData,
+  faqButtonData,
+  aboutButtonData,
+  supprotButtonData,
+  HamburgerSearchData,
+} from "Config";
+import { HOME_URL } from "Lib/urls";
+import { AppState } from "App/reducers";
+import { setShowMobileMenu } from "Data/LayoutState";
 import HeaderMenuLogo from "Assets/images/svg/logo/hamburger-menu-logo.svg";
 import { MdClose } from "react-icons/md";
 
@@ -11,6 +33,16 @@ type hamburgerMenuProps = {
 export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
   isShowMobileMenu,
 }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
+  const { userInfo } = useSelector((state: any) => state.user);
+  const isUpdated = userInfo.first_name;
+  const logOut = () => {
+    dispatch({ type: "RESET" });
+    dispatch(setShowMobileMenu(false));
+    navigate(HOME_URL);
+  };
   return (
     <div className="z-50">
       <div className="w-full bg-green-70">
@@ -32,7 +64,30 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
           </div>
           {/* Part -  Hamburger List */}
           <div className="mt-30">
-            <HamburgerItemList />
+            <div className="flex flex-col divide-y divide-solid divide-green-30">
+              <HamburgerItem Item={homeButtonData} />
+              <HamburgerItem Item={exploreButtonData} />
+              <HamburgerSubMenuItem
+                List={fundraisingButtonData(isAuth, isUpdated)}
+              />
+              <HamburgerSubMenuItem List={advertisingButtonData} />
+              <HamburgerSubMenuItem List={sponsorshipButtonData} />
+              <HamburgerItem Item={feeButtonData} />
+              <HamburgerItem Item={faqButtonData} />
+              <HamburgerItem Item={aboutButtonData} />
+              <HamburgerItem Item={supprotButtonData} />
+              {isAuth && (
+                <button
+                  className="text-green-10 font-medium text-[16px] leading-[22px] text-left px-[10px] py-[20px]"
+                  onClick={logOut}
+                >
+                  Sign out
+                </button>
+              )}
+              <div className="px-[10px] py-30">
+                <SocialSiteLink />
+              </div>
+            </div>
           </div>
         </div>
       </div>

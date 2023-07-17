@@ -3,15 +3,19 @@ import {
     HOME_URL,
     EXPLORE_URL,
     CROWDFUNDINGLIST_URL,
-    FUNDRAISER_URL,
-    ADVERTISING_URL,
-    SPONSOR_URL,
+    CREATEFUNDRAISER_URL,
+    CREATEADVERTISING_URL,
+    CREATESPONSORSHIP_URL,
     SPONSORSHIPLISTING_URL,
     FEES_URL,
     ABOUTUS_URL,
     SUPPORT_URL,
-FAQ_URL
-} from "Lib";
+    MYACCOUNT_URL,
+    PROFILEPAGE_URL,
+    FAQ_URL,
+    FUNDRAISERSIGNUP_URL,
+    FUNDRAISERACCOUNTUPDATE_URL
+} from "Lib/urls";
 import {
     ButtonItemType,
     MenuItemType,
@@ -20,6 +24,8 @@ import {
     SearchDataType
 } from "types";
 import { MdSearch } from "react-icons/md";
+import { useSelector } from "react-redux";
+
 
 export const homeButtonData: ButtonItemType = {
         title: "Home",
@@ -45,20 +51,22 @@ export const feeButtonData: ButtonItemType = {
     title: "Fees",
       href:FEES_URL,
 }
-export const fundraisingButtonData: MenuItemType = {
+export const fundraisingButtonData = (isAuth: boolean, isUpdated: string) => ({
+    // const { userInfo } = useSelector((state: any) => state.user)
+    // const isUpdated = userInfo.first_name
     title: "Fundraising",
     href: "/",
     children: [
         {
             title: "Fundraise",
-            href: FUNDRAISER_URL
+            href: isAuth ? (isUpdated? CREATEFUNDRAISER_URL : FUNDRAISERACCOUNTUPDATE_URL) : FUNDRAISERSIGNUP_URL,
         },
         {
             title: "Contribute",
             href: CROWDFUNDINGLIST_URL
         },
     ]
-}
+})
 export const sponsorshipButtonData: MenuItemType = {
      title: "Sponsorship",
         href: "/",
@@ -69,7 +77,7 @@ export const sponsorshipButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: SPONSOR_URL
+                href: CREATEADVERTISING_URL
             },
         ]
 }
@@ -83,7 +91,7 @@ export const advertisingButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: ADVERTISING_URL
+                href: CREATEADVERTISING_URL
             },
         ]
 }
@@ -122,7 +130,7 @@ export const moreButtonData: MenuItemType = {
       children: [
             {
                 title: "Fundraise",
-                href: FUNDRAISER_URL
+                href: CREATEFUNDRAISER_URL
             },
             {
                 title: "Contribute",
@@ -139,7 +147,7 @@ export const moreButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href:  ADVERTISING_URL
+                href:  CREATESPONSORSHIP_URL
                
             },
         ]
@@ -153,7 +161,7 @@ export const moreButtonData: MenuItemType = {
             },
             {
                 title: "Sell",
-                href: SPONSOR_URL
+                href: CREATESPONSORSHIP_URL
             },
         ]
     },
@@ -178,11 +186,13 @@ export const moreButtonData: MenuItemType = {
 export const AccounMenuData : AccountMenuDataType[] = [
     {
         id: 1,
-        title: 'My Account'
+        title: 'My Account',
+        url: MYACCOUNT_URL
     },
     {
         id: 2,
-        title: 'Profile'
+        title: 'Profile',
+        url:PROFILEPAGE_URL
     },
     {
         id: 3,

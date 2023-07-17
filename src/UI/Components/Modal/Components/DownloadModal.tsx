@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { RadioButtonList } from "UI";
 import { Modal } from "..";
@@ -20,8 +20,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
   menuContent,
   menuTitle,
 }) => {
-  const [downloadFormat, setDownloadFormat] = useState<number>();
-
   return (
     <Modal>
       <div className="w-[330px] p-15 bg-white rounded-10 border-[1px] border-gray-300 shadow-sm shadow-gray-200">
@@ -30,11 +28,10 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
         <div className="mt-2.5">
           <RadioButtonList
             options={DownloadFormatData}
-            currentValue={downloadFormat}
-            onSelect={setDownloadFormat}
             classes="flex gap-30"
             textStyle="text-base"
             checkboxStyle={false}
+            name="download_format"
           />
         </div>
         <div className="mt-30">

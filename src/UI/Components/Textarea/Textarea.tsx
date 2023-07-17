@@ -13,6 +13,7 @@ interface Props {
   titleStyle?: string;
   height?: string;
   placeholder?: string;
+  required?: boolean
 }
 
 export const Textarea: React.FC<Props> = ({
@@ -25,6 +26,7 @@ export const Textarea: React.FC<Props> = ({
   showLeftCharacters,
   placeholder,
   name,
+  required
 }) => {
   const { descriptionList, handleDescriptionChange } =
     useContext(FormStepperContext)!;
@@ -49,6 +51,7 @@ export const Textarea: React.FC<Props> = ({
         }}
         value={descriptionList[name]}
         placeholder={placeholder}
+        required={required}
       />
       {showLeftCharacters && (
         <div
@@ -63,7 +66,7 @@ export const Textarea: React.FC<Props> = ({
         </div>
       )}
       {title && (
-        <div className="absolute w-full top-[12px] px-[16px] hidden vs:block">
+        <div className="absolute top-[12px] px-[16px] hidden vs:block">
           <div
             className={classNames(
               titleStyle,

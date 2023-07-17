@@ -3,11 +3,11 @@ import { CardType } from "types";
 import {
   ADSLISTING_URL,
   CROWDFUNDINGLIST_URL,
-  FUNDRAISER_URL,
-  ADVERTISING_URL,
-  SPONSOR_URL,
-  SPONSORSHIPLISTING_URL
-} from "Lib";
+  CREATEFUNDRAISER_URL,
+  SPONSORSHIPLISTING_URL,
+  CREATEADVERTISING_URL,
+  CREATESPONSORSHIP_URL
+} from "Lib/urls";
 import FirstCarouselCard from "Assets/images/home/carousel-first-img.png";
 import SecondCarouselCard from 'Assets/images/home/carousel-second-image.png'
 import FundraiseCardImage from "Assets/images/home/fundraise.png";
@@ -31,7 +31,7 @@ export const FundraisingCardData: AdsCardDataType[] = [
       "Stand out from the crowd and raise funds on a dedicated football platform.",
     backgroundImage: FundraiseCardImage,
     buttonName: "Start Now",
-    linkUrl:FUNDRAISER_URL
+    linkUrl:CREATEFUNDRAISER_URL
   },
   {
     id: 2,
@@ -51,7 +51,7 @@ export const MobileFundraisingCardData: AdsCardDataType[] = [
       "Stand out from the crowd and raise funds on a dedicated football platform.",
     backgroundImage: MobileFundraiseCardImage,
     buttonName: "Start Now",
-    linkUrl:FUNDRAISER_URL
+    linkUrl:CREATEFUNDRAISER_URL
   },
   {
     id: 2,
@@ -80,7 +80,7 @@ export const AdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: AdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:ADVERTISING_URL
+     linkUrl:CREATEADVERTISING_URL
   },
 ];
 export const MobileAdvertisingCardData: AdsCardDataType[] = [
@@ -100,7 +100,7 @@ export const MobileAdvertisingCardData: AdsCardDataType[] = [
       "List advertising opportunities to brands and put your assets to the best use possible.",
     backgroundImage: MobileAdvertisingSellImg,
     buttonName: "Sell your ads",
-     linkUrl:ADVERTISING_URL
+     linkUrl:CREATEADVERTISING_URL
   },
 ];
 export const SponsorshipData: AdsCardDataType[] = [
@@ -120,7 +120,7 @@ export const SponsorshipData: AdsCardDataType[] = [
       "Attract sponsors to your club or organisation by listing your important sponsorship deals.",
     backgroundImage: SponsorshipSellImg,
     buttonName: "Sell your spots",
-     linkUrl:SPONSOR_URL
+     linkUrl:CREATESPONSORSHIP_URL
   },
 ];
 export const MobileSponsorshipData: AdsCardDataType[] = [
@@ -140,7 +140,7 @@ export const MobileSponsorshipData: AdsCardDataType[] = [
       "Attract sponsors to your club or organisation by listing your important sponsorship deals.",
     backgroundImage: MobileSponsorshipSellImg,
     buttonName: "Sell your spots",
-     linkUrl:SPONSOR_URL
+     linkUrl:CREATESPONSORSHIP_URL
   },
 ];
 

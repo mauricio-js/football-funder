@@ -2,13 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Helmet } from "react-helmet-async";
 import classNames from "classnames";
-import { APP_NAME } from "Lib";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { APP_NAME } from "Lib/urls";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Loader } from "UI";
 import { AppState } from "App/reducers";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
   title?: string;

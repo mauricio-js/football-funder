@@ -4,7 +4,6 @@ import { StepperActionPropsType } from "types";
 
 export const ConfirmPage: React.FC<StepperActionPropsType> = ({
   handleNextPage,
-  handlePrevPage,
 }) => {
   return (
     <div>

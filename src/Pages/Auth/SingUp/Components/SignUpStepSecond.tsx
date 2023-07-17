@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormStepperContext } from "App/FormStepperProvider";
 import "react-toastify/dist/ReactToastify.css";
-
 import {
   ContactOrganisationData,
   ContactAddressLine1Data,
@@ -19,8 +17,9 @@ import {
   StepperBackButton,
   UnchangePageTitle,
 } from "UI";
-import { SIGNIN_URL } from "Lib";
+import { SIGNIN_URL } from "Lib/urls";
 import { StatusContext } from "App/StatusProvider";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 interface SignUpSecondPagePropsType {
   handleNextPage: () => void;
@@ -41,7 +40,7 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
 
   const signUpSecondPageAction = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.country) {
+    if (formValues.org_country) {
       handleNextPage();
     } else {
       showStatus("You must select the country", "error");
@@ -73,25 +72,25 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
           />
         </div>
         <div className="mt-30 xs:w-[500px] w-full">
-          <Input data={ContactOrganisationData} name="organization" />
+          <Input data={ContactOrganisationData} name="org_name" />
           <div className="mt-2.5 smallIntroText">
             Use official name - if individual, use full name.
           </div>
           <div className="mt-30 flex flex-col gap-2.5">
             <div className="flex gap-2.5">
               <div className="w-1/2">
-                <Input data={ContactAddressLine1Data} name="address_line1" />
+                <Input data={ContactAddressLine1Data} name="org_address1" />
               </div>
               <div className="w-1/2">
-                <Input data={ContactAddressLine2Data} name="address_line2" />
+                <Input data={ContactAddressLine2Data} name="org_address2" />
               </div>
             </div>
             <div className="flex gap-2.5">
               <div className="w-1/2">
-                <Input data={ContactTownData} name="city" />
+                <Input data={ContactTownData} name="org_city" />
               </div>
               <div className="w-1/2">
-                <Input data={ContactPostcodeData} name="postcode" />
+                <Input data={ContactPostcodeData} name="org_post_code" />
               </div>
             </div>
           </div>
@@ -101,7 +100,7 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
           <div className="mt-5">
             <Select
               backgroundColor="bg-white"
-              name="country"
+              name="org_country"
               label="Country (Region)"
               SelectFormData={RegionData}
               textSize="generalText"

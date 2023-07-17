@@ -3,116 +3,127 @@ import { ColorProvider } from "App/ColorProvider";
 import { FormStepperProvider } from "App/FormStepperProvider";
 
 import {
-  ABOUTUS_URL,
-  ADDETAILLIVE_URL,
-  ADDETAILPENDING_URL,
-  ADSLISTING_URL,
-  ADVERTISINGSALE_URL,
-  BUYERFIRSTPAGE_URL,
-  BUYERCHECKOUT_URL,
-  BUYERFINAL_URL,
-  CHECKOUT_URL,
+  HOME_URL,
+  EXPLORE_URL,
+  HOWITWORKS_URL,
+  SIGNUP_URL,
+  SIGNIN_URL,
+  EMAILVERIFICATION_URL,
+  VERIFY_ACCOUNT_URL,
+  FORGOTPASSWORD_URL,
+  RESET_PASSWORD,
+  FUNDRAISERSIGNUP_URL,
+  FUNDRAISERACCOUNTUPDATE_URL,
+  CREATEFUNDRAISER_URL,
+  CROWDFUNDINGLIST_URL,
+  CROWDFUNDINGDONATE_URL,
   CROWDFUNDDETAILLIVE_URL,
   CROWDFUNDDETAILLIVEMENU_URL,
   CROWDFUNDDETAILPENDING_URL,
-  CROWDFUNDINGLIST_URL,
-  CROWDFUNDINGDONATE_URL,
-  DONATIONVIEW_URL,
-  EXPLORE_URL,
-  FEES_URL,
-  FORGOTPASSWORD_URL,
-  HOME_URL,
-  HOWITWORKS_URL,
-  LISTINGAPPROVAL_URL,
   MAKEAWITHDRAWAL_URL,
-  MYACCOUNT_URL,
-  EDITMYACCOUNT_URL,
-  ADVERTISING_URL,
-  FUNDRAISER_URL,
-  SPONSOR_URL,
-  PITCHSIDEADBOARD_URL,
-  PROFILEPAGE_URL,
-  PROFILEEDIT_URL,
-  INDIVIDUALPROFILEPAGE_URL,
-  SPONSORPROFILEPAGE_URL,
-  PROMOTE_URL,
-  SELLERFIRSTPAGE_URL,
-  SELLERFINAL_URL,
-  SIGNIN_URL,
-  SIGNUP_URL,
+  ADVERTISINGSIGNUP_URL,
+  ADVERTISINGACCOUNTUPDATE_URL,
+  CREATEADVERTISING_URL,
+  ADVERTISINGSALE_URL,
+  ADSDETAILLIVE_URL,
+  ADSDETAILPENDING_URL,
+  ADSLISTING_URL,
+  SPONSORSHIPSIGNUP_URL,
+  SPONSORSHIPACCOUNTUPDATE_URL,
+  CREATESPONSORSHIP_URL,
   SPONSORSHIPLISTING_URL,
   SPONSORSHIPDETAILLIVE_URL,
   SPONSORSHIPDETAILPENDING_URL,
   SPONSORSHIPSALE_URL,
-  SUPPORT_URL,
+  PROMOTE_URL,
+  CHECKOUT_URL,
+  DONATIONVIEW_URL,
   SUPPORTERVIEW_URL,
+  MYACCOUNT_URL,
+  EDITMYACCOUNT_URL,
   UPDATEPASSWORD_URL,
+  PITCHSIDEADBOARD_URL,
+  BUYERFIRSTPAGE_URL,
+  BUYERCHECKOUT_URL,
+  BUYERFINAL_URL,
+  SELLERFIRSTPAGE_URL,
+  SELLERFINAL_URL,
+  PROFILEPAGE_URL,
+  PROFILEEDIT_URL,
+  INDIVIDUALPROFILEPAGE_URL,
+  SPONSORPROFILEPAGE_URL,
+  LISTINGAPPROVAL_URL,
+  ABOUTUS_URL,
+  WITHDRAWALAPPROVAL_URL,
   COOKIE_URL,
+  FAQ_URL,
+  FEES_URL,
   FRAUDPOLICY_URL,
   PRIVACYPOLICY_URL,
-  FAQ_URL,
+  SUPPORT_URL,
   TERMS_URL,
-  WITHDRAWALAPPROVAL_URL,
-  EMAILVERIFICATION_URL,
-  VERIFY_ACCOUNT_URL,
-  REST_PASSWORD,
-} from "Lib";
+} from "Lib/urls";
 
 import {
-  AboutUs,
-  AdDetailLivePage,
-  AdDetailPendingPage,
-  AdsList,
-  AdvertisingSale,
-  BuyerCheckoutPage,
-  BuyerFinalPage,
-  BuyerFirstPage,
-  Checkout,
+  Home,
+  Explore,
+  HowItWorks,
+  SignUp,
+  Signin,
+  EmailVerification,
+  VerifyAccount,
+  ForgotPassword,
+  ResetPassword,
+  FundraiserSignUp,
+  FundraiserAccountUpate,
+  CreateFundraiser,
+  CrowdfundingList,
+  CrowdfundingDonate,
+  MakeWithdrawal,
   CrowdFundDetailLivePage,
   CrowdFundDetailLiveMenuPage,
   CrowdFundDetailPendingPage,
-  CrowdfundingDonate,
-  CrowdfundingList,
-  DonationView,
-  EditMyAccount,
-  Explore,
-  Fees,
-  ForgotPassword,
-  Home,
-  HowItWorks,
-  Landing,
-  ListingApproval,
-  MakeWithdrawal,
-  MyAccountPage,
-  Fundraiser,
-  Advertiser,
-  Sponsor,
-  PitchSideAdBoard,
-  ProfilePage,
-  EditProfile,
-  IndividualProfilePage,
-  SponsorProfilePage,
-  Promote,
-  SellerFirstPage,
-  SellerFinalPage,
-  Signin,
-  SignUp,
+  AdvertisingSignUp,
+  AdvertisingAccountUpdate,
+  CreateAdsListing,
+  AdsList,
+  AdDetailLivePage,
+  AdDetailPendingPage,
+  AdvertisingSale,
+  SponsorshipSignUp,
+  SponsorshipAccountUpdate,
+  CreateSponsorshipListing,
   SponsorshipList,
   SponsorshipDetailLivePage,
   SponsorshipDetailPendingPage,
   SponsorshipSale,
-  Support,
+  Promote,
+  Checkout,
   SupporterView,
+  DonationView,
+  MyAccountPage,
+  EditMyAccount,
   UpdatePassword,
-  CookiePage,
-  FraudPrivacyPage,
-  FAQPage,
-  PrivacyPolicyPage,
-  TermsPage,
+  PitchSideAdBoard,
+  BuyerFirstPage,
+  BuyerCheckoutPage,
+  BuyerFinalPage,
+  SellerFirstPage,
+  SellerFinalPage,
+  ProfilePage,
+  EditProfile,
+  IndividualProfilePage,
+  SponsorProfilePage,
+  ListingApproval,
   WithdrawalApproval,
-  EmailVerification,
-  VerifyAccount,
-  ResetPassword,
+  AboutUs,
+  CookiePage,
+  FAQPage,
+  Fees,
+  FraudPrivacyPage,
+  PrivacyPolicyPage,
+  Support,
+  Terms,
 } from "Pages";
 import {
   BrowserRouter,
@@ -136,7 +147,7 @@ function App() {
   const RedirectToRoot = () => {
     const navigate = useNavigate();
     useEffect(() => {
-      navigate("/home");
+      navigate("/");
     }, [navigate]);
     return null;
   };
@@ -148,43 +159,97 @@ function App() {
           <BrowserRouter>
             <ScrollToTop />
             <Routes>
-              <Route path="/" element={<Landing />} />
               <Route path={HOME_URL} element={<Home />} />
               <Route path={EXPLORE_URL} element={<Explore />} />
               <Route path={HOWITWORKS_URL} element={<HowItWorks />} />
-              <Route path={FUNDRAISER_URL} element={<Fundraiser />} />
-              <Route path={FUNDRAISER_URL} element={<Fundraiser />} />
+
+              {/* Authentication Pages */}
+              <Route path={SIGNUP_URL} element={<SignUp />} />
+              <Route path={SIGNIN_URL} element={<Signin />} />
+              <Route
+                path={EMAILVERIFICATION_URL}
+                element={<EmailVerification />}
+              />
+              <Route
+                path={VERIFY_ACCOUNT_URL + "/:token"}
+                element={<VerifyAccount />}
+              />
+              <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
+              <Route
+                path={RESET_PASSWORD + "/:token"}
+                element={<ResetPassword />}
+              />
+
+              {/* Fundraising Pages */}
+              <Route
+                path={FUNDRAISERSIGNUP_URL}
+                element={<FundraiserSignUp />}
+              />
+              <Route
+                path={FUNDRAISERACCOUNTUPDATE_URL}
+                element={<FundraiserAccountUpate />}
+              />
+              <Route
+                path={CREATEFUNDRAISER_URL}
+                element={<CreateFundraiser />}
+              />
               <Route
                 path={CROWDFUNDINGLIST_URL}
                 element={<CrowdfundingList />}
               />
               <Route
-                path={CROWDFUNDDETAILLIVEMENU_URL}
-                element={<CrowdFundDetailLiveMenuPage />}
+                path={CROWDFUNDINGDONATE_URL}
+                element={<CrowdfundingDonate />}
               />
-              <Route path={MAKEAWITHDRAWAL_URL} element={<MakeWithdrawal />} />
               <Route
                 path={CROWDFUNDDETAILLIVE_URL}
                 element={<CrowdFundDetailLivePage />}
+              />
+              <Route
+                path={CROWDFUNDDETAILLIVEMENU_URL}
+                element={<CrowdFundDetailLiveMenuPage />}
               />
               <Route
                 path={CROWDFUNDDETAILPENDING_URL}
                 element={<CrowdFundDetailPendingPage />}
               />
               <Route />
+              <Route path={MAKEAWITHDRAWAL_URL} element={<MakeWithdrawal />} />
+
+              {/* Advertising Pages */}
               <Route
-                path={CROWDFUNDINGDONATE_URL}
-                element={<CrowdfundingDonate />}
+                path={ADVERTISINGSIGNUP_URL}
+                element={<AdvertisingSignUp />}
               />
-              <Route path={ADVERTISING_URL} element={<Advertiser />} />
-              <Route path={ADSLISTING_URL} element={<AdsList />} />
-              <Route path={ADDETAILLIVE_URL} element={<AdDetailLivePage />} />
               <Route
-                path={ADDETAILPENDING_URL}
+                path={ADVERTISINGACCOUNTUPDATE_URL}
+                element={<AdvertisingAccountUpdate />}
+              />
+              <Route
+                path={CREATEADVERTISING_URL}
+                element={<CreateAdsListing />}
+              />
+              <Route path={ADSLISTING_URL} element={<AdsList />} />
+              <Route path={ADSDETAILLIVE_URL} element={<AdDetailLivePage />} />
+              <Route
+                path={ADSDETAILPENDING_URL}
                 element={<AdDetailPendingPage />}
               />
               <Route path={ADVERTISINGSALE_URL} element={<AdvertisingSale />} />
-              <Route path={SPONSOR_URL} element={<Sponsor />} />
+
+              {/* Sponsorship Page */}
+              <Route
+                path={SPONSORSHIPSIGNUP_URL}
+                element={<SponsorshipSignUp />}
+              />
+              <Route
+                path={SPONSORSHIPACCOUNTUPDATE_URL}
+                element={<SponsorshipAccountUpdate />}
+              />
+              <Route
+                path={CREATESPONSORSHIP_URL}
+                element={<CreateSponsorshipListing />}
+              />
               <Route
                 path={SPONSORSHIPLISTING_URL}
                 element={<SponsorshipList />}
@@ -198,30 +263,18 @@ function App() {
                 element={<SponsorshipDetailPendingPage />}
               />
               <Route path={SPONSORSHIPSALE_URL} element={<SponsorshipSale />} />
+
+              {/* Promote Page */}
               <Route path={PROMOTE_URL} element={<Promote />} />
+
+              {/* Checkout Page */}
               <Route path={CHECKOUT_URL} element={<Checkout />} />
-              {/* auth */}
-              <Route path={SIGNIN_URL} element={<Signin />} />
-              <Route
-                path={EMAILVERIFICATION_URL}
-                element={<EmailVerification />}
-              />
-              <Route path={SIGNUP_URL} element={<SignUp />} />
-              <Route path={FORGOTPASSWORD_URL} element={<ForgotPassword />} />
-              <Route
-                path={VERIFY_ACCOUNT_URL + "/:token"}
-                element={<VerifyAccount />}
-              />
-              <Route
-                path={REST_PASSWORD + "/:token"}
-                element={<ResetPassword />}
-              />
-              {/*  */}
-              <Route path={FEES_URL} element={<Fees />} />
-              <Route path={ABOUTUS_URL} element={<AboutUs />} />
-              <Route path={SUPPORT_URL} element={<Support />} />
-              <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
+
+              {/* View Pages */}
               <Route path={DONATIONVIEW_URL} element={<DonationView />} />
+              <Route path={SUPPORTERVIEW_URL} element={<SupporterView />} />
+
+              {/* My Account Page */}
               <Route path={MYACCOUNT_URL} element={<MyAccountPage />} />
               <Route path={EDITMYACCOUNT_URL} element={<EditMyAccount />} />
               <Route path={UPDATEPASSWORD_URL} element={<UpdatePassword />} />
@@ -229,11 +282,15 @@ function App() {
                 path={PITCHSIDEADBOARD_URL}
                 element={<PitchSideAdBoard />}
               />
+
+              {/* Agreement Pages */}
               <Route path={BUYERFIRSTPAGE_URL} element={<BuyerFirstPage />} />
               <Route path={BUYERCHECKOUT_URL} element={<BuyerCheckoutPage />} />
               <Route path={BUYERFINAL_URL} element={<BuyerFinalPage />} />
               <Route path={SELLERFIRSTPAGE_URL} element={<SellerFirstPage />} />
               <Route path={SELLERFINAL_URL} element={<SellerFinalPage />} />
+
+              {/* Profile Pages */}
               <Route path={PROFILEPAGE_URL} element={<ProfilePage />} />
               <Route path={PROFILEEDIT_URL} element={<EditProfile />} />
               <Route
@@ -244,16 +301,23 @@ function App() {
                 path={SPONSORPROFILEPAGE_URL}
                 element={<SponsorProfilePage />}
               />
-              <Route path={COOKIE_URL} element={<CookiePage />} />
-              <Route path={FRAUDPOLICY_URL} element={<FraudPrivacyPage />} />
-              <Route path={FAQ_URL} element={<FAQPage />} />
-              <Route path={PRIVACYPOLICY_URL} element={<PrivacyPolicyPage />} />
-              <Route path={TERMS_URL} element={<TermsPage />} />
+
+              {/* Approval Pages */}
               <Route path={LISTINGAPPROVAL_URL} element={<ListingApproval />} />
               <Route
                 path={WITHDRAWALAPPROVAL_URL}
                 element={<WithdrawalApproval />}
               />
+
+              {/* Guide Pages */}
+              <Route path={ABOUTUS_URL} element={<AboutUs />} />
+              <Route path={COOKIE_URL} element={<CookiePage />} />
+              <Route path={FAQ_URL} element={<FAQPage />} />
+              <Route path={FEES_URL} element={<Fees />} />
+              <Route path={FRAUDPOLICY_URL} element={<FraudPrivacyPage />} />
+              <Route path={PRIVACYPOLICY_URL} element={<PrivacyPolicyPage />} />
+              <Route path={SUPPORT_URL} element={<Support />} />
+              <Route path={TERMS_URL} element={<Terms />} />
               <Route path="*" element={<RedirectToRoot />} />
             </Routes>
             <ScrollToTop />

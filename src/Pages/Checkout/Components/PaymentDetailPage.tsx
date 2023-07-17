@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Input,
@@ -27,8 +27,6 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const [paymentMethod, setPaymentMethod] = useState<number>();
-
   return (
     <form>
       <div
@@ -75,11 +73,10 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
             <div className="mt-15">
               <RadioButtonList
                 options={PaymentMethodData}
-                currentValue={paymentMethod}
-                onSelect={setPaymentMethod}
                 classes="flex gap-[15px]"
                 textStyle="text-base"
                 checkboxStyle={false}
+                name="payment_method"
               />
             </div>
           </div>

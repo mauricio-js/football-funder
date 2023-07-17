@@ -1,7 +1,7 @@
 export interface loginFormDataType { 
     action: string,
-    email: string,
-    password:string
+    email: string | null,
+    password:string | null
 }
 
 export interface FetchLoginDataResponseType {

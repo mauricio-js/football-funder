@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "App/reducers";
 import { setShowMobileMenu } from "Data/LayoutState";
-import { SIGNIN_URL, SIGNUP_URL } from "Lib";
+import { SIGNIN_URL, SIGNUP_URL } from "Lib/urls";
 
 export const HamburgerSignInButton: React.FC = () => {
   const navigate = useNavigate();

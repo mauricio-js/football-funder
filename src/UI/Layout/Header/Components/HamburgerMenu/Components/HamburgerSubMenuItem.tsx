@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useDispatch, useSelector } from "react-redux";
 import { setShowMobileMenu } from "Data/LayoutState";
+// import { AppState } from "App/reducers";
+// import { SIGNUP_URL } from "Lib/urls";
 import { MenuItemType } from "types";
 
 export interface ListItemProps {
@@ -12,6 +14,7 @@ export interface ListItemProps {
 export const HamburgerSubMenuItem: React.FC<ListItemProps> = ({ List }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
 
   const onGoNavigate = (href: string) => {
     navigate(href);

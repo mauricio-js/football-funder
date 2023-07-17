@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useAxios } from "Lib";
 import { FormStepperContext } from "App/FormStepperProvider";
 import classNames from "classnames";
 import { AiOutlinePaperClip } from "react-icons/ai";
@@ -9,20 +10,39 @@ interface FileInputProps {
 }
 
 export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
-  const { selectedImage, handleSelectedImage } =
+  const axios = useAxios();
+  const { selectedImage, handleSelectedImage, setIsLoading, isLoading } =
     useContext(FormStepperContext)!;
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const fileList = event.target.files;
     if (fileList && fileList.length > 0) {
       const seletedFile = fileList[0];
-      handleSelectedImage(name, seletedFile);
+      let formData = new FormData();
+      formData.append("file", seletedFile);
+      try {
+        setIsLoading(true);
+        const response = await axios.post(
+          "file/fundraiser/file_upload",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        setIsLoading(false);
+        handleSelectedImage(name, seletedFile, response.data);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      handleSelectedImage(name, null);
+      handleSelectedImage(name, null, null);
     }
-  };
+  }
 
   const removeImage = () => {
-    handleSelectedImage(name, null);
+    handleSelectedImage(name, null, null);
   };
 
   return (
@@ -48,7 +68,7 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
               <div className="text-[16px] rotate-180">
                 <AiOutlinePaperClip />
               </div>
-              {selectedImage[name]?.name}
+              {selectedImage[name]?.file?.name}
             </div>
             <div className="text-red-600" onClick={removeImage}>
               <RiDeleteBin6Line />

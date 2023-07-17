@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { CROWDFUNDDETAILLIVEMENU_URL } from "Lib";
+import { CROWDFUNDDETAILLIVEMENU_URL } from "Lib/urls";
 
 import {
   Button,

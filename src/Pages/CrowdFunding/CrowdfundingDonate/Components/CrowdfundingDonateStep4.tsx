@@ -33,8 +33,6 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const [paymentMethod, setPaymentMethod] = useState<number>();
-
   const [btnActive, setBtnActive] = useState<boolean>(false);
 
   const handleClickPaymentMethodBtn = () => {
@@ -95,11 +93,10 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
             <div className="mt-15">
               <RadioButtonList
                 options={PaymentMethodData}
-                currentValue={paymentMethod}
-                onSelect={setPaymentMethod}
                 classes="flex gap-[15px]"
                 textStyle="text-base"
                 checkboxStyle={false}
+                name="payment_method"
               />
             </div>
           </div>

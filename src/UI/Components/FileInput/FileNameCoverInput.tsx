@@ -45,7 +45,6 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({
     }
   }
 
-  console.log(selectedImage);
   const removeImage = () => {
     handleSelectedImage(name, null, null);
   };
@@ -92,7 +91,6 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({
           name="documents[]"
           accept="image/*"
           onChange={handleFileChange}
-          required
         />
       )}
     </div>

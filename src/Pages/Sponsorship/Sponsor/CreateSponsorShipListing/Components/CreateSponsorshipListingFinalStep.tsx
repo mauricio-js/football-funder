@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "UI";
 import BackImage from "Assets/images/fundraiser/thankyou-back-img.png";
-import { SPONSORSHIPLISTING_URL } from "Lib/urls";
+import { SPONSORSHIPLISTING_URL,MYACCOUNT_URL } from "Lib/urls";
 
 export const CreateSponsorshipLisingFinalStep: React.FC = () => {
   const navigate = useNavigate();
@@ -48,6 +48,7 @@ export const CreateSponsorshipLisingFinalStep: React.FC = () => {
               text="My Account"
               textColor="text-white"
               textSize="text-[16px] leading-[22px] font-semibold"
+              handleClick={() => navigate(MYACCOUNT_URL)}
             />
           </div>
         </div>

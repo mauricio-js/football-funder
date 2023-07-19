@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { useAxios } from "Lib";
-
 import {
   Accordion,
   CarouselCard,

@@ -47,11 +47,6 @@ export const AdvertisingAccountUpdate: React.FC = () => {
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirm_password) {
-      showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
-      showStatus("Password must be longer than 8 characters", "error");
-    } else {
       if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
         showStatus(
           "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
@@ -59,7 +54,6 @@ export const AdvertisingAccountUpdate: React.FC = () => {
         );
       } else {
         advertiserAccountUpdate(data);
-      }
     }
   };
 

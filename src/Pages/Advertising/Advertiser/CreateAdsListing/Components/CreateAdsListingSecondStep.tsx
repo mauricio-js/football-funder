@@ -1,117 +1,199 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
+  AddmoreBtn,
   Button,
-  DatePicker,
+  FileNameCoverInput,
+  Input,
   PageSectionTitle,
   PageTitle,
-  RadioButtonList,
-  AmountShow,
   StepLabel,
   StepperBackButton,
   Textarea,
 } from "UI";
-import {
-  CommencementDateDate,
-  EndPeriodDateData,
-  IncludingVatData,
-  StartPeriodDateData,
-} from "Config";
+import { AdsNumberData, VideoURLData } from "Config";
 import { StepperActionPropsType } from "types";
+import { Perks } from "UI";
+import { FormStepperContext } from "App/FormStepperProvider";
+
+interface Perk {
+  title: string;
+  description: string;
+}
 
 export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  return (
-    <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 ns:mb-[100px] mb-[60px] mx-auto">
-      <PageTitle title="Create your listing" />
-      <div className="mt-15">
-        <StepperBackButton handleBackPage={handlePrevPage} />
-      </div>
-      <div className="mt-30 ">
-        <StepLabel number="Step 4" title="Listing details" />
-      </div>
-      <div className="mt-30 xs:w-[500px] flex flex-col gap-30">
-        <div>
-          <PageSectionTitle
-            title="Advertising listing title"
-            intro="What would you like the title of your listing to be?"
-          />
-          <div className="mt-15">
-            <Textarea
-              name="title_1"
-              title="Title"
-              limit={150}
-              height="h-[124px]"
-              titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
-              showLeftCharacters={true}
-            />
-          </div>
-        </div>
-        <div>
-          <PageSectionTitle
-            title="Amount"
-            intro="Place the amount you want for your advertisement."
-          />
-          <div className="mt-15">
-            <AmountShow name="advertisement_amount" />
-          </div>
-        </div>
+  const {
+    clickCount,
+    setClickCount,
+    clickedComponents,
+    setClickedComponnets,
+    inputValue,
+    textareaValue,
+    perkArray,
+    setPerkArray,
+    handleInputValue,
+    handleTextAreaValue,
+  } = useContext(FormStepperContext);
 
-        <div className="">
-          <PageSectionTitle
-            title="VAT"
-            intro="Does this price include or exclude VAT?"
-          />
-          <div className="mt-15">
-            <RadioButtonList
-              options={IncludingVatData}
-              classes="flex flex-col gap-[15px]"
-              textStyle="text-base"
-              checkboxStyle={false}
-              name="including_vat"
+  const handleAddmoreBtnClick = () => {
+    const newperks: Perk = {
+      title: textareaValue[clickCount] || "",
+      description: inputValue[clickCount] || "",
+    };
+    setPerkArray([...perkArray, newperks]);
+    setClickCount(clickCount + 1);
+    setClickedComponnets([...clickedComponents, clickCount]);
+    console.log(clickCount, clickedComponents, perkArray);
+  };
+  return (
+    <form onSubmit={handleNextPage}>
+      <div
+        className="
+        w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
+         mb-[100px] max-ns:mb-[60px] mx-auto"
+      >
+        <PageTitle title="Create your listing" />
+        <div className="mt-15">
+          <StepperBackButton handleBackPage={handlePrevPage} />
+        </div>
+        <div className="mt-30">
+          <StepLabel number="Step 5" title="Add Details" />
+        </div>
+        <div className="xs:w-[500px]">
+          <div className="mt-30">
+            <PageSectionTitle
+              title="Description of advert"
+              intro="Give a detailed description of your fundraiser."
             />
-          </div>
-        </div>
-        <div>
-          <PageSectionTitle
-            title="Period of time"
-            intro="Please select the time period you want your advertisement to last."
-          />
-          <div className="mt-15 flex gap-2.5">
-            <div className="w-1/2">
-              <DatePicker data={StartPeriodDateData} name="startPeriod" />
-            </div>
-            <div className="w-1/2">
-              <DatePicker data={EndPeriodDateData} name="endPeriod" />
+            <div className="mt-[15px] xs:w-[500px]">
+              <Textarea
+                height="ns:h-[350px] vs:h-[390px] "
+                name="advert_description"
+                showLeftCharacters={false}
+                title="Description"
+                titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
+                required={true}
+              />
             </div>
           </div>
-        </div>
-      </div>
-      <div className="mt-30">
-        <PageSectionTitle
-          title="Commencement date (optional)"
-          intro="If you have a date in mind for when the advert will be available, please select below."
-        />
-        <div className="mt-15 xs:w-[500px]">
-          <DatePicker data={CommencementDateDate} name="commencement" />
-        </div>
-      </div>
-      <div className="xs:mt-[100px] mt-[60px]">
-        <div className="flex xs:justify-end w-full">
-          <div className="xs:w-[250px] w-full">
-            <Button
-              backgroundColor="bg-green-10"
-              height="h-[50px]"
-              width="w-full"
-              text="Continue"
-              textColor="text-green-70"
-              textSize="buttonText"
-              handleClick={handleNextPage}
+          <div className="mt-30">
+            <PageSectionTitle
+              title="Number of adverts"
+              intro="If there are multiple versions of the same advert - state how many."
             />
+            <div className="mt-15">
+              <div className="bg-gray-200 p-2.5 rounded-10 text-[12px] leading-5 text-gray-600">
+                We charge a small fee per individual listing on the platform.
+                The number of listings should match the number of adverts
+                available so that our fee is fairly reflected. <br />
+                <br /> If you are listing multiple advertising opportunities of
+                the same description as this listing, type the amount below so
+                that we can calculate the correct fee.
+              </div>
+            </div>
+            <div className="mt-15">
+              <Input
+                data={AdsNumberData}
+                name="ads_number"
+                required={true}
+                disabled={false}
+              />
+            </div>
+          </div>
+          <div className="mt-30">
+            <PageSectionTitle
+              title="Title image"
+              intro="Recommended size 300x300px - this will be the first image you see on your campaign and in all listings."
+            />
+            <div className="mt-[15px]">
+              <div className="xs:w-[500px]">
+                <FileNameCoverInput
+                  name="ads_title_image"
+                  uploadUrl="fundraiser"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="mt-30">
+            <PageSectionTitle
+              title="Listing pitch image/video"
+              intro="This will appear at the top of your fundraiser page. Select image or video - a video will really bring the listing to life."
+            />
+            <div className="mt-[15px]">
+              <div className="flex gap-[10px]">
+                <div className="w-1/2">
+                  <Button
+                    backgroundColor="bg-green-10"
+                    textColor="text-black"
+                    textSize="text-[14px] leading-5 font-semibold"
+                    height="h-[54px]"
+                    width="w-full"
+                    text="Video"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <FileNameCoverInput
+                    name="ads_pitch_image"
+                    uploadUrl="fundraiser"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mt-[15px] xs:w-[500px] w-full">
+              <Input
+                data={VideoURLData}
+                name="ads_video_url"
+                required={true}
+                disabled={false}
+              />
+            </div>
+            <div className="mt-30">
+              <PageSectionTitle
+                title="Add perks"
+                intro="Give your advertisers something back for providing you with financial backing. The number of rewards you can offer is unlimited."
+              />
+              <div className="mt-15">
+                <>
+                  {clickedComponents.map((value, index) => (
+                    <Perks
+                      key={index}
+                      number={value}
+                      inputValue={inputValue[index] || ""}
+                      setInputValue={handleInputValue}
+                      textareaValue={textareaValue[index] || ""}
+                      setTextareaValue={handleTextAreaValue}
+                    />
+                  ))}
+                </>
+
+                <div className="mt-5">
+                  <button type="button" onClick={handleAddmoreBtnClick}>
+                    <AddmoreBtn />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="xs:mt-[100px] mt-[60px]">
+          <div className="flex xs:justify-end">
+            <div className="xs:w-[250px] w-full">
+              <Button
+                backgroundColor="bg-green-10"
+                height="h-[50px]"
+                width="w-full"
+                text="Continue"
+                textColor="text-green-70"
+                textSize="buttonText"
+                // handleClick={handleNextPage}
+                type="submit"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };

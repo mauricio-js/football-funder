@@ -59,7 +59,7 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
             />
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
-                <FileNameCoverInput name="title_image" />
+                <FileNameCoverInput name="title_image" uploadUrl="fundraiser" />
               </div>
             </div>
           </div>
@@ -81,12 +81,20 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
                   />
                 </div>
                 <div className="w-1/2">
-                  <FileNameCoverInput name="pitch_image" />
+                  <FileNameCoverInput
+                    name="pitch_image"
+                    uploadUrl="fundraiser"
+                  />
                 </div>
               </div>
             </div>
             <div className="mt-[15px] xs:w-[500px] w-full">
-              <Input data={VideoURLData} name="video_url" />
+              <Input
+                data={VideoURLData}
+                name="video_url"
+                required={true}
+                disabled={false}
+              />
             </div>
           </div>
         </div>

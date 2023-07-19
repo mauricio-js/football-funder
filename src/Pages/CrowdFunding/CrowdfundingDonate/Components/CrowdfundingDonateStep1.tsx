@@ -62,22 +62,43 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
           <div className="mt-[15px] xs:w-[500px]">
             <div className="flex flex-col gap-[10px]">
               <div className="flex flex-col gap-[10px]">
-                <Input data={FirstNameData} name="first_name" />
-                <Input data={LastNameData} name="last_name" />
+                <Input
+                  data={FirstNameData}
+                  name="first_name"
+                  required={true}
+                  disabled={false}
+                />
+                <Input
+                  data={LastNameData}
+                  name="last_name"
+                  required={true}
+                  disabled={false}
+                />
 
                 <DatePicker data={DateData} name="birth" />
               </div>
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                required={true}
               />
               <div className="flex flex-col gap-[10px]">
                 <div className="flex gap-[10px]">
                   <div className="w-1/2">
-                    <Input data={ContactPostcodeData} name="post_code" />
+                    <Input
+                      data={ContactPostcodeData}
+                      name="post_code"
+                      required={true}
+                      disabled={false}
+                    />
                   </div>
                   <div className="w-1/2">
-                    <Input data={AddressData} name="address" />
+                    <Input
+                      data={AddressData}
+                      name="address"
+                      required={true}
+                      disabled={false}
+                    />
                   </div>
                 </div>
               </div>
@@ -96,9 +117,24 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
         <div className="mt-30 xs:w-[500px]">
           <PageSectionTitle title="Account details" />
           <div className="mt-5 flex flex-col gap-[10px]">
-            <Input data={AccountEmailData} name="email" />
-            <Input data={AccountPasswordData} name="password" />
-            <Input data={AccountConfirmPasswordData} name="confirm_password" />
+            <Input
+              data={AccountEmailData}
+              name="email"
+              required={true}
+              disabled={false}
+            />
+            <Input
+              data={AccountPasswordData}
+              name="password"
+              required={true}
+              disabled={false}
+            />
+            <Input
+              data={AccountConfirmPasswordData}
+              name="confirm_password"
+              required={true}
+              disabled={false}
+            />
           </div>
         </div>
         <div className="mt-30">

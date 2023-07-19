@@ -98,12 +98,16 @@ export const Explore: React.FC = () => {
                           <Input
                             data={MileDistanceInputFormData}
                             name="mile_distance"
+                            required={true}
+                            disabled={false}
                           />
                         </div>
                         <div className="w-[180px]">
                           <Input
                             data={PostcodeDistanceInputFormData}
                             name="postcode_distance"
+                            required={true}
+                            disabled={false}
                           />
                         </div>
                       </div>

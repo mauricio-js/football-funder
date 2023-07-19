@@ -7,11 +7,15 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 interface FileInputProps {
   name: string;
+  uploadUrl: string;
 }
 
-export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
+export const FileNameCoverInput: React.FC<FileInputProps> = ({
+  name,
+  uploadUrl,
+}) => {
   const axios = useAxios();
-  const { selectedImage, handleSelectedImage, setIsLoading, isLoading } =
+  const { selectedImage, handleSelectedImage, setIsLoading } =
     useContext(FormStepperContext)!;
 
   async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -23,7 +27,7 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
       try {
         setIsLoading(true);
         const response = await axios.post(
-          "file/fundraiser/file_upload",
+          `file/${uploadUrl}/file_upload`,
           formData,
           {
             headers: {
@@ -41,6 +45,7 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
     }
   }
 
+  console.log(selectedImage);
   const removeImage = () => {
     handleSelectedImage(name, null, null);
   };
@@ -51,10 +56,12 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
         className={classNames(
           "bg-white text-green-70  text-[14px] flex items-center",
           "leading-[20px] h-[54px] rounded-10 border-2 border-gray-200 font-semibold py-2 px-4 w-full",
-          selectedImage[name] ? "justify-start" : "justify-center"
+          selectedImage[name] && selectedImage[name]?.file !== null
+            ? "justify-start"
+            : "justify-center"
         )}
       >
-        {!selectedImage[name] && (
+        {(!selectedImage[name] || selectedImage[name]?.file === null) && (
           <div className="flex items-center gap-1">
             <div className="text-[16px] rotate-180">
               <AiOutlinePaperClip />
@@ -62,7 +69,7 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
             Upload image
           </div>
         )}
-        {selectedImage[name] && (
+        {selectedImage[name] && selectedImage[name]?.file !== null && (
           <div className="w-full flex justify-between">
             <div className="flex items-center gap-1">
               <div className="text-[16px] rotate-180">
@@ -76,13 +83,16 @@ export const FileNameCoverInput: React.FC<FileInputProps> = ({ name }) => {
           </div>
         )}
       </div>
-      {!selectedImage[name] && (
+      {(!selectedImage ||
+        !selectedImage[name] ||
+        selectedImage[name]?.file === null) && (
         <input
           className="absolute top-0 cursor-pointer block h-[54px] w-full opacity-0"
           type="file"
           name="documents[]"
           accept="image/*"
           onChange={handleFileChange}
+          required
         />
       )}
     </div>

@@ -45,6 +45,7 @@ export const Signin: React.FC = () => {
         // const resData = res;
         const data = res.data;
         const userInfo = data.data;
+        console.log("userInfo", userInfo);
         storeLoginData(data);
         storeUserInfo(userInfo);
 
@@ -81,9 +82,19 @@ export const Signin: React.FC = () => {
               <TextButton text="Sign Up" handleClick={goToSignUp} />
             </div>
             <div className="mt-30">
-              <Input data={AccountEmailData} name="email" />
+              <Input
+                data={AccountEmailData}
+                name="email"
+                required={true}
+                disabled={false}
+              />
               <div className="mt-2.5">
-                <Input data={AccountPasswordData} name="password" />
+                <Input
+                  data={AccountPasswordData}
+                  name="password"
+                  required={true}
+                  disabled={false}
+                />
               </div>
             </div>
             <div className="mt-30">

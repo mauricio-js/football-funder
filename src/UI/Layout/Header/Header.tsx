@@ -37,7 +37,9 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
   );
   const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
   const { userInfo } = useSelector((state: any) => state.user);
-  const isUpdated = userInfo.first_name;
+  const isFundraiserAccountUpdated = userInfo.fundraiser_first_name;
+  const isAdvertiserAccountUpdated = userInfo.advertiser_first_name;
+  const isSponsorshipAccountUpdated = userInfo.sponsorship_first_name;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -109,10 +111,23 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
                         handleClick={() => navigate(EXPLORE_URL)}
                       />
                       <Dropdown
-                        List={fundraisingButtonData(isAuth, isUpdated)}
+                        List={fundraisingButtonData(
+                          isAuth,
+                          isFundraiserAccountUpdated
+                        )}
                       />
-                      <Dropdown List={advertisingButtonData} />
-                      <Dropdown List={sponsorshipButtonData} />
+                      <Dropdown
+                        List={advertisingButtonData(
+                          isAuth,
+                          isAdvertiserAccountUpdated
+                        )}
+                      />
+                      <Dropdown
+                        List={sponsorshipButtonData(
+                          isAuth,
+                          isSponsorshipAccountUpdated
+                        )}
+                      />
                       <Button
                         text="Fees"
                         textSize="text-sm fpont-semibold"

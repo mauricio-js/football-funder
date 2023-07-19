@@ -78,10 +78,17 @@ export const ResetPassword: React.FC = () => {
             Enter your new password.
           </div>
           <div className="mt-30 xs:w-[500px] mx-auto w-full flex justify-center flex-col gap-2.5">
-            <Input data={AccountPasswordData} name="password" />
+            <Input
+              data={AccountPasswordData}
+              name="password"
+              required={true}
+              disabled={false}
+            />
             <Input
               data={AccountConfirmPasswordData}
               name="password_confirmation"
+              required={true}
+              disabled={false}
             />
           </div>
           <div className="mt-30 w-full flex justify-center">

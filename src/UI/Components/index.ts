@@ -28,6 +28,7 @@ export * from './Modal';
 export * from './MyTab';
 export * from './PageTitle';
 export * from './PageSectionTitle';
+export * from './Perks'
 export * from './PromoteImageTitle';
 export * from './RadioButton';
 export * from './RadioButtonList';

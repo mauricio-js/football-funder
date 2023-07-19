@@ -54,7 +54,12 @@ export const BuyerFirstPage: React.FC = () => {
                   <div>
                     <div className="buttonText text-green-70">Organisation</div>
                     <div className="mt-5">
-                      <Input data={NameData} disabled={true} name="name" />
+                      <Input
+                        data={NameData}
+                        name="name"
+                        required={true}
+                        disabled={false}
+                      />
                     </div>
                   </div>
                 </div>
@@ -66,10 +71,20 @@ export const BuyerFirstPage: React.FC = () => {
                     <div className="mt-5">
                       <div className="flex gap-2.5">
                         <div className="w-1/2">
-                          <Input data={PostcodeData} name="post_code" />
+                          <Input
+                            data={PostcodeData}
+                            name="post_code"
+                            required={true}
+                            disabled={false}
+                          />
                         </div>
                         <div className="w-1/2">
-                          <Input data={AddressData} name="address" />
+                          <Input
+                            data={AddressData}
+                            name="address"
+                            required={true}
+                            disabled={false}
+                          />
                         </div>
                       </div>
                       <div className="mt-2.5">
@@ -92,10 +107,20 @@ export const BuyerFirstPage: React.FC = () => {
                     <div className="mt-5">
                       <div className="flex gap-2.5">
                         <div className="w-1/2">
-                          <Input data={PostcodeData} name="post_code" />
+                          <Input
+                            data={PostcodeData}
+                            name="post_code"
+                            required={true}
+                            disabled={false}
+                          />
                         </div>
                         <div className="w-1/2">
-                          <Input data={AddressData} name="address" />
+                          <Input
+                            data={AddressData}
+                            name="address"
+                            required={true}
+                            disabled={false}
+                          />
                         </div>
                       </div>
                       <div className="mt-2.5">
@@ -116,13 +141,29 @@ export const BuyerFirstPage: React.FC = () => {
                       Legal contact information
                     </div>
                     <div className="mt-5 flex flex-col gap-2.5">
-                      <Input data={FirstNameData} name="first_name" />
-                      <Input data={LastNameData} name="last_name" />
+                      <Input
+                        data={FirstNameData}
+                        name="first_name"
+                        required={true}
+                        disabled={false}
+                      />
+                      <Input
+                        data={LastNameData}
+                        name="last_name"
+                        required={true}
+                        disabled={false}
+                      />
                       <DropdownInput
                         data={ContactPhoneNumberData}
                         name="phone_number"
+                        required={true}
                       />
-                      <Input data={AccountEmailData} name="email" />
+                      <Input
+                        data={AccountEmailData}
+                        name="email"
+                        required={true}
+                        disabled={false}
+                      />
                     </div>
                   </div>
                 </div>

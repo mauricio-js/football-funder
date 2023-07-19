@@ -39,13 +39,29 @@ export const BillingDetailsPage: React.FC<StepperActionPropsType> = ({
           <div className="mt-30 xs:w-[500px]">
             <PageSectionTitle title="Details" />
             <div className="mt-15 flex flex-col gap-2.5">
-              <Input data={FirstNameData} name="first_name" />
-              <Input data={LastNameData} name="last_name" />
+              <Input
+                data={FirstNameData}
+                name="first_name"
+                required={true}
+                disabled={false}
+              />
+              <Input
+                data={LastNameData}
+                name="last_name"
+                required={true}
+                disabled={false}
+              />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                required={true}
               />
-              <Input data={AddressData} name="address" />
+              <Input
+                data={AddressData}
+                name="address"
+                required={true}
+                disabled={false}
+              />
               <Select
                 backgroundColor="bg-white"
                 name="country"

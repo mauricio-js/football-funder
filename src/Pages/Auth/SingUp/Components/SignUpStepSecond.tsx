@@ -72,25 +72,50 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
           />
         </div>
         <div className="mt-30 xs:w-[500px] w-full">
-          <Input data={ContactOrganisationData} name="org_name" />
+          <Input
+            data={ContactOrganisationData}
+            name="org_name"
+            required={true}
+            disabled={false}
+          />
           <div className="mt-2.5 smallIntroText">
             Use official name - if individual, use full name.
           </div>
           <div className="mt-30 flex flex-col gap-2.5">
             <div className="flex gap-2.5">
               <div className="w-1/2">
-                <Input data={ContactAddressLine1Data} name="org_address1" />
+                <Input
+                  data={ContactAddressLine1Data}
+                  name="org_address1"
+                  required={true}
+                  disabled={false}
+                />
               </div>
               <div className="w-1/2">
-                <Input data={ContactAddressLine2Data} name="org_address2" />
+                <Input
+                  data={ContactAddressLine2Data}
+                  name="org_address2"
+                  required={true}
+                  disabled={false}
+                />
               </div>
             </div>
             <div className="flex gap-2.5">
               <div className="w-1/2">
-                <Input data={ContactTownData} name="org_city" />
+                <Input
+                  data={ContactTownData}
+                  name="org_city"
+                  required={true}
+                  disabled={false}
+                />
               </div>
               <div className="w-1/2">
-                <Input data={ContactPostcodeData} name="org_post_code" />
+                <Input
+                  data={ContactPostcodeData}
+                  name="org_post_code"
+                  required={true}
+                  disabled={false}
+                />
               </div>
             </div>
           </div>

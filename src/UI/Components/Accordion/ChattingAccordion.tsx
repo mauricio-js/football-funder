@@ -144,6 +144,7 @@ export const ChattingAccordion: React.FC<ChattingAccordionPropsType> = ({
                     height="h-[50px]"
                     chattingField={true}
                     className="p-2.5 text-[12px] leading-4"
+                    required={true}
                   />
                 </div>
                 <div className="mt-2.5">

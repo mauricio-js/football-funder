@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { useAxios } from "Lib";
-import { AppState } from "App/reducers";
 
 import {
   Accordion,
@@ -24,7 +23,6 @@ import {
 } from "UI";
 
 import {
-  AdsListData,
   AccountDropdownData,
   AccountPageTabButtonNameData,
   AccountClubTypeCardLabelData,
@@ -45,11 +43,7 @@ import { HiOutlinePencil } from "react-icons/hi";
 import { MdAnnouncement } from "react-icons/md";
 import { BiCheck } from "react-icons/bi";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
-
-import { FaRegUserCircle, FaRegCalendarAlt } from "react-icons/fa";
-import { BiMap, BiMessageRounded } from "react-icons/bi";
-import CardImageA from "Assets/images/explore/card-a.png";
-import dayjs from "dayjs";
+import { listingDataFetch } from "Utils";
 
 export const MyAccountPage: React.FC = () => {
   const axios = useAxios();
@@ -72,6 +66,12 @@ export const MyAccountPage: React.FC = () => {
   const [accountFundraserListData, setAccountFundraiserListData] = useState<
     any[]
   >([]);
+  const [accountAdvertisingListData, setAccountAdvertisingListData] = useState<
+    any[]
+  >([]);
+  const [accountSponsorshipListData, setAccountSponsorshipListData] = useState<
+    any[]
+  >([]);
 
   const getAccountFundraiserList = async (): Promise<any> => {
     const { data } = await axios.get(
@@ -79,59 +79,47 @@ export const MyAccountPage: React.FC = () => {
     );
     return data;
   };
-
+  const getAccountAdvertisingList = async (): Promise<any> => {
+    const { data } = await axios.get(
+      `/advertising/${userInfo.id}/getAllAdvertisingByUserId`
+    );
+    return data;
+  };
+  const getAccountSponsorshipList = async (): Promise<any> => {
+    const { data } = await axios.get(
+      `/sponsorship/${userInfo.id}/getAllSponsorshipByUserId`
+    );
+    return data;
+  };
   useQuery([QueryKey.AccountFundraiserList], getAccountFundraiserList, {
     onSuccess: (data) => {
-      setAccountFundraiserData(data.data);
+      const ListingData = listingDataFetch(data.data);
+      setAccountFundraiserListData(ListingData);
     },
-    onError: (data: any) => {},
+    onError: (data: any) => {
+      console.log(data);
+    },
+  });
+  useQuery([QueryKey.AccountAdvertisingList], getAccountAdvertisingList, {
+    onSuccess: (data) => {
+      const ListingData = listingDataFetch(data.data);
+      setAccountAdvertisingListData(ListingData);
+    },
+    onError: (data: any) => {
+      console.log(data);
+    },
+  });
+  useQuery([QueryKey.AccountSponsorshipList], getAccountSponsorshipList, {
+    onSuccess: (data) => {
+      const ListingData = listingDataFetch(data.data);
+      setAccountSponsorshipListData(ListingData);
+    },
+    onError: (data: any) => {
+      console.log(data);
+    },
   });
 
-  const setAccountFundraiserData = (fundraiserData: any) => {
-    let accountFundraiserData = [];
-    for (let accountFundraiser of fundraiserData) {
-      let data = {
-        broadcastingType: "Live",
-        club: {
-          icon: FaRegUserCircle,
-          backgroundColor: "bg-green-80",
-          textColor: "text-green-10",
-          text: accountFundraiser.userData.organization?.name,
-        },
-        location: {
-          icon: BiMap,
-          backgroundColor: "bg-green-80",
-          textColor: "text-white",
-          text: `${accountFundraiser.userData.country} ${accountFundraiser.userData.city}`,
-        },
-        title: accountFundraiser.title,
-        description: accountFundraiser.description,
-        progress: true,
-        fund: "50% funded",
-        curFund: 50000,
-        oriFund: 100000,
-        date: {
-          icon: FaRegCalendarAlt,
-          backgroundColor: "bg-gray-100",
-          textColor: "text-green-70",
-          text: dayjs(accountFundraiser.created_at).format("MMM DD, YYYY"),
-        },
-        collection: {
-          icon: BiMessageRounded,
-          backgroundColor: "bg-gray-100",
-          textColor: "text-green-70",
-          text: "15 Comments",
-        },
-        image:
-          accountFundraiser.title_img_link === "" ||
-          !accountFundraiser.title_img_link
-            ? CardImageA
-            : `https://storage.googleapis.com/football_funder${accountFundraiser.title_img_link}`,
-      };
-      accountFundraiserData.push(data);
-    }
-    setAccountFundraiserListData(accountFundraiserData);
-  };
+  console.log("accountFundraserListData", accountFundraserListData);
 
   function handleScroll(): void {
     const div = document.querySelector("#sticky-tab");
@@ -406,28 +394,69 @@ export const MyAccountPage: React.FC = () => {
                         <Accordion title="Fundraising">
                           <div className="mt-5 introText">Live fundraisers</div>
                           <div className="flex flex-col gap-2.5">
-                            {accountFundraserListData.map((item, index) => {
-                              return (
-                                <CarouselCard
-                                  key={index}
-                                  cardData={item}
-                                  account={true}
-                                  dropdownData={CardDropdownData}
-                                />
-                              );
-                            })}
+                            {accountFundraserListData.length !== 0 ? (
+                              <>
+                                {accountFundraserListData.map((item, index) => {
+                                  return (
+                                    <CarouselCard
+                                      key={index}
+                                      cardData={item}
+                                      account={true}
+                                      dropdownData={CardDropdownData}
+                                    />
+                                  );
+                                })}
+                              </>
+                            ) : (
+                              <>
+                                <div className="mt-15 bg-gray-20 rounded-10 flex items-center px-15 py-5 gap-2.5">
+                                  <div className="text-gray-10">
+                                    <MdAnnouncement />
+                                  </div>
+                                  <div className="introText">
+                                    Coxhoe Athletic FC currently has no
+                                    crowfunding opportunities listed.
+                                  </div>
+                                </div>
+                              </>
+                            )}
                           </div>
                         </Accordion>
                       </div>
                       <div className="mt-30">
                         <Accordion title="Advertising">
-                          <div className="mt-5 introText">Live fundraisers</div>
+                          <div className="mt-5 introText">
+                            Live advertising opportunities
+                          </div>
                           <div className="flex flex-col gap-5 mt-5">
-                            <CarouselCard
-                              cardData={AdsListData[0]}
-                              account={true}
-                              dropdownData={CardDropdownData}
-                            />
+                            {accountAdvertisingListData ? (
+                              <>
+                                {accountAdvertisingListData.map(
+                                  (item, index) => {
+                                    return (
+                                      <CarouselCard
+                                        key={index}
+                                        cardData={item}
+                                        account={true}
+                                        dropdownData={CardDropdownData}
+                                      />
+                                    );
+                                  }
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                <div className="mt-15 bg-gray-20 rounded-10 flex items-center px-15 py-5 gap-2.5">
+                                  <div className="text-gray-10">
+                                    <MdAnnouncement />
+                                  </div>
+                                  <div className="introText">
+                                    Coxhoe Athletic FC currently has no
+                                    advertising opportunities listed.
+                                  </div>
+                                </div>
+                              </>
+                            )}
                           </div>
                         </Accordion>
                       </div>
@@ -436,14 +465,35 @@ export const MyAccountPage: React.FC = () => {
                           <div className="mt-5 introText">
                             Live sponsorship opportunities
                           </div>
-                          <div className="mt-15 bg-gray-20 rounded-10 flex items-center px-15 py-5 gap-2.5">
-                            <div className="text-gray-10">
-                              <MdAnnouncement />
-                            </div>
-                            <div className="introText">
-                              Coxhoe Athletic FC currently has no sponsorship
-                              opportunities listed.
-                            </div>
+                          <div className="flex flex-col gap-5 mt-5">
+                            {accountSponsorshipListData ? (
+                              <>
+                                {accountSponsorshipListData.map(
+                                  (item, index) => {
+                                    return (
+                                      <CarouselCard
+                                        key={index}
+                                        cardData={item}
+                                        account={true}
+                                        dropdownData={CardDropdownData}
+                                      />
+                                    );
+                                  }
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                <div className="mt-15 bg-gray-20 rounded-10 flex items-center px-15 py-5 gap-2.5">
+                                  <div className="text-gray-10">
+                                    <MdAnnouncement />
+                                  </div>
+                                  <div className="introText">
+                                    Coxhoe Athletic FC currently has no
+                                    sponsorship opportunities listed.
+                                  </div>
+                                </div>
+                              </>
+                            )}
                           </div>
                         </Accordion>
                       </div>

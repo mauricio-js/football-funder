@@ -60,14 +60,30 @@ export const MakeWithdrawal: React.FC = () => {
             <div className="mt-[15px]">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px]">
-                  <Input data={FirstNameData} name="first_name" />
-                  <Input data={LastNameData} name="last_name" />
+                  <Input
+                    data={FirstNameData}
+                    name="first_name"
+                    required={true}
+                    disabled={false}
+                  />
+                  <Input
+                    data={LastNameData}
+                    name="last_name"
+                    required={true}
+                    disabled={false}
+                  />
                   <DropdownInput
                     data={ContactPhoneNumberData}
                     name="phone_number"
+                    required={true}
                   />
 
-                  <Input data={AddressData} name="address" />
+                  <Input
+                    data={AddressData}
+                    name="address"
+                    required={true}
+                    disabled={false}
+                  />
                 </div>
                 <div>
                   <Select
@@ -84,8 +100,18 @@ export const MakeWithdrawal: React.FC = () => {
           <div className="mt-30">
             <PageSectionTitle title="Account" />
             <div className="mt-5 flex flex-col gap-[10px]">
-              <Input data={AccountNumberData} name="account_number" />
-              <Input data={SortCodeData} name="sort_code" />
+              <Input
+                data={AccountNumberData}
+                name="account_number"
+                required={true}
+                disabled={false}
+              />
+              <Input
+                data={SortCodeData}
+                name="sort_code"
+                required={true}
+                disabled={false}
+              />
             </div>
           </div>
         </div>

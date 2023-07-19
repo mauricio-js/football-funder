@@ -33,6 +33,7 @@ export interface UserStateType {
     post_code: string;
     role: string;
     updated_at: string; // Change Date to string
+    profile_url?:string
 }
 
 const initialUserState: {
@@ -71,6 +72,7 @@ const initialUserState: {
         post_code: '',
         role: '',
         updated_at: '', // Change new Date() to an empty string
+        profile_url:''
     }
 };
 

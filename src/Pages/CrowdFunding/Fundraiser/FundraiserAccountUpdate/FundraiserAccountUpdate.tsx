@@ -33,16 +33,17 @@ import { useAxios } from "Lib";
 
 export const FundraiserAccountUpate: React.FC = () => {
   const { showStatus } = useContext(StatusContext);
+  const { formValues, selectValue } = useContext(FormStepperContext);
   const axios = useAxios();
   const navigate = useNavigate();
-  const { selectValue, formValues } = useContext(FormStepperContext);
+
   const { userInfo } = useSelector((state: any) => state.user);
 
   const data: any = {
-    category_id: selectValue.fundraiser_category,
+    category_id: selectValue.sponsorship_category,
     org_name: formValues.org_name,
-    org_address1: formValues.org_address1,
-    org_address2: formValues.org_address2,
+    org_address_line1: formValues.org_address_line1,
+    org_address_line2: formValues.org_address_line2,
     org_phone_number: formValues.org_phone_number,
     org_city: formValues.org_city,
     org_post_code: formValues.org_post_code,
@@ -57,7 +58,7 @@ export const FundraiserAccountUpate: React.FC = () => {
     last_name: formValues.last_name,
   };
 
-  const { mutate: fundraiserUpdate, isLoading } = useMutation(
+  const { mutate: fundraiserAccountUpdate, isLoading } = useMutation(
     (params: registerFormDataType) =>
       axios.put(`/user/${userInfo.id}/update_account`, params),
     {
@@ -73,7 +74,7 @@ export const FundraiserAccountUpate: React.FC = () => {
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    fundraiserUpdate(data);
+    fundraiserAccountUpdate(data);
   };
 
   return (
@@ -99,14 +100,25 @@ export const FundraiserAccountUpate: React.FC = () => {
             <div className="mt-[15px] xs:w-[500px]">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px]">
-                  <Input data={FirstNameData} name="first_name" />
-                  <Input data={LastNameData} name="last_name" />
+                  <Input
+                    data={FirstNameData}
+                    name="first_name"
+                    required={true}
+                    disabled={false}
+                  />
+                  <Input
+                    data={LastNameData}
+                    name="last_name"
+                    required={true}
+                    disabled={false}
+                  />
 
-                  <DatePicker data={DateData} name="birth" />
+                  <DatePicker data={DateData} name="birth_date" />
                 </div>
                 <DropdownInput
                   data={ContactPhoneNumberData}
                   name="phone_number"
+                  required={true}
                 />
                 <div className="flex flex-col gap-[10px]">
                   <div className="flex gap-[10px]">
@@ -114,21 +126,35 @@ export const FundraiserAccountUpate: React.FC = () => {
                       <Input
                         data={ContactAddressLine1Data}
                         name="address_line1"
+                        required={true}
+                        disabled={false}
                       />
                     </div>
                     <div className="w-1/2">
                       <Input
                         data={ContactAddressLine2Data}
                         name="address_line2"
+                        required={true}
+                        disabled={false}
                       />
                     </div>
                   </div>
                   <div className="flex gap-[10px]">
                     <div className="w-1/2">
-                      <Input data={ContactTownData} name="city" />
+                      <Input
+                        data={ContactTownData}
+                        name="city"
+                        required={true}
+                        disabled={false}
+                      />
                     </div>
                     <div className="w-1/2">
-                      <Input data={ContactPostcodeData} name="post_code" />
+                      <Input
+                        data={ContactPostcodeData}
+                        name="post_code"
+                        required={true}
+                        disabled={false}
+                      />
                     </div>
                   </div>
                 </div>

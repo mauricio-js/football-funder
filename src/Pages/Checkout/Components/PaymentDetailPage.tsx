@@ -83,16 +83,36 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
           <div className="mt-30">
             <PageSectionTitle title="Card details" />
             <div className="mt-15 flex flex-col gap-2.5">
-              <Input data={CardNumberData} name="card_number" />
+              <Input
+                data={CardNumberData}
+                name="card_number"
+                required={true}
+                disabled={false}
+              />
               <div className="flex gap-[10px]">
                 <div className="w-1/2">
-                  <Input data={ExpiryData} name="expiry" />
+                  <Input
+                    data={ExpiryData}
+                    name="expiry"
+                    required={true}
+                    disabled={false}
+                  />
                 </div>
                 <div className="w-1/2">
-                  <Input data={CvcData} name="cvc" />
+                  <Input
+                    data={CvcData}
+                    name="cvc"
+                    required={true}
+                    disabled={false}
+                  />
                 </div>
               </div>
-              <Input data={PostcodeData} name="post_code" />
+              <Input
+                data={PostcodeData}
+                name="post_code"
+                required={true}
+                disabled={false}
+              />
               <div className="mt-5">
                 <button className="w-full border-[1px] rounded-10 buttonText text-green-70 border-green-70 py-15">
                   Save as payment method

@@ -89,11 +89,22 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               Use official name - if individual, use full name.
             </div>
             <div className="mt-15 flex flex-col gap-15">
-              <Input data={FirstNameData} name="first_name" />
-              <Input data={LastNameData} name="last_name" />
+              <Input
+                data={FirstNameData}
+                name="first_name"
+                required={true}
+                disabled={false}
+              />
+              <Input
+                data={LastNameData}
+                name="last_name"
+                required={true}
+                disabled={false}
+              />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                required={true}
               />
             </div>
           </div>
@@ -103,7 +114,12 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               This will double up as your username.
             </div>
             <div className="mt-15">
-              <Input data={AccountEmailData} name="email" />
+              <Input
+                data={AccountEmailData}
+                name="email"
+                required={true}
+                disabled={false}
+              />
             </div>
           </div>
           <div className="mt-30">
@@ -113,10 +129,17 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               managing  your campaign.
             </div>
             <div className="mt-15 flex flex-col gap-2.5">
-              <Input data={AccountPasswordData} name="password" />
+              <Input
+                data={AccountPasswordData}
+                name="password"
+                required={true}
+                disabled={false}
+              />
               <Input
                 data={AccountConfirmPasswordData}
                 name="confirm_password"
+                required={true}
+                disabled={false}
               />
             </div>
           </div>

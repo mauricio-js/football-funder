@@ -16,7 +16,6 @@ import {
   FilterSearchData,
   ListingPageDropdownData,
   ListingPageSearchData,
-  AdsListData,
   MileDistanceInputFormData,
   OrganisationFilterData,
   PostcodeDistanceInputFormData,
@@ -31,11 +30,32 @@ import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 import { TbLayoutList, TbLayoutGrid } from "react-icons/tb";
 import FilterIcon from "Assets/images/explore/filter-icon.svg";
+import { QueryKey } from "types";
+import { useAxios } from "Lib";
+import { useQuery } from "react-query";
+import { listingDataFetch } from "Utils";
 
 export const AdsList: React.FC = () => {
+  const axios = useAxios();
+
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   const [region, setRegion] = useState<string>(ListingPageDropdownData[0].name);
   const [horizontalLayout, setHorizonalLayout] = useState<boolean>(false);
+  const [advertising, setAdvertising] = useState<any[]>([]);
+  const getAdvertisingList = async (): Promise<any> => {
+    const { data } = await axios.get(`/advertising/getAlladvertising`);
+    return data;
+  };
+
+  useQuery([QueryKey.AdsList], getAdvertisingList, {
+    onSuccess: (data) => {
+      const ListingData = listingDataFetch(data.data);
+      setAdvertising(ListingData);
+    },
+    onError: (data: any) => {
+      console.log(data);
+    },
+  });
   return (
     <Template>
       <div className="relative md:pt-5 pt-[10px] md:pb-[150px] pb-[50px]">
@@ -92,12 +112,16 @@ export const AdsList: React.FC = () => {
                           <Input
                             data={MileDistanceInputFormData}
                             name="mile_distance"
+                            required={true}
+                            disabled={false}
                           />
                         </div>
                         <div className="w-[180px]">
                           <Input
                             data={PostcodeDistanceInputFormData}
                             name="postcode_distance"
+                            required={true}
+                            disabled={false}
                           />
                         </div>
                       </div>
@@ -186,13 +210,13 @@ export const AdsList: React.FC = () => {
             <div className="xs:mt-[65px] mt-30 max-md:w-full mx-auto">
               {horizontalLayout ? (
                 <div className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-2 max-xs:grid-cols-2 gap-x-5 max-2xs:gap-x-2.5 gap-y-30 ">
-                  {AdsListData.map((item, index) => {
+                  {advertising.map((item, index) => {
                     return <HorizontalCard key={index} cardData={item} />;
                   })}
                 </div>
               ) : (
                 <div className="grid grid-cols-1 gap-y-5">
-                  {AdsListData.map((item, index) => {
+                  {advertising.map((item, index) => {
                     return (
                       <VerticalCard
                         key={index}

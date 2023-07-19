@@ -70,13 +70,28 @@ export const EditMyAccount: React.FC = () => {
               </div>
               <div className="xs:w-[500px]">
                 <div className="mt-30 flex flex-col gap-2.5">
-                  <Input data={ContactOrganisationData} name="organisation" />
+                  <Input
+                    data={ContactOrganisationData}
+                    name="organisation"
+                    required={true}
+                    disabled={false}
+                  />
                   <div className="flex gap-[10px]">
                     <div className="w-1/2">
-                      <Input data={ContactPostcodeData} name="post_code" />
+                      <Input
+                        data={ContactPostcodeData}
+                        name="post_code"
+                        required={true}
+                        disabled={false}
+                      />
                     </div>
                     <div className="w-1/2">
-                      <Input data={AddressData} name="address" />
+                      <Input
+                        data={AddressData}
+                        name="address"
+                        required={true}
+                        disabled={false}
+                      />
                     </div>
                   </div>
                   <Select
@@ -99,14 +114,25 @@ export const EditMyAccount: React.FC = () => {
                   <div className="mt-[15px]">
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex flex-col gap-[10px]">
-                        <Input data={FirstNameData} name="first_name" />
-                        <Input data={LastNameData} name="last_name" />
+                        <Input
+                          data={FirstNameData}
+                          name="first_name"
+                          required={true}
+                          disabled={false}
+                        />
+                        <Input
+                          data={LastNameData}
+                          name="last_name"
+                          required={true}
+                          disabled={false}
+                        />
 
                         <DatePicker data={DateData} name="birth" />
                       </div>
                       <DropdownInput
                         data={ContactPhoneNumberData}
                         name="phone_number"
+                        required={true}
                       />
                       <div className="flex flex-col gap-[10px]">
                         <div className="flex gap-[10px]">
@@ -114,10 +140,17 @@ export const EditMyAccount: React.FC = () => {
                             <Input
                               data={ContactPostcodeData}
                               name="post_code"
+                              required={true}
+                              disabled={false}
                             />
                           </div>
                           <div className="w-1/2">
-                            <Input data={AddressData} name="address" />
+                            <Input
+                              data={AddressData}
+                              name="address"
+                              required={true}
+                              disabled={false}
+                            />
                           </div>
                         </div>
                       </div>
@@ -136,11 +169,17 @@ export const EditMyAccount: React.FC = () => {
                 <div className="mt-30">
                   <PageSectionTitle title="Account Details" />
                   <div className="mt-5 flex flex-col gap-2.5">
-                    <Input data={AccountEmailData} name="email" />
+                    <Input
+                      data={AccountEmailData}
+                      name="email"
+                      required={true}
+                      disabled={false}
+                    />
                     <Input
                       data={AccountPasswordData}
                       disabled={true}
                       name="password"
+                      required={true}
                     />
                   </div>
                   <div className="mt-5">

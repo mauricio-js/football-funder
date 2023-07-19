@@ -42,11 +42,18 @@ export const UpdatePasswordStep2: React.FC<StepperActionPropsType> = ({
               <div className="introText">Enter your new password.</div>
             </div>
             <div className="mt-30">
-              <Input data={AccountPasswordData} name="password" />
+              <Input
+                data={AccountPasswordData}
+                name="password"
+                required={true}
+                disabled={false}
+              />
               <div className="mt-2.5">
                 <Input
                   data={AccountConfirmPasswordData}
                   name="confirm_password"
+                  required={true}
+                  disabled={false}
                 />
               </div>
             </div>

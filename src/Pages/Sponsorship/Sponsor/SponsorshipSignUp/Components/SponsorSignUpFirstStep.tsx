@@ -12,7 +12,6 @@ import { StepperActionPropsType } from "types";
 
 export const SponsorSignUpFirstStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
-  handlePrevPage,
 }) => {
   return (
     <div
@@ -37,7 +36,7 @@ export const SponsorSignUpFirstStep: React.FC<StepperActionPropsType> = ({
         <div className="mt-[15px]">
           <CategoryButtonList
             options={FundraiserCategoryData}
-            name="sponsor_category"
+            name="sponsorship_category"
           />
         </div>
       </div>
@@ -49,7 +48,7 @@ export const SponsorSignUpFirstStep: React.FC<StepperActionPropsType> = ({
         <div className="mt-[15px]">
           <CategoryButtonList
             options={FundraiserNationData}
-            name="sponsor_nation"
+            name="sponsorship_nation"
           />
         </div>
       </div>

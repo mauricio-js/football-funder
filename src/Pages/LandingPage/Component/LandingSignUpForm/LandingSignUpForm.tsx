@@ -43,12 +43,42 @@ export const LandingSignUpForm: React.FC = () => {
                 </div>
                 <div className="mt-[15px]">
                   <div className="flex flex-col gap-y-[10px]">
-                    <Input data={FirstNameData} name="first_name" />
-                    <Input data={LastNameData} name="last_name" />
-                    <Input data={ContactOrganisationData} name="organisation" />
-                    <Input data={AccountEmailData} name="email" />
-                    <Input data={PhoneNumberData} name="phone_number" />
-                    <Input data={WebSiteData} name="website_url" />
+                    <Input
+                      data={FirstNameData}
+                      name="first_name"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={LastNameData}
+                      name="last_name"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={ContactOrganisationData}
+                      name="organisation"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={AccountEmailData}
+                      name="email"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={PhoneNumberData}
+                      name="phone_number"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={WebSiteData}
+                      name="website_url"
+                      required={true}
+                      disabled={false}
+                    />
                   </div>
 
                   <div className="mt-30">
@@ -64,10 +94,30 @@ export const LandingSignUpForm: React.FC = () => {
                 </div>
                 <div className="mt-[15px]">
                   <div className="flex flex-col gap-y-[10px]">
-                    <Input data={FirstNameData} name="first_name" />
-                    <Input data={LastNameData} name="last_name" />
-                    <Input data={AccountEmailData} name="email" />
-                    <Input data={PhoneNumberData} name="phone_number" />
+                    <Input
+                      data={FirstNameData}
+                      name="first_name"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={LastNameData}
+                      name="last_name"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={AccountEmailData}
+                      name="email"
+                      required={true}
+                      disabled={false}
+                    />
+                    <Input
+                      data={PhoneNumberData}
+                      name="phone_number"
+                      required={true}
+                      disabled={false}
+                    />
                   </div>
 
                   <div className="mt-30">

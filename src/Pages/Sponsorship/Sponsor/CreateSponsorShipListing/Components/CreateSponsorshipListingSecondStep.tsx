@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AddmoreBtn,
   Button,
@@ -8,16 +8,54 @@ import {
   PageTitle,
   StepLabel,
   StepperBackButton,
-  Textarea,
 } from "UI";
-import { PerkTitleData, VideoURLData } from "Config";
+import { VideoURLData } from "Config";
 import { StepperActionPropsType } from "types";
+import { Perks } from "UI";
+import { FormStepperContext } from "App/FormStepperProvider";
+
+interface Perk {
+  title: string;
+  description: string;
+}
 
 export const CreateSponsorshipListingSecondStep: React.FC<
   StepperActionPropsType
 > = ({ handleNextPage, handlePrevPage }) => {
+  const {
+    clickCount,
+    setClickCount,
+    clickedComponents,
+    setClickedComponnets,
+    inputValue,
+    textareaValue,
+    perkArray,
+    setPerkArray,
+    handleInputValue,
+    handleTextAreaValue,
+  } = useContext(FormStepperContext);
+  const handleAddmoreBtnClick = () => {
+    const newperks: Perk = {
+      title: textareaValue[clickCount] || "",
+      description: inputValue[clickCount] || "",
+    };
+    setPerkArray([...perkArray, newperks]);
+    setClickCount(clickCount + 1);
+    setClickedComponnets([...clickedComponents, clickCount]);
+    console.log(clickCount, clickedComponents, perkArray);
+  };
+
+  const handleClick = () => {
+    // if (!selectedImage.sponsorship_title_image?.publicUrl) {
+    //   showStatus("You must upload the title image", "error");
+    // } else if (!selectedImage.sponsorship_pitch_image?.publicUrl) {
+    //   showStatus("You must upload the pitch image", "error");
+    // } else {
+    handleNextPage();
+    // }
+  };
   return (
-    <form>
+    <form onSubmit={handleClick}>
       <div
         className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
@@ -38,7 +76,10 @@ export const CreateSponsorshipListingSecondStep: React.FC<
             />
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
-                <FileNameCoverInput name="title_image" />
+                <FileNameCoverInput
+                  name="sponsorship_title_image"
+                  uploadUrl="fundraiser"
+                />
               </div>
             </div>
           </div>
@@ -60,34 +101,45 @@ export const CreateSponsorshipListingSecondStep: React.FC<
                   />
                 </div>
                 <div className="w-1/2">
-                  <FileNameCoverInput name="pitch_image" />
+                  <FileNameCoverInput
+                    name="sponsorship_pitch_image"
+                    uploadUrl="fundraiser"
+                  />
                 </div>
               </div>
             </div>
             <div className="mt-[15px] xs:w-[500px] w-full">
-              <Input data={VideoURLData} name="video_url" />
+              <Input
+                data={VideoURLData}
+                name="sponsorship_video_url"
+                required={true}
+                disabled={false}
+              />
             </div>
             <div className="mt-30">
               <PageSectionTitle
                 title="Add perks"
                 intro="Give your advertisers something back for providing you with financial backing. The number of rewards you can offer is unlimited."
               />
+
               <div className="mt-15">
-                <Input data={PerkTitleData} name="perk_title" />
-                <div className="mt-2.5">
-                  <Textarea
-                    height="h-[150px] max-ns:h-[200px]"
-                    name="perk_title"
-                    limit={300}
-                    showLeftCharacters={true}
-                    title="Perk description"
-                    titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
-                  />
-                </div>
+                <>
+                  {clickedComponents.map((value, index) => (
+                    <Perks
+                      key={index}
+                      number={value}
+                      inputValue={inputValue[index] || ""}
+                      setInputValue={handleInputValue}
+                      textareaValue={textareaValue[index] || ""}
+                      setTextareaValue={handleTextAreaValue}
+                    />
+                  ))}
+                </>
+
                 <div className="mt-5">
-                  <div>
+                  <button type="button" onClick={handleAddmoreBtnClick}>
                     <AddmoreBtn />
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -103,7 +155,7 @@ export const CreateSponsorshipListingSecondStep: React.FC<
                 text="Continue"
                 textColor="text-green-70"
                 textSize="buttonText"
-                handleClick={handleNextPage}
+                type="submit"
               />
             </div>
           </div>

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useContext } from "react";
 import {
   Button,
   EditPanelItem,
@@ -11,7 +10,6 @@ import { FormStepperContext } from "App/FormStepperProvider";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { StepperActionPropsType } from "types";
-import { AppState } from "App/reducers";
 
 export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
@@ -29,7 +27,6 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
     deleteRewardData,
   } = useContext(FormStepperContext);
 
-  const rewardList = useSelector((state: AppState) => state.reward.rewardData);
   const handleClickAddBtn = () => {
     handleInputChange("available_num", "");
     handleDescriptionChange("reward_title", "");

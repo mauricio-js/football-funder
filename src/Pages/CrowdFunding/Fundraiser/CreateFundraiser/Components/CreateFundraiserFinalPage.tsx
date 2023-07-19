@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "UI";
 import BackImage from "Assets/images/fundraiser/thankyou-back-img.png";
 import { useNavigate } from "react-router-dom";
-import { CROWDFUNDINGLIST_URL } from "Lib/urls";
+import { CROWDFUNDINGLIST_URL,MYACCOUNT_URL } from "Lib/urls";
 
 export const CreateFundraiserFinalPage: React.FC = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export const CreateFundraiserFinalPage: React.FC = () => {
               text="View listing"
               textColor="text-green-70"
               textSize="text-[16px] leading-[22px] font-semibold"
-              handleClick={() => navigate(CROWDFUNDINGLIST_URL)}
+              handleClick={() => navigate(MYACCOUNT_URL)}
             />
             <Button
               backgroundColor="bg-green-70"
@@ -48,6 +48,7 @@ export const CreateFundraiserFinalPage: React.FC = () => {
               text="My Account"
               textColor="text-white"
               textSize="text-[16px] leading-[22px] font-semibold"
+              handleClick={() => navigate(CROWDFUNDINGLIST_URL)}
             />
           </div>
         </div>

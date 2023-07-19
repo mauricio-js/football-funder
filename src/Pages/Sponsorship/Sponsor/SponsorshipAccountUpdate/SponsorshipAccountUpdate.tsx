@@ -10,11 +10,9 @@ import {
   StepLabel,
   DatePicker,
   Template,
+CheckBox,
 } from "UI";
 import {
-  AccountConfirmPasswordData,
-  AccountEmailData,
-  AccountPasswordData,
   ContactAddressLine1Data,
   ContactAddressLine2Data,
   ContactPhoneNumberData,
@@ -34,6 +32,7 @@ import { useSelector } from "react-redux";
 import { useMutation } from "react-query";
 import { registerFormDataType } from "Pages/Auth/SingUp/types";
 import { CREATESPONSORSHIP_URL } from "Lib/urls";
+import { MdAnnouncement } from "react-icons/md";
 
 export const SponsorshipAccountUpdate: React.FC = () => {
   const { showStatus } = useContext(StatusContext);
@@ -79,11 +78,12 @@ export const SponsorshipAccountUpdate: React.FC = () => {
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirm_password) {
-      showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
-      showStatus("Password must be longer than 8 characters", "error");
-    } else {
+    if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+      showStatus(
+        "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
+        "error"
+      )
+    }else {
       sponsorshipAccountUpdate(data);
     }
   };
@@ -180,30 +180,8 @@ export const SponsorshipAccountUpdate: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mt-30 xs:w-[500px]">
-            <PageSectionTitle title="Account details" />
-            <div className="mt-5 flex flex-col gap-[10px]">
-              <Input
-                data={AccountEmailData}
-                name="email"
-                required={true}
-                disabled={false}
-              />
-              <Input
-                data={AccountPasswordData}
-                name="password"
-                required={true}
-                disabled={false}
-              />
-              <Input
-                data={AccountConfirmPasswordData}
-                name="confirm_password"
-                required={true}
-                disabled={false}
-              />
-            </div>
-          </div>
-          {/* <div className="mt-30">
+          
+          <div className="mt-30">
             <PageSectionTitle title="Confirmation" />
             <div className="mt-[15px]">
               <CheckBox
@@ -225,7 +203,7 @@ export const SponsorshipAccountUpdate: React.FC = () => {
               </div>
               You can modify your fundraiser details at any time after posting.
             </div>
-          </div> */}
+          </div>
           <div className="xs:mt-[100px] mt-[60px]">
             <div className="flex xs:justify-end">
               <div className="xs:w-[250px] w-full">

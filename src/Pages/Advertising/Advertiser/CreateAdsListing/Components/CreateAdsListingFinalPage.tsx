@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ADSLISTING_URL } from "Lib/urls";
+import { ADSLISTING_URL, MYACCOUNT_URL } from "Lib/urls";
 import { Button } from "UI";
 import BackImage from "Assets/images/fundraiser/thankyou-back-img.png";
 
@@ -48,6 +48,7 @@ export const CreateAdsListingFinalPage: React.FC = () => {
               text="My Account"
               textColor="text-white"
               textSize="text-[16px] leading-[22px] font-semibold"
+              handleClick={() => navigate(MYACCOUNT_URL)}
             />
           </div>
         </div>

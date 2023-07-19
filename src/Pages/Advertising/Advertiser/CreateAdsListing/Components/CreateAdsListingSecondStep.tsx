@@ -39,13 +39,13 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
 
   const handleAddmoreBtnClick = () => {
     const newperks: Perk = {
-      title: textareaValue[clickCount] || "",
-      description: inputValue[clickCount] || "",
+      title: textareaValue[clickCount-1] || "",
+      description: inputValue[clickCount-1] || "",
     };
     setPerkArray([...perkArray, newperks]);
     setClickCount(clickCount + 1);
     setClickedComponnets([...clickedComponents, clickCount]);
-    console.log(clickCount, clickedComponents, perkArray);
+    console.log(clickCount, clickedComponents, "textarea",textareaValue,"input value",inputValue,"perk array",perkArray);
   };
   return (
     <form onSubmit={handleNextPage}>

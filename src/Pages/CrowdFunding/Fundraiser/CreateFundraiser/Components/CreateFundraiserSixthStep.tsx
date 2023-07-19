@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import classNames from "classnames";
 import {
   Button,
@@ -8,7 +8,6 @@ import {
   StepperBackButton,
   StepLabel,
 } from "UI";
-import { StepperActionPropsType } from "types";
 import { FormStepperContext } from "App/FormStepperProvider";
 
 interface CreateFundraiserSixthStepProps {

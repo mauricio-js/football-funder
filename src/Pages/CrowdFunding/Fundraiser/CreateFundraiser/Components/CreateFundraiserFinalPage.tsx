@@ -39,7 +39,7 @@ export const CreateFundraiserFinalPage: React.FC = () => {
               text="View listing"
               textColor="text-green-70"
               textSize="text-[16px] leading-[22px] font-semibold"
-              handleClick={() => navigate(MYACCOUNT_URL)}
+              handleClick={() => navigate(CROWDFUNDINGLIST_URL)}
             />
             <Button
               backgroundColor="bg-green-70"
@@ -48,7 +48,7 @@ export const CreateFundraiserFinalPage: React.FC = () => {
               text="My Account"
               textColor="text-white"
               textSize="text-[16px] leading-[22px] font-semibold"
-              handleClick={() => navigate(CROWDFUNDINGLIST_URL)}
+              handleClick={() => navigate(MYACCOUNT_URL)}
             />
           </div>
         </div>

@@ -37,7 +37,9 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
   const dispatch = useDispatch();
   const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
   const { userInfo } = useSelector((state: any) => state.user);
-  const isUpdated = userInfo.first_name;
+  const isFundraiserAccountUpdated = userInfo.fundraiser_first_name;
+  const isAdvertiserAccountUpdated = userInfo.advertiser_first_name;
+  const isSponsorshipAccountUpdated = userInfo.sponsorship_first_name;
   const logOut = () => {
     dispatch({ type: "RESET" });
     dispatch(setShowMobileMenu(false));
@@ -68,10 +70,17 @@ export const HamburgerMenu: React.FC<hamburgerMenuProps> = ({
               <HamburgerItem Item={homeButtonData} />
               <HamburgerItem Item={exploreButtonData} />
               <HamburgerSubMenuItem
-                List={fundraisingButtonData(isAuth, isUpdated)}
+                List={fundraisingButtonData(isAuth, isFundraiserAccountUpdated)}
               />
-              <HamburgerSubMenuItem List={advertisingButtonData} />
-              <HamburgerSubMenuItem List={sponsorshipButtonData} />
+              <HamburgerSubMenuItem
+                List={advertisingButtonData(isAuth, isAdvertiserAccountUpdated)}
+              />
+              <HamburgerSubMenuItem
+                List={sponsorshipButtonData(
+                  isAuth,
+                  isSponsorshipAccountUpdated
+                )}
+              />
               <HamburgerItem Item={feeButtonData} />
               <HamburgerItem Item={faqButtonData} />
               <HamburgerItem Item={aboutButtonData} />

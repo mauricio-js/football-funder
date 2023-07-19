@@ -7,9 +7,14 @@ import Arrow from "Assets/images/svg/button/black-arrow";
 interface DropdownInputProps {
   data: ContactPhoneNumberType[];
   name: string;
+  required: boolean;
 }
 
-export const DropdownInput: React.FC<DropdownInputProps> = ({ data, name }) => {
+export const DropdownInput: React.FC<DropdownInputProps> = ({
+  data,
+  name,
+  required,
+}) => {
   const {
     formValues,
     handleInputChange,
@@ -49,7 +54,7 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({ data, name }) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           autoComplete="on"
-          required
+          required={required}
         />
         <div className="absolute top-0 h-full px-4 flex items-center">
           <div className="relative h-full">

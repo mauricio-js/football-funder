@@ -38,7 +38,6 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     selectValue,
     addRewardData,
     handleRewardIdArray,
-    rewardIdArray,
   } = useContext(FormStepperContext);
 
   //  front-end
@@ -124,6 +123,7 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
                 limit={150}
                 height="h-[80px]"
                 showLeftCharacters={true}
+                required={true}
               />
             </div>
           </div>
@@ -143,13 +143,19 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
                 limit={150}
                 height="h-[150px]"
                 showLeftCharacters={true}
+                required={true}
               />
             </div>
           </div>
           <div>
             <PageSectionTitle title="How many are available?" />
             <div className="mt-15 flex gap-30">
-              <Input data={AvailableNumberData} name="available_num" />
+              <Input
+                data={AvailableNumberData}
+                name="available_num"
+                required={true}
+                disabled={false}
+              />
               <CheckBox
                 align="flex-row-reverse gap-[10px]"
                 label="Unlimited"
@@ -171,6 +177,7 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
                 showLeftCharacters={false}
                 name="reward_additional_info"
                 title="Description"
+                required={true}
               />
             </div>
           </div>

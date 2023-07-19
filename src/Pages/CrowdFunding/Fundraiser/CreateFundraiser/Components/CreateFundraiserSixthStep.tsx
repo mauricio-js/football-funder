@@ -47,7 +47,7 @@ export const CreateFundraiserSixthStep: React.FC<
             intro="Choose an image to represent your video before it plays. 695x460px recommended resolution."
           />
           <div className="mt-15 ns:w-[390px] w-full ">
-            <FileNameCoverInput name="overlay_image" />
+            <FileNameCoverInput name="overlay_image" uploadUrl="fundraiser" />
           </div>
         </div>
         <div

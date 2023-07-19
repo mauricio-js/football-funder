@@ -17,4 +17,5 @@ export interface registerFormDataType {
     last_name: string | null,
     email: string | null,
     password: string | null
+    profile_url?: string | null
 }

@@ -5,6 +5,11 @@ import { ContactPhoneNumberData } from "Config";
 import { useSelector } from "react-redux";
 import { UserStateType } from "Data/User";
 
+interface Perk {
+  title: string;
+  description: string;
+}
+
 interface FormStepperContextProps {
   formValues: { [key: string]: string | null };
   handleInputChange: (name: string, value: string | null) => void;
@@ -42,6 +47,24 @@ interface FormStepperContextProps {
   handleRewardIdArray: any;
   isLoading: boolean;
   setIsLoading: (value: boolean) => void;
+
+  clickCount: number;
+  setClickCount: (value: number) => void;
+  clickedComponents: number[];
+  setClickedComponnets: (value: number[]) => void;
+  inputValue: { [number: number]: string };
+  setInputValue: React.Dispatch<
+    React.SetStateAction<{ [number: number]: string }>
+  >;
+  textareaValue: { [number: number]: string };
+  setTextareaValue: React.Dispatch<
+    React.SetStateAction<{ [number: number]: string }>
+  >;
+  perkArray: Perk[];
+  setPerkArray: React.Dispatch<React.SetStateAction<Perk[]>>;
+  handleInputValue: (number: number, value: string) => void;
+  handleTextAreaValue: (number: number, value: string) => void;
+  handleAddmoreBtnClick: () => void;
 }
 
 interface FormStepperPropsType {
@@ -66,8 +89,8 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   }>({
     category_id: userInfo.category_id.toString(),
     org_name: organization?.name || "",
-    org_address1: organization?.address1 || "",
-    org_address2: organization?.address2 || "",
+    org_address_line1: organization?.address1 || "",
+    org_address_line2: organization?.address2 || "",
     org_phone_number: organization?.phone_number || "",
     org_city: organization?.city || "",
     org_country: organization?.country || "",
@@ -104,6 +127,13 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   //   reward_ids: "",
   // });
 
+  // const handleUpdateFundraiserFormValues = (key: string, value: string) => {
+  //   setfundraiserFormValues({
+  //     ...fundraiserformValues,
+  //     [key]: value,
+  //   });
+  // };
+
   useEffect(() => {
     setFormValues((preValue) => ({
       ...preValue,
@@ -124,6 +154,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       first_name: userInfo?.first_name || "",
       last_name: userInfo?.last_name || "",
       email: userInfo?.email || "",
+      profile_url: userInfo?.profile_url || "",
     }));
   }, [userInfo, organization]);
 
@@ -134,10 +165,11 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     fundraiser_nation: 1,
     advertiser_category: 1,
     advertiser_nation: 1,
-    sponsor_category: 1,
-    sponsor_nation: 1,
+    sponsorship_category: 1,
+    sponsorship_nation: 1,
     delivery: 0,
     ecc_communication: 0,
+    including_vat: 1,
   });
   const [dateList, setDateList] = useState<{ [key: string]: Date | null }>({});
   const [descriptionList, setDescriptionList] = useState<{
@@ -159,6 +191,40 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   const [isClickedPromoteBtn, setIsClickPromoteBtn] = useState(false);
   const [isClickedAddrewardBtn, setIsClickAddrewardBtn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  const [clickCount, setClickCount] = useState<number>(1);
+  const [clickedComponents, setClickedComponnets] = useState<number[]>([0]);
+  const [inputValue, setInputValue] = useState<{ [number: number]: string }>(
+    {}
+  );
+  const [textareaValue, setTextareaValue] = useState<{
+    [number: number]: string;
+  }>({});
+  const [perkArray, setPerkArray] = useState<Perk[]>([]);
+
+  const handleInputValue = (number: number, value: string) => {
+    setInputValue((preValue) => ({
+      ...preValue,
+      [number]: value,
+    }));
+  };
+  const handleTextAreaValue = (number: number, value: string) => {
+    setTextareaValue((preValue) => ({
+      ...preValue,
+      [number]: value,
+    }));
+  };
+  const handleAddmoreBtnClick = () => {
+    const newperks: Perk = {
+      title: textareaValue[clickCount] || "",
+      description: inputValue[clickCount] || "",
+    };
+    setPerkArray([...perkArray, newperks]);
+    setClickCount(clickCount + 1);
+    setClickedComponnets([...clickedComponents, clickCount]);
+    console.log(clickCount, clickedComponents, perkArray);
+  };
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
   const handleClickPromoteBtn = () => {
     setIsClickPromoteBtn(!isClickedPromoteBtn);
   };
@@ -303,6 +369,19 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         rewardIdArray,
         isLoading,
         setIsLoading,
+        clickCount,
+        clickedComponents,
+        inputValue,
+        perkArray,
+        textareaValue,
+        setClickCount,
+        setClickedComponnets,
+        setInputValue,
+        setPerkArray,
+        setTextareaValue,
+        handleAddmoreBtnClick,
+        handleInputValue,
+        handleTextAreaValue,
       }}
     >
       {children}

@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "App/reducers";
 import { setShowMobileMenu } from "Data/LayoutState";
-import { SIGNIN_URL, SIGNUP_URL } from "Lib/urls";
+import {
+  SIGNIN_URL,
+  SIGNUP_URL,
+  MYACCOUNT_URL,
+  PROFILEPAGE_URL,
+} from "Lib/urls";
 
 export const HamburgerSignInButton: React.FC = () => {
   const navigate = useNavigate();
@@ -38,14 +43,22 @@ export const HamburgerSignInButton: React.FC = () => {
       {isAuth && (
         <div className="flex flex-row">
           <div className="w-[100px] h-[100px] mx-[4px] rounded-full bg-white"></div>
-          <div className="ml-[15px] flex flex-col justify-between">
+          <div className="ml-[15px] flex flex-col justify-between items-start">
             <div className="font-semibold text-lg text-white">
               Sheldon Cooper
             </div>
-            <div className="font-medium text-base text-green-10">
+            <button
+              className="font-medium text-base text-green-10"
+              onClick={() => goToNewPage(MYACCOUNT_URL)}
+            >
               My Account
-            </div>
-            <div className="font-medium text-base text-green-10">Profile</div>
+            </button>
+            <button
+              className="font-medium text-base text-green-10"
+              onClick={() => goToNewPage(PROFILEPAGE_URL)}
+            >
+              Profile
+            </button>
           </div>
         </div>
       )}

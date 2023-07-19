@@ -13,7 +13,7 @@ interface Props {
   titleStyle?: string;
   height?: string;
   placeholder?: string;
-  required?: boolean
+  required: boolean
 }
 
 export const Textarea: React.FC<Props> = ({

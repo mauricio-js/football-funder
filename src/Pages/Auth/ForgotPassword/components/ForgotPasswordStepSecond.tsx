@@ -33,7 +33,12 @@ export const ForgotPasswordStepSecond: React.FC<
         </div>
         <div className="w-full mx-auto">
           <div className="mt-30 xs:w-[500px] w-full mx-auto">
-            <Input data={AccountEmailData} name="email" />
+            <Input
+              data={AccountEmailData}
+              name="email"
+              required={true}
+              disabled={false}
+            />
           </div>
         </div>
         <div className="mt-30 w-full flex justify-center">

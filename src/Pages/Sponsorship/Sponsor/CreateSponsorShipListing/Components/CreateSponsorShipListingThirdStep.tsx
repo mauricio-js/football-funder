@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import classNames from "classnames";
 import {
   Button,
@@ -10,10 +10,25 @@ import {
 } from "UI";
 import { FinalTouchPageCheckboxData } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
+import { StatusContext } from "App/StatusProvider";
 
 export const CreateSponsorshipListingThirdStep: React.FC<
   StepperActionPropsType
 > = ({ handleNextPage, handlePrevPage }) => {
+  const { selectedCheckbox, isClickedPromoteBtn, handleClickPromoteBtn } =
+    useContext(FormStepperContext);
+  const { showStatus } = useContext(StatusContext);
+
+  const handleSubmit = () => {
+    if (
+      selectedCheckbox.sponsorhip_final_touch_checkbox?.length &&
+      selectedCheckbox.sponsorhip_final_touch_checkbox.length === 3
+    ) {
+      handleNextPage();
+    } else showStatus("You must confirm", "error");
+  };
+
   return (
     <div
       className="
@@ -54,12 +69,15 @@ export const CreateSponsorshipListingThirdStep: React.FC<
           </div>
           <div className="mt-15">
             <Button
-              backgroundColor="bg-green-10"
+              backgroundColor={
+                isClickedPromoteBtn ? "bg-green-70" : "bg-green-10"
+              }
               height="h-[50px]"
               width="w-full"
               text="Promote"
-              textColor="text-green-70"
+              textColor={isClickedPromoteBtn ? "text-white" : "text-green-70"}
               textSize="text-[16px] leading-[20px] font-semibold"
+              handleClick={handleClickPromoteBtn}
             />
           </div>
         </div>
@@ -69,7 +87,7 @@ export const CreateSponsorshipListingThirdStep: React.FC<
             <GeneralCheckBoxList
               options={FinalTouchPageCheckboxData}
               textStyle="introText"
-              name="final_touch_checkbox"
+              name="sponsorhip_final_touch_checkbox"
             />
           </div>
         </div>
@@ -84,7 +102,7 @@ export const CreateSponsorshipListingThirdStep: React.FC<
               text="Post listing"
               textColor="text-green-70"
               textSize="buttonText"
-              handleClick={handleNextPage}
+              handleClick={handleSubmit}
             />
           </div>
         </div>

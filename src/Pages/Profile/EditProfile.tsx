@@ -104,7 +104,12 @@ export const EditProfile: React.FC = () => {
               <>
                 <div className="buttonText text-green-70">Display name</div>
                 <div className="mt-15">
-                  <Input data={NameData} disabled={false} name="name" />
+                  <Input
+                    data={NameData}
+                    disabled={true}
+                    name="name"
+                    required={true}
+                  />
                 </div>
               </>
               <div className="mt-30">
@@ -117,6 +122,7 @@ export const EditProfile: React.FC = () => {
                     limit={300}
                     title="Description"
                     titleStyle="text-[10px] leading-[14px] text-gray-10"
+                    required={true}
                   />
                 </div>
               </div>
@@ -326,20 +332,47 @@ export const EditProfile: React.FC = () => {
               <div className="mt-30">
                 <EditProfileListTitle title="Stats" />
                 <div className="mt-15 flex flex-col gap-2.5">
-                  <Input data={FoundedData} name="funded" />
-                  <Input data={TrophiesData} name="trophies" />
-                  <Input data={CapacityData} name="capacity" />
+                  <Input
+                    data={FoundedData}
+                    name="funded"
+                    required={true}
+                    disabled={false}
+                  />
+                  <Input
+                    data={TrophiesData}
+                    name="trophies"
+                    required={true}
+                    disabled={false}
+                  />
+                  <Input
+                    data={CapacityData}
+                    name="capacity"
+                    required={true}
+                    disabled={false}
+                  />
                   <Input
                     data={AverageAttendanceData}
                     name="average_attendance"
+                    required={true}
+                    disabled={false}
                   />
-                  <Input data={AveragePlayerAgeData} name="averagePlayerAge" />
+                  <Input
+                    data={AveragePlayerAgeData}
+                    name="averagePlayerAge"
+                    required={true}
+                    disabled={false}
+                  />
                 </div>
               </div>
               <div className="mt-30">
                 <div className="buttonText text-green-70">Website link</div>
                 <div className="mt-15">
-                  <Input data={WebSiteURLData} name="website_url" />
+                  <Input
+                    data={WebSiteURLData}
+                    name="website_url"
+                    required={true}
+                    disabled={false}
+                  />
                 </div>
               </div>
             </div>

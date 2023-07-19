@@ -1,27 +1,32 @@
 import React, { useContext } from "react";
 import {
   Button,
-  CheckBox,
   DropdownInput,
   Input,
   PageSectionTitle,
   PageTitle,
   Select,
-  StepperBackButton,
   StepLabel,
+  DatePicker,
+  StepperBackButton,
+  CheckBox,
 } from "UI";
 import {
+  AccountConfirmPasswordData,
   AccountEmailData,
   AccountPasswordData,
-  AccountConfirmPasswordData,
   ContactAddressLine1Data,
   ContactAddressLine2Data,
-  ContactOrganisationData,
   ContactPhoneNumberData,
   ContactPostcodeData,
   ContactTownData,
+  DateData,
+  FirstNameData,
+  LastNameData,
+  ProfileURLData,
   RegionData,
 } from "Config";
+import { MdAnnouncement } from "react-icons/md";
 import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
 
@@ -29,11 +34,10 @@ interface FundraiserSignUpSecondStepPropsType {
   handleSubmit: () => void;
   handlePrevPage: () => void;
 }
-
-export const FundraiserSignUpSecondStep: React.FC<
+export const IndivididualAdvertiserSignUpSecondStep: React.FC<
   FundraiserSignUpSecondStepPropsType
-> = ({ handleSubmit, handlePrevPage }) => {
-  const { formValues, selectedCheckbox } = useContext(FormStepperContext);
+> = ({ handlePrevPage, handleSubmit }) => {
+  const { selectedCheckbox, formValues } = useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
@@ -62,32 +66,40 @@ export const FundraiserSignUpSecondStep: React.FC<
         mb-[120px] max-ns:mb-[60px] mx-auto"
       >
         <div className="mt-30">
-          <PageTitle title="Create your listing" />
+          <PageTitle title="Create your fundraiser" />
         </div>
         <div className="mt-15">
           <StepperBackButton handleBackPage={handlePrevPage} />
         </div>
         <div className="mt-30">
-          <StepLabel number="Step 2" title="Organisation information" />
+          <StepLabel number="Step 1" title="Your basic information" />
         </div>
 
         <div className="mt-30">
           <PageSectionTitle
             title="Contact"
-            intro="Please provide the details of the organisation that you are listing advertising opportunities for."
+            intro="Please provide the details of the legal contact for the fundraiser."
           />
           <div className="mt-[15px] xs:w-[500px]">
             <div className="flex flex-col gap-[10px]">
-              <Input
-                data={ContactOrganisationData}
-                name="org_name"
-                required={true}
-                disabled={false}
-              />
-
+              <div className="flex flex-col gap-[10px]">
+                <Input
+                  data={FirstNameData}
+                  name="first_name"
+                  required={true}
+                  disabled={false}
+                />
+                <Input
+                  data={LastNameData}
+                  name="last_name"
+                  required={true}
+                  disabled={false}
+                />
+                <DatePicker data={DateData} name="birthday" />
+              </div>
               <DropdownInput
                 data={ContactPhoneNumberData}
-                name="org_phone_number"
+                name="phone_number"
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -95,7 +107,7 @@ export const FundraiserSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine1Data}
-                      name="org_address_line1"
+                      name="address_line1"
                       required={true}
                       disabled={false}
                     />
@@ -103,7 +115,7 @@ export const FundraiserSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine2Data}
-                      name="org_address_line2"
+                      name="address_line2"
                       required={true}
                       disabled={false}
                     />
@@ -113,7 +125,7 @@ export const FundraiserSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactTownData}
-                      name="org_city"
+                      name="city"
                       required={true}
                       disabled={false}
                     />
@@ -121,7 +133,7 @@ export const FundraiserSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactPostcodeData}
-                      name="org_post_code"
+                      name="post_code"
                       required={true}
                       disabled={false}
                     />
@@ -131,52 +143,79 @@ export const FundraiserSignUpSecondStep: React.FC<
               <div>
                 <Select
                   backgroundColor="bg-white"
-                  name="org_country"
+                  name="country"
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
                 />
               </div>
+              <div className="mt-30 xs:w-[500px]">
+                <PageSectionTitle title="Account details" />
+                <div className="mt-5 flex flex-col gap-[10px]">
+                  <Input
+                    data={AccountEmailData}
+                    name="email"
+                    required={true}
+                    disabled={false}
+                  />
+                  <Input
+                    data={AccountPasswordData}
+                    name="password"
+                    required={true}
+                    disabled={false}
+                  />
+                  <Input
+                    data={AccountConfirmPasswordData}
+                    name="confirm_password"
+                    required={true}
+                    disabled={false}
+                  />
+                </div>
+              </div>
+              <div className="mt-30">
+                <PageSectionTitle
+                  title="Profile URL"
+                  intro="Each club and organisation signed up to Football Funder is given their own profile page to share their fundraisers and advertising or sponsorship listings from one place. "
+                />
+                <div className="mt-7 introText">
+                  Enter your preferred subdomain name below:
+                </div>
+                <div className="mt-[35px] xs:w-[500px]">
+                  <Input
+                    data={ProfileURLData}
+                    name="profile_url"
+                    required={true}
+                    disabled={false}
+                  />
+                </div>
+              </div>
+              <div className="mt-30">
+                <PageSectionTitle title="Confirmation" />
+                <div className="mt-[15px]">
+                  <CheckBox
+                    align="flex-row-reverse gap-[10px]"
+                    name="confirm"
+                    label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+                    value={1}
+                    textClass="generalSmallText text-gray-500"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="mt-30 xs:w-[500px]">
-          <PageSectionTitle title="Account details" />
-          <div className="mt-5 flex flex-col gap-[10px]">
-            <Input
-              data={AccountEmailData}
-              name="email"
-              required={true}
-              disabled={false}
-            />
-            <Input
-              data={AccountPasswordData}
-              name="password"
-              required={true}
-              disabled={false}
-            />
-            <Input
-              data={AccountConfirmPasswordData}
-              name="confirm_password"
-              required={true}
-              disabled={false}
-            />
+
+        <div className="md:w-[500px] mt-30">
+          <div
+            className="px-15 xs:py-[15px] py-2 w-full bg-gray-200 rounded-10 
+              flex items-center gap-[10px] generalSmallText text-green-80"
+          >
+            <div className="w-[14px] h-[14px]">
+              <MdAnnouncement />
+            </div>
+            You can modify your fundraiser details at any time after posting.
           </div>
         </div>
-
-        <div className="mt-30">
-          <PageSectionTitle title="Confirmation" />
-          <div className="mt-[15px]">
-            <CheckBox
-              align="flex-row-reverse gap-[10px]"
-              name="confirm"
-              label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-              value={1}
-              textClass="generalSmallText text-gray-500"
-            />
-          </div>
-        </div>
-
         <div className="xs:mt-[100px] mt-[60px]">
           <div className="flex xs:justify-end">
             <div className="xs:w-[250px] w-full">

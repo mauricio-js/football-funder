@@ -54,9 +54,24 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
             <PageSectionTitle title="Your details" />
             <div className="mt-5 ">
               <div className="flex flex-col gap-[10px]">
-                <Input data={FirstNameData} name="first_name" />
-                <Input data={LastNameData} name="last_name" />
-                <Input data={AccountEmailData} name="email" />
+                <Input
+                  data={FirstNameData}
+                  name="first_name"
+                  required={true}
+                  disabled={false}
+                />
+                <Input
+                  data={LastNameData}
+                  name="last_name"
+                  required={true}
+                  disabled={false}
+                />
+                <Input
+                  data={AccountEmailData}
+                  name="email "
+                  required={true}
+                  disabled={false}
+                />
               </div>
             </div>
           </div>
@@ -85,6 +100,7 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
                 height="h-[150px]"
                 limit={300}
                 showLeftCharacters={true}
+                required={true}
               />
             </div>
           </div>

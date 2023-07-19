@@ -1,149 +1,112 @@
-import React from "react";
+import React, { useContext } from "react";
+import classNames from "classnames";
 import {
-  AddmoreBtn,
   Button,
-  FileNameCoverInput,
-  Input,
+  GeneralCheckBoxList,
   PageSectionTitle,
   PageTitle,
-  StepLabel,
   StepperBackButton,
-  Textarea,
+  StepLabel,
 } from "UI";
-import { AdsNumberData, PerkTitleData, VideoURLData } from "Config";
+import { FinalTouchPageCheckboxData } from "Config";
 import { StepperActionPropsType } from "types";
+import { StatusContext } from "App/StatusProvider";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CreateAdsListingThirdStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { selectedCheckbox, isClickedPromoteBtn, handleClickPromoteBtn } =
+    useContext(FormStepperContext);
+  const { showStatus } = useContext(StatusContext);
+
+  const handleSubmit = () => {
+    if (
+      selectedCheckbox.ads_final_touch_checkbox?.length &&
+      selectedCheckbox.ads_final_touch_checkbox.length === 3
+    ) {
+      handleNextPage();
+    } else showStatus("You must confirm", "error");
+  };
+
   return (
-    <form>
-      <div
-        className="
+    <div
+      className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
          mb-[100px] max-ns:mb-[60px] mx-auto"
-      >
-        <PageTitle title="Create your listing" />
+    >
+      <div className="">
+        <PageTitle title="Create your listings" />
         <div className="mt-15">
           <StepperBackButton handleBackPage={handlePrevPage} />
         </div>
         <div className="mt-30">
-          <StepLabel number="Step 5" title="Add Details" />
+          <StepLabel number="Step 6" title="Final touches" />
         </div>
-        <div className="xs:w-[500px]">
-          <div className="mt-30">
-            <PageSectionTitle
-              title="Description of advert"
-              intro="Give a detailed description of your fundraiser."
-            />
-            <div className="mt-[15px] xs:w-[500px]">
-              <Textarea
-                height="ns:h-[350px] vs:h-[390px] "
-                name="description"
-                showLeftCharacters={false}
-                title="Description"
-                titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
-              />
+        <div
+          className={classNames(
+            "mt-30 w-full bg-gray-200 rounded-10 p-15",
+            "xs:w-[500px]"
+          )}
+        >
+          <div className="mt-30 text-[16px] leading-[20px]">
+            Promote Your Fundraiser
+          </div>
+          <div className="mt-[10px]">
+            <div className="generalSmallText text-gray-600">
+              Be featured on the homepage, within your category and on Football
+              Funder social channels for the duration of the fundraiser.
+            </div>
+            <div className="mt-5">
+              <span className="text-[16px] font-semibold text-green-70">
+                £49
+              </span>{" "}
+              <span className="generalSmallText text-gray-600">
+                one time fee, deducted from the final amount raised.
+              </span>
             </div>
           </div>
-          <div className="mt-30">
-            <PageSectionTitle
-              title="Number of adverts"
-              intro="If there are multiple versions of the same advert - state how many."
+          <div className="mt-15">
+            <Button
+              backgroundColor={
+                isClickedPromoteBtn ? "bg-green-70" : "bg-green-10"
+              }
+              height="h-[50px]"
+              width="w-full"
+              text="Promote"
+              textColor={isClickedPromoteBtn ? "text-white" : "text-green-70"}
+              textSize="text-[16px] leading-[20px] font-semibold"
+              handleClick={handleClickPromoteBtn}
             />
-            <div className="mt-15">
-              <div className="bg-gray-200 p-2.5 rounded-10 text-[12px] leading-5 text-gray-600">
-                We charge a small fee per individual listing on the platform.
-                The number of listings should match the number of adverts
-                available so that our fee is fairly reflected. <br />
-                <br /> If you are listing multiple advertising opportunities of
-                the same description as this listing, type the amount below so
-                that we can calculate the correct fee.
-              </div>
-            </div>
-            <div className="mt-15">
-              <Input data={AdsNumberData} name="ads_number" />
-            </div>
-          </div>
-          <div className="mt-30">
-            <PageSectionTitle
-              title="Title image"
-              intro="Recommended size 300x300px - this will be the first image you see on your campaign and in all listings."
-            />
-            <div className="mt-[15px]">
-              <div className="xs:w-[500px]">
-                <FileNameCoverInput name="title_image" />
-              </div>
-            </div>
-          </div>
-          <div className="mt-30">
-            <PageSectionTitle
-              title="Listing pitch image/video"
-              intro="This will appear at the top of your fundraiser page. Select image or video - a video will really bring the listing to life."
-            />
-            <div className="mt-[15px]">
-              <div className="flex gap-[10px]">
-                <div className="w-1/2">
-                  <Button
-                    backgroundColor="bg-green-10"
-                    textColor="text-black"
-                    textSize="text-[14px] leading-5 font-semibold"
-                    height="h-[54px]"
-                    width="w-full"
-                    text="Video"
-                  />
-                </div>
-                <div className="w-1/2">
-                  <FileNameCoverInput name="pitch_image" />
-                </div>
-              </div>
-            </div>
-            <div className="mt-[15px] xs:w-[500px] w-full">
-              <Input data={VideoURLData} name="video_url" />
-            </div>
-            <div className="mt-30">
-              <PageSectionTitle
-                title="Add perks"
-                intro="Give your advertisers something back for providing you with financial backing. The number of rewards you can offer is unlimited."
-              />
-              <div className="mt-15">
-                <Input data={PerkTitleData} name="perk_title" />
-                <div className="mt-2.5">
-                  <Textarea
-                    height="h-[150px] max-ns:h-[200px]"
-                    name="perk_title"
-                    limit={300}
-                    showLeftCharacters={true}
-                    title="Perk description"
-                    titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
-                  />
-                </div>
-                <div className="mt-5">
-                  <div>
-                    <AddmoreBtn />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-        <div className="xs:mt-[100px] mt-[60px]">
-          <div className="flex xs:justify-end">
-            <div className="xs:w-[250px] w-full">
-              <Button
-                backgroundColor="bg-green-10"
-                height="h-[50px]"
-                width="w-full"
-                text="Continue"
-                textColor="text-green-70"
-                textSize="buttonText"
-                handleClick={handleNextPage}
-              />
-            </div>
+        <div className="mt-30 xs:w-[500px] w-full">
+          <PageSectionTitle title="Confirm" />
+          <div className="mt-2.5">
+            <GeneralCheckBoxList
+              options={FinalTouchPageCheckboxData}
+              textStyle="introText"
+              name="ads_final_touch_checkbox"
+            />
           </div>
         </div>
       </div>
-    </form>
+      <div className="xs:mt-[100px] mt-[60px]">
+        <div className="flex xs:justify-end">
+          <div className="xs:w-[250px] w-full">
+            <Button
+              backgroundColor="bg-green-10"
+              height="h-[50px]"
+              width="w-full"
+              text="Post listing"
+              textColor="text-green-70"
+              textSize="buttonText"
+              handleClick={handleSubmit}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };

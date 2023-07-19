@@ -1,11 +1,17 @@
 import {
-    ADSLISTING_URL,
     HOME_URL,
     EXPLORE_URL,
+    FUNDRAISERSIGNUP_URL,
+    FUNDRAISERACCOUNTUPDATE_URL,
     CROWDFUNDINGLIST_URL,
     CREATEFUNDRAISER_URL,
+    ADVERTISINGSIGNUP_URL,
+    ADVERTISINGACCOUNTUPDATE_URL,
     CREATEADVERTISING_URL,
+    ADSLISTING_URL,
     CREATESPONSORSHIP_URL,
+    SPONSORSHIPSIGNUP_URL,
+    SPONSORSHIPACCOUNTUPDATE_URL,
     SPONSORSHIPLISTING_URL,
     FEES_URL,
     ABOUTUS_URL,
@@ -13,8 +19,6 @@ import {
     MYACCOUNT_URL,
     PROFILEPAGE_URL,
     FAQ_URL,
-    FUNDRAISERSIGNUP_URL,
-    FUNDRAISERACCOUNTUPDATE_URL
 } from "Lib/urls";
 import {
     ButtonItemType,
@@ -24,7 +28,6 @@ import {
     SearchDataType
 } from "types";
 import { MdSearch } from "react-icons/md";
-import { useSelector } from "react-redux";
 
 
 export const homeButtonData: ButtonItemType = {
@@ -52,8 +55,7 @@ export const feeButtonData: ButtonItemType = {
       href:FEES_URL,
 }
 export const fundraisingButtonData = (isAuth: boolean, isUpdated: string) => ({
-    // const { userInfo } = useSelector((state: any) => state.user)
-    // const isUpdated = userInfo.first_name
+  
     title: "Fundraising",
     href: "/",
     children: [
@@ -67,34 +69,34 @@ export const fundraisingButtonData = (isAuth: boolean, isUpdated: string) => ({
         },
     ]
 })
-export const sponsorshipButtonData: MenuItemType = {
+export const sponsorshipButtonData =(isAuth:boolean, isUpdated:string)  =>({
      title: "Sponsorship",
         href: "/",
         children: [
             {
                 title: "Buy",
-                href: SPONSORSHIPLISTING_URL
+                href: isAuth ? (isUpdated? CREATESPONSORSHIP_URL : SPONSORSHIPACCOUNTUPDATE_URL) : SPONSORSHIPSIGNUP_URL,
             },
             {
                 title: "Sell",
-                href: CREATEADVERTISING_URL
+                href: SPONSORSHIPLISTING_URL
             },
         ]
-}
-export const advertisingButtonData: MenuItemType = {
+})
+export const advertisingButtonData= (isAuth:boolean, isUpdated:string) => ({
      title: "Advertising",
         href: "/",
         children: [
             {
                 title: "Buy",
-                href: ADSLISTING_URL
+                  href: isAuth ? (isUpdated? CREATEADVERTISING_URL : ADVERTISINGACCOUNTUPDATE_URL) : ADVERTISINGSIGNUP_URL,
             },
             {
                 title: "Sell",
-                href: CREATEADVERTISING_URL
+                href:  ADSLISTING_URL
             },
         ]
-}
+})
 export const moreButtonData: MenuItemType = {
    
         title: "More",

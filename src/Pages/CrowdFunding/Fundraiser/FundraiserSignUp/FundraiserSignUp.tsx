@@ -5,6 +5,7 @@ import { useAxios } from "Lib";
 import {
   FundraiserSignUpFirstStep,
   FundraiserSignUpSecondStep,
+  IndivididualFundraiserSignUpSecondStep,
 } from "./Components";
 import { GeneralStepper, Template } from "UI";
 import { StatusContext } from "App/StatusProvider";
@@ -15,7 +16,7 @@ import { EMAILVERIFICATION_URL } from "Lib/urls";
 export const FundraiserSignUp: React.FC = () => {
   const axios = useAxios();
   const navigate = useNavigate();
-  const { selectValue, formValues } = useContext(FormStepperContext);
+  const { formValues, selectValue } = useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
   const data: registerFormDataType = {
@@ -88,16 +89,27 @@ export const FundraiserSignUp: React.FC = () => {
       name: "FundraiserSignUpFirstStep",
       component: <FundraiserSignUpFirstStep handleNextPage={handleNextPage} />,
     },
-
-    {
-      name: "FundraiserSignUpSecondStep",
-      component: (
-        <FundraiserSignUpSecondStep
-          handleSubmit={onClickSubmitBtn}
-          handlePrevPage={handlePrevPage}
-        />
-      ),
-    },
+    ...[
+      selectValue.fundraiser_category === 2
+        ? {
+            name: "IndivididualFundraiserSignUpSecondStep",
+            component: (
+              <IndivididualFundraiserSignUpSecondStep
+                handleSubmit={onClickSubmitBtn}
+                handlePrevPage={handlePrevPage}
+              />
+            ),
+          }
+        : {
+            name: "FundraiserSignUpSecondStep",
+            component: (
+              <FundraiserSignUpSecondStep
+                handleSubmit={onClickSubmitBtn}
+                handlePrevPage={handlePrevPage}
+              />
+            ),
+          },
+    ],
   ];
 
   return (

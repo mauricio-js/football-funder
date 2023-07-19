@@ -21,7 +21,6 @@ import {
   StatusFilterData,
   ListingPageDropdownData,
   ListingPageSearchData,
-  SponsorshipListData,
 } from "Config";
 import Line from "Assets/images/explore/explore-divide.svg";
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
@@ -29,11 +28,32 @@ import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 import { TbLayoutList, TbLayoutGrid } from "react-icons/tb";
 import FilterIcon from "Assets/images/explore/filter-icon.svg";
 import { IoMdClose } from "react-icons/io";
+import { listingDataFetch } from "Utils";
+import { useAxios } from "Lib";
+import { useQuery } from "react-query";
+import { QueryKey } from "types";
 
 export const SponsorshipList: React.FC = () => {
+  const axios = useAxios();
+
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   const [region, setRegion] = useState<string>(ListingPageDropdownData[0].name);
   const [horizontalLayout, setHorizonalLayout] = useState<boolean>(false);
+  const [sponsorship, setSponsorshipList] = useState<any[]>([]);
+  const getSponsorshipList = async (): Promise<any> => {
+    const { data } = await axios.get(`/sponsorship/getAllSponsorship`);
+    return data;
+  };
+
+  useQuery([QueryKey.SponsorshipList], getSponsorshipList, {
+    onSuccess: (data) => {
+      const ListingData = listingDataFetch(data.data);
+      setSponsorshipList(ListingData);
+    },
+    onError: (data: any) => {
+      console.log(data);
+    },
+  });
   return (
     <Template>
       <div className="relative md:pt-5 pt-[10px] md:pb-[150px] pb-[50px]">
@@ -90,12 +110,16 @@ export const SponsorshipList: React.FC = () => {
                           <Input
                             data={MileDistanceInputFormData}
                             name="mile_distance"
+                            required={true}
+                            disabled={false}
                           />
                         </div>
                         <div className="w-[180px]">
                           <Input
                             data={PostcodeDistanceInputFormData}
                             name="postcode_distance"
+                            required={true}
+                            disabled={false}
                           />
                         </div>
                       </div>
@@ -182,13 +206,13 @@ export const SponsorshipList: React.FC = () => {
             <div className="xs:mt-[65px] mt-30 max-md:w-full mx-auto">
               {horizontalLayout ? (
                 <div className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-2 max-xs:grid-cols-2 gap-x-5 max-2xs:gap-x-2.5 gap-y-30 ">
-                  {SponsorshipListData.map((item, index) => {
+                  {sponsorship.map((item, index) => {
                     return <HorizontalCard key={index} cardData={item} />;
                   })}
                 </div>
               ) : (
                 <div className="grid grid-cols-1 gap-y-5">
-                  {SponsorshipListData.map((item, index) => {
+                  {sponsorship.map((item, index) => {
                     return (
                       <VerticalCard
                         key={index}

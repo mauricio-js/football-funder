@@ -55,12 +55,28 @@ export const AdvertisingSaleStep2: React.FC<LivePagePropsType> = ({
           <PageSectionTitle title="Your details" />
           <div className="mt-5 ">
             <div className="flex flex-col gap-[10px]">
-              <Input data={FirstNameData} name="first_name" />
-              <Input data={ContactOrganisationData} name="organisation" />
-              <Input data={AccountEmailData} name="email" />
+              <Input
+                data={FirstNameData}
+                name="first_name"
+                required={true}
+                disabled={false}
+              />
+              <Input
+                data={ContactOrganisationData}
+                name="organisation"
+                required={true}
+                disabled={false}
+              />
+              <Input
+                data={AccountEmailData}
+                name="email"
+                required={true}
+                disabled={false}
+              />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                required={true}
               />
             </div>
           </div>
@@ -75,6 +91,7 @@ export const AdvertisingSaleStep2: React.FC<LivePagePropsType> = ({
               height="h-[150px]"
               limit={300}
               showLeftCharacters={true}
+              required={true}
             />
           </div>
         </div>

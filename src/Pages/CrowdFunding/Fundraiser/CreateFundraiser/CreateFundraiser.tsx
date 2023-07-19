@@ -15,10 +15,7 @@ import { useAxios } from "Lib";
 import { useSelector } from "react-redux";
 import { FormStepperContext } from "App/FormStepperProvider";
 
-// import { FormStepperContext } from "App/FormStepperProvider";
-
 export const CreateFundraiser: React.FC = () => {
-  // const { selectValue } = useContext(FormStepperContext)!;
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
@@ -63,18 +60,19 @@ export const CreateFundraiser: React.FC = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       },
       onError: (err: any) => {
-        if (err.errors) {
-          window.scrollTo(0, 0);
-          const responseError = err.errors;
-          if (
-            responseError[0].rule === "unique" &&
-            responseError[0].field === "email"
-          ) {
-            showStatus("Username already exists", "error");
-          } else showStatus(responseError[0].message, "error");
-        } else {
-          showStatus(err.message, "error");
-        }
+        console.log(err);
+        // if (err.errors) {
+        //   window.scrollTo(0, 0);
+        //   const responseError = err.errors;
+        //   if (
+        //     responseError[0].rule === "unique" &&
+        //     responseError[0].field === "email"
+        //   ) {
+        //     showStatus("Username already exists", "error");
+        //   } else showStatus(responseError[0].message, "error");
+        // } else {
+        //   showStatus(err.message, "error");
+        // }
       },
     }
   );

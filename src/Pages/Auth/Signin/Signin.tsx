@@ -45,7 +45,6 @@ export const Signin: React.FC = () => {
         // const resData = res;
         const data = res.data;
         const userInfo = data.data;
-        console.log("userInfo", userInfo);
         storeLoginData(data);
         storeUserInfo(userInfo);
 

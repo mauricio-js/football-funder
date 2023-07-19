@@ -118,8 +118,6 @@ export const MyAccountPage: React.FC = () => {
     },
   });
 
-  console.log("accountFundraserListData", accountFundraserListData);
-
   function handleScroll(): void {
     const div = document.querySelector("#sticky-tab");
     if (div) {

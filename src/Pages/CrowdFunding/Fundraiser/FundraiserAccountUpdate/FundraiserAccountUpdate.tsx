@@ -28,15 +28,16 @@ import { useMutation } from "react-query";
 import { registerFormDataType } from "Pages/Auth/SingUp/types";
 import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAxios } from "Lib";
+import { setUserInfo } from "Data/User";
 
 export const FundraiserAccountUpate: React.FC = () => {
   const { showStatus } = useContext(StatusContext);
   const { formValues, selectValue } = useContext(FormStepperContext);
   const axios = useAxios();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const { userInfo } = useSelector((state: any) => state.user);
 
   const data: any = {
@@ -57,12 +58,17 @@ export const FundraiserAccountUpate: React.FC = () => {
     first_name: formValues.first_name,
     last_name: formValues.last_name,
   };
-
+  const storeUserInfo = (userInfo: any) => {
+    dispatch(setUserInfo(userInfo));
+  };
   const { mutate: fundraiserAccountUpdate, isLoading } = useMutation(
     (params: registerFormDataType) =>
       axios.put(`/user/${userInfo.id}/update_account`, params),
     {
-      onSuccess: (data) => {
+      onSuccess: (res) => {
+        const data = res.data;
+        const userInfo = data.data;
+        storeUserInfo(userInfo);
         showStatus("Your account has been succesfully updated!");
         navigate(CREATEFUNDRAISER_URL);
       },

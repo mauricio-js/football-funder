@@ -109,22 +109,13 @@ export const Header: React.FC<HeaderProps> = ({ isShowMobileMenu }) => {
                         handleClick={() => navigate(EXPLORE_URL)}
                       />
                       <Dropdown
-                        List={fundraisingButtonData(
-                          isAuth,
-                          isUpdated
-                        )}
+                        List={fundraisingButtonData(isAuth, isUpdated)}
                       />
                       <Dropdown
-                        List={advertisingButtonData(
-                          isAuth,
-                          isUpdated
-                        )}
+                        List={advertisingButtonData(isAuth, isUpdated)}
                       />
                       <Dropdown
-                        List={sponsorshipButtonData(
-                          isAuth,
-                          isUpdated
-                        )}
+                        List={sponsorshipButtonData(isAuth, isUpdated)}
                       />
                       <Button
                         text="Fees"

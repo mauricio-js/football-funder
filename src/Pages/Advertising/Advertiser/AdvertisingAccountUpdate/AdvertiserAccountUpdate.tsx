@@ -32,11 +32,13 @@ import { useAxios } from "Lib";
 import { CREATEADVERTISING_URL } from "Lib/urls";
 import { useNavigate } from "react-router-dom";
 import { FormStepperContext } from "App/FormStepperProvider";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "react-query";
 import { registerFormDataType } from "Pages/Auth/SingUp/types";
+import { setUserInfo } from "Data/User";
 
 export const AdvertisingAccountUpdate: React.FC = () => {
+  const dispatch = useDispatch();
   const { userInfo } = useSelector((state: any) => state.user);
   const { formValues, selectValue, selectedCheckbox } =
     useContext(FormStepperContext);
@@ -47,13 +49,13 @@ export const AdvertisingAccountUpdate: React.FC = () => {
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-      if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
-        showStatus(
-          "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
-          "error"
-        );
-      } else {
-        advertiserAccountUpdate(data);
+    if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+      showStatus(
+        "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
+        "error"
+      );
+    } else {
+      advertiserAccountUpdate(data);
     }
   };
 
@@ -75,13 +77,18 @@ export const AdvertisingAccountUpdate: React.FC = () => {
     first_name: formValues.first_name,
     last_name: formValues.last_name,
   };
-
+  const storeUserInfo = (userInfo: any) => {
+    dispatch(setUserInfo(userInfo));
+  };
   const { mutate: advertiserAccountUpdate, isLoading } = useMutation(
     (params: registerFormDataType) =>
       axios.put(`/user/${userInfo.id}/update_account`, params),
     {
-      onSuccess: (data) => {
+      onSuccess: (res) => {
         showStatus("Your account has been succesfully updated!");
+        const data = res.data;
+        const userInfo = data.data;
+        storeUserInfo(userInfo);
         navigate(CREATEADVERTISING_URL);
       },
       onError: (err: any) => {

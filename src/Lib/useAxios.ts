@@ -10,7 +10,7 @@ export function useAxios(timeout: number = 500000000) {
   const { token, refresh } = useAuthToken();
 
   const config = {
-    baseURL: apiUrl,
+    baseURL: `${apiUrl}/v1`,
     timeout: timeout,
     headers: {
       'Authorization': 'Bearer ' + token,

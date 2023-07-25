@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   CategoryButtonList,
@@ -9,10 +9,13 @@ import {
 
 import { FundraiserCategoryData, FundraiserNationData } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const SponsorSignUpFirstStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
 }) => {
+  const { sponsorshipRegisterValue, handleSponsorshipRegisterValue } =
+    useContext(FormStepperContext);
   return (
     <div
       className="
@@ -36,7 +39,9 @@ export const SponsorSignUpFirstStep: React.FC<StepperActionPropsType> = ({
         <div className="mt-[15px]">
           <CategoryButtonList
             options={FundraiserCategoryData}
-            name="sponsorship_category"
+            name="category_id"
+            value={sponsorshipRegisterValue.category_id}
+            setValue={handleSponsorshipRegisterValue}
           />
         </div>
       </div>
@@ -48,7 +53,9 @@ export const SponsorSignUpFirstStep: React.FC<StepperActionPropsType> = ({
         <div className="mt-[15px]">
           <CategoryButtonList
             options={FundraiserNationData}
-            name="sponsorship_nation"
+            name="nation"
+            value={sponsorshipRegisterValue.nation}
+            setValue={handleSponsorshipRegisterValue}
           />
         </div>
       </div>

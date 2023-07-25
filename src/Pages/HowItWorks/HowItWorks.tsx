@@ -1,20 +1,23 @@
 import React from "react";
 import { Join, SummaryCard, Template } from "UI";
-import {
-  AdvertisingCardData,
-  MobileAdvertisingCardData,
-  FundraisingCardData,
-  MobileFundraisingCardData,
-  SponsorshipData,
-  MobileSponsorshipData,
-} from "Config";
 
+import {
+  ADSLISTING_URL,
+  CROWDFUNDINGLIST_URL,
+  CREATEFUNDRAISER_URL,
+  SPONSORSHIPLISTING_URL,
+  CREATEADVERTISING_URL,
+  CREATESPONSORSHIP_URL,
+} from "Lib/urls";
 import DesktopBackImage from "Assets/images/howItWorks/howDesktopBackImage.png";
-import MobileBackImage from "Assets/images/howItWorks/howMobileBackImage.png";
 import DesktopMask from "Assets/images/howItWorks/desktopMask.svg";
-import MobileMask from "Assets/images/howItWorks/mobileMask.svg";
 import JoinBackImg from "Assets/images/home/joinnow-back.png";
-import MobileJoinBackImg from "Assets/images/home/mobile-joinnow-back.png";
+import FundraiseCardImage from "Assets/images/home/fundraise.png";
+import ContributeCardImage from "Assets/images/home/contribute.png";
+import SponsorshipBuyImg from "Assets/images/home/sponsorship-buy-img.png";
+import SponsorshipSellImg from "Assets/images/home/sponsorship-sell-img.png";
+import AdvertisingBuyImg from "Assets/images/home/advert-buy-img.png";
+import AdvertisingSellImg from "Assets/images/home/advert-sell-img.png";
 
 export const HowItWorks: React.FC = () => {
   return (
@@ -33,12 +36,7 @@ export const HowItWorks: React.FC = () => {
             <img
               src={DesktopBackImage}
               alt="background"
-              className="w-full max-ns:hidden object-cover h-[378px]"
-            />
-            <img
-              src={MobileBackImage}
-              alt="background"
-              className="ns:hidden object-cover h-[378px] w-full"
+              className="w-full  object-cover h-[378px]"
             />
           </div>
         </div>
@@ -47,12 +45,7 @@ export const HowItWorks: React.FC = () => {
             <img
               src={DesktopMask}
               alt="desktop mask"
-              className="max-ns:hidden object-cover object-top h-[442px] w-full"
-            />
-            <img
-              src={MobileMask}
-              alt="desktop mask"
-              className="ns:hidden object-cover h-[230px] w-full"
+              className="object-cover object-top h-[442px] w-full"
             />
           </div>
           <div className="w-full pt-[23px]">
@@ -87,56 +80,84 @@ export const HowItWorks: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="max-ns:hidden px-5">
-              <div className="mt-[100px]">
-                <SummaryCard
-                  value={FundraisingCardData}
-                  title="Fundraising"
-                  descritpion="Campaign tooling and promotion for football specific fundraising."
-                  textColor="text-white"
-                />
+            <div className="">
+              <div className="mt-[150px] bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col gap-5 ">
+                <div className="font-semibold text-[32px] leading-9 text-white">
+                  Fundraising
+                </div>
+                <div className="mt-15 text-green-300 text-base font-medium">
+                  Campaign tooling and promotion for football specific
+                  fundraising.
+                </div>
+                <div className="mt-2.5 flex bl:flex-row flex-col justify-center gap-5">
+                  <SummaryCard
+                    backgroundImage={FundraiseCardImage}
+                    buttonName="Start Now"
+                    description="Stand out from the crowd and raise funds on a dedicated football platform."
+                    linkUrl={CREATEFUNDRAISER_URL}
+                    title="Fundraise"
+                  />
+                  <SummaryCard
+                    backgroundImage={ContributeCardImage}
+                    buttonName="Explore"
+                    description="Whether here for a cause you support, or just browsing, you can start donating below."
+                    linkUrl={CROWDFUNDINGLIST_URL}
+                    title="Contribute"
+                  />
+                </div>
               </div>
-              <div className="mt-[100px]">
-                <SummaryCard
-                  value={AdvertisingCardData}
-                  title="Advertising"
-                  descritpion="Bring opportunities to life and build relationships with sponsors"
-                  textColor="text-white"
-                />
+              <div className="mt-10 bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col gap-5">
+                <div className="mt-30 font-semibold text-[32px] leading-9 text-white">
+                  Advertising
+                </div>
+                <div className="mt-15 text-green-300 text-base font-medium">
+                  Bring opportunities to life and build relationships with
+                  sponsors
+                </div>
+                <div className="mt-2.5 flex bl:flex-row flex-col justify-center gap-5">
+                  <SummaryCard
+                    backgroundImage={AdvertisingBuyImg}
+                    buttonName="Explore"
+                    description="Interested in showcasing your brand using football? Browse opportunities in your area."
+                    linkUrl={ADSLISTING_URL}
+                    title="Buy"
+                  />
+                  <SummaryCard
+                    backgroundImage={AdvertisingSellImg}
+                    buttonName="Sell your ads"
+                    description="List advertising opportunities to brands and put your assets to the best use possible."
+                    linkUrl={CREATEADVERTISING_URL}
+                    title="Sell"
+                  />
+                </div>
               </div>
-              <div className="mt-[95px]">
-                <SummaryCard
-                  value={SponsorshipData}
-                  title="Sponsorship"
-                  descritpion="Bring opportunities to life and build relationships with sponsors"
-                  textColor="text-white"
-                />
+              <div className="mt-30 bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col gap-5">
+                <div className="font-semibold text-[32px] leading-9 text-white">
+                  Sponsorship
+                </div>
+                <div className="mt-15 text-green-300 text-base font-medium">
+                  Bring opportunities to life and build relationships with
+                  sponsors
+                </div>
+                <div className="mt-2.5 flex bl:flex-row flex-col justify-center gap-5">
+                  <SummaryCard
+                    backgroundImage={SponsorshipBuyImg}
+                    buttonName="Explore"
+                    description="Amplify the presence of your business locally or nationally through football sponsorship."
+                    linkUrl={SPONSORSHIPLISTING_URL}
+                    title="Buy"
+                  />
+                  <SummaryCard
+                    backgroundImage={SponsorshipSellImg}
+                    buttonName="Sell your spots"
+                    description="Attract sponsors to your club or organisation by listing your important sponsorship deals."
+                    linkUrl={CREATESPONSORSHIP_URL}
+                    title="Sell"
+                  />
+                </div>
               </div>
               <div className="mt-[100px]">
                 <Join image={JoinBackImg} />
-              </div>
-            </div>
-            <div className="ns:hidden">
-              <div className="mt-[60px] px-5 flex flex-col gap-y-[60px]">
-                <SummaryCard
-                  value={MobileFundraisingCardData}
-                  title="Fundraising"
-                  descritpion="Campaign tooling and promotion for football specific fundraising."
-                  textColor="text-white"
-                />
-                <SummaryCard
-                  value={MobileAdvertisingCardData}
-                  title="Advertising"
-                  descritpion="Bring opportunities to life and build relationships with sponsors"
-                  textColor="text-white"
-                />
-                <SummaryCard
-                  value={MobileSponsorshipData}
-                  title="Sponsorship"
-                  descritpion="Bring opportunities to life and build relationships with sponsors"
-                  textColor="text-white"
-                />
-                <Join image={MobileJoinBackImg} />
               </div>
             </div>
           </div>

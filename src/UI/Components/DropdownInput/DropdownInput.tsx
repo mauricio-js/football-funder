@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { ContactPhoneNumberType } from "types";
 import Arrow from "Assets/images/svg/button/black-arrow";
@@ -7,23 +6,25 @@ import Arrow from "Assets/images/svg/button/black-arrow";
 interface DropdownInputProps {
   data: ContactPhoneNumberType[];
   name: string;
+  value: any;
+  setValue: (key: string, value: any) => void;
+  country: string;
+  phoneCountry: string;
   required: boolean;
 }
 
 export const DropdownInput: React.FC<DropdownInputProps> = ({
   data,
   name,
+  value,
+  setValue,
+  country,
+  phoneCountry,
   required,
 }) => {
-  const {
-    formValues,
-    handleInputChange,
-    countryPhoneNumber,
-    setCountryPhoneNumber,
-  } = useContext(FormStepperContext)!;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    handleInputChange(name, value);
+    setValue(name, value);
   };
   const [floating, setFloating] = useState<boolean>(false);
 
@@ -43,7 +44,7 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
         <input
           name={name}
           type="text"
-          value={formValues[name] || ""}
+          value={value}
           className={classNames(
             "peer bg-white w-full  text-green-70",
             "transition duration-200 ease-linear h-[54px] pl-16 pt-3",
@@ -66,7 +67,7 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
               }}
             >
               <div className="flex">
-                {countryPhoneNumber}
+                {country}
                 <Arrow />
               </div>
             </button>
@@ -79,7 +80,7 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
                         key={index}
                         className="py-2 px-3 w-full hover:bg-gray-100 flex justify-start"
                         onClick={() => {
-                          setCountryPhoneNumber(item.country);
+                          setValue(phoneCountry, item.country);
                           setIsShowMenu(false);
                         }}
                       >
@@ -98,7 +99,7 @@ export const DropdownInput: React.FC<DropdownInputProps> = ({
           className={classNames(
             "pointer-events-none absolute top-[calc(50%-10px)] left-16 text-sm text-gray-10",
             "origin-[0_0] duration-200 ease-linear",
-            floating || formValues[name] ? "scale-75 -translate-y-2.5" : " ",
+            floating || value ? "scale-75 -translate-y-2.5" : " ",
             "after:content-['*'] after:ml-1 after:text-green-10"
           )}
         >

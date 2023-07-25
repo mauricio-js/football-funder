@@ -10,22 +10,16 @@ import {
   ForgotPasswordStepFourth,
 } from "Pages";
 import { StatusContext } from "App/StatusProvider";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const ForgotPassword: React.FC = () => {
   const navigate = useNavigate();
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
+  const { forgotPasswordValue } = useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
-
-  const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
-  const handleInputChange = (name: string, value: string) => {
-    setFormValues((preValue) => ({
-      ...preValue,
-      [name]: value,
-    }));
-  };
 
   function handleNextPage() {
     if (currentStep < pages.length - 1) {
@@ -55,7 +49,8 @@ export const ForgotPassword: React.FC = () => {
   );
 
   function handleSendResetPassword() {
-    sendForgotPasswordLink.mutate(formValues);
+    // console.log("123123123", forgotPasswordValue.email);
+    sendForgotPasswordLink.mutate(forgotPasswordValue.email);
   }
 
   const pages: { name: string; component: React.ReactNode }[] = [
@@ -69,8 +64,6 @@ export const ForgotPassword: React.FC = () => {
         <ForgotPasswordStepSecond
           handlePrevPage={handlePrevPage}
           handleSendResetPassword={handleSendResetPassword}
-          formValues={formValues}
-          onInputChange={handleInputChange}
         />
       ),
     },

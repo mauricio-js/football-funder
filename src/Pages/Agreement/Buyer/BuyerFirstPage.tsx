@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Button, BuyerCard, DropdownInput, Input, Select, Template } from "UI";
-
 import {
   AccountEmailData,
   AddressData,
@@ -13,15 +11,14 @@ import {
   PostcodeData,
   RegionData,
 } from "Config";
-
 import { BUYERCHECKOUT_URL } from "Lib/urls";
-
 import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
 import { BsCheckLg } from "react-icons/bs";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const BuyerFirstPage: React.FC = () => {
   const navigate = useNavigate();
-
+  const { buyerValue, handleBuyerValue } = useContext(FormStepperContext);
   const [showSignMark, setShowSignMark] = useState<boolean>(false);
 
   return (
@@ -57,6 +54,8 @@ export const BuyerFirstPage: React.FC = () => {
                       <Input
                         data={NameData}
                         name="name"
+                        value={buyerValue.name}
+                        setValue={handleBuyerValue}
                         required={true}
                         disabled={false}
                       />
@@ -73,7 +72,9 @@ export const BuyerFirstPage: React.FC = () => {
                         <div className="w-1/2">
                           <Input
                             data={PostcodeData}
-                            name="post_code"
+                            name="post_code1"
+                            value={buyerValue.post_code1}
+                            setValue={handleBuyerValue}
                             required={true}
                             disabled={false}
                           />
@@ -81,7 +82,9 @@ export const BuyerFirstPage: React.FC = () => {
                         <div className="w-1/2">
                           <Input
                             data={AddressData}
-                            name="address"
+                            name="address1"
+                            value={buyerValue.address1}
+                            setValue={handleBuyerValue}
                             required={true}
                             disabled={false}
                           />
@@ -90,7 +93,9 @@ export const BuyerFirstPage: React.FC = () => {
                       <div className="mt-2.5">
                         <Select
                           backgroundColor="bg-white"
-                          name="country"
+                          name="country1"
+                          value={buyerValue.country1}
+                          setValue={handleBuyerValue}
                           label="Country (Region)"
                           SelectFormData={RegionData}
                           textSize="generalText"
@@ -109,7 +114,9 @@ export const BuyerFirstPage: React.FC = () => {
                         <div className="w-1/2">
                           <Input
                             data={PostcodeData}
-                            name="post_code"
+                            name="post_code2"
+                            value={buyerValue.post_code2}
+                            setValue={handleBuyerValue}
                             required={true}
                             disabled={false}
                           />
@@ -117,7 +124,9 @@ export const BuyerFirstPage: React.FC = () => {
                         <div className="w-1/2">
                           <Input
                             data={AddressData}
-                            name="address"
+                            name="address2"
+                            value={buyerValue.address2}
+                            setValue={handleBuyerValue}
                             required={true}
                             disabled={false}
                           />
@@ -126,7 +135,9 @@ export const BuyerFirstPage: React.FC = () => {
                       <div className="mt-2.5">
                         <Select
                           backgroundColor="bg-white"
-                          name="country"
+                          name="country2"
+                          value={buyerValue.country2}
+                          setValue={handleBuyerValue}
                           label="Country (Region)"
                           SelectFormData={RegionData}
                           textSize="generalText"
@@ -144,23 +155,33 @@ export const BuyerFirstPage: React.FC = () => {
                       <Input
                         data={FirstNameData}
                         name="first_name"
+                        value={buyerValue.first_name}
+                        setValue={handleBuyerValue}
                         required={true}
                         disabled={false}
                       />
                       <Input
                         data={LastNameData}
                         name="last_name"
+                        value={buyerValue.last_name}
+                        setValue={handleBuyerValue}
                         required={true}
                         disabled={false}
                       />
                       <DropdownInput
                         data={ContactPhoneNumberData}
                         name="phone_number"
+                        phoneCountry="pn_country"
+                        country={ContactPhoneNumberData[0].country}
+                        value={buyerValue.phone_number}
+                        setValue={handleBuyerValue}
                         required={true}
                       />
                       <Input
                         data={AccountEmailData}
                         name="email"
+                        value={buyerValue.email}
+                        setValue={handleBuyerValue}
                         required={true}
                         disabled={false}
                       />

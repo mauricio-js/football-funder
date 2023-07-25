@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
-  CheckBox,
   DropdownInput,
   Input,
   PageSectionTitle,
@@ -9,6 +8,7 @@ import {
   Select,
   StepperBackButton,
   StepLabel,
+  ConfirmBox,
 } from "UI";
 import {
   AccountEmailData,
@@ -33,17 +33,32 @@ interface FundraiserSignUpSecondStepPropsType {
 export const FundraiserSignUpSecondStep: React.FC<
   FundraiserSignUpSecondStepPropsType
 > = ({ handleSubmit, handlePrevPage }) => {
-  const { formValues, selectedCheckbox } = useContext(FormStepperContext);
+  const { handleFundraiserRegisterValue, fundraierRegisterValue } =
+    useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirm_password) {
+    if (
+      fundraierRegisterValue.password !==
+      fundraierRegisterValue.confirm_password
+    ) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
+    } else if (
+      fundraierRegisterValue.password &&
+      fundraierRegisterValue.password.length < 8
+    ) {
       showStatus("Password must be longer than 8 characters", "error");
     } else {
-      if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+      if (!confirm.confirm) {
         showStatus(
           "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
           "error"
@@ -81,6 +96,8 @@ export const FundraiserSignUpSecondStep: React.FC<
               <Input
                 data={ContactOrganisationData}
                 name="org_name"
+                value={fundraierRegisterValue.org_name}
+                setValue={handleFundraiserRegisterValue}
                 required={true}
                 disabled={false}
               />
@@ -88,6 +105,10 @@ export const FundraiserSignUpSecondStep: React.FC<
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="org_phone_number"
+                phoneCountry="org_pn_country"
+                value={fundraierRegisterValue.org_phone_number}
+                setValue={handleFundraiserRegisterValue}
+                country={fundraierRegisterValue.org_pn_country}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -95,7 +116,9 @@ export const FundraiserSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine1Data}
-                      name="org_address_line1"
+                      name="org_address1"
+                      value={fundraierRegisterValue.org_address1}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -103,7 +126,9 @@ export const FundraiserSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine2Data}
-                      name="org_address_line2"
+                      name="org_address2"
+                      value={fundraierRegisterValue.org_address2}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -114,6 +139,8 @@ export const FundraiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactTownData}
                       name="org_city"
+                      value={fundraierRegisterValue.org_city}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -122,6 +149,8 @@ export const FundraiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactPostcodeData}
                       name="org_post_code"
+                      value={fundraierRegisterValue.org_post_code}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -135,6 +164,8 @@ export const FundraiserSignUpSecondStep: React.FC<
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
+                  value={fundraierRegisterValue.org_country}
+                  setValue={handleFundraiserRegisterValue}
                 />
               </div>
             </div>
@@ -146,18 +177,24 @@ export const FundraiserSignUpSecondStep: React.FC<
             <Input
               data={AccountEmailData}
               name="email"
+              value={fundraierRegisterValue.email}
+              setValue={handleFundraiserRegisterValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountPasswordData}
               name="password"
+              value={fundraierRegisterValue.password}
+              setValue={handleFundraiserRegisterValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountConfirmPasswordData}
               name="confirm_password"
+              value={fundraierRegisterValue.confirm_password}
+              setValue={handleFundraiserRegisterValue}
               required={true}
               disabled={false}
             />
@@ -167,14 +204,21 @@ export const FundraiserSignUpSecondStep: React.FC<
         <div className="mt-30">
           <PageSectionTitle title="Confirmation" />
           <div className="mt-[15px]">
-            <CheckBox
+            {/* <CheckBox
               align="flex-row-reverse gap-[10px]"
               name="confirm"
               label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
               value={1}
               textClass="generalSmallText text-gray-500"
-            />
+            /> */}
           </div>
+          <ConfirmBox
+            name="confirm"
+            label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+            checkboxStyle={true}
+            value={confirm.confirm}
+            setValue={handleConfirm}
+          />
         </div>
 
         <div className="xs:mt-[100px] mt-[60px]">

@@ -18,7 +18,6 @@ import {
   UnchangePageTitle,
 } from "UI";
 import { SIGNIN_URL } from "Lib/urls";
-import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
 
 interface SignUpSecondPagePropsType {
@@ -31,8 +30,7 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
   handlePrevPage,
 }) => {
   const navigate = useNavigate();
-  const { showStatus } = useContext(StatusContext);
-  const { formValues } = useContext(FormStepperContext)!;
+  const { registerValue, handleRegisterValue } = useContext(FormStepperContext);
 
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
@@ -40,11 +38,7 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
 
   const signUpSecondPageAction = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.org_country) {
-      handleNextPage();
-    } else {
-      showStatus("You must select the country", "error");
-    }
+    handleNextPage();
   };
 
   return (
@@ -75,8 +69,10 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
           <Input
             data={ContactOrganisationData}
             name="org_name"
-            required={true}
+            value={registerValue.org_name}
+            setValue={handleRegisterValue}
             disabled={false}
+            required={true}
           />
           <div className="mt-2.5 smallIntroText">
             Use official name - if individual, use full name.
@@ -87,6 +83,8 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
                 <Input
                   data={ContactAddressLine1Data}
                   name="org_address1"
+                  value={registerValue.org_address1}
+                  setValue={handleRegisterValue}
                   required={true}
                   disabled={false}
                 />
@@ -95,6 +93,8 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
                 <Input
                   data={ContactAddressLine2Data}
                   name="org_address2"
+                  value={registerValue.org_address2}
+                  setValue={handleRegisterValue}
                   required={true}
                   disabled={false}
                 />
@@ -105,6 +105,8 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
                 <Input
                   data={ContactTownData}
                   name="org_city"
+                  value={registerValue.org_city}
+                  setValue={handleRegisterValue}
                   required={true}
                   disabled={false}
                 />
@@ -113,6 +115,8 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
                 <Input
                   data={ContactPostcodeData}
                   name="org_post_code"
+                  value={registerValue.org_post_code}
+                  setValue={handleRegisterValue}
                   required={true}
                   disabled={false}
                 />
@@ -129,6 +133,8 @@ export const SignUpStepSecond: React.FC<SignUpSecondPagePropsType> = ({
               label="Country (Region)"
               SelectFormData={RegionData}
               textSize="generalText"
+              value={registerValue.org_country}
+              setValue={handleRegisterValue}
             />
           </div>
           <div className="mt-2.5 smallIntroText">

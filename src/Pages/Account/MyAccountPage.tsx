@@ -50,18 +50,14 @@ export const MyAccountPage: React.FC = () => {
   const [active, setActive] = useState<string>("myProfile");
 
   const [showDownloadModal, setShowDownloadModal] = useState<boolean>(false);
-
   const [showRewardModal, setShowRewardModal] = useState<boolean>(false);
-
   const [clicked, setClicked] = useState<boolean>(false);
-
   // const userInfo = useSelector((state: AppState) => state.userInfo);
   // console.log("userinfo", userInfo);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [updatedPassword, setUpdatedPassword] = useState<string>(
     sessionStorage.getItem("updatedPassword") || "false"
   );
-
   const [accountFundraserListData, setAccountFundraiserListData] = useState<
     any[]
   >([]);
@@ -71,6 +67,16 @@ export const MyAccountPage: React.FC = () => {
   const [accountSponsorshipListData, setAccountSponsorshipListData] = useState<
     any[]
   >([]);
+
+  const [account, setAccount] = useState<{ [key: string]: any }>({
+    sort: "",
+    campaign: "",
+  });
+  const handleAccout = (key: string, value: any) => {
+    setAccount({
+      [key]: value,
+    });
+  };
 
   const getAccountFundraiserList = async (): Promise<any> => {
     const { data } = await axios.get(
@@ -521,6 +527,8 @@ export const MyAccountPage: React.FC = () => {
                                 <Select
                                   backgroundColor="bg-white"
                                   name="sort"
+                                  value={account.sort}
+                                  setValue={handleAccout}
                                   label="Sort by"
                                   SelectFormData={RewardsSortbyData}
                                   textSize="generalText"
@@ -534,7 +542,9 @@ export const MyAccountPage: React.FC = () => {
                                   classes="flex md:gap-[60px] gap-30"
                                   textStyle="text-[16px] leading-5 text-green-70"
                                   options={CampaignCheckboxData}
-                                  name="campaign_checkbox"
+                                  name="campaign"
+                                  value={account.campaign}
+                                  setValue={handleAccout}
                                 />
                               </div>
                             </div>

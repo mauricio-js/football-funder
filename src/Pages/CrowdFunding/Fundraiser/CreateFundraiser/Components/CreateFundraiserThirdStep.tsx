@@ -18,12 +18,14 @@ export interface AddrewardsFirstPagePropsType {
 export const CreateFundraiserThirdStep: React.FC<
   AddrewardsFirstPagePropsType
 > = ({ handleNextPage, handlePrevPage, handleNextPartPage }) => {
+  const { createFundraiserValue } = useContext(FormStepperContext);
   const { isClickedAddrewardBtn } = useContext(FormStepperContext);
   const handleContinueBtnClick = () => {
     if (isClickedAddrewardBtn) {
       handleNextPage();
     } else {
       handleNextPartPage();
+      console.log(createFundraiserValue);
     }
   };
   return (

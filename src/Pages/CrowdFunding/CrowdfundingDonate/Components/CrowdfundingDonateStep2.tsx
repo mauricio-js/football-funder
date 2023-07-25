@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AmountShow,
   Button,
@@ -11,16 +11,14 @@ import {
 } from "UI";
 import { DonateClubLabel, DonateLocationLabel } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CrowdfundingDonateStep2: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const [donationAmount, setDonationAmount] = useState<number>(0);
-  const [additionalDonationAmount, setAdditionalDonationAmount] =
-    useState<number>(0);
   const [showRange, setShowRange] = useState<boolean>(true);
-
+  const { donateValue, handleDonateValue } = useContext(FormStepperContext);
   return (
     <div
       className="
@@ -52,7 +50,11 @@ export const CrowdfundingDonateStep2: React.FC<StepperActionPropsType> = ({
             intro="Please enter the amount you would like to donate to this fundraiser"
           />
           <div className="mt-15">
-            <AmountShow name="donation_amount" />
+            <AmountShow
+              name="donation_amount"
+              value={donateValue.donation_amount}
+              setValue={handleDonateValue}
+            />
           </div>
         </div>
         <div className="mt-30">
@@ -94,7 +96,11 @@ export const CrowdfundingDonateStep2: React.FC<StepperActionPropsType> = ({
                     </button>
                   </div>
                   <div className="mt-2.5 xs:w-[390px]">
-                    <AmountShow name="amount" />
+                    <AmountShow
+                      name="amount"
+                      value={donateValue.amount}
+                      setValue={handleDonateValue}
+                    />
                   </div>
                 </div>
               )}

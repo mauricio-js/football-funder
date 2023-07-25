@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React from "react";
 import classNames from "classnames";
 
 interface Props {
   name: string;
   chattingField?: boolean;
   className?: string;
-  value?: string;
   limit?: number;
   showLeftCharacters: boolean;
   title?: string;
   titleStyle?: string;
   height?: string;
   placeholder?: string;
-  required: boolean
+  required: boolean;
+  value: any;
+  setValue: (key: string, value: any) => void;
 }
 
 export const Textarea: React.FC<Props> = ({
@@ -25,14 +25,13 @@ export const Textarea: React.FC<Props> = ({
   height,
   showLeftCharacters,
   placeholder,
+  required,
+  value,
+  setValue,
   name,
-  required
 }) => {
-  const { descriptionList, handleDescriptionChange } =
-    useContext(FormStepperContext)!;
-
   const setFormattedContent = (text: string) => {
-    handleDescriptionChange(name, text.slice(0, limit));
+    setValue(name, text.slice(0, limit));
   };
 
   return (
@@ -49,7 +48,7 @@ export const Textarea: React.FC<Props> = ({
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
           setFormattedContent(event.target.value);
         }}
-        value={descriptionList[name]}
+        value={value}
         placeholder={placeholder}
         required={required}
       />
@@ -58,21 +57,15 @@ export const Textarea: React.FC<Props> = ({
           className={classNames(
             "absolute bottom-[10px] right-[10px] text-[10px] leading-[14px]",
             " hidden vs:block text-green-70",
-            !descriptionList[name] && "text-opacity-50"
+            !value && "text-opacity-50"
           )}
         >
-          {descriptionList[name] ? descriptionList[name].length : 0}/{limit}{" "}
-          characters left
+          {value ? value.length : 0}/{limit} characters left
         </div>
       )}
       {title && (
         <div className="absolute top-[12px] px-[16px] hidden vs:block">
-          <div
-            className={classNames(
-              titleStyle,
-              !descriptionList[name] && "text-opacity-50"
-            )}
-          >
+          <div className={classNames(titleStyle, !value && "text-opacity-50")}>
             {title}
           </div>
         </div>

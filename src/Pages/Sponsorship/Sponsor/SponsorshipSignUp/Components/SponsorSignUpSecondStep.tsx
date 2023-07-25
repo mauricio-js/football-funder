@@ -19,7 +19,6 @@ import {
   ContactPhoneNumberData,
   ContactPostcodeData,
   ContactTownData,
-  ProfileURLData,
   RegionData,
 } from "Config";
 import { FormStepperContext } from "App/FormStepperProvider";
@@ -32,14 +31,21 @@ interface FundraiserSignUpSecondStepPropsType {
 export const SponsorSignUpSecondStep: React.FC<
   FundraiserSignUpSecondStepPropsType
 > = ({ handleSubmit, handlePrevPage }) => {
-  const { formValues } = useContext(FormStepperContext);
+  const { sponsorshipRegisterValue, handleSponsorshipRegisterValue } =
+    useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirm_password) {
+    if (
+      sponsorshipRegisterValue.password !==
+      sponsorshipRegisterValue.confirm_password
+    ) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
+    } else if (
+      sponsorshipRegisterValue.password &&
+      sponsorshipRegisterValue.password.length < 8
+    ) {
       showStatus("Password must be longer than 8 characters", "error");
     } else {
       handleSubmit();
@@ -72,12 +78,18 @@ export const SponsorSignUpSecondStep: React.FC<
               <Input
                 data={ContactOrganisationData}
                 name="org_name"
+                value={sponsorshipRegisterValue.org_name}
+                setValue={handleSponsorshipRegisterValue}
                 required={true}
                 disabled={false}
               />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="org_phone_number"
+                phoneCountry="org_pn_country"
+                value={sponsorshipRegisterValue.org_phone_number}
+                setValue={handleSponsorshipRegisterValue}
+                country={sponsorshipRegisterValue.pn_country}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -85,7 +97,9 @@ export const SponsorSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine1Data}
-                      name="org_address_line1"
+                      name="org_address1"
+                      value={sponsorshipRegisterValue.org_address1}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -93,7 +107,9 @@ export const SponsorSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine2Data}
-                      name="org_address_line2"
+                      name="org_address2"
+                      value={sponsorshipRegisterValue.org_address2}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -104,6 +120,8 @@ export const SponsorSignUpSecondStep: React.FC<
                     <Input
                       data={ContactTownData}
                       name="org_city"
+                      value={sponsorshipRegisterValue.org_city}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -112,6 +130,8 @@ export const SponsorSignUpSecondStep: React.FC<
                     <Input
                       data={ContactPostcodeData}
                       name="org_post_code"
+                      value={sponsorshipRegisterValue.org_post_code}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -125,6 +145,8 @@ export const SponsorSignUpSecondStep: React.FC<
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
+                  value={sponsorshipRegisterValue.org_country}
+                  setValue={handleSponsorshipRegisterValue}
                 />
               </div>
             </div>
@@ -136,18 +158,24 @@ export const SponsorSignUpSecondStep: React.FC<
             <Input
               data={AccountEmailData}
               name="email"
+              value={sponsorshipRegisterValue.email}
+              setValue={handleSponsorshipRegisterValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountPasswordData}
               name="password"
+              value={sponsorshipRegisterValue.password}
+              setValue={handleSponsorshipRegisterValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountConfirmPasswordData}
               name="confirm_password"
+              value={sponsorshipRegisterValue.confirm_password}
+              setValue={handleSponsorshipRegisterValue}
               required={true}
               disabled={false}
             />

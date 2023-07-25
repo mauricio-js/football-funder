@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   DropdownInput,
   Input,
-  GeneralCheckBoxList,
   PageSectionTitle,
   PageTitle,
   StepperBackButton,
   StepLabel,
   Textarea,
   VerticalCardLabel,
+  ConfirmBox,
 } from "UI";
 import {
   AccountEmailData,
@@ -18,14 +18,24 @@ import {
   DonateLocationLabel,
   FirstNameData,
   ContactOrganisationData,
-  SaleEnquiryConfirm,
 } from "Config";
 import { LivePagePropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const SponsorshipSaleStep2: React.FC<LivePagePropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { sponsorshipSaleValue, handleSponsorshipSaleValue } =
+    useContext(FormStepperContext);
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    consent: false,
+  });
+  const handleConfirm = (key: string, value: any) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
   return (
     <div
       className="
@@ -58,24 +68,34 @@ export const SponsorshipSaleStep2: React.FC<LivePagePropsType> = ({
               <Input
                 data={FirstNameData}
                 name="first_name"
+                value={sponsorshipSaleValue.first_name}
+                setValue={handleSponsorshipSaleValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={ContactOrganisationData}
-                name="organisation"
+                name="org_name"
+                value={sponsorshipSaleValue.org_name}
+                setValue={handleSponsorshipSaleValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={AccountEmailData}
                 name="email"
+                value={sponsorshipSaleValue.email}
+                setValue={handleSponsorshipSaleValue}
                 required={true}
                 disabled={false}
               />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                country={ContactPhoneNumberData[0].country}
+                value={sponsorshipSaleValue.phone_number}
+                setValue={handleSponsorshipSaleValue}
                 required={true}
               />
             </div>
@@ -86,6 +106,8 @@ export const SponsorshipSaleStep2: React.FC<LivePagePropsType> = ({
           <div className="mt-15">
             <Textarea
               name="comment"
+              value={sponsorshipSaleValue.comment}
+              setValue={handleSponsorshipSaleValue}
               title="Your comment"
               titleStyle="text-[12px] leading-[14px] font-medium text-gray-10"
               height="h-[150px]"
@@ -98,10 +120,12 @@ export const SponsorshipSaleStep2: React.FC<LivePagePropsType> = ({
         <div className="mt-30">
           <PageSectionTitle title="Confirmation" />
           <div className="mt-[15px]">
-            <GeneralCheckBoxList
-              options={SaleEnquiryConfirm}
-              name="sale_enquiry_confirm"
-              textStyle="introText"
+            <ConfirmBox
+              name="consent"
+              label="I consent to the details of this account being passed to the rights holder to initiate contact should they wish to engage further on the opportunity."
+              checkboxStyle={true}
+              value={confirm.consent}
+              setValue={handleConfirm}
             />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   DropdownInput,
@@ -9,7 +9,7 @@ import {
   StepLabel,
   DatePicker,
   StepperBackButton,
-  CheckBox,
+  ConfirmBox,
 } from "UI";
 import {
   AccountConfirmPasswordData,
@@ -37,17 +37,33 @@ interface FundraiserSignUpSecondStepPropsType {
 export const IndivididualAdvertiserSignUpSecondStep: React.FC<
   FundraiserSignUpSecondStepPropsType
 > = ({ handlePrevPage, handleSubmit }) => {
-  const { selectedCheckbox, formValues } = useContext(FormStepperContext);
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      ...confirm,
+      [key]: !value,
+    });
+  };
+  const { advertisingRegisterValue, handleAdvertisingRegisterValue } =
+    useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirm_password) {
+    if (
+      advertisingRegisterValue.password !==
+      advertisingRegisterValue.confirm_password
+    ) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
+    } else if (
+      advertisingRegisterValue.password &&
+      advertisingRegisterValue.password.length < 8
+    ) {
       showStatus("Password must be longer than 8 characters", "error");
     } else {
-      if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+      if (!confirm.confirm) {
         showStatus(
           "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
           "error"
@@ -86,20 +102,34 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                 <Input
                   data={FirstNameData}
                   name="first_name"
+                  value={advertisingRegisterValue.first_name}
+                  setValue={handleAdvertisingRegisterValue}
                   required={true}
                   disabled={false}
                 />
                 <Input
                   data={LastNameData}
                   name="last_name"
+                  value={advertisingRegisterValue.last_name}
+                  setValue={handleAdvertisingRegisterValue}
                   required={true}
                   disabled={false}
                 />
-                <DatePicker data={DateData} name="birthday" />
+                <DatePicker
+                  data={DateData}
+                  name="birth_date"
+                  value={advertisingRegisterValue.birth_date}
+                  setValue={handleAdvertisingRegisterValue}
+                  required={true}
+                />
               </div>
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                value={advertisingRegisterValue.phone_number}
+                setValue={handleAdvertisingRegisterValue}
+                country={advertisingRegisterValue.pn_country}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -108,6 +138,8 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactAddressLine1Data}
                       name="address_line1"
+                      value={advertisingRegisterValue.address_line1}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -116,6 +148,8 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactAddressLine2Data}
                       name="address_line2"
+                      value={advertisingRegisterValue.address_line2}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -126,6 +160,8 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactTownData}
                       name="city"
+                      value={advertisingRegisterValue.city}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -134,6 +170,8 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactPostcodeData}
                       name="post_code"
+                      value={advertisingRegisterValue.post_code}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -147,6 +185,8 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
+                  value={advertisingRegisterValue.country}
+                  setValue={handleAdvertisingRegisterValue}
                 />
               </div>
               <div className="mt-30 xs:w-[500px]">
@@ -155,18 +195,24 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                   <Input
                     data={AccountEmailData}
                     name="email"
+                    value={advertisingRegisterValue.email}
+                    setValue={handleAdvertisingRegisterValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={AccountPasswordData}
                     name="password"
+                    value={advertisingRegisterValue.password}
+                    setValue={handleAdvertisingRegisterValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={AccountConfirmPasswordData}
                     name="confirm_password"
+                    value={advertisingRegisterValue.confirm_password}
+                    setValue={handleAdvertisingRegisterValue}
                     required={true}
                     disabled={false}
                   />
@@ -184,6 +230,8 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
                   <Input
                     data={ProfileURLData}
                     name="profile_url"
+                    value={advertisingRegisterValue.profile_url}
+                    setValue={handleAdvertisingRegisterValue}
                     required={true}
                     disabled={false}
                   />
@@ -192,12 +240,12 @@ export const IndivididualAdvertiserSignUpSecondStep: React.FC<
               <div className="mt-30">
                 <PageSectionTitle title="Confirmation" />
                 <div className="mt-[15px]">
-                  <CheckBox
-                    align="flex-row-reverse gap-[10px]"
+                  <ConfirmBox
                     name="confirm"
                     label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-                    value={1}
-                    textClass="generalSmallText text-gray-500"
+                    checkboxStyle={true}
+                    value={confirm.confirm}
+                    setValue={handleConfirm}
                   />
                 </div>
               </div>

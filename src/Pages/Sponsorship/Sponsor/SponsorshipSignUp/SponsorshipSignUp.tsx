@@ -16,28 +16,29 @@ import { EMAILVERIFICATION_URL } from "Lib/urls";
 export const SponsorshipSignUp: React.FC = () => {
   const axios = useAxios();
   const navigate = useNavigate();
-  const { selectValue, formValues } = useContext(FormStepperContext);
+  const { sponsorshipRegisterValue } = useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
-  const data: registerFormDataType = {
-    category_id: selectValue.sponsorship_category,
-    org_name: formValues.org_name,
-    org_address1: formValues.org_address1,
-    org_address2: formValues.org_address2,
-    org_phone_number: formValues.org_phone_number,
-    org_city: formValues.org_city,
-    org_country: formValues.org_country,
-    org_post_code: formValues.org_post_code,
-    address_line1: formValues.address_line1,
-    address_line2: formValues.address_line2,
-    city: formValues.city,
-    post_code: formValues.post_code,
-    country: formValues.country,
-    phone_number: formValues.phone_number,
-    first_name: formValues.first_name,
-    last_name: formValues.last_name,
-    email: formValues.email,
-    password: formValues.password,
+  const data: any = {
+    category_id: sponsorshipRegisterValue.category_id,
+    org_name: sponsorshipRegisterValue.org_name,
+    org_address1: sponsorshipRegisterValue.org_address1,
+    org_address2: sponsorshipRegisterValue.org_address2,
+    org_phone_number: sponsorshipRegisterValue.org_phone_number,
+    org_city: sponsorshipRegisterValue.org_city,
+    org_country: sponsorshipRegisterValue.org_country,
+    org_post_code: sponsorshipRegisterValue.org_post_code,
+    address_line1: sponsorshipRegisterValue.address_line1,
+    address_line2: sponsorshipRegisterValue.address_line2,
+    city: sponsorshipRegisterValue.city,
+    post_code: sponsorshipRegisterValue.post_code,
+    country: sponsorshipRegisterValue.country,
+    phone_number: sponsorshipRegisterValue.phone_number,
+    first_name: sponsorshipRegisterValue.first_name,
+    last_name: sponsorshipRegisterValue.last_name,
+    email: sponsorshipRegisterValue.email,
+    password: sponsorshipRegisterValue.password,
+    profile_url: sponsorshipRegisterValue.profile_url,
   };
 
   const sponsorshipSignUp = useMutation(
@@ -94,7 +95,7 @@ export const SponsorshipSignUp: React.FC = () => {
       ),
     },
     ...[
-      selectValue.sponsorship_category === 2
+      sponsorshipRegisterValue.category_id === 2
         ? {
             name: "IndivididualSponsorSignUpSecondStep",
             component: (

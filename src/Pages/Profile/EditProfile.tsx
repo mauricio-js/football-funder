@@ -39,48 +39,43 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const EditProfile: React.FC = () => {
   const navigate = useNavigate();
-
+  const [editProfileValue, setEditProfileValue] = useState<{
+    [key: string]: any;
+  }>({});
+  const handleEditProfileValue = (key: any, value: any) => {
+    setEditProfileValue({
+      ...editProfileValue,
+      [key]: value,
+    });
+  };
   const { backgroundColor, setBackgroundColor } = useContext(ColorContext)!;
-
   const { gradientColor, setGradientColor } = useContext(ColorContext)!;
-
   const { primaryColor, setPrimaryColor } = useContext(ColorContext)!;
-
   const { secondaryColor, setSecondaryColor } = useContext(ColorContext)!;
-
   const [selectedProfileImage, setSelectedProfileImage] = useState<File | null>(
     null
   );
-
   const [selectedCoverImage, setSelectedCoverImage] = useState<File | null>(
     null
   );
-
   const [socialLinkUrl, setSocialLinkUrl] = useState<string>("");
-
   const [selectedFundriserCards, setSelectedFundraiserCards] = useState<
     string[]
   >([""]);
-
   const [selectedAdvertisingCards, setSelectedAdvertisingCards] = useState<
     string[]
   >([""]);
-
   const [selectedSponsorshipCards, setSelectedSponsorshipCards] = useState<
     string[]
   >([""]);
-
   const [selectedGalleryImages, setSelectedGalleryImages] =
     useState<FileList | null>(null);
-
   const removeProfileImage = () => {
     setSelectedProfileImage(null);
   };
-
   const removeCoverImage = () => {
     setSelectedCoverImage(null);
   };
-
   const handleRemoveImage = (index: number): void => {
     const updatedImages = Array.from(selectedGalleryImages || []);
     updatedImages.splice(index, 1);
@@ -106,8 +101,10 @@ export const EditProfile: React.FC = () => {
                 <div className="mt-15">
                   <Input
                     data={NameData}
-                    disabled={true}
                     name="name"
+                    value={editProfileValue.name}
+                    setValue={handleEditProfileValue}
+                    disabled={true}
                     required={true}
                   />
                 </div>
@@ -117,6 +114,8 @@ export const EditProfile: React.FC = () => {
                 <div className="mt-15">
                   <Textarea
                     name="description"
+                    value={editProfileValue.description}
+                    setValue={handleEditProfileValue}
                     showLeftCharacters={true}
                     height="h-[150px]"
                     limit={300}
@@ -335,30 +334,40 @@ export const EditProfile: React.FC = () => {
                   <Input
                     data={FoundedData}
                     name="funded"
+                    value={editProfileValue.funded}
+                    setValue={handleEditProfileValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={TrophiesData}
                     name="trophies"
+                    value={editProfileValue.trophies}
+                    setValue={handleEditProfileValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={CapacityData}
                     name="capacity"
+                    value={editProfileValue.capacity}
+                    setValue={handleEditProfileValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={AverageAttendanceData}
-                    name="average_attendance"
+                    name="averageAttendance"
+                    value={editProfileValue.averageAttendance}
+                    setValue={handleEditProfileValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={AveragePlayerAgeData}
                     name="averagePlayerAge"
+                    value={editProfileValue.averagePlayerAge}
+                    setValue={handleEditProfileValue}
                     required={true}
                     disabled={false}
                   />
@@ -370,6 +379,8 @@ export const EditProfile: React.FC = () => {
                   <Input
                     data={WebSiteURLData}
                     name="website_url"
+                    value={editProfileValue.website_url}
+                    setValue={handleEditProfileValue}
                     required={true}
                     disabled={false}
                   />

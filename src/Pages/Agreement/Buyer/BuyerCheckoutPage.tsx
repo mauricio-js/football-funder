@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import {
   Button,
   BuyerCard,
@@ -12,7 +11,6 @@ import {
   StepLabel,
   Template,
 } from "UI";
-
 import {
   CardNumberData,
   ExpiryData,
@@ -20,9 +18,7 @@ import {
   PostcodeData,
   PaymentMethodData,
 } from "Config";
-
 import { BUYERFIRSTPAGE_URL, BUYERFINAL_URL } from "Lib/urls";
-
 import { MdAnnouncement } from "react-icons/md";
 import PayCardA from "Assets/images/checkout/paycard-a.png";
 import PayCardB from "Assets/images/checkout/paycard-b.png";
@@ -30,10 +26,11 @@ import PayCardC from "Assets/images/checkout/paycard-c.png";
 import PayCardD from "Assets/images/checkout/paycard-d.png";
 import PayCardE from "Assets/images/checkout/paycard-e.png";
 import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const BuyerCheckoutPage: React.FC = () => {
   const navigate = useNavigate();
-
+  const { buyerValue, handleBuyerValue } = useContext(FormStepperContext);
   return (
     <Template>
       <form>
@@ -85,6 +82,8 @@ export const BuyerCheckoutPage: React.FC = () => {
                     textStyle="text-base"
                     checkboxStyle={false}
                     name="payment_method"
+                    value={buyerValue.payment_method}
+                    setValue={handleBuyerValue}
                   />
                 </div>
               </div>
@@ -94,6 +93,8 @@ export const BuyerCheckoutPage: React.FC = () => {
                   <Input
                     data={CardNumberData}
                     name="card_number"
+                    value={buyerValue.card_number}
+                    setValue={handleBuyerValue}
                     required={true}
                     disabled={false}
                   />
@@ -102,6 +103,8 @@ export const BuyerCheckoutPage: React.FC = () => {
                       <Input
                         data={ExpiryData}
                         name="expiry"
+                        value={buyerValue.expiry}
+                        setValue={handleBuyerValue}
                         required={true}
                         disabled={false}
                       />
@@ -110,6 +113,8 @@ export const BuyerCheckoutPage: React.FC = () => {
                       <Input
                         data={CvcData}
                         name="cvc"
+                        value={buyerValue.cvc}
+                        setValue={handleBuyerValue}
                         required={true}
                         disabled={false}
                       />
@@ -118,6 +123,8 @@ export const BuyerCheckoutPage: React.FC = () => {
                   <Input
                     data={PostcodeData}
                     name="post_code"
+                    value={buyerValue.post_code}
+                    setValue={handleBuyerValue}
                     required={true}
                     disabled={false}
                   />

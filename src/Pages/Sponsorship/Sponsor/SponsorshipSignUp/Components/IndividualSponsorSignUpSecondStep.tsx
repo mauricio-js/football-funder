@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   DropdownInput,
@@ -9,7 +9,7 @@ import {
   StepLabel,
   DatePicker,
   StepperBackButton,
-  CheckBox,
+  ConfirmBox,
 } from "UI";
 import {
   AccountConfirmPasswordData,
@@ -36,17 +36,31 @@ interface FundraiserSignUpSecondStepPropsType {
 export const IndivididualSponsorSignUpSecondStep: React.FC<
   FundraiserSignUpSecondStepPropsType
 > = ({ handlePrevPage, handleSubmit }) => {
-  const { selectedCheckbox, formValues } = useContext(FormStepperContext);
+  const { sponsorshipRegisterValue, handleSponsorshipRegisterValue } =
+    useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
-
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirmPassword) {
+    if (
+      sponsorshipRegisterValue.password !==
+      sponsorshipRegisterValue.confirm_password
+    ) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
+    } else if (
+      sponsorshipRegisterValue.password &&
+      sponsorshipRegisterValue.password.length < 8
+    ) {
       showStatus("Password must be longer than 8 characters", "error");
     } else {
-      if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+      if (!confirm.confirm) {
         showStatus(
           "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
           "error"
@@ -85,20 +99,34 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
                 <Input
                   data={FirstNameData}
                   name="first_name"
+                  value={sponsorshipRegisterValue.first_name}
+                  setValue={handleSponsorshipRegisterValue}
                   required={true}
                   disabled={false}
                 />
                 <Input
                   data={LastNameData}
                   name="last_name"
+                  value={sponsorshipRegisterValue.last_name}
+                  setValue={handleSponsorshipRegisterValue}
                   required={true}
                   disabled={false}
                 />
-                <DatePicker data={DateData} name="birth_day" />
+                <DatePicker
+                  data={DateData}
+                  name="birth_date"
+                  value={sponsorshipRegisterValue.birth_date}
+                  setValue={handleSponsorshipRegisterValue}
+                  required={true}
+                />
               </div>
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                value={sponsorshipRegisterValue.phone_number}
+                setValue={handleSponsorshipRegisterValue}
+                country={sponsorshipRegisterValue.pn_country}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -107,6 +135,8 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
                     <Input
                       data={ContactAddressLine1Data}
                       name="address_line1"
+                      value={sponsorshipRegisterValue.address_line1}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -115,6 +145,8 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
                     <Input
                       data={ContactAddressLine2Data}
                       name="address_line2"
+                      value={sponsorshipRegisterValue.address_line2}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -125,6 +157,8 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
                     <Input
                       data={ContactTownData}
                       name="city"
+                      value={sponsorshipRegisterValue.city}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -133,6 +167,8 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
                     <Input
                       data={ContactPostcodeData}
                       name="post_code"
+                      value={sponsorshipRegisterValue.post_code}
+                      setValue={handleSponsorshipRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -146,6 +182,8 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
                   SelectFormData={RegionData}
                   textSize="generalText"
                   name="country"
+                  value={sponsorshipRegisterValue.country}
+                  setValue={handleSponsorshipRegisterValue}
                 />
               </div>
               <div className="mt-30 xs:w-[500px]">
@@ -154,18 +192,24 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
                   <Input
                     data={AccountEmailData}
                     name="email"
+                    value={sponsorshipRegisterValue.email}
+                    setValue={handleSponsorshipRegisterValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={AccountPasswordData}
                     name="password"
+                    value={sponsorshipRegisterValue.password}
+                    setValue={handleSponsorshipRegisterValue}
                     required={false}
                     disabled={false}
                   />
                   <Input
                     data={AccountConfirmPasswordData}
                     name="confirm_password"
+                    value={sponsorshipRegisterValue.confirm_password}
+                    setValue={handleSponsorshipRegisterValue}
                     required={false}
                     disabled={false}
                   />
@@ -175,12 +219,12 @@ export const IndivididualSponsorSignUpSecondStep: React.FC<
               <div className="mt-30">
                 <PageSectionTitle title="Confirmation" />
                 <div className="mt-[15px]">
-                  <CheckBox
-                    align="flex-row-reverse gap-[10px]"
+                  <ConfirmBox
                     name="confirm"
                     label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-                    value={1}
-                    textClass="generalSmallText text-gray-500"
+                    checkboxStyle={true}
+                    value={confirm.confirm}
+                    setValue={handleConfirm}
                   />
                 </div>
               </div>

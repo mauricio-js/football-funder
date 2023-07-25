@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
-  CheckBox,
+  ConfirmBox,
   DropdownInput,
   Input,
   PageSectionTitle,
@@ -35,23 +35,26 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
 }) => {
   const navigate = useNavigate();
   const { showStatus } = useContext(StatusContext);
-  const { formValues, selectedCheckbox, selectValue } =
-    useContext(FormStepperContext)!;
-
+  const { registerValue, handleRegisterValue } = useContext(FormStepperContext);
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: any) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
   };
   const SignInFinalPageAction = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (formValues.password !== formValues.confirm_password) {
+    if (registerValue.password !== registerValue.confirm_password) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
+    } else if (registerValue.password && registerValue.password.length < 8) {
       showStatus("Password must be longer than 8 characters", "error");
-    } else if (
-      !selectedCheckbox.confirm ||
-      selectedCheckbox.confirm.length === 0
-    ) {
+    } else if (!confirm.confirm) {
       showStatus(
         "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
         "error"
@@ -70,7 +73,9 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
         <div className="mt-6">
           <StepperBackButton
             handleBackPage={
-              selectValue.category === 2 ? handleDoublePrevPage : handlePrevPage
+              registerValue.category === 2
+                ? handleDoublePrevPage
+                : handlePrevPage
             }
           />
         </div>
@@ -92,18 +97,26 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               <Input
                 data={FirstNameData}
                 name="first_name"
+                value={registerValue.first_name}
+                setValue={handleRegisterValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={LastNameData}
                 name="last_name"
+                value={registerValue.last_name}
+                setValue={handleRegisterValue}
                 required={true}
                 disabled={false}
               />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                value={registerValue.phone_number}
+                setValue={handleRegisterValue}
+                country={registerValue.pn_country}
                 required={true}
               />
             </div>
@@ -117,6 +130,8 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               <Input
                 data={AccountEmailData}
                 name="email"
+                value={registerValue.email}
+                setValue={handleRegisterValue}
                 required={true}
                 disabled={false}
               />
@@ -132,12 +147,16 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               <Input
                 data={AccountPasswordData}
                 name="password"
+                value={registerValue.password}
+                setValue={handleRegisterValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={AccountConfirmPasswordData}
                 name="confirm_password"
+                value={registerValue.confirm_password}
+                setValue={handleRegisterValue}
                 required={true}
                 disabled={false}
               />
@@ -152,10 +171,12 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
               <div className="mt-2.5">
                 <RadioButtonList
                   options={EmailCommunicationAlterCheckboxData}
+                  value={registerValue.email_communication}
+                  setValue={handleRegisterValue}
                   classes="flex flex-col gap-[15px]"
                   textStyle="darkIntroText"
                   checkboxStyle={true}
-                  name="ecc_communication"
+                  name="email_communication"
                 />
               </div>
             </div>
@@ -163,12 +184,12 @@ export const SignUpStepThird: React.FC<SignInThirdPagePropsType> = ({
           <div className="mt-30">
             <PageSectionTitle title="Confirmation" />
             <div className="mt-[15px]">
-              <CheckBox
-                align="flex-row-reverse gap-[10px]"
-                label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-                value={1}
-                textClass="introText"
+              <ConfirmBox
                 name="confirm"
+                label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+                checkboxStyle={true}
+                value={confirm.confirm}
+                setValue={handleConfirm}
               />
             </div>
           </div>

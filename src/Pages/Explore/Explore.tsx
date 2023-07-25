@@ -16,7 +16,6 @@ import {
   FilterSearchData,
   ListingPageDropdownData,
   ListingPageSearchData,
-  ExploreCardData,
   MileDistanceInputFormData,
   OrganisationFilterData,
   PostcodeDistanceInputFormData,
@@ -26,15 +25,57 @@ import {
 } from "Config";
 import Line from "Assets/images/explore/explore-divide.svg";
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
-import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
 import { TbLayoutList, TbLayoutGrid } from "react-icons/tb";
 import FilterIcon from "Assets/images/explore/filter-icon.svg";
 import { IoMdClose } from "react-icons/io";
+import { useAxios } from "Lib";
+import { QueryKey } from "types";
+import { useQuery } from "react-query";
+import { listingDataFetch } from "Utils";
 
 export const Explore: React.FC = () => {
+  const axios = useAxios();
+  const [exploreValue, setExploreValue] = useState<{ [key: string]: any }>({
+    sort: "",
+    mileDistance: "",
+    postcodeDistance: "",
+    org_filter: "",
+    type_filter: "",
+    status_filter: "",
+  });
+  const handleExploreValue = (key: string, value: any) => {
+    setExploreValue({
+      [key]: value,
+    });
+  };
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   const [region, setRegion] = useState<string>(ListingPageDropdownData[0].name);
   const [horizontalLayout, setHorizonalLayout] = useState<boolean>(false);
+  const [allFundraiserListData, setAllFundraiserListData] = useState<any[]>([]);
+  const [allAdvertisingListData, setAllAdvertisingListData] = useState<any[]>(
+    []
+  );
+  const [allSponsorshipListData, setAllSponsorshipListData] = useState<any[]>(
+    []
+  );
+  const getAllListData = async (): Promise<any> => {
+    const { data } = await axios.get(`/explore/getAllexplore`);
+    return data;
+  };
+  useQuery([QueryKey.AllListData], getAllListData, {
+    onSuccess: (data) => {
+      const FundraiserListingData = listingDataFetch(data.data.fundraiser);
+      setAllFundraiserListData(FundraiserListingData);
+      const AdvertisingListingData = listingDataFetch(data.data.advertising);
+      setAllAdvertisingListData(AdvertisingListingData);
+      const SponsorshipListingData = listingDataFetch(data.data.sponsorship);
+      setAllSponsorshipListData(SponsorshipListingData);
+    },
+    onError: (data: any) => {
+      console.log(data);
+    },
+  });
+
   return (
     <Template>
       <div className="relative md:pt-5 pt-[10px] md:pb-[150px] pb-[50px]">
@@ -65,7 +106,9 @@ export const Explore: React.FC = () => {
                     <Accordion title="Sort By">
                       <div className="mt-4">
                         <RadioButtonList
-                          name="sort_by"
+                          name="sort"
+                          value={exploreValue.sort}
+                          setValue={handleExploreValue}
                           options={SortByData}
                           classes="flex flex-col gap-5"
                           textStyle="text-base"
@@ -77,18 +120,24 @@ export const Explore: React.FC = () => {
                     <Accordion title="Type">
                       <CheckBoxList
                         name="type_filter"
+                        value={exploreValue.type_filter}
+                        setValue={handleExploreValue}
                         options={TypeFilterData}
                       />
                     </Accordion>
                     <Accordion title="Organisation">
                       <CheckBoxList
-                        name="organisation_filter"
+                        name="org_filter"
+                        value={exploreValue.org_filter}
+                        setValue={handleExploreValue}
                         options={OrganisationFilterData}
                       />
                     </Accordion>
                     <Accordion title="Status">
                       <CheckBoxList
                         name="status_filter"
+                        value={exploreValue.status_filter}
+                        setValue={handleExploreValue}
                         options={StatusFilterData}
                       />
                     </Accordion>
@@ -97,7 +146,9 @@ export const Explore: React.FC = () => {
                         <div className="w-[180px]">
                           <Input
                             data={MileDistanceInputFormData}
-                            name="mile_distance"
+                            name="mileDistance"
+                            value={exploreValue.mileDistance}
+                            setValue={handleExploreValue}
                             required={true}
                             disabled={false}
                           />
@@ -105,7 +156,9 @@ export const Explore: React.FC = () => {
                         <div className="w-[180px]">
                           <Input
                             data={PostcodeDistanceInputFormData}
-                            name="postcode_distance"
+                            name="postcodeDistance"
+                            value={exploreValue.postcodeDistance}
+                            setValue={handleExploreValue}
                             required={true}
                             disabled={false}
                           />
@@ -136,12 +189,7 @@ export const Explore: React.FC = () => {
             <img
               src={ExploreMask}
               alt="explore back mask"
-              className="object-cover w-full max-ns:hidden"
-            />
-            <img
-              src={MobileExploreMask}
-              alt="explore back mask"
-              className="object-cover w-full ns:hidden"
+              className="object-cover w-full"
             />
           </div>
           <div className="bl:w-[1000px] w-full max-bl:px-5 mx-auto">
@@ -196,13 +244,21 @@ export const Explore: React.FC = () => {
             <div className="xs:mt-[65px] mt-30 max-md:w-full mx-auto">
               {horizontalLayout ? (
                 <div className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-2 max-xs:grid-cols-2 gap-x-5 max-2xs:gap-x-2.5 gap-y-30 ">
-                  {ExploreCardData.map((item, index) => {
+                  {[
+                    // ...allFundraiserListData,
+                    // ...allAdvertisingListData,
+                    ...allSponsorshipListData,
+                  ].map((item, index) => {
                     return <HorizontalCard key={index} cardData={item} />;
                   })}
                 </div>
               ) : (
                 <div className="grid grid-cols-1 gap-y-5">
-                  {ExploreCardData.map((item, index) => {
+                  {[
+                    ...allFundraiserListData,
+                    ...allAdvertisingListData,
+                    ...allSponsorshipListData,
+                  ].map((item, index) => {
                     return (
                       <VerticalCard
                         key={index}

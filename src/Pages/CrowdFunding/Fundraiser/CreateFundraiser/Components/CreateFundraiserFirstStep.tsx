@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   PageSectionTitle,
@@ -8,11 +8,14 @@ import {
   Textarea,
 } from "UI";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CreateFundraiserFirstStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { createFundraiserValue, handleCreateFundraiserValue } =
+    useContext(FormStepperContext);
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleNextPage();
@@ -37,8 +40,10 @@ export const CreateFundraiserFirstStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-15">
               <div className="xs:w-[500px]">
                 <Textarea
-                  name="fundraiser_title"
+                  name="title"
                   title="Title"
+                  value={createFundraiserValue.title}
+                  setValue={handleCreateFundraiserValue}
                   titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                   limit={150}
                   height="h-[124px]"
@@ -56,8 +61,10 @@ export const CreateFundraiserFirstStep: React.FC<StepperActionPropsType> = ({
             </div>
             <div className="mt-[15px] xs:w-[500px]">
               <Textarea
-                name="short_description"
+                name="description"
                 title="Short description"
+                value={createFundraiserValue.description}
+                setValue={handleCreateFundraiserValue}
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 limit={300}
                 height="h-[150px]"
@@ -81,7 +88,11 @@ export const CreateFundraiserFirstStep: React.FC<StepperActionPropsType> = ({
               </div>
             </div>
             <div className="mt-[10px] xs:w-[500px]">
-              <AmountShow name="fundraiser_amount" />
+              <AmountShow
+                name="amount"
+                value={createFundraiserValue.amount}
+                setValue={handleCreateFundraiserValue}
+              />
             </div>
           </div>
         </div>

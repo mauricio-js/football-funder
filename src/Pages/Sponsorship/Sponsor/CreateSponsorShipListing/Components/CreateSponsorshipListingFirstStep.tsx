@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   DatePicker,
@@ -16,10 +16,13 @@ import {
   StartPeriodDateData,
 } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CreateSponsorshipListingFirstStep: React.FC<
   StepperActionPropsType
 > = ({ handleNextPage }) => {
+  const { createSponsorshipValue, handleCreateSponsorshipValue } =
+    useContext(FormStepperContext);
   return (
     <form onSubmit={handleNextPage}>
       <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 ns:mb-[100px] mb-[60px] mx-auto">
@@ -36,7 +39,9 @@ export const CreateSponsorshipListingFirstStep: React.FC<
             />
             <div className="mt-15">
               <Textarea
-                name="sponsorship_listing_title"
+                name="title"
+                value={createSponsorshipValue.title}
+                setValue={handleCreateSponsorshipValue}
                 title="Title"
                 limit={150}
                 height="h-[124px]"
@@ -53,7 +58,9 @@ export const CreateSponsorshipListingFirstStep: React.FC<
             />
             <div className="mt-15">
               <Textarea
-                name="sponsorship_description"
+                name="description"
+                value={createSponsorshipValue.description}
+                setValue={handleCreateSponsorshipValue}
                 title="Title"
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 limit={150}
@@ -69,7 +76,11 @@ export const CreateSponsorshipListingFirstStep: React.FC<
               intro="Place the amount you want for your advertisement."
             />
             <div className="mt-15">
-              <AmountShow name="sponsorship_amount" />
+              <AmountShow
+                name="amount"
+                value={createSponsorshipValue.amount}
+                setValue={handleCreateSponsorshipValue}
+              />
             </div>
           </div>
 
@@ -81,6 +92,8 @@ export const CreateSponsorshipListingFirstStep: React.FC<
             <div className="mt-15">
               <RadioButtonList
                 options={IncludingVatData}
+                value={createSponsorshipValue.including_vat}
+                setValue={handleCreateSponsorshipValue}
                 classes="flex flex-col gap-[15px]"
                 textStyle="text-base"
                 checkboxStyle={false}
@@ -95,10 +108,22 @@ export const CreateSponsorshipListingFirstStep: React.FC<
             />
             <div className="mt-15 flex gap-2.5">
               <div className="w-1/2">
-                <DatePicker data={StartPeriodDateData} name="start_period" />
+                <DatePicker
+                  data={StartPeriodDateData}
+                  name="sPeriodDate"
+                  value={createSponsorshipValue.sPeriodDate}
+                  setValue={handleCreateSponsorshipValue}
+                  required={true}
+                />
               </div>
               <div className="w-1/2">
-                <DatePicker data={EndPeriodDateData} name="end_period" />
+                <DatePicker
+                  data={EndPeriodDateData}
+                  name="lPeriodDate"
+                  value={createSponsorshipValue.lPeriodDate}
+                  setValue={handleCreateSponsorshipValue}
+                  required={true}
+                />
               </div>
             </div>
           </div>
@@ -109,7 +134,13 @@ export const CreateSponsorshipListingFirstStep: React.FC<
             intro="If you have a date in mind for when the advert will be available, please select below."
           />
           <div className="mt-15 xs:w-[500px]">
-            <DatePicker data={CommencementDateDate} name="commencement_date" />
+            <DatePicker
+              data={CommencementDateDate}
+              name="commencementDate"
+              value={createSponsorshipValue.commencementDate}
+              setValue={handleCreateSponsorshipValue}
+              required={false}
+            />
           </div>
         </div>
         <div className="xs:mt-[100px] mt-[60px]">

@@ -28,24 +28,25 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
     clickCount,
     setClickCount,
     clickedComponents,
-    setClickedComponnets,
-    inputValue,
-    textareaValue,
+    setClickedComponets,
+    perkTitle,
+    perkDesc,
     perkArray,
     setPerkArray,
-    handleInputValue,
-    handleTextAreaValue,
+    handlePerkTitle,
+    handlePerkDesc,
+    createAdvertisingValue,
+    handleCreateAdvertisingValue,
   } = useContext(FormStepperContext);
 
   const handleAddmoreBtnClick = () => {
     const newperks: Perk = {
-      title: textareaValue[clickCount-1] || "",
-      description: inputValue[clickCount-1] || "",
+      title: perkDesc[clickCount - 1] || "",
+      description: perkTitle[clickCount - 1] || "",
     };
     setPerkArray([...perkArray, newperks]);
     setClickCount(clickCount + 1);
-    setClickedComponnets([...clickedComponents, clickCount]);
-    console.log(clickCount, clickedComponents, "textarea",textareaValue,"input value",inputValue,"perk array",perkArray);
+    setClickedComponets([...clickedComponents, clickCount]);
   };
   return (
     <form onSubmit={handleNextPage}>
@@ -65,12 +66,14 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
           <div className="mt-30">
             <PageSectionTitle
               title="Description of advert"
-              intro="Give a detailed description of your fundraiser."
+              intro="Give a detailed description of your advert."
             />
             <div className="mt-[15px] xs:w-[500px]">
               <Textarea
                 height="ns:h-[350px] vs:h-[390px] "
-                name="advert_description"
+                name="description"
+                value={createAdvertisingValue.description}
+                setValue={handleCreateAdvertisingValue}
                 showLeftCharacters={false}
                 title="Description"
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
@@ -89,14 +92,16 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
                 The number of listings should match the number of adverts
                 available so that our fee is fairly reflected. <br />
                 <br /> If you are listing multiple advertising opportunities of
-                the same description as this listing, type the amount below so
-                that we can calculate the correct fee.
+                the same description as this listing, type the amount below. If
+                it's just one advert, type '1'.
               </div>
             </div>
             <div className="mt-15">
               <Input
                 data={AdsNumberData}
-                name="ads_number"
+                name="adsNumber"
+                value={createAdvertisingValue.adsNumber}
+                setValue={handleCreateAdvertisingValue}
                 required={true}
                 disabled={false}
               />
@@ -110,8 +115,9 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
                 <FileNameCoverInput
-                  name="ads_title_image"
-                  uploadUrl="fundraiser"
+                  name="titleImg"
+                  imageName={createAdvertisingValue.titleImgName}
+                  setValue={handleCreateAdvertisingValue}
                 />
               </div>
             </div>
@@ -135,8 +141,9 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
                 </div>
                 <div className="w-1/2">
                   <FileNameCoverInput
-                    name="ads_pitch_image"
-                    uploadUrl="fundraiser"
+                    imageName={createAdvertisingValue.pitchImgName}
+                    name={"pitchImg"}
+                    setValue={handleCreateAdvertisingValue}
                   />
                 </div>
               </div>
@@ -144,8 +151,10 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-[15px] xs:w-[500px] w-full">
               <Input
                 data={VideoURLData}
-                name="ads_video_url"
-                required={true}
+                name="pitchVideoLink"
+                value={createAdvertisingValue.pitchVideoLink}
+                setValue={handleCreateAdvertisingValue}
+                required={false}
                 disabled={false}
               />
             </div>
@@ -160,10 +169,10 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
                     <Perks
                       key={index}
                       number={value}
-                      inputValue={inputValue[index] || ""}
-                      setInputValue={handleInputValue}
-                      textareaValue={textareaValue[index] || ""}
-                      setTextareaValue={handleTextAreaValue}
+                      inputValue={perkTitle[index] || ""}
+                      setInputValue={handlePerkTitle}
+                      textareaValue={perkDesc[index] || ""}
+                      setTextareaValue={handlePerkDesc}
                     />
                   ))}
                 </>

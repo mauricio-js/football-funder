@@ -26,22 +26,24 @@ export const CreateSponsorshipListingSecondStep: React.FC<
     clickCount,
     setClickCount,
     clickedComponents,
-    setClickedComponnets,
-    inputValue,
-    textareaValue,
+    setClickedComponets,
+    handlePerkTitle,
+    perkTitle,
+    perkDesc,
     perkArray,
     setPerkArray,
-    handleInputValue,
-    handleTextAreaValue,
+    handlePerkDesc,
+    createSponsorshipValue,
+    handleCreateSponsorshipValue,
   } = useContext(FormStepperContext);
   const handleAddmoreBtnClick = () => {
     const newperks: Perk = {
-      title: textareaValue[clickCount] || "",
-      description: inputValue[clickCount] || "",
+      title: perkTitle[clickCount] || "",
+      description: perkDesc[clickCount] || "",
     };
     setPerkArray([...perkArray, newperks]);
     setClickCount(clickCount + 1);
-    setClickedComponnets([...clickedComponents, clickCount]);
+    setClickedComponets([...clickedComponents, clickCount]);
     console.log(clickCount, clickedComponents, perkArray);
   };
 
@@ -77,8 +79,9 @@ export const CreateSponsorshipListingSecondStep: React.FC<
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
                 <FileNameCoverInput
-                  name="sponsorship_title_image"
-                  uploadUrl="fundraiser"
+                  name="titleImg"
+                  imageName={createSponsorshipValue.titleImgName}
+                  setValue={handleCreateSponsorshipValue}
                 />
               </div>
             </div>
@@ -102,8 +105,9 @@ export const CreateSponsorshipListingSecondStep: React.FC<
                 </div>
                 <div className="w-1/2">
                   <FileNameCoverInput
-                    name="sponsorship_pitch_image"
-                    uploadUrl="fundraiser"
+                    name="pitchImg"
+                    imageName={createSponsorshipValue.pitchImgName}
+                    setValue={handleCreateSponsorshipValue}
                   />
                 </div>
               </div>
@@ -111,8 +115,10 @@ export const CreateSponsorshipListingSecondStep: React.FC<
             <div className="mt-[15px] xs:w-[500px] w-full">
               <Input
                 data={VideoURLData}
-                name="sponsorship_video_url"
-                required={true}
+                name="pitchVideoLink"
+                value={createSponsorshipValue.pitchVideoLink}
+                setValue={handleCreateSponsorshipValue}
+                required={false}
                 disabled={false}
               />
             </div>
@@ -128,10 +134,10 @@ export const CreateSponsorshipListingSecondStep: React.FC<
                     <Perks
                       key={index}
                       number={value}
-                      inputValue={inputValue[index] || ""}
-                      setInputValue={handleInputValue}
-                      textareaValue={textareaValue[index] || ""}
-                      setTextareaValue={handleTextAreaValue}
+                      inputValue={perkTitle[index] || ""}
+                      setInputValue={handlePerkTitle}
+                      textareaValue={perkDesc[index] || ""}
+                      setTextareaValue={handlePerkDesc}
                     />
                   ))}
                 </>

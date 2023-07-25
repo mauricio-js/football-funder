@@ -1,22 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AccountEmailData } from "Config";
 import { Button, Input, StepperBackButton } from "UI";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 interface ResetPasswordStep2PropsType {
   handlePrevPage: () => void;
   handleSendResetPassword: () => void;
-  formValues: { [key: string]: string };
-  onInputChange: (name: string, value: string) => void;
 }
 
 export const ForgotPasswordStepSecond: React.FC<
   ResetPasswordStep2PropsType
-> = ({
-  handleSendResetPassword,
-  handlePrevPage,
-  formValues,
-  onInputChange,
-}) => {
+> = ({ handleSendResetPassword, handlePrevPage }) => {
+  const { forgotPasswordValue, handleForgotPasswordValue } =
+    useContext(FormStepperContext);
   return (
     <form onSubmit={handleSendResetPassword}>
       <div
@@ -36,6 +32,8 @@ export const ForgotPasswordStepSecond: React.FC<
             <Input
               data={AccountEmailData}
               name="email"
+              value={forgotPasswordValue.email}
+              setValue={handleForgotPasswordValue}
               required={true}
               disabled={false}
             />

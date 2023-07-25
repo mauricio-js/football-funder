@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Carousel from "react-simply-carousel";
+import { FiArrowRight } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 
 interface SlideBarDataProps {
   children: React.ReactNode;
@@ -14,6 +16,45 @@ export const SlideBar: React.FC<SlideBarDataProps> = ({ children }) => {
         swipeTreshold={60}
         activeSlideIndex={activeSlide}
         onRequestChange={setActiveSlide}
+        // containerProps={{
+        //   style: {
+        //     width: "100%",
+        //     justifyContent: "space-between",
+        //     userSelect: "none",
+        //   },
+        // }}
+        forwardBtnProps={{
+          style: {
+            alignSelf: "center",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "30px",
+            textAlign: "center",
+            marginLeft: 10,
+            padding: 10,
+          },
+          children: (
+            <span>
+              <FiArrowRight />
+            </span>
+          ),
+        }}
+        backwardBtnProps={{
+          style: {
+            alignSelf: "center",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "30px",
+            textAlign: "center",
+            marginRight: 10,
+            padding: 10,
+          },
+          children: (
+            <span>
+              <FiArrowLeft />
+            </span>
+          ),
+        }}
         dotsNav={{
           show: true,
           itemBtnProps: {
@@ -21,7 +62,7 @@ export const SlideBar: React.FC<SlideBarDataProps> = ({ children }) => {
               height: 10,
               width: 10,
               borderRadius: "50%",
-              margin: "20px 3px 3px 3px",
+              margin: "15px 3px 3px 3px",
               border: "2px solid #061807",
             },
           },
@@ -31,14 +72,21 @@ export const SlideBar: React.FC<SlideBarDataProps> = ({ children }) => {
               width: 10,
               borderRadius: "0%",
               border: "1px solid #061807",
-              margin: "20px 3px 3px 3px",
+              margin: "15px 3px 3px 3px",
               backgroundColor: "#061807",
             },
           },
         }}
-        itemsToShow={3}
         speed={400}
-        centerMode={false}
+        itemsToShow={3}
+        // centerMode={true}
+        // responsiveProps={[
+        //   {
+        //     itemsToShow: 2,
+        //     itemsToScroll: 2,
+        //     maxWidth: 1100,
+        //   },
+        // ]}
       >
         {children}
       </Carousel>

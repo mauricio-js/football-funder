@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Button, BuyerCard, DropdownInput, Input, Select, Template } from "UI";
-
 import {
   AccountEmailData,
   AddressData,
@@ -13,14 +11,13 @@ import {
   PostcodeData,
   RegionData,
 } from "Config";
-
 import { SELLERFINAL_URL } from "Lib/urls";
-
 import BuyCardImage from "Assets/images/agreement/BuyCardImage.png";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const SellerFirstPage: React.FC = () => {
   const navigate = useNavigate();
-
+  const { sellerValue, handleSellerValue } = useContext(FormStepperContext);
   return (
     <Template>
       <div className="xs:pt-30 pt-5 xs:pb-[150px] pb-[100px] px-5">
@@ -63,6 +60,8 @@ export const SellerFirstPage: React.FC = () => {
                     <Input
                       data={NameData}
                       name="name"
+                      value={sellerValue.name}
+                      setValue={handleSellerValue}
                       disabled={true}
                       required={true}
                     />
@@ -78,6 +77,8 @@ export const SellerFirstPage: React.FC = () => {
                         <Input
                           data={PostcodeData}
                           name="post_code"
+                          value={sellerValue.post_code}
+                          setValue={handleSellerValue}
                           required={true}
                           disabled={false}
                         />
@@ -86,6 +87,8 @@ export const SellerFirstPage: React.FC = () => {
                         <Input
                           data={AddressData}
                           name="address_line1"
+                          value={sellerValue.address_line1}
+                          setValue={handleSellerValue}
                           required={true}
                           disabled={false}
                         />
@@ -94,7 +97,9 @@ export const SellerFirstPage: React.FC = () => {
                     <div className="mt-2.5">
                       <Select
                         backgroundColor="bg-white"
-                        name="country"
+                        name="country1"
+                        value={sellerValue.country1}
+                        setValue={handleSellerValue}
                         label="Country (Region)"
                         SelectFormData={RegionData}
                         textSize="generalText"
@@ -112,6 +117,8 @@ export const SellerFirstPage: React.FC = () => {
                         <Input
                           data={PostcodeData}
                           name="post_code"
+                          value={sellerValue.post_code}
+                          setValue={handleSellerValue}
                           required={true}
                           disabled={false}
                         />
@@ -120,6 +127,8 @@ export const SellerFirstPage: React.FC = () => {
                         <Input
                           data={AddressData}
                           name="address_line2"
+                          value={sellerValue.address_line2}
+                          setValue={handleSellerValue}
                           required={true}
                           disabled={false}
                         />
@@ -129,6 +138,8 @@ export const SellerFirstPage: React.FC = () => {
                       <Select
                         backgroundColor="bg-white"
                         name="country"
+                        value={sellerValue.country}
+                        setValue={handleSellerValue}
                         label="Country (Region)"
                         SelectFormData={RegionData}
                         textSize="generalText"
@@ -146,23 +157,33 @@ export const SellerFirstPage: React.FC = () => {
                     <Input
                       data={FirstNameData}
                       name="first_name"
+                      value={sellerValue.first_name}
+                      setValue={handleSellerValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={LastNameData}
                       name="last_name"
+                      value={sellerValue.last_name}
+                      setValue={handleSellerValue}
                       required={true}
                       disabled={false}
                     />
                     <DropdownInput
                       data={ContactPhoneNumberData}
                       name="phone_number"
+                      phoneCountry="pn_country"
+                      country={ContactPhoneNumberData[0].country}
+                      value={sellerValue.phone_number}
+                      setValue={handleSellerValue}
                       required={true}
                     />
                     <Input
                       data={AccountEmailData}
                       name="email"
+                      value={sellerValue.email}
+                      setValue={handleSellerValue}
                       required={true}
                       disabled={false}
                     />

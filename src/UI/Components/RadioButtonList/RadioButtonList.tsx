@@ -5,6 +5,8 @@ import { RadioButtonDataType } from "types";
 
 interface RadioButtonListProps {
   name: string;
+  value: any;
+  setValue: (key: string, value: any) => void;
   options: RadioButtonDataType[];
   classes: string | undefined;
   textStyle: string;
@@ -17,6 +19,8 @@ export const RadioButtonList: React.FC<RadioButtonListProps> = ({
   classes,
   textStyle,
   checkboxStyle,
+  setValue,
+  value,
 }) => {
   return (
     <div className={classNames(classes)}>
@@ -26,6 +30,8 @@ export const RadioButtonList: React.FC<RadioButtonListProps> = ({
             value={option.value}
             label={option.label}
             name={name}
+            checked={value === option.value}
+            onChange={setValue}
             classes={option.classes}
             textStyle={textStyle}
             checkboxStyle={checkboxStyle}

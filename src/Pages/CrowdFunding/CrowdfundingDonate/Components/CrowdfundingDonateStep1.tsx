@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   DatePicker,
   DropdownInput,
-  GeneralCheckBoxList,
   Input,
   PageSectionTitle,
   PageTitle,
   Select,
   VerticalCardLabel,
   StepLabel,
+  ConfirmBox,
 } from "UI";
 import {
   AccountEmailData,
@@ -19,7 +19,6 @@ import {
   ContactPhoneNumberData,
   ContactPostcodeData,
   DateData,
-  DonateCreateAccountConfirm,
   DonateClubLabel,
   DonateLocationLabel,
   FirstNameData,
@@ -27,10 +26,21 @@ import {
   RegionData,
 } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
   handleNextPage,
 }) => {
+  const { donateValue, handleDonateValue } = useContext(FormStepperContext);
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+    sign: false,
+  });
+  const handleConfirm = (key: string, value: any) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
   return (
     <form>
       <div
@@ -65,21 +75,35 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
                 <Input
                   data={FirstNameData}
                   name="first_name"
+                  value={donateValue.first_name}
+                  setValue={handleDonateValue}
                   required={true}
                   disabled={false}
                 />
                 <Input
                   data={LastNameData}
                   name="last_name"
+                  value={donateValue.last_name}
+                  setValue={handleDonateValue}
                   required={true}
                   disabled={false}
                 />
 
-                <DatePicker data={DateData} name="birth" />
+                <DatePicker
+                  data={DateData}
+                  name="birth_date"
+                  value={donateValue.birth_date}
+                  setValue={handleDonateValue}
+                  required={true}
+                />
               </div>
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                country={ContactPhoneNumberData[0].country}
+                value={donateValue.phone_number}
+                setValue={handleDonateValue}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -88,6 +112,8 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
                     <Input
                       data={ContactPostcodeData}
                       name="post_code"
+                      value={donateValue.post_code}
+                      setValue={handleDonateValue}
                       required={true}
                       disabled={false}
                     />
@@ -96,6 +122,8 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
                     <Input
                       data={AddressData}
                       name="address"
+                      value={donateValue.address}
+                      setValue={handleDonateValue}
                       required={true}
                       disabled={false}
                     />
@@ -106,6 +134,8 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
                 <Select
                   backgroundColor="bg-white"
                   name="country"
+                  value={donateValue.country}
+                  setValue={handleDonateValue}
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
@@ -120,18 +150,24 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
             <Input
               data={AccountEmailData}
               name="email"
+              value={donateValue.email}
+              setValue={handleDonateValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountPasswordData}
               name="password"
+              value={donateValue.password}
+              setValue={donateValue.password}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountConfirmPasswordData}
               name="confirm_password"
+              value={donateValue.confirm_password}
+              setValue={handleDonateValue}
               required={true}
               disabled={false}
             />
@@ -140,10 +176,19 @@ export const CrowdfundingDonateStep1: React.FC<StepperActionPropsType> = ({
         <div className="mt-30">
           <PageSectionTitle title="Confirmation" />
           <div className="mt-[15px]">
-            <GeneralCheckBoxList
-              options={DonateCreateAccountConfirm}
-              name="donation_confirm"
-              textStyle="introText"
+            <ConfirmBox
+              name="confirm"
+              label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+              checkboxStyle={true}
+              value={confirm.confirm}
+              setValue={handleConfirm}
+            />
+            <ConfirmBox
+              name="sign"
+              label="I would like to sign up to receive newsletters from Football Funder. See Privacy Policy."
+              checkboxStyle={true}
+              value={confirm.sign}
+              setValue={handleConfirm}
             />
           </div>
         </div>

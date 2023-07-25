@@ -49,7 +49,7 @@ export const CarouselCard: React.FC<CarouselCardPropsType> = ({
             </div>
           </div>
         </div>
-        <div className="relative bg-white rounded-b-20 boder-2 shadow-md px-5 pt-[30px] ns:pb-5 pb-2.5 flex flex-col gap-2.5">
+        <div className="relative bg-white rounded-b-20 boder-2 shadow-md px-5 pt-2.5 ns:pb-5 pb-2.5 flex flex-col gap-2.5">
           {cardData.vat && (
             <div className="absolute top-[-15px] ">
               <div className="valueText bg-green-10 rounded-10 py-[5px] px-2.5">

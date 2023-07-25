@@ -46,7 +46,7 @@ export const VerifyAccount: React.FC = () => {
     {
       onSuccess: (data) => {
         showStatus(
-          "Your account has been succesfully verified. You may now log in."
+          "Your account has been successfully verified. You may now log in."
         );
         navigate(SIGNIN_URL);
       },

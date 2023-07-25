@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   CategoryButtonList,
@@ -7,6 +7,7 @@ import {
   StepLabel,
 } from "UI";
 import { FundraiserCategoryData, FundraiserNationData } from "Config";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 interface CrowdfudingPage1PropsType {
   handleNextPage: () => void;
@@ -15,6 +16,8 @@ interface CrowdfudingPage1PropsType {
 export const FundraiserSignUpFirstStep: React.FC<CrowdfudingPage1PropsType> = ({
   handleNextPage,
 }) => {
+  const { fundraierRegisterValue, handleFundraiserRegisterValue } =
+    useContext(FormStepperContext);
   return (
     <div
       className="
@@ -37,8 +40,10 @@ export const FundraiserSignUpFirstStep: React.FC<CrowdfudingPage1PropsType> = ({
         />
         <div className="mt-[15px]">
           <CategoryButtonList
-            name="fundraiser_category"
+            name="category_id"
             options={FundraiserCategoryData}
+            value={fundraierRegisterValue.category_id}
+            setValue={handleFundraiserRegisterValue}
           />
         </div>
       </div>
@@ -49,8 +54,10 @@ export const FundraiserSignUpFirstStep: React.FC<CrowdfudingPage1PropsType> = ({
         />
         <div className="mt-[15px]">
           <CategoryButtonList
-            name="fundraiser_nation"
+            name="nation"
             options={FundraiserNationData}
+            value={fundraierRegisterValue.nation}
+            setValue={handleFundraiserRegisterValue}
           />
         </div>
       </div>

@@ -19,15 +19,8 @@ export const CreateFundraiser: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const {
-    descriptionList,
-    amount,
-    selectedImage,
-    formValues,
-    isClickedPromoteBtn,
-    rewardIdArray,
-    isLoading,
-  } = useContext(FormStepperContext);
+  const { createFundraiserValue, isLoading, rewardIdArray } =
+    useContext(FormStepperContext);
 
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -35,19 +28,19 @@ export const CreateFundraiser: React.FC = () => {
 
   const data: any = {
     user_id: userInfo.id,
-    title: descriptionList.fundraiser_title,
-    description: descriptionList.short_description,
-    amount: amount.fundraiser_amount,
-    about: descriptionList.description,
-    titleImgLink: selectedImage.title_image?.publicUrl,
-    titleImgName: selectedImage.title_image?.file?.name,
-    pitchImgLink: selectedImage.pitch_image?.publicUrl,
-    pitchImgName: selectedImage.pitch_image?.file?.name,
-    pitchVideoLink: formValues.video_url,
-    pitchVideoName: formValues.video_url,
-    overlayImgLink: selectedImage.overlay_image?.publicUrl,
-    overlayImgName: selectedImage.overlay_image?.file?.name,
-    promote: isClickedPromoteBtn,
+    title: createFundraiserValue.title,
+    description: createFundraiserValue.description,
+    amount: createFundraiserValue.amount,
+    about: createFundraiserValue.about,
+    titleImgLink: createFundraiserValue.titleImgLink,
+    titleImgName: createFundraiserValue.titleImgName,
+    pitchImgLink: createFundraiserValue.pitchImgLink,
+    pitchImgName: createFundraiserValue.pitchImgName,
+    pitchVideoLink: createFundraiserValue.pitchVideoLink,
+    // pitchVideoName: createFundraiserValue.pitchVideoName,
+    overlayImgLink: createFundraiserValue.overlayImgLink,
+    overlayImgName: createFundraiserValue.overlayImgName,
+    promote: createFundraiserValue.promote,
     reward_ids: rewardIdArray,
   };
 

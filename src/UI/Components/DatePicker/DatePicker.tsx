@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { InputType } from "types";
 import ReactDatePicker from "react-datepicker";
@@ -8,17 +7,22 @@ import "react-datepicker/dist/react-datepicker.css";
 interface DatePickerProps {
   data: InputType;
   name: string;
+  value: any;
+  setValue: (key: string, value: any) => void;
+  required: boolean;
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   data,
   name,
+  setValue,
+  value,
+  required,
 }: DatePickerProps) => {
-  const { dateList, handleDateChange } = useContext(FormStepperContext)!;
   const [floating, setFloating] = useState<boolean>(false);
 
   const handleInputDate = (date: Date): void => {
-    handleDateChange(name, date);
+    setValue(name, date);
   };
 
   const handleInputClick = (): void => {
@@ -31,7 +35,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   return (
     <div className="relative customDatePickerWidth">
       <ReactDatePicker
-        selected={dateList[name] || null}
+        selected={value}
         onChange={handleInputDate}
         dateFormat="dd MMMM, yyyy"
         onInputClick={handleInputClick}
@@ -43,20 +47,20 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           data.textSize,
           data.border
         )}
-        required
+        required={required}
       />
       <label
         htmlFor="date-picker"
         className={classNames(
           "pointer-events-none absolute  left-3  top-[calc(50%-10px)] text-gray-10 text-sm",
           "origin-[0_0]  duration-200 ease-linear",
-          floating || dateList[name] ? "scale-75 -translate-y-2.5" : "",
+          floating || value ? "scale-75 -translate-y-2.5" : "",
           data.content
         )}
       >
         {data.label}
       </label>
-      <style>
+      {/* <style>
         {`
           .customDatePickerWidth, 
           .customDatePickerWidth > div.react-datepicker-wrapper, 
@@ -74,7 +78,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             z-index:20;
           }
         `}
-      </style>
+      </style> */}
     </div>
   );
 };

@@ -78,7 +78,7 @@ export const Perks: React.FC<orderProps> = ({
               setFormattedContent(event.target.value);
             }}
             value={textareaValue || ""}
-            required
+            required={false}
           />
           <div
             className={classNames(

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { MYACCOUNT_URL } from "Lib/urls";
 import { Button, Input, StepperBackButton } from "UI";
@@ -6,12 +6,14 @@ import { AccountPasswordData, AccountConfirmPasswordData } from "Config";
 import { StepperActionPropsType } from "types";
 import ExploreMask from "Assets/images/explore/explore-mask.svg";
 import MobileExploreMask from "Assets/images/explore/m-explore-mask.svg";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const UpdatePasswordStep2: React.FC<StepperActionPropsType> = ({
   handlePrevPage,
 }) => {
   const navigate = useNavigate();
-
+  const { updatePasswordValue, handleUpdatePasswordValue } =
+    useContext(FormStepperContext);
   const onUpdateBtnClick = () => {
     navigate(MYACCOUNT_URL);
     sessionStorage.setItem("updatedPassword", "true");
@@ -45,6 +47,8 @@ export const UpdatePasswordStep2: React.FC<StepperActionPropsType> = ({
               <Input
                 data={AccountPasswordData}
                 name="password"
+                value={updatePasswordValue.new_password}
+                setValue={handleUpdatePasswordValue}
                 required={true}
                 disabled={false}
               />
@@ -52,6 +56,8 @@ export const UpdatePasswordStep2: React.FC<StepperActionPropsType> = ({
                 <Input
                   data={AccountConfirmPasswordData}
                   name="confirm_password"
+                  value={updatePasswordValue.confirm_password}
+                  setValue={handleUpdatePasswordValue}
                   required={true}
                   disabled={false}
                 />

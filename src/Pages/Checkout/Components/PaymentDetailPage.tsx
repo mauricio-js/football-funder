@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Input,
@@ -22,11 +22,13 @@ import PayCardB from "Assets/images/checkout/paycard-b.png";
 import PayCardC from "Assets/images/checkout/paycard-c.png";
 import PayCardD from "Assets/images/checkout/paycard-d.png";
 import PayCardE from "Assets/images/checkout/paycard-e.png";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { checkoutValue, handleCheckoutValue } = useContext(FormStepperContext);
   return (
     <form>
       <div
@@ -73,6 +75,8 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
             <div className="mt-15">
               <RadioButtonList
                 options={PaymentMethodData}
+                value={checkoutValue.payment_method}
+                setValue={handleCheckoutValue}
                 classes="flex gap-[15px]"
                 textStyle="text-base"
                 checkboxStyle={false}
@@ -86,6 +90,8 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
               <Input
                 data={CardNumberData}
                 name="card_number"
+                value={checkoutValue.card_number}
+                setValue={handleCheckoutValue}
                 required={true}
                 disabled={false}
               />
@@ -94,6 +100,8 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
                   <Input
                     data={ExpiryData}
                     name="expiry"
+                    value={checkoutValue.expiry}
+                    setValue={handleCheckoutValue}
                     required={true}
                     disabled={false}
                   />
@@ -102,6 +110,8 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
                   <Input
                     data={CvcData}
                     name="cvc"
+                    value={checkoutValue.cvc}
+                    setValue={handleCheckoutValue}
                     required={true}
                     disabled={false}
                   />
@@ -110,6 +120,8 @@ export const PaymentDetailPage: React.FC<StepperActionPropsType> = ({
               <Input
                 data={PostcodeData}
                 name="post_code"
+                value={checkoutValue.post_code}
+                setValue={handleCheckoutValue}
                 required={true}
                 disabled={false}
               />

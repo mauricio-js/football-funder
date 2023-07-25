@@ -20,12 +20,12 @@ export const SignUpStepFirst: React.FC<SignUpFirstPagePropsType> = ({
   handleOtherPage,
 }) => {
   const navigate = useNavigate();
-  const { selectValue } = useContext(FormStepperContext);
+  const { registerValue, handleRegisterValue } = useContext(FormStepperContext);
   const goToSignIn = () => {
     navigate(SIGNIN_URL);
   };
   const signUpFirstPageAction = () => {
-    if (selectValue.category === 2) handleOtherPage();
+    if (registerValue.category_id === 2) handleOtherPage();
     else handleNextPage();
   };
   return (
@@ -48,7 +48,9 @@ export const SignUpStepFirst: React.FC<SignUpFirstPagePropsType> = ({
         <div className="mt-[15px]">
           <CategoryButtonList
             options={FundraiserCategoryData}
-            name="category"
+            name="category_id"
+            value={registerValue.category_id}
+            setValue={handleRegisterValue}
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   DatePicker,
@@ -16,13 +16,19 @@ import {
   StartPeriodDateData,
 } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CreateAdsListingFirstStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { createAdvertisingValue, handleCreateAdvertisingValue } =
+    useContext(FormStepperContext);
+  const handleClick = () => {
+    handleNextPage();
+  };
   return (
-    <form onSubmit={handleNextPage}>
+    <form onSubmit={handleClick}>
       <div className="w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5 ns:mb-[100px] mb-[60px] mx-auto">
         <PageTitle title="Create your listing" />
 
@@ -37,7 +43,9 @@ export const CreateAdsListingFirstStep: React.FC<StepperActionPropsType> = ({
             />
             <div className="mt-15">
               <Textarea
-                name="ads_listing_title"
+                name="title"
+                value={createAdvertisingValue.title}
+                setValue={handleCreateAdvertisingValue}
                 title="Title"
                 limit={150}
                 height="h-[124px]"
@@ -53,7 +61,11 @@ export const CreateAdsListingFirstStep: React.FC<StepperActionPropsType> = ({
               intro="Place the amount you want for your advertisement."
             />
             <div className="mt-15">
-              <AmountShow name="ads_amount" />
+              <AmountShow
+                name="amount"
+                value={createAdvertisingValue.amount}
+                setValue={handleCreateAdvertisingValue}
+              />
             </div>
           </div>
 
@@ -68,7 +80,9 @@ export const CreateAdsListingFirstStep: React.FC<StepperActionPropsType> = ({
                 classes="flex flex-col gap-[15px]"
                 textStyle="text-base"
                 checkboxStyle={false}
-                name="including_vat"
+                name="vat_fee"
+                setValue={handleCreateAdvertisingValue}
+                value={createAdvertisingValue.vat_fee}
               />
             </div>
           </div>
@@ -79,10 +93,22 @@ export const CreateAdsListingFirstStep: React.FC<StepperActionPropsType> = ({
             />
             <div className="mt-15 flex gap-2.5">
               <div className="w-1/2">
-                <DatePicker data={StartPeriodDateData} name="start_period" />
+                <DatePicker
+                  data={StartPeriodDateData}
+                  name="sPeriodDate"
+                  value={createAdvertisingValue.sPeriodDate}
+                  setValue={handleCreateAdvertisingValue}
+                  required={true}
+                />
               </div>
               <div className="w-1/2">
-                <DatePicker data={EndPeriodDateData} name="end_period" />
+                <DatePicker
+                  data={EndPeriodDateData}
+                  name="lPeriodDate"
+                  value={createAdvertisingValue.lPeriodDate}
+                  setValue={handleCreateAdvertisingValue}
+                  required={true}
+                />
               </div>
             </div>
           </div>
@@ -93,7 +119,13 @@ export const CreateAdsListingFirstStep: React.FC<StepperActionPropsType> = ({
             intro="If you have a date in mind for when the advert will be available, please select below."
           />
           <div className="mt-15 xs:w-[500px]">
-            <DatePicker data={CommencementDateDate} name="commencement_date" />
+            <DatePicker
+              data={CommencementDateDate}
+              name="commencementDate"
+              value={createAdvertisingValue.commencementDate}
+              setValue={handleCreateAdvertisingValue}
+              required={false}
+            />
           </div>
         </div>
         <div className="xs:mt-[100px] mt-[60px]">

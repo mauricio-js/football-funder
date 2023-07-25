@@ -1,5 +1,5 @@
 export interface registerFormDataType { 
-    category_id: number,
+    category_id: number|null,
     org_name?: string | null,
     org_address1?: string | null,
     org_address2?: string | null,

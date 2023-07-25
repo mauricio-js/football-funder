@@ -8,7 +8,7 @@ export const EmailCommunicationAlterCheckboxData: RadioButtonDataType[] = [
     },
     {
         label: "No thanks",
-        value: 0,
+        value: 2,
         classes:"gap-[10px] flex-row-reverse justify-end",
         textStyle:"darkIntroText"
     },

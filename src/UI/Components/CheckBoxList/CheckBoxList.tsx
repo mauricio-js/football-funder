@@ -5,26 +5,32 @@ import { RadioButtonDataType } from "types";
 interface FilterDataProps {
   options: RadioButtonDataType[];
   name: string;
+  value: any;
+  setValue: (key: string, value: any) => void;
 }
 
-export const CheckBoxList: React.FC<FilterDataProps> = ({ options, name }) => {
-  // const onHandleSelectedCheckbox = (value: string) => {
-  //   if (value === "all") {
-  //     setValues(["all"]);
-  //   } else {
-  //     const index = selectedValues.findIndex((val) => val === value);
-  //     if (index < 0) {
-  //       const filteredData = selectedValues.filter((val) => val !== "all");
-  //       setValues([...filteredData, value]);
-  //     } else {
-  //       const filteredData = selectedValues.filter(
-  //         (val) => val !== value && val !== "all"
-  //       );
-  //       setValues(filteredData);
-  //     }
-  //   }
-  // };
-  // console.log(selectedValues);
+export const CheckBoxList: React.FC<FilterDataProps> = ({
+  options,
+  name,
+  setValue,
+  value,
+}) => {
+  const handleCheckboxValue = (selectedValue: any) => {
+    if (value === 1) {
+      setValue(name, [...value, options.values]);
+    } else {
+      const index = value.findIndex((val: any) => val === selectedValue);
+      if (index < 0) {
+        const filteredData = value.filter((val: any) => val !== 1);
+        setValue(name, [...filteredData, value]);
+      } else {
+        const filteredData = value.filter(
+          (val: any) => val !== value && val !== 1
+        );
+        setValue(name, filteredData);
+      }
+    }
+  };
 
   return (
     <div className="mt-5 flex flex-col gap-5">
@@ -33,9 +39,10 @@ export const CheckBoxList: React.FC<FilterDataProps> = ({ options, name }) => {
           <div key={index}>
             <CheckBox
               value={item.value}
+              onChange={handleCheckboxValue}
+              checked={value.includes(item.value)}
               label={item.label}
               textClass="text-green-70 generalText"
-              name={name}
             />
           </div>
         );

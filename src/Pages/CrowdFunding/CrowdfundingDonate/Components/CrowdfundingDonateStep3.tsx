@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Input,
@@ -19,11 +19,13 @@ import {
   SelectAnonymous,
 } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { donateValue, handleDonateValue } = useContext(FormStepperContext);
   return (
     <form>
       <div
@@ -57,18 +59,24 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
                 <Input
                   data={FirstNameData}
                   name="first_name"
+                  value={donateValue.first_name}
+                  setValue={handleDonateValue}
                   required={true}
                   disabled={false}
                 />
                 <Input
                   data={LastNameData}
                   name="last_name"
+                  value={donateValue.last_name}
+                  setValue={handleDonateValue}
                   required={true}
                   disabled={false}
                 />
                 <Input
                   data={AccountEmailData}
                   name="email "
+                  value={donateValue.email}
+                  setValue={handleDonateValue}
                   required={true}
                   disabled={false}
                 />
@@ -80,6 +88,8 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
             <div className="mt-5">
               <RadioButtonList
                 options={SelectAnonymous}
+                value={donateValue.anonymous}
+                setValue={handleDonateValue}
                 classes="flex gap-30"
                 textStyle="text-base"
                 checkboxStyle={false}
@@ -95,6 +105,8 @@ export const CrowdfundingDonateStep3: React.FC<StepperActionPropsType> = ({
             <div className="mt-15">
               <Textarea
                 name="comment"
+                value={donateValue.comment}
+                setValue={handleDonateValue}
                 title="Your comment"
                 titleStyle="text-[12px] leading-[14px] font-medium text-gray-10"
                 height="h-[150px]"

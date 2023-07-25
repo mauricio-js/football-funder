@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useAxios } from "Lib";
 import dayjs from "dayjs";
 import {
@@ -21,14 +21,12 @@ import { StepperActionPropsType } from "types";
 import { useMutation } from "react-query";
 import { StatusContext } from "App/StatusProvider";
 import { setReward } from "Data/Reward";
-import { AppState } from "App/reducers";
 export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
   handlePrevPage,
   handleNextPage,
 }) => {
   const axios = useAxios();
   const dispatch = useDispatch();
-  // const reward = useSelector((state: AppState) => state.reward.rewardData);
   const { showStatus } = useContext(StatusContext);
   const [confirm, setConfirm] = useState<{ [key: string]: any }>({
     limit: false,
@@ -78,14 +76,7 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
         const rewardData = res.data.data;
         dispatch(setReward(rewardData));
         handleRewardIdArray(rewardData.id);
-        // console.log(
-        //   "rewardArray",
-        //   "useSelector",
-        //   reward,
-        //   rewardData,
-        //   rewardData.id,
-        //   rewardIdArray
-        // );
+        // console.log("rewardArray", rewardData.id, rewardIdArray);
         handleNextPage();
       },
       onError: (err: any) => {
@@ -94,28 +85,14 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     }
   );
 
-  // const rewardArray = useSelector((state: AppState) => state.reward.rewardData);
-  // const addRewardData = (rewardData: any) => {
-  //   const existingRewardIndex = rewardArray.findIndex(
-  //     (item: any) => item.id === crrRewardId
-  //   );
-  //   if (existingRewardIndex !== -1) {
-  //     const updatedRewardArray = [...rewardArray];
-  //     updatedRewardArray[existingRewardIndex] = rewardData;
-  //     setRewardArray(updatedRewardArray);
-  //     setCrrRewardId("");
-  //   } else {
-  //     const newRewardData = {
-  //       ...rewardData,
-  //       id: uuid(),
-  //     };
-  //     setRewardArray([...rewardArray, newRewardData]);
-  //     setCrrRewardId("");
-  //   }
-  // };
   const handleBtnClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-     addRewardData(rewardData);
+
+
+    addReward(rewardData);
+
+ 
+
   };
 
   return (

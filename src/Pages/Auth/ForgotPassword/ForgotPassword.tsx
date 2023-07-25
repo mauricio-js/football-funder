@@ -33,7 +33,9 @@ export const ForgotPassword: React.FC = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
-
+  const param = {
+    email: forgotPasswordValue.email,
+  };
   const sendForgotPasswordLink = useMutation(
     (params: any) => axios.post("/auth/send_password_reset", params),
     {
@@ -49,8 +51,7 @@ export const ForgotPassword: React.FC = () => {
   );
 
   function handleSendResetPassword() {
-    // console.log("123123123", forgotPasswordValue.email);
-    sendForgotPasswordLink.mutate(forgotPasswordValue.email);
+    sendForgotPasswordLink.mutate(param);
   }
 
   const pages: { name: string; component: React.ReactNode }[] = [

@@ -2,7 +2,11 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
-import { FORGOTPASSWORD_URL, SIGNUP_URL, MYACCOUNT_URL } from "Lib/urls";
+import {
+  FORGOTPASSWORD_URL,
+  SIGNUP_URL,
+  CREATEADVERTISING_URL,
+} from "Lib/urls";
 import { useAxios } from "Lib";
 import { setLogin } from "Data/Auth";
 import { setUserInfo } from "Data/User";
@@ -48,7 +52,7 @@ export const Signin: React.FC = () => {
         storeLoginData(data);
         storeUserInfo(userInfo);
 
-        navigate(MYACCOUNT_URL);
+        navigate(CREATEADVERTISING_URL);
       },
       onError: (err: any) => {
         const errorMessage = err.response?.data.error;

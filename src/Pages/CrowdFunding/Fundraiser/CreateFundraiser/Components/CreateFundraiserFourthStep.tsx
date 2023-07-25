@@ -27,6 +27,7 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
 }) => {
   const axios = useAxios();
   const dispatch = useDispatch();
+  // const reward = useSelector((state: AppState) => state.reward.rewardData);
   const { showStatus } = useContext(StatusContext);
   const [confirm, setConfirm] = useState<{ [key: string]: any }>({
     limit: false,
@@ -76,7 +77,14 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
         const rewardData = res.data.data;
         dispatch(setReward(rewardData));
         handleRewardIdArray(rewardData.id);
-        // console.log("rewardArray", rewardData.id, rewardIdArray);
+        // console.log(
+        //   "rewardArray",
+        //   "useSelector",
+        //   reward,
+        //   rewardData,
+        //   rewardData.id,
+        //   rewardIdArray
+        // );
         handleNextPage();
       },
       onError: (err: any) => {

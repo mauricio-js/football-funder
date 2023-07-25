@@ -19,7 +19,7 @@ export const CreateFundraiser: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const { createFundraiserValue, isLoading, rewardIdArray } =
+  const { createFundraiserValue, isLoading, rewardIdArray, fundPitchImgArray } =
     useContext(FormStepperContext);
 
   const [currentStep, setCurrentStep] = useState<number>(
@@ -34,8 +34,7 @@ export const CreateFundraiser: React.FC = () => {
     about: createFundraiserValue.about,
     titleImgLink: createFundraiserValue.titleImgLink,
     titleImgName: createFundraiserValue.titleImgName,
-    pitchImgLink: createFundraiserValue.pitchImgLink,
-    pitchImgName: createFundraiserValue.pitchImgName,
+    pitchImg: fundPitchImgArray,
     pitchVideoLink: createFundraiserValue.pitchVideoLink,
     // pitchVideoName: createFundraiserValue.pitchVideoName,
     overlayImgLink: createFundraiserValue.overlayImgLink,
@@ -72,6 +71,7 @@ export const CreateFundraiser: React.FC = () => {
 
   function handleNextPage() {
     if (currentStep === 5) {
+      console.log(data);
       createFundraiser.mutate(data);
     } else if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);

@@ -17,7 +17,7 @@ export const CreateAdsListing: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const { isLoading, perkArray, createAdvertisingValue } =
+  const { isLoading, createAdvertisingValue, adsPerkArray, adsPitchImgArray } =
     useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -37,12 +37,11 @@ export const CreateAdsListing: React.FC = () => {
     adsNumber: parseInt(createAdvertisingValue.adsNumber),
     titleImgLink: createAdvertisingValue.titleImgLink,
     titleImgName: createAdvertisingValue.titleImgName,
-    pitchImgLink: createAdvertisingValue.pitchImgLink,
-    pitchImgName: createAdvertisingValue.pitchImgName,
+    pitchImg: adsPitchImgArray,
     pitchVideoLink: createAdvertisingValue.pitchVideoLink,
     // pitchVideoName: inputValue.ads_video_url,
     promote: createAdvertisingValue.promote,
-    perks: perkArray,
+    perks: adsPerkArray,
   };
   const createAdvertising = useMutation(
     (params: any) => axios.post("/advertising/create", params),
@@ -73,8 +72,7 @@ export const CreateAdsListing: React.FC = () => {
 
   function handleNextPage() {
     if (currentStep === 2) {
-      console.log("21312313", data);
-      // createAdvertising.mutate(data);
+      createAdvertising.mutate(data);
     } else if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });

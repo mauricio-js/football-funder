@@ -18,14 +18,15 @@ export const CreateSponsorshipListingThirdStep: React.FC<
   const { createAdvertisingValue, handleCreateAdvertisingPromote } =
     useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
-  const [confirm, setCofirm] = useState<{ [key: string]: any }>({
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
     confirm: false,
     agree: false,
     acknowledge: false,
   });
-  const handleConfirm = (key: string, value: any) => {
-    setCofirm({
-      [key]: value,
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      ...confirm,
+      [key]: !value,
     });
   };
   const handleSubmit = () => {

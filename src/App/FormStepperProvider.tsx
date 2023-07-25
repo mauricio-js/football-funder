@@ -7,6 +7,10 @@ interface Perk {
   title: string;
   description: string;
 }
+interface uploadImage {
+  name: string;
+  img_url: string;
+}
 
 interface FormStepperContextProps {
   // register value context
@@ -21,6 +25,8 @@ interface FormStepperContextProps {
   // create list context
   createFundraiserValue: { [key: string]: any };
   handleCreateFundraiserValue: (key: string, value: any) => void;
+  fundraierPitchImg: any[];
+  handleCreateFundraierPitchImg: (imgData: any) => void;
   handleCreateFundraiserPromote: (value: any) => void;
   rewardIdArray: any;
   handleRewardIdArray: (value: any) => void;
@@ -53,24 +59,22 @@ interface FormStepperContextProps {
   isClickedAddrewardBtn: boolean;
   handleClickAddrewardBtn: () => void;
   handleClickNoAddrewardBtn: () => void;
-  // add perk component context
-  clickCount: number;
-  setClickCount: (value: number) => void;
-  clickedComponents: number[];
-  setClickedComponets: (value: number[]) => void;
-  perkTitle: { [number: number]: string };
-  setPerkTitle: React.Dispatch<
-    React.SetStateAction<{ [number: number]: string }>
-  >;
-  handlePerkTitle: (number: number, value: string) => void;
-  perkDesc: { [number: number]: string };
-  setPerkDesc: React.Dispatch<
-    React.SetStateAction<{ [number: number]: string }>
-  >;
-  handlePerkDesc: (number: number, value: string) => void;
-  perkArray: Perk[];
-  setPerkArray: React.Dispatch<React.SetStateAction<Perk[]>>;
-  // handleAddmoreBtnClick: () => void;
+
+  // perk context
+  adsPerkArray: Perk[];
+  handleChangePerkValue: (keyword: string, index: number, value: any) => void;
+  handleAddNewPerk: () => void;
+  // upload pitchImage context
+  fundPitchImgArray: uploadImage[];
+  handleChangeFundPitchImgValue: (index: number, value: any) => void;
+  handleAddNewFundPitchImgUploadForm: () => void;
+  adsPitchImgArray: uploadImage[];
+  handleChangeAdsPitchImgValue: (index: number, value: any) => void;
+  handleAddNewAdsPitchImgUploadForm: () => void;
+  sponsorPitchImgArray: uploadImage[];
+  handleChangeSponsorPitchImgValue: (index: number, value: any) => void;
+  handleAddNewSponsorPitchImgUploadForm: () => void;
+
   // fundraiser donate
   donateValue: { [key: string]: any };
   handleDonateValue: (key: string, value: any) => void;
@@ -250,7 +254,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   };
   // update password context
   const [updatePasswordValue, setUpdatePasswordValue] = useState<{
-    [key: string]: any;
+ 
   }>({
     password: "",
     email: "",
@@ -319,8 +323,8 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     amount: "",
     titleImgLink: "",
     titleImgName: "",
-    pitchImgLink: "",
-    pitchImgName: "",
+    // pitchImgLink: "",
+    pitchImg: "",
     pitchVideoLink: "",
     pitchVideoName: "",
     promote: false,
@@ -349,6 +353,16 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       [key]: value,
     });
   };
+  const [fundraierPitchImg, setFundraiserPitchImg] = useState<any[]>([]);
+
+  const handleCreateFundraierPitchImg = (imgData: any) => {
+    setFundraiserPitchImg([...fundraierPitchImg, imgData]);
+    setCreateFundraiserValue({
+      ...createFundraiserValue,
+      pitchImg: fundraierPitchImg,
+    });
+  };
+
   const handleCreateFundraiserPromote = () => {
     setCreateFundraiserValue({
       ...createFundraiserValue,
@@ -360,12 +374,6 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setRewardIdArray((preValue: any) => [...preValue, rewardID]);
     handleCreateFundraiserValue("reward_ids", rewardIdArray);
   };
-  // const handleRewardId = (key: string, rewardID: any) => {
-  //   setCreateFundraiserValue({
-  //     ...rewardID,
-  //     [key]: rewardID,
-  //   });
-  // };
 
   const [createAdvertisingValue, setCreateAdvertisingValue] = useState<{
     [key: string]: any;
@@ -578,54 +586,97 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   //   }
   // };
 
-  // const deleteRewardData = (id: number) => {
-  //   const updatedRewardArray = rewardArray.filter(
-  //     (item: any) => item.id !== id
-  //   );
-  //   setRewardArray(updatedRewardArray);
-  // };
-
-  // const handleSetCrrRewardId = (id: string) => {
-  //   setCrrRewardId(id);
-  // };
-
   const [isLoading, setIsLoading] = useState(false);
   const [isClickedAddrewardBtn, setIsClickAddrewardBtn] = useState(false);
-  const [clickCount, setClickCount] = useState<number>(1);
-  const [clickedComponents, setClickedComponets] = useState<number[]>([0]);
-  const [perkTitle, setPerkTitle] = useState<{ [number: number]: string }>({});
-  const [perkDesc, setPerkDesc] = useState<{
-    [number: number]: string;
-  }>({});
-  const [perkArray, setPerkArray] = useState<Perk[]>([]);
 
-  const handlePerkTitle = (number: number, value: string) => {
-    setPerkTitle((preValue) => ({
-      ...preValue,
-      [number]: value,
-    }));
-  };
-  const handlePerkDesc = (number: number, value: string) => {
-    setPerkDesc((preValue) => ({
-      ...preValue,
-      [number]: value,
-    }));
-  };
-  // const handleAddmoreBtnClick = () => {
-  //   const newperks: Perk = {
-  //     title: perkDesc[clickCount] || "",
-  //     description: perkTitle[clickCount] || "",
-  //   };
-  //   setPerkArray([...perkArray, newperks]);
-  //   setClickCount(clickCount + 1);
-  //   setClickedComponets([...clickedComponents, clickCount]);
-  //   console.log(clickCount, clickedComponents, perkArray);
-  // };
   const handleClickAddrewardBtn = () => {
     setIsClickAddrewardBtn(true);
   };
   const handleClickNoAddrewardBtn = () => {
     setIsClickAddrewardBtn(false);
+  };
+  // add ads perk context
+  const [adsPerkArray, setAdsPerkArray] = useState<Perk[]>([
+    { title: "", description: "" },
+  ]);
+
+  const handleChangePerkValue = (
+    keyword: string,
+    index: number,
+    value: any
+  ) => {
+    let tempPerkArray = Array.from(adsPerkArray);
+    if (keyword === "title") {
+      tempPerkArray[index].title = value;
+    } else {
+      tempPerkArray[index].description = value;
+    }
+    setAdsPerkArray(tempPerkArray);
+  };
+
+  const handleAddNewPerk = () => {
+    setAdsPerkArray([
+      ...adsPerkArray,
+      {
+        title: "",
+        description: "",
+      },
+    ]);
+  };
+  // upload pitch image context
+  const [fundPitchImgArray, setFundPitchImgArray] = useState<uploadImage[]>([
+    { name: "", img_url: "" },
+  ]);
+  const handleChangeFundPitchImgValue = (index: number, value: any) => {
+    let tempPitchImgArray = Array.from(fundPitchImgArray);
+    tempPitchImgArray[index] = value;
+    setFundPitchImgArray(tempPitchImgArray);
+  };
+
+  const handleAddNewFundPitchImgUploadForm = () => {
+    setFundPitchImgArray([
+      ...fundPitchImgArray,
+      {
+        name: "",
+        img_url: "",
+      },
+    ]);
+  };
+  const [adsPitchImgArray, setAdsPitchImgArray] = useState<uploadImage[]>([
+    { name: "", img_url: "" },
+  ]);
+  const handleChangeAdsPitchImgValue = (index: number, value: any) => {
+    let tempPitchImgArray = Array.from(adsPitchImgArray);
+    tempPitchImgArray[index] = value;
+    setAdsPitchImgArray(tempPitchImgArray);
+  };
+
+  const handleAddNewAdsPitchImgUploadForm = () => {
+    setAdsPitchImgArray([
+      ...adsPitchImgArray,
+      {
+        name: "",
+        img_url: "",
+      },
+    ]);
+  };
+  const [sponsorPitchImgArray, setSponsorPitchImgArray] = useState<
+    uploadImage[]
+  >([{ name: "", img_url: "" }]);
+  const handleChangeSponsorPitchImgValue = (index: number, value: any) => {
+    let tempPitchImgArray = Array.from(sponsorPitchImgArray);
+    tempPitchImgArray[index] = value;
+    setSponsorPitchImgArray(tempPitchImgArray);
+  };
+
+  const handleAddNewSponsorPitchImgUploadForm = () => {
+    setSponsorPitchImgArray([
+      ...sponsorPitchImgArray,
+      {
+        name: "",
+        img_url: "",
+      },
+    ]);
   };
 
   return (
@@ -659,6 +710,8 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         // create fundriser value
         createFundraiserValue,
         handleCreateFundraiserValue,
+        fundraierPitchImg,
+        handleCreateFundraierPitchImg,
         rewardIdArray,
         handleRewardIdArray,
         handleCreateFundraiserPromote,
@@ -678,20 +731,19 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         handleClickAddrewardBtn,
         handleClickNoAddrewardBtn,
         // add perk component
-        clickCount,
-        setClickCount,
-        clickedComponents,
-        setClickedComponets,
-        perkTitle,
-        setPerkTitle,
-        handlePerkTitle,
-        perkDesc,
-        setPerkDesc,
-        handlePerkDesc,
-        perkArray,
-        setPerkArray,
-        // handleAddmoreBtnClick,
-        // fundraiser donate
+        adsPerkArray,
+        handleChangePerkValue,
+        handleAddNewPerk,
+        // upload pitch image context
+        fundPitchImgArray,
+        handleAddNewFundPitchImgUploadForm,
+        handleChangeFundPitchImgValue,
+        adsPitchImgArray,
+        handleChangeAdsPitchImgValue,
+        handleAddNewAdsPitchImgUploadForm,
+        sponsorPitchImgArray,
+        handleChangeSponsorPitchImgValue,
+        handleAddNewSponsorPitchImgUploadForm,
         donateValue,
         handleDonateValue,
         // ads sale

@@ -17,8 +17,12 @@ export const CreateSponsorshipListing: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const { createSponsorshipValue, isLoading, perkArray } =
-    useContext(FormStepperContext);
+  const {
+    createSponsorshipValue,
+    isLoading,
+    adsPerkArray,
+    sponsorPitchImgArray,
+  } = useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
@@ -33,15 +37,14 @@ export const CreateSponsorshipListing: React.FC = () => {
     commencementDate: dayjs(createSponsorshipValue.commencementDate).format(
       "YYYY-MM-DD"
     ),
-    description: createSponsorshipValue.advert_description,
+    description: createSponsorshipValue.description,
     titleImgLink: createSponsorshipValue.titleImgLink,
     titleImgName: createSponsorshipValue.titleImgName,
-    pitchImgLink: createSponsorshipValue.pitchImgLink,
-    pitchImgName: createSponsorshipValue.pitchImgName,
+    pitchImg: sponsorPitchImgArray,
     pitchVideoLink: createSponsorshipValue.pitchVideoLink,
     // pitchVideoName: inputValue.ads_video_url,
     promote: createSponsorshipValue.promote,
-    perks: perkArray,
+    perks: adsPerkArray,
   };
 
   const createSponsorship = useMutation(

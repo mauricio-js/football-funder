@@ -6,6 +6,7 @@ import {
   Input,
   PageSectionTitle,
   PageTitle,
+  PitchImageUpload,
   StepLabel,
   StepperBackButton,
 } from "UI";
@@ -14,50 +15,28 @@ import { StepperActionPropsType } from "types";
 import { Perks } from "UI";
 import { FormStepperContext } from "App/FormStepperProvider";
 
-interface Perk {
-  title: string;
-  description: string;
-}
-
 export const CreateSponsorshipListingSecondStep: React.FC<
   StepperActionPropsType
 > = ({ handleNextPage, handlePrevPage }) => {
   const {
-    clickCount,
-    setClickCount,
-    clickedComponents,
-    setClickedComponets,
-    handlePerkTitle,
-    perkTitle,
-    perkDesc,
-    perkArray,
-    setPerkArray,
-    handlePerkDesc,
     createSponsorshipValue,
     handleCreateSponsorshipValue,
+    adsPerkArray,
+    handleAddNewPerk,
+    handleChangePerkValue,
+    sponsorPitchImgArray,
+    handleAddNewSponsorPitchImgUploadForm,
+    handleChangeSponsorPitchImgValue,
   } = useContext(FormStepperContext);
-  const handleAddmoreBtnClick = () => {
-    const newperks: Perk = {
-      title: perkTitle[clickCount] || "",
-      description: perkDesc[clickCount] || "",
-    };
-    setPerkArray([...perkArray, newperks]);
-    setClickCount(clickCount + 1);
-    setClickedComponets([...clickedComponents, clickCount]);
-    console.log(clickCount, clickedComponents, perkArray);
+  const handlePerkAddmoreBtnClick = () => {
+    handleAddNewPerk();
+  };
+  const handleImageAddmoreBtnClick = () => {
+    handleAddNewSponsorPitchImgUploadForm();
   };
 
-  const handleClick = () => {
-    // if (!selectedImage.sponsorship_title_image?.publicUrl) {
-    //   showStatus("You must upload the title image", "error");
-    // } else if (!selectedImage.sponsorship_pitch_image?.publicUrl) {
-    //   showStatus("You must upload the pitch image", "error");
-    // } else {
-    handleNextPage();
-    // }
-  };
   return (
-    <form onSubmit={handleClick}>
+    <form onSubmit={handleNextPage}>
       <div
         className="
         w-[1000px] max-lg:w-full px-5 mt-[60px] max-ns:mt-5
@@ -92,24 +71,31 @@ export const CreateSponsorshipListingSecondStep: React.FC<
               intro="This will appear at the top of your fundraiser page. Select image or video - a video will really bring the listing to life."
             />
             <div className="mt-[15px]">
-              <div className="flex gap-[10px]">
-                <div className="w-1/2">
-                  <Button
-                    backgroundColor="bg-green-10"
-                    textColor="text-black"
-                    textSize="text-[14px] leading-5 font-semibold"
-                    height="h-[54px]"
-                    width="w-full"
-                    text="Video"
-                  />
-                </div>
-                <div className="w-1/2">
-                  <FileNameCoverInput
-                    name="pitchImg"
-                    imageName={createSponsorshipValue.pitchImgName}
-                    setValue={handleCreateSponsorshipValue}
-                  />
-                </div>
+              <div className="flex flex-col gap-[10px]">
+                {sponsorPitchImgArray.map((value, index) => {
+                  return (
+                    <PitchImageUpload
+                      key={index}
+                      index={index}
+                      value={value}
+                      handleChangeValue={handleChangeSponsorPitchImgValue}
+                    />
+                  );
+                })}
+                {sponsorPitchImgArray.length !== 0 && (
+                  <button type="button" onClick={handleImageAddmoreBtnClick}>
+                    <AddmoreBtn />
+                  </button>
+                )}
+
+                <Button
+                  backgroundColor="bg-green-10"
+                  textColor="text-black"
+                  textSize="text-[14px] leading-5 font-semibold"
+                  height="h-[54px]"
+                  width="w-full"
+                  text="Video"
+                />
               </div>
             </div>
             <div className="mt-[15px] xs:w-[500px] w-full">
@@ -129,24 +115,21 @@ export const CreateSponsorshipListingSecondStep: React.FC<
               />
 
               <div className="mt-15">
-                <>
-                  {clickedComponents.map((value, index) => (
-                    <Perks
-                      key={index}
-                      number={value}
-                      inputValue={perkTitle[index] || ""}
-                      setInputValue={handlePerkTitle}
-                      textareaValue={perkDesc[index] || ""}
-                      setTextareaValue={handlePerkDesc}
-                    />
-                  ))}
-                </>
-
-                <div className="mt-5">
-                  <button type="button" onClick={handleAddmoreBtnClick}>
-                    <AddmoreBtn />
-                  </button>
-                </div>
+                {adsPerkArray.map((value, index) => (
+                  <Perks
+                    key={index}
+                    index={index}
+                    values={value}
+                    handleChangePerkValue={handleChangePerkValue}
+                  />
+                ))}
+                {adsPerkArray.length !== 0 && (
+                  <div className="mt-5">
+                    <button type="button" onClick={handlePerkAddmoreBtnClick}>
+                      <AddmoreBtn />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

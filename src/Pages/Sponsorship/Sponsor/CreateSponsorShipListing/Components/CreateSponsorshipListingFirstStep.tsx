@@ -92,12 +92,12 @@ export const CreateSponsorshipListingFirstStep: React.FC<
             <div className="mt-15">
               <RadioButtonList
                 options={IncludingVatData}
-                value={createSponsorshipValue.including_vat}
+                value={createSponsorshipValue.vat_fee}
                 setValue={handleCreateSponsorshipValue}
                 classes="flex flex-col gap-[15px]"
                 textStyle="text-base"
                 checkboxStyle={false}
-                name="including_vat"
+                name="vat_fee"
               />
             </div>
           </div>

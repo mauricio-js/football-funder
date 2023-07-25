@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import {
   Button,
   FileNameCoverInput,
+  PitchImageUpload,
   Input,
   PageSectionTitle,
   PageTitle,
   StepLabel,
   StepperBackButton,
   Textarea,
+  AddmoreBtn,
 } from "UI";
 import { VideoURLData } from "Config";
 import { StepperActionPropsType } from "types";
@@ -17,8 +19,16 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const { createFundraiserValue, handleCreateFundraiserValue } =
-    useContext(FormStepperContext);
+  const {
+    createFundraiserValue,
+    handleCreateFundraiserValue,
+    fundPitchImgArray,
+    handleChangeFundPitchImgValue,
+    handleAddNewFundPitchImgUploadForm,
+  } = useContext(FormStepperContext);
+  const handleAddmoreBtnClick = () => {
+    handleAddNewFundPitchImgUploadForm();
+  };
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleNextPage();
@@ -78,24 +88,32 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
               intro="This will appear at the top of your fundraiser page. Select image or video - a video will really bring the listing to life."
             />
             <div className="mt-[15px]">
-              <div className="flex gap-[10px]">
-                <div className="w-1/2">
-                  <Button
-                    backgroundColor="bg-green-10"
-                    textColor="text-black"
-                    textSize="text-[14px] leading-5 font-semibold"
-                    height="h-[54px]"
-                    width="w-full"
-                    text="Video"
-                  />
-                </div>
-                <div className="w-1/2">
-                  <FileNameCoverInput
-                    name="pitchImg"
-                    imageName={createFundraiserValue.pitchImgName}
-                    setValue={handleCreateFundraiserValue}
-                  />
-                </div>
+              <div className="flex flex-col gap-[10px]">
+                {fundPitchImgArray.map((value, index) => {
+                  return (
+                    <PitchImageUpload
+                      key={index}
+                      index={index}
+                      value={value}
+                      handleChangeValue={handleChangeFundPitchImgValue}
+                    />
+                  );
+                })}
+                {fundPitchImgArray.length !== 0 &&
+                  fundPitchImgArray !== null && (
+                    <button type="button" onClick={handleAddmoreBtnClick}>
+                      <AddmoreBtn />
+                    </button>
+                  )}
+
+                <Button
+                  backgroundColor="bg-green-10"
+                  textColor="text-black"
+                  textSize="text-[14px] leading-5 font-semibold"
+                  height="h-[54px]"
+                  width="w-full"
+                  text="Video"
+                />
               </div>
             </div>
             <div className="mt-[15px] xs:w-[500px] w-full">

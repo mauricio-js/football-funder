@@ -75,7 +75,7 @@ interface FormStepperContextProps {
   donateValue: { [key: string]: any };
   handleDonateValue: (key: string, value: any) => void;
   // ads sale
-  adsSaleValue: { [key: string]: any };git
+  adsSaleValue: { [key: string]: any };
   handleAdsSaleValue: (key: string, value: any) => void;
   // sponsorship sale
   sponsorshipSaleValue: { [key: string]: any };

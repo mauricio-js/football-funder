@@ -25,11 +25,10 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
   const handleClickAddBtn = () => {
     handlePrevPage();
   };
-  const handleClickEditBtn = (id: any) => { 
+  const handleClickEditBtn = (id: any) => {
     const filteredRewards = rewardArray.filter((item) => item.id === id);
-    
   };
-  
+
   const handleClickDeleteBtn = (id: any) => {
     axios.post(`/fundraiser/${id}/deleteReward`);
     const filteredRewards = rewardArray.filter((item) => item.id !== id);

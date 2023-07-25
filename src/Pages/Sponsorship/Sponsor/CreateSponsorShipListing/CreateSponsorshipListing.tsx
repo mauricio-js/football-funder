@@ -22,6 +22,7 @@ export const CreateSponsorshipListing: React.FC = () => {
     isLoading,
     adsPerkArray,
     sponsorPitchImgArray,
+    sponsorTitleImg,
   } = useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -38,8 +39,8 @@ export const CreateSponsorshipListing: React.FC = () => {
       "YYYY-MM-DD"
     ),
     description: createSponsorshipValue.description,
-    titleImgLink: createSponsorshipValue.titleImgLink,
-    titleImgName: createSponsorshipValue.titleImgName,
+    titleImgLink: sponsorTitleImg.img_url,
+    titleImgName: sponsorTitleImg.name,
     pitchImg: sponsorPitchImgArray,
     pitchVideoLink: createSponsorshipValue.pitchVideoLink,
     // pitchVideoName: inputValue.ads_video_url,

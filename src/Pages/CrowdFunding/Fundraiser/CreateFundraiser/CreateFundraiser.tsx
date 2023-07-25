@@ -19,8 +19,14 @@ export const CreateFundraiser: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const { createFundraiserValue, isLoading, rewardIdArray, fundPitchImgArray } =
-    useContext(FormStepperContext);
+  const {
+    createFundraiserValue,
+    isLoading,
+    rewardIdArray,
+    fundPitchImgArray,
+    fundTitleImg,
+    fundOverlayImg,
+  } = useContext(FormStepperContext);
 
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -32,13 +38,13 @@ export const CreateFundraiser: React.FC = () => {
     description: createFundraiserValue.description,
     amount: createFundraiserValue.amount,
     about: createFundraiserValue.about,
-    titleImgLink: createFundraiserValue.titleImgLink,
-    titleImgName: createFundraiserValue.titleImgName,
+    titleImgLink: fundTitleImg.img_url,
+    titleImgName: fundTitleImg.name,
     pitchImg: fundPitchImgArray,
     pitchVideoLink: createFundraiserValue.pitchVideoLink,
     // pitchVideoName: createFundraiserValue.pitchVideoName,
-    overlayImgLink: createFundraiserValue.overlayImgLink,
-    overlayImgName: createFundraiserValue.overlayImgName,
+    overlayImgLink: fundOverlayImg.img_url,
+    overlayImgName: fundOverlayImg.name,
     promote: createFundraiserValue.promote,
     reward_ids: rewardIdArray,
   };
@@ -71,7 +77,7 @@ export const CreateFundraiser: React.FC = () => {
 
   function handleNextPage() {
     if (currentStep === 5) {
-      console.log(data);
+      // console.log("1231231", data);
       createFundraiser.mutate(data);
     } else if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);

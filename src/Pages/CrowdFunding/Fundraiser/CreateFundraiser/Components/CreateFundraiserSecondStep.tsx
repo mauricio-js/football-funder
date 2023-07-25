@@ -25,6 +25,8 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
     fundPitchImgArray,
     handleChangeFundPitchImgValue,
     handleAddNewFundPitchImgUploadForm,
+    fundTitleImg,
+    handleChangeFundTitleImg,
   } = useContext(FormStepperContext);
   const handleAddmoreBtnClick = () => {
     handleAddNewFundPitchImgUploadForm();
@@ -75,9 +77,8 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
                 <FileNameCoverInput
-                  name="titleImg"
-                  imageName={createFundraiserValue.titleImgName}
-                  setValue={handleCreateFundraiserValue}
+                  value={fundTitleImg}
+                  handleChangeValue={handleChangeFundTitleImg}
                 />
               </div>
             </div>

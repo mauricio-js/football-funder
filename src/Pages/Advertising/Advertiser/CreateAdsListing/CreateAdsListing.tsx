@@ -17,8 +17,13 @@ export const CreateAdsListing: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const { isLoading, createAdvertisingValue, adsPerkArray, adsPitchImgArray } =
-    useContext(FormStepperContext);
+  const {
+    isLoading,
+    createAdvertisingValue,
+    adsPerkArray,
+    adsPitchImgArray,
+    adsTitleImg,
+  } = useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
@@ -35,8 +40,8 @@ export const CreateAdsListing: React.FC = () => {
     ),
     description: createAdvertisingValue.description,
     adsNumber: parseInt(createAdvertisingValue.adsNumber),
-    titleImgLink: createAdvertisingValue.titleImgLink,
-    titleImgName: createAdvertisingValue.titleImgName,
+    titleImgLink: adsTitleImg.img_url,
+    titleImgName: adsTitleImg.name,
     pitchImg: adsPitchImgArray,
     pitchVideoLink: createAdvertisingValue.pitchVideoLink,
     // pitchVideoName: inputValue.ads_video_url,
@@ -73,6 +78,7 @@ export const CreateAdsListing: React.FC = () => {
   function handleNextPage() {
     if (currentStep === 2) {
       createAdvertising.mutate(data);
+      // console.log("123123123", data);
     } else if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });

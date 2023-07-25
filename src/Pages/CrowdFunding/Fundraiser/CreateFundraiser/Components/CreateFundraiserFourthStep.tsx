@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAxios } from "Lib";
 import dayjs from "dayjs";
 import {
@@ -21,6 +21,7 @@ import { StepperActionPropsType } from "types";
 import { useMutation } from "react-query";
 import { StatusContext } from "App/StatusProvider";
 import { setReward } from "Data/Reward";
+import { AppState } from "App/reducers";
 export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
   handlePrevPage,
   handleNextPage,
@@ -93,10 +94,28 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
     }
   );
 
+  // const rewardArray = useSelector((state: AppState) => state.reward.rewardData);
+  // const addRewardData = (rewardData: any) => {
+  //   const existingRewardIndex = rewardArray.findIndex(
+  //     (item: any) => item.id === crrRewardId
+  //   );
+  //   if (existingRewardIndex !== -1) {
+  //     const updatedRewardArray = [...rewardArray];
+  //     updatedRewardArray[existingRewardIndex] = rewardData;
+  //     setRewardArray(updatedRewardArray);
+  //     setCrrRewardId("");
+  //   } else {
+  //     const newRewardData = {
+  //       ...rewardData,
+  //       id: uuid(),
+  //     };
+  //     setRewardArray([...rewardArray, newRewardData]);
+  //     setCrrRewardId("");
+  //   }
+  // };
   const handleBtnClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    addReward(rewardData);
+    // addRewardData(rewardData);
   };
 
   return (

@@ -23,7 +23,8 @@ export const CreateFundraiserSixthStep: React.FC<
     isClickedAddrewardBtn,
     createFundraiserValue,
     handleCreateFundraiserPromote,
-    handleCreateFundraiserValue,
+    fundOverlayImg,
+    handleChangeFundOverlayImg,
   } = useContext(FormStepperContext);
 
   return (
@@ -51,9 +52,8 @@ export const CreateFundraiserSixthStep: React.FC<
           />
           <div className="mt-15 ns:w-[390px] w-full ">
             <FileNameCoverInput
-              name="overlayImg"
-              imageName={createFundraiserValue.overlayImg}
-              setValue={handleCreateFundraiserValue}
+              value={fundOverlayImg}
+              handleChangeValue={handleChangeFundOverlayImg}
             />
           </div>
         </div>

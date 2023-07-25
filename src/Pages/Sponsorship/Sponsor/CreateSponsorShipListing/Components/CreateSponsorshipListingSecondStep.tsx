@@ -27,6 +27,8 @@ export const CreateSponsorshipListingSecondStep: React.FC<
     sponsorPitchImgArray,
     handleAddNewSponsorPitchImgUploadForm,
     handleChangeSponsorPitchImgValue,
+    sponsorTitleImg,
+    handleChangeSponsorTitleImg,
   } = useContext(FormStepperContext);
   const handlePerkAddmoreBtnClick = () => {
     handleAddNewPerk();
@@ -58,9 +60,8 @@ export const CreateSponsorshipListingSecondStep: React.FC<
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
                 <FileNameCoverInput
-                  name="titleImg"
-                  imageName={createSponsorshipValue.titleImgName}
-                  setValue={handleCreateSponsorshipValue}
+                  value={sponsorTitleImg}
+                  handleChangeValue={handleChangeSponsorTitleImg}
                 />
               </div>
             </div>

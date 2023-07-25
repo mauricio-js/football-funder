@@ -92,6 +92,15 @@ interface FormStepperContextProps {
   handleBuyerValue: (key: string, value: any) => void;
   sellerValue: { [key: string]: any };
   handleSellerValue: (key: string, value: any) => void;
+  //
+  fundTitleImg: any;
+  handleChangeFundTitleImg: (value: any) => void;
+  fundOverlayImg: any;
+  handleChangeFundOverlayImg: (value: any) => void;
+  adsTitleImg: any;
+  handleChangeAdsTitleImg: (value: any) => void;
+  sponsorTitleImg: any;
+  handleChangeSponsorTitleImg: (value: any) => void;
 }
 
 interface FormStepperPropsType {
@@ -253,9 +262,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     });
   };
   // update password context
-  const [updatePasswordValue, setUpdatePasswordValue] = useState<{
- 
-  }>({
+  const [updatePasswordValue, setUpdatePasswordValue] = useState<{}>({
     password: "",
     email: "",
     new_password: "",
@@ -353,6 +360,45 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       [key]: value,
     });
   };
+
+  const [fundTitleImg, setFundTitleImg] = useState<uploadImage>({
+    name: "",
+    img_url: "",
+  });
+
+  const handleChangeFundTitleImg = (value: any) => {
+    let tempPitchImgArray = value;
+    setFundTitleImg(tempPitchImgArray);
+  };
+  const [fundOverlayImg, setFundOverlayImg] = useState<uploadImage>({
+    name: "",
+    img_url: "",
+  });
+
+  const handleChangeFundOverlayImg = (value: any) => {
+    let tempPitchImgArray = value;
+    setFundOverlayImg(tempPitchImgArray);
+  };
+  const [adsTitleImg, setAdsTitleImg] = useState<uploadImage>({
+    name: "",
+    img_url: "",
+  });
+
+  const handleChangeAdsTitleImg = (value: any) => {
+    let tempPitchImgArray = value;
+    setAdsTitleImg(tempPitchImgArray);
+  };
+
+  const [sponsorTitleImg, setSponsorTitleImg] = useState<uploadImage>({
+    name: "",
+    img_url: "",
+  });
+
+  const handleChangeSponsorTitleImg = (value: any) => {
+    let tempPitchImgArray = value;
+    setSponsorTitleImg(tempPitchImgArray);
+  };
+
   const [fundraierPitchImg, setFundraiserPitchImg] = useState<any[]>([]);
 
   const handleCreateFundraierPitchImg = (imgData: any) => {
@@ -760,6 +806,14 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         handleBuyerValue,
         sellerValue,
         handleSellerValue,
+        fundTitleImg,
+        handleChangeFundTitleImg,
+        adsTitleImg,
+        fundOverlayImg,
+        handleChangeAdsTitleImg,
+        handleChangeFundOverlayImg,
+        handleChangeSponsorTitleImg,
+        sponsorTitleImg,
       }}
     >
       {children}

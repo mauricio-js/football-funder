@@ -34,6 +34,8 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
     adsPitchImgArray,
     handleAddNewAdsPitchImgUploadForm,
     handleChangeAdsPitchImgValue,
+    adsTitleImg,
+    handleChangeAdsTitleImg,
   } = useContext(FormStepperContext);
 
   const handleImageAddmoreBtnClick = () => {
@@ -110,9 +112,8 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
                 <FileNameCoverInput
-                  name="titleImg"
-                  imageName={createAdvertisingValue.titleImgName}
-                  setValue={handleCreateAdvertisingValue}
+                  value={adsTitleImg}
+                  handleChangeValue={handleChangeAdsTitleImg}
                 />
               </div>
             </div>

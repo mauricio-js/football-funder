@@ -1,7 +1,6 @@
-# Football funder
-
-- Make sure to install the dependencies exactly 
-
-## USING NPM
-- npm i
-- npm run dev
+node version 18.17.0
+-Run thie script
+npm i
+-Copy env.example to .env
+-Run this script to run the project locally
+npm run dev

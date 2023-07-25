@@ -6,6 +6,7 @@ import {
   Input,
   PageSectionTitle,
   PageTitle,
+  PitchImageUpload,
   StepLabel,
   StepperBackButton,
   Textarea,
@@ -15,39 +16,33 @@ import { StepperActionPropsType } from "types";
 import { Perks } from "UI";
 import { FormStepperContext } from "App/FormStepperProvider";
 
-interface Perk {
-  title: string;
-  description: string;
-}
+// interface PerkType {
+//   title: string;
+//   description: string;
+// }
 
 export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
   const {
-    clickCount,
-    setClickCount,
-    clickedComponents,
-    setClickedComponets,
-    perkTitle,
-    perkDesc,
-    perkArray,
-    setPerkArray,
-    handlePerkTitle,
-    handlePerkDesc,
+    adsPerkArray,
+    handleAddNewPerk,
+    handleChangePerkValue,
     createAdvertisingValue,
     handleCreateAdvertisingValue,
+    adsPitchImgArray,
+    handleAddNewAdsPitchImgUploadForm,
+    handleChangeAdsPitchImgValue,
   } = useContext(FormStepperContext);
 
-  const handleAddmoreBtnClick = () => {
-    const newperks: Perk = {
-      title: perkDesc[clickCount - 1] || "",
-      description: perkTitle[clickCount - 1] || "",
-    };
-    setPerkArray([...perkArray, newperks]);
-    setClickCount(clickCount + 1);
-    setClickedComponets([...clickedComponents, clickCount]);
+  const handleImageAddmoreBtnClick = () => {
+    handleAddNewAdsPitchImgUploadForm();
   };
+  const handlePerkAddmoreBtnClick = () => {
+    handleAddNewPerk();
+  };
+
   return (
     <form onSubmit={handleNextPage}>
       <div
@@ -128,24 +123,32 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
               intro="This will appear at the top of your fundraiser page. Select image or video - a video will really bring the listing to life."
             />
             <div className="mt-[15px]">
-              <div className="flex gap-[10px]">
-                <div className="w-1/2">
-                  <Button
-                    backgroundColor="bg-green-10"
-                    textColor="text-black"
-                    textSize="text-[14px] leading-5 font-semibold"
-                    height="h-[54px]"
-                    width="w-full"
-                    text="Video"
-                  />
-                </div>
-                <div className="w-1/2">
-                  <FileNameCoverInput
-                    imageName={createAdvertisingValue.pitchImgName}
-                    name={"pitchImg"}
-                    setValue={handleCreateAdvertisingValue}
-                  />
-                </div>
+              <div className="flex flex-col gap-[10px]">
+                {adsPitchImgArray.map((value, index) => {
+                  return (
+                    <PitchImageUpload
+                      key={index}
+                      index={index}
+                      value={value}
+                      handleChangeValue={handleChangeAdsPitchImgValue}
+                    />
+                  );
+                })}
+                {adsPitchImgArray.length !== 0 &&
+                  adsPitchImgArray[0].name !== null && (
+                    <button type="button" onClick={handleImageAddmoreBtnClick}>
+                      <AddmoreBtn />
+                    </button>
+                  )}
+
+                <Button
+                  backgroundColor="bg-green-10"
+                  textColor="text-black"
+                  textSize="text-[14px] leading-5 font-semibold"
+                  height="h-[54px]"
+                  width="w-full"
+                  text="Video"
+                />
               </div>
             </div>
             <div className="mt-[15px] xs:w-[500px] w-full">
@@ -164,24 +167,21 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
                 intro="Give your advertisers something back for providing you with financial backing. The number of rewards you can offer is unlimited."
               />
               <div className="mt-15">
-                <>
-                  {clickedComponents.map((value, index) => (
-                    <Perks
-                      key={index}
-                      number={value}
-                      inputValue={perkTitle[index] || ""}
-                      setInputValue={handlePerkTitle}
-                      textareaValue={perkDesc[index] || ""}
-                      setTextareaValue={handlePerkDesc}
-                    />
-                  ))}
-                </>
-
-                <div className="mt-5">
-                  <button type="button" onClick={handleAddmoreBtnClick}>
-                    <AddmoreBtn />
-                  </button>
-                </div>
+                {adsPerkArray.map((value, index) => (
+                  <Perks
+                    key={index}
+                    index={index}
+                    values={value}
+                    handleChangePerkValue={handleChangePerkValue}
+                  />
+                ))}
+                {adsPerkArray.length !== 0 && (
+                  <div className="mt-5">
+                    <button type="button" onClick={handlePerkAddmoreBtnClick}>
+                      <AddmoreBtn />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -196,7 +196,6 @@ export const CreateAdsListingSecondStep: React.FC<StepperActionPropsType> = ({
                 text="Continue"
                 textColor="text-green-70"
                 textSize="buttonText"
-                // handleClick={handleNextPage}
                 type="submit"
               />
             </div>

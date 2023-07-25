@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {
   Button,
   EditPanelItem,
@@ -10,16 +10,33 @@ import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { StepperActionPropsType } from "types";
 import { useSelector } from "react-redux";
+import { AppState } from "App/reducers";
+import { useAxios } from "Lib";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const rewardArray = useSelector((state: any) => state.reward);
+  const axios = useAxios();
+  const rewardArray = useSelector((state: AppState) => state.reward.rewardData);
+  const [rewardData, setRewardData] = useState<any>(rewardArray);
+  const { handleRewardIdArray } = useContext(FormStepperContext);
   const handleClickAddBtn = () => {
     handlePrevPage();
   };
-  const handleClickEditBtn = (value: any) => {};
+  const handleClickEditBtn = (id: any) => {};
+  const handleClickDeleteBtn = (id: any) => {
+    axios.post(`/fundraiser/${id}/deleteReward`);
+    const filteredRewards = rewardArray.filter((item) => item.id !== id);
+    console.log("redux value", rewardArray, filteredRewards);
+    setRewardData(filteredRewards);
+    // filteredRewards.map((item) => dispatch(setReward(item)));
+    // dispatch(setReward(filteredRewards));
+    const filteredRewardIds = filteredRewards.map((item) => item.id);
+    handleRewardIdArray(filteredRewardIds);
+    console.log(filteredRewardIds);
+  };
 
   return (
     <div
@@ -37,7 +54,7 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
           intro="Give your supporters something back by offering rewards for a certain donation amount. 
                 The number of rewards you can offer is unlimited."
         />
-        {rewardArray.map((item: any, index: number) => {
+        {rewardData.map((item: any, index: number) => {
           return (
             <div key={index}>
               <div className="ns:w-[390px] w-full flex flex-col gap-15">
@@ -45,7 +62,7 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
                   <div className="flex flex-col gap-15">
                     <div className="flex justify-between">
                       <div className="text-[16px] leading-5 font-semibold">
-                        {item.reward_title}
+                        {item.title}
                       </div>
                       <div className="flex gap-5">
                         <button
@@ -55,22 +72,23 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
                         >
                           <FiEdit2 />
                         </button>
-                        <button className="text-red-500" onClick={() => {}}>
+                        <button
+                          className="text-red-500"
+                          onClick={() => {
+                            handleClickDeleteBtn(item.id);
+                          }}
+                        >
                           <RiDeleteBin6Line />
                         </button>
                       </div>
                     </div>
                     <EditPanelItem
                       index="Donation amount"
-                      value={item.donation_amount}
+                      value={`￡ ${item.amount}`}
                     />
                     <EditPanelItem
                       index="Availability"
-                      value={
-                        item.available && item.available.includes(1)
-                          ? "Unlimited"
-                          : "Limited"
-                      }
+                      value={item.limit ? "Unlimited" : "Limited"}
                     />
                     <EditPanelItem
                       index="Ships to"
@@ -82,7 +100,7 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
                     />
                     <EditPanelItem
                       index="Estimated dispatch day"
-                      value={`￡ 
+                      value={`
                        ${new Date(item.dispatch_date || "").toLocaleDateString(
                          "en-US",
                          {

@@ -111,7 +111,7 @@ export const Home: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="mt-[100px]">
+              <div className="mt-[120px]">
                 <div className="bl:w-[1120px] w-full mx-auto max-bl:px-5">
                   <div className="lg:w-[980px] w-full mx-auto flex justify-between items-center">
                     <div className="font-semibold text-[32px] leading-[43px] ">
@@ -157,7 +157,7 @@ export const Home: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="mt-[120px] bl:w-[1020px] w-[490px] max-xs:w-full mx-auto flex flex-col gap-5 px-5">
+              <div className="mt-[150px] bl:w-[1020px] w-[490px] max-xs:w-full mx-auto flex flex-col gap-5 px-5">
                 <div className="font-semibold text-[32px] leading-9 text-white">
                   Sponsorship
                 </div>

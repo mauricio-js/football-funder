@@ -34,7 +34,7 @@ export const ADVERTISINGSALE_URL = '/advertising/sale';
 // Sponsorship Page Urls
 export const SPONSORSHIPSIGNUP_URL = '/sponsorship/signup';
 export const SPONSORSHIPACCOUNTUPDATE_URL = '/sponsorship/accountupdate';
-export const CREATESPONSORSHIP_URL = '/sponsorship/create';
+export const CREATESPONSORSHIP_URL = '/sponsorship/createlisting';
 export const SPONSORSHIPLISTING_URL = '/sponsorship/listings';
 export const SPONSORSHIPDETAILLIVE_URL = '/sponsorship/detaillive';
 export const SPONSORSHIPDETAILPENDING_URL = '/sponsorship/detailpending';

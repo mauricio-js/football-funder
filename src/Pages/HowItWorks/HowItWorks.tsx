@@ -81,7 +81,7 @@ export const HowItWorks: React.FC = () => {
               </div>
             </div>
             <div className="">
-              <div className="mt-[150px] bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col gap-5 ">
+              <div className="mt-[150px] bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col">
                 <div className="font-semibold text-[32px] leading-9 text-white">
                   Fundraising
                 </div>
@@ -89,7 +89,7 @@ export const HowItWorks: React.FC = () => {
                   Campaign tooling and promotion for football specific
                   fundraising.
                 </div>
-                <div className="mt-2.5 flex bl:flex-row flex-col justify-center gap-5">
+                <div className="mt-5 flex bl:flex-row flex-col justify-center gap-5">
                   <SummaryCard
                     backgroundImage={FundraiseCardImage}
                     buttonName="Start Now"
@@ -106,7 +106,7 @@ export const HowItWorks: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="mt-10 bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col gap-5">
+              <div className="mt-[100px] bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col">
                 <div className="mt-30 font-semibold text-[32px] leading-9 text-white">
                   Advertising
                 </div>
@@ -114,7 +114,7 @@ export const HowItWorks: React.FC = () => {
                   Bring opportunities to life and build relationships with
                   sponsors
                 </div>
-                <div className="mt-2.5 flex bl:flex-row flex-col justify-center gap-5">
+                <div className="mt-5 flex bl:flex-row flex-col justify-center gap-5">
                   <SummaryCard
                     backgroundImage={AdvertisingBuyImg}
                     buttonName="Explore"
@@ -131,7 +131,7 @@ export const HowItWorks: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="mt-30 bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col gap-5">
+              <div className="mt-[100px] bl:w-[1020px] w-[490px] max-xs:w-full mx-auto px-5 flex flex-col">
                 <div className="font-semibold text-[32px] leading-9 text-white">
                   Sponsorship
                 </div>
@@ -139,7 +139,7 @@ export const HowItWorks: React.FC = () => {
                   Bring opportunities to life and build relationships with
                   sponsors
                 </div>
-                <div className="mt-2.5 flex bl:flex-row flex-col justify-center gap-5">
+                <div className="mt-5 flex bl:flex-row flex-col justify-center gap-5">
                   <SummaryCard
                     backgroundImage={SponsorshipBuyImg}
                     buttonName="Explore"

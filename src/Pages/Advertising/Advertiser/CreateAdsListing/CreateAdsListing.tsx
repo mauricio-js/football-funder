@@ -17,45 +17,38 @@ export const CreateAdsListing: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const {
-    selectValue,
-    dateList,
-    descriptionList,
-    amount,
-    selectedImage,
-    formValues,
-    isClickedPromoteBtn,
-    isLoading,
-    perkArray,
-  } = useContext(FormStepperContext);
+  const { isLoading, perkArray, createAdvertisingValue } =
+    useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
 
   const data: any = {
     user_id: userInfo.id,
-    title: descriptionList.ads_listing_title,
-    amount: amount.ads_amount,
-    vat_fee: selectValue.including_vat ? true : false,
-    sPeriodDate: dayjs(dateList.start_period).format("YYYY-MM-DD"),
-    lPeriodDate: dayjs(dateList.end_period).format("YYYY-MM-DD"),
-    commencementDate: dayjs(dateList.commencement_date).format("YYYY-MM-DD"),
-    description: descriptionList.advert_description,
-    adsNumber: formValues.ads_number,
-    titleImgLink: selectedImage.ads_title_image?.publicUrl,
-    titleImgName: selectedImage.ads_title_image?.file?.name,
-    pitchImgLink: selectedImage.ads_pitch_image?.publicUrl,
-    pitchImgName: selectedImage.ads_pitch_image?.file?.name,
-    pitchVideoLink: formValues.ads_video_url,
-    // pitchVideoName: formValues.ads_video_url,
-    promote: isClickedPromoteBtn,
+    title: createAdvertisingValue.title,
+    amount: createAdvertisingValue.amount,
+    vat_fee: createAdvertisingValue.vat_fee ? true : false,
+    sPeriodDate: dayjs(createAdvertisingValue.sPeriodDate).format("YYYY-MM-DD"),
+    lPeriodDate: dayjs(createAdvertisingValue.lPeriodDate).format("YYYY-MM-DD"),
+    commencementDate: dayjs(createAdvertisingValue.commencementDate).format(
+      "YYYY-MM-DD"
+    ),
+    description: createAdvertisingValue.description,
+    adsNumber: parseInt(createAdvertisingValue.adsNumber),
+    titleImgLink: createAdvertisingValue.titleImgLink,
+    titleImgName: createAdvertisingValue.titleImgName,
+    pitchImgLink: createAdvertisingValue.pitchImgLink,
+    pitchImgName: createAdvertisingValue.pitchImgName,
+    pitchVideoLink: createAdvertisingValue.pitchVideoLink,
+    // pitchVideoName: inputValue.ads_video_url,
+    promote: createAdvertisingValue.promote,
     perks: perkArray,
   };
   const createAdvertising = useMutation(
     (params: any) => axios.post("/advertising/create", params),
     {
       onSuccess: (data) => {
-        showStatus("Your advertising lisitng has been succesfully created!");
+        showStatus("Your advertising lisitng has been successfully created!");
         setCurrentStep(currentStep + 1);
         window.scrollTo({ top: 0, behavior: "smooth" });
       },
@@ -80,8 +73,8 @@ export const CreateAdsListing: React.FC = () => {
 
   function handleNextPage() {
     if (currentStep === 2) {
-      // console.log("date123123123", data);
-      createAdvertising.mutate(data);
+      console.log("21312313", data);
+      // createAdvertising.mutate(data);
     } else if (currentStep < pages.length - 1) {
       setCurrentStep(currentStep + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import { Button, TextButton, Textarea } from "UI";
+import { Button, TextButton } from "UI";
 
 import { ChatHistoryType } from "types";
 
@@ -32,32 +32,6 @@ export const ChattingAccordion: React.FC<ChattingAccordionPropsType> = ({
       <div className="flex gap-2.5 w-full">
         <div className="flex gap-2.5">
           <div className="w-[40px] h-[40px] rounded-20 bg-white"></div>
-          {/* <div className="flex-1 flex justify-between items-center vs:hidden">
-            <div className="flex flex-col items-start gap-[5px]">
-              <div className="valueText">{name}</div>
-              <TextButton
-                text="View profile"
-                textColor="text-green-70"
-                textSize="text-xs"
-              />
-            </div>
-            <div className="flex gap-2.5 items-start">
-              <div
-                className={classNames(
-                  "text-xs font-medium text-gray-10",
-                  showMenu ? "" : "hidden"
-                )}
-              >
-                {date} ago
-              </div>
-              <button
-                className={classNames(showMenu ? "rotate-180" : "rotate-0")}
-                onClick={() => setShowMenu(!showMenu)}
-              >
-                <IoIosArrowDown />
-              </button>
-            </div>
-          </div> */}
         </div>
         <div className="flex-1 flex flex-col gap-15">
           <div className="flex justify-between items-center">
@@ -137,7 +111,7 @@ export const ChattingAccordion: React.FC<ChattingAccordionPropsType> = ({
                 </div>
                 <div className="valueText">Send message</div>
                 <div className="mt-2.5">
-                  <Textarea
+                  {/* <Textarea
                     name="chatting"
                     showLeftCharacters={false}
                     placeholder="Type something..."
@@ -145,7 +119,7 @@ export const ChattingAccordion: React.FC<ChattingAccordionPropsType> = ({
                     chattingField={true}
                     className="p-2.5 text-[12px] leading-4"
                     required={true}
-                  />
+                  /> */}
                 </div>
                 <div className="mt-2.5">
                   <TextButton text="Send message" textSize="darkIntroText" />

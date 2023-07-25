@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import classNames from "classnames";
 import {
   Button,
-  GeneralCheckBoxList,
   PageSectionTitle,
   PageTitle,
   StepperBackButton,
   StepLabel,
+  ConfirmBox,
 } from "UI";
-import { FinalTouchPageCheckboxData } from "Config";
 import { StepperActionPropsType } from "types";
 import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
@@ -17,17 +16,29 @@ export const CreateAdsListingThirdStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const { selectedCheckbox, isClickedPromoteBtn, handleClickPromoteBtn } =
+  const [confirm, setConfirm] = useState<{
+    [key: string]: boolean;
+  }>({
+    confirm: false,
+    agree: false,
+    acknowledge: false,
+  });
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      ...confirm,
+      [key]: !value,
+    });
+  };
+  const { handleCreateAdvertisingPromote, createAdvertisingValue } =
     useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
   const handleSubmit = () => {
-    if (
-      selectedCheckbox.ads_final_touch_checkbox?.length &&
-      selectedCheckbox.ads_final_touch_checkbox.length === 3
-    ) {
+    if (confirm.confirm && confirm.agree && confirm.acknowledge) {
       handleNextPage();
-    } else showStatus("You must confirm", "error");
+    } else {
+      showStatus("Please confirm all requirements to proceed", "error");
+    }
   };
 
   return (
@@ -70,24 +81,42 @@ export const CreateAdsListingThirdStep: React.FC<StepperActionPropsType> = ({
           <div className="mt-15">
             <Button
               backgroundColor={
-                isClickedPromoteBtn ? "bg-green-70" : "bg-green-10"
+                createAdvertisingValue.promote ? "bg-green-70" : "bg-green-10"
               }
               height="h-[50px]"
               width="w-full"
               text="Promote"
-              textColor={isClickedPromoteBtn ? "text-white" : "text-green-70"}
+              textColor={
+                createAdvertisingValue.promote ? "text-white" : "text-green-70"
+              }
               textSize="text-[16px] leading-[20px] font-semibold"
-              handleClick={handleClickPromoteBtn}
+              handleClick={handleCreateAdvertisingPromote}
             />
           </div>
         </div>
         <div className="mt-30 xs:w-[500px] w-full">
           <PageSectionTitle title="Confirm" />
-          <div className="mt-2.5">
-            <GeneralCheckBoxList
-              options={FinalTouchPageCheckboxData}
-              textStyle="introText"
-              name="ads_final_touch_checkbox"
+          <div className="mt-2.5 flex flex-col gap-2.5">
+            <ConfirmBox
+              name="confirm"
+              label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+              checkboxStyle={true}
+              value={confirm.confirm}
+              setValue={handleConfirm}
+            />
+            <ConfirmBox
+              name="agree"
+              label="I agree for the commercial contact to be contacted by phone or email from interested parties, and that the use of the enquiry form will share details with interested parties."
+              checkboxStyle={true}
+              value={confirm.agree}
+              setValue={handleConfirm}
+            />
+            <ConfirmBox
+              name="acknowledge"
+              label="I acknowledge that for the listing to be marked as sold, Football Funder will ask whether the placement was sold successfully or not, and who to."
+              checkboxStyle={true}
+              value={confirm.acknowledge}
+              setValue={handleConfirm}
             />
           </div>
         </div>

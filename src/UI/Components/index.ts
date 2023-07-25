@@ -10,6 +10,7 @@ export * from './CategoryButton';
 export * from './CategoryButtonList';
 export * from './CheckBox';
 export * from './CheckBoxList';
+export * from './ConfirmBox';
 export * from './DatePicker';
 export * from './DescriptionPanel';
 export * from './DownloadTitle';

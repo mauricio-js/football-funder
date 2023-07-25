@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Button,
   EditPanelItem,
@@ -6,69 +6,20 @@ import {
   PageTitle,
   StepLabel,
 } from "UI";
-import { FormStepperContext } from "App/FormStepperProvider";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { StepperActionPropsType } from "types";
+import { useSelector } from "react-redux";
 
 export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
-  const {
-    rewardArray,
-    handleDescriptionChange,
-    handleAmountChange,
-    handleDateChange,
-    handleSelectedCheckbox,
-    handleSelectInput,
-    handleInputChange,
-    handleSetCrrRewardId,
-    deleteRewardData,
-  } = useContext(FormStepperContext);
-
+  const rewardArray = useSelector((state: any) => state.reward);
   const handleClickAddBtn = () => {
-    handleInputChange("available_num", "");
-    handleDescriptionChange("reward_title", "");
-    handleDescriptionChange("reward_additional_info", "");
-    handleDescriptionChange("reward_short_description", "");
-    handleAmountChange("donation_amount", 0);
-    handleDateChange("dispatch_date", null);
-    handleSelectedCheckbox("limit", 0);
-    handleSelectInput("delivery", 0);
     handlePrevPage();
   };
-  const handleClickEditBtn = (value: any) => {
-    const willUpdateRewardArray = rewardArray.filter(
-      (item: any) => item.id === value
-    );
-
-    handleSetCrrRewardId(willUpdateRewardArray[0].id);
-    handleInputChange("available_num", willUpdateRewardArray[0].available_num);
-    handleDescriptionChange(
-      "reward_title",
-      willUpdateRewardArray[0].reward_title
-    );
-    handleDescriptionChange(
-      "reward_additional_info",
-      willUpdateRewardArray[0].reward_additional_info
-    );
-    handleDescriptionChange(
-      "reward_short_description",
-      willUpdateRewardArray[0].reward_short_description
-    );
-    handleAmountChange(
-      "donation_amount",
-      willUpdateRewardArray[0].donation_amount
-    );
-    handleDateChange("dispatch_date", willUpdateRewardArray[0].dispatch_date);
-    handleSelectedCheckbox("limit", willUpdateRewardArray[0].limit);
-    handleSelectInput("delivery", willUpdateRewardArray[0].delivery);
-    handlePrevPage();
-  };
-  // useEffect(() => {
-  //   console.log(rewardList);
-  // }, [rewardList]);
+  const handleClickEditBtn = (value: any) => {};
 
   return (
     <div
@@ -104,10 +55,7 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
                         >
                           <FiEdit2 />
                         </button>
-                        <button
-                          className="text-red-500"
-                          onClick={() => deleteRewardData(item.id)}
-                        >
+                        <button className="text-red-500" onClick={() => {}}>
                           <RiDeleteBin6Line />
                         </button>
                       </div>

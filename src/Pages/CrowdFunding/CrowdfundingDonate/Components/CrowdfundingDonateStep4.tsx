@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
-  GeneralCheckBoxList,
   Button,
   Input,
   PageSectionTitle,
@@ -9,12 +8,12 @@ import {
   StepperBackButton,
   StepLabel,
   VerticalCardLabel,
+  ConfirmBox,
 } from "UI";
 import {
   CardNumberData,
   DonateClubLabel,
   DonateLocationLabel,
-  DonatePaymentConfirm,
   ExpiryData,
   CvcData,
   PostcodeData,
@@ -28,15 +27,25 @@ import PayCardC from "Assets/images/checkout/paycard-c.svg";
 import PayCardD from "Assets/images/checkout/paycard-d.svg";
 import PayCardE from "Assets/images/checkout/paycard-e.svg";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { donateValue, handleDonateValue } = useContext(FormStepperContext);
   const [btnActive, setBtnActive] = useState<boolean>(false);
 
   const handleClickPaymentMethodBtn = () => {
     setBtnActive(!btnActive);
+  };
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: any) => {
+    setConfirm({
+      [key]: !value,
+    });
   };
   return (
     <form>
@@ -97,6 +106,8 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
                 textStyle="text-base"
                 checkboxStyle={false}
                 name="payment_method"
+                value={donateValue.payment_method}
+                setValue={handleDonateValue}
               />
             </div>
           </div>
@@ -107,6 +118,8 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
                 <Input
                   data={CardNumberData}
                   name="card_number"
+                  value={donateValue.card_number}
+                  setValue={handleDonateValue}
                   required={true}
                   disabled={false}
                 />
@@ -115,6 +128,8 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
                     <Input
                       data={ExpiryData}
                       name="expiry"
+                      value={donateValue.expiry}
+                      setValue={handleDonateValue}
                       required={true}
                       disabled={false}
                     />
@@ -123,6 +138,8 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
                     <Input
                       data={CvcData}
                       name="cvc"
+                      value={donateValue.cvc}
+                      setValue={donateValue.cvc}
                       required={true}
                       disabled={false}
                     />
@@ -131,6 +148,8 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
                 <Input
                   data={PostcodeData}
                   name="post_code"
+                  value={donateValue.post_code}
+                  setValue={handleDonateValue}
                   required={true}
                   disabled={false}
                 />
@@ -171,10 +190,12 @@ export const CrowdfundingDonateStep4: React.FC<StepperActionPropsType> = ({
           <div className="mt-30">
             <PageSectionTitle title="Confirmation" />
             <div className="mt-[15px]">
-              <GeneralCheckBoxList
-                options={DonatePaymentConfirm}
-                textStyle="introText"
-                name="donate_payment_confirm"
+              <ConfirmBox
+                name="confirm"
+                label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+                checkboxStyle={true}
+                value={confirm.confirm}
+                setValue={handleConfirm}
               />
             </div>
           </div>

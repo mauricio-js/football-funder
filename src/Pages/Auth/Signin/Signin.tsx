@@ -15,7 +15,7 @@ import { FormStepperContext } from "App/FormStepperProvider";
 
 export const Signin: React.FC = () => {
   const navigate = useNavigate();
-  const { formValues } = useContext(FormStepperContext)!;
+  const { loginValue, handleLoginValue } = useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
   // const userInfo = useSelector((state: AppState) => state.user);
 
@@ -23,8 +23,8 @@ export const Signin: React.FC = () => {
 
   const data: loginFormDataType = {
     action: "validate-login",
-    email: formValues.email,
-    password: formValues.password,
+    email: loginValue.email,
+    password: loginValue.password,
   };
 
   const axios = useAxios();
@@ -84,6 +84,8 @@ export const Signin: React.FC = () => {
               <Input
                 data={AccountEmailData}
                 name="email"
+                value={loginValue.email}
+                setValue={handleLoginValue}
                 required={true}
                 disabled={false}
               />
@@ -91,6 +93,8 @@ export const Signin: React.FC = () => {
                 <Input
                   data={AccountPasswordData}
                   name="password"
+                  value={loginValue.password}
+                  setValue={handleLoginValue}
                   required={true}
                   disabled={false}
                 />

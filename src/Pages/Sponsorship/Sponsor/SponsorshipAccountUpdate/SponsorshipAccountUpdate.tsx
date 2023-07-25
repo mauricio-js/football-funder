@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   // CheckBox,
@@ -10,7 +10,7 @@ import {
   StepLabel,
   DatePicker,
   Template,
-  CheckBox,
+  ConfirmBox,
 } from "UI";
 import {
   ContactAddressLine1Data,
@@ -27,7 +27,6 @@ import {
 import { StatusContext } from "App/StatusProvider";
 import { useAxios } from "Lib";
 import { useNavigate } from "react-router-dom";
-import { FormStepperContext } from "App/FormStepperProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "react-query";
 import { registerFormDataType } from "Pages/Auth/SingUp/types";
@@ -37,30 +36,49 @@ import { setUserInfo } from "Data/User";
 
 export const SponsorshipAccountUpdate: React.FC = () => {
   const { showStatus } = useContext(StatusContext);
-  const { formValues, selectValue, selectedCheckbox } =
-    useContext(FormStepperContext);
+  const [sponsorshipAccountUpdateValue, setSponsorshipAccountUpdateValue] =
+    useState<{
+      [key: string]: any;
+    }>({
+      first_name: "",
+      last_name: "",
+      address_line1: "",
+      address_line2: "",
+      city: "",
+      post_code: "",
+      country: "",
+      phone_number: "",
+      phone_country: ContactPhoneNumberData[0].country,
+      birth_date: "",
+    });
+  const handleSponsorshipAccountUpdateValue = (key: string, value: any) => {
+    setSponsorshipAccountUpdateValue({
+      ...sponsorshipAccountUpdateValue,
+      [key]: value,
+    });
+  };
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: any) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
   const axios = useAxios();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state: any) => state.user);
 
   const data: any = {
-    category_id: selectValue.sponsorship_category,
-    org_name: formValues.org_name,
-    org_address1: formValues.org_address_line1,
-    org_address2: formValues.org_address_line2,
-    org_phone_number: formValues.org_phone_number,
-    org_city: formValues.org_city,
-    org_post_code: formValues.org_post_code,
-    org_country: formValues.org_country,
-    address_line1: formValues.address_line1,
-    address_line2: formValues.address_line2,
-    city: formValues.city,
-    post_code: formValues.post_code,
-    country: formValues.country,
-    phone_number: formValues.phone_number,
-    first_name: formValues.first_name,
-    last_name: formValues.last_name,
+    address_line1: sponsorshipAccountUpdateValue.address_line1,
+    address_line2: sponsorshipAccountUpdateValue.address_line2,
+    city: sponsorshipAccountUpdateValue.city,
+    post_code: sponsorshipAccountUpdateValue.post_code,
+    country: sponsorshipAccountUpdateValue.country,
+    phone_number: sponsorshipAccountUpdateValue.phone_number,
+    first_name: sponsorshipAccountUpdateValue.first_name,
+    last_name: sponsorshipAccountUpdateValue.last_name,
   };
   const storeUserInfo = (userInfo: any) => {
     dispatch(setUserInfo(userInfo));
@@ -84,12 +102,13 @@ export const SponsorshipAccountUpdate: React.FC = () => {
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+    if (!confirm.confirm) {
       showStatus(
         "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
         "error"
       );
     } else {
+      console.log("123123123", data);
       sponsorshipAccountUpdate(data);
     }
   };
@@ -120,20 +139,34 @@ export const SponsorshipAccountUpdate: React.FC = () => {
                   <Input
                     data={FirstNameData}
                     name="first_name"
+                    value={sponsorshipAccountUpdateValue.first_name}
+                    setValue={handleSponsorshipAccountUpdateValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={LastNameData}
                     name="last_name"
+                    value={sponsorshipAccountUpdateValue.last_name}
+                    setValue={handleSponsorshipAccountUpdateValue}
                     required={true}
                     disabled={false}
                   />
-                  <DatePicker data={DateData} name="birth_date" />
+                  <DatePicker
+                    data={DateData}
+                    name="birth_date"
+                    value={sponsorshipAccountUpdateValue.birth_date}
+                    setValue={handleSponsorshipAccountUpdateValue}
+                    required={true}
+                  />
                 </div>
                 <DropdownInput
                   data={ContactPhoneNumberData}
                   name="phone_number"
+                  phoneCountry="pn_country"
+                  value={sponsorshipAccountUpdateValue.phone_number}
+                  setValue={handleSponsorshipAccountUpdateValue}
+                  country={sponsorshipAccountUpdateValue.phone_country}
                   required={true}
                 />
                 <div className="flex flex-col gap-[10px]">
@@ -142,6 +175,8 @@ export const SponsorshipAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactAddressLine1Data}
                         name="address_line1"
+                        value={sponsorshipAccountUpdateValue.address_line1}
+                        setValue={handleSponsorshipAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -150,6 +185,8 @@ export const SponsorshipAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactAddressLine2Data}
                         name="address_line2"
+                        value={sponsorshipAccountUpdateValue.address_line2}
+                        setValue={handleSponsorshipAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -160,6 +197,8 @@ export const SponsorshipAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactTownData}
                         name="city"
+                        value={sponsorshipAccountUpdateValue.city}
+                        setValue={handleSponsorshipAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -168,6 +207,8 @@ export const SponsorshipAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactPostcodeData}
                         name="post_code"
+                        value={sponsorshipAccountUpdateValue.post_code}
+                        setValue={handleSponsorshipAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -181,6 +222,8 @@ export const SponsorshipAccountUpdate: React.FC = () => {
                     label="Country (Region)"
                     SelectFormData={RegionData}
                     textSize="generalText"
+                    value={sponsorshipAccountUpdateValue.country}
+                    setValue={handleSponsorshipAccountUpdateValue}
                   />
                 </div>
               </div>
@@ -190,12 +233,12 @@ export const SponsorshipAccountUpdate: React.FC = () => {
           <div className="mt-30">
             <PageSectionTitle title="Confirmation" />
             <div className="mt-[15px]">
-              <CheckBox
-                align="flex-row-reverse gap-[10px]"
-                label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-                value={0}
-                textClass="generalSmallText text-gray-500"
+              <ConfirmBox
                 name="confirm"
+                label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+                checkboxStyle={true}
+                value={confirm.confirm}
+                setValue={handleConfirm}
               />
             </div>
           </div>

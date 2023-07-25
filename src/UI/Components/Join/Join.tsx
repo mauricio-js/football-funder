@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router";
+import { SIGNUP_URL, SIGNIN_URL } from "Lib/urls";
 
 interface Proos {
   image: string;
 }
 
 export const Join: React.FC<Proos> = ({ image }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="bl:w-[1000px] bl:px-3 md:px-10 w-full mx-auto">
@@ -36,12 +39,18 @@ export const Join: React.FC<Proos> = ({ image }) => {
                 <button
                   className="w-[150px] h-[50px] max-vs:w-[120px] max-vs:h-[50px]
                               text-[16px] leading-[22px] font-semibold bg-white rounded-10"
+                  onClick={() => {
+                    navigate(SIGNIN_URL);
+                  }}
                 >
                   Sign in
                 </button>
                 <button
                   className="w-[150px] h-[50px]  max-vs:w-[120px] max-vs:h-[50px]
                              text-[16px] leading-[22px] font-semibold bg-green-70 text-white rounded-10"
+                  onClick={() => {
+                    navigate(SIGNUP_URL);
+                  }}
                 >
                   Sign up
                 </button>

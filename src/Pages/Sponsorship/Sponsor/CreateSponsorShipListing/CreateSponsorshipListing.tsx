@@ -17,50 +17,42 @@ export const CreateSponsorshipListing: React.FC = () => {
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
   const { userInfo } = useSelector((state: any) => state.user);
-  const {
-    selectValue,
-    dateList,
-    descriptionList,
-    amount,
-    selectedImage,
-    formValues,
-    isClickedPromoteBtn,
-    isLoading,
-    perkArray,
-  } = useContext(FormStepperContext);
+  const { createSponsorshipValue, isLoading, perkArray } =
+    useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
 
   const data: any = {
     user_id: userInfo.id,
-    title: descriptionList.sponsorship_listing_title,
-    amount: amount.sponsorship_amount,
-    vat_fee: selectValue.including_vat ? true : false,
-    sPeriodDate: dayjs(dateList.start_period).format("YYYY-MM-DD"),
-    lPeriodDate: dayjs(dateList.end_period).format("YYYY-MM-DD"),
-    commencementDate: dayjs(dateList.commencement_date).format("YYYY-MM-DD"),
-    description: descriptionList.sponsorship_description,
-    adsNumber: 123,
-    titleImgLink: selectedImage.sponsorship_title_image?.publicUrl,
-    titleImgName: selectedImage.sponsorship_title_image?.file?.name,
-    pitchImgLink: selectedImage.sponsorship_pitch_image?.publicUrl,
-    pitchImgName: selectedImage.sponsorship_pitch_image?.file?.name,
-    pitchVideoLink: formValues.sponsorship_video_url,
-    // pitchVideoName: formValues.ads_video_url,
-    promote: isClickedPromoteBtn,
+    title: createSponsorshipValue.title,
+    amount: createSponsorshipValue.amount,
+    vat_fee: createSponsorshipValue.vat_fee ? true : false,
+    sPeriodDate: dayjs(createSponsorshipValue.sPeriodDate).format("YYYY-MM-DD"),
+    lPeriodDate: dayjs(createSponsorshipValue.lPeriodDate).format("YYYY-MM-DD"),
+    commencementDate: dayjs(createSponsorshipValue.commencementDate).format(
+      "YYYY-MM-DD"
+    ),
+    description: createSponsorshipValue.advert_description,
+    titleImgLink: createSponsorshipValue.titleImgLink,
+    titleImgName: createSponsorshipValue.titleImgName,
+    pitchImgLink: createSponsorshipValue.pitchImgLink,
+    pitchImgName: createSponsorshipValue.pitchImgName,
+    pitchVideoLink: createSponsorshipValue.pitchVideoLink,
+    // pitchVideoName: inputValue.ads_video_url,
+    promote: createSponsorshipValue.promote,
     perks: perkArray,
   };
+
   const createSponsorship = useMutation(
     (params: any) => axios.post("/sponsorship/create", params),
     {
       onSuccess: (data) => {
-        showStatus("Your sponsorship lisitng has been succesfully created!");
+        showStatus("Your sponsorship lisitng has been successfully created!");
         setCurrentStep(currentStep + 1);
         window.scrollTo({ top: 0, behavior: "smooth" });
       },
       onError: (err: any) => {
-        console.log(data);
         console.log(err);
         if (err.errors) {
           window.scrollTo(0, 0);

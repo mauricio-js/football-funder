@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import {
   Button,
@@ -27,36 +27,48 @@ import { MdAnnouncement } from "react-icons/md";
 import { useMutation } from "react-query";
 import { registerFormDataType } from "Pages/Auth/SingUp/types";
 import { StatusContext } from "App/StatusProvider";
-import { FormStepperContext } from "App/FormStepperProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { useAxios } from "Lib";
 import { setUserInfo } from "Data/User";
 
 export const FundraiserAccountUpate: React.FC = () => {
   const { showStatus } = useContext(StatusContext);
-  const { formValues, selectValue } = useContext(FormStepperContext);
+  const [fundraiserAccountUpdateValue, setFundraiserAccountUpdateValue] =
+    useState<{
+      [key: string]: any;
+    }>({
+      first_name: "",
+      last_name: "",
+      address_line1: "",
+      address_line2: "",
+      city: "",
+      post_code: "",
+      country: "",
+      phone_number: "",
+      phone_country: ContactPhoneNumberData[0].country,
+      profile_url: "",
+      birth_date: "",
+    });
+  const handleFundraiserAccountUpdateValue = (key: string, value: any) => {
+    setFundraiserAccountUpdateValue({
+      ...fundraiserAccountUpdateValue,
+      [key]: value,
+    });
+  };
   const axios = useAxios();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state: any) => state.user);
 
   const data: any = {
-    category_id: selectValue.sponsorship_category,
-    org_name: formValues.org_name,
-    org_address_line1: formValues.org_address_line1,
-    org_address_line2: formValues.org_address_line2,
-    org_phone_number: formValues.org_phone_number,
-    org_city: formValues.org_city,
-    org_post_code: formValues.org_post_code,
-    org_country: formValues.org_country,
-    address_line1: formValues.address_line1,
-    address_line2: formValues.address_line2,
-    city: formValues.city,
-    post_code: formValues.post_code,
-    country: formValues.country,
-    phone_number: formValues.phone_number,
-    first_name: formValues.first_name,
-    last_name: formValues.last_name,
+    address_line1: fundraiserAccountUpdateValue.address_line1,
+    address_line2: fundraiserAccountUpdateValue.address_line2,
+    city: fundraiserAccountUpdateValue.city,
+    post_code: fundraiserAccountUpdateValue.post_code,
+    country: fundraiserAccountUpdateValue.country,
+    phone_number: fundraiserAccountUpdateValue.phone_number,
+    first_name: fundraiserAccountUpdateValue.first_name,
+    last_name: fundraiserAccountUpdateValue.last_name,
   };
   const storeUserInfo = (userInfo: any) => {
     dispatch(setUserInfo(userInfo));
@@ -109,21 +121,35 @@ export const FundraiserAccountUpate: React.FC = () => {
                   <Input
                     data={FirstNameData}
                     name="first_name"
+                    value={fundraiserAccountUpdateValue.first_name}
+                    setValue={handleFundraiserAccountUpdateValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={LastNameData}
                     name="last_name"
+                    value={fundraiserAccountUpdateValue.last_name}
+                    setValue={handleFundraiserAccountUpdateValue}
                     required={true}
                     disabled={false}
                   />
 
-                  <DatePicker data={DateData} name="birth_date" />
+                  <DatePicker
+                    data={DateData}
+                    name="birth_date"
+                    value={fundraiserAccountUpdateValue.birth_date}
+                    setValue={handleFundraiserAccountUpdateValue}
+                    required={true}
+                  />
                 </div>
                 <DropdownInput
                   data={ContactPhoneNumberData}
                   name="phone_number"
+                  phoneCountry="pn_country"
+                  value={fundraiserAccountUpdateValue.phone_number}
+                  setValue={handleFundraiserAccountUpdateValue}
+                  country={fundraiserAccountUpdateValue.phone_country}
                   required={true}
                 />
                 <div className="flex flex-col gap-[10px]">
@@ -132,6 +158,8 @@ export const FundraiserAccountUpate: React.FC = () => {
                       <Input
                         data={ContactAddressLine1Data}
                         name="address_line1"
+                        value={fundraiserAccountUpdateValue.address_line1}
+                        setValue={handleFundraiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -140,6 +168,8 @@ export const FundraiserAccountUpate: React.FC = () => {
                       <Input
                         data={ContactAddressLine2Data}
                         name="address_line2"
+                        value={fundraiserAccountUpdateValue.address_line2}
+                        setValue={handleFundraiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -150,6 +180,8 @@ export const FundraiserAccountUpate: React.FC = () => {
                       <Input
                         data={ContactTownData}
                         name="city"
+                        value={fundraiserAccountUpdateValue.city}
+                        setValue={handleFundraiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -158,6 +190,8 @@ export const FundraiserAccountUpate: React.FC = () => {
                       <Input
                         data={ContactPostcodeData}
                         name="post_code"
+                        value={fundraiserAccountUpdateValue.post_code}
+                        setValue={handleFundraiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -171,6 +205,8 @@ export const FundraiserAccountUpate: React.FC = () => {
                     label="Country (Region)"
                     SelectFormData={RegionData}
                     textSize="generalText"
+                    value={fundraiserAccountUpdateValue.country}
+                    setValue={handleFundraiserAccountUpdateValue}
                   />
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 // import { AppState } from "App/reducers";
@@ -13,7 +13,6 @@ export interface DropdownProps {
 export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
   const navigate = useNavigate();
   // const isAuth = useSelector((state: AppState) => state.auth.loggedIn);
-  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
 
   return (
     <div className="relative group cursor-pointer">
@@ -21,12 +20,11 @@ export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
         id="dropdownDefaultButton"
         className="bg-green-10 p-[10px] hover:bg-black hover:bg-opacity-5 
           rounded-lg text-[14px] font-semibold leading-5 text-center inline-flex items-center"
-        onClick={() => setIsShowMenu(true)}
       >
         {List.title}
         {List.children && <Arrow />}
       </button>
-      {List.children && isShowMenu && (
+      {List.children && (
         <div className="hidden group-hover:flex">
           <div
             id="dropdown"
@@ -42,7 +40,6 @@ export const Dropdown: React.FC<DropdownProps> = ({ List }) => {
                       hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     onClick={() => {
                       navigate(key.href);
-                      setIsShowMenu(false);
                     }}
                   >
                     <div className="flex justify-start">{key.title}</div>

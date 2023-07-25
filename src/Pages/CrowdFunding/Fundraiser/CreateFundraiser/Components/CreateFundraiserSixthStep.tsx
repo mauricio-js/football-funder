@@ -19,8 +19,12 @@ interface CreateFundraiserSixthStepProps {
 export const CreateFundraiserSixthStep: React.FC<
   CreateFundraiserSixthStepProps
 > = ({ handleNextPage, handlePrevPage, handleDoublePrevPage }) => {
-  const { isClickedAddrewardBtn, isClickedPromoteBtn, handleClickPromoteBtn } =
-    useContext(FormStepperContext);
+  const {
+    isClickedAddrewardBtn,
+    createFundraiserValue,
+    handleCreateFundraiserPromote,
+    handleCreateFundraiserValue,
+  } = useContext(FormStepperContext);
 
   return (
     <div
@@ -46,7 +50,11 @@ export const CreateFundraiserSixthStep: React.FC<
             intro="Choose an image to represent your video before it plays. 695x460px recommended resolution."
           />
           <div className="mt-15 ns:w-[390px] w-full ">
-            <FileNameCoverInput name="overlay_image" uploadUrl="fundraiser" />
+            <FileNameCoverInput
+              name="overlayImg"
+              imageName={createFundraiserValue.overlayImg}
+              setValue={handleCreateFundraiserValue}
+            />
           </div>
         </div>
         <div
@@ -75,14 +83,16 @@ export const CreateFundraiserSixthStep: React.FC<
           <div className="mt-15">
             <Button
               backgroundColor={
-                isClickedPromoteBtn ? "bg-green-70" : "bg-green-10"
+                createFundraiserValue.promote ? "bg-green-70" : "bg-green-10"
               }
               height="h-[50px]"
               width="w-full"
               text="Promote"
-              textColor={isClickedPromoteBtn ? "text-white" : "text-green-70"}
+              textColor={
+                createFundraiserValue.promote ? "text-white" : "text-green-70"
+              }
               textSize="text-[16px] leading-[20px] font-semibold"
-              handleClick={handleClickPromoteBtn}
+              handleClick={handleCreateFundraiserPromote}
             />
           </div>
         </div>

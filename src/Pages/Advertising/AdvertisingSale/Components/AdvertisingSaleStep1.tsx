@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   DatePicker,
   DropdownInput,
-  GeneralCheckBoxList,
   Input,
   PageSectionTitle,
   PageTitle,
   Select,
   VerticalCardLabel,
   StepLabel,
+  ConfirmBox,
 } from "UI";
 import {
   AccountEmailData,
@@ -19,7 +19,6 @@ import {
   ContactPhoneNumberData,
   ContactPostcodeData,
   DateData,
-  SaleAccountConfirm,
   SaleClubLabel,
   SaleLocationLabel,
   FirstNameData,
@@ -27,10 +26,18 @@ import {
   RegionData,
 } from "Config";
 import { LivePagePropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const AdvertisingSaleStep1: React.FC<LivePagePropsType> = ({
   handleNextPage,
 }) => {
+  const { adsSaleValue, handleAdsSaleValue } = useContext(FormStepperContext);
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({});
+  const handleConfirm = (key: string, value: any) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
   return (
     <form>
       <div
@@ -64,21 +71,35 @@ export const AdvertisingSaleStep1: React.FC<LivePagePropsType> = ({
                 <Input
                   data={FirstNameData}
                   name="first_name"
+                  value={adsSaleValue.first_name}
+                  setValue={handleAdsSaleValue}
                   required={true}
                   disabled={false}
                 />
                 <Input
                   data={LastNameData}
                   name="last_name"
+                  value={adsSaleValue.last_name}
+                  setValue={handleAdsSaleValue}
                   required={true}
                   disabled={false}
                 />
 
-                <DatePicker data={DateData} name="birth" />
+                <DatePicker
+                  data={DateData}
+                  name="birth_date"
+                  value={adsSaleValue.birth_date}
+                  setValue={handleAdsSaleValue}
+                  required={true}
+                />
               </div>
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                country={ContactPhoneNumberData[0].country}
+                value={adsSaleValue.phone_number}
+                setValue={handleAdsSaleValue}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -87,6 +108,8 @@ export const AdvertisingSaleStep1: React.FC<LivePagePropsType> = ({
                     <Input
                       data={ContactPostcodeData}
                       name="post_code"
+                      value={adsSaleValue.post_code}
+                      setValue={handleAdsSaleValue}
                       required={true}
                       disabled={false}
                     />
@@ -95,6 +118,8 @@ export const AdvertisingSaleStep1: React.FC<LivePagePropsType> = ({
                     <Input
                       data={AddressData}
                       name="address"
+                      value={adsSaleValue.address}
+                      setValue={handleAdsSaleValue}
                       required={true}
                       disabled={false}
                     />
@@ -105,6 +130,8 @@ export const AdvertisingSaleStep1: React.FC<LivePagePropsType> = ({
                 <Select
                   backgroundColor="bg-white"
                   name="country"
+                  value={adsSaleValue.country}
+                  setValue={handleAdsSaleValue}
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
@@ -119,18 +146,24 @@ export const AdvertisingSaleStep1: React.FC<LivePagePropsType> = ({
             <Input
               data={AccountEmailData}
               name="email"
+              value={adsSaleValue.email}
+              setValue={handleAdsSaleValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountPasswordData}
               name="password"
+              value={adsSaleValue.password}
+              setValue={handleAdsSaleValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountConfirmPasswordData}
               name="confirm_password"
+              value={adsSaleValue.confirm_password}
+              setValue={handleAdsSaleValue}
               required={true}
               disabled={false}
             />
@@ -139,10 +172,19 @@ export const AdvertisingSaleStep1: React.FC<LivePagePropsType> = ({
         <div className="mt-30">
           <PageSectionTitle title="Confirmation" />
           <div className="mt-[15px]">
-            <GeneralCheckBoxList
-              options={SaleAccountConfirm}
-              textStyle="introText"
+            <ConfirmBox
               name="confirm"
+              label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+              checkboxStyle={true}
+              value={confirm.confirm}
+              setValue={handleConfirm}
+            />
+            <ConfirmBox
+              name="sign"
+              label="I would like to sign up to receive newsletters from Football Funder. See Privacy Policy."
+              checkboxStyle={true}
+              value={confirm.sign}
+              setValue={handleConfirm}
             />
           </div>
         </div>

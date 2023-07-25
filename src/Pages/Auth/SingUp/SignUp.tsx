@@ -12,36 +12,37 @@ import { FormStepperContext } from "App/FormStepperProvider";
 export const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const axios = useAxios();
-  const { formValues, selectValue } = useContext(FormStepperContext);
+  const { registerValue } = useContext(FormStepperContext);
 
   const { showStatus } = useContext(StatusContext);
 
-  const data: registerFormDataType = {
-    category_id: selectValue.fundraiser_category,
-    org_name: formValues.org_name,
-    org_address1: formValues.org_address1,
-    org_address2: formValues.org_address2,
-    org_phone_number: formValues.org_phone_number,
-    org_city: formValues.org_city,
-    org_country: formValues.org_country,
-    org_post_code: formValues.org_post_code,
-    address_line1: formValues.address_line1,
-    address_line2: formValues.address_line2,
-    city: formValues.city,
-    post_code: formValues.postcode,
-    country: formValues.country,
-    phone_number: formValues.phone_number,
-    first_name: formValues.first_name,
-    last_name: formValues.last_name,
-    email: formValues.email,
-    password: formValues.password,
+  const data: any = {
+    category_id: registerValue.category_id,
+    org_name: registerValue.org_name,
+    org_address1: registerValue.org_address1,
+    org_address2: registerValue.org_address2,
+    org_phone_number: registerValue.org_phone_number,
+    org_city: registerValue.org_city,
+    org_country: registerValue.org_country,
+    org_post_code: registerValue.org_post_code,
+    address_line1: registerValue.address_line1,
+    address_line2: registerValue.address_line2,
+    city: registerValue.city,
+    post_code: registerValue.post_code,
+    country: registerValue.country,
+    phone_number: registerValue.phone_number,
+    first_name: registerValue.first_name,
+    last_name: registerValue.last_name,
+    email: registerValue.email,
+    password: registerValue.password,
+    profile_url: registerValue.profile_url,
   };
 
   const signUp = useMutation(
     (params: registerFormDataType) => axios.post("/user/register", params),
     {
       onSuccess: (data) => {
-        showStatus("Your account has been succesfully registered!");
+        showStatus("Your account has been successfully registered!");
         navigate(EMAILVERIFICATION_URL);
       },
       onError: (err: any) => {

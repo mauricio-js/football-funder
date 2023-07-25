@@ -37,7 +37,18 @@ import { listingDataFetch } from "Utils";
 
 export const AdsList: React.FC = () => {
   const axios = useAxios();
-
+  const [adsListValue, setAdsListValue] = useState<{ [key: string]: any }>({
+    sort: "",
+    mileDistance: "",
+    postcodeDistance: "",
+    org_filter: "",
+    status_filter: "",
+  });
+  const handleAdsListValue = (key: string, value: any) => {
+    setAdsListValue({
+      [key]: value,
+    });
+  };
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   const [region, setRegion] = useState<string>(ListingPageDropdownData[0].name);
   const [horizontalLayout, setHorizonalLayout] = useState<boolean>(false);
@@ -86,7 +97,9 @@ export const AdsList: React.FC = () => {
                     <Accordion title="Sort By">
                       <div className="mt-4">
                         <RadioButtonList
-                          name="sort_by"
+                          name="sort"
+                          value={adsListValue.sort}
+                          setValue={handleAdsListValue}
                           options={SortByData}
                           classes="flex flex-col gap-5"
                           textStyle="text-base"
@@ -96,13 +109,17 @@ export const AdsList: React.FC = () => {
                     </Accordion>
                     <Accordion title="Organisation">
                       <CheckBoxList
-                        name="organisation_filter"
+                        name="org_filter"
+                        value={adsListValue.org_filter}
+                        setValue={handleAdsListValue}
                         options={OrganisationFilterData}
                       />
                     </Accordion>
                     <Accordion title="Status">
                       <CheckBoxList
                         name="status_filter"
+                        value={adsListValue.status_filter}
+                        setValue={handleAdsListValue}
                         options={StatusFilterData}
                       />
                     </Accordion>
@@ -111,7 +128,9 @@ export const AdsList: React.FC = () => {
                         <div className="w-[180px]">
                           <Input
                             data={MileDistanceInputFormData}
-                            name="mile_distance"
+                            name="mileDistance"
+                            value={adsListValue.mileDistance}
+                            setValue={handleAdsListValue}
                             required={true}
                             disabled={false}
                           />
@@ -119,7 +138,9 @@ export const AdsList: React.FC = () => {
                         <div className="w-[180px]">
                           <Input
                             data={PostcodeDistanceInputFormData}
-                            name="postcode_distance"
+                            name="postcodeDistance"
+                            value={adsListValue.postcodeDistance}
+                            setValue={handleAdsListValue}
                             required={true}
                             disabled={false}
                           />

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { RadioButtonList } from "UI";
+// import { RadioButtonList } from "UI";
 import { Modal } from "..";
 
-import { DownloadFormatData } from "Config";
+// import { DownloadFormatData } from "Config";
 
 interface DownloadModalProps {
   isShowModal: () => void;
@@ -26,13 +26,13 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
         <div className="valueText">{menuTitle}</div>
         <div className="mt-2.5 w-[285px] darkIntroText">{menuContent}</div>
         <div className="mt-2.5">
-          <RadioButtonList
+          {/* <RadioButtonList
             options={DownloadFormatData}
             classes="flex gap-30"
             textStyle="text-base"
             checkboxStyle={false}
             name="download_format"
-          />
+          /> */}
         </div>
         <div className="mt-30">
           <div className="flex gap-2.5">

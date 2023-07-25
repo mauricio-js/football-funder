@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
   DropdownInput,
   Input,
-  GeneralCheckBoxList,
   PageSectionTitle,
   PageTitle,
   StepperBackButton,
   StepLabel,
   Textarea,
   VerticalCardLabel,
+  ConfirmBox,
 } from "UI";
 import {
   AccountEmailData,
@@ -18,14 +18,23 @@ import {
   DonateLocationLabel,
   FirstNameData,
   ContactOrganisationData,
-  SaleEnquiryConfirm,
 } from "Config";
 import { LivePagePropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const AdvertisingSaleStep2: React.FC<LivePagePropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    consent: false,
+  });
+  const handleConfirm = (key: string, value: any) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
+  const { adsSaleValue, handleAdsSaleValue } = useContext(FormStepperContext);
   return (
     <div
       className="
@@ -57,25 +66,35 @@ export const AdvertisingSaleStep2: React.FC<LivePagePropsType> = ({
             <div className="flex flex-col gap-[10px]">
               <Input
                 data={FirstNameData}
-                name="first_name"
+                name="full_name"
+                value={adsSaleValue.full_name}
+                setValue={handleAdsSaleValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={ContactOrganisationData}
-                name="organisation"
+                name="org_name"
+                value={adsSaleValue.org_name}
+                setValue={handleAdsSaleValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={AccountEmailData}
                 name="email"
+                value={adsSaleValue.email}
+                setValue={handleAdsSaleValue}
                 required={true}
                 disabled={false}
               />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                value={adsSaleValue.phone_number}
+                country={ContactPhoneNumberData[0].country}
+                setValue={handleAdsSaleValue}
                 required={true}
               />
             </div>
@@ -86,6 +105,8 @@ export const AdvertisingSaleStep2: React.FC<LivePagePropsType> = ({
           <div className="mt-15">
             <Textarea
               name="comment"
+              value={adsSaleValue.comment}
+              setValue={handleAdsSaleValue}
               title="Your comment"
               titleStyle="text-[12px] leading-[14px] font-medium text-gray-10"
               height="h-[150px]"
@@ -98,10 +119,12 @@ export const AdvertisingSaleStep2: React.FC<LivePagePropsType> = ({
         <div className="mt-30">
           <PageSectionTitle title="Confirmation" />
           <div className="mt-[15px]">
-            <GeneralCheckBoxList
-              options={SaleEnquiryConfirm}
-              name="sale_enquiry_confirm"
-              textStyle="introText"
+            <ConfirmBox
+              name="consent"
+              label="I consent to the details of this account being passed to the rights holder to initiate contact should they wish to engage further on the opportunity."
+              checkboxStyle={true}
+              value={confirm.consent}
+              setValue={handleConfirm}
             />
           </div>
         </div>

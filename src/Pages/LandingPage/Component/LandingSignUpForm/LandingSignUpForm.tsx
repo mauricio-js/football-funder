@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { SignUpButton } from "Pages";
 import { Select, Input } from "UI";
 import {
@@ -10,10 +10,15 @@ import {
   SignUpSelectFormData,
   WebSiteData,
 } from "Config";
-import { FormStepperContext } from "App/FormStepperProvider";
 
 export const LandingSignUpForm: React.FC = () => {
-  const { formValues } = useContext(FormStepperContext)!;
+  const [value, setValue] = useState<{ [key: string]: any }>({});
+  const handleValue = (key: string, value: any) => {
+    setValue({
+      ...value,
+      [key]: value,
+    });
+  };
 
   return (
     <form>
@@ -30,13 +35,15 @@ export const LandingSignUpForm: React.FC = () => {
           <Select
             backgroundColor="bg-white"
             name="category"
+            value={value.category}
+            setValue={handleValue}
             label="Select your category"
             SelectFormData={SignUpSelectFormData}
             textSize="generalText"
           />
 
           <div className="mt-30 ">
-            {formValues.category === "organisation" && (
+            {value.category === "organisation" && (
               <div>
                 <div className="text-white text-sm text-center">
                   Please fill the requested information below
@@ -46,36 +53,48 @@ export const LandingSignUpForm: React.FC = () => {
                     <Input
                       data={FirstNameData}
                       name="first_name"
+                      value={value.first_name}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={LastNameData}
                       name="last_name"
+                      value={value.last_name}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={ContactOrganisationData}
-                      name="organisation"
+                      name="org_name"
+                      value={value.org_name}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={AccountEmailData}
                       name="email"
+                      value={value.email}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={PhoneNumberData}
                       name="phone_number"
+                      value={value.phone_number}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={WebSiteData}
                       name="website_url"
+                      value={value.website_url}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
@@ -87,7 +106,7 @@ export const LandingSignUpForm: React.FC = () => {
                 </div>
               </div>
             )}
-            {formValues.category === "individual" && (
+            {value.category === "individual" && (
               <div>
                 <div className="text-white text-sm text-center">
                   Please fill the requested information below
@@ -97,24 +116,32 @@ export const LandingSignUpForm: React.FC = () => {
                     <Input
                       data={FirstNameData}
                       name="first_name"
+                      value={value.first_name}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={LastNameData}
                       name="last_name"
+                      value={value.last_name}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={AccountEmailData}
                       name="email"
+                      value={value.email}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />
                     <Input
                       data={PhoneNumberData}
                       name="phone_number"
+                      value={value.phone_number}
+                      setValue={handleValue}
                       required={true}
                       disabled={false}
                     />

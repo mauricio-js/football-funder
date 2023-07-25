@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { InputType } from "types";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -11,17 +10,20 @@ interface InputProps {
   data: InputType;
   disabled: boolean;
   required: boolean;
+  value: any;
+  setValue: (key: string, value: any) => void;
 }
 export const Input: React.FC<InputProps> = ({
   data,
   name,
+  value,
+  setValue,
   disabled,
   required,
 }) => {
-  const { formValues, handleInputChange } = useContext(FormStepperContext)!;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    handleInputChange(name, value);
+    setValue(name, value);
   };
 
   const [inputType, setInputType] = useState<string>(data.type);
@@ -44,7 +46,7 @@ export const Input: React.FC<InputProps> = ({
         <input
           name={name}
           type={inputType}
-          value={formValues[name] || ""}
+          value={value}
           className={classNames(
             "relative bg-white w-full rounded-10 z-10 pt-3 px-3",
             "transition duration-200 ease-linear border-2 border-gray-200 ",
@@ -95,7 +97,7 @@ export const Input: React.FC<InputProps> = ({
           className={classNames(
             "absolute left-3  top-[calc(50%-10px)] origin-[0_0] pointer-events-none text-sm  z-10",
             "duration-200 ease-linear ",
-            floating || formValues[name] ? "scale-75 -translate-y-2.5" : " ",
+            floating || value ? "scale-75 -translate-y-2.5" : " ",
             disabled ? "text-opacity-50 text-gray-10" : "text-gray-10",
             data.content
           )}

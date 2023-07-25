@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { CROWDFUNDDETAILLIVEMENU_URL } from "Lib/urls";
@@ -27,7 +27,15 @@ import {
 
 export const MakeWithdrawal: React.FC = () => {
   const navigate = useNavigate();
-
+  const [withdrawalValue, setWithdrawalValue] = useState<{
+    [key: string]: any;
+  }>({});
+  const handleWithdrawalValue = (key: string, value: any) => {
+    setWithdrawalValue({
+      ...withdrawalValue,
+      [key]: value,
+    });
+  };
   return (
     <Template>
       <div
@@ -63,24 +71,34 @@ export const MakeWithdrawal: React.FC = () => {
                   <Input
                     data={FirstNameData}
                     name="first_name"
+                    value={withdrawalValue.first_name}
+                    setValue={handleWithdrawalValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={LastNameData}
                     name="last_name"
+                    value={withdrawalValue.last_name}
+                    setValue={handleWithdrawalValue}
                     required={true}
                     disabled={false}
                   />
                   <DropdownInput
                     data={ContactPhoneNumberData}
                     name="phone_number"
+                    phoneCountry="pn_country"
+                    country={ContactPhoneNumberData[0].country}
+                    value={withdrawalValue.phone_number}
+                    setValue={handleWithdrawalValue}
                     required={true}
                   />
 
                   <Input
                     data={AddressData}
                     name="address"
+                    value={withdrawalValue.address}
+                    setValue={handleWithdrawalValue}
                     required={true}
                     disabled={false}
                   />
@@ -89,6 +107,8 @@ export const MakeWithdrawal: React.FC = () => {
                   <Select
                     backgroundColor="bg-white"
                     name="country"
+                    value={withdrawalValue}
+                    setValue={handleWithdrawalValue}
                     label="Country (Region)"
                     SelectFormData={RegionData}
                     textSize="generalText"
@@ -103,12 +123,16 @@ export const MakeWithdrawal: React.FC = () => {
               <Input
                 data={AccountNumberData}
                 name="account_number"
+                value={withdrawalValue.account_number}
+                setValue={handleWithdrawalValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={SortCodeData}
                 name="sort_code"
+                value={withdrawalValue.sort_code}
+                setValue={handleWithdrawalValue}
                 required={true}
                 disabled={false}
               />

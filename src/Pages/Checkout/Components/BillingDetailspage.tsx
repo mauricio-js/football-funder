@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   DropdownInput,
@@ -17,11 +17,14 @@ import {
   RegionData,
 } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const BillingDetailsPage: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { checkoutValue, handleCheckoutValue } = useContext(FormStepperContext);
+
   return (
     <form>
       <div
@@ -42,29 +45,41 @@ export const BillingDetailsPage: React.FC<StepperActionPropsType> = ({
               <Input
                 data={FirstNameData}
                 name="first_name"
+                value={checkoutValue.first_name}
+                setValue={handleCheckoutValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={LastNameData}
                 name="last_name"
+                value={checkoutValue.last_name}
+                setValue={handleCheckoutValue}
                 required={true}
                 disabled={false}
               />
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                country={ContactPhoneNumberData[0].country}
+                value={checkoutValue.phone_number}
+                setValue={handleCheckoutValue}
                 required={true}
               />
               <Input
                 data={AddressData}
                 name="address"
+                value={checkoutValue.address}
+                setValue={handleCheckoutValue}
                 required={true}
                 disabled={false}
               />
               <Select
                 backgroundColor="bg-white"
                 name="country"
+                value={checkoutValue.country}
+                setValue={handleCheckoutValue}
                 label="Country (Region)"
                 SelectFormData={RegionData}
                 textSize="generalText"

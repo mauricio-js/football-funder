@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
-import dayjs from "dayjs";
 import { useAxios } from "Lib";
+import dayjs from "dayjs";
 import {
   Button,
-  CheckBox,
   DatePicker,
   Input,
   PageSectionTitle,
@@ -14,6 +13,7 @@ import {
   StepLabel,
   StepperBackButton,
   Textarea,
+  ConfirmBox,
 } from "UI";
 import { AvailableNumberData, DeliveryData, DispatchDateData } from "Config";
 import { FormStepperContext } from "App/FormStepperProvider";
@@ -22,60 +22,62 @@ import { useMutation } from "react-query";
 import { StatusContext } from "App/StatusProvider";
 import { setReward } from "Data/Reward";
 export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
-  handleNextPage,
   handlePrevPage,
+  handleNextPage,
 }) => {
   const axios = useAxios();
   const dispatch = useDispatch();
-  // const rewardDataList = useSelector((state: AppState) => state.reward);
   const { showStatus } = useContext(StatusContext);
-  const {
-    formValues,
-    descriptionList,
-    amount,
-    dateList,
-    selectedCheckbox,
-    selectValue,
-    addRewardData,
-    handleRewardIdArray,
-  } = useContext(FormStepperContext);
-
-  //  front-end
-  const addRewardPageData: any = {
-    reward_title: descriptionList.reward_title,
-    donation_amount: amount.donation_amount,
-    reward_short_description: descriptionList.reward_short_description,
-    delivery: selectValue.delivery,
-    available_num: formValues.available_num,
-    limit: selectedCheckbox.limit,
-    reward_additional_info: descriptionList.reward_additional_info,
-    dispatch_date: dateList.dispatch_date,
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    limit: false,
+  });
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      ...confirm,
+      [key]: !value,
+    });
   };
+  const { handleRewardIdArray } = useContext(FormStepperContext);
 
+  const [rewardValue, setRewardValue] = useState<{
+    [key: string]: any;
+  }>({
+    title: "",
+    amount: "",
+    description: "",
+    delivery: 0,
+    availableNumber: "",
+    about: "",
+    dispatchDate: "",
+  });
+  const handleRewardValue = (key: string, value: any) => {
+    setRewardValue({
+      ...rewardValue,
+      [key]: value,
+    });
+  };
   //  back-end
   const rewardData: any = {
-    title: descriptionList.reward_title,
-    amount: amount.donation_amount?.toString(),
-    description: descriptionList.reward_short_description,
-    delivery: selectValue.delivery ? true : false,
-    availableNumber: formValues.available_num
-      ? parseInt(formValues.available_num)
-      : 0,
-    unlimited: selectedCheckbox.limit?.includes(1) ? true : false || false,
-    about: descriptionList.reward_additional_info,
-    dispatchDate: dayjs(dateList.dispatch_date).format("YYYY-MM-DD"),
+    title: rewardValue.title,
+    amount: rewardValue.amount,
+    description: rewardValue.description,
+    delivery: rewardValue.delivery === 1 ? true : false,
+    availableNumber: parseInt(rewardValue.availableNumber),
+    unlimited: confirm.limit,
+    about: rewardValue.about,
+    dispatchDate: dayjs(rewardValue.dispatch_date).format("YYYY-MM-DD"),
   };
 
   const { mutate: addReward } = useMutation(
     (params: any) => axios.post("/fundraiser/createReward", params),
     {
       onSuccess: (res) => {
-        showStatus("Your fundraiser has been succesfully created!");
+        showStatus("Your reward has been successfully added!");
         const rewardData = res.data.data;
         dispatch(setReward(rewardData));
         handleRewardIdArray(rewardData.id);
         // console.log("rewardArray", rewardData.id, rewardIdArray);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        handleNextPage();
       },
       onError: (err: any) => {
         console.log(err);
@@ -85,10 +87,8 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
 
   const handleBtnClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addRewardData(addRewardPageData);
-    addReward(rewardData);
 
-    handleNextPage();
+    addReward(rewardData);
   };
 
   return (
@@ -117,7 +117,9 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
             <PageSectionTitle title="Reward title" />
             <div className="mt-15">
               <Textarea
-                name="reward_title"
+                name="title"
+                value={rewardValue.title}
+                setValue={handleRewardValue}
                 title="Reward title"
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 limit={150}
@@ -130,14 +132,20 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
           <div>
             <PageSectionTitle title="Donation amount to qualify" />
             <div className="mt-15">
-              <AmountShow name="donation_amount" />
+              <AmountShow
+                name="amount"
+                value={rewardValue.amount}
+                setValue={handleRewardValue}
+              />
             </div>
           </div>
           <div>
             <PageSectionTitle title="Reward description" />
             <div className="mt-[15px]">
               <Textarea
-                name="reward_short_description"
+                name="description"
+                value={rewardValue.description}
+                setValue={handleRewardValue}
                 title="Short description"
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 limit={150}
@@ -152,16 +160,18 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-15 flex gap-30">
               <Input
                 data={AvailableNumberData}
-                name="available_num"
-                required={true}
+                name="availableNumber"
+                value={rewardValue.availableNumber}
+                setValue={handleRewardValue}
+                required={false}
                 disabled={false}
               />
-              <CheckBox
-                align="flex-row-reverse gap-[10px]"
-                label="Unlimited"
-                value={1}
-                textClass="generalText text-green-70"
+              <ConfirmBox
                 name="limit"
+                label="Unlimited"
+                checkboxStyle={true}
+                value={confirm.limit}
+                setValue={handleConfirm}
               />
             </div>
           </div>
@@ -175,9 +185,11 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 height="h-[350px] max-ns:h-[390px] "
                 showLeftCharacters={false}
-                name="reward_additional_info"
+                name="about"
+                value={rewardValue.about}
+                setValue={handleRewardValue}
                 title="Description"
-                required={true}
+                required={false}
               />
             </div>
           </div>
@@ -189,6 +201,8 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-15">
               <RadioButtonList
                 name="delivery"
+                value={rewardValue.delivery}
+                setValue={handleRewardValue}
                 options={DeliveryData}
                 classes="flex gap-30"
                 textStyle="text-base"
@@ -202,7 +216,13 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
               intro="When can a support expect their reward to be sent?"
             />
             <div className="mt-15">
-              <DatePicker data={DispatchDateData} name="dispatch_date" />
+              <DatePicker
+                data={DispatchDateData}
+                name="dispatch_date"
+                value={rewardValue.dispatch_date}
+                setValue={handleRewardValue}
+                required={true}
+              />
             </div>
           </div>
           <div>

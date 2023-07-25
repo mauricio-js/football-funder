@@ -32,13 +32,20 @@ interface FundraiserSignUpSecondStepPropsType {
 export const AdvertisingSignUpSecondStep: React.FC<
   FundraiserSignUpSecondStepPropsType
 > = ({ handleSubmit, handlePrevPage }) => {
-  const { formValues } = useContext(FormStepperContext);
+  const { advertisingRegisterValue, handleAdvertisingRegisterValue } =
+    useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirm_password) {
+    if (
+      advertisingRegisterValue.password !==
+      advertisingRegisterValue.confirm_password
+    ) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
+    } else if (
+      advertisingRegisterValue.password &&
+      advertisingRegisterValue.password.length < 8
+    ) {
       showStatus("Password must be longer than 8 characters", "error");
     } else {
       handleSubmit();
@@ -71,6 +78,8 @@ export const AdvertisingSignUpSecondStep: React.FC<
               <Input
                 data={ContactOrganisationData}
                 name="org_name"
+                value={advertisingRegisterValue.org_name}
+                setValue={handleAdvertisingRegisterValue}
                 required={true}
                 disabled={false}
               />
@@ -78,6 +87,10 @@ export const AdvertisingSignUpSecondStep: React.FC<
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="org_phone_number"
+                phoneCountry="org_pn_country"
+                value={advertisingRegisterValue.org_phone_number}
+                setValue={handleAdvertisingRegisterValue}
+                country={advertisingRegisterValue.pn_country}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -85,7 +98,9 @@ export const AdvertisingSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine1Data}
-                      name="org_address_line1"
+                      name="org_address1"
+                      value={advertisingRegisterValue.org_address1}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -93,7 +108,9 @@ export const AdvertisingSignUpSecondStep: React.FC<
                   <div className="w-1/2">
                     <Input
                       data={ContactAddressLine2Data}
-                      name="org_address_line2"
+                      name="org_address2"
+                      value={advertisingRegisterValue.org_address2}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -104,6 +121,8 @@ export const AdvertisingSignUpSecondStep: React.FC<
                     <Input
                       data={ContactTownData}
                       name="org_city"
+                      value={advertisingRegisterValue.org_city}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -112,6 +131,8 @@ export const AdvertisingSignUpSecondStep: React.FC<
                     <Input
                       data={ContactPostcodeData}
                       name="org_post_code"
+                      value={advertisingRegisterValue.org_post_code}
+                      setValue={handleAdvertisingRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -125,6 +146,8 @@ export const AdvertisingSignUpSecondStep: React.FC<
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
+                  value={advertisingRegisterValue.org_country}
+                  setValue={handleAdvertisingRegisterValue}
                 />
               </div>
             </div>
@@ -136,18 +159,24 @@ export const AdvertisingSignUpSecondStep: React.FC<
             <Input
               data={AccountEmailData}
               name="email"
+              value={advertisingRegisterValue.email}
+              setValue={handleAdvertisingRegisterValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountPasswordData}
               name="password"
+              value={advertisingRegisterValue.password}
+              setValue={handleAdvertisingRegisterValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountConfirmPasswordData}
               name="confirm_password"
+              value={advertisingRegisterValue.confirm_password}
+              setValue={handleAdvertisingRegisterValue}
               required={true}
               disabled={false}
             />
@@ -165,6 +194,8 @@ export const AdvertisingSignUpSecondStep: React.FC<
             <Input
               data={ProfileURLData}
               name="profile_url"
+              value={advertisingRegisterValue.profile_url}
+              setValue={handleAdvertisingRegisterValue}
               required={true}
               disabled={false}
             />

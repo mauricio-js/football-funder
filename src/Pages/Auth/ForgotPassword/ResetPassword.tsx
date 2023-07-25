@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useMutation } from "react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { AccountConfirmPasswordData, AccountPasswordData } from "Config";
@@ -6,7 +6,6 @@ import { Button, Input, Template } from "UI";
 import { useAxios } from "Lib";
 import { SIGNIN_URL, FORGOTPASSWORD_URL } from "Lib/urls";
 import { StatusContext } from "App/StatusProvider";
-import { FormStepperContext } from "App/FormStepperProvider";
 
 interface ResetPasswordType {
   token: string | undefined;
@@ -14,17 +13,25 @@ interface ResetPasswordType {
   password_confirmation: string | null;
 }
 export const ResetPassword: React.FC = () => {
+  const [resetPasswordValue, setResetPasswordValue] = useState<{
+    [key: string]: any;
+  }>({});
+  const handleResetPasswordValue = (name: string, value: any) => {
+    setResetPasswordValue({
+      ...resetPasswordValue,
+      [name]: value,
+    });
+  };
   const params = useParams<string>();
   const navigate = useNavigate();
   const { showStatus } = useContext(StatusContext);
-  const { formValues } = useContext(FormStepperContext)!;
   const axios = useAxios();
 
   const resetPassword = useMutation(
     (parms: ResetPasswordType) => axios.post("/auth/reset_password", parms),
     {
       onSuccess: () => {
-        showStatus("Your password has been succesfully created!");
+        showStatus("Your password has been successfully created!");
         navigate(SIGNIN_URL);
       },
       onError: (err: any) => {
@@ -57,8 +64,8 @@ export const ResetPassword: React.FC = () => {
     event.preventDefault();
     const formData = {
       token: params?.token,
-      password: formValues.password,
-      password_confirmation: formValues.password_confirmation,
+      password: resetPasswordValue.password,
+      password_confirmation: resetPasswordValue.password_confirmation,
     };
     // console.log("formdata", formData);
     resetPassword.mutate(formData);
@@ -81,12 +88,16 @@ export const ResetPassword: React.FC = () => {
             <Input
               data={AccountPasswordData}
               name="password"
+              value={resetPasswordValue.password}
+              setValue={handleResetPasswordValue}
               required={true}
               disabled={false}
             />
             <Input
               data={AccountConfirmPasswordData}
               name="password_confirmation"
+              value={resetPasswordValue.password_confirmation}
+              setValue={handleResetPasswordValue}
               required={true}
               disabled={false}
             />

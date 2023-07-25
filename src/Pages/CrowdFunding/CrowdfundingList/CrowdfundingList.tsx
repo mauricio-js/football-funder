@@ -35,7 +35,17 @@ import { listingDataFetch } from "Utils";
 
 export const CrowdfundingList: React.FC = () => {
   const axios = useAxios();
-
+  const [listValue, setListValue] = useState<{ [key: string]: any }>({
+    sort: "",
+    status_filter: "",
+    org_filter: "",
+  });
+  const handleListValue = (key: string, value: any) => {
+    setListValue({
+      ...listValue,
+      [key]: value,
+    });
+  };
   const [openFilterForm, setOpenFilterForm] = useState<boolean>(false);
   const [region, setRegion] = useState<string>(ListingPageDropdownData[0].name);
   const [horizontalLayout, setHorizonalLayout] = useState<boolean>(false);
@@ -85,7 +95,9 @@ export const CrowdfundingList: React.FC = () => {
                     <Accordion title="Sort By">
                       <div className="mt-4">
                         <RadioButtonList
-                          name="sort_by"
+                          name="sort"
+                          value={listValue.sort}
+                          setValue={handleListValue}
                           options={SortByData}
                           classes="flex flex-col gap-5"
                           textStyle="text-base"
@@ -96,13 +108,17 @@ export const CrowdfundingList: React.FC = () => {
 
                     <Accordion title="Organisation">
                       <CheckBoxList
-                        name="organisation_filter"
+                        name="org_filter"
+                        value={listValue.org_filter}
+                        setValue={handleListValue}
                         options={OrganisationFilterData}
                       />
                     </Accordion>
                     <Accordion title="Status">
                       <CheckBoxList
                         name="status_filter"
+                        value={listValue.status_filter}
+                        setValue={handleListValue}
                         options={StatusFilterData}
                       />
                     </Accordion>
@@ -111,7 +127,9 @@ export const CrowdfundingList: React.FC = () => {
                         <div className="w-[180px]">
                           <Input
                             data={MileDistanceInputFormData}
-                            name="mile_distance"
+                            name="mileDistance"
+                            value={listValue.mileDistance}
+                            setValue={handleListValue}
                             required={true}
                             disabled={false}
                           />
@@ -119,7 +137,9 @@ export const CrowdfundingList: React.FC = () => {
                         <div className="w-[180px]">
                           <Input
                             data={PostcodeDistanceInputFormData}
-                            name="postcode_distance"
+                            name="postcodeDistance"
+                            value={listValue.postcodeDistance}
+                            setValue={handleListValue}
                             required={true}
                             disabled={false}
                           />

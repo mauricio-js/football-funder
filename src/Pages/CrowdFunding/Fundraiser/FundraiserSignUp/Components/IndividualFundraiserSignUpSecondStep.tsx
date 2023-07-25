@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Button,
   DropdownInput,
@@ -9,7 +9,7 @@ import {
   StepLabel,
   DatePicker,
   StepperBackButton,
-  CheckBox,
+  ConfirmBox,
 } from "UI";
 import {
   AccountConfirmPasswordData,
@@ -36,17 +36,31 @@ interface FundraiserSignUpSecondStepPropsType {
 export const IndivididualFundraiserSignUpSecondStep: React.FC<
   FundraiserSignUpSecondStepPropsType
 > = ({ handlePrevPage, handleSubmit }) => {
-  const { formValues, selectedCheckbox } = useContext(FormStepperContext);
+  const { fundraierRegisterValue, handleFundraiserRegisterValue } =
+    useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
-
+  const [confirm, setConfirm] = useState<{ [key: string]: any }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      [key]: !value,
+    });
+  };
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (formValues.password !== formValues.confirm_password) {
+    if (
+      fundraierRegisterValue.password !==
+      fundraierRegisterValue.confirm_password
+    ) {
       showStatus("These passwords do not match. Try again.", "error");
-    } else if (formValues.password && formValues.password.length < 8) {
+    } else if (
+      fundraierRegisterValue.password &&
+      fundraierRegisterValue.password.length < 8
+    ) {
       showStatus("Password must be longer than 8 characters", "error");
     } else {
-      if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+      if (!confirm.confirm) {
         showStatus(
           "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
           "error"
@@ -85,20 +99,34 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
                 <Input
                   data={FirstNameData}
                   name="first_name"
+                  value={fundraierRegisterValue.first_name}
+                  setValue={handleFundraiserRegisterValue}
                   required={true}
                   disabled={false}
                 />
                 <Input
                   data={LastNameData}
                   name="last_name"
+                  value={fundraierRegisterValue.last_name}
+                  setValue={handleFundraiserRegisterValue}
                   required={true}
                   disabled={false}
                 />
-                <DatePicker data={DateData} name="birth_date" />
+                <DatePicker
+                  data={DateData}
+                  name="birth_date"
+                  value={fundraierRegisterValue.birth_date}
+                  setValue={handleFundraiserRegisterValue}
+                  required={true}
+                />
               </div>
               <DropdownInput
                 data={ContactPhoneNumberData}
                 name="phone_number"
+                phoneCountry="pn_country"
+                value={fundraierRegisterValue.phone_number}
+                setValue={handleFundraiserRegisterValue}
+                country={fundraierRegisterValue.pn_country}
                 required={true}
               />
               <div className="flex flex-col gap-[10px]">
@@ -107,6 +135,8 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactAddressLine1Data}
                       name="address_line1"
+                      value={fundraierRegisterValue.address_line1}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -115,6 +145,8 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactAddressLine2Data}
                       name="address_line2"
+                      value={fundraierRegisterValue.address_line2}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -125,6 +157,8 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactTownData}
                       name="city"
+                      value={fundraierRegisterValue.city}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -133,6 +167,8 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
                     <Input
                       data={ContactPostcodeData}
                       name="post_code"
+                      value={fundraierRegisterValue.post_code}
+                      setValue={handleFundraiserRegisterValue}
                       required={true}
                       disabled={false}
                     />
@@ -146,6 +182,8 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
                   label="Country (Region)"
                   SelectFormData={RegionData}
                   textSize="generalText"
+                  value={fundraierRegisterValue.country}
+                  setValue={handleFundraiserRegisterValue}
                 />
               </div>
               <div className="mt-30 xs:w-[500px]">
@@ -154,18 +192,24 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
                   <Input
                     data={AccountEmailData}
                     name="email"
+                    value={fundraierRegisterValue.email}
+                    setValue={handleFundraiserRegisterValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={AccountPasswordData}
                     name="password"
+                    value={fundraierRegisterValue.password}
+                    setValue={handleFundraiserRegisterValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={AccountConfirmPasswordData}
                     name="confirm_password"
+                    value={fundraierRegisterValue.confirm_password}
+                    setValue={handleFundraiserRegisterValue}
                     required={true}
                     disabled={false}
                   />
@@ -175,12 +219,19 @@ export const IndivididualFundraiserSignUpSecondStep: React.FC<
               <div className="mt-30">
                 <PageSectionTitle title="Confirmation" />
                 <div className="mt-[15px]">
-                  <CheckBox
+                  {/* <CheckBox
                     align="flex-row-reverse gap-[10px]"
                     name="confirm"
                     label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
                     value={1}
                     textClass="generalSmallText text-gray-500"
+                  /> */}
+                  <ConfirmBox
+                    name="confirm"
+                    label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
+                    checkboxStyle={true}
+                    value={confirm.confirm}
+                    setValue={handleConfirm}
                   />
                 </div>
               </div>

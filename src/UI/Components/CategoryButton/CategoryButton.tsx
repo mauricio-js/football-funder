@@ -1,28 +1,30 @@
-import React, { useContext } from "react";
+import React from "react";
 import classNames from "classnames";
-import { FormStepperContext } from "App/FormStepperProvider";
 
 interface CategoryButtonPropsType {
   label: string;
   value: number;
   name: string;
+  checked: boolean;
+  onChange: (key: string, value: any) => void;
 }
 
 export const CategoryButton: React.FC<CategoryButtonPropsType> = ({
   name,
   label,
   value,
+  checked,
+  onChange,
 }) => {
-  const { selectValue, handleSelectInput } = useContext(FormStepperContext)!;
   const handleSelect = () => {
-    handleSelectInput(name, value);
+    onChange(name, value);
   };
   return (
     <div className="flex justify-center peer" onClick={handleSelect}>
       <input
         type="radio"
         value={value}
-        checked={selectValue.name === value}
+        checked={checked}
         onChange={handleSelect}
         className="appearance-none"
       />
@@ -31,7 +33,7 @@ export const CategoryButton: React.FC<CategoryButtonPropsType> = ({
           "cursor-pointer select-none rounded-xl px-[50px] max-md:px-8 py-[15px]",
           "text-green-70 text-[14x] leading-[20px] font-semibold",
           "border-[1px] border-gray-300",
-          selectValue[name] === value && "bg-green-10"
+          checked && "bg-green-10"
         )}
       >
         {label}

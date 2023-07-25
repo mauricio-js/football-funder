@@ -16,29 +16,29 @@ import { EMAILVERIFICATION_URL } from "Lib/urls";
 export const AdvertisingSignUp: React.FC = () => {
   const axios = useAxios();
   const navigate = useNavigate();
-  const { selectValue, formValues } = useContext(FormStepperContext);
+  const { advertisingRegisterValue } = useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
-  const data: registerFormDataType = {
-    category_id: selectValue.advertiser_category,
-    org_name: formValues.org_name,
-    org_address1: formValues.org_address_line1,
-    org_address2: formValues.org_address_line2,
-    org_phone_number: formValues.org_phone_number,
-    org_city: formValues.org_city,
-    org_country: formValues.org_country,
-    org_post_code: formValues.org_post_code,
-    address_line1: formValues.address_line1,
-    address_line2: formValues.address_line2,
-    city: formValues.city,
-    post_code: formValues.post_code,
-    country: formValues.country,
-    phone_number: formValues.phone_number,
-    first_name: formValues.first_name,
-    last_name: formValues.last_name,
-    email: formValues.email,
-    password: formValues.password,
-    profile_url: formValues.profile_url,
+  const data: any = {
+    category_id: advertisingRegisterValue.category_id,
+    org_name: advertisingRegisterValue.org_name,
+    org_address1: advertisingRegisterValue.org_address1,
+    org_address2: advertisingRegisterValue.org_address2,
+    org_phone_number: advertisingRegisterValue.org_phone_number,
+    org_city: advertisingRegisterValue.org_city,
+    org_country: advertisingRegisterValue.org_country,
+    org_post_code: advertisingRegisterValue.org_post_code,
+    address_line1: advertisingRegisterValue.address_line1,
+    address_line2: advertisingRegisterValue.address_line2,
+    city: advertisingRegisterValue.city,
+    post_code: advertisingRegisterValue.post_code,
+    country: advertisingRegisterValue.country,
+    phone_number: advertisingRegisterValue.phone_number,
+    first_name: advertisingRegisterValue.first_name,
+    last_name: advertisingRegisterValue.last_name,
+    email: advertisingRegisterValue.email,
+    password: advertisingRegisterValue.password,
+    profile_url: advertisingRegisterValue.profile_url,
   };
 
   const advertiserSignUp = useMutation(
@@ -67,7 +67,6 @@ export const AdvertisingSignUp: React.FC = () => {
 
   function onClickSubmitBtn() {
     advertiserSignUp.mutate(data);
-    // console.log("params", data);
   }
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -95,7 +94,7 @@ export const AdvertisingSignUp: React.FC = () => {
       ),
     },
     ...[
-      selectValue.advertiser_category === 2
+      advertisingRegisterValue.category_id === 2
         ? {
             name: "IndivididualAdvertiserSignUpSecondStep",
             component: (

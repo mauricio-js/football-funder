@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   FileNameCoverInput,
@@ -11,11 +11,14 @@ import {
 } from "UI";
 import { VideoURLData } from "Config";
 import { StepperActionPropsType } from "types";
+import { FormStepperContext } from "App/FormStepperProvider";
 
 export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
   handleNextPage,
   handlePrevPage,
 }) => {
+  const { createFundraiserValue, handleCreateFundraiserValue } =
+    useContext(FormStepperContext);
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     handleNextPage();
@@ -42,10 +45,12 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
             />
             <div className="mt-[15px] xs:w-[500px]">
               <Textarea
-                name="description"
+                name="about"
+                title="Description"
+                value={createFundraiserValue.about}
+                setValue={handleCreateFundraiserValue}
                 height="ns:h-[350px] vs:h-[390px] "
                 showLeftCharacters={false}
-                title="Description"
                 titleStyle="text-[10px] leading-[14px] text-gray-10 after:content-['*'] after:ml-1 after:text-green-10"
                 required={true}
               />
@@ -59,7 +64,11 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
             />
             <div className="mt-[15px]">
               <div className="xs:w-[500px]">
-                <FileNameCoverInput name="title_image" uploadUrl="fundraiser" />
+                <FileNameCoverInput
+                  name="titleImg"
+                  imageName={createFundraiserValue.titleImgName}
+                  setValue={handleCreateFundraiserValue}
+                />
               </div>
             </div>
           </div>
@@ -82,8 +91,9 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
                 </div>
                 <div className="w-1/2">
                   <FileNameCoverInput
-                    name="pitch_image"
-                    uploadUrl="fundraiser"
+                    name="pitchImg"
+                    imageName={createFundraiserValue.pitchImgName}
+                    setValue={handleCreateFundraiserValue}
                   />
                 </div>
               </div>
@@ -91,8 +101,10 @@ export const CreateFundraiserSecondStep: React.FC<StepperActionPropsType> = ({
             <div className="mt-[15px] xs:w-[500px] w-full">
               <Input
                 data={VideoURLData}
-                name="video_url"
-                required={true}
+                name="pitchVideoLink"
+                value={createFundraiserValue.pitchVideoLink}
+                setValue={handleCreateFundraiserValue}
+                required={false}
                 disabled={false}
               />
             </div>

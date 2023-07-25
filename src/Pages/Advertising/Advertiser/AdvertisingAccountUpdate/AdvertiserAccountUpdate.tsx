@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   Button,
-  CheckBox,
   DropdownInput,
   Input,
   PageSectionTitle,
@@ -10,6 +9,7 @@ import {
   StepLabel,
   DatePicker,
   Template,
+  ConfirmBox,
 } from "UI";
 import {
   AccountEmailData,
@@ -31,17 +31,47 @@ import { StatusContext } from "App/StatusProvider";
 import { useAxios } from "Lib";
 import { CREATEADVERTISING_URL } from "Lib/urls";
 import { useNavigate } from "react-router-dom";
-import { FormStepperContext } from "App/FormStepperProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "react-query";
 import { registerFormDataType } from "Pages/Auth/SingUp/types";
 import { setUserInfo } from "Data/User";
 
 export const AdvertisingAccountUpdate: React.FC = () => {
+  const [advertiserAccountUpdateValue, setAdvertiserAccountUpdateValue] =
+    useState<{
+      [key: string]: any;
+    }>({
+      first_name: "",
+      last_name: "",
+      address_line1: "",
+      address_line2: "",
+      city: "",
+      post_code: "",
+      country: "",
+      phone_number: "",
+      phone_country: ContactPhoneNumberData[0].country,
+      profile_url: "",
+      birth_date: "",
+    });
+  const handleAdvertiserAccountUpdateValue = (key: string, value: any) => {
+    setAdvertiserAccountUpdateValue({
+      ...advertiserAccountUpdateValue,
+      [key]: value,
+    });
+  };
+  const [confirm, setConfirm] = useState<{
+    [key: string]: boolean;
+  }>({
+    confirm: false,
+  });
+  const handleConfirm = (key: string, value: boolean) => {
+    setConfirm({
+      ...confirm,
+      [key]: !value,
+    });
+  };
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state: any) => state.user);
-  const { formValues, selectValue, selectedCheckbox } =
-    useContext(FormStepperContext);
   const axios = useAxios();
   const navigate = useNavigate();
 
@@ -49,7 +79,7 @@ export const AdvertisingAccountUpdate: React.FC = () => {
 
   const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!selectedCheckbox.confirm || selectedCheckbox.confirm.length === 0) {
+    if (!confirm.confirm) {
       showStatus(
         "You must confirm Football Funder’s Terms & Conditions and Fraud Policy",
         "error"
@@ -60,22 +90,14 @@ export const AdvertisingAccountUpdate: React.FC = () => {
   };
 
   const data: any = {
-    category_id: selectValue.advertiser_category,
-    org_name: formValues.org_name,
-    org_address_line1: formValues.org_address_line1,
-    org_address_line2: formValues.org_address_line2,
-    org_phone_number: formValues.org_phone_number,
-    org_city: formValues.org_city,
-    org_post_code: formValues.org_postcode,
-    org_country: formValues.org_country,
-    address_line1: formValues.address_line1,
-    address_line2: formValues.address_line2,
-    city: formValues.city,
-    post_code: formValues.post_code,
-    country: formValues.country,
-    phone_number: formValues.phone_number,
-    first_name: formValues.first_name,
-    last_name: formValues.last_name,
+    address_line1: advertiserAccountUpdateValue.address_line1,
+    address_line2: advertiserAccountUpdateValue.address_line2,
+    city: advertiserAccountUpdateValue.city,
+    post_code: advertiserAccountUpdateValue.post_code,
+    country: advertiserAccountUpdateValue.country,
+    phone_number: advertiserAccountUpdateValue.phone_number,
+    first_name: advertiserAccountUpdateValue.first_name,
+    last_name: advertiserAccountUpdateValue.last_name,
   };
   const storeUserInfo = (userInfo: any) => {
     dispatch(setUserInfo(userInfo));
@@ -124,20 +146,34 @@ export const AdvertisingAccountUpdate: React.FC = () => {
                   <Input
                     data={FirstNameData}
                     name="first_name"
+                    value={advertiserAccountUpdateValue.first_name}
+                    setValue={handleAdvertiserAccountUpdateValue}
                     required={true}
                     disabled={false}
                   />
                   <Input
                     data={LastNameData}
                     name="last_name"
+                    value={advertiserAccountUpdateValue.last_name}
+                    setValue={handleAdvertiserAccountUpdateValue}
                     required={true}
                     disabled={false}
                   />
-                  <DatePicker data={DateData} name="birth_date" />
+                  <DatePicker
+                    data={DateData}
+                    name="birth_date"
+                    value={advertiserAccountUpdateValue.birth_date}
+                    setValue={handleAdvertiserAccountUpdateValue}
+                    required={true}
+                  />
                 </div>
                 <DropdownInput
                   data={ContactPhoneNumberData}
                   name="phone_number"
+                  phoneCountry="pn_country"
+                  country={ContactPhoneNumberData[0].country}
+                  setValue={handleAdvertiserAccountUpdateValue}
+                  value={advertiserAccountUpdateValue.phone_country}
                   required={true}
                 />
                 <div className="flex flex-col gap-[10px]">
@@ -146,6 +182,8 @@ export const AdvertisingAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactAddressLine1Data}
                         name="address_line1"
+                        value={advertiserAccountUpdateValue.address_line1}
+                        setValue={handleAdvertiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -154,6 +192,8 @@ export const AdvertisingAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactAddressLine2Data}
                         name="address_line2"
+                        value={advertiserAccountUpdateValue.address_line2}
+                        setValue={handleAdvertiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -164,6 +204,8 @@ export const AdvertisingAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactTownData}
                         name="city"
+                        value={advertiserAccountUpdateValue.city}
+                        setValue={handleAdvertiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -172,6 +214,8 @@ export const AdvertisingAccountUpdate: React.FC = () => {
                       <Input
                         data={ContactPostcodeData}
                         name="post_code"
+                        value={advertiserAccountUpdateValue.post_code}
+                        setValue={handleAdvertiserAccountUpdateValue}
                         required={true}
                         disabled={false}
                       />
@@ -182,6 +226,8 @@ export const AdvertisingAccountUpdate: React.FC = () => {
                   <Select
                     backgroundColor="bg-white"
                     name="country"
+                    value={advertiserAccountUpdateValue.country}
+                    setValue={handleAdvertiserAccountUpdateValue}
                     label="Country (Region)"
                     SelectFormData={RegionData}
                     textSize="generalText"
@@ -196,18 +242,24 @@ export const AdvertisingAccountUpdate: React.FC = () => {
               <Input
                 data={AccountEmailData}
                 name="email"
+                value={advertiserAccountUpdateValue.email}
+                setValue={handleAdvertiserAccountUpdateValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={AccountPasswordData}
                 name="password"
+                value={advertiserAccountUpdateValue.password}
+                setValue={handleAdvertiserAccountUpdateValue}
                 required={true}
                 disabled={false}
               />
               <Input
                 data={AccountConfirmPasswordData}
                 name="confirm_password"
+                value={advertiserAccountUpdateValue.confirm_password}
+                setValue={handleAdvertiserAccountUpdateValue}
                 required={true}
                 disabled={false}
               />
@@ -225,6 +277,8 @@ export const AdvertisingAccountUpdate: React.FC = () => {
               <Input
                 data={ProfileURLData}
                 name="profile_url"
+                value={advertiserAccountUpdateValue.profile_url}
+                setValue={handleAdvertiserAccountUpdateValue}
                 required={true}
                 disabled={false}
               />
@@ -233,12 +287,12 @@ export const AdvertisingAccountUpdate: React.FC = () => {
           <div className="mt-30">
             <PageSectionTitle title="Confirmation" />
             <div className="mt-[15px]">
-              <CheckBox
+              <ConfirmBox
                 name="confirm"
-                align="flex-row-reverse gap-[10px]"
                 label="I confirm I have read and understand Football Funder’s Terms & Conditions and Fraud Policy"
-                value={0}
-                textClass="generalSmallText text-gray-500"
+                checkboxStyle={true}
+                value={confirm.confirm}
+                setValue={handleConfirm}
               />
             </div>
           </div>

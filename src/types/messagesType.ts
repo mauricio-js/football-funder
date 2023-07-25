@@ -6,4 +6,5 @@ export enum QueryKey {
   AccountAdvertisingList = 'get-accountadvertising-list',
   SponsorshipList = 'get-sponsorship-list',
   AccountSponsorshipList = 'get-accountsponsorship-list',
+  AllListData = 'get-all-list'
 }

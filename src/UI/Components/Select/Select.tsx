@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React, {  useState, useEffect, useRef } from "react";
 import classNames from "classnames";
 import { SelectDataType } from "types";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -10,6 +9,8 @@ interface Props {
   backgroundColor: string;
   label: string;
   textSize: string;
+  value: any;
+  setValue: (key: string, value: any) => void;
 }
 
 export const Select: React.FC<Props> = ({
@@ -18,12 +19,13 @@ export const Select: React.FC<Props> = ({
   SelectFormData,
   textSize,
   label,
+  value,
+  setValue,
 }) => {
-  const { formValues, handleInputChange } = useContext(FormStepperContext)!;
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = event.target;
-  //   handleInputChange(name, value);
-  // };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setValue(name, value);
+  };
   const [floating, setFloating] = useState<boolean>(false);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -51,7 +53,7 @@ export const Select: React.FC<Props> = ({
     <div ref={menuRef} className="relative w-full">
       <input
         type="text"
-        value={formValues[name] || ""}
+        value={value}
         onClick={handleSelectFormClick}
         className={classNames(
           "items-center h-[54px] px-3 pt-3 appearance-none w-full rounded-10 ",
@@ -60,7 +62,7 @@ export const Select: React.FC<Props> = ({
           backgroundColor,
           textSize
         )}
-        onChange={() => {}}
+        onChange={handleChange}
         readOnly={true}
         required
       />
@@ -76,7 +78,7 @@ export const Select: React.FC<Props> = ({
                 key={index}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleInputChange(name, formData.option);
+                  setValue(name, formData.option);
                   setShowOptions(false);
                 }}
                 className={classNames("w-full py-2.5 hover:bg-green-10")}
@@ -100,7 +102,7 @@ export const Select: React.FC<Props> = ({
           "absolute left-3  top-[calc(50%-10px)] origin-[0_0] pointer-events-none text-sm  z-10",
           "duration-200 ease-linear text-gray-10",
           "after:content-['*'] after:ml-1 after:text-green-10",
-          floating || formValues[name] ? "scale-75 -translate-y-2.5" : ""
+          floating || value ? "scale-75 -translate-y-2.5" : ""
         )}
       >
         {label}

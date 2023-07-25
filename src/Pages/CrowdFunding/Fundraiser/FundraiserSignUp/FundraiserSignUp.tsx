@@ -16,28 +16,29 @@ import { EMAILVERIFICATION_URL } from "Lib/urls";
 export const FundraiserSignUp: React.FC = () => {
   const axios = useAxios();
   const navigate = useNavigate();
-  const { formValues, selectValue } = useContext(FormStepperContext);
+  const { fundraierRegisterValue } = useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
-  const data: registerFormDataType = {
-    category_id: selectValue.fundraiser_category,
-    org_name: formValues.org_name,
-    org_address1: formValues.org_address1,
-    org_address2: formValues.org_address2,
-    org_phone_number: formValues.org_phone_number,
-    org_city: formValues.org_city,
-    org_country: formValues.org_country,
-    org_post_code: formValues.org_post_code,
-    address_line1: formValues.address_line1,
-    address_line2: formValues.address_line2,
-    city: formValues.city,
-    post_code: formValues.post_code,
-    country: formValues.country,
-    phone_number: formValues.phone_number,
-    first_name: formValues.first_name,
-    last_name: formValues.last_name,
-    email: formValues.email,
-    password: formValues.password,
+  const data: any = {
+    category_id: fundraierRegisterValue.category_id,
+    org_name: fundraierRegisterValue.org_name,
+    org_address1: fundraierRegisterValue.org_address1,
+    org_address2: fundraierRegisterValue.org_address2,
+    org_phone_number: fundraierRegisterValue.org_phone_number,
+    org_city: fundraierRegisterValue.org_city,
+    org_country: fundraierRegisterValue.org_country,
+    org_post_code: fundraierRegisterValue.org_post_code,
+    address_line1: fundraierRegisterValue.address_line1,
+    address_line2: fundraierRegisterValue.address_line2,
+    city: fundraierRegisterValue.city,
+    post_code: fundraierRegisterValue.post_code,
+    country: fundraierRegisterValue.country,
+    phone_number: fundraierRegisterValue.phone_number,
+    first_name: fundraierRegisterValue.first_name,
+    last_name: fundraierRegisterValue.last_name,
+    email: fundraierRegisterValue.email,
+    password: fundraierRegisterValue.password,
+    profile_url: fundraierRegisterValue.profile_url,
   };
 
   const fundraiserSignUp = useMutation(
@@ -66,6 +67,7 @@ export const FundraiserSignUp: React.FC = () => {
 
   function onClickSubmitBtn() {
     fundraiserSignUp.mutate(data);
+    // console.log("123123", data);
   }
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -90,7 +92,7 @@ export const FundraiserSignUp: React.FC = () => {
       component: <FundraiserSignUpFirstStep handleNextPage={handleNextPage} />,
     },
     ...[
-      selectValue.fundraiser_category === 2
+      fundraierRegisterValue.category_id === 2
         ? {
             name: "IndivididualFundraiserSignUpSecondStep",
             component: (

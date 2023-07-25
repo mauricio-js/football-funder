@@ -1,17 +1,22 @@
-import React, { useContext, useState } from "react";
-import { FormStepperContext } from "App/FormStepperProvider";
+import React, {  useState } from "react";
 import classNames from "classnames";
 import { BiPound } from "react-icons/bi";
 
 interface ShowAmountProps {
   name: string;
   classes?: string;
+  value: any;
+  setValue: (key: string, value: any) => void;
 }
 
-export const AmountShow: React.FC<ShowAmountProps> = ({ name, classes }) => {
-  const { amount, handleAmountChange } = useContext(FormStepperContext)!;
+export const AmountShow: React.FC<ShowAmountProps> = ({
+  name,
+  classes,
+  setValue,
+  value,
+}) => {
   const [inputValue, setInputValue] = useState(
-    amount[name] ? amount[name].toLocaleString("en-US") : ""
+    value ? value.toLocaleString("en-US") : ""
   );
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.replace(/\D/g, "");
@@ -19,7 +24,7 @@ export const AmountShow: React.FC<ShowAmountProps> = ({ name, classes }) => {
     const newAmount = Number(value);
     if (!isNaN(newAmount)) {
       setInputValue(newAmount.toLocaleString("en-US"));
-      handleAmountChange(name, newAmount);
+      setValue(name, newAmount);
     }
   };
   return (

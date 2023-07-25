@@ -88,7 +88,11 @@ export const CreateFundraiserFourthStep: React.FC<StepperActionPropsType> = ({
   const handleBtnClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+
     addReward(rewardData);
+
+ 
+
   };
 
   return (

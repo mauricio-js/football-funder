@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "react-query";
 import { GeneralStepper, Template } from "UI";
 import { SignUpStepFirst, SignUpStepSecond, SignUpStepThird } from "Pages";
@@ -8,12 +9,15 @@ import { EMAILVERIFICATION_URL } from "Lib/urls";
 import { registerFormDataType } from "./types";
 import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
+import { setDefaultRegister } from "Data/DefaultSignUpState";
+import { AppState } from "App/reducers";
 
 export const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const axios = useAxios();
-  const { registerValue } = useContext(FormStepperContext);
-
+  const { registerValue, clearRegisterValue } = useContext(FormStepperContext);
+  const isSignUp = useSelector((state: AppState) => state.register);
+  const dispatch = useDispatch();
   const { showStatus } = useContext(StatusContext);
 
   const data: any = {
@@ -37,11 +41,14 @@ export const SignUp: React.FC = () => {
     password: registerValue.password,
     profile_url: registerValue.profile_url,
   };
-
+  const { defaultRegister } = useSelector((state: AppState) => state.register);
+  console.log("defaultRegister", defaultRegister);
   const signUp = useMutation(
     (params: registerFormDataType) => axios.post("/user/register", params),
     {
       onSuccess: (data) => {
+        clearRegisterValue();
+        dispatch(setDefaultRegister(true));
         showStatus("Your account has been successfully registered!");
         navigate(EMAILVERIFICATION_URL);
       },

@@ -14,6 +14,7 @@ interface uploadImage {
 
 interface FormStepperContextProps {
   // register value context
+  registerBaseValue: any;
   registerValue: { [key: string]: any };
   handleRegisterValue: (key: string, value: any) => void;
   fundraierRegisterValue: { [key: string]: any };
@@ -25,8 +26,6 @@ interface FormStepperContextProps {
   // create list context
   createFundraiserValue: { [key: string]: any };
   handleCreateFundraiserValue: (key: string, value: any) => void;
-  fundraierPitchImg: any[];
-  handleCreateFundraierPitchImg: (imgData: any) => void;
   handleCreateFundraiserPromote: (value: any) => void;
   rewardIdArray: any;
   handleRewardIdArray: (value: any) => void;
@@ -36,9 +35,6 @@ interface FormStepperContextProps {
   createSponsorshipValue: { [key: string]: any };
   handleCreateSponsorshipValue: (key: string, value: any) => void;
   handleCreateSponsorshipPromote: (value: any) => void;
-  // login value context
-  loginValue: { [key: string]: any };
-  handleLoginValue: (key: string, value: any) => void;
   // update password context
   updatePasswordValue: { [key: string]: any };
   handleUpdatePasswordValue: (key: string, value: any) => void;
@@ -64,6 +60,7 @@ interface FormStepperContextProps {
   adsPerkArray: Perk[];
   handleChangePerkValue: (keyword: string, index: number, value: any) => void;
   handleAddNewPerk: () => void;
+  clearAdsPerkArray: () => void;
   // upload pitchImage context
   fundPitchImgArray: uploadImage[];
   handleChangeFundPitchImgValue: (index: number, value: any) => void;
@@ -101,6 +98,26 @@ interface FormStepperContextProps {
   handleChangeAdsTitleImg: (value: any) => void;
   sponsorTitleImg: any;
   handleChangeSponsorTitleImg: (value: any) => void;
+  clearRegisterValue: () => void;
+  clearFundraiserRegisterValue: () => void;
+  clearAdsRegisterValue: () => void;
+  clearSponsorRegisterValue: () => void;
+  clearUpdatePasswordValue: () => void;
+  clearFundraiserUpdateValue: () => void;
+  clearAdsUpdateValue: () => void;
+  clearSponsorUpdateValue: () => void;
+  clearForgotPasswordValue: () => void;
+  clearCreateFundraiserValue: () => void;
+  clearfundTitleImgValue: () => void;
+  clearfundOverlayImgValue: () => void;
+  clearAdsTitleImgValue: () => void;
+  clearSponsorTitleImgValue: () => void;
+  clearCreateAdvertisingValue: () => void;
+  clearCreateSponsorshipValue: () => void;
+  clearFundPitchImgArrayValue: () => void;
+  clearAdsPitchImgArrayValue: () => void;
+  clearSponsorPitchImgArrayValue: () => void;
+  clearRewardIdArrayValue: () => void;
 }
 
 interface FormStepperPropsType {
@@ -212,12 +229,17 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     ...registerBaseValue,
     email_communication: 1,
   });
+
   const handleRegisterValue = (key: string, value: any) => {
     setRegisterValue({
       ...registerValue,
       [key]: value,
     });
   };
+  const clearRegisterValue = () => {
+    setRegisterValue({ ...registerBaseValue });
+  };
+
   const [fundraierRegisterValue, setFundraiserRegisterValue] = useState<{
     [key: string]: any;
   }>({
@@ -229,6 +251,11 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       [key]: value,
     });
   };
+
+  const clearFundraiserRegisterValue = () => {
+    setFundraiserRegisterValue({ ...registerBaseValue });
+  };
+
   const [advertisingRegisterValue, setAdvetisingRegisterValue] = useState<{
     [key: string]: any;
   }>({
@@ -239,6 +266,10 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       ...advertisingRegisterValue,
       [key]: value,
     });
+  };
+
+  const clearAdsRegisterValue = () => {
+    setAdvetisingRegisterValue({ ...registerBaseValue });
   };
   const [sponsorshipRegisterValue, setSponsorshipRegisterValue] = useState<{
     [key: string]: any;
@@ -251,16 +282,11 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       [key]: value,
     });
   };
-  // login context
-  const [loginValue, setLoginValue] = useState<{ [key: string]: any }>({
-    ...loginBaseValue,
-  });
-  const handleLoginValue = (key: string, value: any) => {
-    setLoginValue({
-      ...loginValue,
-      [key]: value,
-    });
+
+  const clearSponsorRegisterValue = () => {
+    setSponsorshipRegisterValue({ ...registerBaseValue });
   };
+
   // update password context
   const [updatePasswordValue, setUpdatePasswordValue] = useState<{}>({
     password: "",
@@ -272,6 +298,15 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setUpdatePasswordValue({
       ...updatePasswordValue,
       [key]: value,
+    });
+  };
+
+  const clearUpdatePasswordValue = () => {
+    setUpdatePasswordValue({
+      password: "",
+      email: "",
+      new_password: "",
+      confirm_password: "",
     });
   };
   // account update context
@@ -287,6 +322,12 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       [key]: value,
     });
   };
+
+  const clearFundraiserUpdateValue = () => {
+    setFundraiserAccountUpdateValue({
+      ...registerBaseValue,
+    });
+  };
   const [advertisingAccountUpdateValue, setAdvertisingAccountUpdateValue] =
     useState<{
       [key: string]: any;
@@ -297,6 +338,12 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setAdvertisingAccountUpdateValue({
       ...advertisingAccountUpdateValue,
       [key]: value,
+    });
+  };
+
+  const clearAdsUpdateValue = () => {
+    setAdvertisingAccountUpdateValue({
+      ...registerBaseValue,
     });
   };
   const [sponsorshipAccountUpdateValue, setSponsorshipAccountUpdateValue] =
@@ -311,6 +358,12 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       [key]: value,
     });
   };
+
+  const clearSponsorUpdateValue = () => {
+    setSponsorshipAccountUpdateValue({
+      ...registerBaseValue,
+    });
+  };
   // forgot password context
   const [forgotPasswordValue, setForgotPasswordValue] = useState<{
     [key: string]: any;
@@ -323,15 +376,17 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       [key]: value,
     });
   };
+
+  const clearForgotPasswordValue = () => {
+    setForgotPasswordValue({
+      email: "",
+    });
+  };
   //  create list context
   const listBaseValue = {
     title: "",
     description: "",
     amount: "",
-    titleImgLink: "",
-    titleImgName: "",
-    // pitchImgLink: "",
-    pitchImg: "",
     pitchVideoLink: "",
     pitchVideoName: "",
     promote: false,
@@ -349,8 +404,6 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
   }>({
     ...listBaseValue,
     about: "",
-    overlayImgLink: "",
-    overlayImgName: "",
     reward_ids: "",
   });
 
@@ -358,6 +411,13 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setCreateFundraiserValue({
       ...createFundraiserValue,
       [key]: value,
+    });
+  };
+  const clearCreateFundraiserValue = () => {
+    setCreateFundraiserValue({
+      ...listBaseValue,
+      about: "",
+      reward_ids: "",
     });
   };
 
@@ -370,10 +430,23 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     let tempPitchImgArray = value;
     setFundTitleImg(tempPitchImgArray);
   };
+  const clearfundTitleImgValue = () => {
+    setFundTitleImg({
+      name: "",
+      img_url: "",
+    });
+  };
   const [fundOverlayImg, setFundOverlayImg] = useState<uploadImage>({
     name: "",
     img_url: "",
   });
+
+  const clearfundOverlayImgValue = () => {
+    setFundOverlayImg({
+      name: "",
+      img_url: "",
+    });
+  };
 
   const handleChangeFundOverlayImg = (value: any) => {
     let tempPitchImgArray = value;
@@ -389,6 +462,13 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setAdsTitleImg(tempPitchImgArray);
   };
 
+  const clearAdsTitleImgValue = () => {
+    setAdsTitleImg({
+      name: "",
+      img_url: "",
+    });
+  };
+
   const [sponsorTitleImg, setSponsorTitleImg] = useState<uploadImage>({
     name: "",
     img_url: "",
@@ -399,13 +479,10 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setSponsorTitleImg(tempPitchImgArray);
   };
 
-  const [fundraierPitchImg, setFundraiserPitchImg] = useState<any[]>([]);
-
-  const handleCreateFundraierPitchImg = (imgData: any) => {
-    setFundraiserPitchImg([...fundraierPitchImg, imgData]);
-    setCreateFundraiserValue({
-      ...createFundraiserValue,
-      pitchImg: fundraierPitchImg,
+  const clearSponsorTitleImgValue = () => {
+    setSponsorTitleImg({
+      name: "",
+      img_url: "",
     });
   };
 
@@ -420,6 +497,9 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setRewardIdArray((preValue: any) => [...preValue, rewardID]);
     handleCreateFundraiserValue("reward_ids", rewardIdArray);
   };
+  const clearRewardIdArrayValue = () => {
+    setRewardIdArray([]);
+  };
 
   const [createAdvertisingValue, setCreateAdvertisingValue] = useState<{
     [key: string]: any;
@@ -431,6 +511,12 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setCreateAdvertisingValue({
       ...createAdvertisingValue,
       [key]: value,
+    });
+  };
+  const clearCreateAdvertisingValue = () => {
+    setCreateAdvertisingValue({
+      ...otherBaseValue,
+      adsNumber: "",
     });
   };
   const handleCreateAdvertisingPromote = () => {
@@ -449,6 +535,12 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setCreateSponsorshipValue({
       ...createSponsorshipValue,
       [key]: value,
+    });
+  };
+
+  const clearCreateSponsorshipValue = () => {
+    setCreateSponsorshipValue({
+      ...otherBaseValue,
     });
   };
   const handleCreateSponsorshipPromote = () => {
@@ -660,6 +752,10 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setAdsPerkArray(tempPerkArray);
   };
 
+  const clearAdsPerkArray = () => {
+    setAdsPerkArray([{ title: "", description: "" }]);
+  };
+
   const handleAddNewPerk = () => {
     setAdsPerkArray([
       ...adsPerkArray,
@@ -669,6 +765,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
       },
     ]);
   };
+
   // upload pitch image context
   const [fundPitchImgArray, setFundPitchImgArray] = useState<uploadImage[]>([
     { name: "", img_url: "" },
@@ -677,6 +774,9 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     let tempPitchImgArray = Array.from(fundPitchImgArray);
     tempPitchImgArray[index] = value;
     setFundPitchImgArray(tempPitchImgArray);
+  };
+  const clearFundPitchImgArrayValue = () => {
+    setFundPitchImgArray([{ name: "", img_url: "" }]);
   };
 
   const handleAddNewFundPitchImgUploadForm = () => {
@@ -696,7 +796,9 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     tempPitchImgArray[index] = value;
     setAdsPitchImgArray(tempPitchImgArray);
   };
-
+  const clearAdsPitchImgArrayValue = () => {
+    setAdsPitchImgArray([{ name: "", img_url: "" }]);
+  };
   const handleAddNewAdsPitchImgUploadForm = () => {
     setAdsPitchImgArray([
       ...adsPitchImgArray,
@@ -715,6 +817,10 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     setSponsorPitchImgArray(tempPitchImgArray);
   };
 
+  const clearSponsorPitchImgArrayValue = () => {
+    setSponsorPitchImgArray([{ name: "", img_url: "" }]);
+  };
+
   const handleAddNewSponsorPitchImgUploadForm = () => {
     setSponsorPitchImgArray([
       ...sponsorPitchImgArray,
@@ -729,6 +835,7 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
     <FormStepperContext.Provider
       value={{
         // register value
+        registerBaseValue,
         registerValue,
         handleRegisterValue,
         fundraierRegisterValue,
@@ -737,9 +844,6 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         handleAdvertisingRegisterValue,
         sponsorshipRegisterValue,
         handleSponsorshipRegisterValue,
-        // login value
-        loginValue,
-        handleLoginValue,
         // update password
         updatePasswordValue,
         handleUpdatePasswordValue,
@@ -756,8 +860,6 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         // create fundriser value
         createFundraiserValue,
         handleCreateFundraiserValue,
-        fundraierPitchImg,
-        handleCreateFundraierPitchImg,
         rewardIdArray,
         handleRewardIdArray,
         handleCreateFundraiserPromote,
@@ -814,6 +916,27 @@ export const FormStepperProvider: React.FC<FormStepperPropsType> = ({
         handleChangeFundOverlayImg,
         handleChangeSponsorTitleImg,
         sponsorTitleImg,
+        clearRegisterValue,
+        clearAdsPitchImgArrayValue,
+        clearAdsRegisterValue,
+        clearAdsTitleImgValue,
+        clearAdsUpdateValue,
+        clearCreateAdvertisingValue,
+        clearCreateFundraiserValue,
+        clearCreateSponsorshipValue,
+        clearForgotPasswordValue,
+        clearfundOverlayImgValue,
+        clearFundPitchImgArrayValue,
+        clearFundraiserRegisterValue,
+        clearFundraiserUpdateValue,
+        clearfundTitleImgValue,
+        clearAdsPerkArray,
+        clearSponsorPitchImgArrayValue,
+        clearSponsorRegisterValue,
+        clearSponsorTitleImgValue,
+        clearSponsorUpdateValue,
+        clearUpdatePasswordValue,
+        clearRewardIdArrayValue,
       }}
     >
       {children}

@@ -26,17 +26,17 @@ export const CreateFundraiserFivethStep: React.FC<StepperActionPropsType> = ({
     handlePrevPage();
   };
   const handleClickEditBtn = (id: any) => {
-    const filteredRewards = rewardArray.filter((item) => item.id === id);
+    // const filteredRewards = rewardArray.filter((item) => item.id === id);
   };
 
   const handleClickDeleteBtn = (id: any) => {
     axios.post(`/fundraiser/${id}/deleteReward`);
-    const filteredRewards = rewardArray.filter((item) => item.id !== id);
+    const filteredRewards = rewardArray.filter((item: any) => item.id !== id);
     console.log("redux value", rewardArray, filteredRewards);
     setRewardData(filteredRewards);
     // filteredRewards.map((item) => dispatch(setReward(item)));
     // dispatch(setReward(filteredRewards));
-    const filteredRewardIds = filteredRewards.map((item) => item.id);
+    const filteredRewardIds = filteredRewards.map((item: any) => item.id);
     handleRewardIdArray(filteredRewardIds);
     console.log(filteredRewardIds);
   };

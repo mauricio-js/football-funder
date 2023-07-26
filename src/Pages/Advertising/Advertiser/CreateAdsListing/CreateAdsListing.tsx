@@ -23,6 +23,10 @@ export const CreateAdsListing: React.FC = () => {
     adsPerkArray,
     adsPitchImgArray,
     adsTitleImg,
+    clearCreateAdvertisingValue,
+    clearAdsPerkArray,
+    clearAdsPitchImgArrayValue,
+    clearAdsTitleImgValue,
   } = useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -42,7 +46,7 @@ export const CreateAdsListing: React.FC = () => {
     adsNumber: parseInt(createAdvertisingValue.adsNumber),
     titleImgLink: adsTitleImg.img_url,
     titleImgName: adsTitleImg.name,
-    pitchImg: adsPitchImgArray,
+    pitchImages: adsPitchImgArray,
     pitchVideoLink: createAdvertisingValue.pitchVideoLink,
     // pitchVideoName: inputValue.ads_video_url,
     promote: createAdvertisingValue.promote,
@@ -52,6 +56,10 @@ export const CreateAdsListing: React.FC = () => {
     (params: any) => axios.post("/advertising/create", params),
     {
       onSuccess: (data) => {
+        clearCreateAdvertisingValue();
+        clearAdsPerkArray();
+        clearAdsPitchImgArrayValue();
+        clearAdsTitleImgValue();
         showStatus("Your advertising lisitng has been successfully created!");
         setCurrentStep(currentStep + 1);
         window.scrollTo({ top: 0, behavior: "smooth" });

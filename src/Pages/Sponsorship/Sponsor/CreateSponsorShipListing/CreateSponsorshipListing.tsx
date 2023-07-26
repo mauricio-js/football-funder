@@ -23,6 +23,10 @@ export const CreateSponsorshipListing: React.FC = () => {
     adsPerkArray,
     sponsorPitchImgArray,
     sponsorTitleImg,
+    clearSponsorPitchImgArrayValue,
+    clearSponsorTitleImgValue,
+    clearAdsPitchImgArrayValue,
+    clearCreateSponsorshipValue,
   } = useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
@@ -41,7 +45,7 @@ export const CreateSponsorshipListing: React.FC = () => {
     description: createSponsorshipValue.description,
     titleImgLink: sponsorTitleImg.img_url,
     titleImgName: sponsorTitleImg.name,
-    pitchImg: sponsorPitchImgArray,
+    pitchImages: sponsorPitchImgArray,
     pitchVideoLink: createSponsorshipValue.pitchVideoLink,
     // pitchVideoName: inputValue.ads_video_url,
     promote: createSponsorshipValue.promote,
@@ -52,6 +56,10 @@ export const CreateSponsorshipListing: React.FC = () => {
     (params: any) => axios.post("/sponsorship/create", params),
     {
       onSuccess: (data) => {
+        clearSponsorPitchImgArrayValue();
+        clearSponsorTitleImgValue();
+        clearAdsPitchImgArrayValue();
+        clearCreateSponsorshipValue();
         showStatus("Your sponsorship lisitng has been successfully created!");
         setCurrentStep(currentStep + 1);
         window.scrollTo({ top: 0, behavior: "smooth" });

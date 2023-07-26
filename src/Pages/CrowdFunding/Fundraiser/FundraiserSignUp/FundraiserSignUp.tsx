@@ -16,7 +16,8 @@ import { EMAILVERIFICATION_URL } from "Lib/urls";
 export const FundraiserSignUp: React.FC = () => {
   const axios = useAxios();
   const navigate = useNavigate();
-  const { fundraierRegisterValue } = useContext(FormStepperContext);
+  const { fundraierRegisterValue, clearFundraiserRegisterValue } =
+    useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
 
   const data: any = {
@@ -45,6 +46,7 @@ export const FundraiserSignUp: React.FC = () => {
     (params: registerFormDataType) => axios.post("/user/register", params),
     {
       onSuccess: (data) => {
+        clearFundraiserRegisterValue();
         showStatus("Your account has been succesfully registered!");
         navigate(EMAILVERIFICATION_URL);
       },

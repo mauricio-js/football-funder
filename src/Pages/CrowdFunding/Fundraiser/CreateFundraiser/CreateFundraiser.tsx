@@ -26,6 +26,11 @@ export const CreateFundraiser: React.FC = () => {
     fundPitchImgArray,
     fundTitleImg,
     fundOverlayImg,
+    clearCreateFundraiserValue,
+    clearfundTitleImgValue,
+    clearFundPitchImgArrayValue,
+    clearfundOverlayImgValue,
+    clearRewardIdArrayValue,
   } = useContext(FormStepperContext);
 
   const [currentStep, setCurrentStep] = useState<number>(
@@ -40,7 +45,7 @@ export const CreateFundraiser: React.FC = () => {
     about: createFundraiserValue.about,
     titleImgLink: fundTitleImg.img_url,
     titleImgName: fundTitleImg.name,
-    pitchImg: fundPitchImgArray,
+    pitchImages: fundPitchImgArray,
     pitchVideoLink: createFundraiserValue.pitchVideoLink,
     // pitchVideoName: createFundraiserValue.pitchVideoName,
     overlayImgLink: fundOverlayImg.img_url,
@@ -53,6 +58,11 @@ export const CreateFundraiser: React.FC = () => {
     (params: any) => axios.post("/fundraiser/create", params),
     {
       onSuccess: (data) => {
+        clearCreateFundraiserValue();
+        clearfundTitleImgValue();
+        clearFundPitchImgArrayValue();
+        clearfundOverlayImgValue();
+        clearRewardIdArrayValue();
         showStatus("Your fundraiser has been succesfully created!");
         setCurrentStep(currentStep + 1);
         window.scrollTo({ top: 0, behavior: "smooth" });

@@ -16,7 +16,8 @@ export const ForgotPassword: React.FC = () => {
   const navigate = useNavigate();
   const axios = useAxios();
   const { showStatus } = useContext(StatusContext);
-  const { forgotPasswordValue } = useContext(FormStepperContext);
+  const { forgotPasswordValue, clearForgotPasswordValue } =
+    useContext(FormStepperContext);
   const [currentStep, setCurrentStep] = useState<number>(
     parseInt(sessionStorage.getItem("currentStep") || "0")
   );
@@ -40,6 +41,7 @@ export const ForgotPassword: React.FC = () => {
     (params: any) => axios.post("/auth/send_password_reset", params),
     {
       onSuccess: () => {
+        clearForgotPasswordValue();
         showStatus("Just sent a reset password link. Please check your email!");
       },
       onError: (err: any) => {

@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   FORGOTPASSWORD_URL,
   SIGNUP_URL,
-  CREATEADVERTISING_URL,
+  CREATEFUNDRAISER_URL,
+  FUNDRAISERACCOUNTUPDATE_URL,
 } from "Lib/urls";
 import { useAxios } from "Lib";
 import { setLogin } from "Data/Auth";
@@ -15,22 +16,32 @@ import { AccountEmailData, AccountPasswordData } from "Config";
 import { loginFormDataType } from "./types";
 import { StatusContext } from "App/StatusProvider";
 import { FormStepperContext } from "App/FormStepperProvider";
-// import { AppState } from "App/reducers";
+import { AppState } from "App/reducers";
 
 export const Signin: React.FC = () => {
   const navigate = useNavigate();
-  const { loginValue, handleLoginValue } = useContext(FormStepperContext);
+  useContext(FormStepperContext);
   const { showStatus } = useContext(StatusContext);
-  // const userInfo = useSelector((state: AppState) => state.user);
+  const { userInfo } = useSelector((state: AppState) => state.user);
+  const { defaultRegister } = useSelector((state: AppState) => state.register);
 
   // const { setSafely } = useIsMounted();
 
+  const [loginValue, setLoginValue] = useState<{ [key: string]: any }>({
+    email: "",
+    password: "",
+  });
+  const handleLoginValue = (key: string, value: any) => {
+    setLoginValue({
+      ...loginValue,
+      [key]: value,
+    });
+  };
   const data: loginFormDataType = {
     action: "validate-login",
     email: loginValue.email,
     password: loginValue.password,
   };
-
   const axios = useAxios();
   const dispatch = useDispatch();
 
@@ -45,14 +56,17 @@ export const Signin: React.FC = () => {
     {
       onSuccess: (res) => {
         showStatus("Your account has been succesfully login!");
-
         // const resData = res;
         const data = res.data;
         const userInfo = data.data;
+        console.log(userInfo);
+        const isUpdated = userInfo.first_name;
         storeLoginData(data);
         storeUserInfo(userInfo);
 
-        navigate(CREATEADVERTISING_URL);
+        defaultRegister || isUpdated
+          ? navigate(CREATEFUNDRAISER_URL)
+          : navigate(FUNDRAISERACCOUNTUPDATE_URL);
       },
       onError: (err: any) => {
         const errorMessage = err.response?.data.error;

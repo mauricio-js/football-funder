@@ -1,6 +1,12 @@
+## Instructions
+
 node version 18.17.0
--Run thie script
-npm i
--Copy env.example to .env
--Run this script to run the project locally
-npm run dev
+
+### Installation 
+
+1. `npm i`
+2. Copy env.example to .env. Edit the file
+
+### Running locally 
+
+`npm run dev`
